@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "size": "9 x 11 in",
+  "abrasive": "silicon carbide",
+  "use_mode": "wet or dry",
+  "grits": [
+    {
+      "grit": 60,
+      "family": "coarse",
+      "typical_uses": ["heavy material removal", "paint removal", "rough shaping"],
+      "not_for": ["final finish", "polishing prep"],
+      "commonly_before": [],
+      "commonly_after": [80, 100, 120],
+      "status": "draft"
+    },
+    {
+      "grit": 80,
+      "family": "coarse",
+      "typical_uses": ["heavy removal", "rough prep", "old finish removal"],
+      "not_for": ["between coats", "final finish"],
+      "commonly_before": [60],
+      "commonly_after": [100, 120, 150],
+      "status": "draft"
+    },
+    {
+      "grit": 100,
+      "family": "coarse",
+      "typical_uses": ["material removal", "surface leveling", "rough prep"],
+      "not_for": ["polishing prep"],
+      "commonly_before": [80],
+      "commonly_after": [120, 150],
+      "status": "draft"
+    },
+    {
+      "grit": 120,
+      "family": "coarse",
+      "typical_uses": ["rough prep", "smoothing after coarse sanding", "surface preparation"],
+      "not_for": ["final finish"],
+      "commonly_before": [100],
+      "commonly_after": [150, 180],
+      "status": "draft"
+    },
+    {
+      "grit": 150,
+      "family": "medium",
+      "typical_uses": ["surface prep", "smoothing uneven areas", "early finish prep"],
+      "not_for": ["polishing prep"],
+      "commonly_before": [120],
+      "commonly_after": [180, 220],
+      "status": "draft"
+    },
+    {
+      "grit": 180,
+      "family": "medium",
+      "typical_uses": ["surface prep", "refining scratch pattern", "general smoothing"],
+      "not_for": ["final polish stage"],
+      "commonly_before": [150],
+      "commonly_after": [220, 240],
+      "status": "draft"
+    },
+    {
+      "grit": 220,
+      "family": "medium",
+      "typical_uses": ["prep before coating", "wood smoothing", "general finish prep"],
+      "not_for": ["heavy removal"],
+      "commonly_before": [180],
+      "commonly_after": [240, 280, 320],
+      "status": "draft"
+    },
+    {
+      "grit": 240,
+      "family": "medium",
+      "typical_uses": ["surface refinement", "prep work", "light smoothing"],
+      "not_for": ["heavy stripping"],
+      "commonly_before": [220],
+      "commonly_after": [280, 320],
+      "status": "draft"
+    },
+    {
+      "grit": 280,
+      "family": "fine",
+      "typical_uses": ["fine prep", "scratch refinement", "pre-finish smoothing"],
+      "not_for": ["fast removal"],
+      "commonly_before": [240],
+      "commonly_after": [320, 360],
+      "status": "draft"
+    },
+    {
+      "grit": 320,
+      "family": "fine",
+      "typical_uses": ["fine sanding", "finish prep", "between coats support"],
+      "not_for": ["heavy stripping"],
+      "commonly_before": [280],
+      "commonly_after": [360, 400],
+      "status": "draft"
+    },
+    {
+      "grit": 360,
+      "family": "fine",
+      "typical_uses": ["fine surface prep", "finish refinement", "light coat prep"],
+      "not_for": ["rough shaping"],
+      "commonly_before": [320],
+      "commonly_after": [400, 500],
+      "status": "draft"
+    },
+    {
+      "grit": 400,
+      "family": "fine",
+      "typical_uses": ["finish prep", "between coats", "light refinement"],
+      "not_for": ["heavy removal"],
+      "commonly_before": [360],
+      "commonly_after": [500, 600],
+      "status": "draft"
+    },
+    {
+      "grit": 500,
+      "family": "extra-fine",
+      "typical_uses": ["extra-fine prep", "finish refinement", "light wet sanding"],
+      "not_for": ["aggressive sanding"],
+      "commonly_before": [400],
+      "commonly_after": [600, 800],
+      "status": "draft"
+    },
+    {
+      "grit": 600,
+      "family": "extra-fine",
+      "typical_uses": ["fine finish work", "wet sanding support", "surface refinement"],
+      "not_for": ["heavy leveling"],
+      "commonly_before": [500],
+      "commonly_after": [800, 1000],
+      "status": "draft"
+    },
+    {
+      "grit": 800,
+      "family": "extra-fine",
+      "typical_uses": ["fine wet sanding", "finish refinement", "pre-polish stage"],
+      "not_for": ["rough prep"],
+      "commonly_before": [600],
+      "commonly_after": [1000, 1200],
+      "status": "draft"
+    },
+    {
+      "grit": 1000,
+      "family": "ultra-fine",
+      "typical_uses": ["wet sanding", "polishing preparation", "finish refinement"],
+      "not_for": ["fast material removal"],
+      "commonly_before": [800],
+      "commonly_after": [1200, 1500],
+      "status": "draft"
+    },
+    {
+      "grit": 1200,
+      "family": "ultra-fine",
+      "typical_uses": ["wet sanding", "refined finish prep", "pre-polish refinement"],
+      "not_for": ["rough surface shaping"],
+      "commonly_before": [1000],
+      "commonly_after": [1500, 2000],
+      "status": "draft"
+    },
+    {
+      "grit": 1500,
+      "family": "ultra-fine",
+      "typical_uses": ["fine wet sanding", "finish refinement", "polish prep"],
+      "not_for": ["general stripping"],
+      "commonly_before": [1200],
+      "commonly_after": [2000, 3000],
+      "status": "draft"
+    },
+    {
+      "grit": 2000,
+      "family": "ultra-fine",
+      "typical_uses": ["very fine wet sanding", "surface refinement", "pre-polish stage"],
+      "not_for": ["coarse prep"],
+      "commonly_before": [1500],
+      "commonly_after": [3000],
+      "status": "draft"
+    },
+    {
+      "grit": 3000,
+      "family": "ultra-fine",
+      "typical_uses": ["final wet sanding refinement", "very fine finish prep", "polishing preparation"],
+      "not_for": ["surface leveling"],
+      "commonly_before": [2000],
+      "commonly_after": [],
+      "status": "draft"
+    }
+  ]
+}

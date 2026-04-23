@@ -1,0 +1,10 @@
+{
+  "name": "sandpaper-support",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Problem-first public support system for eQualle sandpaper products.",
+  "scripts": {
+    "validate:data": "node -e \"console.log('validate:data placeholder')\"",
+    "build:content": "node -e \"console.log('build:content placeholder')\""
+  }
+}

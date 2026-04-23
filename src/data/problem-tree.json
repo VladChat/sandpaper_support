@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "project": "eQualle Support System",
+  "top_problems": [
+    {
+      "id": "problem-scratches-too-deep",
+      "slug": "scratches-too-deep",
+      "title": "Scratches Too Deep",
+      "summary": "User sees sanding marks that are deeper than expected or remain visible after moving to finer grit.",
+      "search_terms": [
+        "deep scratches after sanding",
+        "sanding scratches too visible",
+        "scratch pattern too rough"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "clear-coat"],
+        "stage": ["prep-stage", "final-finish"],
+        "method": ["dry-sanding", "wet-sanding"]
+      },
+      "example_scenarios": [
+        "320 grit does not remove 180 grit scratches",
+        "fine grit still shows heavy scratch lines",
+        "clear coat shows sanding marks after progression"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-not-sure-what-grit-to-use",
+      "slug": "not-sure-what-grit-to-use",
+      "title": "Not Sure What Grit To Use",
+      "summary": "User needs help choosing the correct grit or grit progression.",
+      "search_terms": [
+        "what grit should I use",
+        "best grit for sanding",
+        "which sandpaper grit do I need"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "clear-coat", "plastic", "general"],
+        "stage": ["heavy-removal", "prep-stage", "between-coats", "final-finish", "polishing-prep"],
+        "method": ["dry-sanding", "wet-sanding", "unknown-method"]
+      },
+      "example_scenarios": [
+        "what grit for wood before paint",
+        "what grit for sanding between coats",
+        "what grit before polishing"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-paper-clogs-too-fast",
+      "slug": "paper-clogs-too-fast",
+      "title": "Paper Clogs Too Fast",
+      "summary": "User reports fast loading, buildup, or reduced cutting during sanding.",
+      "search_terms": [
+        "sandpaper clogs quickly",
+        "paper loads up fast",
+        "sandpaper fills with dust"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "painted-surface", "clear-coat", "plastic", "general"],
+        "stage": ["prep-stage", "between-coats", "final-finish"],
+        "method": ["dry-sanding", "wet-sanding", "hand-sanding"]
+      },
+      "example_scenarios": [
+        "paper loads up on paint quickly",
+        "fine grit clogs during finish sanding",
+        "sheet stops cutting after short use"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-sanding-takes-too-long",
+      "slug": "sanding-takes-too-long",
+      "title": "Sanding Takes Too Long",
+      "summary": "User feels removal is too slow or progress is poor.",
+      "search_terms": [
+        "sanding takes too long",
+        "sandpaper not cutting fast enough",
+        "removal is too slow"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "general"],
+        "stage": ["heavy-removal", "prep-stage"],
+        "method": ["dry-sanding", "hand-sanding", "sanding-block"]
+      },
+      "example_scenarios": [
+        "paint removal is too slow",
+        "surface stays rough after long sanding",
+        "starting grit feels too fine"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-finish-looks-uneven",
+      "slug": "finish-looks-uneven",
+      "title": "Finish Looks Uneven",
+      "summary": "User sees inconsistent surface appearance, patchiness, or uneven smoothing.",
+      "search_terms": [
+        "finish looks uneven after sanding",
+        "patchy sanding result",
+        "surface not evenly sanded"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "clear-coat"],
+        "stage": ["prep-stage", "between-coats", "final-finish"],
+        "method": ["dry-sanding", "wet-sanding"]
+      },
+      "example_scenarios": [
+        "surface has dull and shiny patches",
+        "finish looks uneven after fine sanding",
+        "coat prep looks inconsistent"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-swirl-marks-remain",
+      "slug": "swirl-marks-remain",
+      "title": "Swirl Marks Remain",
+      "summary": "User sees circular or visible sanding marks that remain after later steps.",
+      "search_terms": [
+        "swirl marks after sanding",
+        "circular sanding marks remain",
+        "visible sanding trails"
+      ],
+      "qualifiers": {
+        "surface": ["clear-coat", "painted-surface", "metal"],
+        "stage": ["final-finish", "polishing-prep"],
+        "method": ["wet-sanding", "dry-sanding"]
+      },
+      "example_scenarios": [
+        "swirl marks remain after wet sanding",
+        "clear coat still shows sanding pattern",
+        "fine grit leaves visible trails"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-paper-tears-early",
+      "slug": "paper-tears-early",
+      "title": "Paper Tears Early",
+      "summary": "User reports the sheet tearing or failing sooner than expected.",
+      "search_terms": [
+        "sandpaper tears quickly",
+        "sheet rips during sanding",
+        "paper tearing on edges"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "general"],
+        "stage": ["heavy-removal", "prep-stage", "unknown-stage"],
+        "method": ["hand-sanding", "sanding-block", "dry-sanding"]
+      },
+      "example_scenarios": [
+        "paper tears on sharp edges",
+        "sheet rips while hand sanding",
+        "paper fails early under pressure"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-poor-results-between-coats",
+      "slug": "poor-results-between-coats",
+      "title": "Poor Results Between Coats",
+      "summary": "User is sanding between coats and gets poor prep or visible defects.",
+      "search_terms": [
+        "bad sanding between coats",
+        "between coats sanding problem",
+        "surface looks wrong before next coat"
+      ],
+      "qualifiers": {
+        "surface": ["painted-surface", "clear-coat", "wood"],
+        "stage": ["between-coats"],
+        "method": ["dry-sanding", "wet-sanding"]
+      },
+      "example_scenarios": [
+        "surface looks scratched between coats",
+        "coat prep leaves visible marks",
+        "not sure what grit for between coats"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-wet-sanding-leaves-haze",
+      "slug": "wet-sanding-leaves-haze",
+      "title": "Wet Sanding Leaves Haze",
+      "summary": "User sees cloudiness or haze after wet sanding stages.",
+      "search_terms": [
+        "haze after wet sanding",
+        "wet sanding leaves cloudy finish",
+        "surface looks hazy after fine grit"
+      ],
+      "qualifiers": {
+        "surface": ["clear-coat", "painted-surface", "plastic"],
+        "stage": ["final-finish", "polishing-prep"],
+        "method": ["wet-sanding"]
+      },
+      "example_scenarios": [
+        "1000 grit leaves haze on clear coat",
+        "surface looks cloudy after wet sanding",
+        "finish not clearing after final sanding"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "problem-surface-still-feels-rough",
+      "slug": "surface-still-feels-rough",
+      "title": "Surface Still Feels Rough",
+      "summary": "User expects a smoother finish but the surface still feels rough.",
+      "search_terms": [
+        "surface still rough after sanding",
+        "wood still rough after fine grit",
+        "sanding did not smooth surface"
+      ],
+      "qualifiers": {
+        "surface": ["wood", "metal", "painted-surface", "plastic", "general"],
+        "stage": ["prep-stage", "final-finish"],
+        "method": ["dry-sanding", "wet-sanding", "hand-sanding"]
+      },
+      "example_scenarios": [
+        "220 grit still leaves wood rough",
+        "surface feels rough after progression",
+        "fine sanding still not smooth"
+      ],
+      "status": "draft"
+    }
+  ]
+}

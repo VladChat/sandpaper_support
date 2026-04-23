@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "brand": "eQualle",
+  "products": [
+    {
+      "product_id": "assorted-kit-80-3000-15sheets",
+      "slug": "assorted-kit-80-3000",
+      "display_name": "Sandpaper Sheets Kit, 15 Sheets, 80 to 3000 Grit",
+      "format": "assorted-kit",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [80, 120, 180, 220, 320, 400, 600, 800, 1000, 1200, 1500, 2000, 2500, 3000],
+      "notes": "Needs validation against final commercial assortment list before public release.",
+      "related_problems": [
+        "not-sure-what-grit-to-use",
+        "scratches-too-deep",
+        "paper-clogs-too-fast",
+        "surface-still-feels-rough"
+      ],
+      "status": "needs_validation"
+    },
+    {
+      "product_id": "single-grit-80",
+      "slug": "single-grit-80",
+      "display_name": "80 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [80],
+      "related_problems": [
+        "sanding-takes-too-long",
+        "not-sure-what-grit-to-use"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-120",
+      "slug": "single-grit-120",
+      "display_name": "120 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [120],
+      "related_problems": [
+        "not-sure-what-grit-to-use",
+        "scratches-too-deep"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-220",
+      "slug": "single-grit-220",
+      "display_name": "220 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [220],
+      "related_problems": [
+        "surface-still-feels-rough",
+        "not-sure-what-grit-to-use",
+        "poor-results-between-coats"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-320",
+      "slug": "single-grit-320",
+      "display_name": "320 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [320],
+      "related_problems": [
+        "poor-results-between-coats",
+        "finish-looks-uneven",
+        "scratches-too-deep"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-600",
+      "slug": "single-grit-600",
+      "display_name": "600 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [600],
+      "related_problems": [
+        "finish-looks-uneven",
+        "poor-results-between-coats",
+        "wet-sanding-leaves-haze"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-1000",
+      "slug": "single-grit-1000",
+      "display_name": "1000 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [1000],
+      "related_problems": [
+        "wet-sanding-leaves-haze",
+        "swirl-marks-remain",
+        "not-sure-what-grit-to-use"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-2000",
+      "slug": "single-grit-2000",
+      "display_name": "2000 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [2000],
+      "related_problems": [
+        "wet-sanding-leaves-haze",
+        "swirl-marks-remain"
+      ],
+      "status": "draft"
+    },
+    {
+      "product_id": "single-grit-3000",
+      "slug": "single-grit-3000",
+      "display_name": "3000 Grit Sandpaper Sheets",
+      "format": "single-grit-sheets",
+      "size": "9 x 11 in",
+      "abrasive": "silicon carbide",
+      "use_mode": "wet or dry",
+      "included_grits": [3000],
+      "related_problems": [
+        "swirl-marks-remain",
+        "wet-sanding-leaves-haze"
+      ],
+      "status": "draft"
+    }
+  ]
+}

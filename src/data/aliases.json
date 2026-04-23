@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "aliases": [
+    {"alias": "deep scratches", "maps_to": "scratches-too-deep", "confidence": 0.98},
+    {"alias": "sanding scratches too visible", "maps_to": "scratches-too-deep", "confidence": 0.94},
+    {"alias": "what grit do I need", "maps_to": "not-sure-what-grit-to-use", "confidence": 0.99},
+    {"alias": "which sandpaper grit", "maps_to": "not-sure-what-grit-to-use", "confidence": 0.97},
+    {"alias": "paper clogging", "maps_to": "paper-clogs-too-fast", "confidence": 0.98},
+    {"alias": "sandpaper loads up", "maps_to": "paper-clogs-too-fast", "confidence": 0.96},
+    {"alias": "sanding too slow", "maps_to": "sanding-takes-too-long", "confidence": 0.97},
+    {"alias": "not cutting fast enough", "maps_to": "sanding-takes-too-long", "confidence": 0.94},
+    {"alias": "uneven finish", "maps_to": "finish-looks-uneven", "confidence": 0.98},
+    {"alias": "patchy finish after sanding", "maps_to": "finish-looks-uneven", "confidence": 0.93},
+    {"alias": "swirl marks", "maps_to": "swirl-marks-remain", "confidence": 0.99},
+    {"alias": "circular sanding marks", "maps_to": "swirl-marks-remain", "confidence": 0.95},
+    {"alias": "paper tearing", "maps_to": "paper-tears-early", "confidence": 0.98},
+    {"alias": "sheet rips", "maps_to": "paper-tears-early", "confidence": 0.94},
+    {"alias": "between coats problem", "maps_to": "poor-results-between-coats", "confidence": 0.95},
+    {"alias": "sanding between coats", "maps_to": "poor-results-between-coats", "confidence": 0.98},
+    {"alias": "haze after wet sanding", "maps_to": "wet-sanding-leaves-haze", "confidence": 0.99},
+    {"alias": "cloudy after wet sanding", "maps_to": "wet-sanding-leaves-haze", "confidence": 0.95},
+    {"alias": "surface still rough", "maps_to": "surface-still-feels-rough", "confidence": 0.99},
+    {"alias": "not smooth after sanding", "maps_to": "surface-still-feels-rough", "confidence": 0.96}
+  ]
+}
