@@ -9,7 +9,7 @@ The full problem list should live in structured data and power search, autocompl
 The public homepage should show:
 
 1. one large problem search box
-2. a small set of top problem shortcuts
+2. exactly 12 top problem shortcut cards
 3. optional category chips
 4. AI helper entry point
 
@@ -67,7 +67,7 @@ Suggestions:
 
 ## Visible Homepage Shortcuts
 
-Show only 6-8 top problems, not the full database.
+Show exactly 12 top problems, not the full database.
 
 Recommended shortcut cards:
 
@@ -79,6 +79,10 @@ Recommended shortcut cards:
 - Finish looks uneven
 - Sanding takes too long
 - Paper tears early
+- Poor results between coats
+- Swirl marks remain
+- Paint or finish removal is not working
+- Wrong grit progression
 
 These cards are fallback navigation for users who do not want to type.
 
@@ -107,11 +111,12 @@ Each searchable item should include:
 3. Use customer language in suggestions.
 4. Keep expert terms inside final answers.
 5. Show the best match first.
-6. Show no more than 5-7 suggestions at once.
-7. Include a fallback button: "Browse all problems".
-8. Use synonyms and aliases aggressively.
-9. Track zero-result searches later.
-10. Turn repeated zero-result searches into new support pages.
+6. Show no more than 5-7 autocomplete suggestions at once.
+7. Show exactly 12 top shortcut cards on the homepage.
+8. Include a fallback button: "Browse all problems".
+9. Use synonyms and aliases aggressively.
+10. Track zero-result searches later.
+11. Turn repeated zero-result searches into new support pages.
 
 ## AI Role
 
@@ -131,7 +136,7 @@ Best AI behavior:
 2. create `search-index.json`
 3. update homepage to search-first layout
 4. show autocomplete suggestions while typing
-5. add small top-problem shortcut cards
+5. add exactly 12 top-problem shortcut cards
 6. add "Browse all problems" page
 7. add unresolved-search logging later
 8. add AI assistant after the content base is strong
