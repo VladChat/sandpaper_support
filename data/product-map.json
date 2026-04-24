@@ -1,0 +1,40 @@
+[
+  {
+    "id": "assorted-kit-80-3000",
+    "title": "eQualle 15-Sheet Assorted Sandpaper Kit, 80 to 3000 Grit",
+    "description": "9 x 11 inch silicon carbide sandpaper assortment for wet or dry use.",
+    "included": "15 sheets covering grit progression from 80 to 3000.",
+    "bestFor": [
+      "choosing the right grit",
+      "testing grit progression",
+      "wood prep",
+      "metal prep",
+      "paint prep",
+      "wet sanding",
+      "finish refinement"
+    ],
+    "linkedProblems": [
+      "not-sure-what-grit-to-use",
+      "scratches-too-deep",
+      "wet-sanding-leaves-haze",
+      "surface-still-feels-rough"
+    ]
+  },
+  {
+    "id": "single-grit-sheets",
+    "title": "eQualle 9 x 11 Inch Silicon Carbide Sandpaper Sheets",
+    "description": "Single-grit sandpaper sheet packs for wet or dry sanding tasks.",
+    "included": "Pack size varies by SKU.",
+    "bestFor": [
+      "repeating one sanding stage",
+      "surface preparation",
+      "finish refinement",
+      "wet or dry use"
+    ],
+    "linkedProblems": [
+      "paper-clogs-too-fast",
+      "sanding-takes-too-long",
+      "poor-results-between-coats"
+    ]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "range": "60\u2013120",
+    "family": "Coarse",
+    "use": "Heavy material removal, rough sanding, paint or rust removal, shaping uneven areas.",
+    "avoid": "Final finishing or delicate sanding where deep scratches would be a problem.",
+    "next": "Move to 150\u2013240 for surface preparation."
+  },
+  {
+    "range": "150\u2013240",
+    "family": "Medium",
+    "use": "Surface preparation, smoothing, sanding before primer, paint, stain, or sealer.",
+    "avoid": "Polishing preparation or very fine finish refinement.",
+    "next": "Move to 280\u2013400 for finish preparation."
+  },
+  {
+    "range": "280\u2013400",
+    "family": "Fine",
+    "use": "Fine sanding, finish preparation, sanding between suitable coats.",
+    "avoid": "Heavy removal tasks.",
+    "next": "Move to 600\u2013800 for extra-fine finishing."
+  },
+  {
+    "range": "600\u2013800",
+    "family": "Extra Fine",
+    "use": "Extra-fine finishing, light wet sanding, reducing fine surface marks.",
+    "avoid": "Fast cutting or reshaping tasks.",
+    "next": "Move to 1000\u20133000 for polishing preparation."
+  },
+  {
+    "range": "1000\u20133000",
+    "family": "Ultra Fine",
+    "use": "Very fine wet sanding, polishing preparation, finish refinement.",
+    "avoid": "Removing heavy defects or old coatings.",
+    "next": "Polish or apply the next finish step as required by the project."
+  }
+]
