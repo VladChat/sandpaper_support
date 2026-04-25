@@ -285,6 +285,9 @@
           guide: true,
           use: true,
         };
+        const meaningfulTerms = terms.filter(function (term) {
+          return term.length > 2 && !vagueTerms[term];
+        });
 
         if (!loweredQuery || loweredQuery.length < 3) {
           return [];
@@ -299,15 +302,19 @@
             const surfaces = normalizeList(entry.surface);
             const grits = normalizeList(entry.grits);
             const methods = normalizeList(entry.method);
-            const primaryText = [title].concat(customerPhrases, aliases).join(" ");
-            const broadText = [primaryText, description]
-              .concat(surfaces, grits, methods)
-              .join(" ");
 
             let score = 0;
             let matchedTerms = 0;
-            let strongTermMatches = 0;
+            let meaningfulTermMatches = 0;
             let hasStrongSignal = false;
+            const exactPhraseMatch =
+              title.indexOf(loweredQuery) !== -1 ||
+              customerPhrases.some(function (phrase) {
+                return phrase.indexOf(loweredQuery) !== -1;
+              }) ||
+              aliases.some(function (alias) {
+                return alias.indexOf(loweredQuery) !== -1;
+              });
 
             if (shortQuery) {
               if (phraseStartsWithQuery([title], loweredQuery)) {
@@ -331,17 +338,20 @@
                 score = 0;
               }
             } else {
-              const titlePhraseExact = title.indexOf(loweredQuery) !== -1;
-              const customerPhraseExact = customerPhrases.some(function (phrase) {
-                return phrase.indexOf(loweredQuery) !== -1;
-              });
-
-              if (titlePhraseExact) {
+              if (title.indexOf(loweredQuery) !== -1) {
                 score += 120;
                 hasStrongSignal = true;
               }
-              if (customerPhraseExact) {
+              if (customerPhrases.some(function (phrase) {
+                return phrase.indexOf(loweredQuery) !== -1;
+              })) {
                 score += 115;
+                hasStrongSignal = true;
+              }
+              if (aliases.some(function (alias) {
+                return alias.indexOf(loweredQuery) !== -1;
+              })) {
+                score += 108;
                 hasStrongSignal = true;
               }
 
@@ -361,23 +371,27 @@
               terms.forEach(function (term) {
                 let termMatched = false;
                 let strongMatch = false;
+                let semanticMatch = false;
 
                 if (title.indexOf(term) !== -1) {
                   score += 16;
                   termMatched = true;
                   strongMatch = true;
+                  semanticMatch = true;
                 } else if (customerPhrases.some(function (phrase) {
                   return phrase.indexOf(term) !== -1;
                 })) {
                   score += 14;
                   termMatched = true;
                   strongMatch = true;
+                  semanticMatch = true;
                 } else if (aliases.some(function (alias) {
                   return alias.indexOf(term) !== -1;
                 })) {
                   score += 12;
                   termMatched = true;
                   strongMatch = true;
+                  semanticMatch = true;
                 } else if (
                   grits.indexOf(term) !== -1 ||
                   surfaces.some(function (surface) {
@@ -389,6 +403,7 @@
                 ) {
                   score += 8;
                   termMatched = true;
+                  semanticMatch = true;
                 } else if (description.indexOf(term) !== -1) {
                   score += 3;
                   termMatched = true;
@@ -396,8 +411,8 @@
 
                 if (termMatched) {
                   matchedTerms += 1;
-                  if (strongMatch || !vagueTerms[term]) {
-                    strongTermMatches += 1;
+                  if (!vagueTerms[term] && (strongMatch || semanticMatch)) {
+                    meaningfulTermMatches += 1;
                   }
                 }
               });
@@ -414,7 +429,7 @@
                 score -= 35;
               }
 
-              if (matchedTerms === 1 && strongTermMatches === 0 && !hasStrongSignal) {
+              if (matchedTerms === 1 && meaningfulTermMatches === 0 && !hasStrongSignal) {
                 score -= 25;
               }
             }
@@ -426,6 +441,8 @@
             return {
               score: score,
               entry: entry,
+              exactPhraseMatch: exactPhraseMatch,
+              meaningfulTermMatches: meaningfulTermMatches,
             };
           })
           .filter(function (item) {
@@ -434,11 +451,19 @@
             }
 
             if (terms.length > 1) {
-              const haystack = buildSearchHaystack(item.entry);
-              const matched = terms.filter(function (term) {
-                return clean(haystack).indexOf(term) !== -1;
-              }).length;
-              return matched > 1 || item.entry.type === "exact_scenario";
+              if (item.exactPhraseMatch) {
+                return true;
+              }
+
+              if (item.meaningfulTermMatches >= 2) {
+                return true;
+              }
+
+              if (meaningfulTerms.length < 2) {
+                return false;
+              }
+
+              return false;
             }
 
             return true;
@@ -825,44 +850,69 @@
     return /^\/(problems|solutions)\/[^/]+\/?$/.test(scopedPath);
   }
 
-  function attachPageFollowup(basePath) {
+  function attachPageTopAssistant(basePath) {
     if (!isSupportLeaf(window.location.pathname, basePath)) {
       return null;
     }
 
-    if (document.querySelector("[data-support-followup]")) {
-      return parseExistingShell(document.querySelector("[data-support-followup]"));
+    if (document.querySelector("[data-support-top-assistant]")) {
+      return parseExistingShell(document.querySelector("[data-support-top-assistant]"));
     }
 
-    const answerCard = document.querySelector(".answer-card:last-of-type");
-    if (!answerCard) {
+    const section = document.querySelector("main .section");
+    if (!section) {
       return null;
     }
 
     const block = document.createElement("section");
-    block.className = "answer-card support-followup-card";
-    block.setAttribute("data-support-followup", "");
+    block.className = "answer-card support-top-assistant-card";
+    block.setAttribute("data-support-top-assistant", "");
 
     const heading = document.createElement("h2");
-    heading.textContent = "Need more help with this issue?";
+    heading.textContent = "Ask about this issue";
     block.appendChild(heading);
 
     const intro = document.createElement("p");
     intro.className = "section-intro";
     intro.textContent =
-      "Ask a short follow-up and the assistant will answer from approved support guides.";
+      "Ask a follow-up question about this sanding problem, grit choice, surface, or next step.";
     block.appendChild(intro);
 
     const shell = buildAssistantShell({
-      title: "Need more help with this issue?",
+      title: "Ask about this issue",
       description: "",
-      placeholder: "Example: what should I do next?",
-      initialMessage: "Share what you tried, and I will suggest the next support step.",
+      placeholder: "Example: what grit should I use next?",
+      initialMessage: "Pick a suggestion or ask your exact next-step question.",
     });
+
+    const suggestions = document.createElement("div");
+    suggestions.className = "support-suggestion-row";
+    suggestions.setAttribute("data-support-suggestions", "");
+    [
+      "What should I do next?",
+      "Which grit comes next?",
+      "Should I sand wet or dry?",
+    ].forEach(function (text) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "support-suggestion-button";
+      button.textContent = text;
+      suggestions.appendChild(button);
+    });
+    block.appendChild(suggestions);
 
     block.appendChild(shell.root.querySelector(".chat-shell"));
 
-    answerCard.insertAdjacentElement("afterend", block);
+    const introNode = section.querySelector(".section-intro");
+    const firstAnswerCard = section.querySelector(".answer-card");
+
+    if (introNode) {
+      introNode.insertAdjacentElement("afterend", block);
+    } else if (firstAnswerCard) {
+      firstAnswerCard.insertAdjacentElement("beforebegin", block);
+    } else {
+      section.appendChild(block);
+    }
 
     return {
       root: block,
@@ -871,6 +921,9 @@
       messages: shell.messages,
       setTitle: shell.setTitle,
       setDescription: shell.setDescription,
+      suggestionButtons: Array.prototype.slice.call(
+        block.querySelectorAll(".support-suggestion-button"),
+      ),
     };
   }
 
@@ -1286,14 +1339,21 @@
   }
 
   function setupSupportFollowup(basePath, knowledge) {
-    const shell = attachPageFollowup(basePath);
+    const shell = attachPageTopAssistant(basePath);
     if (!shell) {
       return;
     }
 
     const requester = createAssistantRequester(basePath, knowledge);
-    wireChat(shell, requester, basePath, {
+    const chat = wireChat(shell, requester, basePath, {
       source: "support-page-followup",
+    });
+
+    (shell.suggestionButtons || []).forEach(function (button) {
+      button.addEventListener("click", function () {
+        const question = button.textContent || "";
+        chat.ask(question, { auto: false });
+      });
     });
   }
 
