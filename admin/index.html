@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard | eQualle Support</title>
+    <meta
+      name="description"
+      content="Private admin dashboard for eQualle support search logs, feedback, and draft solution cards."
+    >
+    <link rel="stylesheet" href="/sandpaper_support/assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a>
+        <nav class="nav">
+          <a href="/sandpaper_support/problems/">Find My Problem</a>
+          <a href="/sandpaper_support/grits/">By Grit</a>
+          <a href="/sandpaper_support/products/">By Product</a>
+          <a href="/sandpaper_support/how-to/">How To</a>
+          <a href="/sandpaper_support/documents/">Documents</a>
+          <a href="/sandpaper_support/ai-assistant/">AI Assistant</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section admin-shell">
+        <div class="admin-heading">
+          <div>
+            <div class="eyebrow">Private Admin</div>
+            <h1>Support Data Dashboard</h1>
+            <p class="section-intro">
+              Review search logs, zero-result searches, customer feedback, and draft solution card activity.
+            </p>
+          </div>
+          <button class="admin-button admin-button-secondary" type="button" data-admin-logout>
+            Log out
+          </button>
+        </div>
+
+        <div class="admin-status" data-admin-status aria-live="polite"></div>
+
+        <section class="answer-card admin-login-card" data-admin-login>
+          <h2>Admin Login</h2>
+          <form class="admin-form" data-admin-login-form>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="admin-button" type="submit">Log in</button>
+          </form>
+          <p class="section-intro">
+            The dashboard is hidden until a Supabase Auth session is active.
+          </p>
+        </section>
+
+        <section class="admin-dashboard" data-admin-dashboard hidden>
+          <article class="answer-card admin-section">
+            <h2>Recent Search Logs</h2>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Query</th>
+                    <th>Results</th>
+                    <th>Selected path</th>
+                  </tr>
+                </thead>
+                <tbody data-search-logs-body>
+                  <tr><td colspan="4">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="answer-card admin-section">
+            <h2>Zero Result Searches</h2>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Query</th>
+                    <th>Normalized query</th>
+                  </tr>
+                </thead>
+                <tbody data-zero-searches-body>
+                  <tr><td colspan="3">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="answer-card admin-section">
+            <h2>Recent Feedback</h2>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Rating</th>
+                    <th>Page</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody data-feedback-body>
+                  <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="answer-card admin-section">
+            <h2>Not Helpful Feedback</h2>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Rating</th>
+                    <th>Page</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody data-not-helpful-feedback-body>
+                  <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="answer-card admin-section">
+            <h2>Draft Solution Cards</h2>
+            <p class="section-intro">
+              Placeholder review surface for draft support cards stored in Supabase.
+            </p>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Problem</th>
+                    <th>Grit</th>
+                    <th>Status</th>
+                    <th>Updated</th>
+                  </tr>
+                </thead>
+                <tbody data-drafts-body>
+                  <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© eQualle Support System</span>
+        <span>Private dashboard for approved support data.</span>
+      </div>
+    </footer>
+    <script src="/sandpaper_support/assets/config.js"></script>
+    <script src="/sandpaper_support/assets/supabase-client.js"></script>
+    <script src="/sandpaper_support/assets/admin.js"></script>
+  </body>
+</html>

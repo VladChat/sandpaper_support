@@ -18,6 +18,12 @@ to service_role
 using (true)
 with check (true);
 
+create policy "Admins can read support feedback"
+on public.support_feedback
+for select
+to authenticated
+using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
 create policy "Anonymous users can submit search logs"
 on public.search_logs
 for insert
@@ -30,6 +36,12 @@ for all
 to service_role
 using (true)
 with check (true);
+
+create policy "Admins can read search logs"
+on public.search_logs
+for select
+to authenticated
+using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 create policy "Service role can manage AI sessions"
 on public.ai_sessions

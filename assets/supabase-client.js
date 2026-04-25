@@ -32,6 +32,198 @@
       });
   }
 
+  function authFetch(path, options) {
+    var config = getConfig();
+    options = options || {};
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true });
+    }
+
+    return fetch(config.url + path, {
+      method: options.method || "GET",
+      headers: Object.assign(
+        {
+          apikey: config.anonKey,
+          "Content-Type": "application/json",
+        },
+        options.headers || {},
+      ),
+      body: options.body ? JSON.stringify(options.body) : undefined,
+    });
+  }
+
+  function saveSession(session) {
+    try {
+      if (session) {
+        window.localStorage.setItem(
+          "equalle_admin_session",
+          JSON.stringify(session),
+        );
+      } else {
+        window.localStorage.removeItem("equalle_admin_session");
+      }
+    } catch (_error) {
+      return;
+    }
+  }
+
+  function readStoredSession() {
+    try {
+      var raw = window.localStorage.getItem("equalle_admin_session");
+      return raw ? JSON.parse(raw) : null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function normalizeSession(body) {
+    if (!body || !body.access_token) {
+      return null;
+    }
+
+    return {
+      access_token: body.access_token,
+      refresh_token: body.refresh_token || null,
+      expires_at: body.expires_at || null,
+      user: body.user || null,
+    };
+  }
+
+  function signIn(email, password) {
+    return authFetch("/auth/v1/token?grant_type=password", {
+      method: "POST",
+      body: {
+        email: email,
+        password: password,
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            return {
+              ok: false,
+              status: response.status,
+              error: body.error_description || body.msg || body.message,
+            };
+          }
+
+          var session = normalizeSession(body);
+          saveSession(session);
+          return { ok: true, session: session };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Sign in failed." };
+      });
+  }
+
+  function signOut() {
+    var session = readStoredSession();
+
+    if (!session || !session.access_token) {
+      saveSession(null);
+      return Promise.resolve({ ok: true });
+    }
+
+    return authFetch("/auth/v1/logout", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + session.access_token,
+      },
+    })
+      .then(function (response) {
+        saveSession(null);
+        return { ok: response.ok, status: response.status };
+      })
+      .catch(function () {
+        saveSession(null);
+        return { ok: false };
+      });
+  }
+
+  function getSession() {
+    var session = readStoredSession();
+
+    if (!session || !session.access_token) {
+      return Promise.resolve({ ok: true, session: null });
+    }
+
+    return authFetch("/auth/v1/user", {
+      headers: {
+        Authorization: "Bearer " + session.access_token,
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            saveSession(null);
+            return { ok: false, status: response.status, session: null };
+          }
+
+          session.user = body;
+          saveSession(session);
+          return { ok: true, session: session };
+        });
+      })
+      .catch(function () {
+        return { ok: false, session: session };
+      });
+  }
+
+  function buildQuery(params) {
+    params = params || {};
+    return Object.keys(params)
+      .map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+      })
+      .join("&");
+  }
+
+  function readTable(table, params) {
+    var session = readStoredSession();
+
+    if (!session || !session.access_token) {
+      return Promise.resolve({
+        ok: false,
+        status: 401,
+        error: "Sign in before reading admin data.",
+      });
+    }
+
+    var query = buildQuery(params);
+
+    return authFetch("/rest/v1/" + table + (query ? "?" + query : ""), {
+      headers: {
+        Authorization: "Bearer " + session.access_token,
+        Prefer: "count=exact",
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return [];
+        }).then(function (body) {
+          if (!response.ok) {
+            return {
+              ok: false,
+              status: response.status,
+              error: body.message || body.hint || "RLS may be blocking access.",
+              data: [],
+            };
+          }
+
+          return { ok: true, status: response.status, data: body };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Admin data could not be loaded.", data: [] };
+      });
+  }
+
   function isConfigured() {
     var config = getConfig();
     return Boolean(config.url && config.anonKey);
@@ -102,6 +294,50 @@
       });
   }
 
+  function fetchSearchLogs(params) {
+    return readTable(
+      "search_logs",
+      Object.assign(
+        {
+          select: "id,query,normalized_query,result_count,selected_path,created_at",
+          order: "created_at.desc",
+          limit: 25,
+        },
+        params || {},
+      ),
+    );
+  }
+
+  function fetchFeedback(params) {
+    return readTable(
+      "support_feedback",
+      Object.assign(
+        {
+          select:
+            "id,page_path,problem_slug,feedback_type,rating,message,created_at",
+          order: "created_at.desc",
+          limit: 25,
+        },
+        params || {},
+      ),
+    );
+  }
+
+  function fetchDraftSolutionCards(params) {
+    return readTable(
+      "draft_solution_cards",
+      Object.assign(
+        {
+          select:
+            "id,problem_slug,title,likely_cause,recommended_grit,method,status,validation_notes,updated_at,created_at",
+          order: "updated_at.desc",
+          limit: 25,
+        },
+        params || {},
+      ),
+    );
+  }
+
   function getSessionToken() {
     try {
       var key = "equalle_support_session";
@@ -124,5 +360,11 @@
     logSearch: logSearch,
     submitFeedback: submitFeedback,
     askSupportAssistant: askSupportAssistant,
+    signIn: signIn,
+    signOut: signOut,
+    getSession: getSession,
+    fetchSearchLogs: fetchSearchLogs,
+    fetchFeedback: fetchFeedback,
+    fetchDraftSolutionCards: fetchDraftSolutionCards,
   };
 })();
