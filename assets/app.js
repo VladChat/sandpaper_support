@@ -1,5 +1,5 @@
 async function loadJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(path, { cache: "no-cache" });
   return await response.json();
 }
 
@@ -37,6 +37,7 @@ async function setupSearch() {
 
   function normalizeSearchEntry(entry) {
     return {
+      type: entry.type,
       title: entry.title,
       description: entry.description,
       targetUrl: entry.target_url || entry.targetUrl,
@@ -58,6 +59,7 @@ async function setupSearch() {
 
   function normalizeProblemEntry(problem) {
     return {
+      type: "top_problem",
       title: problem.title,
       description: problem.description,
       targetUrl: "/problems/" + problem.id + "/",
@@ -80,6 +82,10 @@ async function setupSearch() {
 
     if (entry.haystack.includes(query)) {
       score += 20;
+    }
+
+    if (entry.type === "exact_scenario") {
+      score += 5;
     }
 
     terms.forEach(function (term) {

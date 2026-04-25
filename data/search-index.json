@@ -4,11 +4,34 @@
     "type": "top_problem",
     "title": "Scratches Are Too Deep",
     "description": "Visible sanding scratches, gouges, or marks remain after sanding.",
-    "customer_phrases": ["scratches too deep", "deep sanding marks", "visible scratches after sanding"],
-    "aliases": ["gouges after sanding", "coarse grit scratches", "scratch pattern"],
-    "surface": ["wood", "metal", "paint", "clear coat", "plastic"],
-    "grits": ["80", "120", "180", "220", "320"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "scratches too deep",
+      "deep sanding marks",
+      "visible scratches after sanding"
+    ],
+    "aliases": [
+      "gouges after sanding",
+      "coarse grit scratches",
+      "scratch pattern"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "paint",
+      "clear coat",
+      "plastic"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/scratches-too-deep/"
   },
   {
@@ -16,23 +39,66 @@
     "type": "exact_scenario",
     "title": "320 Grit Is Not Removing Scratches",
     "description": "320 grit is too fine to remove deeper scratches left by 180 grit or heavy pressure.",
-    "customer_phrases": ["320 grit is not removing scratches", "320 wont remove 180 scratches", "scratches still show after 320"],
-    "aliases": ["320 grit scratches", "180 to 320 problem", "wrong grit jump"],
-    "surface": ["wood", "paint", "metal", "clear coat"],
-    "grits": ["180", "220", "240", "320"],
-    "method": ["dry"],
-    "target_url": "/problems/scratches-too-deep/"
+    "customer_phrases": [
+      "320 grit is not removing scratches",
+      "320 wont remove 180 scratches",
+      "scratches still show after 320"
+    ],
+    "aliases": [
+      "320 grit scratches",
+      "180 to 320 problem",
+      "wrong grit jump"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "metal",
+      "clear coat"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "240",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/320-does-not-remove-180-scratches/"
   },
   {
     "id": "search-paper-clogs-too-fast",
     "type": "top_problem",
     "title": "Sandpaper Clogs Too Fast",
     "description": "Dust, paint, finish, or residue loads into the abrasive and stops cutting.",
-    "customer_phrases": ["sandpaper clogs", "paper loads up", "paint clogs sandpaper"],
-    "aliases": ["loaded paper", "gummed up sandpaper", "stops cutting"],
-    "surface": ["paint", "wood", "finish", "primer"],
-    "grits": ["80", "120", "180", "220", "320", "400"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "sandpaper clogs",
+      "paper loads up",
+      "paint clogs sandpaper"
+    ],
+    "aliases": [
+      "loaded paper",
+      "gummed up sandpaper",
+      "stops cutting"
+    ],
+    "surface": [
+      "paint",
+      "wood",
+      "finish",
+      "primer"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/paper-clogs-too-fast/"
   },
   {
@@ -40,23 +106,67 @@
     "type": "exact_scenario",
     "title": "Paint Clogs Sandpaper",
     "description": "Soft paint or finish residue smears into the sheet during sanding.",
-    "customer_phrases": ["paint clogs", "paint loads up paper", "sandpaper gums up on paint"],
-    "aliases": ["paint loading", "soft coating clogs", "paint residue"],
-    "surface": ["paint", "primer", "finish"],
-    "grits": ["120", "180", "220", "320", "400"],
-    "method": ["dry", "wet"],
-    "target_url": "/problems/paper-clogs-too-fast/"
+    "customer_phrases": [
+      "paint clogs",
+      "paint loads up paper",
+      "sandpaper gums up on paint"
+    ],
+    "aliases": [
+      "paint loading",
+      "soft coating clogs",
+      "paint residue"
+    ],
+    "surface": [
+      "paint",
+      "primer",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/paint-clogs-sheet/"
   },
   {
     "id": "search-surface-still-rough",
     "type": "top_problem",
     "title": "Surface Still Feels Rough",
     "description": "The surface does not become smooth even after sanding.",
-    "customer_phrases": ["surface still rough", "wood still rough", "not smooth after sanding"],
-    "aliases": ["rough after 220", "rough surface", "needs smoother finish"],
-    "surface": ["wood", "metal", "plastic", "paint"],
-    "grits": ["120", "150", "180", "220", "320", "400"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "surface still rough",
+      "wood still rough",
+      "not smooth after sanding"
+    ],
+    "aliases": [
+      "rough after 220",
+      "rough surface",
+      "needs smoother finish"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "plastic",
+      "paint"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/surface-still-feels-rough/"
   },
   {
@@ -64,11 +174,30 @@
     "type": "top_problem",
     "title": "Wet Sanding Leaves Haze",
     "description": "Wet sanding leaves a cloudy, dull, or hazy surface.",
-    "customer_phrases": ["wet sanding haze", "cloudy after wet sanding", "dull clear coat after wet sanding"],
-    "aliases": ["hazy finish", "wet sanding dull", "clear coat haze"],
-    "surface": ["clear coat", "paint", "plastic"],
-    "grits": ["1000", "1500", "2000", "3000"],
-    "method": ["wet"],
+    "customer_phrases": [
+      "wet sanding haze",
+      "cloudy after wet sanding",
+      "dull clear coat after wet sanding"
+    ],
+    "aliases": [
+      "hazy finish",
+      "wet sanding dull",
+      "clear coat haze"
+    ],
+    "surface": [
+      "clear coat",
+      "paint",
+      "plastic"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
     "target_url": "/problems/wet-sanding-leaves-haze/"
   },
   {
@@ -76,11 +205,40 @@
     "type": "grit_question",
     "title": "Wrong Grit Progression",
     "description": "Skipped grit steps can leave old scratches behind.",
-    "customer_phrases": ["what grit comes next", "sandpaper grit progression", "can I skip grits"],
-    "aliases": ["grit sequence", "grit steps", "grit jump"],
-    "surface": ["wood", "metal", "paint", "clear coat", "plastic"],
-    "grits": ["80", "120", "180", "220", "320", "400", "600", "1000", "1500", "2000", "3000"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "what grit comes next",
+      "sandpaper grit progression",
+      "can I skip grits"
+    ],
+    "aliases": [
+      "grit sequence",
+      "grit steps",
+      "grit jump"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "paint",
+      "clear coat",
+      "plastic"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/how-to/"
   },
   {
@@ -88,11 +246,42 @@
     "type": "top_problem",
     "title": "Not Sure What Grit To Use",
     "description": "Find a starting grit or the next grit based on the sanding stage.",
-    "customer_phrases": ["not sure what grit to use", "which sandpaper grit", "what grit should I use"],
-    "aliases": ["grit guide", "choose grit", "sandpaper grit help"],
-    "surface": ["wood", "metal", "paint", "clear coat", "plastic"],
-    "grits": ["60", "80", "120", "150", "180", "220", "320", "400", "600", "1000", "1500", "2000", "3000"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "not sure what grit to use",
+      "which sandpaper grit",
+      "what grit should I use"
+    ],
+    "aliases": [
+      "grit guide",
+      "choose grit",
+      "sandpaper grit help"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "paint",
+      "clear coat",
+      "plastic"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/not-sure-what-grit-to-use/"
   },
   {
@@ -100,11 +289,30 @@
     "type": "surface_question",
     "title": "What Grit For Wood",
     "description": "Choose a grit based on whether wood needs removal, prep, or finish sanding.",
-    "customer_phrases": ["what grit for wood", "sandpaper grit for wood", "wood prep grit"],
-    "aliases": ["wood sanding grit", "grit for bare wood", "smooth wood"],
-    "surface": ["wood"],
-    "grits": ["80", "120", "150", "180", "220", "320"],
-    "method": ["dry"],
+    "customer_phrases": [
+      "what grit for wood",
+      "sandpaper grit for wood",
+      "wood prep grit"
+    ],
+    "aliases": [
+      "wood sanding grit",
+      "grit for bare wood",
+      "smooth wood"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
     "target_url": "/problems/not-sure-what-grit-to-use/"
   },
   {
@@ -112,11 +320,32 @@
     "type": "surface_question",
     "title": "What Grit For Metal",
     "description": "Use coarser grits for oxidation or scratch removal and finer grits for prep.",
-    "customer_phrases": ["what grit for metal", "sandpaper grit for metal", "metal prep grit"],
-    "aliases": ["metal sanding", "metal scratches", "prepare metal"],
-    "surface": ["metal"],
-    "grits": ["80", "120", "180", "220", "320", "400", "600"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "what grit for metal",
+      "sandpaper grit for metal",
+      "metal prep grit"
+    ],
+    "aliases": [
+      "metal sanding",
+      "metal scratches",
+      "prepare metal"
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/not-sure-what-grit-to-use/"
   },
   {
@@ -124,11 +353,31 @@
     "type": "how_to_question",
     "title": "Sanding Between Coats",
     "description": "Use light pressure and fine grits so the next coat bonds without deep scratches.",
-    "customer_phrases": ["sanding between coats", "what grit between coats", "between coat sanding"],
-    "aliases": ["primer sanding", "paint between coats", "finish between coats"],
-    "surface": ["paint", "primer", "clear coat", "wood finish"],
-    "grits": ["320", "400", "600"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "sanding between coats",
+      "what grit between coats",
+      "between coat sanding"
+    ],
+    "aliases": [
+      "primer sanding",
+      "paint between coats",
+      "finish between coats"
+    ],
+    "surface": [
+      "paint",
+      "primer",
+      "clear coat",
+      "wood finish"
+    ],
+    "grits": [
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/poor-results-between-coats/"
   },
   {
@@ -136,11 +385,31 @@
     "type": "top_problem",
     "title": "Poor Results Between Coats",
     "description": "Intercoat sanding leaves scratches, cut-through, or a rough surface.",
-    "customer_phrases": ["poor results between coats", "bad sanding between coats", "scratches between coats"],
-    "aliases": ["between coat sanding problem", "primer sanding issue", "finish coat scratches"],
-    "surface": ["paint", "primer", "clear coat", "wood finish"],
-    "grits": ["320", "400", "600"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "poor results between coats",
+      "bad sanding between coats",
+      "scratches between coats"
+    ],
+    "aliases": [
+      "between coat sanding problem",
+      "primer sanding issue",
+      "finish coat scratches"
+    ],
+    "surface": [
+      "paint",
+      "primer",
+      "clear coat",
+      "wood finish"
+    ],
+    "grits": [
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/poor-results-between-coats/"
   },
   {
@@ -148,11 +417,30 @@
     "type": "top_problem",
     "title": "Swirl Marks Remain",
     "description": "Circular or curved sanding marks remain visible.",
-    "customer_phrases": ["swirl marks", "circular sanding marks", "wet sanding swirls"],
-    "aliases": ["curved marks", "sanding circles", "fine scratches"],
-    "surface": ["clear coat", "paint", "plastic"],
-    "grits": ["1000", "1500", "2000", "3000"],
-    "method": ["wet"],
+    "customer_phrases": [
+      "swirl marks",
+      "circular sanding marks",
+      "wet sanding swirls"
+    ],
+    "aliases": [
+      "curved marks",
+      "sanding circles",
+      "fine scratches"
+    ],
+    "surface": [
+      "clear coat",
+      "paint",
+      "plastic"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
     "target_url": "/problems/swirl-marks-remain/"
   },
   {
@@ -160,11 +448,34 @@
     "type": "top_problem",
     "title": "Sandpaper Tears Early",
     "description": "The sheet rips, catches, or wears through during use.",
-    "customer_phrases": ["paper tears", "sandpaper tears", "sandpaper ripped"],
-    "aliases": ["sheet ripped", "paper caught edge", "tears on corners"],
-    "surface": ["wood", "metal", "plastic", "paint"],
-    "grits": ["80", "120", "180", "220", "320", "400"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "paper tears",
+      "sandpaper tears",
+      "sandpaper ripped"
+    ],
+    "aliases": [
+      "sheet ripped",
+      "paper caught edge",
+      "tears on corners"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "plastic",
+      "paint"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/paper-tears-early/"
   },
   {
@@ -172,23 +483,64 @@
     "type": "exact_scenario",
     "title": "Paint Removal Is Slow",
     "description": "A grit may be too fine or the sheet may be loaded or worn.",
-    "customer_phrases": ["paint removal slow", "sanding paint takes forever", "not removing paint"],
-    "aliases": ["paint not coming off", "slow sanding paint", "paint stripping"],
-    "surface": ["paint"],
-    "grits": ["60", "80", "120", "180"],
-    "method": ["dry"],
-    "target_url": "/problems/sanding-takes-too-long/"
+    "customer_phrases": [
+      "paint removal slow",
+      "sanding paint takes forever",
+      "not removing paint"
+    ],
+    "aliases": [
+      "paint not coming off",
+      "slow sanding paint",
+      "paint stripping"
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "180"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/paint-removal-too-slow/"
   },
   {
     "id": "search-sanding-takes-too-long",
     "type": "top_problem",
     "title": "Sanding Takes Too Long",
     "description": "The abrasive is cutting slowly or the task feels inefficient.",
-    "customer_phrases": ["sanding takes too long", "sandpaper not cutting", "takes forever to sand"],
-    "aliases": ["slow sanding", "not removing material", "worn sandpaper"],
-    "surface": ["wood", "metal", "paint", "finish"],
-    "grits": ["60", "80", "120", "180", "220", "320", "400"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "sanding takes too long",
+      "sandpaper not cutting",
+      "takes forever to sand"
+    ],
+    "aliases": [
+      "slow sanding",
+      "not removing material",
+      "worn sandpaper"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/sanding-takes-too-long/"
   },
   {
@@ -196,11 +548,33 @@
     "type": "top_problem",
     "title": "Finish Looks Uneven",
     "description": "Patchy sanding marks, dull spots, or inconsistent texture remain.",
-    "customer_phrases": ["finish looks uneven", "patchy sanding", "uneven finish after sanding"],
-    "aliases": ["surface looks blotchy", "uneven scratch pattern", "dull spots"],
-    "surface": ["wood", "paint", "primer", "clear coat"],
-    "grits": ["180", "220", "320", "400", "600"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "finish looks uneven",
+      "patchy sanding",
+      "uneven finish after sanding"
+    ],
+    "aliases": [
+      "surface looks blotchy",
+      "uneven scratch pattern",
+      "dull spots"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/problems/finish-looks-uneven/"
   },
   {
@@ -208,11 +582,28 @@
     "type": "how_to_question",
     "title": "Clear Coat Wet Sanding",
     "description": "Fine wet sanding can level defects before polishing when the coating is ready.",
-    "customer_phrases": ["clear coat wet sanding", "what grit for clear coat", "wet sand clear coat haze"],
-    "aliases": ["clearcoat sanding", "polishing prep", "orange peel"],
-    "surface": ["clear coat"],
-    "grits": ["1000", "1500", "2000", "3000"],
-    "method": ["wet"],
+    "customer_phrases": [
+      "clear coat wet sanding",
+      "what grit for clear coat",
+      "wet sand clear coat haze"
+    ],
+    "aliases": [
+      "clearcoat sanding",
+      "polishing prep",
+      "orange peel"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
     "target_url": "/problems/wet-sanding-leaves-haze/"
   },
   {
@@ -220,11 +611,41 @@
     "type": "grit_question",
     "title": "How To Use An 80-3000 Assorted Kit",
     "description": "Use lower grits for removal, middle grits for prep, and high grits for fine wet sanding or polishing prep.",
-    "customer_phrases": ["80 3000 sandpaper kit", "assorted sandpaper grits", "which grit in kit"],
-    "aliases": ["80-3000 kit", "grit assortment", "sandpaper kit guide"],
-    "surface": ["wood", "metal", "paint", "clear coat", "plastic"],
-    "grits": ["80", "120", "180", "220", "320", "400", "600", "800", "1000", "1500", "2000", "3000"],
-    "method": ["dry", "wet"],
+    "customer_phrases": [
+      "80 3000 sandpaper kit",
+      "assorted sandpaper grits",
+      "which grit in kit"
+    ],
+    "aliases": [
+      "80-3000 kit",
+      "grit assortment",
+      "sandpaper kit guide"
+    ],
+    "surface": [
+      "wood",
+      "metal",
+      "paint",
+      "clear coat",
+      "plastic"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
     "target_url": "/products/"
   }
 ]
