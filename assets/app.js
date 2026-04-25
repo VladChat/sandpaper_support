@@ -1,158 +1,6 @@
-async function loadJson(path) {
-  const response = await fetch(path, { cache: "no-cache" });
-  return await response.json();
-}
-
-function clean(value) {
-  return String(value || "").toLowerCase();
-}
-
 function getProblemSlug() {
   const match = window.location.pathname.match(/\/problems\/([^/]+)\/?$/);
   return match ? match[1] : null;
-}
-
-function debounce(callback, wait) {
-  let timeoutId;
-  return function () {
-    const args = arguments;
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(function () {
-      callback.apply(null, args);
-    }, wait);
-  };
-}
-
-async function setupSearch() {
-  const input = document.querySelector("[data-support-search]");
-  const results = document.querySelector("[data-search-results]");
-
-  if (!input || !results) {
-    return;
-  }
-
-  function loadSupportJson(path) {
-    return loadJson("/sandpaper_support/" + path).catch(() => loadJson(path));
-  }
-
-  function normalizeSearchEntry(entry) {
-    return {
-      type: entry.type,
-      title: entry.title,
-      description: entry.description,
-      targetUrl: entry.target_url || entry.targetUrl,
-      haystack: [
-        entry.id,
-        entry.type,
-        entry.title,
-        entry.description,
-        ...(entry.customer_phrases || []),
-        ...(entry.aliases || []),
-        ...(entry.surface || []),
-        ...(entry.grits || []),
-        ...(entry.method || []),
-      ]
-        .join(" ")
-        .toLowerCase(),
-    };
-  }
-
-  function normalizeProblemEntry(problem) {
-    return {
-      type: "top_problem",
-      title: problem.title,
-      description: problem.description,
-      targetUrl: "/problems/" + problem.id + "/",
-      haystack: [
-        problem.id,
-        problem.title,
-        problem.description,
-        ...(problem.aliases || []),
-        ...(problem.qualifiers || []),
-        ...(problem.solution_card_ids || []),
-        ...(problem.solutions || []).map((solution) => solution.title),
-      ]
-        .join(" ")
-        .toLowerCase(),
-    };
-  }
-
-  function scoreEntry(entry, query, terms) {
-    let score = 0;
-
-    if (entry.haystack.includes(query)) {
-      score += 20;
-    }
-
-    if (entry.type === "exact_scenario") {
-      score += 5;
-    }
-
-    terms.forEach(function (term) {
-      if (term.length > 2 && entry.haystack.includes(term)) {
-        score += 1;
-      }
-    });
-
-    return score;
-  }
-
-  const searchEntries = await loadSupportJson("data/search-index.json")
-    .then((items) => items.map(normalizeSearchEntry))
-    .catch(() =>
-      loadSupportJson("data/problem-tree.json").then((items) =>
-        items.map(normalizeProblemEntry),
-      ),
-    );
-
-  const logRenderedSearch = debounce(function (query, resultCount) {
-    if (window.eQualleSupabase) {
-      window.eQualleSupabase.logSearch(query, resultCount, null);
-    }
-  }, 600);
-
-  function render(query) {
-    const q = clean(query).trim();
-    results.innerHTML = "";
-
-    if (!q) {
-      return;
-    }
-
-    const terms = q.split(/\s+/);
-    const matches = searchEntries
-      .map((entry) => ({
-        entry: entry,
-        score: scoreEntry(entry, q, terms),
-      }))
-      .filter((match) => match.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 7)
-      .map((match) => match.entry);
-
-    logRenderedSearch(q, matches.length);
-
-    if (!matches.length) {
-      results.innerHTML =
-        '<div class="result-link">No exact match yet. Try: scratches, clogging, grit, haze, rough, swirl marks.</div>';
-      return;
-    }
-
-    for (const match of matches) {
-      const link = document.createElement("a");
-      link.className = "result-link";
-      link.href = "/sandpaper_support" + match.targetUrl;
-      link.textContent = match.title + " - " + match.description;
-      link.addEventListener("click", function () {
-        if (window.eQualleSupabase) {
-          window.eQualleSupabase.logSearch(q, matches.length, link.pathname);
-        }
-      });
-      results.appendChild(link);
-    }
-  }
-
-  input.addEventListener("input", (event) => render(event.target.value));
 }
 
 function setupFeedback() {
@@ -242,125 +90,55 @@ function setupFeedback() {
   });
 }
 
-function getAssistantSessionToken() {
-  try {
-    const key = "equalle_ai_assistant_session";
-    const existing = window.sessionStorage.getItem(key);
-
-    if (existing) {
-      return existing;
-    }
-
-    const token = "assistant-" + Math.random().toString(36).slice(2) + Date.now();
-    window.sessionStorage.setItem(key, token);
-    return token;
-  } catch (_error) {
-    return "assistant-" + Date.now();
-  }
-}
-
-function setupAssistantChat() {
-  const shell = document.querySelector("[data-ai-chat]");
-
-  if (!shell) {
-    return;
+function loadSupportAssistantAssets() {
+  const stylesheetId = "equalle-support-assistant-css";
+  if (!document.getElementById(stylesheetId)) {
+    const link = document.createElement("link");
+    link.id = stylesheetId;
+    link.rel = "stylesheet";
+    link.href = "/sandpaper_support/assets/support-assistant.css";
+    document.head.appendChild(link);
   }
 
-  const form = shell.querySelector("[data-ai-form]");
-  const input = shell.querySelector("[data-ai-input]");
-  const messages = shell.querySelector("[data-ai-messages]");
-
-  if (!form || !input || !messages) {
-    return;
+  if (window.eQualleSupportAssistant && window.eQualleSupportAssistant.init) {
+    return Promise.resolve();
   }
 
-  const sessionToken = getAssistantSessionToken();
+  const scriptId = "equalle-support-assistant-js";
+  const existing = document.getElementById(scriptId);
 
-  function addMessage(role, text) {
-    const message = document.createElement("div");
-    message.className = "chat-message chat-message-" + role;
-    message.textContent = text;
-    messages.appendChild(message);
-    messages.scrollTop = messages.scrollHeight;
-    return message;
-  }
-
-  function addLinks(pages) {
-    if (!Array.isArray(pages) || !pages.length) {
-      return;
-    }
-
-    const list = document.createElement("div");
-    list.className = "chat-links";
-
-    pages.forEach(function (page) {
-      const href = page && (page.href || page.url || page.path);
-      const label = (page && (page.title || page.label || href)) || "";
-
-      if (!href || !label) {
-        return;
-      }
-
-      const link = document.createElement("a");
-      link.href = href;
-      link.textContent = label;
-      list.appendChild(link);
-    });
-
-    if (list.children.length) {
-      messages.appendChild(list);
-      messages.scrollTop = messages.scrollHeight;
-    }
-  }
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const userMessage = input.value.trim();
-
-    if (!userMessage) {
-      return;
-    }
-
-    input.value = "";
-    addMessage("user", userMessage);
-
-    if (!window.eQualleSupabase || !window.eQualleSupabase.isConfigured()) {
-      addMessage(
-        "assistant",
-        "The assistant is unavailable right now. The support pages still work.",
-      );
-      return;
-    }
-
-    const pending = addMessage("assistant", "Checking approved support content...");
-
-    window.eQualleSupabase
-      .askSupportAssistant({
-        sessionToken: sessionToken,
-        userMessage: userMessage,
-        context: {
-          currentPath: window.location.pathname,
-        },
-      })
-      .then(function (result) {
-        if (!result || !result.ok) {
-          pending.textContent =
-            "The assistant is unavailable right now. The support pages still work.";
-          return;
-        }
-
-        pending.textContent = result.reply || "I need a little more detail.";
-
-        if (result.clarifyingQuestion) {
-          addMessage("assistant", result.clarifyingQuestion);
-        }
-
-        addLinks(result.matchedPages);
+  if (existing) {
+    return new Promise(function (resolve) {
+      existing.addEventListener("load", function () {
+        resolve();
       });
+      existing.addEventListener("error", function () {
+        resolve();
+      });
+    });
+  }
+
+  return new Promise(function (resolve) {
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "/sandpaper_support/assets/support-assistant.js";
+    script.defer = true;
+    script.onload = function () {
+      resolve();
+    };
+    script.onerror = function () {
+      resolve();
+    };
+    document.body.appendChild(script);
   });
 }
 
-setupSearch();
 setupFeedback();
-setupAssistantChat();
+
+loadSupportAssistantAssets().then(function () {
+  if (window.eQualleSupportAssistant && window.eQualleSupportAssistant.init) {
+    window.eQualleSupportAssistant.init({
+      basePath: "/sandpaper_support",
+    });
+  }
+});

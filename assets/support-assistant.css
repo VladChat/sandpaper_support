@@ -1,0 +1,26 @@
+.support-assistant-panel {
+  margin-top: 14px;
+}
+
+.support-assistant-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.support-assistant-description {
+  color: #53606e;
+  font-size: 0.92rem;
+  margin: 0 0 10px;
+}
+
+.support-assistant-home .chat-messages {
+  min-height: 180px;
+}
+
+.support-followup-card .chat-shell {
+  max-width: none;
+}
+
+.support-followup-card .section-intro {
+  margin-bottom: 14px;
+}
