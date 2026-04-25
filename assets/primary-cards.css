@@ -1,0 +1,9 @@
+
+/* Primary support paths - stronger visual presence */
+.primary-paths{padding-bottom:0}
+.primary-grid .card-primary{border:3px solid var(--blue);border-radius:22px;padding:28px;background:linear-gradient(135deg,#f0f7fc,#e5f0fa);cursor:pointer;transition:.2s ease;position:relative}
+.primary-grid .card-primary:hover{border-color:#4a8fc7;transform:translateY(-3px);box-shadow:0 16px 40px rgba(124,177,217,.25)}
+.primary-grid .card-primary h3{font-size:1.35rem;margin:0 0 10px;color:var(--black)}
+.primary-grid .card-primary p{color:#334155;margin:0 0 14px;font-size:.98rem;line-height:1.45}
+.card-icon{font-size:2rem;line-height:1;margin-bottom:10px;display:block}
+@media(max-width:860px){.primary-grid{grid-template-columns:1fr}.primary-grid .card-primary{padding:20px}}
