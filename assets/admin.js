@@ -72,7 +72,7 @@
       return;
     }
 
-    body.innerHTML = result.data.map(rowTemplate).join("");
+    body.innerHTML = result.data.slice(0, 25).map(rowTemplate).join("");
   }
 
   function renderSearchLogs(result) {
@@ -162,6 +162,102 @@
     });
   }
 
+  function getRows(result) {
+    return result && result.ok && Array.isArray(result.data) ? result.data : [];
+  }
+
+  function setText(selector, value) {
+    var element = document.querySelector(selector);
+
+    if (element) {
+      element.textContent = String(value);
+    }
+  }
+
+  function countBy(rows, getter) {
+    return rows.reduce(function (counts, row) {
+      var key = getter(row);
+
+      if (!key) {
+        return counts;
+      }
+
+      counts[key] = (counts[key] || 0) + 1;
+      return counts;
+    }, {});
+  }
+
+  function topEntries(rows, getter) {
+    var counts = countBy(rows, getter);
+
+    return Object.keys(counts)
+      .map(function (label) {
+        return {
+          label: label,
+          count: counts[label],
+        };
+      })
+      .sort(function (a, b) {
+        return b.count - a.count || a.label.localeCompare(b.label);
+      })
+      .slice(0, 5);
+  }
+
+  function renderIssueList(selector, entries) {
+    var list = document.querySelector(selector);
+
+    if (!list) {
+      return;
+    }
+
+    if (!entries.length) {
+      list.innerHTML = "<li>No rows yet.</li>";
+      return;
+    }
+
+    list.innerHTML = entries
+      .map(function (entry) {
+        return (
+          "<li><span>" +
+          escapeHtml(entry.label) +
+          '</span><strong>' +
+          escapeHtml(entry.count) +
+          "</strong></li>"
+        );
+      })
+      .join("");
+  }
+
+  function renderMetrics(results) {
+    var searchRows = getRows(results[0]);
+    var zeroSearchRows = getRows(results[1]);
+    var feedbackRows = getRows(results[2]);
+    var notHelpfulRows = getRows(results[3]);
+    var draftRows = getRows(results[4]);
+    var helpfulRows = feedbackRows.filter(function (row) {
+      return row.feedback_type === "helpful";
+    });
+
+    setText("[data-summary-total-searches]", searchRows.length);
+    setText("[data-summary-zero-searches]", zeroSearchRows.length);
+    setText("[data-summary-helpful-feedback]", helpfulRows.length);
+    setText("[data-summary-not-helpful-feedback]", notHelpfulRows.length);
+    setText("[data-summary-draft-cards]", draftRows.length);
+
+    renderIssueList(
+      "[data-top-zero-queries]",
+      topEntries(zeroSearchRows, function (row) {
+        return row.normalized_query || row.query;
+      }),
+    );
+    renderIssueList(
+      "[data-top-not-helpful-pages]",
+      topEntries(notHelpfulRows, function (row) {
+        return row.page_path || row.problem_slug;
+      }),
+    );
+  }
+
   function loadDashboard(isAdmin) {
     if (!api) {
       setStatus("Supabase client is unavailable.", true);
@@ -171,12 +267,13 @@
     setStatus("Loading admin data...");
 
     Promise.all([
-      api.fetchSearchLogs(),
-      api.fetchSearchLogs({ result_count: "eq.0", limit: 25 }),
-      api.fetchFeedback(),
-      api.fetchFeedback({ feedback_type: "eq.not_helpful", limit: 25 }),
-      api.fetchDraftSolutionCards(),
+      api.fetchSearchLogs({ limit: 1000 }),
+      api.fetchSearchLogs({ result_count: "eq.0", limit: 1000 }),
+      api.fetchFeedback({ limit: 1000 }),
+      api.fetchFeedback({ feedback_type: "eq.not_helpful", limit: 1000 }),
+      api.fetchDraftSolutionCards({ limit: 1000 }),
     ]).then(function (results) {
+      renderMetrics(results);
       renderSearchLogs(results[0]);
       renderZeroSearches(results[1]);
       renderFeedback("[data-feedback-body]", results[2]);
