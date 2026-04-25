@@ -3,9 +3,11 @@
   var loginPanel = document.querySelector("[data-admin-login]");
   var dashboard = document.querySelector("[data-admin-dashboard]");
   var form = document.querySelector("[data-admin-login-form]");
+  var newDraftForm = document.querySelector("[data-new-draft-form]");
   var logoutButton = document.querySelector("[data-admin-logout]");
   var status = document.querySelector("[data-admin-status]");
   var draftRowsById = {};
+  var currentSessionIsAdmin = false;
 
   function setStatus(message, isError) {
     if (!status) {
@@ -30,6 +32,8 @@
     if (logoutButton) {
       logoutButton.hidden = !isSignedIn;
     }
+
+    currentSessionIsAdmin = isSignedIn ? currentSessionIsAdmin : false;
   }
 
   function formatDate(value) {
@@ -309,6 +313,72 @@
     });
   }
 
+  function linesFromField(formElement, name) {
+    var field = formElement.querySelector('[name="' + name + '"]');
+
+    if (!field) {
+      return [];
+    }
+
+    return field.value
+      .split(/\r?\n/)
+      .map(function (line) {
+        return line.trim();
+      })
+      .filter(Boolean);
+  }
+
+  function valueFromField(formElement, name) {
+    var field = formElement.querySelector('[name="' + name + '"]');
+    return field ? field.value.trim() : "";
+  }
+
+  function saveNewDraft(formElement) {
+    if (!api || !api.createDraftSolutionCard) {
+      setStatus("Supabase draft creation is unavailable.", true);
+      return;
+    }
+
+    if (!currentSessionIsAdmin) {
+      setStatus("Sign in with an admin account before saving drafts.", true);
+      return;
+    }
+
+    var submitButton = formElement.querySelector('[type="submit"]');
+    var payload = {
+      title: valueFromField(formElement, "title"),
+      problem_slug: valueFromField(formElement, "problem_slug"),
+      likely_cause: valueFromField(formElement, "likely_cause"),
+      recommended_grit: valueFromField(formElement, "recommended_grit"),
+      method: valueFromField(formElement, "method") || "unknown",
+      steps: linesFromField(formElement, "steps"),
+      avoid: linesFromField(formElement, "avoid"),
+      success_check: valueFromField(formElement, "success_check"),
+      validation_notes: valueFromField(formElement, "validation_notes"),
+    };
+
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+
+    setStatus("Saving draft solution card...");
+
+    api.createDraftSolutionCard(payload).then(function (result) {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+
+      if (!result || !result.ok) {
+        showAdminActionError("Draft could not be saved.", result);
+        return;
+      }
+
+      formElement.reset();
+      setStatus("Draft solution card saved.");
+      loadDashboard(true);
+    });
+  }
+
   function getRows(result) {
     return result && result.ok && Array.isArray(result.data) ? result.data : [];
   }
@@ -458,10 +528,11 @@
 
     api.getSession().then(function (result) {
       var session = result && result.session;
+      currentSessionIsAdmin = isAdminSession(session);
       setProtectedView(session);
 
       if (session) {
-        loadDashboard(isAdminSession(session));
+        loadDashboard(currentSessionIsAdmin);
       }
     });
   }
@@ -483,8 +554,9 @@
         }
 
         form.reset();
+        currentSessionIsAdmin = isAdminSession(result.session);
         setProtectedView(result.session);
-        loadDashboard(isAdminSession(result.session));
+        loadDashboard(currentSessionIsAdmin);
       });
     });
   }
@@ -492,9 +564,17 @@
   if (logoutButton) {
     logoutButton.addEventListener("click", function () {
       api.signOut().then(function () {
+        currentSessionIsAdmin = false;
         setProtectedView(null);
         setStatus("Signed out.");
       });
+    });
+  }
+
+  if (newDraftForm) {
+    newDraftForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      saveNewDraft(newDraftForm);
     });
   }
 

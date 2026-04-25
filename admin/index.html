@@ -184,6 +184,51 @@
             <p class="section-intro">
               Placeholder review surface for draft support cards stored in Supabase.
             </p>
+            <form class="admin-draft-form" data-new-draft-form>
+              <h3>Create Draft Solution Card</h3>
+              <label>
+                Title
+                <input name="title" required>
+              </label>
+              <label>
+                Problem slug
+                <input name="problem_slug" placeholder="paper-clogs-too-fast">
+              </label>
+              <label>
+                Likely cause
+                <textarea name="likely_cause" rows="3"></textarea>
+              </label>
+              <label>
+                Recommended grit
+                <input name="recommended_grit">
+              </label>
+              <label>
+                Wet or dry
+                <select name="method">
+                  <option value="unknown">Unknown</option>
+                  <option value="dry">Dry</option>
+                  <option value="wet">Wet</option>
+                  <option value="wet_or_dry">Wet or dry</option>
+                </select>
+              </label>
+              <label>
+                Steps
+                <textarea name="steps" rows="5" placeholder="One step per line"></textarea>
+              </label>
+              <label>
+                Avoid
+                <textarea name="avoid" rows="3" placeholder="One item per line"></textarea>
+              </label>
+              <label>
+                Success check
+                <textarea name="success_check" rows="3"></textarea>
+              </label>
+              <label>
+                Validation notes
+                <textarea name="validation_notes" rows="3"></textarea>
+              </label>
+              <button class="admin-button" type="submit">Save as draft</button>
+            </form>
             <div class="admin-table-wrap">
               <table class="admin-table">
                 <thead>

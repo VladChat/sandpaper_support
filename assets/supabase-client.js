@@ -381,6 +381,34 @@
     );
   }
 
+  function createDraftSolutionCard(input) {
+    input = input || {};
+
+    if (!input.title) {
+      return Promise.resolve({
+        ok: false,
+        error: "Draft title is required.",
+      });
+    }
+
+    return writeTable("draft_solution_cards", {
+      method: "POST",
+      body: {
+        source_session_id: null,
+        problem_slug: input.problem_slug || null,
+        title: input.title,
+        likely_cause: input.likely_cause || null,
+        recommended_grit: input.recommended_grit || null,
+        method: input.method || "unknown",
+        steps: Array.isArray(input.steps) ? input.steps : [],
+        avoid: Array.isArray(input.avoid) ? input.avoid : [],
+        success_check: input.success_check || null,
+        validation_notes: input.validation_notes || null,
+        status: "draft",
+      },
+    });
+  }
+
   function updateDraftSolutionCardStatus(id, status) {
     if (!id || !status) {
       return Promise.resolve({
@@ -445,6 +473,7 @@
     fetchSearchLogs: fetchSearchLogs,
     fetchFeedback: fetchFeedback,
     fetchDraftSolutionCards: fetchDraftSolutionCards,
+    createDraftSolutionCard: createDraftSolutionCard,
     updateDraftSolutionCardStatus: updateDraftSolutionCardStatus,
     enqueueContentSync: enqueueContentSync,
   };
