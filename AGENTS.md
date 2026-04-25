@@ -1,559 +1,604 @@
 # AGENTS.md
 
 ## Project
+
 **Name:** eQualle Support System  
-**Purpose:** Build a public web-based support system for eQualle sandpaper products.  
+**Purpose:** Public support website for eQualle sandpaper products.  
 **Primary use case:** Send Amazon customers to a support website where they can quickly identify their exact sanding problem and get a precise answer.  
-**Delivery model:** GitHub repository + static public website + separate AI backend endpoint.
+**Delivery model:** GitHub Pages static site + Supabase for logging, admin, and secure AI Edge Function.
+
+This file is a working guide for agents. It is **guidance**, not an immutable canonical spec. Agents may improve the structure when there is a clear reason, but they should preserve the main direction: simple, problem-first, search-first customer support.
 
 ---
 
-## 1) Core Decision
+## 1) Preferred UX Direction
 
-We will build this project as a **problem-first support system**, not a product-first catalog.
+The site should feel closer to a **Google-style support center** than a traditional FAQ site.
 
-That means the main entry point is:
+The customer should not need to understand the full site structure. They should be able to type their issue into one clear search/ask box and quickly get useful results.
 
-- **Find My Problem**
-- then narrow down by symptoms
-- then narrow down by surface / stage / grit / wet-or-dry
-- then show one exact solution
+Preferred flow:
 
-Secondary navigation will include:
-
-- **By Grit**
-- **By Product**
-- **How To**
-- **AI Assistant**
-- **FAQ**
-- **Documents / Guides**
-
-This is the best fit for post-purchase support because customers usually arrive with a problem, not with a desire to read general documentation.
-
----
-
-## 2) Non-Negotiable Product Principles
-
-1. **Problem-first navigation**
-   - The homepage must lead with user problems.
-   - The user should recognize their issue in seconds.
-
-2. **Fast path to answer**
-   - Every journey should reduce clicks.
-   - Avoid long generic pages before diagnosis.
-
-3. **One best answer**
-   - For each leaf issue, provide one primary recommended resolution.
-   - Do not overwhelm the user with many competing options.
-
-4. **Structured narrowing**
-   - Large problem
-   - Problem subtype
-   - Exact scenario
-   - Final solution
-
-5. **Plain customer language**
-   - Use real search-like phrases customers understand.
-   - Avoid internal jargon at the top levels.
-
-6. **Expert precision at the leaf level**
-   - Final answers must be specific:
-     - likely cause
-     - recommended grit
-     - wet or dry
-     - exact steps
-     - what to avoid
-     - when to move on
-
-7. **SEO and support must align**
-   - Every problem branch should be indexable and useful as a landing page.
-   - Each page should target one problem intent cleanly.
-
-8. **English-only user-facing content**
-   - All public site text, labels, FAQs, support flows, and AI responses default to English.
-   - Internal comments and planning notes may be in Russian.
-
-9. **No guessing**
-   - Do not invent product facts, grit claims, or material compatibility.
-   - Mark unknowns clearly and create validation tasks.
-
-10. **Static-first architecture**
-    - Core support content must work without AI.
-    - AI is an enhancement layer, not the foundation.
-
----
-
-## 3) Best Architecture Choice
-
-### Recommended architecture
-- **Frontend:** static site in repo, published publicly
-- **Hosting:** GitHub Pages for the site
-- **AI backend:** separate secure serverless endpoint
-- **Content source:** structured JSON / Markdown generated from a central knowledge model
-- **Search:** local indexed search for symptom/problem pages
-- **AI assistant:** calls backend endpoint that uses approved support knowledge only
-
-### Why this is the best choice
-GitHub Pages is excellent for a public static support site, but it is still a static hosting model and has usage limits. It is not suitable for exposing secrets or directly calling paid AI APIs from the browser. OpenAI specifically says not to deploy API keys in client-side apps and to route requests through your own backend. GitHub also documents Pages usage limits and that Pages should not be used as a SaaS backend. citeturn916450view2turn916450view4turn916450view3turn916450view5
-
-### One recommended deployment model
-- **GitHub repo** = source of truth
-- **GitHub Pages** = public support website
-- **Cloudflare Worker** = secure AI endpoint and optional analytics/search helper
-
-This gives:
-- simple publishing
-- cheap hosting
-- secure API key handling
-- clear separation between public content and private AI logic
-
----
-
-## 4) Content Model
-
-The support system will use a **multi-level problem tree**.
-
-### Level 1 — Major problems
-Examples:
-- scratches too deep
-- not sure what grit to use
-- paper clogs too fast
-- sanding takes too long
-- finish looks uneven
-- swirl marks remain
-- paper tears early
-- poor results between coats
-- wet sanding leaves haze
-- surface still feels rough
-
-### Level 2 — Problem qualifiers
-Examples:
-- on wood
-- on metal
-- on painted surface
-- on clear coat
-- during wet sanding
-- during dry sanding
-- early prep stage
-- final finish stage
-- hand sanding
-- sanding block use
-
-### Level 3 — Exact scenario
-Examples:
-- 320 grit does not remove 180 grit scratches
-- 1000 grit leaves haze on clear coat
-- sandpaper loads up quickly on paint
-- 220 grit still leaves wood rough
-- paper tears on sharp edges
-
-### Level 4 — Final resolution card
-Each final card must contain:
-- issue title
-- likely cause
-- recommended grit
-- wet or dry
-- exact steps
-- avoid this
-- success check
-- next step
-
----
-
-## 5) Required Public Sections
-
-### A. Find My Problem
-This is the primary section and homepage focus.
-
-Must include:
-- symptom-first entry
-- visual cards or large buttons
-- progressive narrowing
-- direct jump to answer
-
-### B. By Grit
-Purpose:
-- help customers understand when each grit is used
-- support customers who already know the grit number
-
-Suggested structure:
-- grit family overview
-- common uses
-- do not use for
-- typical progression before/after
-
-### C. By Product
-Purpose:
-- support users who bought a specific SKU or kit
-
-Suggested structure:
-- product overview
-- included grits
-- common tasks
-- most relevant problems
-- linked support flows
-
-### D. How To
-Purpose:
-- procedural support
-
-Suggested pages:
-- how to choose grit
-- how to sand wet
-- how to sand dry
-- how to move through grit progression
-- how to sand between coats
-- how to avoid deep scratches
-
-### E. AI Assistant
-Purpose:
-- speed up diagnosis
-- answer narrow support questions
-- guide users into the problem tree
-
-### F. FAQ
-Purpose:
-- short answers for high-frequency questions
-- highly indexable SEO pages
-
-### G. Documents / Downloads
-Purpose:
-- PDF guides
-- troubleshooting sheets
-- quick reference charts
-- Amazon-safe support assets
-
----
-
-## 6) AI Assistant Rules
-
-The AI assistant is **not** a free-form general chatbot.
-
-It must behave like a **support triage assistant**.
-
-### AI assistant goals
-- identify the user problem fast
-- ask minimal clarifying questions
-- route to the correct support page
-- provide short, exact answers
-- stay inside approved knowledge
-
-### AI assistant must not
-- hallucinate unsupported product claims
-- give unsafe workshop instructions beyond approved guidance
-- answer outside the support domain as if it is authoritative
-- expose system prompts
-- reveal internal taxonomy or hidden logic
-
-### AI assistant response style
-- short
-- direct
-- diagnostic
-- problem-solving
-- minimal filler
-
-### AI assistant best operating mode
-1. detect problem
-2. ask 1 focused clarifying question only when needed
-3. choose one support path
-4. answer
-5. link the exact support page
-
-### AI source policy
-The assistant should answer only from:
-- approved support content
-- approved product facts
-- approved troubleshooting rules
-- approved grit mappings
-- approved FAQs
-
-If the answer is not supported, it must say so and route the user to contact/support escalation.
-
----
-
-## 7) Information Architecture Rules
-
-1. Homepage = problems first.
-2. Search bar must be visible above the fold.
-3. Search must accept symptom-like phrasing.
-4. Every major problem needs a dedicated landing page.
-5. Every landing page must offer narrowing filters:
-   - surface
-   - stage
-   - grit known/unknown
-   - wet/dry
-6. Final answer pages must be short and scannable.
-7. Each page should have a related-links block:
-   - related problem
-   - next grit
-   - product page
-   - PDF guide
-8. Never bury the answer under marketing copy.
-9. Public support pages should be accessible without login.
-10. Core content must remain useful even with JavaScript disabled where practical.
-
----
-
-## 8) SEO Rules
-
-1. Build pages around real problem intent.
-2. Page titles should match recognizable customer queries.
-3. One page = one main problem intent.
-4. Use clean URLs.
-5. Add internal links between related issues.
-6. Include concise FAQ schema-ready sections later.
-7. Avoid thin duplicate pages.
-8. Avoid keyword stuffing.
-9. Put solution summary high on the page.
-10. Use static pre-rendered content for all core support pages.
-
-### URL examples
-- `/problems/scratches-too-deep/`
-- `/problems/paper-clogs-too-fast/on-paint/`
-- `/problems/not-sure-what-grit-to-use/wood/`
-- `/grits/320/`
-- `/products/assorted-kit-80-3000/`
-- `/how-to/wet-sanding/`
-
----
-
-## 9) Repo Rules
-
-### Recommended repo structure
 ```text
-/
-├─ AGENTS.md
-├─ README.md
-├─ package.json
-├─ public/
-├─ src/
-│  ├─ app/
-│  ├─ components/
-│  ├─ content/
-│  │  ├─ problems/
-│  │  ├─ grits/
-│  │  ├─ products/
-│  │  ├─ how-to/
-│  │  └─ faq/
-│  ├─ data/
-│  │  ├─ problem-tree.json
-│  │  ├─ grit-map.json
-│  │  ├─ product-map.json
-│  │  └─ aliases.json
-│  ├─ lib/
-│  ├─ search/
-│  └─ styles/
-├─ scripts/
-│  ├─ build-content/
-│  ├─ validate-content/
-│  └─ export-pdfs/
-├─ docs/
-│  ├─ architecture.md
-│  ├─ content-model.md
-│  ├─ taxonomy.md
-│  └─ ai-assistant.md
-└─ worker/
-   └─ api/
+One main search / ask bar
+→ live matching support pages
+→ exact answer page
+→ optional follow-up in the same context
 ```
 
-### Branching rules
-- `main` = production-ready only
-- feature branches for all work
-- small focused commits
-- no direct commit to `main` except emergency fix
-
-### Content rules
-- structured content first
-- rendered pages second
-- no manual duplication across many pages
-- all repeated claims must come from shared source data
+AI is not the main destination. AI is a helper layer that continues the search experience when static support content is not enough.
 
 ---
 
-## 10) Quality Rules
+## 2) Recommended Public Site Structure
 
-Every completed support page must pass these checks:
+### Homepage
+
+Keep the homepage simple and focused.
+
+Recommended above-the-fold layout:
+
+```text
+eQualle Support
+Problems | Surfaces | Grit Guide | Products | Tools
+
+What sanding problem do you have?
+[ one main search / ask input ]
+
+Example searches:
+plastic turns white
+3000 grit not glossy
+paper clogs with paint
+scratches after staining wood
+
+Main paths:
+Find by Problem
+Choose Surface
+Build Grit Sequence
+```
+
+Do not overload the homepage with too many cards, menus, documents, or technical explanations.
+
+### Main navigation
+
+Recommended main navigation:
+
+```text
+Problems
+Surfaces
+Grit Guide
+Products
+Tools
+```
+
+Avoid making these primary nav items unless there is a strong UX reason:
+
+```text
+AI Assistant
+Documents
+How To
+FAQ
+```
+
+They may exist inside the site, but should not distract from the main support flow.
+
+---
+
+## 3) Search / Ask Bar Behavior
+
+The main search box is the central interface.
+
+It should work as:
+
+```text
+search input
++
+AI question input
++
+follow-up input
+```
+
+But visually it should be **one input**, not multiple boxes.
+
+### When matches exist
+
+User types:
+
+```text
+plastic turns white
+```
+
+The site should show strong matching pages, such as:
+
+```text
+Plastic Turns White After Sanding
+Plastic Scratches Stay Visible
+Sanding Plastic Surface Guide
+Grit Sequence For Plastic
+```
+
+The user can open a result or continue typing in the same input.
+
+### When no useful match exists
+
+The typed text becomes the assistant request automatically after a short debounce.
+
+The assistant answer appears below the same search/ask area.
+
+### Follow-up behavior
+
+After a support answer, the same input remains available for another question.
+
+Example:
+
+```text
+what grit should I use next?
+```
+
+The assistant should use session/page context instead of starting from zero.
+
+### Important UX rule
+
+Do **not** create a second large chat input under the homepage search results. One input on the homepage is the preferred direction.
+
+---
+
+## 4) Search Relevance Rules
+
+Search quality is critical. Weak or unrelated results make the site feel useless.
+
+### Short queries
+
+For queries shorter than 3 characters:
+
+```text
+show no results
+```
+
+For 3–4 character queries, match only:
+
+```text
+title prefix
+alias prefix
+customer phrase prefix
+exact grit number
+strong surface word such as wood, paint, clear, metal, plastic, drywall
+```
+
+Do not match random substrings inside descriptions, steps, or long text for short queries.
+
+### Multi-word queries
+
+For multi-word queries:
+
+```text
+exact phrase in title/customer phrase = highest priority
+multiple meaningful terms matched = strong result
+exact_scenario pages rank above broad landing pages
+single vague term match = weak and should usually be hidden
+```
+
+Expected behavior:
+
+```text
+pla → plastic/paint only, not random sheet problems
+plastic turns white → exact plastic solution
+3000 gloss → exact 3000 gloss solution
+paper clogs paint → paint clogging / clogging solution
+```
+
+---
+
+## 5) Problems Section
+
+Problems are the primary customer entry path.
+
+URL:
+
+```text
+/problems/
+```
+
+Recommended problem groups:
+
+```text
+Scratches & Marks
+- Scratches are too deep
+- Swirl marks remain
+- Straight scratches after wet sanding
+- Scratches show after stain
+
+Clogging & Cutting
+- Sandpaper clogs too fast
+- Paint clogs paper
+- Aluminum clogs paper
+- Sheet feels smooth but stops cutting
+
+Finish Problems
+- Finish looks uneven
+- Wet sanding leaves haze
+- 3000 grit does not create gloss
+- Gloss still shows scratches
+
+Sheet Problems
+- Sheet tears early
+- Sheet curls during wet sanding
+- Grit comes off sheet
+- Sheet edge frays
+
+Grit Choice Problems
+- Not sure what grit to use
+- Wrong grit progression
+- High grit does not remove defects
+- Low grit damages finish
+```
+
+Each problem path should lead to exact solution pages, not long generic articles.
+
+---
+
+## 6) Surfaces Section
+
+Surface pages are the second main user path.
+
+URL:
+
+```text
+/surfaces/
+```
+
+Main surface pages:
+
+```text
+Wood
+Paint / Primer
+Clear Coat
+Metal
+Plastic
+Drywall Patch
+Sheet Problems
+```
+
+Each surface page should use the same structure:
+
+```text
+Surface name
+Best starting grits
+Common problems
+Recommended sequences
+Common mistakes
+Related answers
+Link to Grit Sequence Builder
+```
+
+Example for Wood:
+
+```text
+Best starting grits
+- Rough wood: 80–120
+- Surface prep: 120–180
+- Before stain: 180–220
+- Fine prep: 220–320
+
+Common wood problems
+- Scratches show after stain
+- Stain looks blotchy
+- Raised grain after water
+- Veneer sands through
+- Edges round over too much
+
+Recommended sequences
+- General prep: 120 → 150 → 180 → 220
+- Before stain: 150 → 180 → 220
+- Fix scratches: step back one grit, then progress again
+
+Common mistakes
+- sanding across grain
+- skipping grits
+- using too much pressure
+- not removing dust before finish
+```
+
+---
+
+## 7) Grit Guide
+
+URL:
+
+```text
+/grits/
+```
+
+This section explains what each grit range does. It is not just a SKU list.
+
+Recommended range structure:
+
+```text
+Coarse: 60–120
+For heavy removal, rough shaping, paint removal.
+
+Medium: 150–240
+For surface preparation and smoothing after coarse grits.
+
+Fine: 280–400
+For fine prep before coating, primer, or finish.
+
+Extra Fine: 500–800
+For smoothing coating layers and fine finishing.
+
+Ultra Fine: 1000–3000
+For wet sanding, haze reduction, clear coat prep, polishing preparation.
+```
+
+Include a clear “what grit comes next” reference:
+
+```text
+80 → 120
+120 → 150 or 180
+180 → 220
+220 → 320
+320 → 400
+400 → 600
+600 → 800
+800 → 1000
+1000 → 1500
+1500 → 2000
+2000 → 3000
+```
+
+---
+
+## 8) Tools Section
+
+URL:
+
+```text
+/tools/
+```
+
+The most useful tool right now is the Grit Sequence Builder:
+
+```text
+/tools/grit-sequence-builder/
+https://vladchat.github.io/sandpaper_support/tools/grit-sequence-builder/
+```
+
+This is a useful and important part of the site. Preserve it and improve it rather than hiding it.
+
+### Grit Sequence Builder structure
+
+```text
+Choose surface:
+Wood / Paint / Clear Coat / Metal / Plastic / Drywall
+
+Choose goal:
+Heavy removal / Surface preparation / Fine prep / Wet sanding / Fix scratches / Remove haze
+```
+
+Result should show:
+
+```text
+Start grit
+Next grit sequence
+Wet or dry
+Avoid
+Related solution pages
+Related product page
+```
+
+---
+
+## 9) Products Section
+
+URL:
+
+```text
+/products/
+```
+
+Current important product page:
+
+```text
+/products/assorted-80-3000/
+```
+
+This page supports the eQualle Assorted Sandpaper Kit 80–3000.
+
+Recommended structure:
+
+```text
+What is included
+Which sheet should I start with?
+Do I need to use every grit?
+What is 3000 grit for?
+Wet or dry?
+Common mistakes
+Related tools
+Related solutions
+```
+
+Allowed product facts:
+
+```text
+eQualle sandpaper sheets
+9 x 11 inch
+silicon carbide abrasive
+wet or dry use
+grits 60 through 3000
+assorted kit: 80 through 3000 grit
+```
+
+Do not invent unsupported product claims.
+
+---
+
+## 10) Solution Page Template
+
+Each solution page should answer one exact customer problem.
+
+Recommended structure:
+
+```text
+Top search / ask bar
+Problem title
+Short answer
+What to do
+Recommended grit / grit sequence
+Wet or dry
+Avoid
+Success check
+Related guides
+```
+
+Avoid placing a large disconnected assistant/chat block at the bottom of the page. If a follow-up helper exists, it should be integrated near the main answer or referenced through the top search/ask bar.
+
+---
+
+## 11) AI Assistant Direction
+
+AI should not feel like a separate chatbot product.
+
+Preferred behavior:
+
+```text
+Search found answer → show matching pages
+User needs more → same input continues the conversation
+Search found nothing → same typed text becomes AI request
+Solution page → user can ask follow-up in that page context
+```
+
+AI should:
+
+```text
+read the user query
+use current page context
+retrieve approved solution cards / grit sequences / surface data
+write a short support answer
+link to approved pages
+ask one clarifying question only when needed
+```
+
+AI should not:
+
+```text
+replace static support content
+invent product claims
+act like a general workshop chatbot
+create a second confusing input on the homepage
+bury the useful answer under chat UI
+```
+
+AI response format should usually be:
+
+```text
+Likely issue:
+Why it happens:
+Recommended next step:
+Suggested grit sequence:
+Wet or dry:
+Avoid:
+Related guides:
+```
+
+---
+
+## 12) Product and Content Rules
+
+1. All public user-facing text must be English.
+2. Keep answers short, direct, and practical.
+3. Avoid unsupported marketing terms such as:
+   ```text
+   best
+   premium
+   superior
+   professional-grade
+   high-quality
+   unmatched
+   ultimate
+   ```
+4. Do not invent product facts.
+5. Do not claim a grit can do something that is not supported by the current knowledge base.
+6. Prefer one clear recommended path over many competing options.
+7. When uncertain, create a validation task instead of guessing.
+8. Static support pages must remain useful even if AI is unavailable.
+
+---
+
+## 13) Repo / Implementation Rules
+
+1. Work only in this repository unless the user explicitly says otherwise:
+   ```text
+   https://github.com/VladChat/sandpaper_support
+   ```
+2. Verify remote before commits:
+   ```text
+   git remote get-url origin
+   ```
+3. Expected remote:
+   ```text
+   https://github.com/VladChat/sandpaper_support.git
+   ```
+4. Do not print or expose secrets.
+5. Do not put OpenAI API keys in browser code.
+6. Frontend must call a secure backend function for OpenAI.
+7. Preserve Supabase search logging and feedback logging.
+8. Preserve admin dashboard auth.
+9. Keep changes small and focused.
+10. Commit and push only after tests pass or report exact failure.
+
+---
+
+## 14) Quality Checks For Agents
+
+Before reporting a task complete, check:
 
 ### User clarity
-- Can a customer identify this issue in under 5 seconds?
-- Is the answer visible without heavy reading?
-- Is the next action obvious?
+
+```text
+Can a customer understand the page in 5 seconds?
+Is the next action obvious?
+Is the useful answer near the top?
+```
 
 ### Support quality
-- Does it solve a real post-purchase issue?
-- Does it avoid vague advice?
-- Does it specify grit, stage, and method where needed?
 
-### SEO quality
-- Is the page focused on one search intent?
-- Is the title aligned with a real customer query?
-- Is there duplicate overlap with another page?
+```text
+Does the page solve a real sanding problem?
+Does it include grit / surface / wet-dry guidance where needed?
+Does it say what to avoid?
+```
 
-### Data quality
-- Is every factual claim sourced from approved project knowledge?
-- Is product compatibility verified?
-- Are grit recommendations internally consistent?
+### Search quality
 
----
+```text
+Does the query return strong relevant results?
+Are weak unrelated results hidden?
+Does exact customer language match the right page?
+```
 
-## 11) Build Plan
+### AI quality
 
-## Phase 1 — Foundation
-Goal: create the project skeleton and core rules.
-
-Tasks:
-1. create repo
-2. create frontend scaffold
-3. add AGENTS.md
-4. define content model
-5. define URL structure
-6. define visual style
-7. define problem taxonomy
-8. define grit taxonomy
-9. define product taxonomy
-
-Deliverable:
-- working local project with empty but real structure
+```text
+Does AI answer from approved context?
+Does AI link to approved pages?
+Does AI avoid unsupported claims?
+Does AI ask only one clarifying question when needed?
+```
 
 ---
 
-## Phase 2 — Knowledge Model
-Goal: build the support database before building pretty pages.
+## 15) Current Strategic Direction
 
-Tasks:
-1. create master problem list
-2. create problem qualifiers
-3. create leaf solution format
-4. create grit map
-5. create product map
-6. create phrase alias map from real customer language
-7. create validation rules to catch contradictions
+The next UX direction should be:
 
-Deliverable:
-- structured JSON/Markdown support knowledge base
+```text
+Simplify the site.
+Make one search / ask bar the central interface.
+Keep Problems, Surfaces, Grit Guide, Products, Tools as the main structure.
+Keep Grit Sequence Builder prominent.
+Remove confusing duplicate inputs.
+Do not make AI a separate destination.
+Use AI as continuation of search and support pages.
+```
 
----
-
-## Phase 3 — Core UX
-Goal: build the support flows customers will actually use.
-
-Tasks:
-1. homepage with problem-first navigation
-2. global search
-3. problem tree pages
-4. leaf solution pages
-5. by grit pages
-6. by product pages
-7. related links blocks
-8. document download section
-
-Deliverable:
-- static support site fully navigable without AI
-
----
-
-## Phase 4 — AI Assistant
-Goal: add secure assistant without breaking the static-first model.
-
-Tasks:
-1. create secure backend endpoint
-2. add retrieval over approved support content
-3. add strict assistant instructions
-4. add conversation logging policy
-5. add user interface widget
-6. add guardrails for unsupported questions
-7. add handoff to exact page links
-
-Deliverable:
-- AI assistant that improves routing and diagnosis
-
----
-
-## Phase 5 — Content Expansion
-Goal: scale breadth and coverage.
-
-Tasks:
-1. add all major problem branches
-2. add grit-specific support pages
-3. add kit-specific support pages
-4. add FAQs
-5. add downloadable PDFs
-6. add short support videos
-7. add Amazon-facing landing pages
-
-Deliverable:
-- broad useful support library
-
----
-
-## Phase 6 — Measurement and Refinement
-Goal: improve searchability and reduce unresolved visits.
-
-Tasks:
-1. add analytics
-2. track most searched problems
-3. track dead-end searches
-4. track page exits
-5. improve taxonomy and aliases
-6. improve AI routing quality
-7. add missing content based on real usage
-
-Deliverable:
-- measurable support system that gets better over time
-
----
-
-## 12) Working Rules For Agents
-
-1. Always preserve the problem-first architecture.
-2. Do not turn the homepage into a product catalog.
-3. Do not start with a giant blog strategy.
-4. Build the support knowledge model before scaling design.
-5. Prefer reusable structured data over hardcoded page text.
-6. Keep answers short and concrete.
-7. Every support statement must be traceable to approved data.
-8. When uncertain, create a validation task instead of guessing.
-9. AI must route to content, not replace the content system.
-10. Public UX simplicity is more important than fancy architecture.
-
----
-
-## 13) First Execution Target
-
-The first practical milestone is:
-
-**A working MVP with:**
-- homepage
-- problem search
-- 10 major problems
-- 3 levels of narrowing
-- final answer pages
-- grit pages
-- product pages for the first key SKUs
-- no hallucination AI assistant linked to approved support content only
-
----
-
-## 14) Immediate Next Step
-
-Create these files first:
-
-1. `README.md`
-2. `docs/architecture.md`
-3. `docs/content-model.md`
-4. `docs/taxonomy.md`
-5. `src/data/problem-tree.json`
-6. `src/data/grit-map.json`
-7. `src/data/product-map.json`
-
-Then build the first version of:
-- homepage
-- problem tree
-- leaf answer template
-- search index
-
----
-
-## 15) Amazon Fit
-
-This support system is designed to work well with Amazon Product Support because Amazon allows self-help content, documents, and URLs that help customers resolve product issues quickly, and product documents like manuals or troubleshooting guides can be uploaded for products. The website will serve as the richer support destination, while Amazon can point customers to the relevant support resource. citeturn916450view0turn335319search1turn335319search9
+This section is guidance, not a rigid canonical law. Agents can improve the implementation, but should not return to a cluttered homepage, duplicated chat inputs, or disconnected bottom assistant blocks.
