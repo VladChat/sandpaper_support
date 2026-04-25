@@ -3,6 +3,14 @@
     "id": "scratches-too-deep",
     "title": "Scratches Are Too Deep",
     "description": "The surface has visible sanding marks, gouges, or scratches that remain after sanding.",
+    "solution_card_ids": [
+      "deep-scratches-after-80-grit",
+      "320-does-not-remove-180-scratches",
+      "coarse-scratches-on-wood",
+      "scratches-on-metal-after-prep",
+      "deep-lines-on-clear-coat",
+      "dry-sanding-leaves-dust-scratches"
+    ],
     "aliases": [
       "deep scratches",
       "sandpaper scratches too deep",
@@ -56,6 +64,17 @@
     "id": "not-sure-what-grit-to-use",
     "title": "Not Sure What Grit To Use",
     "description": "The customer does not know which grit to start with or which grit comes next.",
+    "solution_card_ids": [
+      "skipped-120-to-320",
+      "choosing-starting-grit",
+      "using-80-3000-kit",
+      "what-grit-for-wood-prep",
+      "what-grit-for-paint-prep",
+      "metal-prep-before-paint",
+      "plastic-prep-before-paint",
+      "assorted-kit-heavy-removal",
+      "assorted-kit-finish-prep"
+    ],
     "aliases": [
       "what grit should I use",
       "which sandpaper grit",
@@ -93,6 +112,13 @@
     "id": "paper-clogs-too-fast",
     "title": "Sandpaper Clogs Too Fast",
     "description": "Dust, paint, finish, or residue loads into the abrasive surface quickly.",
+    "solution_card_ids": [
+      "paint-clogs-sheet",
+      "primer-dust-loads-paper",
+      "wood-dust-clogs-paper",
+      "finish-smears-while-sanding",
+      "wet-sanding-slurry-builds-up"
+    ],
     "aliases": [
       "sandpaper clogging",
       "paper loads up",
@@ -130,6 +156,11 @@
     "id": "sanding-takes-too-long",
     "title": "Sanding Takes Too Long",
     "description": "The sandpaper is cutting slowly or the task feels inefficient.",
+    "solution_card_ids": [
+      "paint-removal-too-slow",
+      "fine-grit-used-for-removal",
+      "worn-sheet-not-cutting"
+    ],
     "aliases": [
       "sandpaper not cutting",
       "sanding too slow",
@@ -165,6 +196,12 @@
     "id": "finish-looks-uneven",
     "title": "Finish Looks Uneven",
     "description": "The surface has uneven dull spots, patchy sanding marks, or inconsistent texture.",
+    "solution_card_ids": [
+      "uneven-finish-from-pressure",
+      "hand-sanding-finger-grooves",
+      "finish-patchy-after-grit-change",
+      "haze-is-uneven"
+    ],
     "aliases": [
       "uneven finish after sanding",
       "patchy sanding",
@@ -202,6 +239,11 @@
     "id": "swirl-marks-remain",
     "title": "Swirl Marks Remain",
     "description": "Circular or curved marks remain visible after sanding or wet sanding.",
+    "solution_card_ids": [
+      "swirls-after-1000",
+      "swirls-from-dirty-water",
+      "random-orbital-swirl-pattern"
+    ],
     "aliases": [
       "swirl marks",
       "circular sanding marks",
@@ -239,6 +281,11 @@
     "id": "paper-tears-early",
     "title": "Paper Tears Early",
     "description": "The sheet rips, catches, or wears through before expected.",
+    "solution_card_ids": [
+      "paper-tears-on-sharp-edge",
+      "paper-tears-from-folding",
+      "paper-tears-from-heavy-pressure"
+    ],
     "aliases": [
       "sandpaper tears",
       "paper ripping",
@@ -275,6 +322,12 @@
     "id": "poor-results-between-coats",
     "title": "Poor Results Between Coats",
     "description": "Sanding between paint, primer, sealer, or clear coats leaves visible problems.",
+    "solution_card_ids": [
+      "between-coats-too-coarse",
+      "between-coats-cut-through",
+      "primer-scratches-show-through",
+      "what-grit-for-paint-prep"
+    ],
     "aliases": [
       "sanding between coats",
       "bad result between coats",
@@ -311,6 +364,14 @@
     "id": "wet-sanding-leaves-haze",
     "title": "Wet Sanding Leaves Haze",
     "description": "Wet sanding leaves a cloudy, dull, or hazy surface.",
+    "solution_card_ids": [
+      "normal-haze-after-wet-sanding",
+      "clear-coat-haze-after-1000",
+      "plastic-haze-after-wet-sanding",
+      "haze-is-uneven",
+      "clear-coat-orange-peel-leveling",
+      "assorted-kit-polishing-prep"
+    ],
     "aliases": [
       "wet sanding haze",
       "cloudy after wet sanding",
@@ -348,6 +409,14 @@
     "id": "surface-still-feels-rough",
     "title": "Surface Still Feels Rough",
     "description": "The surface does not become smooth even after sanding.",
+    "solution_card_ids": [
+      "wood-still-rough-after-120",
+      "wood-still-rough-after-220",
+      "metal-still-rough",
+      "plastic-still-rough",
+      "rough-spots-after-fine-grit",
+      "wood-prep-before-finish"
+    ],
     "aliases": [
       "surface still rough",
       "wood still rough after sanding",

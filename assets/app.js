@@ -31,9 +31,73 @@ async function setupSearch() {
     return;
   }
 
-  const problems = await loadJson("/sandpaper_support/data/problem-tree.json").catch(
-    () => loadJson("data/problem-tree.json"),
-  );
+  function loadSupportJson(path) {
+    return loadJson("/sandpaper_support/" + path).catch(() => loadJson(path));
+  }
+
+  function normalizeSearchEntry(entry) {
+    return {
+      title: entry.title,
+      description: entry.description,
+      targetUrl: entry.target_url || entry.targetUrl,
+      haystack: [
+        entry.id,
+        entry.type,
+        entry.title,
+        entry.description,
+        ...(entry.customer_phrases || []),
+        ...(entry.aliases || []),
+        ...(entry.surface || []),
+        ...(entry.grits || []),
+        ...(entry.method || []),
+      ]
+        .join(" ")
+        .toLowerCase(),
+    };
+  }
+
+  function normalizeProblemEntry(problem) {
+    return {
+      title: problem.title,
+      description: problem.description,
+      targetUrl: "/problems/" + problem.id + "/",
+      haystack: [
+        problem.id,
+        problem.title,
+        problem.description,
+        ...(problem.aliases || []),
+        ...(problem.qualifiers || []),
+        ...(problem.solution_card_ids || []),
+        ...(problem.solutions || []).map((solution) => solution.title),
+      ]
+        .join(" ")
+        .toLowerCase(),
+    };
+  }
+
+  function scoreEntry(entry, query, terms) {
+    let score = 0;
+
+    if (entry.haystack.includes(query)) {
+      score += 20;
+    }
+
+    terms.forEach(function (term) {
+      if (term.length > 2 && entry.haystack.includes(term)) {
+        score += 1;
+      }
+    });
+
+    return score;
+  }
+
+  const searchEntries = await loadSupportJson("data/search-index.json")
+    .then((items) => items.map(normalizeSearchEntry))
+    .catch(() =>
+      loadSupportJson("data/problem-tree.json").then((items) =>
+        items.map(normalizeProblemEntry),
+      ),
+    );
 
   const logRenderedSearch = debounce(function (query, resultCount) {
     if (window.eQualleSupabase) {
@@ -49,24 +113,16 @@ async function setupSearch() {
       return;
     }
 
-    const matches = problems
-      .filter((problem) => {
-        const hay = [
-          problem.title,
-          problem.description,
-          ...(problem.aliases || []),
-          ...(problem.qualifiers || []),
-          ...(problem.solutions || []).map((solution) => solution.title),
-        ]
-          .join(" ")
-          .toLowerCase();
-
-        return (
-          hay.includes(q) ||
-          q.split(/\s+/).some((term) => term.length > 2 && hay.includes(term))
-        );
-      })
-      .slice(0, 6);
+    const terms = q.split(/\s+/);
+    const matches = searchEntries
+      .map((entry) => ({
+        entry: entry,
+        score: scoreEntry(entry, q, terms),
+      }))
+      .filter((match) => match.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 7)
+      .map((match) => match.entry);
 
     logRenderedSearch(q, matches.length);
 
@@ -76,11 +132,11 @@ async function setupSearch() {
       return;
     }
 
-    for (const problem of matches) {
+    for (const match of matches) {
       const link = document.createElement("a");
       link.className = "result-link";
-      link.href = `/sandpaper_support/problems/${problem.id}/`;
-      link.textContent = problem.title + " - " + problem.description;
+      link.href = "/sandpaper_support" + match.targetUrl;
+      link.textContent = match.title + " - " + match.description;
       link.addEventListener("click", function () {
         if (window.eQualleSupabase) {
           window.eQualleSupabase.logSearch(q, matches.length, link.pathname);
