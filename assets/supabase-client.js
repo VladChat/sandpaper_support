@@ -67,6 +67,41 @@
     });
   }
 
+  function askSupportAssistant(input) {
+    input = input || {};
+    var config = getConfig();
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true });
+    }
+
+    return fetch(config.url + "/functions/v1/support-ai-chat", {
+      method: "POST",
+      headers: {
+        apikey: config.anonKey,
+        Authorization: "Bearer " + config.anonKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sessionToken: input.sessionToken,
+        userMessage: input.userMessage,
+        context: input.context || {},
+      }),
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          body.ok = response.ok;
+          body.status = response.status;
+          return body;
+        });
+      })
+      .catch(function () {
+        return { ok: false };
+      });
+  }
+
   function getSessionToken() {
     try {
       var key = "equalle_support_session";
@@ -88,5 +123,6 @@
     isConfigured: isConfigured,
     logSearch: logSearch,
     submitFeedback: submitFeedback,
+    askSupportAssistant: askSupportAssistant,
   };
 })();

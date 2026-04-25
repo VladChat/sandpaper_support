@@ -180,5 +180,125 @@ function setupFeedback() {
   });
 }
 
+function getAssistantSessionToken() {
+  try {
+    const key = "equalle_ai_assistant_session";
+    const existing = window.sessionStorage.getItem(key);
+
+    if (existing) {
+      return existing;
+    }
+
+    const token = "assistant-" + Math.random().toString(36).slice(2) + Date.now();
+    window.sessionStorage.setItem(key, token);
+    return token;
+  } catch (_error) {
+    return "assistant-" + Date.now();
+  }
+}
+
+function setupAssistantChat() {
+  const shell = document.querySelector("[data-ai-chat]");
+
+  if (!shell) {
+    return;
+  }
+
+  const form = shell.querySelector("[data-ai-form]");
+  const input = shell.querySelector("[data-ai-input]");
+  const messages = shell.querySelector("[data-ai-messages]");
+
+  if (!form || !input || !messages) {
+    return;
+  }
+
+  const sessionToken = getAssistantSessionToken();
+
+  function addMessage(role, text) {
+    const message = document.createElement("div");
+    message.className = "chat-message chat-message-" + role;
+    message.textContent = text;
+    messages.appendChild(message);
+    messages.scrollTop = messages.scrollHeight;
+    return message;
+  }
+
+  function addLinks(pages) {
+    if (!Array.isArray(pages) || !pages.length) {
+      return;
+    }
+
+    const list = document.createElement("div");
+    list.className = "chat-links";
+
+    pages.forEach(function (page) {
+      const href = page && (page.href || page.url || page.path);
+      const label = (page && (page.title || page.label || href)) || "";
+
+      if (!href || !label) {
+        return;
+      }
+
+      const link = document.createElement("a");
+      link.href = href;
+      link.textContent = label;
+      list.appendChild(link);
+    });
+
+    if (list.children.length) {
+      messages.appendChild(list);
+      messages.scrollTop = messages.scrollHeight;
+    }
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const userMessage = input.value.trim();
+
+    if (!userMessage) {
+      return;
+    }
+
+    input.value = "";
+    addMessage("user", userMessage);
+
+    if (!window.eQualleSupabase || !window.eQualleSupabase.isConfigured()) {
+      addMessage(
+        "assistant",
+        "The assistant is unavailable right now. The support pages still work.",
+      );
+      return;
+    }
+
+    const pending = addMessage("assistant", "Checking approved support content...");
+
+    window.eQualleSupabase
+      .askSupportAssistant({
+        sessionToken: sessionToken,
+        userMessage: userMessage,
+        context: {
+          currentPath: window.location.pathname,
+        },
+      })
+      .then(function (result) {
+        if (!result || !result.ok) {
+          pending.textContent =
+            "The assistant is unavailable right now. The support pages still work.";
+          return;
+        }
+
+        pending.textContent = result.reply || "I need a little more detail.";
+
+        if (result.clarifyingQuestion) {
+          addMessage("assistant", result.clarifyingQuestion);
+        }
+
+        addLinks(result.matchedPages);
+      });
+  });
+}
+
 setupSearch();
 setupFeedback();
+setupAssistantChat();
