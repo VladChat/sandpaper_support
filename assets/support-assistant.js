@@ -119,6 +119,32 @@
       });
   }
 
+  function normalizeList(values) {
+    return (Array.isArray(values) ? values : [])
+      .map(function (value) {
+        return clean(value).trim();
+      })
+      .filter(function (value) {
+        return Boolean(value);
+      });
+  }
+
+  function phraseStartsWithQuery(phrases, query) {
+    const lowered = clean(query).trim();
+    if (!lowered) {
+      return false;
+    }
+
+    return normalizeList(phrases).some(function (phrase) {
+      if (phrase.indexOf(lowered) === 0) {
+        return true;
+      }
+      return phrase.split(/\s+/).some(function (word) {
+        return word.indexOf(lowered) === 0;
+      });
+    });
+  }
+
   function scoreHaystack(haystack, query, terms) {
     const loweredHaystack = clean(haystack);
     const loweredQuery = clean(query).trim();
@@ -247,18 +273,154 @@
       function findSearchMatches(query, limit) {
         const terms = toTerms(query);
         const loweredQuery = clean(query).trim();
+        const shortQuery = loweredQuery.length <= 4;
+        const vagueTerms = {
+          help: true,
+          issue: true,
+          problem: true,
+          sanding: true,
+          sandpaper: true,
+          sand: true,
+          paper: true,
+          guide: true,
+          use: true,
+        };
 
-        if (!loweredQuery) {
+        if (!loweredQuery || loweredQuery.length < 3) {
           return [];
         }
 
         return searchEntries
           .map(function (entry) {
-            const haystack = buildSearchHaystack(entry);
-            let score = scoreHaystack(haystack, loweredQuery, terms);
+            const title = clean(entry.title || "");
+            const description = clean(entry.description || "");
+            const aliases = normalizeList(entry.aliases);
+            const customerPhrases = normalizeList(entry.customer_phrases);
+            const surfaces = normalizeList(entry.surface);
+            const grits = normalizeList(entry.grits);
+            const methods = normalizeList(entry.method);
+            const primaryText = [title].concat(customerPhrases, aliases).join(" ");
+            const broadText = [primaryText, description]
+              .concat(surfaces, grits, methods)
+              .join(" ");
+
+            let score = 0;
+            let matchedTerms = 0;
+            let strongTermMatches = 0;
+            let hasStrongSignal = false;
+
+            if (shortQuery) {
+              if (phraseStartsWithQuery([title], loweredQuery)) {
+                score += 55;
+                hasStrongSignal = true;
+              }
+              if (phraseStartsWithQuery(aliases, loweredQuery)) {
+                score += 50;
+                hasStrongSignal = true;
+              }
+              if (phraseStartsWithQuery(customerPhrases, loweredQuery)) {
+                score += 50;
+                hasStrongSignal = true;
+              }
+              if (grits.indexOf(loweredQuery) !== -1) {
+                score += 48;
+                hasStrongSignal = true;
+              }
+
+              if (!hasStrongSignal) {
+                score = 0;
+              }
+            } else {
+              const titlePhraseExact = title.indexOf(loweredQuery) !== -1;
+              const customerPhraseExact = customerPhrases.some(function (phrase) {
+                return phrase.indexOf(loweredQuery) !== -1;
+              });
+
+              if (titlePhraseExact) {
+                score += 120;
+                hasStrongSignal = true;
+              }
+              if (customerPhraseExact) {
+                score += 115;
+                hasStrongSignal = true;
+              }
+
+              if (phraseStartsWithQuery([title], loweredQuery)) {
+                score += 70;
+                hasStrongSignal = true;
+              }
+              if (phraseStartsWithQuery(customerPhrases, loweredQuery)) {
+                score += 65;
+                hasStrongSignal = true;
+              }
+              if (phraseStartsWithQuery(aliases, loweredQuery)) {
+                score += 58;
+                hasStrongSignal = true;
+              }
+
+              terms.forEach(function (term) {
+                let termMatched = false;
+                let strongMatch = false;
+
+                if (title.indexOf(term) !== -1) {
+                  score += 16;
+                  termMatched = true;
+                  strongMatch = true;
+                } else if (customerPhrases.some(function (phrase) {
+                  return phrase.indexOf(term) !== -1;
+                })) {
+                  score += 14;
+                  termMatched = true;
+                  strongMatch = true;
+                } else if (aliases.some(function (alias) {
+                  return alias.indexOf(term) !== -1;
+                })) {
+                  score += 12;
+                  termMatched = true;
+                  strongMatch = true;
+                } else if (
+                  grits.indexOf(term) !== -1 ||
+                  surfaces.some(function (surface) {
+                    return surface.indexOf(term) !== -1;
+                  }) ||
+                  methods.some(function (method) {
+                    return method.indexOf(term) !== -1;
+                  })
+                ) {
+                  score += 8;
+                  termMatched = true;
+                } else if (description.indexOf(term) !== -1) {
+                  score += 3;
+                  termMatched = true;
+                }
+
+                if (termMatched) {
+                  matchedTerms += 1;
+                  if (strongMatch || !vagueTerms[term]) {
+                    strongTermMatches += 1;
+                  }
+                }
+              });
+
+              if (terms.length > 1) {
+                score += matchedTerms * 6;
+                if (matchedTerms === terms.length) {
+                  score += 20;
+                }
+                if (matchedTerms < 2) {
+                  score -= 25;
+                }
+              } else if (terms.length === 1 && vagueTerms[terms[0]] && !hasStrongSignal) {
+                score -= 35;
+              }
+
+              if (matchedTerms === 1 && strongTermMatches === 0 && !hasStrongSignal) {
+                score -= 25;
+              }
+            }
 
             if (entry.type === "exact_scenario") {
-              score += 4;
+              score += 12;
             }
 
             return {
@@ -267,10 +429,33 @@
             };
           })
           .filter(function (item) {
-            return item.score > 0;
+            if (item.score <= 0) {
+              return false;
+            }
+
+            if (terms.length > 1) {
+              const haystack = buildSearchHaystack(item.entry);
+              const matched = terms.filter(function (term) {
+                return clean(haystack).indexOf(term) !== -1;
+              }).length;
+              return matched > 1 || item.entry.type === "exact_scenario";
+            }
+
+            return true;
           })
           .sort(function (a, b) {
-            return b.score - a.score;
+            if (b.score !== a.score) {
+              return b.score - a.score;
+            }
+
+            if (a.entry.type === "exact_scenario" && b.entry.type !== "exact_scenario") {
+              return -1;
+            }
+            if (b.entry.type === "exact_scenario" && a.entry.type !== "exact_scenario") {
+              return 1;
+            }
+
+            return 0;
           })
           .slice(0, limit || 7)
           .map(function (item) {
@@ -863,27 +1048,159 @@
     }
 
     const requester = createAssistantRequester(basePath, knowledge);
-
-    const assistantShell = buildAssistantShell({
-      title: "Ask a follow-up question about this issue",
-      description: "Use this to narrow the exact next step.",
-      placeholder: "Ask a follow-up question about this issue",
-      initialMessage: "Ask about your exact surface, grit, or next step.",
-    });
-
-    assistantShell.root.classList.add("support-assistant-home");
-    assistantShell.root.hidden = true;
-    results.insertAdjacentElement("afterend", assistantShell.root);
-
-    const chat = wireChat(assistantShell, requester, basePath, {
-      source: "homepage-search",
-    });
+    const homepageConversation = [];
 
     const logRenderedSearch = debounce(function (query, resultCount) {
       if (window.eQualleSupabase) {
         window.eQualleSupabase.logSearch(query, resultCount, null);
       }
     }, 600);
+
+    function addConversationEntry(role, text, links, pending) {
+      homepageConversation.push({
+        role: role,
+        text: text,
+        links: Array.isArray(links) ? links : [],
+        pending: Boolean(pending),
+      });
+    }
+
+    function logAssistantMessage(role, text) {
+      pushSessionArray(
+        STORAGE_KEYS.assistantMessages,
+        {
+          role: role,
+          text: text,
+          at: new Date().toISOString(),
+          source: "homepage-search",
+        },
+        30,
+      );
+    }
+
+    function renderConversationBlock() {
+      if (!homepageConversation.length) {
+        return null;
+      }
+
+      const block = document.createElement("div");
+      block.className = "chat-shell support-home-conversation";
+
+      const messages = document.createElement("div");
+      messages.className = "chat-messages";
+      messages.setAttribute("aria-live", "polite");
+
+      homepageConversation.forEach(function (entry) {
+        const message = appendMessage(messages, entry.role, entry.text);
+        if (entry.pending) {
+          message.classList.add("chat-message-pending");
+        }
+
+        if (entry.links && entry.links.length) {
+          appendLinks(messages, entry.links, basePath, function (page) {
+            recordClickedPage(page.path, page.title);
+          });
+        }
+      });
+
+      block.appendChild(messages);
+      return block;
+    }
+
+    function renderOutput(q, matches) {
+      results.innerHTML = "";
+
+      if (!q) {
+        return;
+      }
+
+      if (q.length < 3) {
+        const hint = document.createElement("div");
+        hint.className = "result-link";
+        hint.textContent = "Type at least 3 characters to see matching support pages.";
+        results.appendChild(hint);
+      } else if (!matches.length) {
+        const empty = document.createElement("div");
+        empty.className = "result-link";
+        empty.textContent =
+          "No exact match yet. Press Enter to ask the assistant, or keep typing.";
+        results.appendChild(empty);
+      } else {
+        matches.forEach(function (match) {
+          const link = document.createElement("a");
+          link.className = "result-link";
+          link.href = normalizePath(basePath, match.target_url || match.targetUrl || "");
+          link.textContent = match.title + " - " + match.description;
+
+          link.addEventListener("click", function () {
+            if (window.eQualleSupabase) {
+              window.eQualleSupabase.logSearch(q, matches.length, link.pathname);
+            }
+            recordClickedPage(link.pathname, match.title);
+          });
+
+          results.appendChild(link);
+        });
+      }
+
+      const conversation = renderConversationBlock();
+      if (conversation) {
+        results.appendChild(conversation);
+      }
+    }
+
+    function sendAssistantQuery(userMessage, options) {
+      const message = String(userMessage || "").trim();
+      if (!message) {
+        return;
+      }
+
+      const isAuto = Boolean(options && options.auto);
+
+      addConversationEntry("user", message, [], false);
+      logAssistantMessage("user", message);
+
+      addConversationEntry("assistant", "Checking approved support guides...", [], true);
+
+      const currentMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
+      renderOutput(message, currentMatches);
+
+      requester(message, {
+        source: "homepage-search",
+        mode: isAuto ? "auto" : "manual",
+      }).then(function (result) {
+        const pending = homepageConversation[homepageConversation.length - 1];
+        if (!pending || pending.role !== "assistant" || !pending.pending) {
+          return;
+        }
+
+        if (!result.ok) {
+          pending.pending = false;
+          pending.text =
+            "Assistant response is unavailable right now. Approved support guides are still shown above.";
+          logAssistantMessage("assistant", pending.text);
+          renderOutput(message, currentMatches);
+          return;
+        }
+
+        pending.pending = false;
+        pending.text = result.reply || "I need one more detail to guide you.";
+        pending.links = Array.isArray(result.matchedPages) ? result.matchedPages : [];
+        logAssistantMessage("assistant", pending.text);
+
+        if (result.needsClarification && result.clarifyingQuestion) {
+          addConversationEntry(
+            "assistant",
+            result.clarifyingQuestion,
+            [],
+            false,
+          );
+          logAssistantMessage("assistant", result.clarifyingQuestion);
+        }
+
+        renderOutput(message, currentMatches);
+      });
+    }
 
     const scheduleAutoAsk = debounce(function (query) {
       const autoQueries = getStoredJson(STORAGE_KEYS.autoSubmittedQueries, []);
@@ -897,14 +1214,13 @@
       }
       setStoredJson(STORAGE_KEYS.autoSubmittedQueries, autoQueries);
 
-      chat.ask(query, { auto: true });
+      sendAssistantQuery(query, { auto: true });
     }, 800);
 
     function render(query) {
       const q = clean(query).trim();
-      const matches = q ? knowledge.findSearchMatches(q, 7) : [];
+      const matches = q && q.length >= 3 ? knowledge.findSearchMatches(q, 7) : [];
 
-      results.innerHTML = "";
       setStoredText(STORAGE_KEYS.lastQuery, q);
       setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 7).map(compactSearchEntry));
 
@@ -919,53 +1235,35 @@
       );
 
       if (!q) {
-        assistantShell.root.hidden = true;
+        results.innerHTML = "";
         return;
       }
 
       logRenderedSearch(q, matches.length);
 
-      if (!matches.length) {
-        const empty = document.createElement("div");
-        empty.className = "result-link";
-        empty.textContent =
-          "No exact match yet. Try: scratches, clogging, grit, haze, rough, swirl marks.";
-        results.appendChild(empty);
+      renderOutput(q, matches);
 
-        assistantShell.root.hidden = false;
-        assistantShell.setTitle("Ask a follow-up question about this issue");
-        assistantShell.setDescription("No exact page matched yet. The assistant can help route you.");
-
-        if (q.length >= 4) {
-          scheduleAutoAsk(q);
-        }
-
-        return;
+      if (!matches.length && q.length >= 4) {
+        scheduleAutoAsk(q);
       }
-
-      matches.forEach(function (match) {
-        const link = document.createElement("a");
-        link.className = "result-link";
-        link.href = normalizePath(basePath, match.target_url || match.targetUrl || "");
-        link.textContent = match.title + " - " + match.description;
-
-        link.addEventListener("click", function () {
-          if (window.eQualleSupabase) {
-            window.eQualleSupabase.logSearch(q, matches.length, link.pathname);
-          }
-          recordClickedPage(link.pathname, match.title);
-        });
-
-        results.appendChild(link);
-      });
-
-      assistantShell.root.hidden = false;
-      assistantShell.setTitle("Ask a follow-up question about this issue");
-      assistantShell.setDescription("Matches are shown above. Ask for the next exact step if needed.");
     }
 
     input.addEventListener("input", function (event) {
       render(event.target.value);
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter") {
+        return;
+      }
+
+      event.preventDefault();
+      const message = input.value.trim();
+      if (!message) {
+        return;
+      }
+
+      sendAssistantQuery(message, { auto: false });
     });
 
     const initial = getStoredText(STORAGE_KEYS.lastQuery, "");
