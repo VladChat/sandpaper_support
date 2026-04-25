@@ -26,43 +26,54 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+
           if [ -z "${SUPABASE_ACCESS_TOKEN:-}" ]; then
             echo "Missing secret: SUPABASE_ACCESS_TOKEN"
             exit 1
           fi
+
           if [ -z "${SUPABASE_PROJECT_REF:-}" ]; then
             echo "Missing secret: SUPABASE_PROJECT_REF"
             exit 1
           fi
+
           if [ -z "${SUPABASE_ANON_KEY:-}" ]; then
             echo "Missing secret: SUPABASE_ANON_KEY"
             exit 1
           fi
+
           if [ -z "${OPENAI_API_KEY:-}" ]; then
             echo "Missing secret: OPENAI_API_KEY"
             exit 1
           fi
+
           echo "Required secrets are present."
 
       - name: Sync OPENAI_API_KEY to Supabase project secrets
         shell: bash
         run: |
           set -euo pipefail
+
           supabase secrets set OPENAI_API_KEY="$OPENAI_API_KEY" --project-ref "$SUPABASE_PROJECT_REF"
+
           echo "OPENAI_API_KEY synced to Supabase secrets."
 
       - name: Deploy support-ai-chat function
         shell: bash
         run: |
           set -euo pipefail
+
           supabase functions deploy support-ai-chat --project-ref "$SUPABASE_PROJECT_REF" --no-verify-jwt
+
           echo "Function deploy completed."
 
       - name: Test support-ai-chat POST
         shell: bash
         run: |
           set -euo pipefail
+
           endpoint="https://${SUPABASE_PROJECT_REF}.supabase.co/functions/v1/support-ai-chat"
+
           payload='{
             "sessionToken": "gha-test-session",
             "userMessage": "3000 grit does not make gloss",
@@ -87,9 +98,11 @@ jobs:
             -X POST "$endpoint" \
             -H "Content-Type: application/json" \
             -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
             --data "$payload")
 
           echo "Function POST status: $http_code"
+
           if [ "$http_code" != "200" ]; then
             echo "Function POST failed."
             cat response.json
@@ -98,12 +111,14 @@ jobs:
 
           python - <<'PY'
           import json
-          with open('response.json', 'r', encoding='utf-8') as f:
-            data = json.load(f)
 
-          reply = data.get('reply', '')
+          with open("response.json", "r", encoding="utf-8") as f:
+              data = json.load(f)
+
+          reply = data.get("reply", "")
+
           if not isinstance(reply, str) or not reply.strip():
-            raise SystemExit('Function response missing reply')
+              raise SystemExit("Function response missing reply")
 
-          print('Function response looks valid.')
+          print("Function response looks valid.")
           PY
