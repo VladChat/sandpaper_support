@@ -647,5 +647,1531 @@
       "wet"
     ],
     "target_url": "/products/"
+  },
+  {
+    "id": "search-grit-comes-off-sheet",
+    "type": "exact_scenario",
+    "title": "Grit comes off the sheet",
+    "description": "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
+    "customer_phrases": [
+      "grit comes off the sheet",
+      "grit comes off sheet",
+      "loose abrasive appears on the surface or the sheet sheds grit during sanding."
+    ],
+    "aliases": [
+      "paper tears early",
+      "grit comes off the sheet"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/grit-comes-off-sheet/"
+  },
+  {
+    "id": "search-sheet-curls-during-wet-sanding",
+    "type": "exact_scenario",
+    "title": "Sheet curls during wet sanding",
+    "description": "The sheet curls up and becomes hard to keep flat while wet sanding.",
+    "customer_phrases": [
+      "sheet curls during wet sanding",
+      "sheet curls during wet sanding",
+      "the sheet curls up and becomes hard to keep flat while wet sanding."
+    ],
+    "aliases": [
+      "paper tears early",
+      "sheet curls during wet sanding"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-curls-during-wet-sanding/"
+  },
+  {
+    "id": "search-sheet-soft-after-soaking-too-long",
+    "type": "exact_scenario",
+    "title": "Sheet becomes soft after soaking too long",
+    "description": "The sheet feels weak or soft after sitting in water.",
+    "customer_phrases": [
+      "sheet becomes soft after soaking too long",
+      "sheet soft after soaking too long",
+      "the sheet feels weak or soft after sitting in water."
+    ],
+    "aliases": [
+      "paper tears early",
+      "sheet becomes soft after soaking too long"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-soft-after-soaking-too-long/"
+  },
+  {
+    "id": "search-sheet-edge-frays",
+    "type": "exact_scenario",
+    "title": "Sheet edge frays during sanding",
+    "description": "The edge of the sandpaper frays and leaves fibers or rough backing.",
+    "customer_phrases": [
+      "sheet edge frays during sanding",
+      "sheet edge frays",
+      "the edge of the sandpaper frays and leaves fibers or rough backing."
+    ],
+    "aliases": [
+      "paper tears early",
+      "sheet edge frays during sanding"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-edge-frays/"
+  },
+  {
+    "id": "search-sandpaper-leaves-residue",
+    "type": "exact_scenario",
+    "title": "Sandpaper leaves residue",
+    "description": "Residue from dust, slurry, or loaded coating remains after sanding.",
+    "customer_phrases": [
+      "sandpaper leaves residue",
+      "sandpaper leaves residue",
+      "residue from dust, slurry, or loaded coating remains after sanding."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "paper leaves residue"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/sandpaper-leaves-residue/"
+  },
+  {
+    "id": "search-sheet-smooth-but-unused",
+    "type": "exact_scenario",
+    "title": "Sheet feels smooth but looks unused",
+    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
+    "customer_phrases": [
+      "sheet feels smooth but looks unused",
+      "sheet smooth but unused",
+      "the sheet does not look worn out, but it feels smooth and stops cutting."
+    ],
+    "aliases": [
+      "sanding takes too long",
+      "sheet feels smooth but looks unused"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-smooth-but-unused/"
+  },
+  {
+    "id": "search-sheet-hard-to-hold-detail-sanding",
+    "type": "exact_scenario",
+    "title": "Sheet is hard to hold for detail sanding",
+    "description": "Small details are difficult to sand evenly with a loose sheet.",
+    "customer_phrases": [
+      "sheet is hard to hold for detail sanding",
+      "sheet hard to hold detail sanding",
+      "small details are difficult to sand evenly with a loose sheet."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "sheet is hard to hold for detail sanding"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-hard-to-hold-detail-sanding/"
+  },
+  {
+    "id": "search-60-grit-too-aggressive",
+    "type": "exact_scenario",
+    "title": "60 grit is too aggressive",
+    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
+    "customer_phrases": [
+      "60 grit is too aggressive",
+      "60 grit too aggressive",
+      "60 grit cuts fast and leaves scratches deeper than the project needs."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "60 grit is too aggressive"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/60-grit-too-aggressive/"
+  },
+  {
+    "id": "search-80-grit-removes-too-much",
+    "type": "exact_scenario",
+    "title": "80 grit removes too much",
+    "description": "80 grit cuts deeper or faster than expected.",
+    "customer_phrases": [
+      "80 grit removes too much",
+      "80 grit removes too much",
+      "80 grit cuts deeper or faster than expected."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "80 grit removes too much"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/80-grit-removes-too-much/"
+  },
+  {
+    "id": "search-100-grit-marks-before-180",
+    "type": "exact_scenario",
+    "title": "100 grit leaves marks before 180",
+    "description": "100 grit scratches are still visible after moving to 180.",
+    "customer_phrases": [
+      "100 grit leaves marks before 180",
+      "100 grit marks before 180",
+      "100 grit scratches are still visible after moving to 180."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "100 grit leaves marks before 180"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/100-grit-marks-before-180/"
+  },
+  {
+    "id": "search-150-grit-not-smooth-enough",
+    "type": "exact_scenario",
+    "title": "150 grit is not smooth enough",
+    "description": "The surface still feels rough after sanding with 150 grit.",
+    "customer_phrases": [
+      "150 grit is not smooth enough",
+      "150 grit not smooth enough",
+      "the surface still feels rough after sanding with 150 grit."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "150 grit is not smooth enough"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/150-grit-not-smooth-enough/"
+  },
+  {
+    "id": "search-240-still-leaves-scratches",
+    "type": "exact_scenario",
+    "title": "240 grit still leaves scratches",
+    "description": "Scratches remain visible after 240 grit.",
+    "customer_phrases": [
+      "240 grit still leaves scratches",
+      "240 still leaves scratches",
+      "scratches remain visible after 240 grit."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "240 grit still leaves scratches"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/240-still-leaves-scratches/"
+  },
+  {
+    "id": "search-280-vs-320-confusion",
+    "type": "exact_scenario",
+    "title": "280 vs 320 grit confusion",
+    "description": "It is unclear whether to use 280 or 320 grit next.",
+    "customer_phrases": [
+      "280 vs 320 grit confusion",
+      "280 vs 320 confusion",
+      "it is unclear whether to use 280 or 320 grit next."
+    ],
+    "aliases": [
+      "not sure what grit to use",
+      "280 vs 320 grit confusion"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/280-vs-320-confusion/"
+  },
+  {
+    "id": "search-360-vs-400-confusion",
+    "type": "exact_scenario",
+    "title": "360 vs 400 grit confusion",
+    "description": "It is unclear whether 360 or 400 is the better next grit.",
+    "customer_phrases": [
+      "360 vs 400 grit confusion",
+      "360 vs 400 confusion",
+      "it is unclear whether 360 or 400 is the better next grit."
+    ],
+    "aliases": [
+      "not sure what grit to use",
+      "360 vs 400 grit confusion"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/360-vs-400-confusion/"
+  },
+  {
+    "id": "search-500-vs-600-confusion",
+    "type": "exact_scenario",
+    "title": "500 vs 600 grit confusion",
+    "description": "It is unclear whether 500 or 600 grit should be used next.",
+    "customer_phrases": [
+      "500 vs 600 grit confusion",
+      "500 vs 600 confusion",
+      "it is unclear whether 500 or 600 grit should be used next."
+    ],
+    "aliases": [
+      "not sure what grit to use",
+      "500 vs 600 grit confusion"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/500-vs-600-confusion/"
+  },
+  {
+    "id": "search-800-leaves-dull-marks",
+    "type": "exact_scenario",
+    "title": "800 grit leaves dull marks",
+    "description": "800 grit leaves a dull, visible sanding pattern.",
+    "customer_phrases": [
+      "800 grit leaves dull marks",
+      "800 leaves dull marks",
+      "800 grit leaves a dull, visible sanding pattern."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "800 grit leaves dull marks"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/800-leaves-dull-marks/"
+  },
+  {
+    "id": "search-1000-not-fine-enough-clear-coat",
+    "type": "exact_scenario",
+    "title": "1000 grit is not fine enough for clear coat gloss",
+    "description": "Clear coat still looks dull after 1000 grit.",
+    "customer_phrases": [
+      "1000 grit is not fine enough for clear coat gloss",
+      "1000 not fine enough clear coat",
+      "clear coat still looks dull after 1000 grit."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "1000 grit is not fine enough for clear coat gloss"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1000-not-fine-enough-clear-coat/"
+  },
+  {
+    "id": "search-1200-still-leaves-haze",
+    "type": "exact_scenario",
+    "title": "1200 grit still leaves haze",
+    "description": "The surface still has a cloudy haze after 1200 grit.",
+    "customer_phrases": [
+      "1200 grit still leaves haze",
+      "1200 still leaves haze",
+      "the surface still has a cloudy haze after 1200 grit."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "1200 grit still leaves haze"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1200-still-leaves-haze/"
+  },
+  {
+    "id": "search-1500-does-not-remove-1000-marks",
+    "type": "exact_scenario",
+    "title": "1500 grit does not remove 1000 marks",
+    "description": "1000-grit marks remain after sanding with 1500.",
+    "customer_phrases": [
+      "1500 grit does not remove 1000 marks",
+      "1500 does not remove 1000 marks",
+      "1000-grit marks remain after sanding with 1500."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "1500 grit does not remove 1000 marks"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1500-does-not-remove-1000-marks/"
+  },
+  {
+    "id": "search-2000-still-needs-3000",
+    "type": "exact_scenario",
+    "title": "2000 grit still needs 3000",
+    "description": "The surface is finer after 2000 grit but still not ready for the desired gloss.",
+    "customer_phrases": [
+      "2000 grit still needs 3000",
+      "2000 still needs 3000",
+      "the surface is finer after 2000 grit but still not ready for the desired gloss."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "2000 grit still needs 3000"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/2000-still-needs-3000/"
+  },
+  {
+    "id": "search-3000-does-not-create-gloss",
+    "type": "exact_scenario",
+    "title": "3000 grit does not create gloss by itself",
+    "description": "The surface is still hazy after 3000 grit.",
+    "customer_phrases": [
+      "3000 grit does not create gloss by itself",
+      "3000 does not create gloss",
+      "the surface is still hazy after 3000 grit."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "3000 grit does not create gloss by itself"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/3000-does-not-create-gloss/"
+  },
+  {
+    "id": "search-high-grit-does-not-remove-defects",
+    "type": "exact_scenario",
+    "title": "High grit does not remove defects",
+    "description": "Fine grit does not remove scratches, chips, or raised defects.",
+    "customer_phrases": [
+      "high grit does not remove defects",
+      "high grit does not remove defects",
+      "fine grit does not remove scratches, chips, or raised defects."
+    ],
+    "aliases": [
+      "sanding takes too long",
+      "high grit does not remove defects"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/high-grit-does-not-remove-defects/"
+  },
+  {
+    "id": "search-low-grit-damages-finish",
+    "type": "exact_scenario",
+    "title": "Low grit damages finish",
+    "description": "A coarse grit leaves heavy scratches or cuts through a finish.",
+    "customer_phrases": [
+      "low grit damages finish",
+      "low grit damages finish",
+      "a coarse grit leaves heavy scratches or cuts through a finish."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "low grit damages finish"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/low-grit-damages-finish/"
+  },
+  {
+    "id": "search-scratches-show-after-stain",
+    "type": "exact_scenario",
+    "title": "Scratches show after stain",
+    "description": "Scratch lines become visible after stain is applied.",
+    "customer_phrases": [
+      "scratches show after stain",
+      "scratches show after stain",
+      "scratch lines become visible after stain is applied."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "scratches show after stain"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/scratches-show-after-stain/"
+  },
+  {
+    "id": "search-stain-looks-blotchy",
+    "type": "exact_scenario",
+    "title": "Stain looks blotchy after sanding",
+    "description": "Stain absorbs unevenly after sanding.",
+    "customer_phrases": [
+      "stain looks blotchy after sanding",
+      "stain looks blotchy",
+      "stain absorbs unevenly after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "stain looks blotchy after sanding"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/stain-looks-blotchy/"
+  },
+  {
+    "id": "search-raised-grain-after-water-wipe",
+    "type": "exact_scenario",
+    "title": "Raised grain after water wipe",
+    "description": "Wood feels fuzzy or raised after wiping with water.",
+    "customer_phrases": [
+      "raised grain after water wipe",
+      "raised grain after water wipe",
+      "wood feels fuzzy or raised after wiping with water."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "raised grain after water wipe"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/raised-grain-after-water-wipe/"
+  },
+  {
+    "id": "search-end-grain-sands-differently",
+    "type": "exact_scenario",
+    "title": "End grain sands differently",
+    "description": "End grain looks or feels different from the rest of the wood after sanding.",
+    "customer_phrases": [
+      "end grain sands differently",
+      "end grain sands differently",
+      "end grain looks or feels different from the rest of the wood after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "end grain sands differently"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/end-grain-sands-differently/"
+  },
+  {
+    "id": "search-veneer-sands-through",
+    "type": "exact_scenario",
+    "title": "Veneer sands through",
+    "description": "A thin wood surface is sanded through to a lower layer.",
+    "customer_phrases": [
+      "veneer sands through",
+      "veneer sands through",
+      "a thin wood surface is sanded through to a lower layer."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "veneer sands through"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/veneer-sands-through/"
+  },
+  {
+    "id": "search-softwood-grooves-from-sanding",
+    "type": "exact_scenario",
+    "title": "Softwood grooves from sanding",
+    "description": "Softwood develops grooves or low lines after sanding.",
+    "customer_phrases": [
+      "softwood grooves from sanding",
+      "softwood grooves from sanding",
+      "softwood develops grooves or low lines after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "softwood grooves from sanding"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/softwood-grooves-from-sanding/"
+  },
+  {
+    "id": "search-hardwood-scratch-lines",
+    "type": "exact_scenario",
+    "title": "Hardwood scratch lines remain",
+    "description": "Straight scratch lines remain visible on hardwood.",
+    "customer_phrases": [
+      "hardwood scratch lines remain",
+      "hardwood scratch lines",
+      "straight scratch lines remain visible on hardwood."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "hardwood scratch lines remain"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/hardwood-scratch-lines/"
+  },
+  {
+    "id": "search-dust-hides-scratches-until-finish",
+    "type": "exact_scenario",
+    "title": "Dust hides scratches until finish",
+    "description": "Scratches appear only after dust is wiped away or finish is applied.",
+    "customer_phrases": [
+      "dust hides scratches until finish",
+      "dust hides scratches until finish",
+      "scratches appear only after dust is wiped away or finish is applied."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "dust hides scratches until finish"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/dust-hides-scratches-until-finish/"
+  },
+  {
+    "id": "search-sanding-across-grain-lines",
+    "type": "exact_scenario",
+    "title": "Sanding across grain leaves lines",
+    "description": "Lines across the wood grain remain visible after sanding.",
+    "customer_phrases": [
+      "sanding across grain leaves lines",
+      "sanding across grain lines",
+      "lines across the wood grain remain visible after sanding."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "sanding across grain leaves lines"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/sanding-across-grain-lines/"
+  },
+  {
+    "id": "search-paint-edges-do-not-feather",
+    "type": "exact_scenario",
+    "title": "Paint edges do not feather smoothly",
+    "description": "A paint edge remains visible instead of blending into the surrounding surface.",
+    "customer_phrases": [
+      "paint edges do not feather smoothly",
+      "paint edges do not feather",
+      "a paint edge remains visible instead of blending into the surrounding surface."
+    ],
+    "aliases": [
+      "poor results between coats",
+      "paint edges do not feather smoothly"
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/paint-edges-do-not-feather/"
+  },
+  {
+    "id": "search-primer-sands-unevenly",
+    "type": "exact_scenario",
+    "title": "Primer sands unevenly",
+    "description": "Primer has patchy dull spots or uneven texture after sanding.",
+    "customer_phrases": [
+      "primer sands unevenly",
+      "primer sands unevenly",
+      "primer has patchy dull spots or uneven texture after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "primer sands unevenly"
+    ],
+    "surface": [
+      "primer"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/primer-sands-unevenly/"
+  },
+  {
+    "id": "search-paint-chips-at-edge",
+    "type": "exact_scenario",
+    "title": "Paint chips at the edge while sanding",
+    "description": "Paint chips or flakes at an edge during sanding.",
+    "customer_phrases": [
+      "paint chips at the edge while sanding",
+      "paint chips at edge",
+      "paint chips or flakes at an edge during sanding."
+    ],
+    "aliases": [
+      "poor results between coats",
+      "paint chips at the edge while sanding"
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/paint-chips-at-edge/"
+  },
+  {
+    "id": "search-old-paint-gets-gummy",
+    "type": "exact_scenario",
+    "title": "Old paint gets gummy",
+    "description": "Old paint softens or gums up the sandpaper.",
+    "customer_phrases": [
+      "old paint gets gummy",
+      "old paint gets gummy",
+      "old paint softens or gums up the sandpaper."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "old paint gets gummy"
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/old-paint-gets-gummy/"
+  },
+  {
+    "id": "search-clear-coat-burns-through-edges",
+    "type": "exact_scenario",
+    "title": "Clear coat burns through on edges",
+    "description": "Clear coat is sanded through on corners, edges, or raised lines.",
+    "customer_phrases": [
+      "clear coat burns through on edges",
+      "clear coat burns through edges",
+      "clear coat is sanded through on corners, edges, or raised lines."
+    ],
+    "aliases": [
+      "poor results between coats",
+      "clear coat burns through on edges"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-burns-through-edges/"
+  },
+  {
+    "id": "search-sanding-leaves-low-spots",
+    "type": "exact_scenario",
+    "title": "Sanding leaves low spots",
+    "description": "Some areas become lower or look dished after sanding.",
+    "customer_phrases": [
+      "sanding leaves low spots",
+      "sanding leaves low spots",
+      "some areas become lower or look dished after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "sanding leaves low spots"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/sanding-leaves-low-spots/"
+  },
+  {
+    "id": "search-gloss-shows-scratches",
+    "type": "exact_scenario",
+    "title": "Gloss shows sanding scratches",
+    "description": "Scratches that were hard to see become obvious on a glossy surface.",
+    "customer_phrases": [
+      "gloss shows sanding scratches",
+      "gloss shows scratches",
+      "scratches that were hard to see become obvious on a glossy surface."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "gloss shows sanding scratches"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/gloss-shows-scratches/"
+  },
+  {
+    "id": "search-paint-looks-dull-after-sanding",
+    "type": "exact_scenario",
+    "title": "Paint looks dull after sanding",
+    "description": "Paint or clear coat looks dull after fine sanding.",
+    "customer_phrases": [
+      "paint looks dull after sanding",
+      "paint looks dull after sanding",
+      "paint or clear coat looks dull after fine sanding."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "paint looks dull after sanding"
+    ],
+    "surface": [
+      "clear coat",
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/paint-looks-dull-after-sanding/"
+  },
+  {
+    "id": "search-orange-peel-not-leveling",
+    "type": "exact_scenario",
+    "title": "Orange peel is not leveling",
+    "description": "Clear coat texture remains after wet sanding.",
+    "customer_phrases": [
+      "orange peel is not leveling",
+      "orange peel not leveling",
+      "clear coat texture remains after wet sanding."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "orange peel is not leveling"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/orange-peel-not-leveling/"
+  },
+  {
+    "id": "search-runs-drips-hard-to-level",
+    "type": "exact_scenario",
+    "title": "Runs or drips are hard to level",
+    "description": "Paint or clear coat runs remain raised after sanding.",
+    "customer_phrases": [
+      "runs or drips are hard to level",
+      "runs drips hard to level",
+      "paint or clear coat runs remain raised after sanding."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "runs or drips are hard to level"
+    ],
+    "surface": [
+      "clear coat",
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/runs-drips-hard-to-level/"
+  },
+  {
+    "id": "search-dust-nibs-remain",
+    "type": "exact_scenario",
+    "title": "Dust nibs remain after sanding",
+    "description": "Small raised dust spots remain in paint or clear coat.",
+    "customer_phrases": [
+      "dust nibs remain after sanding",
+      "dust nibs remain",
+      "small raised dust spots remain in paint or clear coat."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "dust nibs remain after sanding"
+    ],
+    "surface": [
+      "clear coat",
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/dust-nibs-remain/"
+  },
+  {
+    "id": "search-clear-coat-cloudy-after-2000",
+    "type": "exact_scenario",
+    "title": "Clear coat cloudy after 2000 grit",
+    "description": "Clear coat remains cloudy after 2000 grit wet sanding.",
+    "customer_phrases": [
+      "clear coat cloudy after 2000 grit",
+      "clear coat cloudy after 2000",
+      "clear coat remains cloudy after 2000 grit wet sanding."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "clear coat cloudy after 2000 grit"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-cloudy-after-2000/"
+  },
+  {
+    "id": "search-clear-coat-shows-1500-marks",
+    "type": "exact_scenario",
+    "title": "Clear coat shows 1500 marks",
+    "description": "1500-grit marks are still visible in clear coat.",
+    "customer_phrases": [
+      "clear coat shows 1500 marks",
+      "clear coat shows 1500 marks",
+      "1500-grit marks are still visible in clear coat."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "clear coat shows 1500 marks"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-shows-1500-marks/"
+  },
+  {
+    "id": "search-sand-through-clear-coat-corners",
+    "type": "exact_scenario",
+    "title": "Sand through clear coat on corners",
+    "description": "Clear coat is removed on corners during sanding.",
+    "customer_phrases": [
+      "sand through clear coat on corners",
+      "sand through clear coat corners",
+      "clear coat is removed on corners during sanding."
+    ],
+    "aliases": [
+      "poor results between coats",
+      "sand through clear coat on corners"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sand-through-clear-coat-corners/"
+  },
+  {
+    "id": "search-wet-sanding-straight-scratches",
+    "type": "exact_scenario",
+    "title": "Wet sanding leaves straight scratches",
+    "description": "Straight scratches appear during wet sanding.",
+    "customer_phrases": [
+      "wet sanding leaves straight scratches",
+      "wet sanding straight scratches",
+      "straight scratches appear during wet sanding."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "wet sanding leaves straight scratches"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/wet-sanding-straight-scratches/"
+  },
+  {
+    "id": "search-wet-sanding-random-deep-scratches",
+    "type": "exact_scenario",
+    "title": "Wet sanding creates random deep scratches",
+    "description": "Random deeper scratches appear during wet sanding.",
+    "customer_phrases": [
+      "wet sanding creates random deep scratches",
+      "wet sanding random deep scratches",
+      "random deeper scratches appear during wet sanding."
+    ],
+    "aliases": [
+      "scratches too deep",
+      "wet sanding creates random deep scratches"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/wet-sanding-random-deep-scratches/"
+  },
+  {
+    "id": "search-rust-pits-remain",
+    "type": "exact_scenario",
+    "title": "Rust pits remain",
+    "description": "Dark pits or small low spots remain after rust sanding.",
+    "customer_phrases": [
+      "rust pits remain",
+      "rust pits remain",
+      "dark pits or small low spots remain after rust sanding."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "rust pits remain"
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/rust-pits-remain/"
+  },
+  {
+    "id": "search-aluminum-clogs-paper",
+    "type": "exact_scenario",
+    "title": "Aluminum clogs paper",
+    "description": "Aluminum residue loads into the abrasive and sanding slows.",
+    "customer_phrases": [
+      "aluminum clogs paper",
+      "aluminum clogs paper",
+      "aluminum residue loads into the abrasive and sanding slows."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "aluminum clogs paper"
+    ],
+    "surface": [
+      "aluminum",
+      "metal"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/aluminum-clogs-paper/"
+  },
+  {
+    "id": "search-plastic-turns-white",
+    "type": "exact_scenario",
+    "title": "Plastic turns white after sanding",
+    "description": "Plastic turns white or cloudy after sanding.",
+    "customer_phrases": [
+      "plastic turns white after sanding",
+      "plastic turns white",
+      "plastic turns white or cloudy after sanding."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "plastic turns white after sanding"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-turns-white/"
+  },
+  {
+    "id": "search-plastic-melts-or-smears",
+    "type": "exact_scenario",
+    "title": "Plastic melts or smears",
+    "description": "Plastic smears, melts, or loads the sheet while sanding.",
+    "customer_phrases": [
+      "plastic melts or smears",
+      "plastic melts or smears",
+      "plastic smears, melts, or loads the sheet while sanding."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "plastic melts or smears"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-melts-or-smears/"
+  },
+  {
+    "id": "search-plastic-edge-gets-fuzzy",
+    "type": "exact_scenario",
+    "title": "Plastic edge gets fuzzy",
+    "description": "A plastic edge becomes fuzzy or rough after sanding.",
+    "customer_phrases": [
+      "plastic edge gets fuzzy",
+      "plastic edge gets fuzzy",
+      "a plastic edge becomes fuzzy or rough after sanding."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "plastic edge gets fuzzy"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-edge-gets-fuzzy/"
+  },
+  {
+    "id": "search-3000-leaves-plastic-hazy",
+    "type": "exact_scenario",
+    "title": "3000 leaves plastic hazy",
+    "description": "Plastic still looks hazy after 3000 grit.",
+    "customer_phrases": [
+      "3000 leaves plastic hazy",
+      "3000 leaves plastic hazy",
+      "plastic still looks hazy after 3000 grit."
+    ],
+    "aliases": [
+      "wet sanding leaves haze",
+      "3000 leaves plastic hazy"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/3000-leaves-plastic-hazy/"
+  },
+  {
+    "id": "search-plastic-dust-clogs-paper",
+    "type": "exact_scenario",
+    "title": "Plastic dust clogs paper",
+    "description": "Plastic dust packs into the abrasive and slows sanding.",
+    "customer_phrases": [
+      "plastic dust clogs paper",
+      "plastic dust clogs paper",
+      "plastic dust packs into the abrasive and slows sanding."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "plastic dust clogs paper"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-dust-clogs-paper/"
+  },
+  {
+    "id": "search-drywall-patch-ridges-remain",
+    "type": "exact_scenario",
+    "title": "Drywall patch ridges remain",
+    "description": "Drywall patch ridges are still visible or feel high after sanding.",
+    "customer_phrases": [
+      "drywall patch ridges remain",
+      "drywall patch ridges remain",
+      "drywall patch ridges are still visible or feel high after sanding."
+    ],
+    "aliases": [
+      "surface still feels rough",
+      "drywall patch ridges remain"
+    ],
+    "surface": [
+      "drywall"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/drywall-patch-ridges-remain/"
+  },
+  {
+    "id": "search-drywall-paper-tears",
+    "type": "exact_scenario",
+    "title": "Drywall paper tears while sanding",
+    "description": "The drywall face paper tears or fuzzes during sanding.",
+    "customer_phrases": [
+      "drywall paper tears while sanding",
+      "drywall paper tears",
+      "the drywall face paper tears or fuzzes during sanding."
+    ],
+    "aliases": [
+      "paper tears early",
+      "drywall paper tears while sanding"
+    ],
+    "surface": [
+      "drywall"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/drywall-paper-tears/"
+  },
+  {
+    "id": "search-joint-compound-clogs-paper",
+    "type": "exact_scenario",
+    "title": "Joint compound clogs paper",
+    "description": "Joint compound dust packs into the sandpaper quickly.",
+    "customer_phrases": [
+      "joint compound clogs paper",
+      "joint compound clogs paper",
+      "joint compound dust packs into the sandpaper quickly."
+    ],
+    "aliases": [
+      "paper clogs too fast",
+      "joint compound clogs paper"
+    ],
+    "surface": [
+      "general"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/joint-compound-clogs-paper/"
+  },
+  {
+    "id": "search-patch-edge-visible-after-sanding",
+    "type": "exact_scenario",
+    "title": "Patch edge visible after sanding",
+    "description": "The edge of a drywall patch still shows after sanding.",
+    "customer_phrases": [
+      "patch edge visible after sanding",
+      "patch edge visible after sanding",
+      "the edge of a drywall patch still shows after sanding."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "patch edge visible after sanding"
+    ],
+    "surface": [
+      "drywall"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/patch-edge-visible-after-sanding/"
+  },
+  {
+    "id": "search-patch-smooth-but-shows-after-paint",
+    "type": "exact_scenario",
+    "title": "Patch is smooth but shows after paint",
+    "description": "The patch feels smooth but is visible after painting.",
+    "customer_phrases": [
+      "patch is smooth but shows after paint",
+      "patch smooth but shows after paint",
+      "the patch feels smooth but is visible after painting."
+    ],
+    "aliases": [
+      "finish looks uneven",
+      "patch is smooth but shows after paint"
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "unknown"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/patch-smooth-but-shows-after-paint/"
   }
 ]
