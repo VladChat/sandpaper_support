@@ -1,0 +1,568 @@
+[
+  {
+    "surface": "Wood",
+    "goal": "Heavy removal",
+    "sequence": ["80", "120", "150"],
+    "start_grit": "80",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not use 60 grit unless the surface has very deep damage. Move finer before finishing.",
+    "related_solution_ids": [
+      "solutions/60-grit-too-aggressive",
+      "solutions/80-grit-removes-too-much",
+      "solutions/wood-prep-before-finish",
+      "solutions/using-80-3000-kit",
+      "solutions/assorted-kit-heavy-removal"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Wood",
+    "goal": "Surface preparation",
+    "sequence": ["120", "150", "180", "220"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not skip from 120 to 220 if roughness remains. Do not wet sand bare wood.",
+    "related_solution_ids": [
+      "solutions/what-grit-for-wood-prep",
+      "solutions/wood-prep-before-finish",
+      "solutions/150-grit-not-smooth-enough",
+      "solutions/wood-still-rough-after-120",
+      "solutions/skipped-120-to-320"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Wood",
+    "goal": "Fine prep",
+    "sequence": ["220", "320"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not use 400+ grit on bare wood unless the project specifically calls for it. Raising grain can occur.",
+    "related_solution_ids": [
+      "solutions/wood-prep-before-finish",
+      "solutions/raised-grain-after-water-wipe",
+      "solutions/240-still-leaves-scratches",
+      "solutions/assorted-kit-finish-prep"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Wood",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["400", "600", "800"],
+    "start_grit": "400",
+    "wet_or_dry": "Wet",
+    "avoid": "Wet sanding on bare wood can raise grain. Use only after a sealed or finished surface is ready.",
+    "related_solution_ids": [
+      "solutions/raised-grain-after-water-wipe",
+      "solutions/finish-patchy-after-grit-change",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Wood",
+    "goal": "Fix scratches",
+    "sequence": ["120", "150", "180", "220"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not sand across the grain. Use the finest grit that removes the scratch, then move through the sequence.",
+    "related_solution_ids": [
+      "solutions/scratches-show-after-stain",
+      "solutions/coarse-scratches-on-wood",
+      "solutions/sanding-across-grain-lines",
+      "solutions/hardwood-scratch-lines"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Wood",
+    "goal": "Remove haze",
+    "sequence": ["220", "320", "400"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry",
+    "avoid": "Haze on bare wood is usually a scratch pattern issue, not solved by very high grits alone.",
+    "related_solution_ids": [
+      "solutions/dust-hides-scratches-until-finish",
+      "solutions/finish-looks-uneven",
+      "solutions/wood-prep-before-finish"
+    ],
+    "related_surface_url": "/surfaces/wood/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Heavy removal",
+    "sequence": ["80", "120", "180"],
+    "start_grit": "80",
+    "wet_or_dry": "Dry",
+    "avoid": "Heavy pressure can heat and gum paint. Check the sheet often for loading.",
+    "related_solution_ids": [
+      "solutions/paint-removal-too-slow",
+      "solutions/paint-clogs-sheet",
+      "solutions/old-paint-gets-gummy",
+      "solutions/80-grit-removes-too-much",
+      "solutions/assorted-kit-heavy-removal"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Surface preparation",
+    "sequence": ["220", "320", "400"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not skip from 220 to 400 if scratches from 220 remain. Use 320 in between.",
+    "related_solution_ids": [
+      "solutions/what-grit-for-paint-prep",
+      "solutions/320-does-not-remove-180-scratches",
+      "solutions/paint-edges-do-not-feather",
+      "solutions/paint-looks-dull-after-sanding"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Fine prep",
+    "sequence": ["320", "400", "500"],
+    "start_grit": "320",
+    "wet_or_dry": "Dry or wet",
+    "avoid": "Do not use heavy pressure on edges. Fine grits can cut through thin coatings at corners.",
+    "related_solution_ids": [
+      "solutions/poor-results-between-coats",
+      "solutions/between-coats-too-coarse",
+      "solutions/between-coats-cut-through",
+      "solutions/assorted-kit-finish-prep"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["600", "1000", "1500"],
+    "start_grit": "600",
+    "wet_or_dry": "Wet",
+    "avoid": "Do not wet sand until the coating is fully cured. Early wet sanding can damage soft paint.",
+    "related_solution_ids": [
+      "solutions/wet-sanding-leaves-haze",
+      "solutions/normal-haze-after-wet-sanding",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Fix scratches",
+    "sequence": ["120", "220", "320"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Feather the edges of the repair. Do not create a sharp step between repaired and surrounding areas.",
+    "related_solution_ids": [
+      "solutions/paint-chips-at-edge",
+      "solutions/paint-edges-do-not-feather",
+      "solutions/patch-edge-visible-after-sanding",
+      "solutions/patch-smooth-but-shows-after-paint"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Paint / Primer",
+    "goal": "Remove haze",
+    "sequence": ["1000", "1500", "2000"],
+    "start_grit": "1000",
+    "wet_or_dry": "Wet",
+    "avoid": "Haze from a paint defect may need recoat, not just finer sanding. Sanding alone cannot fix missing coating.",
+    "related_solution_ids": [
+      "solutions/wet-sanding-leaves-haze",
+      "solutions/normal-haze-after-wet-sanding",
+      "solutions/1000-not-fine-enough-clear-coat",
+      "solutions/1200-still-leaves-haze"
+    ],
+    "related_surface_url": "/surfaces/paint-primer/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Heavy removal",
+    "sequence": ["600", "800", "1000"],
+    "start_grit": "600",
+    "wet_or_dry": "Wet",
+    "avoid": "Heavy removal on clear coat risks cutting through. Use light pressure and check edges and corners often.",
+    "related_solution_ids": [
+      "solutions/clear-coat-burns-through-edges",
+      "solutions/sand-through-clear-coat-corners",
+      "solutions/clear-coat-orange-peel-leveling",
+      "solutions/low-grit-damages-finish"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Surface preparation",
+    "sequence": ["800", "1000", "1500"],
+    "start_grit": "800",
+    "wet_or_dry": "Wet",
+    "avoid": "Do not skip from 800 to 1500 if 800 marks remain. Ensure the coating is cured before wet sanding.",
+    "related_solution_ids": [
+      "solutions/clear-coat-haze-after-1000",
+      "solutions/1000-not-fine-enough-clear-coat",
+      "solutions/clear-coat-shows-1500-marks",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Fine prep",
+    "sequence": ["1000", "1500", "2000"],
+    "start_grit": "1000",
+    "wet_or_dry": "Wet",
+    "avoid": "Do not expect gloss from 2000 grit alone. Polishing preparation requires the correct next step after sanding.",
+    "related_solution_ids": [
+      "solutions/2000-still-needs-3000",
+      "solutions/clear-coat-cloudy-after-2000",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["1000", "1500", "2000", "3000"],
+    "start_grit": "1000",
+    "wet_or_dry": "Wet",
+    "avoid": "Do not use heavy pressure. Keep water clean. 3000 grit leaves a fine haze; polishing is normally needed after.",
+    "related_solution_ids": [
+      "solutions/1000-not-fine-enough-clear-coat",
+      "solutions/1500-does-not-remove-1000-marks",
+      "solutions/2000-still-needs-3000",
+      "solutions/3000-does-not-create-gloss",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Fix scratches",
+    "sequence": ["800", "1000", "1500"],
+    "start_grit": "800",
+    "wet_or_dry": "Wet",
+    "avoid": "Deep scratches in clear coat may reach the base layer. Sanding cannot restore missing coating.",
+    "related_solution_ids": [
+      "solutions/deep-lines-on-clear-coat",
+      "solutions/clear-coat-burns-through-edges",
+      "solutions/high-grit-does-not-remove-defects",
+      "solutions/sand-through-clear-coat-corners"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Clear Coat",
+    "goal": "Remove haze",
+    "sequence": ["1500", "2000", "3000"],
+    "start_grit": "1500",
+    "wet_or_dry": "Wet",
+    "avoid": "Haze may remain if the previous grit marks were not fully removed. Do not skip from 1500 to 3000.",
+    "related_solution_ids": [
+      "solutions/wet-sanding-leaves-haze",
+      "solutions/normal-haze-after-wet-sanding",
+      "solutions/1200-still-leaves-haze",
+      "solutions/3000-does-not-create-gloss"
+    ],
+    "related_surface_url": "/surfaces/clear-coat/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Heavy removal",
+    "sequence": ["80", "120", "180", "220"],
+    "start_grit": "80",
+    "wet_or_dry": "Dry",
+    "avoid": "Metal heats quickly. Let the surface cool. Do not press hard or the sheet may load or tear.",
+    "related_solution_ids": [
+      "solutions/metal-prep-before-paint",
+      "solutions/rust-pits-remain",
+      "solutions/scratches-on-metal-after-prep",
+      "solutions/80-grit-removes-too-much",
+      "solutions/assorted-kit-heavy-removal"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Surface preparation",
+    "sequence": ["180", "220", "320"],
+    "start_grit": "180",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not skip from 180 to 400. 220 or 320 is needed to remove 180-grit scratches.",
+    "related_solution_ids": [
+      "solutions/metal-prep-before-paint",
+      "solutions/metal-still-rough",
+      "solutions/240-still-leaves-scratches",
+      "solutions/what-grit-for-metal"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Fine prep",
+    "sequence": ["220", "320", "400"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry or wet",
+    "avoid": "Very fine grits on bare metal are slow. Use only when the surface is already smooth and needs light scuffing.",
+    "related_solution_ids": [
+      "solutions/metal-still-rough",
+      "solutions/scratches-on-metal-after-prep",
+      "solutions/assorted-kit-finish-prep"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["400", "600", "800", "1000"],
+    "start_grit": "400",
+    "wet_or_dry": "Wet",
+    "avoid": "Wet sanding bare metal can cause flash rust. Dry the surface immediately after wet sanding.",
+    "related_solution_ids": [
+      "solutions/assorted-kit-polishing-prep",
+      "solutions/rust-pits-remain",
+      "solutions/500-vs-600-confusion"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Fix scratches",
+    "sequence": ["120", "180", "220", "320"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Use the least aggressive grit that removes the scratch. Work through each step before moving finer.",
+    "related_solution_ids": [
+      "solutions/scratches-on-metal-after-prep",
+      "solutions/metal-still-rough",
+      "solutions/80-grit-removes-too-much"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Metal",
+    "goal": "Remove haze",
+    "sequence": ["1000", "1500", "2000"],
+    "start_grit": "1000",
+    "wet_or_dry": "Wet",
+    "avoid": "Metal haze from oxidation may need cleaning or prep, not just sanding. Check for rust or oil before fine sanding.",
+    "related_solution_ids": [
+      "solutions/rust-pits-remain",
+      "solutions/assorted-kit-polishing-prep",
+      "solutions/1000-not-fine-enough-clear-coat"
+    ],
+    "related_surface_url": "/surfaces/metal/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Heavy removal",
+    "sequence": ["120", "180", "220"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Plastic heats and melts easily. Use light pressure and let the surface cool between grits.",
+    "related_solution_ids": [
+      "solutions/plastic-melts-or-smears",
+      "solutions/plastic-edge-gets-fuzzy",
+      "solutions/plastic-turns-white",
+      "solutions/80-grit-removes-too-much"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Surface preparation",
+    "sequence": ["220", "320", "400"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry",
+    "avoid": "Plastic loads paper quickly. Tap or rinse the sheet often. Do not press hard.",
+    "related_solution_ids": [
+      "solutions/plastic-prep-before-paint",
+      "solutions/plastic-still-rough",
+      "solutions/plastic-dust-clogs-paper",
+      "solutions/320-does-not-remove-180-scratches"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Fine prep",
+    "sequence": ["320", "400", "600"],
+    "start_grit": "320",
+    "wet_or_dry": "Dry or wet",
+    "avoid": "Do not use heavy pressure. Plastic scratches easily and fine grits can still cut through thin sections.",
+    "related_solution_ids": [
+      "solutions/plastic-prep-before-paint",
+      "solutions/plastic-still-rough",
+      "solutions/360-vs-400-confusion"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["600", "1000", "1500"],
+    "start_grit": "600",
+    "wet_or_dry": "Wet",
+    "avoid": "Keep water cool. Plastic softens with heat. Check the surface temperature during wet sanding.",
+    "related_solution_ids": [
+      "solutions/plastic-haze-after-wet-sanding",
+      "solutions/3000-leaves-plastic-hazy",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Fix scratches",
+    "sequence": ["320", "400", "600"],
+    "start_grit": "320",
+    "wet_or_dry": "Dry or wet",
+    "avoid": "Deep plastic scratches may need heat or filler, not just sanding. Fine grits alone cannot fill deep defects.",
+    "related_solution_ids": [
+      "solutions/plastic-edge-gets-fuzzy",
+      "solutions/plastic-still-rough",
+      "solutions/high-grit-does-not-remove-defects"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Plastic",
+    "goal": "Remove haze",
+    "sequence": ["1000", "1500", "2000", "3000"],
+    "start_grit": "1000",
+    "wet_or_dry": "Wet",
+    "avoid": "Plastic haze can come from heat damage, not just scratches. If haze returns, reduce pressure and use cooler water.",
+    "related_solution_ids": [
+      "solutions/plastic-haze-after-wet-sanding",
+      "solutions/3000-leaves-plastic-hazy",
+      "solutions/1500-does-not-remove-1000-marks",
+      "solutions/2000-still-needs-3000"
+    ],
+    "related_surface_url": "/surfaces/plastic/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Heavy removal",
+    "sequence": ["80", "120", "150"],
+    "start_grit": "80",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not use 60 grit on drywall. 80 grit is aggressive enough for joint compound ridges. Light pressure to avoid tearing paper.",
+    "related_solution_ids": [
+      "solutions/drywall-patch-ridges-remain",
+      "solutions/joint-compound-clogs-paper",
+      "solutions/60-grit-too-aggressive",
+      "solutions/assorted-kit-heavy-removal"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Surface preparation",
+    "sequence": ["120", "150", "180", "220"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Do not over-sand the paper face. Stop when the patch is level with the surrounding wall.",
+    "related_solution_ids": [
+      "solutions/drywall-patch-ridges-remain",
+      "solutions/drywall-paper-tears",
+      "solutions/patch-edge-visible-after-sanding",
+      "solutions/patch-smooth-but-shows-after-paint"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Fine prep",
+    "sequence": ["180", "220"],
+    "start_grit": "180",
+    "wet_or_dry": "Dry",
+    "avoid": "Drywall does not benefit from very high grits. 220 is usually the practical limit before priming.",
+    "related_solution_ids": [
+      "solutions/drywall-paper-tears",
+      "solutions/patch-smooth-but-shows-after-paint",
+      "solutions/assorted-kit-finish-prep"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Wet sanding / polishing prep",
+    "sequence": ["400", "600"],
+    "start_grit": "400",
+    "wet_or_dry": "Wet",
+    "avoid": "Wet sanding drywall is uncommon and can damage the paper face. Use only if the project specifically calls for it.",
+    "related_solution_ids": [
+      "solutions/drywall-paper-tears",
+      "solutions/sheet-curls-during-wet-sanding",
+      "solutions/assorted-kit-polishing-prep"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Fix scratches",
+    "sequence": ["120", "150", "180", "220"],
+    "start_grit": "120",
+    "wet_or_dry": "Dry",
+    "avoid": "Scratches in drywall paper may tear deeper with coarse grits. Use 220 to feather lightly.",
+    "related_solution_ids": [
+      "solutions/drywall-paper-tears",
+      "solutions/patch-edge-visible-after-sanding",
+      "solutions/sheet-tears-from-folding"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  },
+  {
+    "surface": "Drywall Patch",
+    "goal": "Remove haze",
+    "sequence": ["220", "320", "400"],
+    "start_grit": "220",
+    "wet_or_dry": "Dry",
+    "avoid": "Haze on drywall is usually joint compound residue or uneven texture. Sanding may not fix texture issues.",
+    "related_solution_ids": [
+      "solutions/patch-smooth-but-shows-after-paint",
+      "solutions/haze-is-uneven",
+      "solutions/drywall-patch-ridges-remain"
+    ],
+    "related_surface_url": "/surfaces/drywall-patch/",
+    "related_product_url": "/products/assorted-80-3000/"
+  }
+]

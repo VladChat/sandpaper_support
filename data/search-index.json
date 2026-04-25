@@ -2900,5 +2900,279 @@
       "wet"
     ],
     "target_url": "/products/assorted-80-3000/"
+  },
+  {
+    "id": "search-grit-sequence-builder",
+    "type": "tool",
+    "title": "Grit Sequence Builder",
+    "description": "Choose a surface and goal to get a recommended sandpaper grit sequence.",
+    "customer_phrases": [
+      "grit sequence builder",
+      "sandpaper sequence tool",
+      "grit order tool"
+    ],
+    "aliases": [
+      "grit sequence builder",
+      "sandpaper sequence",
+      "grit progression tool"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "500",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-sandpaper-grit-sequence",
+    "type": "how_to_question",
+    "title": "Sandpaper Grit Sequence",
+    "description": "Recommended grit progression for sanding tasks by surface and goal.",
+    "customer_phrases": [
+      "sandpaper grit sequence",
+      "grit sequence",
+      "sanding grit order"
+    ],
+    "aliases": [
+      "sandpaper sequence",
+      "grit progression",
+      "sanding order"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-what-grit-comes-next",
+    "type": "how_to_question",
+    "title": "What Grit Comes Next",
+    "description": "Find the next grit in a sanding progression.",
+    "customer_phrases": [
+      "what grit comes next",
+      "what grit next",
+      "next grit after 220",
+      "next grit after 320"
+    ],
+    "aliases": [
+      "what grit comes next",
+      "next grit in sequence",
+      "grit after 220",
+      "grit after 320"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-grit-order-for-wood",
+    "type": "surface_question",
+    "title": "Grit Order for Wood",
+    "description": "Recommended sandpaper grit sequence for wood sanding tasks.",
+    "customer_phrases": [
+      "grit order for wood",
+      "wood grit sequence",
+      "sandpaper order wood"
+    ],
+    "aliases": [
+      "grit order for wood",
+      "wood sanding sequence",
+      "wood grit progression"
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-grit-order-for-clear-coat",
+    "type": "surface_question",
+    "title": "Grit Order for Clear Coat",
+    "description": "Recommended sandpaper grit sequence for clear coat sanding and polishing prep.",
+    "customer_phrases": [
+      "grit order for clear coat",
+      "clear coat grit sequence",
+      "wet sanding clear coat grit order"
+    ],
+    "aliases": [
+      "grit order for clear coat",
+      "clear coat sanding sequence",
+      "clear coat wet sanding grits"
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-grit-order-for-plastic",
+    "type": "surface_question",
+    "title": "Grit Order for Plastic",
+    "description": "Recommended sandpaper grit sequence for plastic sanding tasks.",
+    "customer_phrases": [
+      "grit order for plastic",
+      "plastic grit sequence",
+      "sandpaper order plastic"
+    ],
+    "aliases": [
+      "grit order for plastic",
+      "plastic sanding sequence",
+      "plastic grit progression"
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
+  },
+  {
+    "id": "search-grit-sequence-for-paint-primer",
+    "type": "surface_question",
+    "title": "Grit Sequence for Paint Primer",
+    "description": "Recommended sandpaper grit sequence for paint and primer sanding tasks.",
+    "customer_phrases": [
+      "grit sequence for paint primer",
+      "paint primer grit order",
+      "sandpaper sequence paint"
+    ],
+    "aliases": [
+      "grit sequence for paint primer",
+      "paint sanding sequence",
+      "primer grit order"
+    ],
+    "surface": [
+      "paint",
+      "primer"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "500",
+      "600",
+      "1000",
+      "1500"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/tools/grit-sequence-builder/"
   }
 ]

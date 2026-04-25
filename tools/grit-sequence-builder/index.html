@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grit Sequence Builder | eQualle Support</title>
+  <meta name="description" content="Choose a surface and goal to get a recommended sandpaper grit sequence. General support guide for eQualle silicon carbide wet or dry sheets.">
+  <link rel="stylesheet" href="/sandpaper_support/assets/styles.css">
+  <style>
+    .builder-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.5rem;
+    }
+    .builder-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1 1 220px;
+    }
+    .builder-field label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .builder-field select {
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .builder-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #2d6cdf;
+      color: #fff;
+      cursor: pointer;
+    }
+    .builder-btn:hover {
+      background: #1a4db3;
+    }
+    .builder-btn:disabled {
+      background: #aab7c4;
+      cursor: not-allowed;
+    }
+    .result-panel {
+      background: #f6f8fa;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .result-panel h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+    .grit-sequence {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .grit-step {
+      background: #2d6cdf;
+      color: #fff;
+      padding: 0.4rem 0.7rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .grit-arrow {
+      color: #555;
+      font-weight: 700;
+    }
+    .avoid-box {
+      background: #fff;
+      border-left: 4px solid #e8a317;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      border-radius: 0 6px 6px 0;
+    }
+    .avoid-box strong {
+      color: #8a6d0b;
+    }
+    .related-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .related-links a {
+      display: inline-block;
+      padding: 0.35rem 0.7rem;
+      background: #e1e4e8;
+      color: #333;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .related-links a:hover {
+      background: #cfd3d8;
+    }
+    .no-result {
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a>
+    <nav class="nav">
+      <a href="/sandpaper_support/problems/">Find My Problem</a>
+      <a href="/sandpaper_support/surfaces/">By Surface</a>
+      <a href="/sandpaper_support/grits/">By Grit</a>
+      <a href="/sandpaper_support/products/">By Product</a>
+      <a href="/sandpaper_support/how-to/">How To</a>
+      <a href="/sandpaper_support/documents/">Documents</a>
+      <a href="/sandpaper_support/ai-assistant/">AI Assistant</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / <a href="/sandpaper_support/tools/">Tools</a> / Grit Sequence Builder</div>
+    <h1>Grit Sequence Builder</h1>
+    <p class="section-intro">Choose a surface and a goal to see a recommended grit progression. This is a general support guide, not a guarantee for every project. Results depend on coating thickness, condition, and technique.</p>
+
+    <div class="builder-form">
+      <div class="builder-field">
+        <label for="surface-select">Surface</label>
+        <select id="surface-select">
+          <option value="">Select surface</option>
+          <option value="Wood">Wood</option>
+          <option value="Paint / Primer">Paint / Primer</option>
+          <option value="Clear Coat">Clear Coat</option>
+          <option value="Metal">Metal</option>
+          <option value="Plastic">Plastic</option>
+          <option value="Drywall Patch">Drywall Patch</option>
+        </select>
+      </div>
+      <div class="builder-field">
+        <label for="goal-select">Goal</label>
+        <select id="goal-select">
+          <option value="">Select goal</option>
+          <option value="Heavy removal">Heavy removal</option>
+          <option value="Surface preparation">Surface preparation</option>
+          <option value="Fine prep">Fine prep</option>
+          <option value="Wet sanding / polishing prep">Wet sanding / polishing prep</option>
+          <option value="Fix scratches">Fix scratches</option>
+          <option value="Remove haze">Remove haze</option>
+        </select>
+      </div>
+      <button class="builder-btn" id="build-btn" type="button">Show Sequence</button>
+    </div>
+
+    <div class="result-panel" id="result-panel" hidden>
+      <h3 id="result-title">Recommended sequence</h3>
+      <div class="grit-sequence" id="grit-sequence"></div>
+      <div id="result-details"></div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; eQualle Support System</span>
+    <span>Sandpaper troubleshooting, grit guidance, and product support.</span>
+  </div>
+</footer>
+<script src="/sandpaper_support/assets/config.js"></script>
+<script src="/sandpaper_support/assets/supabase-client.js"></script>
+<script src="/sandpaper_support/assets/app.js"></script>
+<script>
+(function() {
+  const surfaceSelect = document.getElementById('surface-select');
+  const goalSelect = document.getElementById('goal-select');
+  const buildBtn = document.getElementById('build-btn');
+  const resultPanel = document.getElementById('result-panel');
+  const resultTitle = document.getElementById('result-title');
+  const gritSequenceEl = document.getElementById('grit-sequence');
+  const resultDetails = document.getElementById('result-details');
+
+  let sequences = [];
+
+  async function loadSequences() {
+    try {
+      const res = await fetch('/sandpaper_support/data/grit-sequences.json', { cache: 'no-cache' });
+      sequences = await res.json();
+    } catch (e) {
+      sequences = [];
+      console.error('Failed to load grit sequences:', e);
+    }
+  }
+
+  function basePath() {
+    return '/sandpaper_support';
+  }
+
+  function renderSequence(surface, goal) {
+    const match = sequences.find(function(s) {
+      return s.surface === surface && s.goal === goal;
+    });
+
+    if (!match) {
+      resultPanel.hidden = false;
+      resultTitle.textContent = 'No exact sequence found';
+      gritSequenceEl.innerHTML = '<span class="no-result">Try a different surface or goal. Use the problem search or AI assistant for more specific help.</span>';
+      resultDetails.innerHTML = '';
+      return;
+    }
+
+    resultPanel.hidden = false;
+    resultTitle.textContent = surface + ' \u2014 ' + goal;
+
+    gritSequenceEl.innerHTML = '';
+    match.sequence.forEach(function(g, i) {
+      const step = document.createElement('span');
+      step.className = 'grit-step';
+      step.textContent = g + ' grit';
+      gritSequenceEl.appendChild(step);
+      if (i < match.sequence.length - 1) {
+        const arrow = document.createElement('span');
+        arrow.className = 'grit-arrow';
+        arrow.textContent = '\u2192';
+        gritSequenceEl.appendChild(arrow);
+      }
+    });
+
+    let detailsHtml = '';
+    detailsHtml += '<p><strong>Start grit:</strong> ' + match.start_grit + '</p>';
+    detailsHtml += '<p><strong>Wet or dry:</strong> ' + match.wet_or_dry + '</p>';
+
+    if (match.avoid) {
+      detailsHtml += '<div class="avoid-box"><strong>Avoid:</strong> ' + match.avoid + '</div>';
+    }
+
+    const bp = basePath();
+    let linksHtml = '';
+    if (match.related_surface_url) {
+      linksHtml += '<a href="' + bp + match.related_surface_url + '">' + match.surface + ' support</a>';
+    }
+    if (match.related_product_url) {
+      linksHtml += '<a href="' + bp + match.related_product_url + '">Assorted 80-3000 kit</a>';
+    }
+    if (Array.isArray(match.related_solution_ids) && match.related_solution_ids.length) {
+      match.related_solution_ids.forEach(function(id) {
+        const parts = id.split('/');
+        const name = parts[parts.length - 1].replace(/-/g, ' ');
+        linksHtml += '<a href="' + bp + '/' + id + '/">' + name + '</a>';
+      });
+    }
+    if (linksHtml) {
+      detailsHtml += '<div class="related-links">' + linksHtml + '</div>';
+    }
+
+    resultDetails.innerHTML = detailsHtml;
+  }
+
+  function onBuild() {
+    const surface = surfaceSelect.value;
+    const goal = goalSelect.value;
+    if (!surface || !goal) {
+      resultPanel.hidden = false;
+      resultTitle.textContent = 'Choose both options';
+      gritSequenceEl.innerHTML = '<span class="no-result">Please select a surface and a goal.</span>';
+      resultDetails.innerHTML = '';
+      return;
+    }
+    renderSequence(surface, goal);
+  }
+
+  buildBtn.addEventListener('click', onBuild);
+
+  loadSequences();
+})();
+</script>
+</body>
+</html>
