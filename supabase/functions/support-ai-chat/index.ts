@@ -15,6 +15,10 @@ type ChatRequest = {
 
 const jsonHeaders = {
   "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 function jsonResponse(body: unknown, status = 200): Response {
@@ -55,6 +59,13 @@ function validateRequest(body: unknown): ChatRequest | string {
 }
 
 Deno.serve(async (request: Request) => {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: jsonHeaders,
+    });
+  }
+
   if (request.method !== "POST") {
     return jsonResponse({ error: "Method not allowed." }, 405);
   }
