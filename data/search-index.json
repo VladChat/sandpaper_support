@@ -608,33 +608,42 @@
   },
   {
     "id": "search-80-3000-kit",
-    "type": "grit_question",
-    "title": "How To Use An 80-3000 Assorted Kit",
-    "description": "Use lower grits for removal, middle grits for prep, and high grits for fine wet sanding or polishing prep.",
+    "type": "product_support",
+    "title": "eQualle Assorted Sandpaper Kit 80-3000",
+    "description": "Support guide for the eQualle assorted 9 x 11 inch silicon carbide sandpaper sheets kit, 80 through 3000 grit, for wet or dry use.",
     "customer_phrases": [
+      "80-3000 sandpaper kit",
+      "80 3000 kit",
+      "assorted 80 3000 sandpaper kit",
       "80 3000 sandpaper kit",
-      "assorted sandpaper grits",
-      "which grit in kit"
+      "eQualle assorted sandpaper kit"
     ],
     "aliases": [
       "80-3000 kit",
       "grit assortment",
-      "sandpaper kit guide"
+      "sandpaper kit guide",
+      "assorted sandpaper grits"
     ],
     "surface": [
       "wood",
-      "metal",
       "paint",
+      "primer",
       "clear coat",
-      "plastic"
+      "metal",
+      "plastic",
+      "drywall"
     ],
     "grits": [
       "80",
       "120",
+      "150",
       "180",
       "220",
+      "240",
+      "280",
       "320",
       "400",
+      "500",
       "600",
       "800",
       "1000",
@@ -646,7 +655,7 @@
       "dry",
       "wet"
     ],
-    "target_url": "/products/"
+    "target_url": "/products/assorted-80-3000/"
   },
   {
     "id": "search-grit-comes-off-sheet",
@@ -2717,5 +2726,179 @@
       "wet"
     ],
     "target_url": "/surfaces/sheet-problems/"
+  },
+  {
+    "id": "search-how-to-use-80-to-3000-grit-sandpaper",
+    "type": "product_support",
+    "title": "How to use 80 to 3000 grit sandpaper",
+    "description": "Choose lower grits for removal, middle grits for preparation, and 1000 through 3000 for wet sanding or polishing preparation.",
+    "customer_phrases": [
+      "how to use 80 to 3000 grit sandpaper",
+      "how to use 80 3000 grit sandpaper",
+      "80 through 3000 grit order"
+    ],
+    "aliases": [
+      "80 to 3000 sequence",
+      "sandpaper kit sequence",
+      "grit order in kit"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "500",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/products/assorted-80-3000/"
+  },
+  {
+    "id": "search-starting-grit-assorted-kit",
+    "type": "product_support",
+    "title": "What grit should I start with in the assorted kit",
+    "description": "Start with the least aggressive grit that still removes the defect, then refine through smaller grit steps.",
+    "customer_phrases": [
+      "what grit should I start with in assorted kit",
+      "which grit should I start with",
+      "start grit in sandpaper kit"
+    ],
+    "aliases": [
+      "starting grit",
+      "first sheet to use",
+      "choose starting grit",
+      "least aggressive grit"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "500",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/products/assorted-80-3000/"
+  },
+  {
+    "id": "search-3000-grit-does-not-make-gloss",
+    "type": "exact_scenario",
+    "title": "3000 grit does not make gloss",
+    "description": "3000 grit leaves a very fine sanding haze and does not create gloss by itself.",
+    "customer_phrases": [
+      "3000 grit does not make gloss",
+      "3000 gloss",
+      "3000 grit not shiny"
+    ],
+    "aliases": [
+      "3000 does not create gloss",
+      "3000 still hazy",
+      "need polish after 3000"
+    ],
+    "surface": [
+      "clear coat",
+      "plastic",
+      "paint"
+    ],
+    "grits": [
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/3000-does-not-create-gloss/"
+  },
+  {
+    "id": "search-which-sheet-from-kit-should-i-use",
+    "type": "product_support",
+    "title": "Which sheet from the kit should I use",
+    "description": "Pick the sheet by surface, defect depth, and sanding stage: removal, prep, fine finishing, or wet sanding.",
+    "customer_phrases": [
+      "which sheet from the kit should I use",
+      "which sandpaper sheet should I use",
+      "which grit in kit"
+    ],
+    "aliases": [
+      "which sheet in assorted kit",
+      "which grit from kit",
+      "choose sheet from kit"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "primer",
+      "clear coat",
+      "metal",
+      "plastic",
+      "drywall"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "500",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/products/assorted-80-3000/"
   }
 ]
