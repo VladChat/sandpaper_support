@@ -2476,5 +2476,246 @@
       "dry"
     ],
     "target_url": "/solutions/patch-smooth-but-shows-after-paint/"
+  },
+  {
+    "id": "search-surface-wood",
+    "type": "surface_landing",
+    "title": "Wood Sanding Problems",
+    "description": "Wood sanding issues including scratches, raised grain, stain prep, veneer, softwood, hardwood, and edges.",
+    "customer_phrases": [
+      "wood sanding problems",
+      "wood scratches after sanding",
+      "wood stain sanding help"
+    ],
+    "aliases": [
+      "bare wood sanding",
+      "stain prep",
+      "raised grain",
+      "veneer sanding"
+    ],
+    "surface": [
+      "wood",
+      "wood"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/surfaces/wood/"
+  },
+  {
+    "id": "search-surface-paint-primer",
+    "type": "surface_landing",
+    "title": "Paint / Primer Sanding Problems",
+    "description": "Paint and primer sanding issues including clogging, feather edges, scratches, chips, dull spots, and repaint prep.",
+    "customer_phrases": [
+      "paint primer sanding problems",
+      "paint sanding help",
+      "primer sanding scratches"
+    ],
+    "aliases": [
+      "paint prep",
+      "primer prep",
+      "coating sanding",
+      "feather edge"
+    ],
+    "surface": [
+      "paint primer",
+      "paint primer"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/surfaces/paint-primer/"
+  },
+  {
+    "id": "search-surface-clear-coat",
+    "type": "surface_landing",
+    "title": "Clear Coat Sanding Problems",
+    "description": "Clear coat wet sanding issues including haze, orange peel, 1500 marks, edge burn-through, and polish prep.",
+    "customer_phrases": [
+      "clear coat sanding problems",
+      "clear coat wet sanding help",
+      "orange peel sanding help"
+    ],
+    "aliases": [
+      "clearcoat sanding",
+      "clear coat haze",
+      "polishing prep",
+      "orange peel"
+    ],
+    "surface": [
+      "clear coat",
+      "clear coat"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/surfaces/clear-coat/"
+  },
+  {
+    "id": "search-surface-metal",
+    "type": "surface_landing",
+    "title": "Metal Sanding Problems",
+    "description": "Metal sanding issues including rust pits, oxidation, directional scratches, aluminum loading, burrs, and paint prep.",
+    "customer_phrases": [
+      "metal sanding problems",
+      "rust pits sanding",
+      "aluminum clogs sandpaper"
+    ],
+    "aliases": [
+      "rust sanding",
+      "aluminum sanding",
+      "stainless scratch direction",
+      "metal prep"
+    ],
+    "surface": [
+      "metal",
+      "metal"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/surfaces/metal/"
+  },
+  {
+    "id": "search-surface-plastic",
+    "type": "surface_landing",
+    "title": "Plastic Sanding Problems",
+    "description": "Plastic sanding issues including white haze, smearing, fuzzy edges, visible scratches, heat, and clogged paper.",
+    "customer_phrases": [
+      "plastic sanding problems",
+      "plastic turns white after sanding",
+      "plastic wet sanding haze"
+    ],
+    "aliases": [
+      "plastic haze",
+      "clear plastic sanding",
+      "fuzzy plastic edge",
+      "plastic smears"
+    ],
+    "surface": [
+      "plastic",
+      "plastic"
+    ],
+    "grits": [
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/surfaces/plastic/"
+  },
+  {
+    "id": "search-surface-drywall-patch",
+    "type": "surface_landing",
+    "title": "Drywall Patch Sanding Problems",
+    "description": "Drywall patch sanding issues including ridges, torn paper, clogged joint compound, visible edges, dust, and low spots.",
+    "customer_phrases": [
+      "drywall patch sanding problems",
+      "drywall patch ridges",
+      "joint compound clogs sandpaper"
+    ],
+    "aliases": [
+      "drywall repair sanding",
+      "joint compound sanding",
+      "patch edge visible",
+      "spackle sanding"
+    ],
+    "surface": [
+      "drywall patch",
+      "drywall patch"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/surfaces/drywall-patch/"
+  },
+  {
+    "id": "search-surface-sheet-problems",
+    "type": "surface_landing",
+    "title": "General Sheet Problems",
+    "description": "Sheet and abrasive handling issues including grit shedding, curling, fraying, tearing, residue, soaking, clogging, and worn sheets.",
+    "customer_phrases": [
+      "sandpaper sheet problems",
+      "grit comes off sheet",
+      "sheet curls wet sanding"
+    ],
+    "aliases": [
+      "abrasive sheet help",
+      "paper tearing",
+      "sheet fraying",
+      "sandpaper residue"
+    ],
+    "surface": [
+      "general sheet problems",
+      "sheet problems"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/surfaces/sheet-problems/"
   }
 ]
