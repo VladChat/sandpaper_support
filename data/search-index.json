@@ -654,19 +654,35 @@
     "title": "Grit comes off the sheet",
     "description": "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
     "customer_phrases": [
-      "grit comes off the sheet",
-      "grit comes off sheet",
-      "loose abrasive appears on the surface or the sheet sheds grit during sanding."
+      "abrasive shedding",
+      "loose grit on surface",
+      "sandpaper grit falling off"
     ],
     "aliases": [
-      "paper tears early",
-      "grit comes off the sheet"
+      "abrasive shedding",
+      "loose grit on surface",
+      "sandpaper grit falling off"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic",
+      "clear coat"
     ],
     "grits": [
-      "unknown"
+      "60",
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "dry",
@@ -680,19 +696,27 @@
     "title": "Sheet curls during wet sanding",
     "description": "The sheet curls up and becomes hard to keep flat while wet sanding.",
     "customer_phrases": [
-      "sheet curls during wet sanding",
-      "sheet curls during wet sanding",
-      "the sheet curls up and becomes hard to keep flat while wet sanding."
+      "paper curls in water",
+      "wet sanding paper curls",
+      "curled wet sandpaper"
     ],
     "aliases": [
-      "paper tears early",
-      "sheet curls during wet sanding"
+      "paper curls in water",
+      "wet sanding paper curls",
+      "curled wet sandpaper"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -705,19 +729,27 @@
     "title": "Sheet becomes soft after soaking too long",
     "description": "The sheet feels weak or soft after sitting in water.",
     "customer_phrases": [
-      "sheet becomes soft after soaking too long",
-      "sheet soft after soaking too long",
-      "the sheet feels weak or soft after sitting in water."
+      "over soaked sandpaper",
+      "wet paper feels weak",
+      "soft backing after soaking"
     ],
     "aliases": [
-      "paper tears early",
-      "sheet becomes soft after soaking too long"
+      "over soaked sandpaper",
+      "wet paper feels weak",
+      "soft backing after soaking"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -730,19 +762,28 @@
     "title": "Sheet edge frays during sanding",
     "description": "The edge of the sandpaper frays and leaves fibers or rough backing.",
     "customer_phrases": [
-      "sheet edge frays during sanding",
-      "sheet edge frays",
-      "the edge of the sandpaper frays and leaves fibers or rough backing."
+      "frayed sandpaper edge",
+      "paper edge coming apart",
+      "rough backing fibers"
     ],
     "aliases": [
-      "paper tears early",
-      "sheet edge frays during sanding"
+      "frayed sandpaper edge",
+      "paper edge coming apart",
+      "rough backing fibers"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -756,19 +797,30 @@
     "title": "Sandpaper leaves residue",
     "description": "Residue from dust, slurry, or loaded coating remains after sanding.",
     "customer_phrases": [
-      "sandpaper leaves residue",
-      "sandpaper leaves residue",
-      "residue from dust, slurry, or loaded coating remains after sanding."
+      "sanding residue",
+      "dirty slurry marks",
+      "loaded paper residue"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "paper leaves residue"
+      "sanding residue",
+      "dirty slurry marks",
+      "loaded paper residue"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic",
+      "clear coat"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000"
     ],
     "method": [
       "dry",
@@ -782,19 +834,29 @@
     "title": "Sheet feels smooth but looks unused",
     "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
     "customer_phrases": [
-      "sheet feels smooth but looks unused",
-      "sheet smooth but unused",
-      "the sheet does not look worn out, but it feels smooth and stops cutting."
+      "glazed abrasive",
+      "paper not cutting",
+      "sheet feels worn smooth"
     ],
     "aliases": [
-      "sanding takes too long",
-      "sheet feels smooth but looks unused"
+      "glazed abrasive",
+      "paper not cutting",
+      "sheet feels worn smooth"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic",
+      "primer"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
     ],
     "method": [
       "dry",
@@ -808,19 +870,26 @@
     "title": "Sheet is hard to hold for detail sanding",
     "description": "Small details are difficult to sand evenly with a loose sheet.",
     "customer_phrases": [
-      "sheet is hard to hold for detail sanding",
-      "sheet hard to hold detail sanding",
-      "small details are difficult to sand evenly with a loose sheet."
+      "detail sanding control",
+      "small piece hard to hold",
+      "folded paper detail sanding"
     ],
     "aliases": [
-      "finish looks uneven",
-      "sheet is hard to hold for detail sanding"
+      "detail sanding control",
+      "small piece hard to hold",
+      "folded paper detail sanding"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220",
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -834,19 +903,24 @@
     "title": "60 grit is too aggressive",
     "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
     "customer_phrases": [
-      "60 grit is too aggressive",
-      "60 grit too aggressive",
-      "60 grit cuts fast and leaves scratches deeper than the project needs."
+      "60 grit scratches",
+      "coarse grit damage",
+      "60 grit cuts too much"
     ],
     "aliases": [
-      "scratches too deep",
-      "60 grit is too aggressive"
+      "60 grit scratches",
+      "coarse grit damage",
+      "60 grit cuts too much"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "60",
+      "80",
+      "120"
     ],
     "method": [
       "dry"
@@ -859,19 +933,27 @@
     "title": "80 grit removes too much",
     "description": "80 grit cuts deeper or faster than expected.",
     "customer_phrases": [
-      "80 grit removes too much",
-      "80 grit removes too much",
-      "80 grit cuts deeper or faster than expected."
+      "80 grit too coarse",
+      "80 grit cuts too fast",
+      "coarse removal damage"
     ],
     "aliases": [
-      "scratches too deep",
-      "80 grit removes too much"
+      "80 grit too coarse",
+      "80 grit cuts too fast",
+      "coarse removal damage"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "80",
+      "120",
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -884,19 +966,25 @@
     "title": "100 grit leaves marks before 180",
     "description": "100 grit scratches are still visible after moving to 180.",
     "customer_phrases": [
-      "100 grit leaves marks before 180",
-      "100 grit marks before 180",
-      "100 grit scratches are still visible after moving to 180."
+      "100 grit scratches",
+      "100 to 180 grit jump",
+      "marks before 180"
     ],
     "aliases": [
-      "scratches too deep",
-      "100 grit leaves marks before 180"
+      "100 grit scratches",
+      "100 to 180 grit jump",
+      "marks before 180"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "100",
+      "120",
+      "150",
+      "180"
     ],
     "method": [
       "dry"
@@ -909,19 +997,24 @@
     "title": "150 grit is not smooth enough",
     "description": "The surface still feels rough after sanding with 150 grit.",
     "customer_phrases": [
-      "150 grit is not smooth enough",
-      "150 grit not smooth enough",
-      "the surface still feels rough after sanding with 150 grit."
+      "150 grit rough",
+      "surface rough after 150",
+      "need 180 after 150"
     ],
     "aliases": [
-      "surface still feels rough",
-      "150 grit is not smooth enough"
+      "150 grit rough",
+      "surface rough after 150",
+      "need 180 after 150"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -934,19 +1027,26 @@
     "title": "240 grit still leaves scratches",
     "description": "Scratches remain visible after 240 grit.",
     "customer_phrases": [
-      "240 grit still leaves scratches",
-      "240 still leaves scratches",
-      "scratches remain visible after 240 grit."
+      "240 grit scratches",
+      "scratches after 240",
+      "need 320 after 240"
     ],
     "aliases": [
-      "scratches too deep",
-      "240 grit still leaves scratches"
+      "240 grit scratches",
+      "scratches after 240",
+      "need 320 after 240"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "primer"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220",
+      "240",
+      "320"
     ],
     "method": [
       "dry",
@@ -960,19 +1060,25 @@
     "title": "280 vs 320 grit confusion",
     "description": "It is unclear whether to use 280 or 320 grit next.",
     "customer_phrases": [
-      "280 vs 320 grit confusion",
-      "280 vs 320 confusion",
-      "it is unclear whether to use 280 or 320 grit next."
+      "280 or 320 grit",
+      "after 240 grit",
+      "fine prep grit choice"
     ],
     "aliases": [
-      "not sure what grit to use",
-      "280 vs 320 grit confusion"
+      "280 or 320 grit",
+      "after 240 grit",
+      "fine prep grit choice"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "primer"
     ],
     "grits": [
-      "unknown"
+      "240",
+      "280",
+      "320"
     ],
     "method": [
       "dry",
@@ -986,19 +1092,25 @@
     "title": "360 vs 400 grit confusion",
     "description": "It is unclear whether 360 or 400 is the better next grit.",
     "customer_phrases": [
-      "360 vs 400 grit confusion",
-      "360 vs 400 confusion",
-      "it is unclear whether 360 or 400 is the better next grit."
+      "360 or 400 grit",
+      "after 320 grit",
+      "paint prep grit choice"
     ],
     "aliases": [
-      "not sure what grit to use",
-      "360 vs 400 grit confusion"
+      "360 or 400 grit",
+      "after 320 grit",
+      "paint prep grit choice"
     ],
     "surface": [
-      "general"
+      "paint",
+      "primer",
+      "wood",
+      "metal"
     ],
     "grits": [
-      "unknown"
+      "320",
+      "360",
+      "400"
     ],
     "method": [
       "dry",
@@ -1012,19 +1124,25 @@
     "title": "500 vs 600 grit confusion",
     "description": "It is unclear whether 500 or 600 grit should be used next.",
     "customer_phrases": [
-      "500 vs 600 grit confusion",
-      "500 vs 600 confusion",
-      "it is unclear whether 500 or 600 grit should be used next."
+      "500 or 600 grit",
+      "fine coating prep",
+      "after 400 grit"
     ],
     "aliases": [
-      "not sure what grit to use",
-      "500 vs 600 grit confusion"
+      "500 or 600 grit",
+      "fine coating prep",
+      "after 400 grit"
     ],
     "surface": [
-      "general"
+      "paint",
+      "primer",
+      "clear coat",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "400",
+      "500",
+      "600"
     ],
     "method": [
       "dry",
@@ -1038,19 +1156,26 @@
     "title": "800 grit leaves dull marks",
     "description": "800 grit leaves a dull, visible sanding pattern.",
     "customer_phrases": [
-      "800 grit leaves dull marks",
-      "800 leaves dull marks",
-      "800 grit leaves a dull, visible sanding pattern."
+      "800 grit haze",
+      "dull after 800",
+      "800 wet sanding marks"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "800 grit leaves dull marks"
+      "800 grit haze",
+      "dull after 800",
+      "800 wet sanding marks"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1063,19 +1188,23 @@
     "title": "1000 grit is not fine enough for clear coat gloss",
     "description": "Clear coat still looks dull after 1000 grit.",
     "customer_phrases": [
-      "1000 grit is not fine enough for clear coat gloss",
-      "1000 not fine enough clear coat",
-      "clear coat still looks dull after 1000 grit."
+      "1000 grit clear coat haze",
+      "clear coat dull after 1000",
+      "need 1500 after 1000"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "1000 grit is not fine enough for clear coat gloss"
+      "1000 grit clear coat haze",
+      "clear coat dull after 1000",
+      "need 1500 after 1000"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1088,19 +1217,25 @@
     "title": "1200 grit still leaves haze",
     "description": "The surface still has a cloudy haze after 1200 grit.",
     "customer_phrases": [
-      "1200 grit still leaves haze",
-      "1200 still leaves haze",
-      "the surface still has a cloudy haze after 1200 grit."
+      "1200 grit haze",
+      "cloudy after 1200",
+      "need 1500 after 1200"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "1200 grit still leaves haze"
+      "1200 grit haze",
+      "cloudy after 1200",
+      "need 1500 after 1200"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "1200",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1113,19 +1248,24 @@
     "title": "1500 grit does not remove 1000 marks",
     "description": "1000-grit marks remain after sanding with 1500.",
     "customer_phrases": [
-      "1500 grit does not remove 1000 marks",
-      "1500 does not remove 1000 marks",
-      "1000-grit marks remain after sanding with 1500."
+      "1000 marks after 1500",
+      "1500 not removing scratches",
+      "need more 1500 sanding"
     ],
     "aliases": [
-      "scratches too deep",
-      "1500 grit does not remove 1000 marks"
+      "1000 marks after 1500",
+      "1500 not removing scratches",
+      "need more 1500 sanding"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000"
     ],
     "method": [
       "wet"
@@ -1138,19 +1278,23 @@
     "title": "2000 grit still needs 3000",
     "description": "The surface is finer after 2000 grit but still not ready for the desired gloss.",
     "customer_phrases": [
-      "2000 grit still needs 3000",
-      "2000 still needs 3000",
-      "the surface is finer after 2000 grit but still not ready for the desired gloss."
+      "2000 grit haze",
+      "need 3000 after 2000",
+      "2000 not final gloss"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "2000 grit still needs 3000"
+      "2000 grit haze",
+      "need 3000 after 2000",
+      "2000 not final gloss"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1163,19 +1307,23 @@
     "title": "3000 grit does not create gloss by itself",
     "description": "The surface is still hazy after 3000 grit.",
     "customer_phrases": [
-      "3000 grit does not create gloss by itself",
-      "3000 does not create gloss",
-      "the surface is still hazy after 3000 grit."
+      "3000 grit haze",
+      "3000 not glossy",
+      "needs polish after 3000"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "3000 grit does not create gloss by itself"
+      "3000 grit haze",
+      "3000 not glossy",
+      "needs polish after 3000"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "plastic",
+      "paint"
     ],
     "grits": [
-      "unknown"
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1188,19 +1336,29 @@
     "title": "High grit does not remove defects",
     "description": "Fine grit does not remove scratches, chips, or raised defects.",
     "customer_phrases": [
-      "high grit does not remove defects",
-      "high grit does not remove defects",
-      "fine grit does not remove scratches, chips, or raised defects."
+      "fine grit not cutting",
+      "1000 grit not removing scratch",
+      "too fine for defect"
     ],
     "aliases": [
-      "sanding takes too long",
-      "high grit does not remove defects"
+      "fine grit not cutting",
+      "1000 grit not removing scratch",
+      "too fine for defect"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "metal",
+      "plastic",
+      "clear coat"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "1000"
     ],
     "method": [
       "dry",
@@ -1214,19 +1372,28 @@
     "title": "Low grit damages finish",
     "description": "A coarse grit leaves heavy scratches or cuts through a finish.",
     "customer_phrases": [
-      "low grit damages finish",
-      "low grit damages finish",
-      "a coarse grit leaves heavy scratches or cuts through a finish."
+      "coarse grit finish damage",
+      "80 grit on finish",
+      "low grit scratches coating"
     ],
     "aliases": [
-      "scratches too deep",
-      "low grit damages finish"
+      "coarse grit finish damage",
+      "80 grit on finish",
+      "low grit scratches coating"
     ],
     "surface": [
-      "general"
+      "paint",
+      "clear coat",
+      "wood finish",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "60",
+      "80",
+      "120",
+      "320",
+      "400",
+      "600"
     ],
     "method": [
       "dry",
@@ -1240,19 +1407,23 @@
     "title": "Scratches show after stain",
     "description": "Scratch lines become visible after stain is applied.",
     "customer_phrases": [
-      "scratches show after stain",
-      "scratches show after stain",
-      "scratch lines become visible after stain is applied."
+      "stain reveals scratches",
+      "wood scratches under stain",
+      "sanding marks after stain"
     ],
     "aliases": [
-      "scratches too deep",
-      "scratches show after stain"
+      "stain reveals scratches",
+      "wood scratches under stain",
+      "sanding marks after stain"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1265,19 +1436,21 @@
     "title": "Stain looks blotchy after sanding",
     "description": "Stain absorbs unevenly after sanding.",
     "customer_phrases": [
-      "stain looks blotchy after sanding",
-      "stain looks blotchy",
-      "stain absorbs unevenly after sanding."
+      "blotchy stain sanding",
+      "uneven stain prep",
+      "wood stain patchy"
     ],
     "aliases": [
-      "finish looks uneven",
-      "stain looks blotchy after sanding"
+      "blotchy stain sanding",
+      "uneven stain prep",
+      "wood stain patchy"
     ],
     "surface": [
-      "general"
+      "wood"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1290,19 +1463,21 @@
     "title": "Raised grain after water wipe",
     "description": "Wood feels fuzzy or raised after wiping with water.",
     "customer_phrases": [
-      "raised grain after water wipe",
-      "raised grain after water wipe",
-      "wood feels fuzzy or raised after wiping with water."
+      "wood grain raised",
+      "fuzzy after water wipe",
+      "water raised fibers"
     ],
     "aliases": [
-      "surface still feels rough",
-      "raised grain after water wipe"
+      "wood grain raised",
+      "fuzzy after water wipe",
+      "water raised fibers"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "220",
+      "320"
     ],
     "method": [
       "dry"
@@ -1315,19 +1490,21 @@
     "title": "End grain sands differently",
     "description": "End grain looks or feels different from the rest of the wood after sanding.",
     "customer_phrases": [
-      "end grain sands differently",
-      "end grain sands differently",
-      "end grain looks or feels different from the rest of the wood after sanding."
+      "end grain sanding",
+      "end grain absorbs differently",
+      "wood end grain prep"
     ],
     "aliases": [
-      "finish looks uneven",
-      "end grain sands differently"
+      "end grain sanding",
+      "end grain absorbs differently",
+      "wood end grain prep"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1340,19 +1517,22 @@
     "title": "Veneer sands through",
     "description": "A thin wood surface is sanded through to a lower layer.",
     "customer_phrases": [
-      "veneer sands through",
-      "veneer sands through",
-      "a thin wood surface is sanded through to a lower layer."
+      "sanded through veneer",
+      "thin veneer damage",
+      "veneer cut through"
     ],
     "aliases": [
-      "scratches too deep",
-      "veneer sands through"
+      "sanded through veneer",
+      "thin veneer damage",
+      "veneer cut through"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220",
+      "320"
     ],
     "method": [
       "dry"
@@ -1365,19 +1545,22 @@
     "title": "Softwood grooves from sanding",
     "description": "Softwood develops grooves or low lines after sanding.",
     "customer_phrases": [
-      "softwood grooves from sanding",
-      "softwood grooves from sanding",
-      "softwood develops grooves or low lines after sanding."
+      "softwood finger grooves",
+      "pine sanding grooves",
+      "soft wood low spots"
     ],
     "aliases": [
-      "finish looks uneven",
-      "softwood grooves from sanding"
+      "softwood finger grooves",
+      "pine sanding grooves",
+      "soft wood low spots"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1390,19 +1573,23 @@
     "title": "Hardwood scratch lines remain",
     "description": "Straight scratch lines remain visible on hardwood.",
     "customer_phrases": [
-      "hardwood scratch lines remain",
-      "hardwood scratch lines",
-      "straight scratch lines remain visible on hardwood."
+      "hardwood sanding scratches",
+      "scratch lines in hardwood",
+      "hard wood marks"
     ],
     "aliases": [
-      "scratches too deep",
-      "hardwood scratch lines remain"
+      "hardwood sanding scratches",
+      "scratch lines in hardwood",
+      "hard wood marks"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1415,19 +1602,26 @@
     "title": "Dust hides scratches until finish",
     "description": "Scratches appear only after dust is wiped away or finish is applied.",
     "customer_phrases": [
-      "dust hides scratches until finish",
-      "dust hides scratches until finish",
-      "scratches appear only after dust is wiped away or finish is applied."
+      "hidden sanding scratches",
+      "dust filled scratches",
+      "finish reveals scratches"
     ],
     "aliases": [
-      "scratches too deep",
-      "dust hides scratches until finish"
+      "hidden sanding scratches",
+      "dust filled scratches",
+      "finish reveals scratches"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "clear coat"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
     ],
     "method": [
       "dry"
@@ -1440,19 +1634,22 @@
     "title": "Sanding across grain leaves lines",
     "description": "Lines across the wood grain remain visible after sanding.",
     "customer_phrases": [
-      "sanding across grain leaves lines",
-      "sanding across grain lines",
-      "lines across the wood grain remain visible after sanding."
+      "cross grain scratches",
+      "across grain marks",
+      "wood grain sanding lines"
     ],
     "aliases": [
-      "scratches too deep",
-      "sanding across grain leaves lines"
+      "cross grain scratches",
+      "across grain marks",
+      "wood grain sanding lines"
     ],
     "surface": [
       "wood"
     ],
     "grits": [
-      "unknown"
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -1465,19 +1662,22 @@
     "title": "Paint edges do not feather smoothly",
     "description": "A paint edge remains visible instead of blending into the surrounding surface.",
     "customer_phrases": [
-      "paint edges do not feather smoothly",
-      "paint edges do not feather",
-      "a paint edge remains visible instead of blending into the surrounding surface."
+      "paint feather edge",
+      "paint edge ridge",
+      "blend paint edge"
     ],
     "aliases": [
-      "poor results between coats",
-      "paint edges do not feather smoothly"
+      "paint feather edge",
+      "paint edge ridge",
+      "blend paint edge"
     ],
     "surface": [
       "paint"
     ],
     "grits": [
-      "unknown"
+      "220",
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -1491,19 +1691,23 @@
     "title": "Primer sands unevenly",
     "description": "Primer has patchy dull spots or uneven texture after sanding.",
     "customer_phrases": [
-      "primer sands unevenly",
-      "primer sands unevenly",
-      "primer has patchy dull spots or uneven texture after sanding."
+      "patchy primer sanding",
+      "primer dull spots",
+      "uneven primer prep"
     ],
     "aliases": [
-      "finish looks uneven",
-      "primer sands unevenly"
+      "patchy primer sanding",
+      "primer dull spots",
+      "uneven primer prep"
     ],
     "surface": [
+      "drywall",
       "primer"
     ],
     "grits": [
-      "unknown"
+      "320",
+      "400",
+      "600"
     ],
     "method": [
       "dry",
@@ -1517,19 +1721,21 @@
     "title": "Paint chips at the edge while sanding",
     "description": "Paint chips or flakes at an edge during sanding.",
     "customer_phrases": [
-      "paint chips at the edge while sanding",
-      "paint chips at edge",
-      "paint chips or flakes at an edge during sanding."
+      "paint edge chips",
+      "paint flakes while sanding",
+      "fragile paint edge"
     ],
     "aliases": [
-      "poor results between coats",
-      "paint chips at the edge while sanding"
+      "paint edge chips",
+      "paint flakes while sanding",
+      "fragile paint edge"
     ],
     "surface": [
       "paint"
     ],
     "grits": [
-      "unknown"
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -1543,19 +1749,23 @@
     "title": "Old paint gets gummy",
     "description": "Old paint softens or gums up the sandpaper.",
     "customer_phrases": [
-      "old paint gets gummy",
-      "old paint gets gummy",
-      "old paint softens or gums up the sandpaper."
+      "gummy paint sanding",
+      "old paint loads paper",
+      "soft paint smears"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "old paint gets gummy"
+      "gummy paint sanding",
+      "old paint loads paper",
+      "soft paint smears"
     ],
     "surface": [
       "paint"
     ],
     "grits": [
-      "unknown"
+      "80",
+      "120",
+      "180",
+      "220"
     ],
     "method": [
       "dry",
@@ -1569,19 +1779,22 @@
     "title": "Clear coat burns through on edges",
     "description": "Clear coat is sanded through on corners, edges, or raised lines.",
     "customer_phrases": [
-      "clear coat burns through on edges",
-      "clear coat burns through edges",
-      "clear coat is sanded through on corners, edges, or raised lines."
+      "clear coat edge burn through",
+      "sanded through clear edge",
+      "clear coat corners"
     ],
     "aliases": [
-      "poor results between coats",
-      "clear coat burns through on edges"
+      "clear coat edge burn through",
+      "sanded through clear edge",
+      "clear coat corners"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1594,19 +1807,27 @@
     "title": "Sanding leaves low spots",
     "description": "Some areas become lower or look dished after sanding.",
     "customer_phrases": [
-      "sanding leaves low spots",
-      "sanding leaves low spots",
-      "some areas become lower or look dished after sanding."
+      "dished sanding spot",
+      "sanded low area",
+      "uneven leveling"
     ],
     "aliases": [
-      "finish looks uneven",
-      "sanding leaves low spots"
+      "dished sanding spot",
+      "sanded low area",
+      "uneven leveling"
     ],
     "surface": [
-      "general"
+      "wood",
+      "paint",
+      "clear coat",
+      "drywall"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -1620,19 +1841,23 @@
     "title": "Gloss shows sanding scratches",
     "description": "Scratches that were hard to see become obvious on a glossy surface.",
     "customer_phrases": [
-      "gloss shows sanding scratches",
-      "gloss shows scratches",
-      "scratches that were hard to see become obvious on a glossy surface."
+      "gloss reveals scratches",
+      "shiny finish shows marks",
+      "scratches visible in gloss"
     ],
     "aliases": [
-      "scratches too deep",
-      "gloss shows sanding scratches"
+      "gloss reveals scratches",
+      "shiny finish shows marks",
+      "scratches visible in gloss"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "dry",
@@ -1646,20 +1871,25 @@
     "title": "Paint looks dull after sanding",
     "description": "Paint or clear coat looks dull after fine sanding.",
     "customer_phrases": [
-      "paint looks dull after sanding",
-      "paint looks dull after sanding",
-      "paint or clear coat looks dull after fine sanding."
+      "dull paint after sanding",
+      "paint sanding haze",
+      "scuffed paint surface"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "paint looks dull after sanding"
+      "dull paint after sanding",
+      "paint sanding haze",
+      "scuffed paint surface"
     ],
     "surface": [
       "clear coat",
       "paint"
     ],
     "grits": [
-      "unknown"
+      "600",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "dry",
@@ -1673,19 +1903,23 @@
     "title": "Orange peel is not leveling",
     "description": "Clear coat texture remains after wet sanding.",
     "customer_phrases": [
-      "orange peel is not leveling",
-      "orange peel not leveling",
-      "clear coat texture remains after wet sanding."
+      "orange peel still there",
+      "clear coat texture not flat",
+      "orange peel wet sanding"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "orange peel is not leveling"
+      "orange peel still there",
+      "clear coat texture not flat",
+      "orange peel wet sanding"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1698,20 +1932,25 @@
     "title": "Runs or drips are hard to level",
     "description": "Paint or clear coat runs remain raised after sanding.",
     "customer_phrases": [
-      "runs or drips are hard to level",
-      "runs drips hard to level",
-      "paint or clear coat runs remain raised after sanding."
+      "paint run leveling",
+      "clear coat drip sanding",
+      "raised run after sanding"
     ],
     "aliases": [
-      "surface still feels rough",
-      "runs or drips are hard to level"
+      "paint run leveling",
+      "clear coat drip sanding",
+      "raised run after sanding"
     ],
     "surface": [
       "clear coat",
       "paint"
     ],
     "grits": [
-      "unknown"
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1724,20 +1963,24 @@
     "title": "Dust nibs remain after sanding",
     "description": "Small raised dust spots remain in paint or clear coat.",
     "customer_phrases": [
-      "dust nibs remain after sanding",
-      "dust nibs remain",
-      "small raised dust spots remain in paint or clear coat."
+      "dust nib sanding",
+      "raised paint specks",
+      "small clear coat bumps"
     ],
     "aliases": [
-      "surface still feels rough",
-      "dust nibs remain after sanding"
+      "dust nib sanding",
+      "raised paint specks",
+      "small clear coat bumps"
     ],
     "surface": [
       "clear coat",
       "paint"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1750,19 +1993,21 @@
     "title": "Clear coat cloudy after 2000 grit",
     "description": "Clear coat remains cloudy after 2000 grit wet sanding.",
     "customer_phrases": [
-      "clear coat cloudy after 2000 grit",
-      "clear coat cloudy after 2000",
-      "clear coat remains cloudy after 2000 grit wet sanding."
+      "cloudy after 2000",
+      "2000 grit clear haze",
+      "need 3000 clear coat"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "clear coat cloudy after 2000 grit"
+      "cloudy after 2000",
+      "2000 grit clear haze",
+      "need 3000 clear coat"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1775,19 +2020,22 @@
     "title": "Clear coat shows 1500 marks",
     "description": "1500-grit marks are still visible in clear coat.",
     "customer_phrases": [
-      "clear coat shows 1500 marks",
-      "clear coat shows 1500 marks",
-      "1500-grit marks are still visible in clear coat."
+      "1500 scratches in clear",
+      "clear coat 1500 lines",
+      "need 2000 after 1500"
     ],
     "aliases": [
-      "scratches too deep",
-      "clear coat shows 1500 marks"
+      "1500 scratches in clear",
+      "clear coat 1500 lines",
+      "need 2000 after 1500"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1800,19 +2048,22 @@
     "title": "Sand through clear coat on corners",
     "description": "Clear coat is removed on corners during sanding.",
     "customer_phrases": [
-      "sand through clear coat on corners",
-      "sand through clear coat corners",
-      "clear coat is removed on corners during sanding."
+      "clear coat corner sand through",
+      "sanded clear on corner",
+      "edge cut through"
     ],
     "aliases": [
-      "poor results between coats",
-      "sand through clear coat on corners"
+      "clear coat corner sand through",
+      "sanded clear on corner",
+      "edge cut through"
     ],
     "surface": [
       "clear coat"
     ],
     "grits": [
-      "unknown"
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1825,19 +2076,25 @@
     "title": "Wet sanding leaves straight scratches",
     "description": "Straight scratches appear during wet sanding.",
     "customer_phrases": [
-      "wet sanding leaves straight scratches",
-      "wet sanding straight scratches",
-      "straight scratches appear during wet sanding."
+      "straight wet sanding lines",
+      "wet sanding scratch lines",
+      "linear scratches wet sanding"
     ],
     "aliases": [
-      "scratches too deep",
-      "wet sanding leaves straight scratches"
+      "straight wet sanding lines",
+      "wet sanding scratch lines",
+      "linear scratches wet sanding"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1850,19 +2107,25 @@
     "title": "Wet sanding creates random deep scratches",
     "description": "Random deeper scratches appear during wet sanding.",
     "customer_phrases": [
-      "wet sanding creates random deep scratches",
-      "wet sanding random deep scratches",
-      "random deeper scratches appear during wet sanding."
+      "random wet sanding scratches",
+      "dirty slurry scratches",
+      "deep scratches from wet sanding"
     ],
     "aliases": [
-      "scratches too deep",
-      "wet sanding creates random deep scratches"
+      "random wet sanding scratches",
+      "dirty slurry scratches",
+      "deep scratches from wet sanding"
     ],
     "surface": [
-      "general"
+      "clear coat",
+      "paint",
+      "plastic"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1875,19 +2138,24 @@
     "title": "Rust pits remain",
     "description": "Dark pits or small low spots remain after rust sanding.",
     "customer_phrases": [
-      "rust pits remain",
-      "rust pits remain",
-      "dark pits or small low spots remain after rust sanding."
+      "rust pitting",
+      "pits after rust sanding",
+      "metal rust pits"
     ],
     "aliases": [
-      "surface still feels rough",
-      "rust pits remain"
+      "rust pitting",
+      "pits after rust sanding",
+      "metal rust pits"
     ],
     "surface": [
       "metal"
     ],
     "grits": [
-      "unknown"
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
     ],
     "method": [
       "dry"
@@ -1900,20 +2168,24 @@
     "title": "Aluminum clogs paper",
     "description": "Aluminum residue loads into the abrasive and sanding slows.",
     "customer_phrases": [
-      "aluminum clogs paper",
-      "aluminum clogs paper",
-      "aluminum residue loads into the abrasive and sanding slows."
+      "aluminum loading sandpaper",
+      "metal clogs abrasive",
+      "soft aluminum residue"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "aluminum clogs paper"
+      "aluminum loading sandpaper",
+      "metal clogs abrasive",
+      "soft aluminum residue"
     ],
     "surface": [
       "aluminum",
       "metal"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220",
+      "320",
+      "400"
     ],
     "method": [
       "dry",
@@ -1927,19 +2199,23 @@
     "title": "Plastic turns white after sanding",
     "description": "Plastic turns white or cloudy after sanding.",
     "customer_phrases": [
-      "plastic turns white after sanding",
-      "plastic turns white",
-      "plastic turns white or cloudy after sanding."
+      "white plastic haze",
+      "cloudy plastic after sanding",
+      "plastic sanding haze"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "plastic turns white after sanding"
+      "white plastic haze",
+      "cloudy plastic after sanding",
+      "plastic sanding haze"
     ],
     "surface": [
       "plastic"
     ],
     "grits": [
-      "unknown"
+      "1000",
+      "1500",
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -1952,19 +2228,23 @@
     "title": "Plastic melts or smears",
     "description": "Plastic smears, melts, or loads the sheet while sanding.",
     "customer_phrases": [
-      "plastic melts or smears",
-      "plastic melts or smears",
-      "plastic smears, melts, or loads the sheet while sanding."
+      "plastic smears sanding",
+      "plastic heat marks",
+      "melted plastic dust"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "plastic melts or smears"
+      "plastic smears sanding",
+      "plastic heat marks",
+      "melted plastic dust"
     ],
     "surface": [
       "plastic"
     ],
     "grits": [
-      "unknown"
+      "320",
+      "400",
+      "600",
+      "1000"
     ],
     "method": [
       "dry",
@@ -1978,19 +2258,22 @@
     "title": "Plastic edge gets fuzzy",
     "description": "A plastic edge becomes fuzzy or rough after sanding.",
     "customer_phrases": [
-      "plastic edge gets fuzzy",
-      "plastic edge gets fuzzy",
-      "a plastic edge becomes fuzzy or rough after sanding."
+      "fuzzy plastic edge",
+      "rough plastic edge",
+      "plastic edge sanding"
     ],
     "aliases": [
-      "surface still feels rough",
-      "plastic edge gets fuzzy"
+      "fuzzy plastic edge",
+      "rough plastic edge",
+      "plastic edge sanding"
     ],
     "surface": [
       "plastic"
     ],
     "grits": [
-      "unknown"
+      "400",
+      "600",
+      "1000"
     ],
     "method": [
       "dry",
@@ -2004,19 +2287,21 @@
     "title": "3000 leaves plastic hazy",
     "description": "Plastic still looks hazy after 3000 grit.",
     "customer_phrases": [
-      "3000 leaves plastic hazy",
-      "3000 leaves plastic hazy",
-      "plastic still looks hazy after 3000 grit."
+      "plastic hazy after 3000",
+      "3000 plastic haze",
+      "clear plastic still cloudy"
     ],
     "aliases": [
-      "wet sanding leaves haze",
-      "3000 leaves plastic hazy"
+      "plastic hazy after 3000",
+      "3000 plastic haze",
+      "clear plastic still cloudy"
     ],
     "surface": [
       "plastic"
     ],
     "grits": [
-      "unknown"
+      "2000",
+      "3000"
     ],
     "method": [
       "wet"
@@ -2029,19 +2314,22 @@
     "title": "Plastic dust clogs paper",
     "description": "Plastic dust packs into the abrasive and slows sanding.",
     "customer_phrases": [
-      "plastic dust clogs paper",
-      "plastic dust clogs paper",
-      "plastic dust packs into the abrasive and slows sanding."
+      "plastic dust loading",
+      "plastic clogs abrasive",
+      "plastic residue on paper"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "plastic dust clogs paper"
+      "plastic dust loading",
+      "plastic clogs abrasive",
+      "plastic residue on paper"
     ],
     "surface": [
       "plastic"
     ],
     "grits": [
-      "unknown"
+      "320",
+      "400",
+      "600"
     ],
     "method": [
       "dry",
@@ -2055,19 +2343,23 @@
     "title": "Drywall patch ridges remain",
     "description": "Drywall patch ridges are still visible or feel high after sanding.",
     "customer_phrases": [
-      "drywall patch ridges remain",
-      "drywall patch ridges remain",
-      "drywall patch ridges are still visible or feel high after sanding."
+      "drywall patch ridge",
+      "joint compound ridge",
+      "patch high spots"
     ],
     "aliases": [
-      "surface still feels rough",
-      "drywall patch ridges remain"
+      "drywall patch ridge",
+      "joint compound ridge",
+      "patch high spots"
     ],
     "surface": [
       "drywall"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -2080,19 +2372,21 @@
     "title": "Drywall paper tears while sanding",
     "description": "The drywall face paper tears or fuzzes during sanding.",
     "customer_phrases": [
-      "drywall paper tears while sanding",
-      "drywall paper tears",
-      "the drywall face paper tears or fuzzes during sanding."
+      "drywall face paper tear",
+      "fuzzy drywall paper",
+      "sanding tears drywall"
     ],
     "aliases": [
-      "paper tears early",
-      "drywall paper tears while sanding"
+      "drywall face paper tear",
+      "fuzzy drywall paper",
+      "sanding tears drywall"
     ],
     "surface": [
       "drywall"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -2105,19 +2399,23 @@
     "title": "Joint compound clogs paper",
     "description": "Joint compound dust packs into the sandpaper quickly.",
     "customer_phrases": [
-      "joint compound clogs paper",
-      "joint compound clogs paper",
-      "joint compound dust packs into the sandpaper quickly."
+      "compound dust clogs",
+      "spackle clogs paper",
+      "drywall mud loads sandpaper"
     ],
     "aliases": [
-      "paper clogs too fast",
-      "joint compound clogs paper"
+      "compound dust clogs",
+      "spackle clogs paper",
+      "drywall mud loads sandpaper"
     ],
     "surface": [
-      "general"
+      "drywall"
     ],
     "grits": [
-      "unknown"
+      "120",
+      "150",
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -2130,19 +2428,21 @@
     "title": "Patch edge visible after sanding",
     "description": "The edge of a drywall patch still shows after sanding.",
     "customer_phrases": [
-      "patch edge visible after sanding",
-      "patch edge visible after sanding",
-      "the edge of a drywall patch still shows after sanding."
+      "visible drywall patch edge",
+      "patch not feathered",
+      "drywall repair edge"
     ],
     "aliases": [
-      "finish looks uneven",
-      "patch edge visible after sanding"
+      "visible drywall patch edge",
+      "patch not feathered",
+      "drywall repair edge"
     ],
     "surface": [
       "drywall"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220"
     ],
     "method": [
       "dry"
@@ -2155,19 +2455,22 @@
     "title": "Patch is smooth but shows after paint",
     "description": "The patch feels smooth but is visible after painting.",
     "customer_phrases": [
-      "patch is smooth but shows after paint",
-      "patch smooth but shows after paint",
-      "the patch feels smooth but is visible after painting."
+      "patch shows after paint",
+      "drywall patch flashing",
+      "smooth patch visible"
     ],
     "aliases": [
-      "finish looks uneven",
-      "patch is smooth but shows after paint"
+      "patch shows after paint",
+      "drywall patch flashing",
+      "smooth patch visible"
     ],
     "surface": [
+      "drywall",
       "paint"
     ],
     "grits": [
-      "unknown"
+      "180",
+      "220"
     ],
     "method": [
       "dry"
