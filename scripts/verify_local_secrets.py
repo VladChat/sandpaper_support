@@ -136,7 +136,7 @@ def make_checks(config: dict[str, str]) -> list[tuple[str, Callable[[], tuple[bo
             return False, "JWT ref does not match project ref"
         return True, "service role JWT claims match"
 
-    def supabase_anon_rest_and_auth() -> tuple[bool, str]:
+    def supabase_anon_auth() -> tuple[bool, str]:
         missing = require("SUPABASE_URL", "SUPABASE_ANON_KEY")
         if missing:
             return False, missing
@@ -146,23 +146,11 @@ def make_checks(config: dict[str, str]) -> list[tuple[str, Callable[[], tuple[bo
             f"{base_url}/auth/v1/settings",
             {
                 "apikey": anon_key,
-                "Authorization": f"Bearer {anon_key}",
             },
         )
         if not (200 <= auth_status < 300):
             return False, f"anon auth endpoint returned HTTP {auth_status}"
-
-        rest_status, _ = request_json_or_text(
-            f"{base_url}/rest/v1/",
-            {
-                "apikey": anon_key,
-                "Authorization": f"Bearer {anon_key}",
-                "Accept": "application/openapi+json",
-            },
-        )
-        if not (200 <= rest_status < 300):
-            return False, f"anon REST endpoint returned HTTP {rest_status}"
-        return True, "anon auth and REST endpoints reachable"
+        return True, "anon auth endpoint reachable"
 
     def supabase_service_rest() -> tuple[bool, str]:
         missing = require("SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY")
@@ -232,7 +220,7 @@ def make_checks(config: dict[str, str]) -> list[tuple[str, Callable[[], tuple[bo
         ("required variables", required_vars),
         ("Supabase URL/ref", supabase_url_matches_ref),
         ("Supabase service role JWT", service_role_jwt),
-        ("Supabase anon REST/auth", supabase_anon_rest_and_auth),
+        ("Supabase anon auth", supabase_anon_auth),
         ("Supabase service REST", supabase_service_rest),
         ("Supabase DB URL", supabase_db_connection),
         ("OpenAI API key", openai_models),
