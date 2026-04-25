@@ -5,6 +5,7 @@
   var form = document.querySelector("[data-admin-login-form]");
   var logoutButton = document.querySelector("[data-admin-logout]");
   var status = document.querySelector("[data-admin-status]");
+  var draftRowsById = {};
 
   function setStatus(message, isError) {
     if (!status) {
@@ -139,7 +140,12 @@
   }
 
   function renderDrafts(result) {
-    renderTable("[data-drafts-body]", result, 5, function (row) {
+    draftRowsById = {};
+    getRows(result).forEach(function (row) {
+      draftRowsById[row.id] = row;
+    });
+
+    renderTable("[data-drafts-body]", result, 6, function (row) {
       return (
         "<tr>" +
         "<td>" +
@@ -157,8 +163,149 @@
         "<td>" +
         escapeHtml(formatDate(row.updated_at || row.created_at)) +
         "</td>" +
+        '<td><div class="admin-action-row">' +
+        '<button type="button" data-draft-action="view" data-draft-id="' +
+        escapeHtml(row.id) +
+        '">View</button>' +
+        '<button type="button" data-draft-action="approve" data-draft-id="' +
+        escapeHtml(row.id) +
+        '">Approve</button>' +
+        '<button type="button" data-draft-action="reject" data-draft-id="' +
+        escapeHtml(row.id) +
+        '">Reject</button>' +
+        "</div></td>" +
         "</tr>"
       );
+    });
+  }
+
+  function formatArrayValue(value) {
+    if (Array.isArray(value)) {
+      return value.join("\n");
+    }
+
+    if (value && typeof value === "object") {
+      return JSON.stringify(value, null, 2);
+    }
+
+    return value || "";
+  }
+
+  function detailBlock(label, value) {
+    return (
+      '<div class="admin-draft-detail"><div class="label">' +
+      escapeHtml(label) +
+      '</div><pre class="value">' +
+      escapeHtml(formatArrayValue(value)) +
+      "</pre></div>"
+    );
+  }
+
+  function showDraftDetails(id) {
+    var row = draftRowsById[id];
+    var panel = document.querySelector("[data-draft-panel]");
+    var title = document.querySelector("[data-draft-panel-title]");
+    var body = document.querySelector("[data-draft-panel-body]");
+
+    if (!row || !panel || !title || !body) {
+      setStatus("Draft details could not be shown.", true);
+      return;
+    }
+
+    title.textContent = row.title || "Draft details";
+    body.innerHTML =
+      detailBlock("Title", row.title) +
+      detailBlock("Likely cause", row.likely_cause) +
+      detailBlock("Recommended grit", row.recommended_grit) +
+      detailBlock("Method", row.method) +
+      detailBlock("Steps", row.steps) +
+      detailBlock("Avoid", row.avoid) +
+      detailBlock("Success check", row.success_check) +
+      detailBlock("Validation notes", row.validation_notes);
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function setDraftActionButtonsDisabled(id, disabled) {
+    document
+      .querySelectorAll("[data-draft-id]")
+      .forEach(function (button) {
+        if (button.getAttribute("data-draft-id") === id) {
+          button.disabled = disabled;
+        }
+      });
+  }
+
+  function showAdminActionError(prefix, result) {
+    setStatus(
+      prefix +
+        " " +
+        ((result && result.error) || "RLS may be blocking this admin action."),
+      true,
+    );
+  }
+
+  function updateDraftStatus(id, nextStatus) {
+    if (!api || !api.updateDraftSolutionCardStatus) {
+      setStatus("Supabase admin actions are unavailable.", true);
+      return Promise.resolve();
+    }
+
+    setDraftActionButtonsDisabled(id, true);
+    setStatus("Updating draft...");
+
+    return api.updateDraftSolutionCardStatus(id, nextStatus).then(function (result) {
+      if (!result || !result.ok) {
+        setDraftActionButtonsDisabled(id, false);
+        showAdminActionError("Draft status could not be updated.", result);
+        return null;
+      }
+
+      if (draftRowsById[id]) {
+        draftRowsById[id].status = nextStatus;
+      }
+
+      return result;
+    });
+  }
+
+  function approveDraft(id) {
+    updateDraftStatus(id, "approved").then(function (result) {
+      if (!result) {
+        return;
+      }
+
+      setStatus("Queueing approved draft for publish...");
+
+      api
+        .enqueueContentSync("draft_solution_card", id, "publish")
+        .then(function (queueResult) {
+          setDraftActionButtonsDisabled(id, false);
+
+          if (!queueResult || !queueResult.ok) {
+            showAdminActionError(
+              "Draft approved, but content sync could not be queued.",
+              queueResult,
+            );
+            return;
+          }
+
+          setStatus("Draft approved and queued for publish.");
+          loadDashboard(true);
+        });
+    });
+  }
+
+  function rejectDraft(id) {
+    updateDraftStatus(id, "rejected").then(function (result) {
+      setDraftActionButtonsDisabled(id, false);
+
+      if (!result) {
+        return;
+      }
+
+      setStatus("Draft rejected.");
+      loadDashboard(true);
     });
   }
 
@@ -350,6 +497,36 @@
       });
     });
   }
+
+  document.addEventListener("click", function (event) {
+    var closeButton = event.target.closest("[data-draft-panel-close]");
+    var actionButton = event.target.closest("[data-draft-action]");
+
+    if (closeButton) {
+      var panel = document.querySelector("[data-draft-panel]");
+
+      if (panel) {
+        panel.hidden = true;
+      }
+
+      return;
+    }
+
+    if (!actionButton) {
+      return;
+    }
+
+    var id = actionButton.getAttribute("data-draft-id");
+    var action = actionButton.getAttribute("data-draft-action");
+
+    if (action === "view") {
+      showDraftDetails(id);
+    } else if (action === "approve") {
+      approveDraft(id);
+    } else if (action === "reject") {
+      rejectDraft(id);
+    }
+  });
 
   init();
 })();

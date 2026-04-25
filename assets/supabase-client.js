@@ -224,6 +224,49 @@
       });
   }
 
+  function writeTable(table, options) {
+    var session = readStoredSession();
+    options = options || {};
+
+    if (!session || !session.access_token) {
+      return Promise.resolve({
+        ok: false,
+        status: 401,
+        error: "Sign in before changing admin data.",
+      });
+    }
+
+    return authFetch("/rest/v1/" + table + (options.query || ""), {
+      method: options.method || "POST",
+      headers: Object.assign(
+        {
+          Authorization: "Bearer " + session.access_token,
+          Prefer: options.prefer || "return=minimal",
+        },
+        options.headers || {},
+      ),
+      body: options.body || {},
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            return {
+              ok: false,
+              status: response.status,
+              error: body.message || body.hint || "RLS may be blocking this action.",
+            };
+          }
+
+          return { ok: true, status: response.status, data: body };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Admin action could not be completed." };
+      });
+  }
+
   function isConfigured() {
     var config = getConfig();
     return Boolean(config.url && config.anonKey);
@@ -329,13 +372,49 @@
       Object.assign(
         {
           select:
-            "id,problem_slug,title,likely_cause,recommended_grit,method,status,validation_notes,updated_at,created_at",
+            "id,problem_slug,title,likely_cause,recommended_grit,method,steps,avoid,success_check,validation_notes,status,updated_at,created_at",
           order: "updated_at.desc",
           limit: 25,
         },
         params || {},
       ),
     );
+  }
+
+  function updateDraftSolutionCardStatus(id, status) {
+    if (!id || !status) {
+      return Promise.resolve({
+        ok: false,
+        error: "Draft id and status are required.",
+      });
+    }
+
+    return writeTable("draft_solution_cards", {
+      method: "PATCH",
+      query: "?id=eq." + encodeURIComponent(id),
+      body: {
+        status: status,
+      },
+    });
+  }
+
+  function enqueueContentSync(entityType, entityId, action) {
+    if (!entityType || !entityId || !action) {
+      return Promise.resolve({
+        ok: false,
+        error: "Entity type, entity id, and action are required.",
+      });
+    }
+
+    return writeTable("content_sync_queue", {
+      method: "POST",
+      body: {
+        entity_type: entityType,
+        entity_id: entityId,
+        action: action,
+        status: "pending",
+      },
+    });
   }
 
   function getSessionToken() {
@@ -366,5 +445,7 @@
     fetchSearchLogs: fetchSearchLogs,
     fetchFeedback: fetchFeedback,
     fetchDraftSolutionCards: fetchDraftSolutionCards,
+    updateDraftSolutionCardStatus: updateDraftSolutionCardStatus,
+    enqueueContentSync: enqueueContentSync,
   };
 })();
