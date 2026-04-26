@@ -1,9 +1,72 @@
+/* Homepage primary cards */
+.primary-paths {
+  padding-top: 28px;
+}
 
-/* Primary support paths - stronger visual presence */
-.primary-paths{padding-bottom:0}
-.primary-grid .card-primary{border:3px solid var(--blue);border-radius:22px;padding:28px;background:linear-gradient(135deg,#f0f7fc,#e5f0fa);cursor:pointer;transition:.2s ease;position:relative}
-.primary-grid .card-primary:hover{border-color:#4a8fc7;transform:translateY(-3px);box-shadow:0 16px 40px rgba(124,177,217,.25)}
-.primary-grid .card-primary h3{font-size:1.35rem;margin:0 0 10px;color:var(--black)}
-.primary-grid .card-primary p{color:#334155;margin:0 0 14px;font-size:.98rem;line-height:1.45}
-.card-icon{font-size:2rem;line-height:1;margin-bottom:10px;display:block}
-@media(max-width:860px){.primary-grid{grid-template-columns:1fr}.primary-grid .card-primary{padding:20px}}
+.primary-grid {
+  align-items: stretch;
+  gap: 18px;
+}
+
+.primary-grid .card-primary {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 230px;
+  padding: 22px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.primary-grid .card-primary:hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+}
+
+.primary-grid .card-primary h3 {
+  color: var(--black);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.primary-grid .card-primary p {
+  color: #4b5563;
+  margin: 0;
+}
+
+.primary-grid .card-primary .cta {
+  margin-top: auto;
+}
+
+.card-icon {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 1024px) {
+  .primary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .primary-paths {
+    padding-top: 18px;
+  }
+
+  .primary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-grid .card-primary {
+    min-height: 0;
+    padding: 18px;
+  }
+}
