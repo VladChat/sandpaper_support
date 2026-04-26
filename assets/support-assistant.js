@@ -936,66 +936,11 @@
       return;
     }
 
-    const requester = createAssistantRequester(basePath, knowledge);
-    const homepageConversation = [];
-    let assistantPending = false;
-
     const logRenderedSearch = debounce(function (query, resultCount) {
       if (window.eQualleSupabase) {
         window.eQualleSupabase.logSearch(query, resultCount, null);
       }
     }, 600);
-
-    function addConversationEntry(role, text, links, pending) {
-      homepageConversation.push({
-        role: role,
-        text: text,
-        links: Array.isArray(links) ? links : [],
-        pending: Boolean(pending),
-      });
-    }
-
-    function logAssistantMessage(role, text) {
-      pushSessionArray(
-        STORAGE_KEYS.assistantMessages,
-        {
-          role: role,
-          text: text,
-          at: new Date().toISOString(),
-          source: "homepage-search",
-        },
-        30,
-      );
-    }
-
-    function renderConversationBlock() {
-      if (!homepageConversation.length) {
-        return null;
-      }
-
-      const block = document.createElement("div");
-      block.className = "chat-shell support-home-conversation";
-
-      const messages = document.createElement("div");
-      messages.className = "chat-messages";
-      messages.setAttribute("aria-live", "polite");
-
-      homepageConversation.forEach(function (entry) {
-        const message = appendMessage(messages, entry.role, entry.text);
-        if (entry.pending) {
-          message.classList.add("chat-message-pending");
-        }
-
-        if (entry.links && entry.links.length) {
-          appendLinks(messages, entry.links, basePath, function (page) {
-            recordClickedPage(page.path, page.title);
-          });
-        }
-      });
-
-      block.appendChild(messages);
-      return block;
-    }
 
     function renderOutput(q, matches) {
       results.innerHTML = "";
@@ -1019,7 +964,9 @@
           const link = document.createElement("a");
           link.className = "result-link";
           link.href = normalizePath(basePath, match.target_url || match.targetUrl || "");
-          link.textContent = match.title + " - " + match.description;
+          const title = String(match.title || "").trim();
+          const description = String(match.description || "").trim();
+          link.textContent = title && description ? title + " - " + description : title;
 
           link.addEventListener("click", function () {
             if (window.eQualleSupabase) {
@@ -1031,83 +978,6 @@
           results.appendChild(link);
         });
       }
-
-      const conversation = renderConversationBlock();
-      if (conversation) {
-        results.appendChild(conversation);
-      }
-    }
-
-    function sendAssistantQuery(userMessage, options) {
-      const message = String(userMessage || "").trim();
-      if (!message || assistantPending) {
-        return;
-      }
-
-      const isAuto = Boolean(options && options.auto);
-
-      addConversationEntry("user", message, [], false);
-      logAssistantMessage("user", message);
-
-      addConversationEntry("assistant", "Checking approved support guides...", [], true);
-
-      const currentMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
-      renderOutput(message, currentMatches);
-
-      if (isOrderTrackingQuery(message)) {
-        const pendingLocal = homepageConversation[homepageConversation.length - 1];
-        if (pendingLocal && pendingLocal.role === "assistant" && pendingLocal.pending) {
-          pendingLocal.pending = false;
-          pendingLocal.text =
-            "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.";
-          pendingLocal.links = [];
-          logAssistantMessage("assistant", pendingLocal.text);
-          renderOutput(message, currentMatches);
-        }
-        return;
-      }
-
-      assistantPending = true;
-      if (submitButton) {
-        submitButton.disabled = true;
-      }
-      requester(message, {
-        source: "homepage-search",
-        mode: isAuto ? "auto" : "manual",
-      }).then(function (result) {
-        const pending = homepageConversation[homepageConversation.length - 1];
-        if (!pending || pending.role !== "assistant" || !pending.pending) {
-          return;
-        }
-
-        if (!result.ok) {
-          pending.pending = false;
-          pending.text =
-            "Assistant response is unavailable right now. Approved support guides are still shown above.";
-          logAssistantMessage("assistant", pending.text);
-          renderOutput(message, currentMatches);
-          return;
-        }
-
-          pending.pending = false;
-          pending.text =
-            result.needsClarification && result.clarifyingQuestion
-              ? (result.reply &&
-                  clean(result.reply) !== clean(result.clarifyingQuestion) &&
-                  result.reply.trim().length > 0
-                  ? result.reply + "\n\n" + result.clarifyingQuestion
-                  : result.clarifyingQuestion)
-              : (result.reply || "I need one more detail to guide you.");
-          pending.links = Array.isArray(result.matchedPages) ? result.matchedPages : [];
-          logAssistantMessage("assistant", pending.text);
-
-        renderOutput(message, currentMatches);
-      }).finally(function () {
-        assistantPending = false;
-        if (submitButton) {
-          submitButton.disabled = false;
-        }
-      });
     }
 
     function render(query) {
@@ -1141,10 +1011,11 @@
       render(event.target.value);
     });
 
+    function redirectToAskPage(message) {
+      window.location.href = normalizePath(basePath, "/ask/") + "?q=" + encodeURIComponent(message);
+    }
+
     function runSearchAction() {
-      if (assistantPending) {
-        return;
-      }
       const message = input.value.trim();
       if (!message) {
         input.focus();
@@ -1178,8 +1049,10 @@
         window.location.href = topHref;
         return;
       }
-
-      sendAssistantQuery(message, { auto: false });
+      if (window.eQualleSupabase) {
+        window.eQualleSupabase.logSearch(message, matches.length, null);
+      }
+      redirectToAskPage(message);
     }
 
     input.addEventListener("keydown", function (event) {
@@ -1211,9 +1084,16 @@
     }
 
     const requester = createAssistantRequester(basePath, knowledge);
-    wireChat(shell, requester, basePath, {
+    const chat = wireChat(shell, requester, basePath, {
       source: "ai-assistant-page",
     });
+    const params = new URLSearchParams(window.location.search);
+    const q = String(params.get("q") || "").trim();
+    if (q) {
+      shell.input.value = "";
+      shell.messages.innerHTML = "";
+      chat.ask(q, { auto: true });
+    }
   }
 
   function setupSupportFollowup(basePath, knowledge) {

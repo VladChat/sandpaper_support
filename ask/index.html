@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support Answer | eQualle Sandpaper Support</title>
+<meta name="description" content="Get a support answer for your sanding question.">
+<link rel="icon" href="/sandpaper_support/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/sandpaper_support/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/sandpaper_support/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
+<link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=hero-width-fix-20260426">
+<link rel="stylesheet" href="/sandpaper_support/assets/primary-cards.css?v=hero-width-fix-20260426">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a>
+    <nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/">Tools</a></nav>
+  </div>
+</header>
+<main>
+  <div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / Ask</div>
+  <section class="section">
+    <h1>Support Answer</h1>
+    <p class="section-intro" id="ask-query-summary">Question: loading...</p>
+    <div class="chat-shell" data-ai-chat>
+      <div class="chat-messages" data-ai-messages aria-live="polite"></div>
+      <form class="chat-form" data-ai-form>
+        <label class="sr-only" for="ask-followup-input">Ask a follow-up question</label>
+        <input id="ask-followup-input" class="chat-input" data-ai-input type="text" autocomplete="off" placeholder="Ask a follow-up question">
+        <button class="chat-send" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <span>&copy; eQualle Support System</span>
+    <span>Problem-first sandpaper help for customers.</span>
+  </div>
+</footer>
+<script src="/sandpaper_support/assets/config.js"></script>
+<script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
+<script src="/sandpaper_support/assets/app.js?v=search-fix-20260426"></script>
+<script>
+  (function () {
+    var query = new URLSearchParams(window.location.search).get("q") || "";
+    var summary = document.getElementById("ask-query-summary");
+    if (summary) {
+      summary.textContent = query ? "Question: " + query : "Question: Ask your sanding problem below.";
+    }
+  })();
+</script>
+</body>
+</html>

@@ -220,11 +220,11 @@ function loadSupportAssistantAssets() {
 
   return loadScript(
     "equalle-search-core-js",
-    "/sandpaper_support/assets/search-core.js?v=search-intent-2-20260426",
+    "/sandpaper_support/assets/search-core.js?v=search-fix-20260426",
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=search-action-single-answer-20260426",
+      "/sandpaper_support/assets/support-assistant.js?v=search-fix-20260426",
     );
   });
 }

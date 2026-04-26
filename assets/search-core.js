@@ -37,7 +37,30 @@
     my: true,
     too: true,
     where: true,
+    how: true,
+    why: true,
+    what: true,
+    which: true,
+    when: true,
+    can: true,
+    do: true,
+    does: true,
+    should: true,
   };
+  const SUPPORTED_GRITS = {
+    60: true, 80: true, 100: true, 120: true, 150: true, 180: true, 220: true, 240: true,
+    280: true, 320: true, 360: true, 400: true, 500: true, 600: true, 800: true, 1000: true,
+    1200: true, 1500: true, 2000: true, 3000: true,
+  };
+  const QUESTION_ONLY = { how: true, why: true, what: true, which: true };
+  const POPULAR_QUESTION_SUGGESTIONS = [
+    { title: "What grit should I use?", target_url: "/problems/not-sure-what-grit-to-use/", description: "Start with the right grit for your surface and stage." },
+    { title: "Why does sandpaper clog?", target_url: "/problems/paper-clogs-too-fast/", description: "Find the main causes of loading and how to prevent it." },
+    { title: "How do I sand plastic?", target_url: "/surfaces/plastic/", description: "Plastic-specific sanding guidance and common issues." },
+    { title: "Which grit comes next?", target_url: "/tools/grit-sequence-builder/", description: "Use the sequence builder to choose your next grit." },
+  ];
+  const BLOCKED_SUGGESTION_IDS = { "search-how-to-use-80-to-3000-grit-sandpaper": true };
+  const BLOCKED_SUGGESTION_TITLES = { "how to use 60 to 3000 grit sandpaper": true };
 
   const INTENT_ORDER = [
     "buy_intent",
@@ -117,6 +140,73 @@
       .filter(Boolean);
   }
 
+  function pickTop(entries, limit, query) {
+    return entries.slice(0, Math.min(Math.max(limit || 5, 1), 5)).map(function (entry) {
+      const out = Object.assign({}, entry);
+      out.search_score = Number.isFinite(out.search_score) ? out.search_score : 120;
+      out.search_strong = out.search_strong !== false;
+      out.search_intent = out.search_intent || "general_support";
+      if (query) {
+        out.search_query = query;
+      }
+      return out;
+    });
+  }
+
+  function isBlockedFallbackEntry(entry) {
+    const id = clean(entry && entry.id);
+    const title = clean(entry && entry.title);
+    return Boolean(BLOCKED_SUGGESTION_IDS[id] || BLOCKED_SUGGESTION_TITLES[title]);
+  }
+
+  function hasSurfaceSignal(context) {
+    const q = context.normalizedQuery;
+    const hasSurface = SURFACE_TERMS.some(function (term) {
+      return q.indexOf(term) !== -1;
+    });
+    const hasSandingSignal = /\bsand|\bsanding|\bwet\b|\bdry\b/.test(q);
+    return hasSurface || hasSandingSignal;
+  }
+
+  function hasProblemSignal(context) {
+    const q = context.normalizedQuery;
+    return PROBLEM_TERMS.some(function (term) {
+      return q.indexOf(term) !== -1;
+    });
+  }
+
+  function hasGritIntentSignal(context) {
+    const q = context.normalizedQuery;
+    const gritHit = context.gritNumbers.some(function (num) {
+      return Boolean(SUPPORTED_GRITS[String(num)]);
+    });
+    return (
+      gritHit ||
+      q.indexOf("what grit") !== -1 ||
+      q.indexOf("which grit") !== -1 ||
+      q.indexOf("next grit") !== -1 ||
+      q.indexOf("grit after") !== -1 ||
+      q.indexOf("after ") !== -1 && q.indexOf("grit") !== -1
+    );
+  }
+
+  function questionOnlySuggestions(context, maxResults) {
+    if (context.wordCount !== 1 || !QUESTION_ONLY[context.normalizedQuery]) {
+      return null;
+    }
+    return pickTop(
+      POPULAR_QUESTION_SUGGESTIONS.map(function (item, index) {
+        const row = Object.assign({}, item);
+        row.search_score = 200 - index * 5;
+        row.search_intent = "question_suggestions";
+        row.search_strong = true;
+        return row;
+      }),
+      maxResults,
+      context.normalizedQuery,
+    );
+  }
+
   function containsAnyPhrase(query, phrases) {
     return phrases.some(function (phrase) {
       return query.indexOf(phrase) !== -1;
@@ -147,6 +237,15 @@
       }
       return term.length > 1;
     });
+    const expandedMeaningfulTerms = meaningfulTerms.slice();
+    meaningfulTerms.forEach(function (term) {
+      if (term === "clogging") {
+        expandedMeaningfulTerms.push("clog");
+      }
+      if (term.endsWith("ing") && term.length > 5) {
+        expandedMeaningfulTerms.push(term.replace(/ing$/, ""));
+      }
+    });
 
     const phraseFlags = {
       hasNearMe: normalized.indexOf("near me") !== -1,
@@ -162,7 +261,7 @@
     return {
       normalizedQuery: normalized,
       allTerms: allTerms,
-      meaningfulTerms: meaningfulTerms,
+      meaningfulTerms: expandedMeaningfulTerms,
       gritNumbers: gritNumbers,
       phraseFlags: phraseFlags,
       queryLength: normalized.length,
@@ -290,7 +389,17 @@
 
     if (mainIntent === "buy_intent") {
       if (classified.category === "product") {
-        return true;
+        const buySignals = BUY_TERMS.concat(["where to buy", "for sale", "near me"]);
+        const haystack = [classified.title, classified.description]
+          .concat(classified.customerPhrases)
+          .concat(classified.aliases)
+          .join(" ");
+        const isBuyRelevant = buySignals.some(function (signal) {
+          return haystack.indexOf(signal) !== -1;
+        });
+        if (isBuyRelevant || classified.targetUrl === "/products/") {
+          return true;
+        }
       }
       if (classified.category === "tools" && sequenceAsked && !queryContext.phraseFlags.hasWhereToBuy) {
         return true;
@@ -321,7 +430,14 @@
     }
 
     if (mainIntent === "grit_intent") {
-      return classified.category === "grit" || classified.category === "tools" || classified.category === "solution" || classified.category === "product";
+      return (
+        classified.category === "grit" ||
+        classified.category === "tools" ||
+        classified.category === "solution" ||
+        classified.category === "product" ||
+        classified.category === "problem" ||
+        classified.category === "surface"
+      );
     }
 
     return true;
@@ -492,7 +608,15 @@
       return null;
     }
 
-    if (multiWord && !exactPhraseMatch && meaningfulSignals < 2) {
+    if (
+      multiWord &&
+      !exactPhraseMatch &&
+      meaningfulSignals < 2 &&
+      !(
+        meaningfulSignals >= 1 &&
+        ["surface_intent", "problem_intent", "grit_intent", "buy_intent", "product_intent"].indexOf(intentContext.mainIntent) !== -1
+      )
+    ) {
       return null;
     }
 
@@ -524,15 +648,38 @@
       return [];
     }
 
+    const questionSuggestions = questionOnlySuggestions(queryContext, maxResults);
+    if (questionSuggestions) {
+      return questionSuggestions;
+    }
     if (!queryContext.meaningfulTerms.length && !queryContext.gritNumbers.length) {
       return [];
     }
 
     const ranked = (Array.isArray(entries) ? entries : [])
+      .filter(function (entry) {
+        return !isBlockedFallbackEntry(entry);
+      })
       .map(classifyEntry)
       .filter(function (classified) {
-        if (intentContext.mainIntent === "general_support") {
-          return true;
+        const shouldPrioritizeGrit = hasGritIntentSignal(queryContext);
+        const shouldPrioritizeSurface = hasSurfaceSignal(queryContext);
+        const shouldPrioritizeProblem = hasProblemSignal(queryContext);
+
+        if (shouldPrioritizeGrit) {
+          if (["grit", "tools", "problem", "solution", "surface", "product"].indexOf(classified.category) === -1) {
+            return false;
+          }
+        } else if (shouldPrioritizeSurface) {
+          if (["surface", "problem", "solution", "grit", "tools"].indexOf(classified.category) === -1) {
+            return false;
+          }
+        } else if (shouldPrioritizeProblem) {
+          if (["problem", "solution", "surface"].indexOf(classified.category) === -1) {
+            return false;
+          }
+        } else if (intentContext.mainIntent === "general_support") {
+          return false;
         }
         return filterEntriesByIntent(intentContext, classified, queryContext);
       })

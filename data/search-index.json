@@ -2780,54 +2780,6 @@
     "target_url": "/surfaces/sheet-problems/"
   },
   {
-    "id": "search-how-to-use-80-to-3000-grit-sandpaper",
-    "type": "product_support",
-    "title": "How to use 60 to 3000 grit sandpaper",
-    "description": "Choose lower grits for removal, middle grits for preparation, and 1000 through 3000 for wet sanding or polishing preparation.",
-    "customer_phrases": [
-      "how to use 60 to 3000 grit sandpaper",
-      "how to use 60 3000 grit sandpaper",
-      "60 through 3000 grit order"
-    ],
-    "aliases": [
-      "60 to 3000 sequence",
-      "sandpaper kit sequence",
-      "grit order in kit"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "primer",
-      "clear coat",
-      "metal",
-      "plastic",
-      "drywall"
-    ],
-    "grits": [
-      "80",
-      "120",
-      "150",
-      "180",
-      "220",
-      "240",
-      "280",
-      "320",
-      "400",
-      "500",
-      "600",
-      "800",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/products/assorted-80-3000/"
-  },
-  {
     "id": "search-starting-grit-assorted-kit",
     "type": "product_support",
     "title": "What grit should I start with in the assorted kit",
