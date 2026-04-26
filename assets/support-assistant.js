@@ -955,10 +955,7 @@
         hint.textContent = "Type at least 3 characters to see matching support pages.";
         results.appendChild(hint);
       } else if (!matches.length) {
-        const empty = document.createElement("div");
-        empty.className = "result-link";
-        empty.textContent = "No exact support page found. Press Enter to ask support.";
-        results.appendChild(empty);
+        return;
       } else {
         matches.forEach(function (match) {
           const link = document.createElement("a");

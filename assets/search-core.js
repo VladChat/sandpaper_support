@@ -59,6 +59,13 @@
     { title: "How do I sand plastic?", target_url: "/surfaces/plastic/", description: "Plastic-specific sanding guidance and common issues." },
     { title: "Which grit comes next?", target_url: "/tools/grit-sequence-builder/", description: "Use the sequence builder to choose your next grit." },
   ];
+  const GENERAL_SANDPAPER_SUGGESTIONS = [
+    { title: "Sandpaper Clogs Too Fast", target_url: "/problems/paper-clogs-too-fast/", description: "Dust, paint, finish, or residue loads into the abrasive and stops cutting." },
+    { title: "Sandpaper Grit Sequence", target_url: "/tools/grit-sequence-builder/", description: "Recommended grit progression for sanding tasks by surface and goal." },
+    { title: "What Grit Should I Use?", target_url: "/problems/not-sure-what-grit-to-use/", description: "Choose a grit based on surface, material removal, prep, or finish sanding." },
+    { title: "Sandpaper Tears Early", target_url: "/problems/paper-tears-early/", description: "The sheet rips, catches, or wears through during use." },
+    { title: "Scratches Are Too Deep", target_url: "/problems/scratches-too-deep/", description: "Visible sanding marks, gouges, or scratches remain after sanding." },
+  ];
   const BLOCKED_SUGGESTION_IDS = { "search-how-to-use-80-to-3000-grit-sandpaper": true };
   const BLOCKED_SUGGESTION_TITLES = { "how to use 60 to 3000 grit sandpaper": true };
 
@@ -200,6 +207,31 @@
         row.search_score = 200 - index * 5;
         row.search_intent = "question_suggestions";
         row.search_strong = true;
+        return row;
+      }),
+      maxResults,
+      context.normalizedQuery,
+    );
+  }
+
+  function generalSandpaperSuggestions(context, maxResults) {
+    const genericQueries = {
+      sandpaper: true,
+      sanding: true,
+      abrasive: true,
+      abrasives: true,
+    };
+
+    if (context.wordCount !== 1 || !genericQueries[context.normalizedQuery]) {
+      return null;
+    }
+
+    return pickTop(
+      GENERAL_SANDPAPER_SUGGESTIONS.map(function (item, index) {
+        const row = Object.assign({}, item);
+        row.search_score = 190 - index * 5;
+        row.search_intent = "general_sandpaper_suggestions";
+        row.search_strong = false;
         return row;
       }),
       maxResults,
@@ -652,6 +684,12 @@
     if (questionSuggestions) {
       return questionSuggestions;
     }
+
+    const generalSuggestions = generalSandpaperSuggestions(queryContext, maxResults);
+    if (generalSuggestions) {
+      return generalSuggestions;
+    }
+
     if (!queryContext.meaningfulTerms.length && !queryContext.gritNumbers.length) {
       return [];
     }
