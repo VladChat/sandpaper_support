@@ -131,7 +131,9 @@ function setupFeedback() {
           showStatus(
             isSuccess
               ? "Thanks for the feedback."
-              : "Feedback could not be sent right now.",
+              : (result && result.error)
+                ? "Feedback could not be sent: " + result.error
+                : "Feedback could not be sent right now.",
           );
           if (isSuccess) {
             incrementCount(feedbackType);

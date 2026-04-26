@@ -470,6 +470,8 @@
   }
 
   function renderMetrics(results) {
+    var feedbackLoadFailed =
+      !results[2] || !results[2].ok || !results[3] || !results[3].ok || !results[5] || !results[5].ok;
     var searchRows = getRows(results[0]);
     var zeroSearchRows = getRows(results[1]);
     var feedbackRows = getRows(results[2]);
@@ -481,8 +483,8 @@
 
     setText("[data-summary-total-searches]", searchRows.length);
     setText("[data-summary-zero-searches]", zeroSearchRows.length);
-    setText("[data-summary-helpful-feedback]", helpfulRows.length);
-    setText("[data-summary-not-helpful-feedback]", notHelpfulRows.length);
+    setText("[data-summary-helpful-feedback]", feedbackLoadFailed ? "ERR" : helpfulRows.length);
+    setText("[data-summary-not-helpful-feedback]", feedbackLoadFailed ? "ERR" : notHelpfulRows.length);
     setText("[data-summary-draft-cards]", draftRows.length);
 
     renderIssueList(

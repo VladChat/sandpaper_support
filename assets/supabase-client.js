@@ -291,44 +291,75 @@
 
   function submitFeedback(input) {
     input = input || {};
+    var config = getConfig();
 
-    return post("support_feedback", {
-      page_path: input.pagePath || window.location.pathname,
-      problem_slug: input.problemSlug || null,
-      feedback_type: input.feedbackType || null,
-      rating: Number.isFinite(input.rating) ? input.rating : null,
-      message: input.message || null,
-      user_agent: window.navigator ? window.navigator.userAgent : null,
-    });
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true, error: "Supabase is not configured." });
+    }
+
+    return fetch(config.url + "/rest/v1/support_feedback", {
+      method: "POST",
+      headers: {
+        apikey: config.anonKey,
+        Authorization: "Bearer " + config.anonKey,
+        "Content-Type": "application/json",
+        Prefer: "return=representation",
+      },
+      body: JSON.stringify({
+        page_path: input.pagePath || window.location.pathname,
+        problem_slug: input.problemSlug || null,
+        feedback_type: input.feedbackType || null,
+        rating: Number.isFinite(input.rating) ? input.rating : null,
+        message: input.message || null,
+        user_agent: window.navigator ? window.navigator.userAgent : null,
+      }),
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return [];
+        }).then(function (body) {
+          var rows = Array.isArray(body) ? body : [];
+          var errorMessage = !response.ok
+            ? (body && (body.message || body.error_description || body.error || body.hint))
+            : null;
+          return {
+            ok: response.ok && rows.length > 0,
+            status: response.status,
+            data: rows,
+            error: errorMessage || null,
+          };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Feedback request failed." };
+      });
   }
 
-  function readFeedbackRows(params) {
+  function readFeedbackPublicCounts(pagePath) {
     var config = getConfig();
-    var session = readStoredSession();
-    var query = buildQuery(
-      Object.assign(
-        {
-          select: "page_path,feedback_type,created_at",
-          feedback_type: "in.(helpful,not_helpful)",
-          order: "created_at.desc",
-          limit: 1000,
-        },
-        params || {},
-      ),
-    );
+    var normalizedPath = String(pagePath || "").trim();
 
     if (!config.url || !config.anonKey) {
       return Promise.resolve({ ok: false, skipped: true, data: [] });
     }
 
-    return fetch(config.url + "/rest/v1/support_feedback?" + query, {
+    if (!normalizedPath) {
+      return Promise.resolve({ ok: false, error: "pagePath is required.", data: [] });
+    }
+
+    var query = buildQuery({
+      select: "feedback_type,created_at",
+      page_path: "eq." + normalizedPath,
+      feedback_type: "in.(helpful,not_helpful)",
+      order: "created_at.desc",
+      limit: 2000,
+    });
+
+    return fetch(config.url + "/rest/v1/support_feedback_public_counts?" + query, {
       method: "GET",
       headers: {
         apikey: config.anonKey,
-        Authorization:
-          session && session.access_token
-            ? "Bearer " + session.access_token
-            : "Bearer " + config.anonKey,
+        Authorization: "Bearer " + config.anonKey,
         "Content-Type": "application/json",
       },
     })
@@ -343,12 +374,83 @@
               ok: response.ok,
               status: response.status,
               data: Array.isArray(body) ? body : [],
+              error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Count query failed.",
             };
           });
       })
       .catch(function () {
-        return { ok: false, data: [] };
+        return { ok: false, data: [], error: "Count query failed." };
       });
+  }
+
+  function readFeedbackPublicCountsLegacy(pagePath) {
+    var config = getConfig();
+    var normalizedPath = String(pagePath || "").trim();
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true, data: [] });
+    }
+
+    if (!normalizedPath) {
+      return Promise.resolve({ ok: false, error: "pagePath is required.", data: [] });
+    }
+
+    var query = buildQuery({
+      select: "feedback_type,created_at",
+      page_path: "eq." + normalizedPath,
+      feedback_type: "in.(helpful,not_helpful)",
+      order: "created_at.desc",
+      limit: 2000,
+    });
+
+    return fetch(config.url + "/rest/v1/support_feedback?" + query, {
+      method: "GET",
+      headers: {
+        apikey: config.anonKey,
+        Authorization: "Bearer " + config.anonKey,
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (response) {
+        return response
+          .json()
+          .catch(function () {
+            return [];
+          })
+          .then(function (body) {
+            return {
+              ok: response.ok,
+              status: response.status,
+              data: Array.isArray(body) ? body : [],
+              error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Legacy count query failed.",
+            };
+          });
+      })
+      .catch(function () {
+        return { ok: false, data: [], error: "Legacy count query failed." };
+      });
+  }
+
+  function readFeedbackRows(params) {
+    var session = readStoredSession();
+    if (!session || !session.access_token) {
+      return Promise.resolve({
+        ok: false,
+        status: 401,
+        error: "Sign in before reading feedback admin data.",
+        data: [],
+      });
+    }
+
+    return readTable("support_feedback", Object.assign(
+      {
+        select: "page_path,feedback_type,created_at",
+        feedback_type: "in.(helpful,not_helpful)",
+        order: "created_at.desc",
+        limit: 1000,
+      },
+      params || {},
+    ));
   }
 
   function fetchFeedbackCounts(pagePath) {
@@ -365,9 +467,11 @@
       });
     }
 
-    return readFeedbackRows({
-      page_path: "eq." + normalizedPath,
-      limit: 2000,
+    return readFeedbackPublicCounts(normalizedPath).then(function (result) {
+      if (result && !result.ok && result.status === 404) {
+        return readFeedbackPublicCountsLegacy(normalizedPath);
+      }
+      return result;
     }).then(function (result) {
       var helpful = 0;
       var notHelpful = 0;
@@ -377,6 +481,7 @@
         return {
           ok: false,
           status: result ? result.status : null,
+          error: result ? result.error : "Count query failed.",
           helpful: null,
           notHelpful: null,
           total: null,
@@ -422,6 +527,7 @@
         return {
           ok: false,
           status: result ? result.status : null,
+          error: result ? result.error : "Feedback summary query failed.",
           data: [],
         };
       }
