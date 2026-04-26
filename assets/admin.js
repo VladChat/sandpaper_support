@@ -143,6 +143,30 @@
     });
   }
 
+  function renderFeedbackSummary(result) {
+    renderTable("[data-feedback-summary-body]", result, 5, function (row) {
+      return (
+        "<tr>" +
+        "<td>" +
+        escapeHtml(row.page_path || "") +
+        "</td>" +
+        "<td>" +
+        escapeHtml(row.helpful_count || 0) +
+        "</td>" +
+        "<td>" +
+        escapeHtml(row.not_helpful_count || 0) +
+        "</td>" +
+        "<td>" +
+        escapeHtml(row.total_count || 0) +
+        "</td>" +
+        "<td>" +
+        escapeHtml(formatDate(row.latest_feedback_at || "")) +
+        "</td>" +
+        "</tr>"
+      );
+    });
+  }
+
   function renderDrafts(result) {
     draftRowsById = {};
     getRows(result).forEach(function (row) {
@@ -489,6 +513,7 @@
       api.fetchFeedback({ limit: 1000 }),
       api.fetchFeedback({ feedback_type: "eq.not_helpful", limit: 1000 }),
       api.fetchDraftSolutionCards({ limit: 1000 }),
+      api.fetchFeedbackSummary({ limit: 5000 }),
     ]).then(function (results) {
       renderMetrics(results);
       renderSearchLogs(results[0]);
@@ -496,6 +521,7 @@
       renderFeedback("[data-feedback-body]", results[2]);
       renderFeedback("[data-not-helpful-feedback-body]", results[3]);
       renderDrafts(results[4]);
+      renderFeedbackSummary(results[5]);
 
       var blocked = !isAdmin || results.some(function (result) {
         return !result || !result.ok;

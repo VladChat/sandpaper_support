@@ -302,6 +302,172 @@
     });
   }
 
+  function readFeedbackRows(params) {
+    var config = getConfig();
+    var session = readStoredSession();
+    var query = buildQuery(
+      Object.assign(
+        {
+          select: "page_path,feedback_type,created_at",
+          feedback_type: "in.(helpful,not_helpful)",
+          order: "created_at.desc",
+          limit: 1000,
+        },
+        params || {},
+      ),
+    );
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true, data: [] });
+    }
+
+    return fetch(config.url + "/rest/v1/support_feedback?" + query, {
+      method: "GET",
+      headers: {
+        apikey: config.anonKey,
+        Authorization:
+          session && session.access_token
+            ? "Bearer " + session.access_token
+            : "Bearer " + config.anonKey,
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (response) {
+        return response
+          .json()
+          .catch(function () {
+            return [];
+          })
+          .then(function (body) {
+            return {
+              ok: response.ok,
+              status: response.status,
+              data: Array.isArray(body) ? body : [],
+            };
+          });
+      })
+      .catch(function () {
+        return { ok: false, data: [] };
+      });
+  }
+
+  function fetchFeedbackCounts(pagePath) {
+    var normalizedPath = String(pagePath || "").trim();
+
+    if (!normalizedPath) {
+      return Promise.resolve({
+        ok: false,
+        error: "pagePath is required.",
+        helpful: null,
+        notHelpful: null,
+        total: null,
+        latestAt: null,
+      });
+    }
+
+    return readFeedbackRows({
+      page_path: "eq." + normalizedPath,
+      limit: 2000,
+    }).then(function (result) {
+      var helpful = 0;
+      var notHelpful = 0;
+      var latestAt = null;
+
+      if (!result || !result.ok) {
+        return {
+          ok: false,
+          status: result ? result.status : null,
+          helpful: null,
+          notHelpful: null,
+          total: null,
+          latestAt: null,
+        };
+      }
+
+      result.data.forEach(function (row) {
+        if (row.feedback_type === "helpful") {
+          helpful += 1;
+        } else if (row.feedback_type === "not_helpful") {
+          notHelpful += 1;
+        }
+
+        if (!latestAt && row.created_at) {
+          latestAt = row.created_at;
+        }
+      });
+
+      return {
+        ok: true,
+        status: result.status,
+        helpful: helpful,
+        notHelpful: notHelpful,
+        total: helpful + notHelpful,
+        latestAt: latestAt,
+      };
+    });
+  }
+
+  function fetchFeedbackSummary(params) {
+    return readFeedbackRows(
+      Object.assign(
+        {
+          limit: 5000,
+        },
+        params || {},
+      ),
+    ).then(function (result) {
+      var byPage = {};
+
+      if (!result || !result.ok) {
+        return {
+          ok: false,
+          status: result ? result.status : null,
+          data: [],
+        };
+      }
+
+      result.data.forEach(function (row) {
+        var pagePath = row.page_path || "(unknown)";
+        if (!byPage[pagePath]) {
+          byPage[pagePath] = {
+            page_path: pagePath,
+            helpful_count: 0,
+            not_helpful_count: 0,
+            total_count: 0,
+            latest_feedback_at: null,
+          };
+        }
+
+        if (row.feedback_type === "helpful") {
+          byPage[pagePath].helpful_count += 1;
+        } else if (row.feedback_type === "not_helpful") {
+          byPage[pagePath].not_helpful_count += 1;
+        }
+
+        byPage[pagePath].total_count += 1;
+
+        if (!byPage[pagePath].latest_feedback_at && row.created_at) {
+          byPage[pagePath].latest_feedback_at = row.created_at;
+        }
+      });
+
+      return {
+        ok: true,
+        status: result.status,
+        data: Object.keys(byPage)
+          .map(function (key) {
+            return byPage[key];
+          })
+          .sort(function (a, b) {
+            if (b.total_count !== a.total_count) {
+              return b.total_count - a.total_count;
+            }
+            return a.page_path.localeCompare(b.page_path);
+          }),
+      };
+    });
+  }
+
   function askSupportAssistant(input) {
     input = input || {};
     var config = getConfig();
@@ -472,6 +638,8 @@
     getSession: getSession,
     fetchSearchLogs: fetchSearchLogs,
     fetchFeedback: fetchFeedback,
+    fetchFeedbackCounts: fetchFeedbackCounts,
+    fetchFeedbackSummary: fetchFeedbackSummary,
     fetchDraftSolutionCards: fetchDraftSolutionCards,
     createDraftSolutionCard: createDraftSolutionCard,
     updateDraftSolutionCardStatus: updateDraftSolutionCardStatus,
