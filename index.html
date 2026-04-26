@@ -13,6 +13,24 @@
 <meta name="theme-color" content="#0B0C0E">
 
 <link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=support-home-final-20260426">
+<style>
+body.support-home .support-home-main {
+  align-items: flex-start;
+  padding: clamp(96px, 18vh, 150px) 24px 48px;
+}
+
+@media (max-width: 860px) {
+  body.support-home .support-home-main {
+    padding: 72px 20px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.support-home .support-home-main {
+    padding: 56px 16px 32px;
+  }
+}
+</style>
 </head>
 <body class="support-home">
 <header class="site-header">
@@ -32,7 +50,7 @@
             id="support-search"
             class="support-search-input"
             data-support-search
-            placeholder="Search sandpaper problems, surfaces, or grits"
+            placeholder="Example: sandpaper clogs too fast"
           >
           <button class="support-search-button" type="button" data-support-search-submit>Search</button>
         </div>
