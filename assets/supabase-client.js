@@ -297,64 +297,44 @@
       return Promise.resolve({ ok: false, skipped: true, error: "Supabase is not configured." });
     }
 
-    function performInsert(preferHeader) {
-      return fetch(config.url + "/rest/v1/support_feedback", {
-        method: "POST",
-        headers: {
-          apikey: config.anonKey,
-          Authorization: "Bearer " + config.anonKey,
-          "Content-Type": "application/json",
-          Prefer: preferHeader,
-        },
-        body: JSON.stringify({
-          page_path: input.pagePath || window.location.pathname,
-          problem_slug: input.problemSlug || null,
-          feedback_type: input.feedbackType || null,
-          rating: Number.isFinite(input.rating) ? input.rating : null,
-          message: input.message || null,
-          user_agent: window.navigator ? window.navigator.userAgent : null,
-        }),
-      }).then(function (response) {
-        return response.json().catch(function () {
-          return [];
-        }).then(function (body) {
-          var rows = Array.isArray(body) ? body : [];
-          var errorMessage = !response.ok
-            ? (body && (body.message || body.error_description || body.error || body.hint))
-            : null;
-          return {
-            ok: response.ok && (preferHeader !== "return=representation" || rows.length > 0),
-            status: response.status,
-            data: rows,
-            error: errorMessage || null,
-          };
-        });
-      });
-    }
-
-    return performInsert("return=representation").then(function (result) {
-      var needsMinimalFallback =
-        result &&
-        !result.ok &&
-        (result.status === 401 || result.status === 403) &&
-        /permission denied/i.test(String(result.error || ""));
-
-      if (!needsMinimalFallback) {
-        return result;
-      }
-
-      return performInsert("return=minimal").then(function (fallback) {
-        if (fallback && fallback.ok) {
+    return fetch(config.url + "/rest/v1/support_feedback", {
+      method: "POST",
+      headers: {
+        apikey: config.anonKey,
+        Authorization: "Bearer " + config.anonKey,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify({
+        page_path: input.pagePath || window.location.pathname,
+        problem_slug: input.problemSlug || null,
+        feedback_type: input.feedbackType || null,
+        rating: Number.isFinite(input.rating) ? input.rating : null,
+        message: input.message || null,
+        user_agent: window.navigator ? window.navigator.userAgent : null,
+      }),
+    })
+      .then(function (response) {
+        if (response.ok) {
           return {
             ok: true,
-            status: fallback.status,
+            status: response.status,
             data: [],
             error: null,
           };
         }
-        return fallback;
-      });
-    })
+
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          return {
+            ok: false,
+            status: response.status,
+            data: [],
+            error: (body && (body.message || body.error_description || body.error || body.hint)) || "Feedback request failed.",
+          };
+        });
+      })
       .catch(function () {
         return { ok: false, error: "Feedback request failed." };
       });
