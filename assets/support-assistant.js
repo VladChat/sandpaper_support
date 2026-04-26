@@ -271,221 +271,14 @@
       });
 
       function findSearchMatches(query, limit) {
-        const terms = toTerms(query);
         const loweredQuery = clean(query).trim();
-        const shortQuery = loweredQuery.length <= 4;
-        const vagueTerms = {
-          help: true,
-          issue: true,
-          problem: true,
-          sanding: true,
-          sandpaper: true,
-          sand: true,
-          paper: true,
-          guide: true,
-          use: true,
-        };
-        const meaningfulTerms = terms.filter(function (term) {
-          return term.length > 2 && !vagueTerms[term];
-        });
-
         if (!loweredQuery || loweredQuery.length < 3) {
           return [];
         }
-
-        return searchEntries
-          .map(function (entry) {
-            const title = clean(entry.title || "");
-            const description = clean(entry.description || "");
-            const aliases = normalizeList(entry.aliases);
-            const customerPhrases = normalizeList(entry.customer_phrases);
-            const surfaces = normalizeList(entry.surface);
-            const grits = normalizeList(entry.grits);
-            const methods = normalizeList(entry.method);
-
-            let score = 0;
-            let matchedTerms = 0;
-            let meaningfulTermMatches = 0;
-            let hasStrongSignal = false;
-            const exactPhraseMatch =
-              title.indexOf(loweredQuery) !== -1 ||
-              customerPhrases.some(function (phrase) {
-                return phrase.indexOf(loweredQuery) !== -1;
-              }) ||
-              aliases.some(function (alias) {
-                return alias.indexOf(loweredQuery) !== -1;
-              });
-
-            if (shortQuery) {
-              if (phraseStartsWithQuery([title], loweredQuery)) {
-                score += 55;
-                hasStrongSignal = true;
-              }
-              if (phraseStartsWithQuery(aliases, loweredQuery)) {
-                score += 50;
-                hasStrongSignal = true;
-              }
-              if (phraseStartsWithQuery(customerPhrases, loweredQuery)) {
-                score += 50;
-                hasStrongSignal = true;
-              }
-              if (grits.indexOf(loweredQuery) !== -1) {
-                score += 48;
-                hasStrongSignal = true;
-              }
-
-              if (!hasStrongSignal) {
-                score = 0;
-              }
-            } else {
-              if (title.indexOf(loweredQuery) !== -1) {
-                score += 120;
-                hasStrongSignal = true;
-              }
-              if (customerPhrases.some(function (phrase) {
-                return phrase.indexOf(loweredQuery) !== -1;
-              })) {
-                score += 115;
-                hasStrongSignal = true;
-              }
-              if (aliases.some(function (alias) {
-                return alias.indexOf(loweredQuery) !== -1;
-              })) {
-                score += 108;
-                hasStrongSignal = true;
-              }
-
-              if (phraseStartsWithQuery([title], loweredQuery)) {
-                score += 70;
-                hasStrongSignal = true;
-              }
-              if (phraseStartsWithQuery(customerPhrases, loweredQuery)) {
-                score += 65;
-                hasStrongSignal = true;
-              }
-              if (phraseStartsWithQuery(aliases, loweredQuery)) {
-                score += 58;
-                hasStrongSignal = true;
-              }
-
-              terms.forEach(function (term) {
-                let termMatched = false;
-                let strongMatch = false;
-                let semanticMatch = false;
-
-                if (title.indexOf(term) !== -1) {
-                  score += 16;
-                  termMatched = true;
-                  strongMatch = true;
-                  semanticMatch = true;
-                } else if (customerPhrases.some(function (phrase) {
-                  return phrase.indexOf(term) !== -1;
-                })) {
-                  score += 14;
-                  termMatched = true;
-                  strongMatch = true;
-                  semanticMatch = true;
-                } else if (aliases.some(function (alias) {
-                  return alias.indexOf(term) !== -1;
-                })) {
-                  score += 12;
-                  termMatched = true;
-                  strongMatch = true;
-                  semanticMatch = true;
-                } else if (
-                  grits.indexOf(term) !== -1 ||
-                  surfaces.some(function (surface) {
-                    return surface.indexOf(term) !== -1;
-                  }) ||
-                  methods.some(function (method) {
-                    return method.indexOf(term) !== -1;
-                  })
-                ) {
-                  score += 8;
-                  termMatched = true;
-                  semanticMatch = true;
-                } else if (description.indexOf(term) !== -1) {
-                  score += 3;
-                  termMatched = true;
-                }
-
-                if (termMatched) {
-                  matchedTerms += 1;
-                  if (!vagueTerms[term] && (strongMatch || semanticMatch)) {
-                    meaningfulTermMatches += 1;
-                  }
-                }
-              });
-
-              if (terms.length > 1) {
-                score += matchedTerms * 6;
-                if (matchedTerms === terms.length) {
-                  score += 20;
-                }
-                if (matchedTerms < 2) {
-                  score -= 25;
-                }
-              } else if (terms.length === 1 && vagueTerms[terms[0]] && !hasStrongSignal) {
-                score -= 35;
-              }
-
-              if (matchedTerms === 1 && meaningfulTermMatches === 0 && !hasStrongSignal) {
-                score -= 25;
-              }
-            }
-
-            if (entry.type === "exact_scenario") {
-              score += 12;
-            }
-
-            return {
-              score: score,
-              entry: entry,
-              exactPhraseMatch: exactPhraseMatch,
-              meaningfulTermMatches: meaningfulTermMatches,
-            };
-          })
-          .filter(function (item) {
-            if (item.score <= 0) {
-              return false;
-            }
-
-            if (terms.length > 1) {
-              if (item.exactPhraseMatch) {
-                return true;
-              }
-
-              if (item.meaningfulTermMatches >= 2) {
-                return true;
-              }
-
-              if (meaningfulTerms.length < 2) {
-                return false;
-              }
-
-              return false;
-            }
-
-            return true;
-          })
-          .sort(function (a, b) {
-            if (b.score !== a.score) {
-              return b.score - a.score;
-            }
-
-            if (a.entry.type === "exact_scenario" && b.entry.type !== "exact_scenario") {
-              return -1;
-            }
-            if (b.entry.type === "exact_scenario" && a.entry.type !== "exact_scenario") {
-              return 1;
-            }
-
-            return 0;
-          })
-          .slice(0, limit || 7)
-          .map(function (item) {
-            return item.entry;
-          });
+        if (window.eQualleSearchCore && typeof window.eQualleSearchCore.searchEntries === "function") {
+          return window.eQualleSearchCore.searchEntries(searchEntries, loweredQuery, limit || 5);
+        }
+        return [];
       }
 
       function getPageCards(pathname, title) {
@@ -1175,8 +968,7 @@
       } else if (!matches.length) {
         const empty = document.createElement("div");
         empty.className = "result-link";
-        empty.textContent =
-          "No exact match yet. Press Enter to ask the assistant, or keep typing.";
+        empty.textContent = "No exact support page found. Press Enter to ask support.";
         results.appendChild(empty);
       } else {
         matches.forEach(function (match) {
@@ -1255,27 +1047,12 @@
       });
     }
 
-    const scheduleAutoAsk = debounce(function (query) {
-      const autoQueries = getStoredJson(STORAGE_KEYS.autoSubmittedQueries, []);
-      if (autoQueries.indexOf(query) !== -1) {
-        return;
-      }
-
-      autoQueries.push(query);
-      while (autoQueries.length > 40) {
-        autoQueries.shift();
-      }
-      setStoredJson(STORAGE_KEYS.autoSubmittedQueries, autoQueries);
-
-      sendAssistantQuery(query, { auto: true });
-    }, 800);
-
     function render(query) {
       const q = clean(query).trim();
-      const matches = q && q.length >= 3 ? knowledge.findSearchMatches(q, 7) : [];
+      const matches = q && q.length >= 3 ? knowledge.findSearchMatches(q, 5) : [];
 
       setStoredText(STORAGE_KEYS.lastQuery, q);
-      setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 7).map(compactSearchEntry));
+      setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
 
       pushSessionArray(
         STORAGE_KEYS.searchTrail,
@@ -1295,10 +1072,6 @@
       logRenderedSearch(q, matches.length);
 
       renderOutput(q, matches);
-
-      if (!matches.length && q.length >= 4) {
-        scheduleAutoAsk(q);
-      }
     }
 
     input.addEventListener("input", function (event) {
@@ -1313,6 +1086,34 @@
       event.preventDefault();
       const message = input.value.trim();
       if (!message) {
+        return;
+      }
+      const matches = knowledge.findSearchMatches(message, 5);
+      const topMatch = matches.length ? matches[0] : null;
+      const topHref = topMatch ? normalizePath(basePath, topMatch.target_url || topMatch.targetUrl || "") : "";
+      const isStrongTopMatch = Boolean(
+        topMatch &&
+          (topMatch.search_strong ||
+            (Number.isFinite(topMatch.search_score) && topMatch.search_score >= 90)),
+      );
+
+      setStoredText(STORAGE_KEYS.lastQuery, clean(message).trim());
+      setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
+      renderOutput(message, matches);
+
+      if (isStrongTopMatch && topHref) {
+        try {
+          const parsed = new URL(topHref, window.location.origin);
+          if (window.eQualleSupabase) {
+            window.eQualleSupabase.logSearch(message, matches.length, parsed.pathname);
+          }
+          recordClickedPage(parsed.pathname, topMatch.title || "");
+        } catch (_error) {
+          if (window.eQualleSupabase) {
+            window.eQualleSupabase.logSearch(message, matches.length, null);
+          }
+        }
+        window.location.href = topHref;
         return;
       }
 

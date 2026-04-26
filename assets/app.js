@@ -190,32 +190,42 @@ function loadSupportAssistantAssets() {
     return Promise.resolve();
   }
 
-  const scriptId = "equalle-support-assistant-js";
-  const existing = document.getElementById(scriptId);
+  function loadScript(scriptId, src) {
+    const existing = document.getElementById(scriptId);
+    if (existing) {
+      return new Promise(function (resolve) {
+        existing.addEventListener("load", function () {
+          resolve();
+        });
+        existing.addEventListener("error", function () {
+          resolve();
+        });
+      });
+    }
 
-  if (existing) {
     return new Promise(function (resolve) {
-      existing.addEventListener("load", function () {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = src;
+      script.defer = true;
+      script.onload = function () {
         resolve();
-      });
-      existing.addEventListener("error", function () {
+      };
+      script.onerror = function () {
         resolve();
-      });
+      };
+      document.body.appendChild(script);
     });
   }
 
-  return new Promise(function (resolve) {
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = "/sandpaper_support/assets/support-assistant.js?v=remove-dead-assistant-20260426";
-    script.defer = true;
-    script.onload = function () {
-      resolve();
-    };
-    script.onerror = function () {
-      resolve();
-    };
-    document.body.appendChild(script);
+  return loadScript(
+    "equalle-search-core-js",
+    "/sandpaper_support/assets/search-core.js?v=search-intent-20260426",
+  ).then(function () {
+    return loadScript(
+      "equalle-support-assistant-js",
+      "/sandpaper_support/assets/support-assistant.js?v=search-intent-20260426",
+    );
   });
 }
 

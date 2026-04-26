@@ -607,6 +607,46 @@
     "target_url": "/problems/wet-sanding-leaves-haze/"
   },
   {
+    "id": "search-products",
+    "type": "product_support",
+    "title": "Products",
+    "description": "Find eQualle sandpaper sheets, assorted kits, and product support.",
+    "customer_phrases": [
+      "buy sandpaper",
+      "where to buy sandpaper",
+      "where to buy sandpaper near me",
+      "buy grit sandpaper",
+      "sandpaper products",
+      "order sandpaper",
+      "buy eQualle sandpaper"
+    ],
+    "aliases": [
+      "shop sandpaper",
+      "purchase sandpaper",
+      "sandpaper price",
+      "sandpaper pack",
+      "sandpaper sheets"
+    ],
+    "surface": [
+      "wood",
+      "paint",
+      "metal",
+      "plastic"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "220",
+      "500",
+      "3000"
+    ],
+    "method": [
+      "dry",
+      "wet"
+    ],
+    "target_url": "/products/"
+  },
+  {
     "id": "search-80-3000-kit",
     "type": "product_support",
     "title": "eQualle Assorted Sandpaper Kit 80-3000",
@@ -616,13 +656,24 @@
       "80 3000 kit",
       "assorted 80 3000 sandpaper kit",
       "80 3000 sandpaper kit",
-      "eQualle assorted sandpaper kit"
+      "eQualle assorted sandpaper kit",
+      "buy 3000 grit sandpaper",
+      "where to buy 3000 grit sandpaper",
+      "buy assorted sandpaper kit",
+      "buy 80 3000 sandpaper kit",
+      "order 80 3000 sandpaper kit"
     ],
     "aliases": [
       "80-3000 kit",
       "grit assortment",
       "sandpaper kit guide",
-      "assorted sandpaper grits"
+      "assorted sandpaper grits",
+      "sandpaper kit purchase",
+      "assorted grit pack",
+      "3000 grit sheets",
+      "500 grit sheets",
+      "grit 500 where to buy",
+      "where to buy 500 grit"
     ],
     "surface": [
       "wood",
