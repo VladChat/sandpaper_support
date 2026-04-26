@@ -224,7 +224,7 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=search-intent-2-20260426",
+      "/sandpaper_support/assets/support-assistant.js?v=search-action-single-answer-20260426",
     );
   });
 }

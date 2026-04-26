@@ -223,6 +223,24 @@ function fallbackMatchedPages(context: ChatContext): Array<{ title: string; path
   return pages.slice(0, 4);
 }
 
+function isOrderTrackingQuery(message: string): boolean {
+  const text = message.toLowerCase();
+  const phrases = [
+    "where is my order",
+    "track my order",
+    "tracking number",
+    "order status",
+    "shipping status",
+    "my shipment",
+    "delivery status",
+    "when will it arrive",
+  ];
+  if (phrases.some((phrase) => text.includes(phrase))) {
+    return true;
+  }
+  return /\bpackage\b/.test(text);
+}
+
 function parseAssistantOutput(rawText: string): AssistantOutput | null {
   try {
     const parsed = JSON.parse(rawText) as AssistantOutput;
@@ -313,6 +331,10 @@ async function callOpenAI(
     "Do not recommend unsafe or unrelated uses.",
     "Prefer linking to approved pages over long free-form text.",
     "Ask only one clarifying question when truly needed.",
+    "One user message must produce one assistant answer.",
+    "Do not return a full separate second answer as clarifyingQuestion.",
+    "If clarification is needed, keep reply short and include the question naturally.",
+    "For order tracking, shipping status, delivery status, package location, or retailer-specific purchase questions, reply exactly: I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper. Set needsClarification=false, clarifyingQuestion=\"\", matchedPages=[].",
     "Use this reply template when possible: Likely issue / Why it happens / Recommended next step / Suggested grit sequence / Wet or dry / Avoid / Related guides.",
   ].join("\n");
 
@@ -327,7 +349,7 @@ async function callOpenAI(
         matchedPages: "array of up to 5 items with {title, path}",
       },
       guidance:
-        "When context is enough, answer directly and set needsClarification=false with empty clarifyingQuestion.",
+        "When context is enough, answer directly and set needsClarification=false with empty clarifyingQuestion. Return one unified assistant answer per user message.",
     },
   };
 
@@ -449,6 +471,18 @@ Deno.serve(async (request: Request) => {
 
   const context = sanitizeContext(parsedRequest.context);
   const apiKey = Deno.env.get("OPENAI_API_KEY");
+
+  if (isOrderTrackingQuery(parsedRequest.userMessage)) {
+    return jsonResponse({
+      reply:
+        "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.",
+      needsClarification: false,
+      clarifyingQuestion: "",
+      matchedPages: [],
+      draftCreated: false,
+      model: MODEL_NAME,
+    });
+  }
 
   if (!apiKey) {
     return jsonResponse(

@@ -14,6 +14,27 @@
     return String(value || "").toLowerCase();
   }
 
+  function isOrderTrackingQuery(message) {
+    const text = clean(message).trim();
+    if (!text) {
+      return false;
+    }
+    const phrases = [
+      "where is my order",
+      "track my order",
+      "tracking number",
+      "order status",
+      "shipping status",
+      "my shipment",
+      "delivery status",
+      "when will it arrive",
+    ];
+    if (phrases.some(function (phrase) { return text.indexOf(phrase) !== -1; })) {
+      return true;
+    }
+    return /\bpackage\b/.test(text);
+  }
+
   function debounce(callback, wait) {
     let timeoutId;
     return function () {
@@ -826,6 +847,22 @@
         "Checking approved support guides...",
       );
 
+      if (isOrderTrackingQuery(message)) {
+        pending.textContent =
+          "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.";
+        pushSessionArray(
+          STORAGE_KEYS.assistantMessages,
+          {
+            role: "assistant",
+            text: pending.textContent,
+            at: new Date().toISOString(),
+            source: source,
+          },
+          30,
+        );
+        return;
+      }
+
       requester(message, {
         source: source,
         mode: meta && meta.auto ? "auto" : "manual",
@@ -847,7 +884,16 @@
           return;
         }
 
-        pending.textContent = result.reply || "I need one more detail to guide you.";
+        const combinedReply =
+          result.needsClarification && result.clarifyingQuestion
+            ? (result.reply &&
+                clean(result.reply) !== clean(result.clarifyingQuestion) &&
+                result.reply.trim().length > 0
+                ? result.reply + "\n\n" + result.clarifyingQuestion
+                : result.clarifyingQuestion)
+            : (result.reply || "I need one more detail to guide you.");
+
+        pending.textContent = combinedReply;
 
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
@@ -859,10 +905,6 @@
           },
           30,
         );
-
-        if (result.needsClarification && result.clarifyingQuestion) {
-          appendMessage(shell.messages, "assistant", result.clarifyingQuestion);
-        }
 
         appendLinks(shell.messages, result.matchedPages, basePath, function (page) {
           recordClickedPage(page.path, page.title);
@@ -888,6 +930,7 @@
   function setupHomepageSearch(basePath, knowledge) {
     const input = document.querySelector("[data-support-search]");
     const results = document.querySelector("[data-search-results]");
+    const submitButton = document.querySelector("[data-support-search-submit]");
 
     if (!input || !results) {
       return;
@@ -895,6 +938,7 @@
 
     const requester = createAssistantRequester(basePath, knowledge);
     const homepageConversation = [];
+    let assistantPending = false;
 
     const logRenderedSearch = debounce(function (query, resultCount) {
       if (window.eQualleSupabase) {
@@ -996,7 +1040,7 @@
 
     function sendAssistantQuery(userMessage, options) {
       const message = String(userMessage || "").trim();
-      if (!message) {
+      if (!message || assistantPending) {
         return;
       }
 
@@ -1010,6 +1054,23 @@
       const currentMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
       renderOutput(message, currentMatches);
 
+      if (isOrderTrackingQuery(message)) {
+        const pendingLocal = homepageConversation[homepageConversation.length - 1];
+        if (pendingLocal && pendingLocal.role === "assistant" && pendingLocal.pending) {
+          pendingLocal.pending = false;
+          pendingLocal.text =
+            "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.";
+          pendingLocal.links = [];
+          logAssistantMessage("assistant", pendingLocal.text);
+          renderOutput(message, currentMatches);
+        }
+        return;
+      }
+
+      assistantPending = true;
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
       requester(message, {
         source: "homepage-search",
         mode: isAuto ? "auto" : "manual",
@@ -1028,22 +1089,24 @@
           return;
         }
 
-        pending.pending = false;
-        pending.text = result.reply || "I need one more detail to guide you.";
-        pending.links = Array.isArray(result.matchedPages) ? result.matchedPages : [];
-        logAssistantMessage("assistant", pending.text);
-
-        if (result.needsClarification && result.clarifyingQuestion) {
-          addConversationEntry(
-            "assistant",
-            result.clarifyingQuestion,
-            [],
-            false,
-          );
-          logAssistantMessage("assistant", result.clarifyingQuestion);
-        }
+          pending.pending = false;
+          pending.text =
+            result.needsClarification && result.clarifyingQuestion
+              ? (result.reply &&
+                  clean(result.reply) !== clean(result.clarifyingQuestion) &&
+                  result.reply.trim().length > 0
+                  ? result.reply + "\n\n" + result.clarifyingQuestion
+                  : result.clarifyingQuestion)
+              : (result.reply || "I need one more detail to guide you.");
+          pending.links = Array.isArray(result.matchedPages) ? result.matchedPages : [];
+          logAssistantMessage("assistant", pending.text);
 
         renderOutput(message, currentMatches);
+      }).finally(function () {
+        assistantPending = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
       });
     }
 
@@ -1078,14 +1141,13 @@
       render(event.target.value);
     });
 
-    input.addEventListener("keydown", function (event) {
-      if (event.key !== "Enter") {
+    function runSearchAction() {
+      if (assistantPending) {
         return;
       }
-
-      event.preventDefault();
       const message = input.value.trim();
       if (!message) {
+        input.focus();
         return;
       }
       const matches = knowledge.findSearchMatches(message, 5);
@@ -1118,7 +1180,22 @@
       }
 
       sendAssistantQuery(message, { auto: false });
+    }
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter") {
+        return;
+      }
+      event.preventDefault();
+      runSearchAction();
     });
+
+    if (submitButton) {
+      submitButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        runSearchAction();
+      });
+    }
 
     const initial = getStoredText(STORAGE_KEYS.lastQuery, "");
     if (initial) {
