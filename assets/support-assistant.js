@@ -1070,11 +1070,7 @@
       });
     }
 
-    const initial = getStoredText(STORAGE_KEYS.lastQuery, "");
-    if (initial) {
-      input.value = initial;
-      render(initial);
-    }
+    input.value = "";
   }
 
   function setupAiAssistantPage(basePath, knowledge) {

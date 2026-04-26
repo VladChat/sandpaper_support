@@ -176,3 +176,166 @@ main,
     grid-template-columns: 1fr;
   }
 }
+
+/* Homepage minimal support search layout */
+body.support-home {
+  background: #ffffff;
+  color: #0b0c0e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.support-home .site-header {
+  flex-shrink: 0;
+}
+
+.support-home-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background: #ffffff;
+}
+
+.support-hero {
+  width: 100%;
+}
+
+.support-hero-content {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.support-hero-title {
+  margin: 0 0 14px;
+  font-size: clamp(2.125rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #0b0c0e;
+}
+
+.support-hero-subtitle {
+  margin: 0 0 28px;
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.support-search-shell {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.support-search-form {
+  width: 100%;
+  min-height: 56px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(11, 12, 14, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.support-search-form:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px rgba(124, 177, 217, 0.22);
+}
+
+.support-search-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #0b0c0e;
+  padding: 0 0 0 22px;
+}
+
+.support-search-input::placeholder {
+  color: #6b7280;
+}
+
+.support-search-button {
+  border: none;
+  border-radius: 999px;
+  height: 44px;
+  margin-right: 6px;
+  padding: 0 26px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--blue);
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.support-search-button:hover {
+  background: #5f9fcf;
+}
+
+.support-home .search-results {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.support-home .result-link {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.support-footer {
+  flex-shrink: 0;
+  padding: 18px 24px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  border-top: 1px solid #f3f4f6;
+  background: #ffffff;
+}
+
+.support-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+@media (max-width: 860px) {
+  .support-hero-title {
+    font-size: clamp(2.125rem, 9vw, 2.625rem);
+  }
+
+  .support-hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-home-main {
+    padding: 20px 16px;
+  }
+
+  .support-search-form {
+    border-radius: 24px;
+    padding: 8px;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .support-search-input {
+    min-height: 44px;
+    padding: 0 12px;
+  }
+
+  .support-search-button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
