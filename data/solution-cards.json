@@ -435,9 +435,9 @@
     ]
   },
   {
-    "id": "using-80-3000-kit",
+    "id": "using-60-3000-kit",
     "problem_slug": "not-sure-what-grit-to-use",
-    "title": "Using the 80-3000 assorted kit",
+    "title": "Using the 60-3000 assorted kit",
     "problem": "The kit has many grits and the right order is unclear.",
     "likely_cause": "Each grit range serves a different stage.",
     "recommended_grit": "Use 80-120 for removal, 180-400 for prep, 600-3000 for fine finishing and polishing prep.",

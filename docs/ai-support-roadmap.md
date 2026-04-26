@@ -119,7 +119,7 @@ Each surface page should connect users to:
 
 Create support pages for product groups:
 
-- assorted 80 to 3000 grit kit
+- assorted 60 to 3000 grit kit
 - single-grit 9 x 11 sheets
 - coarse grit sheets
 - medium grit sheets

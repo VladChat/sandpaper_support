@@ -425,7 +425,7 @@ eQualle sandpaper sheets
 silicon carbide abrasive
 wet or dry use
 grits 60 through 3000
-assorted kit: 80 through 3000 grit
+assorted kit: 60 through 3000 grit
 ```
 
 Do not invent unsupported product claims.

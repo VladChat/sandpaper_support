@@ -125,18 +125,15 @@ const cases = [];
 {
   const results = runSearch("grit 500 where to buy near me");
   const list = titles(results);
-  const valid = list.some(function (title) {
-    return (
-      title === "Products" ||
-      title === "eQualle Assorted Sandpaper Kit 80-3000" ||
-      title === "How to use 80 to 3000 grit sandpaper" ||
-      title === "Which sheet from the kit should I use"
-    );
-  });
-  assert(valid, 'query "grit 500 where to buy near me" returns product/buy results', list);
+  assert(
+    list.length === 1 && list[0] === "eQualle Assorted Sandpaper Kit 60-3000",
+    'query "grit 500 where to buy near me" returns exactly eQualle Assorted Sandpaper Kit 60-3000',
+    list,
+  );
   assertNoForbidden(
     results,
     [
+      "Products",
       "60 grit is too aggressive",
       "80 grit removes too much",
       "100 grit leaves marks before 180",
@@ -152,14 +149,17 @@ const cases = [];
 {
   const results = runSearch("where to buy 3000 grit");
   const list = titles(results);
-  const valid = list.some(function (title) {
-    return title === "Products" || title === "eQualle Assorted Sandpaper Kit 80-3000";
-  });
+  const valid = list.length === 1 && list[0] === "eQualle Assorted Sandpaper Kit 60-3000";
   const hasProblem = results.some(function (row) {
     const url = String(row.target_url || "").toLowerCase();
     return url.indexOf("/problems/") === 0 || url.indexOf("/solutions/") === 0;
   });
-  assert(valid && !hasProblem, 'query "where to buy 3000 grit" returns product results, not problem pages', list);
+  const hasProductsFallback = list.indexOf("Products") !== -1;
+  assert(
+    valid && !hasProblem && !hasProductsFallback,
+    'query "where to buy 3000 grit" returns exactly eQualle Assorted Sandpaper Kit 60-3000',
+    list,
+  );
   cases.push(["where to buy 3000 grit", list]);
 }
 
@@ -189,6 +189,51 @@ console.log("\nSearch outputs:");
 cases.forEach(function (item) {
   console.log("-", item[0], "=>", item[1].join(" | "));
 });
+
+if (process.exitCode && process.exitCode !== 0) {
+  process.exit(process.exitCode);
+}
+
+const invalidPatterns = [
+  ["eQualle Assorted Sandpaper Kit ", "80-3000"].join(""),
+  ["80-3000", " sandpaper kit"].join(""),
+  ["80", " through 3000 grit"].join(""),
+  ["Grid80", " True3000"].join(""),
+];
+const grepScope = [
+  "AGENTS.md",
+  "products/assorted-80-3000/index.html",
+  "solutions/using-80-3000-kit/index.html",
+  "data/search-index.json",
+  "data/product-map.json",
+  "src/data/product-map.json",
+  "data/grit-sequences.json",
+  "data/problem-tree.json",
+  "data/solution-cards.json",
+  "data/surface-map.json",
+  "tools/search-relevance-check.mjs",
+  "assets/search-core.js",
+  "products/index.html",
+  "tools/grit-sequence-builder/index.html",
+  "docs/taxonomy.md",
+  "docs/ai-support-roadmap.md",
+  "docs/supabase-implementation-plan.md",
+  "docs/user-experience-and-ai-design.md",
+  "supabase/functions/support-ai-chat/index.ts",
+];
+
+for (const rel of grepScope) {
+  const filePath = path.join(root, rel);
+  if (!fs.existsSync(filePath)) {
+    continue;
+  }
+  const text = fs.readFileSync(filePath, "utf-8");
+  for (const pattern of invalidPatterns) {
+    if (text.includes(pattern)) {
+      fail(`forbidden customer-facing string found in ${rel}: ${pattern}`);
+    }
+  }
+}
 
 if (process.exitCode && process.exitCode !== 0) {
   process.exit(process.exitCode);

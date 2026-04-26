@@ -185,7 +185,7 @@
       });
 
     const hasProductPhrase =
-      containsAnyPhrase(query, ["80 3000", "80-3000"]) ||
+      containsAnyPhrase(query, ["60 3000", "60-3000"]) ||
       terms.some(function (term) {
         return PRODUCT_TERMS.indexOf(term) !== -1;
       });
@@ -560,6 +560,21 @@
         const clusterCutoff = Math.max(35, top * 0.45);
         candidates = ranked.filter(function (row) {
           return row.score >= clusterCutoff;
+        });
+      }
+    }
+
+    if (intentContext.mainIntent === "buy_intent" || intentContext.mainIntent === "product_intent") {
+      const hasSpecificProduct = candidates.some(function (row) {
+        const targetUrl = clean(row.entry.target_url || row.entry.targetUrl || "");
+        return row.entry && targetUrl !== "/products/" && targetUrl.indexOf("/products/") === 0;
+      });
+      if (hasSpecificProduct) {
+        candidates = candidates.filter(function (row) {
+          const targetUrl = clean(row.entry.target_url || row.entry.targetUrl || "");
+          const normalizedTitle = clean(row.entry.title || "");
+          const isGenericProducts = targetUrl === "/products/" || normalizedTitle === "products";
+          return !isGenericProducts;
         });
       }
     }

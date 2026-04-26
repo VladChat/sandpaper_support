@@ -647,24 +647,24 @@
     "target_url": "/products/"
   },
   {
-    "id": "search-80-3000-kit",
+    "id": "search-60-3000-kit",
     "type": "product_support",
-    "title": "eQualle Assorted Sandpaper Kit 80-3000",
-    "description": "Support guide for the eQualle assorted 9 x 11 inch silicon carbide sandpaper sheets kit, 80 through 3000 grit, for wet or dry use.",
+    "title": "eQualle Assorted Sandpaper Kit 60-3000",
+    "description": "Support guide for the eQualle assorted 9 x 11 inch silicon carbide sandpaper sheets kit, 60 through 3000 grit, for wet or dry use.",
     "customer_phrases": [
-      "80-3000 sandpaper kit",
-      "80 3000 kit",
-      "assorted 80 3000 sandpaper kit",
-      "80 3000 sandpaper kit",
+      "60-3000 sandpaper kit",
+      "60 3000 kit",
+      "assorted 60 3000 sandpaper kit",
+      "60 3000 sandpaper kit",
       "eQualle assorted sandpaper kit",
       "buy 3000 grit sandpaper",
       "where to buy 3000 grit sandpaper",
       "buy assorted sandpaper kit",
-      "buy 80 3000 sandpaper kit",
-      "order 80 3000 sandpaper kit"
+      "buy 60 3000 sandpaper kit",
+      "order 60 3000 sandpaper kit"
     ],
     "aliases": [
-      "80-3000 kit",
+      "60-3000 kit",
       "grit assortment",
       "sandpaper kit guide",
       "assorted sandpaper grits",
@@ -685,6 +685,7 @@
       "drywall"
     ],
     "grits": [
+      "60",
       "80",
       "120",
       "150",
@@ -2781,15 +2782,15 @@
   {
     "id": "search-how-to-use-80-to-3000-grit-sandpaper",
     "type": "product_support",
-    "title": "How to use 80 to 3000 grit sandpaper",
+    "title": "How to use 60 to 3000 grit sandpaper",
     "description": "Choose lower grits for removal, middle grits for preparation, and 1000 through 3000 for wet sanding or polishing preparation.",
     "customer_phrases": [
-      "how to use 80 to 3000 grit sandpaper",
-      "how to use 80 3000 grit sandpaper",
-      "80 through 3000 grit order"
+      "how to use 60 to 3000 grit sandpaper",
+      "how to use 60 3000 grit sandpaper",
+      "60 through 3000 grit order"
     ],
     "aliases": [
-      "80 to 3000 sequence",
+      "60 to 3000 sequence",
       "sandpaper kit sequence",
       "grit order in kit"
     ],

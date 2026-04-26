@@ -135,7 +135,7 @@ Create one main Edge Function:
   "userMessage": "320 grit still leaves scratches",
   "context": {
     "currentPage": "/problems/scratches-too-deep/",
-    "product": "assorted-80-3000",
+    "product": "assorted-60-3000",
     "surface": "paint"
   }
 }

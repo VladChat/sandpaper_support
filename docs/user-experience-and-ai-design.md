@@ -113,7 +113,7 @@ Each product page should answer:
 - most common problems for this product
 - which support path to use first
 
-For the assorted 80-3000 grit kit, the page should focus on grit progression and choosing the correct starting grit.
+For the assorted 60-3000 grit kit, the page should focus on grit progression and choosing the correct starting grit.
 
 ## How It Works Internally
 
@@ -203,7 +203,7 @@ The system must be built from eQualle-specific product facts:
 - silicon carbide abrasive
 - wet or dry use
 - supported grits from coarse to ultra-fine
-- assorted kit coverage from 80 to 3000 grit
+- assorted kit coverage from 60 to 3000 grit
 - single-grit sheet packs
 - common surfaces: wood, metal, automotive paint, clear coat, plastic, drywall patch
 

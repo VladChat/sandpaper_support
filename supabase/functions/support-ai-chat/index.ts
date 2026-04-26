@@ -307,7 +307,7 @@ async function callOpenAI(
 
   const policyRules = [
     "Respond in English.",
-    "Brand facts allowed: eQualle sandpaper sheets, 9 x 11 inch, silicon carbide, wet or dry use, grits 60 through 3000, assorted kit 80 through 3000.",
+    "Brand facts allowed: eQualle sandpaper sheets, 9 x 11 inch, silicon carbide, wet or dry use, grits 60 through 3000, assorted kit 60 through 3000.",
     "Avoid unsupported marketing claims.",
     "Do not use words: premium, best, professional-grade, superior.",
     "Do not recommend unsafe or unrelated uses.",
