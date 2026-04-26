@@ -9,3 +9,18 @@
 .feedback-count{background:var(--soft);border:1px solid var(--line);border-radius:999px;display:inline-block;font-size:.82rem;font-weight:800;line-height:1;min-width:28px;padding:4px 8px;text-align:center}
 .feedback-count:empty{display:none}
 @media(max-width:860px){.feedback-actions button{min-width:unset;width:100%}}
+
+/* Responsive safety overrides */
+body{overflow-x:hidden}
+img,video,canvas,svg,table,pre,iframe{max-width:100%}
+.chat-shell{max-width:100%;width:100%}
+.chat-messages{min-height:120px}
+.answer-card,.card,.section{min-width:0}
+.answer-card,.card,.value,.section-intro,.chat-message{overflow-wrap:anywhere}
+
+@media(max-width:860px){
+  .nav{width:100%}
+  .nav a{padding:4px 0}
+  .answer-card{padding:18px}
+  .section{padding:30px 0}
+}

@@ -1339,22 +1339,7 @@
   }
 
   function setupSupportFollowup(basePath, knowledge) {
-    const shell = attachPageTopAssistant(basePath);
-    if (!shell) {
-      return;
-    }
-
-    const requester = createAssistantRequester(basePath, knowledge);
-    const chat = wireChat(shell, requester, basePath, {
-      source: "support-page-followup",
-    });
-
-    (shell.suggestionButtons || []).forEach(function (button) {
-      button.addEventListener("click", function () {
-        const question = button.textContent || "";
-        chat.ask(question, { auto: false });
-      });
-    });
+    return;
   }
 
   function init(options) {

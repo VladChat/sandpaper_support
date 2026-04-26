@@ -207,7 +207,7 @@ function loadSupportAssistantAssets() {
   return new Promise(function (resolve) {
     const script = document.createElement("script");
     script.id = scriptId;
-    script.src = "/sandpaper_support/assets/support-assistant.js";
+    script.src = "/sandpaper_support/assets/support-assistant.js?v=remove-dead-assistant-20260426";
     script.defer = true;
     script.onload = function () {
       resolve();
