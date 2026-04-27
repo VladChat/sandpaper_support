@@ -287,9 +287,60 @@ body.support-home {
   text-align: left;
 }
 
-.support-home .result-link {
+.result-link {
+  align-items: flex-start;
   border: 1px solid #e5e7eb;
   background: #ffffff;
+  display: flex;
+  gap: 10px;
+}
+
+.result-kind {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 58px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.result-kind-answer {
+  background: #e8f3fb;
+  color: #005f93;
+}
+
+.result-kind-guide {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.result-kind-tool {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.result-kind-product {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.result-text {
+  display: block;
+  min-width: 0;
+}
+
+.result-title {
+  font-weight: 700;
+}
+
+.result-description {
+  color: #374151;
 }
 
 .support-footer {
@@ -337,5 +388,17 @@ body.support-home {
   .support-search-button {
     width: 100%;
     margin-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .result-link {
+    gap: 8px;
+  }
+
+  .result-kind {
+    min-width: 52px;
+    height: 22px;
+    font-size: 11px;
   }
 }

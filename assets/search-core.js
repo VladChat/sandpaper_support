@@ -76,6 +76,30 @@
     abrasives: true,
   };
 
+  const LOW_VALUE_QUERY_TERMS = {
+    there: true,
+    this: true,
+    that: true,
+    these: true,
+    those: true,
+    small: true,
+    smaller: true,
+    size: true,
+    sizes: true,
+    get: true,
+    have: true,
+    has: true,
+    any: true,
+    some: true,
+    one: true,
+    ones: true,
+    item: true,
+    items: true,
+    i: true,
+    sheet: true,
+    sheets: true,
+  };
+
   const TYPO_NORMALIZATION = {
     snd: "sand",
     sanderpaper: "sandpaper",
@@ -190,6 +214,23 @@
 
   function clean(value) {
     return String(value || "").toLowerCase();
+  }
+
+  function inferResultKind(targetUrl) {
+    const url = clean(targetUrl || "");
+    if (url.indexOf("/problems/") === 0 || url.indexOf("/solutions/") === 0) {
+      return "answer";
+    }
+    if (url.indexOf("/surfaces/") === 0 || url === "/how-to/") {
+      return "guide";
+    }
+    if (url.indexOf("/tools/") === 0) {
+      return "tool";
+    }
+    if (url.indexOf("/products/") === 0) {
+      return "product";
+    }
+    return "guide";
   }
 
   function normalizeSuggestionToken(token) {
@@ -357,6 +398,7 @@
       title: suggestion.title || "",
       description: suggestion.description || "",
       target_url: suggestion.target_url || "",
+      result_kind: suggestion.result_kind || inferResultKind(suggestion.target_url || ""),
       search_score: score,
       search_strong: score >= 120,
       search_intent: intent || "smart_suggestion",
@@ -807,6 +849,9 @@
   function scoreSuggestion(suggestion, queryContext, starter) {
     const query = queryContext.normalizedQuery;
     const expandedTerms = queryContext.expandedTerms || [];
+    const usefulNonStarterTerms = queryContext.usefulNonStarterTerms || [];
+    const isStarterQuery = Boolean(starter && QUESTION_STARTERS[starter]);
+    const isMultiWordStarterQuery = Boolean(isStarterQuery && queryContext.wordCount > 1);
     const title = String(suggestion.title || "");
     const aliases = Array.isArray(suggestion.aliases) ? suggestion.aliases : [];
     const keywords = Array.isArray(suggestion.keywords) ? suggestion.keywords : [];
@@ -859,7 +904,50 @@
       }
     }
 
-    return score;
+    let matchedNonStarterTerms = 0;
+    let strongNonStarterMatches = 0;
+    let weakNonStarterMatches = 0;
+
+    if (isMultiWordStarterQuery) {
+      const matchedTerms = {};
+
+      usefulNonStarterTerms.forEach(function (term) {
+        if (!term) {
+          return;
+        }
+        const titleMatch = textMatchesTerm(title, term);
+        const aliasMatch = aliases.some(function (alias) { return textMatchesTerm(alias, term); });
+        const keywordMatch = normalizedKeywords.some(function (keyword) { return fuzzyTokenMatch(keyword, term); });
+        const descriptionMatch = textMatchesTerm(description, term);
+
+        if (!(titleMatch || aliasMatch || keywordMatch || descriptionMatch)) {
+          return;
+        }
+
+        matchedTerms[term] = true;
+        if (titleMatch || aliasMatch || keywordMatch) {
+          strongNonStarterMatches += 1;
+        } else if (descriptionMatch) {
+          weakNonStarterMatches += 1;
+        }
+      });
+
+      matchedNonStarterTerms = Object.keys(matchedTerms).length;
+      if (!matchedNonStarterTerms) {
+        return null;
+      }
+
+      if (usefulNonStarterTerms.length >= 3 && !(strongNonStarterMatches >= 1 || weakNonStarterMatches >= 2)) {
+        return null;
+      }
+    }
+
+    return {
+      score: score,
+      matchedNonStarterTerms: matchedNonStarterTerms,
+      strongNonStarterMatches: strongNonStarterMatches,
+      weakNonStarterMatches: weakNonStarterMatches,
+    };
   }
 
   function rankSuggestionEntries(suggestionEntries, queryContext, maxResults) {
@@ -868,7 +956,14 @@
       .map(function (term) { return normalizeSuggestionToken(term); })
       .filter(Boolean);
     const starter = queryTerms[0] || "";
-    const expandedTerms = expandTerms(queryTerms);
+    const isMultiWordStarterQuery = queryTerms.length > 1 && QUESTION_STARTERS[starter];
+    const nonStarterTerms = queryTerms.filter(function (term) {
+      return !QUESTION_STARTERS[term];
+    });
+    const usefulNonStarterTerms = nonStarterTerms.filter(function (term) {
+      return !LOW_VALUE_QUERY_TERMS[term];
+    });
+    const expandedTerms = isMultiWordStarterQuery ? expandTerms(nonStarterTerms) : expandTerms(queryTerms);
     const normalizedQuery = queryContext.normalizedQuery;
 
     if (!suggestions.length || !queryTerms.length) {
@@ -911,6 +1006,10 @@
         });
     }
 
+    if (isMultiWordStarterQuery && !usefulNonStarterTerms.length) {
+      return [];
+    }
+
     const hasSandpaperSignal =
       queryTerms.some(function (term) { return GENERIC_SUGGESTION_STARTERS[term]; }) ||
       expandedTerms.some(function (term) {
@@ -927,17 +1026,20 @@
         }
 
         const suggestionContext = Object.assign({}, queryContext, {
+          normalizedTerms: queryTerms,
+          nonStarterTerms: nonStarterTerms,
+          usefulNonStarterTerms: usefulNonStarterTerms,
           expandedTerms: expandedTerms,
         });
 
-        const score = scoreSuggestion(suggestion, suggestionContext, starter);
-        if (score < 35) {
+        const scoreInfo = scoreSuggestion(suggestion, suggestionContext, starter);
+        if (!scoreInfo || scoreInfo.score < 35) {
           return null;
         }
 
         return {
           suggestion: suggestion,
-          score: score,
+          score: scoreInfo.score,
           priority: Number(suggestion.priority || 0),
         };
       })
@@ -1043,6 +1145,7 @@
       output.search_score = row.score;
       output.search_strong = row.isStrong;
       output.search_intent = intentContext.mainIntent;
+      output.result_kind = inferResultKind(output.target_url || output.targetUrl || "");
       return output;
     });
   }
@@ -1092,6 +1195,7 @@
           return;
         }
         seen[key] = true;
+        item.result_kind = item.result_kind || inferResultKind(item.target_url || item.targetUrl || "");
         deduped.push(item);
       });
 

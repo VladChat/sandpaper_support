@@ -242,6 +242,8 @@
     return {
       title: entry.title || "",
       target_url: entry.target_url || "",
+      result_kind: entry.result_kind || "",
+      search_intent: entry.search_intent || "",
       surface: Array.isArray(entry.surface) ? entry.surface[0] || "" : "",
       goal: "",
     };
@@ -965,7 +967,36 @@
           link.href = normalizePath(basePath, match.target_url || match.targetUrl || "");
           const title = String(match.title || "").trim();
           const description = String(match.description || "").trim();
-          link.textContent = title && description ? title + " - " + description : title;
+          const kindRaw = clean(match.result_kind || "");
+          const kindMap = {
+            answer: { label: "Answer", className: "result-kind-answer" },
+            guide: { label: "Guide", className: "result-kind-guide" },
+            tool: { label: "Tool", className: "result-kind-tool" },
+            product: { label: "Product", className: "result-kind-product" },
+          };
+          const kind = kindMap[kindRaw] || kindMap.guide;
+
+          const kindNode = document.createElement("span");
+          kindNode.className = "result-kind " + kind.className;
+          kindNode.textContent = kind.label;
+
+          const textNode = document.createElement("span");
+          textNode.className = "result-text";
+
+          const titleNode = document.createElement("span");
+          titleNode.className = "result-title";
+          titleNode.textContent = title || "";
+          textNode.appendChild(titleNode);
+
+          if (description) {
+            const descriptionNode = document.createElement("span");
+            descriptionNode.className = "result-description";
+            descriptionNode.textContent = " - " + description;
+            textNode.appendChild(descriptionNode);
+          }
+
+          link.appendChild(kindNode);
+          link.appendChild(textNode);
 
           link.addEventListener("click", function () {
             if (window.eQualleSupabase) {
@@ -1014,6 +1045,16 @@
       window.location.href = normalizePath(basePath, "/ask/") + "?q=" + encodeURIComponent(message);
     }
 
+    function isAnswerResult(match) {
+      const target = String((match && (match.target_url || match.targetUrl)) || "");
+      return Boolean(
+        match &&
+          (match.result_kind === "answer" ||
+            target.indexOf("/problems/") === 0 ||
+            target.indexOf("/solutions/") === 0)
+      );
+    }
+
     function runSearchAction() {
       const message = input.value.trim();
       if (!message) {
@@ -1033,7 +1074,7 @@
       setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
       renderOutput(message, matches);
 
-      if (isStrongTopMatch && topHref) {
+      if (isStrongTopMatch && topHref && isAnswerResult(topMatch)) {
         try {
           const parsed = new URL(topHref, window.location.origin);
           if (window.eQualleSupabase) {
@@ -1048,6 +1089,14 @@
         window.location.href = topHref;
         return;
       }
+
+      if (matches.length) {
+        if (window.eQualleSupabase) {
+          window.eQualleSupabase.logSearch(message, matches.length, null);
+        }
+        return;
+      }
+
       if (window.eQualleSupabase) {
         window.eQualleSupabase.logSearch(message, matches.length, null);
       }
