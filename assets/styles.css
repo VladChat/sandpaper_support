@@ -402,3 +402,81 @@ body.support-home {
     font-size: 11px;
   }
 }
+
+.answer-summary {
+  margin: 4px 0 24px;
+  padding: 18px 20px;
+  border: 1px solid rgba(124, 177, 217, 0.55);
+  border-left: 6px solid #7CB1D9;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f0f8ff 0%, #ffffff 100%);
+  box-shadow: 0 12px 30px rgba(12, 17, 23, 0.08);
+}
+
+.answer-summary-label {
+  margin-bottom: 8px;
+  color: #005f93;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.answer-summary-text {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(1.16rem, 1vw + 1rem, 1.42rem);
+  font-weight: 700;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.answer-follow-up {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #fafafa;
+}
+
+.answer-follow-up h2 {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.answer-follow-up .section-intro {
+  margin: 0 0 12px;
+}
+
+.answer-follow-up .chat-shell {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.answer-follow-up .chat-messages:empty {
+  display: none;
+}
+
+.answer-follow-up .chat-form {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .answer-summary {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .answer-summary-text {
+    font-size: 1.08rem;
+  }
+
+  .answer-follow-up {
+    padding: 16px;
+  }
+}
