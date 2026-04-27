@@ -7,7 +7,11 @@
 **Primary use case:** Send Amazon customers to a support website where they can quickly identify their exact sanding problem and get a precise answer.  
 **Delivery model:** GitHub Pages static site + Supabase for logging, admin, missing-answer capture, and secure AI Edge Function.
 
-This file is a working guide for agents. It is **guidance**, not an immutable canonical spec. Agents may improve the structure when there is a clear reason, but they should preserve the main direction: simple, problem-first, search-first customer support.
+This file is a working guide for agents. **Agents must read AGENTS.md completely before working in this repository.**
+
+It is **guidance**, not an immutable canonical spec. Agents may improve the structure when there is a clear reason, but they should preserve the main direction: simple, problem-first, search-first customer support.
+
+**Locked Design:** The canonical solution page design, layout, and visual structure are locked. See section 11A. If a future request may affect solution page design, layout, spacing, or structure, the agent must ask Vlad for explicit approval before changing it.
 
 ---
 
@@ -548,6 +552,69 @@ The bottom link should be "← Back to search" and should point to /sandpaper_su
 Tags that look clickable must be real links; otherwise they should not look like buttons.
 Use a small context follow-up box, not a large disconnected chat block.
 ```
+
+---
+
+## 11A) Locked Canonical Solution Page Design
+
+**The current solution page design, visual structure, layout, spacing, typography scale, section order, answer-card structure, related topic chips, and bottom search bar are locked.**
+
+The canonical template is finalized in:
+
+```text
+templates/solution-page.html
+```
+
+The build script that generates all solution pages is:
+
+```text
+scripts/build-solution-pages.js
+```
+
+Locked design elements:
+
+```text
+Header with site logo and navigation
+Breadcrumb trail
+Problem label and title (h1)
+Problem description
+Related topics section with topic chips
+  - max 4 chips per page
+  - chips only from approved whitelist
+  - no raw search phrases as chips
+  - no URLs with spaces
+  - clickable chips link to approved pages
+  - non-clickable chips display as text
+Answer card with:
+  - Answer summary (short direct answer)
+  - Answer grid (Why it happens, Recommended grit, Wet or dry, Success check)
+  - h2 "What to do" with ordered steps
+  - Yellow note box with "Avoid: ..." content
+Solution search block at bottom with:
+  - Input field for follow-up question
+  - Support tool button (mic icon)
+  - Support tool button (photo icon with "Add Photo" text)
+  - Search button with "Get Answer" text
+  - Search results area below input
+Back to search link at bottom
+```
+
+Do not change:
+
+```text
+- Visual layout scale or spacing
+- Typography sizes or weights
+- Section ordering
+- Answer card structure
+- Topic chip whitelist or href mapping
+- Button styling or SVG icons
+- Search results positioning
+- Breadcrumb or header layout
+```
+
+If a future request would modify solution page design, layout, visible structure, button styling, or chip behavior, ask Vlad for explicit approval before proceeding.
+
+The current design was validated and locked on 2026-04-27.
 
 ---
 
