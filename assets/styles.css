@@ -496,6 +496,28 @@ body.support-home {
   word-break: break-word;
 }
 
+body.solution-page .section > h1 {
+  max-width: 100%;
+  font-size: clamp(2.35rem, 4.2vw, 3.55rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+}
+
+body.solution-page .section > .section-intro {
+  max-width: 100%;
+}
+
+@media (max-width: 860px) {
+  body.solution-page .section > h1 {
+    font-size: clamp(2.05rem, 9vw, 2.85rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+}
+
 @media (max-width: 640px) {
   .answer-summary {
     padding: 16px;
@@ -532,5 +554,12 @@ body.support-home {
     height: 44px;
     margin-right: 0;
     padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body.solution-page .section > h1 {
+    font-size: clamp(1.85rem, 10.5vw, 2.4rem);
+    line-height: 1.12;
   }
 }
