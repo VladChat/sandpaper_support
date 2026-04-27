@@ -229,7 +229,20 @@ function loadSupportAssistantAssets() {
   });
 }
 
+function setupSupportToolButtons() {
+  document.querySelectorAll(".support-tool-button").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const shell = button.closest(".support-search-shell") || document;
+      const input = shell.querySelector("[data-support-search]");
+      if (input) {
+        input.focus();
+      }
+    });
+  });
+}
+
 setupFeedback();
+setupSupportToolButtons();
 
 loadSupportAssistantAssets().then(function () {
   if (window.eQualleSupportAssistant && window.eQualleSupportAssistant.init) {

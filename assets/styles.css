@@ -282,6 +282,69 @@ body.support-home {
   background: #5f9fcf;
 }
 
+.support-tool-button {
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 44px;
+  white-space: nowrap;
+  background: transparent;
+  border-radius: 999px;
+  color: #4b5563;
+  font: inherit;
+  min-width: 44px;
+  padding: 0 12px;
+}
+
+.support-tool-button:hover {
+  background: #f3f4f6;
+  color: #0b0c0e;
+}
+
+.support-tool-button svg {
+  height: 20px;
+  width: 20px;
+}
+
+.support-photo-button {
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.solution-search-block {
+  margin: 24px 0 10px;
+}
+
+.solution-search-shell {
+  max-width: 100%;
+  margin: 0;
+}
+
+.solution-search-block .support-search-form {
+  min-height: 64px;
+  padding: 6px 8px 6px 22px;
+  gap: 8px;
+  box-shadow: 0 8px 28px rgba(11, 12, 14, 0.1);
+}
+
+.solution-search-block .support-search-input {
+  min-height: 50px;
+  padding: 0;
+}
+
+.solution-search-block .support-search-button {
+  height: 50px;
+  margin-right: 0;
+  padding: 0 28px;
+}
+
+.solution-search-block .search-results {
+  margin-top: 14px;
+}
+
 .support-home .search-results {
   margin-top: 24px;
   text-align: left;
@@ -433,39 +496,6 @@ body.support-home {
   word-break: break-word;
 }
 
-.answer-follow-up {
-  margin-top: 24px;
-  padding: 18px;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  background: #fafafa;
-}
-
-.answer-follow-up h2 {
-  margin: 0 0 6px;
-  font-size: 1.25rem;
-  line-height: 1.25;
-}
-
-.answer-follow-up .section-intro {
-  margin: 0 0 12px;
-}
-
-.answer-follow-up .chat-shell {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.answer-follow-up .chat-messages:empty {
-  display: none;
-}
-
-.answer-follow-up .chat-form {
-  margin-top: 0;
-}
-
 @media (max-width: 640px) {
   .answer-summary {
     padding: 16px;
@@ -476,7 +506,31 @@ body.support-home {
     font-size: 1.08rem;
   }
 
-  .answer-follow-up {
-    padding: 16px;
+  .solution-search-block .support-search-form {
+    border-radius: 28px;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .solution-search-block .support-search-input {
+    flex-basis: 100%;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  .solution-search-block .support-tool-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .solution-search-block .support-photo-button {
+    flex: 1;
+  }
+
+  .solution-search-block .support-search-button {
+    flex: 1.4;
+    height: 44px;
+    margin-right: 0;
+    padding: 0 16px;
   }
 }

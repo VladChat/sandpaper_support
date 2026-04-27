@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=answer-highlight-20260427">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-search-bar-20260427">
 </head>
 <body>
 <header class="site-header">
@@ -75,20 +75,33 @@
       <div class="note"><strong>Avoid:</strong> Do not jump from 80 directly to 320 or finer.</div>
 
       
-
-      <section class="answer-follow-up" data-support-top-assistant>
-        <h2>Ask a follow-up</h2>
-        <p class="section-intro">Ask about this answer, the next grit, or wet/dry use.</p>
-        <div class="chat-shell support-chat-shell">
-          <div class="chat-messages" data-ai-messages aria-live="polite"></div>
-          <form class="chat-form" data-ai-form>
-            <label class="sr-only" for="follow-up-deep-scratches-after-80-grit">Ask a follow-up about this answer</label>
-            <input id="follow-up-deep-scratches-after-80-grit" class="chat-input" data-ai-input type="text" autocomplete="off" placeholder="Example: what grit should I use next?">
-            <button class="chat-send" type="submit">Ask</button>
-          </form>
-        </div>
-      </section>
     </article>
+
+    <section class="solution-search-block" aria-label="Ask another sanding question">
+      <div class="support-search-shell solution-search-shell">
+        <div class="support-search-form" role="search">
+          <input
+            id="solution-search-deep-scratches-after-80-grit"
+            class="support-search-input"
+            data-support-search
+            placeholder="Example: sandpaper clogs too fast"
+          >
+          <button class="support-tool-button support-mic-button" type="button" aria-label="Voice input coming soon" title="Voice input coming soon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3Zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7Z"/>
+            </svg>
+          </button>
+          <button class="support-tool-button support-photo-button" type="button" aria-label="Add photo coming soon" title="Add photo coming soon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M19 5h-3.17l-1.84-2H10L8.17 5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2Zm-7 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-1.8A3.2 3.2 0 1 0 12 9.8a3.2 3.2 0 0 0 0 6.4Z"/>
+            </svg>
+            <span>Add Photo</span>
+          </button>
+          <button class="support-search-button" type="button" data-support-search-submit>Get Answer</button>
+        </div>
+        <div class="search-results" data-search-results></div>
+      </div>
+    </section>
 
     <p><a class="cta" href="/sandpaper_support/">← Back to search</a></p>
   </section>
