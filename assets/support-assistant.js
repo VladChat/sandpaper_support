@@ -954,13 +954,13 @@
 
     function isHomepageAnswerMatch(match) {
       const target = String((match && (match.target_url || match.targetUrl)) || "");
-      if (target === "/problems/" || target === "/solutions/") {
+      if (target === "/solutions/") {
         return false;
       }
       return Boolean(
         match &&
           match.result_kind === "answer" &&
-          (target.indexOf("/problems/") === 0 || target.indexOf("/solutions/") === 0)
+          target.indexOf("/solutions/") === 0
       );
     }
 

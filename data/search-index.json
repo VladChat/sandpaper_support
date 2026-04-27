@@ -1,5 +1,3146 @@
 [
   {
+    "id": "solution-deep-scratches-after-80-grit",
+    "type": "exact_solution",
+    "title": "Deep scratches remain after 80 grit",
+    "description": "80 grit removed material but left deep scratches.",
+    "customer_phrases": [
+      "Deep scratches remain after 80 grit",
+      "80 grit removed material but left deep scratches.",
+      "Clean the surface.",
+      "Sand evenly with 120 grit until the 80-grit marks are lighter."
+    ],
+    "aliases": [
+      "80 grit is a heavy removal grit and leaves a scratch pattern that must be refined in steps.",
+      "120, then 180, then 220 or 320 as needed.",
+      "Do not jump from 80 directly to 320 or finer."
+    ],
+    "surface": [],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/deep-scratches-after-80-grit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-320-does-not-remove-180-scratches",
+    "type": "exact_solution",
+    "title": "320 grit does not remove 180 grit scratches",
+    "description": "Scratches from 180 grit remain after sanding with 320 grit.",
+    "customer_phrases": [
+      "320 grit does not remove 180 grit scratches",
+      "Scratches from 180 grit remain after sanding with 320 grit.",
+      "Return to 220 or 240 grit.",
+      "Use light, even pressure."
+    ],
+    "aliases": [
+      "The jump from 180 to 320 is too large for the depth of the scratches.",
+      "220 or 240 before returning to 320.",
+      "Do not press harder with 320 grit to force removal."
+    ],
+    "surface": [],
+    "grits": [
+      "180",
+      "220",
+      "240",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/320-does-not-remove-180-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-coarse-scratches-on-wood",
+    "type": "exact_solution",
+    "title": "Coarse scratches show on wood",
+    "description": "Wood still shows visible scratch lines after prep sanding.",
+    "customer_phrases": [
+      "Coarse scratches show on wood",
+      "Wood still shows visible scratch lines after prep sanding.",
+      "Sand with the grain when possible.",
+      "Use the grit that still removes the visible lines."
+    ],
+    "aliases": [
+      "The previous grit pattern was not fully removed before moving finer.",
+      "120 to remove heavy marks, then 180 and 220 for prep.",
+      "Do not skip directly to fine finishing grits on rough wood."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/coarse-scratches-on-wood/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-scratches-on-metal-after-prep",
+    "type": "exact_solution",
+    "title": "Scratches remain on metal after prep",
+    "description": "Metal shows straight or uneven sanding scratches.",
+    "customer_phrases": [
+      "Scratches remain on metal after prep",
+      "Metal shows straight or uneven sanding scratches.",
+      "Remove residue from the metal.",
+      "Sand with the next finer grit until the old pattern is uniform."
+    ],
+    "aliases": [
+      "The metal was not refined through enough intermediate grits.",
+      "180, 220, 320, then 400 or 600 if a finer prep is needed.",
+      "Do not leave loose grit or debris on the surface."
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/scratches-on-metal-after-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-deep-lines-on-clear-coat",
+    "type": "exact_solution",
+    "title": "Deep lines remain on clear coat",
+    "description": "Fine sanding leaves some deeper lines in clear coat.",
+    "customer_phrases": [
+      "Deep lines remain on clear coat",
+      "Fine sanding leaves some deeper lines in clear coat.",
+      "Rinse the surface and paper.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "A previous grit or debris created scratches deeper than the current fine grit can remove.",
+      "Return one step coarser only as needed, then progress 1000, 1500, 2000, 3000.",
+      "Do not dry sand a fine clear coat finish unless the coating instructions call for it."
+    ],
+    "surface": [
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/deep-lines-on-clear-coat/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-clogs-sheet",
+    "type": "exact_solution",
+    "title": "Paint clogs the sheet quickly",
+    "description": "Paint residue loads into the abrasive and sanding slows.",
+    "customer_phrases": [
+      "Paint clogs the sheet quickly",
+      "Paint residue loads into the abrasive and sanding slows.",
+      "Clean the painted surface.",
+      "Use lighter pressure."
+    ],
+    "aliases": [
+      "Soft paint or coating residue is smearing under pressure.",
+      "Use the grit needed for the stage; often 120 to 220 for removal or prep.",
+      "Do not keep sanding with a glazed or loaded sheet."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "220"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paint-clogs-sheet/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-primer-dust-loads-paper",
+    "type": "exact_solution",
+    "title": "Primer dust loads the paper",
+    "description": "Primer dust packs into the abrasive during prep.",
+    "customer_phrases": [
+      "Primer dust loads the paper",
+      "Primer dust packs into the abrasive during prep.",
+      "Let the primer cure as directed by the coating maker.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "Dust is not being cleared often enough or the sheet is worn.",
+      "320 to 600 depending on the coating stage.",
+      "Do not sand uncured coating."
+    ],
+    "surface": [
+      "primer",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/primer-dust-loads-paper/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wood-dust-clogs-paper",
+    "type": "exact_solution",
+    "title": "Wood dust clogs the paper",
+    "description": "Wood dust fills the abrasive and the sheet feels smooth.",
+    "customer_phrases": [
+      "Wood dust clogs the paper",
+      "Wood dust fills the abrasive and the sheet feels smooth.",
+      "Brush or wipe dust away often.",
+      "Use lighter pressure."
+    ],
+    "aliases": [
+      "Dust buildup, excess pressure, or a worn sheet is reducing cutting.",
+      "Use the correct prep grit, commonly 120 to 220 for wood smoothing.",
+      "Do not use a clogged sheet for final prep."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "120",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/wood-dust-clogs-paper/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-finish-smears-while-sanding",
+    "type": "exact_solution",
+    "title": "Finish smears while sanding",
+    "description": "The finish gums up instead of sanding to powder.",
+    "customer_phrases": [
+      "Finish smears while sanding",
+      "The finish gums up instead of sanding to powder.",
+      "Stop and clean the sheet.",
+      "Allow more cure time if the coating is soft."
+    ],
+    "aliases": [
+      "The finish may be too soft for sanding or too much heat is being created.",
+      "Use fine prep grits such as 320 to 600 when the finish is ready.",
+      "Do not grind soft finish with heavy pressure."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/finish-smears-while-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wet-sanding-slurry-builds-up",
+    "type": "exact_solution",
+    "title": "Wet sanding slurry builds up",
+    "description": "Wet sanding residue collects and makes cutting inconsistent.",
+    "customer_phrases": [
+      "Wet sanding slurry builds up",
+      "Wet sanding residue collects and makes cutting inconsistent.",
+      "Keep clean water on the surface.",
+      "Rinse the sheet often."
+    ],
+    "aliases": [
+      "The surface and sheet are not being rinsed often enough.",
+      "Use the planned fine grit sequence, such as 1000 to 3000.",
+      "Do not let dirty slurry dry on the work area."
+    ],
+    "surface": [],
+    "grits": [
+      "1000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/wet-sanding-slurry-builds-up/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wood-still-rough-after-120",
+    "type": "exact_solution",
+    "title": "Wood still rough after 120 grit",
+    "description": "Wood fibers or roughness remain after sanding with 120 grit.",
+    "customer_phrases": [
+      "Wood still rough after 120 grit",
+      "Wood fibers or roughness remain after sanding with 120 grit.",
+      "Sand evenly with 150 or 180.",
+      "Clean dust."
+    ],
+    "aliases": [
+      "120 grit may still be an early prep step and needs follow-up refinement.",
+      "150 or 180, then 220 for smoother prep.",
+      "Do not jump from rough 120 grit directly to very fine grit."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/wood-still-rough-after-120/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wood-still-rough-after-220",
+    "type": "exact_solution",
+    "title": "Wood still rough after 220 grit",
+    "description": "The wood still feels raised or uneven after 220 grit.",
+    "customer_phrases": [
+      "Wood still rough after 220 grit",
+      "The wood still feels raised or uneven after 220 grit.",
+      "Identify whether roughness is across the whole surface or only spots.",
+      "Return to 180 on rough areas."
+    ],
+    "aliases": [
+      "The roughness was not fully removed at the earlier grit or the grain was raised.",
+      "Return to 180 if roughness remains, then finish with 220.",
+      "Do not polish rough wood with 320 before it is leveled."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/wood-still-rough-after-220/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-metal-still-rough",
+    "type": "exact_solution",
+    "title": "Metal still feels rough",
+    "description": "Metal still has roughness after sanding.",
+    "customer_phrases": [
+      "Metal still feels rough",
+      "Metal still has roughness after sanding.",
+      "Remove loose debris.",
+      "Sand with a grit that cuts the roughness."
+    ],
+    "aliases": [
+      "Burrs, oxidation, or deeper scratches need a grit that still cuts them.",
+      "Start around 120 or 180 for roughness, then 220 and 320.",
+      "Do not start too fine on rough metal."
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/metal-still-rough/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-still-rough",
+    "type": "exact_solution",
+    "title": "Plastic still feels rough",
+    "description": "Plastic remains rough or uneven after sanding.",
+    "customer_phrases": [
+      "Plastic still feels rough",
+      "Plastic remains rough or uneven after sanding.",
+      "Clean the plastic.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "The surface needs gentler step-by-step refinement to avoid deep scratches.",
+      "320 or 400 for prep, then 600+ for finer finish needs.",
+      "Do not use heavy pressure that can gouge or heat the plastic."
+    ],
+    "surface": [
+      "plastic",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-still-rough/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-rough-spots-after-fine-grit",
+    "type": "exact_solution",
+    "title": "Rough spots remain after fine grit",
+    "description": "Most of the surface is smooth but some spots remain rough.",
+    "customer_phrases": [
+      "Rough spots remain after fine grit",
+      "Most of the surface is smooth but some spots remain rough.",
+      "Mark the rough spots visually if needed.",
+      "Sand those areas evenly with the working grit."
+    ],
+    "aliases": [
+      "The rough spots were not leveled before moving to a finer grit.",
+      "Return to the last grit that can remove the roughness.",
+      "Do not overwork one tiny spot and create a low area."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/rough-spots-after-fine-grit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-normal-haze-after-wet-sanding",
+    "type": "exact_solution",
+    "title": "Normal haze after wet sanding",
+    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "customer_phrases": [
+      "Normal haze after wet sanding",
+      "Wet sanding leaves the surface dull or cloudy.",
+      "Keep the surface wet.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "Fine wet sanding normally creates a uniform haze before polishing or final refinement.",
+      "1000, 1500, 2000, then 3000 as needed.",
+      "Do not expect sanding alone to restore gloss."
+    ],
+    "surface": [],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/normal-haze-after-wet-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-haze-after-1000",
+    "type": "exact_solution",
+    "title": "Clear coat haze after 1000 grit",
+    "description": "1000 grit wet sanding leaves a dull clear coat.",
+    "customer_phrases": [
+      "Clear coat haze after 1000 grit",
+      "1000 grit wet sanding leaves a dull clear coat.",
+      "Rinse the area.",
+      "Refine with 1500 grit."
+    ],
+    "aliases": [
+      "1000 grit is often an intermediate leveling step, not the final gloss stage.",
+      "1500, then 2000 and 3000 before polishing.",
+      "Do not stop at 1000 grit when a gloss finish is expected."
+    ],
+    "surface": [
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-haze-after-1000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-haze-after-wet-sanding",
+    "type": "exact_solution",
+    "title": "Plastic haze after wet sanding",
+    "description": "Plastic looks cloudy after fine wet sanding.",
+    "customer_phrases": [
+      "Plastic haze after wet sanding",
+      "Plastic looks cloudy after fine wet sanding.",
+      "Use clean water.",
+      "Use very light pressure."
+    ],
+    "aliases": [
+      "The surface has been refined but still needs finer grits or polishing if gloss is desired.",
+      "1500, 2000, and 3000 for polishing preparation.",
+      "Do not create heat with heavy pressure."
+    ],
+    "surface": [
+      "plastic",
+      "finish"
+    ],
+    "grits": [
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-haze-after-wet-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-haze-is-uneven",
+    "type": "exact_solution",
+    "title": "Wet sanding haze is uneven",
+    "description": "Some areas are dull while others are still glossy or scratched.",
+    "customer_phrases": [
+      "Wet sanding haze is uneven",
+      "Some areas are dull while others are still glossy or scratched.",
+      "Rinse the surface.",
+      "Sand with overlapping strokes."
+    ],
+    "aliases": [
+      "Pressure, water, or sanding coverage was inconsistent.",
+      "Repeat the current fine grit before moving finer.",
+      "Do not polish an unevenly sanded surface and expect uniform results."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/haze-is-uneven/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-skipped-120-to-320",
+    "type": "exact_solution",
+    "title": "Skipped from 120 to 320",
+    "description": "320 grit does not remove the scratches left by 120 grit.",
+    "customer_phrases": [
+      "Skipped from 120 to 320",
+      "320 grit does not remove the scratches left by 120 grit.",
+      "Return to 180 or 220.",
+      "Sand until the 120-grit lines are gone."
+    ],
+    "aliases": [
+      "The grit progression skipped too many intermediate steps.",
+      "Use 180 or 220 before 320.",
+      "Do not use fine grit as a substitute for proper progression."
+    ],
+    "surface": [],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/skipped-120-to-320/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-choosing-starting-grit",
+    "type": "exact_solution",
+    "title": "Choosing a starting grit",
+    "description": "It is unclear which grit to start with.",
+    "customer_phrases": [
+      "Choosing a starting grit",
+      "It is unclear which grit to start with.",
+      "Identify whether you are removing, smoothing, finishing, or polishing prep.",
+      "Start with the least aggressive grit that works."
+    ],
+    "aliases": [
+      "The task stage has not been identified yet.",
+      "60-120 for removal, 150-240 for prep, 280-400 for finish prep, 600+ for fine stages.",
+      "Do not start with the coarsest grit unless heavy removal is needed."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "120",
+      "150",
+      "240",
+      "280",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/choosing-starting-grit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-using-60-3000-kit",
+    "type": "exact_solution",
+    "title": "Using the 60-3000 assorted kit",
+    "description": "The kit has many grits and the right order is unclear.",
+    "customer_phrases": [
+      "Using the 60-3000 assorted kit",
+      "The kit has many grits and the right order is unclear.",
+      "Choose the grit range for the task stage.",
+      "Do not use every grit if the surface does not need it."
+    ],
+    "aliases": [
+      "Each grit range serves a different stage.",
+      "Use 80-120 for removal, 180-400 for prep, 600-3000 for fine finishing and polishing prep.",
+      "Do not use 1000-3000 for heavy removal."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "180",
+      "400",
+      "600",
+      "1000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/using-60-3000-kit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-what-grit-for-wood-prep",
+    "type": "exact_solution",
+    "title": "What grit for wood prep",
+    "description": "The wood needs to be prepared but the grit is unclear.",
+    "customer_phrases": [
+      "What grit for wood prep",
+      "The wood needs to be prepared but the grit is unclear.",
+      "Start only as coarse as needed.",
+      "Sand evenly with the grain when possible."
+    ],
+    "aliases": [
+      "Wood prep depends on how rough the surface is before sanding.",
+      "120 or 150 for rough prep, then 180 or 220 for smoother prep.",
+      "Do not over-sand soft areas with heavy pressure."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/what-grit-for-wood-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-what-grit-for-paint-prep",
+    "type": "exact_solution",
+    "title": "What grit for paint prep",
+    "description": "Paint needs prep sanding before another coat.",
+    "customer_phrases": [
+      "What grit for paint prep",
+      "Paint needs prep sanding before another coat.",
+      "Let the coating cure as directed.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "Paint prep needs enough tooth without deep scratches.",
+      "220 to 400 depending on the stage and coating instructions.",
+      "Do not use heavy-removal grit between finish coats."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "220",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/what-grit-for-paint-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-between-coats-too-coarse",
+    "type": "exact_solution",
+    "title": "Grit is too coarse between coats",
+    "description": "Sanding between coats leaves scratches or cuts through coating.",
+    "customer_phrases": [
+      "Grit is too coarse between coats",
+      "Sanding between coats leaves scratches or cuts through coating.",
+      "Confirm the coating is ready to sand.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "The grit is intended for removal instead of light intercoat prep.",
+      "320 to 600 depending on coating stage.",
+      "Do not use 80, 120, or 180 grit for fine intercoat sanding."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/between-coats-too-coarse/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-between-coats-cut-through",
+    "type": "exact_solution",
+    "title": "Sanding cuts through between coats",
+    "description": "Sanding removes too much coating in some areas.",
+    "customer_phrases": [
+      "Sanding cuts through between coats",
+      "Sanding removes too much coating in some areas.",
+      "Reduce pressure.",
+      "Use a finer grit."
+    ],
+    "aliases": [
+      "Pressure is too high, grit is too coarse, or edges are being overworked.",
+      "Use a finer grit such as 400 or 600 for delicate intercoat smoothing.",
+      "Do not try to level thick defects with fine intercoat sanding."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/between-coats-cut-through/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-primer-scratches-show-through",
+    "type": "exact_solution",
+    "title": "Primer scratches show through",
+    "description": "Scratches remain visible after coating over primer.",
+    "customer_phrases": [
+      "Primer scratches show through",
+      "Scratches remain visible after coating over primer.",
+      "Sand the primer evenly.",
+      "Remove coarse scratch marks."
+    ],
+    "aliases": [
+      "The primer was not refined enough before the next coat.",
+      "320 or 400 before recoating, depending on coating instructions.",
+      "Do not coat over isolated deep sanding marks."
+    ],
+    "surface": [
+      "primer",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/primer-scratches-show-through/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-swirls-after-1000",
+    "type": "exact_solution",
+    "title": "Swirls remain after 1000 grit",
+    "description": "Curved or circular marks remain after fine sanding.",
+    "customer_phrases": [
+      "Swirls remain after 1000 grit",
+      "Curved or circular marks remain after fine sanding.",
+      "Clean the area.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "1000 grit marks may need further refinement or the pattern was inconsistent.",
+      "1500, 2000, then 3000 as needed.",
+      "Do not press harder with the same grit to chase swirls."
+    ],
+    "surface": [],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/swirls-after-1000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-swirls-from-dirty-water",
+    "type": "exact_solution",
+    "title": "Swirls from dirty wet sanding water",
+    "description": "Fine sanding creates random curved scratches.",
+    "customer_phrases": [
+      "Swirls from dirty wet sanding water",
+      "Fine sanding creates random curved scratches.",
+      "Rinse the surface.",
+      "Use clean water."
+    ],
+    "aliases": [
+      "Loose grit or debris in the water is scratching the surface.",
+      "Repeat the current fine grit, then move finer.",
+      "Do not keep sanding with contaminated slurry."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/swirls-from-dirty-water/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-random-orbital-swirl-pattern",
+    "type": "exact_solution",
+    "title": "Random swirl pattern remains",
+    "description": "A visible pattern remains after sanding.",
+    "customer_phrases": [
+      "Random swirl pattern remains",
+      "A visible pattern remains after sanding.",
+      "Identify the deepest visible marks.",
+      "Return one grit step if needed."
+    ],
+    "aliases": [
+      "The final grit was not fine enough or the previous scratches were not fully removed.",
+      "Move gradually through finer grits up to the finish goal.",
+      "Do not skip refinement steps when the finish will be inspected closely."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/random-orbital-swirl-pattern/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-on-sharp-edge",
+    "type": "exact_solution",
+    "title": "Paper tears on sharp edges",
+    "description": "The sheet catches and rips on an edge or corner.",
+    "customer_phrases": [
+      "Paper tears on sharp edges",
+      "The sheet catches and rips on an edge or corner.",
+      "Inspect the edge.",
+      "Use lighter pressure."
+    ],
+    "aliases": [
+      "Sharp edges cut into the backing under pressure.",
+      "Use the correct task grit, but reduce pressure near edges.",
+      "Do not pull the sheet hard across sharp corners."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-on-sharp-edge/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-from-folding",
+    "type": "exact_solution",
+    "title": "Paper tears at the fold",
+    "description": "The sheet splits where it was folded.",
+    "customer_phrases": [
+      "Paper tears at the fold",
+      "The sheet splits where it was folded.",
+      "Fold gently without crushing the backing.",
+      "Use a smaller piece if needed."
+    ],
+    "aliases": [
+      "A hard crease concentrates stress in one line.",
+      "Any grit can tear if sharply creased.",
+      "Do not create a tight crease and pull hard under pressure."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-from-folding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-from-heavy-pressure",
+    "type": "exact_solution",
+    "title": "Paper tears from heavy pressure",
+    "description": "The sheet wears through or tears during sanding.",
+    "customer_phrases": [
+      "Paper tears from heavy pressure",
+      "The sheet wears through or tears during sanding.",
+      "Reduce pressure.",
+      "Let the abrasive do the cutting."
+    ],
+    "aliases": [
+      "Excess pressure creates heat and stress on the backing.",
+      "Use a grit coarse enough to cut without forcing it.",
+      "Do not use pressure to make a too-fine grit remove material."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-from-heavy-pressure/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-removal-too-slow",
+    "type": "exact_solution",
+    "title": "Paint removal is too slow",
+    "description": "Paint is not coming off efficiently.",
+    "customer_phrases": [
+      "Paint removal is too slow",
+      "Paint is not coming off efficiently.",
+      "Use a coarser grit suited to removal.",
+      "Clear dust and paint residue often."
+    ],
+    "aliases": [
+      "The grit may be too fine, loaded, or worn for removal.",
+      "60, 80, or 120 for removal depending on the surface and finish goal.",
+      "Do not remove paint with 400+ grit unless only light scuffing is needed."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "400"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/paint-removal-too-slow/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-fine-grit-used-for-removal",
+    "type": "exact_solution",
+    "title": "Fine grit used for removal",
+    "description": "Sanding takes a long time and little material is removed.",
+    "customer_phrases": [
+      "Fine grit used for removal",
+      "Sanding takes a long time and little material is removed.",
+      "Switch to a grit that actually cuts the defect.",
+      "Sand evenly."
+    ],
+    "aliases": [
+      "Fine grit refines scratches but is not efficient for heavy removal.",
+      "60 to 120 for heavy removal, then step finer.",
+      "Do not keep rubbing with a fine grit when the defect is still high or deep."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "120"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/fine-grit-used-for-removal/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-worn-sheet-not-cutting",
+    "type": "exact_solution",
+    "title": "Worn sheet is not cutting",
+    "description": "The sheet feels smooth and sanding no longer changes the surface.",
+    "customer_phrases": [
+      "Worn sheet is not cutting",
+      "The sheet feels smooth and sanding no longer changes the surface.",
+      "Inspect the abrasive surface.",
+      "Clear debris if lightly loaded."
+    ],
+    "aliases": [
+      "The abrasive is worn or loaded.",
+      "Stay with the selected grit but use a fresh sheet.",
+      "Do not compensate for a worn sheet with heavy pressure."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/worn-sheet-not-cutting/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wood-prep-before-finish",
+    "type": "exact_solution",
+    "title": "Wood prep before finish",
+    "description": "Wood needs a smooth, consistent surface before finish.",
+    "customer_phrases": [
+      "Wood prep before finish",
+      "Wood needs a smooth, consistent surface before finish.",
+      "Start with the least aggressive grit that removes roughness.",
+      "Sand evenly."
+    ],
+    "aliases": [
+      "The prep sequence has not reached an even final scratch pattern.",
+      "120 or 150, then 180 and 220.",
+      "Do not leave coarse scratch marks under finish."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/wood-prep-before-finish/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-metal-prep-before-paint",
+    "type": "exact_solution",
+    "title": "Metal prep before paint",
+    "description": "Metal needs sanding before coating.",
+    "customer_phrases": [
+      "Metal prep before paint",
+      "Metal needs sanding before coating.",
+      "Clean the metal.",
+      "Remove roughness or oxidation with the needed grit."
+    ],
+    "aliases": [
+      "The surface needs cleaning and a consistent prep pattern.",
+      "180 to 320 depending on existing roughness and coating instructions.",
+      "Do not coat over loose debris or deep random scratches."
+    ],
+    "surface": [
+      "paint",
+      "metal",
+      "finish"
+    ],
+    "grits": [
+      "180",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/metal-prep-before-paint/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-prep-before-paint",
+    "type": "exact_solution",
+    "title": "Plastic prep before paint",
+    "description": "Plastic needs light sanding before coating.",
+    "customer_phrases": [
+      "Plastic prep before paint",
+      "Plastic needs light sanding before coating.",
+      "Clean the plastic.",
+      "Use light pressure."
+    ],
+    "aliases": [
+      "Plastic can scratch or heat easily if the grit or pressure is too aggressive.",
+      "320 to 600 depending on coating instructions and surface condition.",
+      "Do not gouge plastic with coarse grit unless heavy shaping is intentional."
+    ],
+    "surface": [
+      "paint",
+      "plastic",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/plastic-prep-before-paint/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-orange-peel-leveling",
+    "type": "exact_solution",
+    "title": "Clear coat leveling before polish",
+    "description": "Clear coat needs fine leveling before polishing.",
+    "customer_phrases": [
+      "Clear coat leveling before polish",
+      "Clear coat needs fine leveling before polishing.",
+      "Confirm the coating is ready for sanding.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The surface has texture that requires controlled fine wet sanding.",
+      "1000 or 1500 to start only when appropriate, then 2000 and 3000.",
+      "Do not sand through edges or raised body lines."
+    ],
+    "surface": [
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-orange-peel-leveling/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-assorted-kit-heavy-removal",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for heavy removal",
+    "description": "The task needs fast material removal.",
+    "customer_phrases": [
+      "Using the assorted kit for heavy removal",
+      "The task needs fast material removal.",
+      "Start with 80 or 120 only if heavy removal is needed.",
+      "Stop once the defect is reduced."
+    ],
+    "aliases": [
+      "Starting too fine makes sanding slow.",
+      "80 or 120, then refine with 180, 220, and 320 as needed.",
+      "Do not leave 80-grit scratches as the final surface."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/assorted-kit-heavy-removal/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-assorted-kit-finish-prep",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for finish prep",
+    "description": "The surface needs fine prep before coating or finishing.",
+    "customer_phrases": [
+      "Using the assorted kit for finish prep",
+      "The surface needs fine prep before coating or finishing.",
+      "Use 220 or 320 to refine prep scratches.",
+      "Use 400 or 600 for lighter fine prep where appropriate."
+    ],
+    "aliases": [
+      "Finish prep needs finer grits than heavy removal.",
+      "220, 320, 400, or 600 depending on finish stage.",
+      "Do not use 80 or 120 for fine finish prep."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/assorted-kit-finish-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-assorted-kit-polishing-prep",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for polishing prep",
+    "description": "A glossy surface needs fine sanding before polish.",
+    "customer_phrases": [
+      "Using the assorted kit for polishing prep",
+      "A glossy surface needs fine sanding before polish.",
+      "Start only as coarse as the defect requires.",
+      "Keep the surface wet."
+    ],
+    "aliases": [
+      "The surface must be refined through high grits before polishing.",
+      "1000, 1500, 2000, and 3000.",
+      "Do not use low grits for polishing prep."
+    ],
+    "surface": [],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/assorted-kit-polishing-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-uneven-finish-from-pressure",
+    "type": "exact_solution",
+    "title": "Uneven finish from pressure",
+    "description": "The sanded surface looks patchy or uneven.",
+    "customer_phrases": [
+      "Uneven finish from pressure",
+      "The sanded surface looks patchy or uneven.",
+      "Sand with overlapping strokes.",
+      "Use even pressure."
+    ],
+    "aliases": [
+      "Pressure or stroke coverage was inconsistent.",
+      "Repeat the current stage grit before moving finer.",
+      "Do not focus pressure in one small area."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/uneven-finish-from-pressure/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-hand-sanding-finger-grooves",
+    "type": "exact_solution",
+    "title": "Finger grooves from hand sanding",
+    "description": "The surface has uneven grooves from fingers.",
+    "customer_phrases": [
+      "Finger grooves from hand sanding",
+      "The surface has uneven grooves from fingers.",
+      "Use a sanding block on flat surfaces.",
+      "Keep pressure even."
+    ],
+    "aliases": [
+      "Finger pressure concentrated force in narrow lines.",
+      "Use the current prep grit, then refine normally.",
+      "Do not press with fingertips on flat finish areas."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/hand-sanding-finger-grooves/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-finish-patchy-after-grit-change",
+    "type": "exact_solution",
+    "title": "Patchy surface after grit change",
+    "description": "The surface looks uneven after switching grits.",
+    "customer_phrases": [
+      "Patchy surface after grit change",
+      "The surface looks uneven after switching grits.",
+      "Inspect the entire area.",
+      "Sand until the older pattern is gone."
+    ],
+    "aliases": [
+      "The previous grit pattern was not fully removed across the whole surface.",
+      "Return to the previous grit or current grit until uniform.",
+      "Do not move finer while old scratches remain in spots."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/finish-patchy-after-grit-change/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-dry-sanding-leaves-dust-scratches",
+    "type": "exact_solution",
+    "title": "Dust creates extra scratches",
+    "description": "Random scratches appear while dry sanding.",
+    "customer_phrases": [
+      "Dust creates extra scratches",
+      "Random scratches appear while dry sanding.",
+      "Stop and wipe the surface.",
+      "Clean or replace the sheet."
+    ],
+    "aliases": [
+      "Loose grit or debris is trapped under the paper.",
+      "Repeat the current grit after cleaning, then move finer.",
+      "Do not sand over loose debris."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/dry-sanding-leaves-dust-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-grit-comes-off-sheet",
+    "type": "exact_solution",
+    "title": "Grit comes off the sheet",
+    "description": "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
+    "customer_phrases": [
+      "Grit comes off the sheet",
+      "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The sheet may be worn, creased, over-soaked, or used with heavy pressure on a rough edge.",
+      "Use a fresh sheet in the same grit, or step coarser only if the task is too slow.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/grit-comes-off-sheet/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sheet-curls-during-wet-sanding",
+    "type": "exact_solution",
+    "title": "Sheet curls during wet sanding",
+    "description": "The sheet curls up and becomes hard to keep flat while wet sanding.",
+    "customer_phrases": [
+      "Sheet curls during wet sanding",
+      "The sheet curls up and becomes hard to keep flat while wet sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Water exposure and hand pressure can make a cut piece curl, especially if it is not supported evenly.",
+      "Use the planned wet sanding grit, commonly 800 to 3000 for fine stages.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [],
+    "grits": [
+      "800",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-curls-during-wet-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sheet-soft-after-soaking-too-long",
+    "type": "exact_solution",
+    "title": "Sheet becomes soft after soaking too long",
+    "description": "The sheet feels weak or soft after sitting in water.",
+    "customer_phrases": [
+      "Sheet becomes soft after soaking too long",
+      "The sheet feels weak or soft after sitting in water.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Extended soaking can soften the backing and make handling less controlled.",
+      "Use the intended wet sanding grit with a fresh piece.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sheet-soft-after-soaking-too-long/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sheet-edge-frays",
+    "type": "exact_solution",
+    "title": "Sheet edge frays during sanding",
+    "description": "The edge of the sandpaper frays and leaves fibers or rough backing.",
+    "customer_phrases": [
+      "Sheet edge frays during sanding",
+      "The edge of the sandpaper frays and leaves fibers or rough backing.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The sheet edge is rubbing against corners, burrs, or a sharp surface under pressure.",
+      "Use the same working grit, with lighter pressure near edges.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/sheet-edge-frays/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sandpaper-leaves-residue",
+    "type": "exact_solution",
+    "title": "Sandpaper leaves residue",
+    "description": "Residue from dust, slurry, or loaded coating remains after sanding.",
+    "customer_phrases": [
+      "Sandpaper leaves residue",
+      "Residue from dust, slurry, or loaded coating remains after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Loaded abrasive, dirty wet sanding water, or loose sanding dust is being spread over the surface.",
+      "Stay with the current grit, then move finer only after cleaning.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/sandpaper-leaves-residue/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sheet-smooth-but-unused",
+    "type": "exact_solution",
+    "title": "Sheet feels smooth but looks unused",
+    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
+    "customer_phrases": [
+      "Sheet feels smooth but looks unused",
+      "The sheet does not look worn out, but it feels smooth and stops cutting.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Fine dust or finish residue can glaze the abrasive surface before the sheet looks fully used.",
+      "Use a fresh sheet in the same grit, or choose a grit that better matches the task.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sheet-hard-to-hold-detail-sanding",
+    "type": "exact_solution",
+    "title": "Sheet is hard to hold for detail sanding",
+    "description": "Small details are difficult to sand evenly with a loose sheet.",
+    "customer_phrases": [
+      "Sheet is hard to hold for detail sanding",
+      "Small details are difficult to sand evenly with a loose sheet.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "A large piece of sheet can bunch up and concentrate pressure in small areas.",
+      "Use the grit required for the detail stage, often 180 to 400 for prep.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [
+      "180",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/sheet-hard-to-hold-detail-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-60-grit-too-aggressive",
+    "type": "exact_solution",
+    "title": "60 grit is too aggressive",
+    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
+    "customer_phrases": [
+      "60 grit is too aggressive",
+      "60 grit cuts fast and leaves scratches deeper than the project needs.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "60 grit is a heavy removal grit and may be too coarse for light prep or finish work.",
+      "Use 80, 120, or 150 instead when heavy removal is not needed.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/60-grit-too-aggressive/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-80-grit-removes-too-much",
+    "type": "exact_solution",
+    "title": "80 grit removes too much",
+    "description": "80 grit cuts deeper or faster than expected.",
+    "customer_phrases": [
+      "80 grit removes too much",
+      "80 grit cuts deeper or faster than expected.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "80 grit is still a coarse removal grit and can change edges or surface level quickly.",
+      "Move to 120 or 150 for lighter shaping, then 180 and 220.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/80-grit-removes-too-much/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-100-grit-marks-before-180",
+    "type": "exact_solution",
+    "title": "100 grit leaves marks before 180",
+    "description": "100 grit scratches are still visible after moving to 180.",
+    "customer_phrases": [
+      "100 grit leaves marks before 180",
+      "100 grit scratches are still visible after moving to 180.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "The 100-grit scratch pattern was not fully refined before switching or pressure was too heavy.",
+      "Use 120 or 150 before 180 if the 100-grit marks are deep.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [],
+    "grits": [
+      "100",
+      "120",
+      "150",
+      "180"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/100-grit-marks-before-180/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-150-grit-not-smooth-enough",
+    "type": "exact_solution",
+    "title": "150 grit is not smooth enough",
+    "description": "The surface still feels rough after sanding with 150 grit.",
+    "customer_phrases": [
+      "150 grit is not smooth enough",
+      "The surface still feels rough after sanding with 150 grit.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "150 grit is a prep step and usually needs follow-up refinement for smoother surfaces.",
+      "Move to 180, then 220 if a smoother prep surface is needed.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [],
+    "grits": [
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/150-grit-not-smooth-enough/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-240-still-leaves-scratches",
+    "type": "exact_solution",
+    "title": "240 grit still leaves scratches",
+    "description": "Scratches remain visible after 240 grit.",
+    "customer_phrases": [
+      "240 grit still leaves scratches",
+      "Scratches remain visible after 240 grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The previous grit marks were too deep or 240 is still not the final finish grit for the surface.",
+      "Use 180 or 220 first if needed, then 240 and 320.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "240",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/240-still-leaves-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-280-vs-320-confusion",
+    "type": "exact_solution",
+    "title": "280 vs 320 grit confusion",
+    "description": "It is unclear whether to use 280 or 320 grit next.",
+    "customer_phrases": [
+      "280 vs 320 grit confusion",
+      "It is unclear whether to use 280 or 320 grit next.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Both are fine prep grits, but the choice depends on how much scratch refinement is still needed.",
+      "Use 280 when 240 marks need a smaller step; use 320 for a finer prep surface.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [
+      "240",
+      "280",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/280-vs-320-confusion/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-360-vs-400-confusion",
+    "type": "exact_solution",
+    "title": "360 vs 400 grit confusion",
+    "description": "It is unclear whether 360 or 400 is the better next grit.",
+    "customer_phrases": [
+      "360 vs 400 grit confusion",
+      "It is unclear whether 360 or 400 is the better next grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Both are fine prep grits, and either can be useful depending on how much refinement remains.",
+      "Use 360 for a smaller step after 320; use 400 for finer prep or light scuffing.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "360",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/360-vs-400-confusion/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-500-vs-600-confusion",
+    "type": "exact_solution",
+    "title": "500 vs 600 grit confusion",
+    "description": "It is unclear whether 500 or 600 grit should be used next.",
+    "customer_phrases": [
+      "500 vs 600 grit confusion",
+      "It is unclear whether 500 or 600 grit should be used next.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Both are fine finishing or coating-prep grits, with 600 leaving a finer pattern.",
+      "Use 500 when 400 marks need a smaller step; use 600 for finer prep.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "400",
+      "500",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/500-vs-600-confusion/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-800-leaves-dull-marks",
+    "type": "exact_solution",
+    "title": "800 grit leaves dull marks",
+    "description": "800 grit leaves a dull, visible sanding pattern.",
+    "customer_phrases": [
+      "800 grit leaves dull marks",
+      "800 grit leaves a dull, visible sanding pattern.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "800 grit is fine, but it still leaves a sanding haze that needs finer grits for gloss preparation.",
+      "Move to 1000, 1500, 2000, and 3000 as needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/800-leaves-dull-marks/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-1000-not-fine-enough-clear-coat",
+    "type": "exact_solution",
+    "title": "1000 grit is not fine enough for clear coat gloss",
+    "description": "Clear coat still looks dull after 1000 grit.",
+    "customer_phrases": [
+      "1000 grit is not fine enough for clear coat gloss",
+      "Clear coat still looks dull after 1000 grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "1000 grit is commonly a leveling step and usually needs finer wet sanding before polishing.",
+      "1500, then 2000 and 3000 before polishing.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1000-not-fine-enough-clear-coat/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-1200-still-leaves-haze",
+    "type": "exact_solution",
+    "title": "1200 grit still leaves haze",
+    "description": "The surface still has a cloudy haze after 1200 grit.",
+    "customer_phrases": [
+      "1200 grit still leaves haze",
+      "The surface still has a cloudy haze after 1200 grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "1200 grit can still leave visible sanding haze and may need higher grits for polishing prep.",
+      "1500, 2000, then 3000 as needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [],
+    "grits": [
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1200-still-leaves-haze/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-1500-does-not-remove-1000-marks",
+    "type": "exact_solution",
+    "title": "1500 grit does not remove 1000 marks",
+    "description": "1000-grit marks remain after sanding with 1500.",
+    "customer_phrases": [
+      "1500 grit does not remove 1000 marks",
+      "1000-grit marks remain after sanding with 1500.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The 1000-grit scratches were not uniform or the 1500 step has not fully refined them yet.",
+      "Repeat 1500 with light pressure, or return to 1000 only where deeper marks remain.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [
+      "1000",
+      "1500"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/1500-does-not-remove-1000-marks/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-2000-still-needs-3000",
+    "type": "exact_solution",
+    "title": "2000 grit still needs 3000",
+    "description": "The surface is finer after 2000 grit but still not ready for the desired gloss.",
+    "customer_phrases": [
+      "2000 grit still needs 3000",
+      "The surface is finer after 2000 grit but still not ready for the desired gloss.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "2000 grit can leave a fine haze that may still need 3000 and polishing for gloss.",
+      "Move to 3000 before polishing when a finer finish is needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/2000-still-needs-3000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-3000-does-not-create-gloss",
+    "type": "exact_solution",
+    "title": "3000 grit does not create gloss by itself",
+    "description": "The surface is still hazy after 3000 grit.",
+    "customer_phrases": [
+      "3000 grit does not create gloss by itself",
+      "The surface is still hazy after 3000 grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "3000 grit prepares a very fine sanding haze, but sanding alone does not create full gloss.",
+      "Use 3000 as the final sanding step before polishing when gloss is required.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [],
+    "grits": [
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/3000-does-not-create-gloss/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-high-grit-does-not-remove-defects",
+    "type": "exact_solution",
+    "title": "High grit does not remove defects",
+    "description": "Fine grit does not remove scratches, chips, or raised defects.",
+    "customer_phrases": [
+      "High grit does not remove defects",
+      "Fine grit does not remove scratches, chips, or raised defects.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "High grits refine a surface but do not remove deeper defects efficiently.",
+      "Return to the least aggressive grit that actually cuts the defect, often 180 to 400 depending on severity.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [
+      "180",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/high-grit-does-not-remove-defects/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-low-grit-damages-finish",
+    "type": "exact_solution",
+    "title": "Low grit damages finish",
+    "description": "A coarse grit leaves heavy scratches or cuts through a finish.",
+    "customer_phrases": [
+      "Low grit damages finish",
+      "A coarse grit leaves heavy scratches or cuts through a finish.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The grit is too aggressive for finish prep or intercoat sanding.",
+      "Use 320 to 600 for light finish prep, depending on the coating stage.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/low-grit-damages-finish/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-scratches-show-after-stain",
+    "type": "exact_solution",
+    "title": "Scratches show after stain",
+    "description": "Scratch lines become visible after stain is applied.",
+    "customer_phrases": [
+      "Scratches show after stain",
+      "Scratch lines become visible after stain is applied.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Dust or lighting hid coarse scratches before finishing.",
+      "Return to 180 or 220 for wood prep, then clean thoroughly.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/scratches-show-after-stain/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-stain-looks-blotchy",
+    "type": "exact_solution",
+    "title": "Stain looks blotchy after sanding",
+    "description": "Stain absorbs unevenly after sanding.",
+    "customer_phrases": [
+      "Stain looks blotchy after sanding",
+      "Stain absorbs unevenly after sanding.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Uneven sanding pressure or mixed scratch patterns can leave inconsistent surface preparation.",
+      "Prepare evenly with 180 or 220, based on the project needs.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/stain-looks-blotchy/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-raised-grain-after-water-wipe",
+    "type": "exact_solution",
+    "title": "Raised grain after water wipe",
+    "description": "Wood feels fuzzy or raised after wiping with water.",
+    "customer_phrases": [
+      "Raised grain after water wipe",
+      "Wood feels fuzzy or raised after wiping with water.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Water can raise wood fibers that need light sanding after the surface dries.",
+      "Use 220 or 320 lightly after the surface dries.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/raised-grain-after-water-wipe/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-end-grain-sands-differently",
+    "type": "exact_solution",
+    "title": "End grain sands differently",
+    "description": "End grain looks or feels different from the rest of the wood after sanding.",
+    "customer_phrases": [
+      "End grain sands differently",
+      "End grain looks or feels different from the rest of the wood after sanding.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "End grain absorbs and abrades differently, so pressure and grit choice show more.",
+      "Use the same final prep grit, often 180 or 220, with careful light pressure.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/end-grain-sands-differently/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-veneer-sands-through",
+    "type": "exact_solution",
+    "title": "Veneer sands through",
+    "description": "A thin wood surface is sanded through to a lower layer.",
+    "customer_phrases": [
+      "Veneer sands through",
+      "A thin wood surface is sanded through to a lower layer.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Coarse grit or heavy pressure removed too much material from a thin surface.",
+      "Use fine prep grits such as 180 to 320 with very light pressure.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "180",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/veneer-sands-through/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-softwood-grooves-from-sanding",
+    "type": "exact_solution",
+    "title": "Softwood grooves from sanding",
+    "description": "Softwood develops grooves or low lines after sanding.",
+    "customer_phrases": [
+      "Softwood grooves from sanding",
+      "Softwood develops grooves or low lines after sanding.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Finger pressure or coarse grit can dig into softer grain.",
+      "Use 150 to 220 with a sanding block for prep.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "150",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/softwood-grooves-from-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-hardwood-scratch-lines",
+    "type": "exact_solution",
+    "title": "Hardwood scratch lines remain",
+    "description": "Straight scratch lines remain visible on hardwood.",
+    "customer_phrases": [
+      "Hardwood scratch lines remain",
+      "Straight scratch lines remain visible on hardwood.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Hardwood can hold visible scratches if the previous grit pattern is not fully refined.",
+      "120 or 150 to remove deeper lines, then 180 and 220.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/hardwood-scratch-lines/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-dust-hides-scratches-until-finish",
+    "type": "exact_solution",
+    "title": "Dust hides scratches until finish",
+    "description": "Scratches appear only after dust is wiped away or finish is applied.",
+    "customer_phrases": [
+      "Dust hides scratches until finish",
+      "Scratches appear only after dust is wiped away or finish is applied.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "Sanding dust can fill scratches and make the surface look smoother than it is.",
+      "Return to the grit that removes the visible scratches, then refine to the final prep grit.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "finish"
+    ],
+    "grits": [],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/dust-hides-scratches-until-finish/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sanding-across-grain-lines",
+    "type": "exact_solution",
+    "title": "Sanding across grain leaves lines",
+    "description": "Lines across the wood grain remain visible after sanding.",
+    "customer_phrases": [
+      "Sanding across grain leaves lines",
+      "Lines across the wood grain remain visible after sanding.",
+      "Sand with the grain where possible.",
+      "Use the grit that removes the visible issue."
+    ],
+    "aliases": [
+      "Cross-grain scratches are more visible and need careful refinement.",
+      "Return to 150 or 180 if needed, then finish with 220 along the grain.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [
+      "wood",
+      "finish"
+    ],
+    "grits": [
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/sanding-across-grain-lines/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-edges-do-not-feather",
+    "type": "exact_solution",
+    "title": "Paint edges do not feather smoothly",
+    "description": "A paint edge remains visible instead of blending into the surrounding surface.",
+    "customer_phrases": [
+      "Paint edges do not feather smoothly",
+      "A paint edge remains visible instead of blending into the surrounding surface.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The edge needs gradual leveling and refinement rather than pressure in one spot.",
+      "Start around 220 or 320, then refine with 400 as needed.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paint-edges-do-not-feather/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-primer-sands-unevenly",
+    "type": "exact_solution",
+    "title": "Primer sands unevenly",
+    "description": "Primer has patchy dull spots or uneven texture after sanding.",
+    "customer_phrases": [
+      "Primer sands unevenly",
+      "Primer has patchy dull spots or uneven texture after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Pressure, cure state, or dust loading may be uneven across the surface.",
+      "320 to 600 depending on the primer stage and coating instructions.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "primer",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/primer-sands-unevenly/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-chips-at-edge",
+    "type": "exact_solution",
+    "title": "Paint chips at the edge while sanding",
+    "description": "Paint chips or flakes at an edge during sanding.",
+    "customer_phrases": [
+      "Paint chips at the edge while sanding",
+      "Paint chips or flakes at an edge during sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The edge may be sharp, weak, or attacked with too much pressure or too coarse a grit.",
+      "Use 320 or 400 with light pressure for edge prep.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paint-chips-at-edge/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-old-paint-gets-gummy",
+    "type": "exact_solution",
+    "title": "Old paint gets gummy",
+    "description": "Old paint softens or gums up the sandpaper.",
+    "customer_phrases": [
+      "Old paint gets gummy",
+      "Old paint softens or gums up the sandpaper.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The coating is smearing from heat, pressure, or softness instead of sanding to dust.",
+      "Use the removal or prep grit needed, often 80 to 220, with fresh paper.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "80",
+      "220"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/old-paint-gets-gummy/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-burns-through-edges",
+    "type": "exact_solution",
+    "title": "Clear coat burns through on edges",
+    "description": "Clear coat is sanded through on corners, edges, or raised lines.",
+    "customer_phrases": [
+      "Clear coat burns through on edges",
+      "Clear coat is sanded through on corners, edges, or raised lines.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Edges have less margin for sanding and are easy to overwork with pressure.",
+      "Use fine grits such as 1500 to 3000 with very light pressure where wet sanding is appropriate.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1500",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-burns-through-edges/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sanding-leaves-low-spots",
+    "type": "exact_solution",
+    "title": "Sanding leaves low spots",
+    "description": "Some areas become lower or look dished after sanding.",
+    "customer_phrases": [
+      "Sanding leaves low spots",
+      "Some areas become lower or look dished after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Pressure was focused in one area or a too-coarse grit removed material unevenly.",
+      "Use the least aggressive grit that levels the defect, then refine.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/sanding-leaves-low-spots/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-gloss-shows-scratches",
+    "type": "exact_solution",
+    "title": "Gloss shows sanding scratches",
+    "description": "Scratches that were hard to see become obvious on a glossy surface.",
+    "customer_phrases": [
+      "Gloss shows sanding scratches",
+      "Scratches that were hard to see become obvious on a glossy surface.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Gloss reflects light strongly and reveals scratches that were not fully refined.",
+      "Refine through finer grits; for clear coat prep use 1500, 2000, and 3000 before polishing.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/gloss-shows-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-looks-dull-after-sanding",
+    "type": "exact_solution",
+    "title": "Paint looks dull after sanding",
+    "description": "Paint or clear coat looks dull after fine sanding.",
+    "customer_phrases": [
+      "Paint looks dull after sanding",
+      "Paint or clear coat looks dull after fine sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Sanding creates a uniform scratch pattern or haze before the next coating or polish step.",
+      "Use the grit required by the stage, often 600+ for fine prep or 1000-3000 for polishing prep.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "paint",
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "600",
+      "1000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paint-looks-dull-after-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-orange-peel-not-leveling",
+    "type": "exact_solution",
+    "title": "Orange peel is not leveling",
+    "description": "Clear coat texture remains after wet sanding.",
+    "customer_phrases": [
+      "Orange peel is not leveling",
+      "Clear coat texture remains after wet sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The grit may be too fine for the texture, or sanding coverage is not even enough.",
+      "Start only as coarse as needed, often 1000 or 1500, then refine to 2000 and 3000.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/orange-peel-not-leveling/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-runs-drips-hard-to-level",
+    "type": "exact_solution",
+    "title": "Runs or drips are hard to level",
+    "description": "Paint or clear coat runs remain raised after sanding.",
+    "customer_phrases": [
+      "Runs or drips are hard to level",
+      "Paint or clear coat runs remain raised after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "A raised run needs careful leveling before fine refinement.",
+      "Use 800 to 1500 depending on the coating and defect height, then refine finer.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "paint",
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "800",
+      "1500"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/runs-drips-hard-to-level/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-dust-nibs-remain",
+    "type": "exact_solution",
+    "title": "Dust nibs remain after sanding",
+    "description": "Small raised dust spots remain in paint or clear coat.",
+    "customer_phrases": [
+      "Dust nibs remain after sanding",
+      "Small raised dust spots remain in paint or clear coat.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The nibs were not leveled before moving to finer grits.",
+      "Use 1000 to 2000 for small nibs, then 3000 if polishing prep is needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "paint",
+      "clear coat",
+      "finish"
+    ],
+    "grits": [
+      "1000",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/dust-nibs-remain/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-cloudy-after-2000",
+    "type": "exact_solution",
+    "title": "Clear coat cloudy after 2000 grit",
+    "description": "Clear coat remains cloudy after 2000 grit wet sanding.",
+    "customer_phrases": [
+      "Clear coat cloudy after 2000 grit",
+      "Clear coat remains cloudy after 2000 grit wet sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "2000 grit still leaves a fine haze and may need 3000 and polishing for gloss.",
+      "Refine with 3000, then polish if gloss is required.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-cloudy-after-2000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-shows-1500-marks",
+    "type": "exact_solution",
+    "title": "Clear coat shows 1500 marks",
+    "description": "1500-grit marks are still visible in clear coat.",
+    "customer_phrases": [
+      "Clear coat shows 1500 marks",
+      "1500-grit marks are still visible in clear coat.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "The 1500 pattern was not refined through enough finer grits before polishing.",
+      "Move to 2000 and 3000 before polishing.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-shows-1500-marks/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-sand-through-clear-coat-corners",
+    "type": "exact_solution",
+    "title": "Sand through clear coat on corners",
+    "description": "Clear coat is removed on corners during sanding.",
+    "customer_phrases": [
+      "Sand through clear coat on corners",
+      "Clear coat is removed on corners during sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Corners and edges sand faster because pressure is concentrated there.",
+      "Use fine wet sanding grits with minimal pressure near corners.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "clear coat"
+    ],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/sand-through-clear-coat-corners/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wet-sanding-straight-scratches",
+    "type": "exact_solution",
+    "title": "Wet sanding leaves straight scratches",
+    "description": "Straight scratches appear during wet sanding.",
+    "customer_phrases": [
+      "Wet sanding leaves straight scratches",
+      "Straight scratches appear during wet sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "A particle, old grit mark, or uneven stroke pattern may be cutting deeper than the current grit.",
+      "Repeat the current grit after cleaning, or step back one grit only if needed.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/wet-sanding-straight-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wet-sanding-random-deep-scratches",
+    "type": "exact_solution",
+    "title": "Wet sanding creates random deep scratches",
+    "description": "Random deeper scratches appear during wet sanding.",
+    "customer_phrases": [
+      "Wet sanding creates random deep scratches",
+      "Random deeper scratches appear during wet sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Loose abrasive, dirt, or contaminated slurry can drag under the sheet.",
+      "Clean and repeat the current grit, then refine finer.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [],
+    "grits": [],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/wet-sanding-random-deep-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-rust-pits-remain",
+    "type": "exact_solution",
+    "title": "Rust pits remain",
+    "description": "Dark pits or small low spots remain after rust sanding.",
+    "customer_phrases": [
+      "Rust pits remain",
+      "Dark pits or small low spots remain after rust sanding.",
+      "Clean the surface.",
+      "Use the recommended grit with light, even pressure."
+    ],
+    "aliases": [
+      "Pitting is below the surrounding surface, so sanding the top surface may not fully erase it.",
+      "Use 80 to 180 for rough cleanup, then 220 and 320 for prep.",
+      "Do not skip grit steps while visible scratches or high spots remain."
+    ],
+    "surface": [],
+    "grits": [
+      "80",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/rust-pits-remain/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-aluminum-clogs-paper",
+    "type": "exact_solution",
+    "title": "Aluminum clogs paper",
+    "description": "Aluminum residue loads into the abrasive and sanding slows.",
+    "customer_phrases": [
+      "Aluminum clogs paper",
+      "Aluminum residue loads into the abrasive and sanding slows.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Soft metal residue can pack into the sheet, especially with pressure or a worn piece.",
+      "Use the grit needed for shaping or prep, often 180 to 400.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "180",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/aluminum-clogs-paper/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-turns-white",
+    "type": "exact_solution",
+    "title": "Plastic turns white after sanding",
+    "description": "Plastic turns white or cloudy after sanding.",
+    "customer_phrases": [
+      "Plastic turns white after sanding",
+      "Plastic turns white or cloudy after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Fine scratches in plastic can scatter light and look white or hazy.",
+      "Refine with 1000, 1500, 2000, and 3000 as needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-turns-white/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-melts-or-smears",
+    "type": "exact_solution",
+    "title": "Plastic melts or smears",
+    "description": "Plastic smears, melts, or loads the sheet while sanding.",
+    "customer_phrases": [
+      "Plastic melts or smears",
+      "Plastic smears, melts, or loads the sheet while sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Heat from pressure, speed, or a loaded sheet can soften plastic.",
+      "Use 320 to 600 for prep, then finer grits as needed.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/plastic-melts-or-smears/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-edge-gets-fuzzy",
+    "type": "exact_solution",
+    "title": "Plastic edge gets fuzzy",
+    "description": "A plastic edge becomes fuzzy or rough after sanding.",
+    "customer_phrases": [
+      "Plastic edge gets fuzzy",
+      "A plastic edge becomes fuzzy or rough after sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Pressure or coarse grit can raise a rough edge instead of refining it cleanly.",
+      "Use 400 to 600, then finer if needed.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/plastic-edge-gets-fuzzy/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-3000-leaves-plastic-hazy",
+    "type": "exact_solution",
+    "title": "3000 leaves plastic hazy",
+    "description": "Plastic still looks hazy after 3000 grit.",
+    "customer_phrases": [
+      "3000 leaves plastic hazy",
+      "Plastic still looks hazy after 3000 grit.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "3000 grit leaves a very fine sanding haze and may not restore clear plastic by itself.",
+      "Use 3000 as final sanding prep, then use the required polishing step if clarity is needed.",
+      "Do not expect sanding alone to create full gloss."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/3000-leaves-plastic-hazy/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-dust-clogs-paper",
+    "type": "exact_solution",
+    "title": "Plastic dust clogs paper",
+    "description": "Plastic dust packs into the abrasive and slows sanding.",
+    "customer_phrases": [
+      "Plastic dust clogs paper",
+      "Plastic dust packs into the abrasive and slows sanding.",
+      "Clean the surface and the sheet.",
+      "Use clean water and light pressure."
+    ],
+    "aliases": [
+      "Plastic residue can load the sheet when pressure or heat is too high.",
+      "Use 320 to 600 for prep and replace loaded sheets promptly.",
+      "Do not let dirty slurry or trapped grit stay under the sheet."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "320",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/plastic-dust-clogs-paper/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-drywall-patch-ridges-remain",
+    "type": "exact_solution",
+    "title": "Drywall patch ridges remain",
+    "description": "Drywall patch ridges are still visible or feel high after sanding.",
+    "customer_phrases": [
+      "Drywall patch ridges remain",
+      "Drywall patch ridges are still visible or feel high after sanding.",
+      "Let the patch dry fully.",
+      "Sand the high area with light pressure."
+    ],
+    "aliases": [
+      "The ridges were not leveled before switching to a finer finishing grit.",
+      "Use 120 to 180 for leveling, then 220 for light smoothing.",
+      "Do not press hard enough to tear paper or create low spots."
+    ],
+    "surface": [
+      "paint",
+      "drywall",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/drywall-patch-ridges-remain/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-drywall-paper-tears",
+    "type": "exact_solution",
+    "title": "Drywall paper tears while sanding",
+    "description": "The drywall face paper tears or fuzzes during sanding.",
+    "customer_phrases": [
+      "Drywall paper tears while sanding",
+      "The drywall face paper tears or fuzzes during sanding.",
+      "Let the patch dry fully.",
+      "Sand the high area with light pressure."
+    ],
+    "aliases": [
+      "The grit is too coarse, pressure is too high, or the sheet is catching the paper edge.",
+      "Use 180 to 220 with very light pressure for patch smoothing.",
+      "Do not compensate for loading or wear with heavy pressure."
+    ],
+    "surface": [
+      "paint",
+      "drywall"
+    ],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/drywall-paper-tears/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-joint-compound-clogs-paper",
+    "type": "exact_solution",
+    "title": "Joint compound clogs paper",
+    "description": "Joint compound dust packs into the sandpaper quickly.",
+    "customer_phrases": [
+      "Joint compound clogs paper",
+      "Joint compound dust packs into the sandpaper quickly.",
+      "Let the patch dry fully.",
+      "Sand the high area with light pressure."
+    ],
+    "aliases": [
+      "Fine compound dust can load the abrasive if it is not cleared often.",
+      "Use 120 to 220 depending on patch height and finish stage.",
+      "Do not compensate for loading or wear with heavy pressure."
+    ],
+    "surface": [
+      "paint",
+      "finish"
+    ],
+    "grits": [
+      "120",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/joint-compound-clogs-paper/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-patch-edge-visible-after-sanding",
+    "type": "exact_solution",
+    "title": "Patch edge visible after sanding",
+    "description": "The edge of a drywall patch still shows after sanding.",
+    "customer_phrases": [
+      "Patch edge visible after sanding",
+      "The edge of a drywall patch still shows after sanding.",
+      "Let the patch dry fully.",
+      "Sand the high area with light pressure."
+    ],
+    "aliases": [
+      "The patch edge was not feathered gradually into the surrounding wall.",
+      "Use 180, then 220 for final feathering.",
+      "Do not press hard enough to tear paper or create low spots."
+    ],
+    "surface": [
+      "paint",
+      "drywall"
+    ],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/patch-edge-visible-after-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-patch-smooth-but-shows-after-paint",
+    "type": "exact_solution",
+    "title": "Patch is smooth but shows after paint",
+    "description": "The patch feels smooth but is visible after painting.",
+    "customer_phrases": [
+      "Patch is smooth but shows after paint",
+      "The patch feels smooth but is visible after painting.",
+      "Let the patch dry fully.",
+      "Sand the high area with light pressure."
+    ],
+    "aliases": [
+      "Uneven scratch pattern, dust, or an unfeathered edge can show once paint is applied.",
+      "Use 180 to feather, then 220 for light final smoothing.",
+      "Do not press hard enough to tear paper or create low spots."
+    ],
+    "surface": [
+      "paint"
+    ],
+    "grits": [
+      "180",
+      "220"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/patch-smooth-but-shows-after-paint/",
+    "result_kind": "answer"
+  },
+  {
     "id": "search-scratches-too-deep",
     "type": "top_problem",
     "title": "Scratches Are Too Deep",
@@ -35,38 +3176,6 @@
     "target_url": "/problems/scratches-too-deep/"
   },
   {
-    "id": "search-320-not-removing-scratches",
-    "type": "exact_scenario",
-    "title": "320 Grit Is Not Removing Scratches",
-    "description": "320 grit is too fine to remove deeper scratches left by 180 grit or heavy pressure.",
-    "customer_phrases": [
-      "320 grit is not removing scratches",
-      "320 wont remove 180 scratches",
-      "scratches still show after 320"
-    ],
-    "aliases": [
-      "320 grit scratches",
-      "180 to 320 problem",
-      "wrong grit jump"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "clear coat"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "240",
-      "320"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/320-does-not-remove-180-scratches/"
-  },
-  {
     "id": "search-paper-clogs-too-fast",
     "type": "top_problem",
     "title": "Sandpaper Clogs Too Fast",
@@ -100,39 +3209,6 @@
       "wet"
     ],
     "target_url": "/problems/paper-clogs-too-fast/"
-  },
-  {
-    "id": "search-paint-clogs",
-    "type": "exact_scenario",
-    "title": "Paint Clogs Sandpaper",
-    "description": "Soft paint or finish residue smears into the sheet during sanding.",
-    "customer_phrases": [
-      "paint clogs",
-      "paint loads up paper",
-      "sandpaper gums up on paint"
-    ],
-    "aliases": [
-      "paint loading",
-      "soft coating clogs",
-      "paint residue"
-    ],
-    "surface": [
-      "paint",
-      "primer",
-      "finish"
-    ],
-    "grits": [
-      "120",
-      "180",
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/paint-clogs-sheet/"
   },
   {
     "id": "search-surface-still-rough",
@@ -479,35 +3555,6 @@
     "target_url": "/problems/paper-tears-early/"
   },
   {
-    "id": "search-paint-removal-slow",
-    "type": "exact_scenario",
-    "title": "Paint Removal Is Slow",
-    "description": "A grit may be too fine or the sheet may be loaded or worn.",
-    "customer_phrases": [
-      "paint removal slow",
-      "sanding paint takes forever",
-      "not removing paint"
-    ],
-    "aliases": [
-      "paint not coming off",
-      "slow sanding paint",
-      "paint stripping"
-    ],
-    "surface": [
-      "paint"
-    ],
-    "grits": [
-      "60",
-      "80",
-      "120",
-      "180"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/paint-removal-too-slow/"
-  },
-  {
     "id": "search-sanding-takes-too-long",
     "type": "top_problem",
     "title": "Sanding Takes Too Long",
@@ -708,1835 +3755,6 @@
       "wet"
     ],
     "target_url": "/products/assorted-80-3000/"
-  },
-  {
-    "id": "search-grit-comes-off-sheet",
-    "type": "exact_scenario",
-    "title": "Grit comes off the sheet",
-    "description": "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
-    "customer_phrases": [
-      "abrasive shedding",
-      "loose grit on surface",
-      "sandpaper grit falling off"
-    ],
-    "aliases": [
-      "abrasive shedding",
-      "loose grit on surface",
-      "sandpaper grit falling off"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic",
-      "clear coat"
-    ],
-    "grits": [
-      "60",
-      "80",
-      "120",
-      "180",
-      "220",
-      "320",
-      "400",
-      "600",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/grit-comes-off-sheet/"
-  },
-  {
-    "id": "search-sheet-curls-during-wet-sanding",
-    "type": "exact_scenario",
-    "title": "Sheet curls during wet sanding",
-    "description": "The sheet curls up and becomes hard to keep flat while wet sanding.",
-    "customer_phrases": [
-      "paper curls in water",
-      "wet sanding paper curls",
-      "curled wet sandpaper"
-    ],
-    "aliases": [
-      "paper curls in water",
-      "wet sanding paper curls",
-      "curled wet sandpaper"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic",
-      "metal"
-    ],
-    "grits": [
-      "800",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/sheet-curls-during-wet-sanding/"
-  },
-  {
-    "id": "search-sheet-soft-after-soaking-too-long",
-    "type": "exact_scenario",
-    "title": "Sheet becomes soft after soaking too long",
-    "description": "The sheet feels weak or soft after sitting in water.",
-    "customer_phrases": [
-      "over soaked sandpaper",
-      "wet paper feels weak",
-      "soft backing after soaking"
-    ],
-    "aliases": [
-      "over soaked sandpaper",
-      "wet paper feels weak",
-      "soft backing after soaking"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic",
-      "metal"
-    ],
-    "grits": [
-      "800",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/sheet-soft-after-soaking-too-long/"
-  },
-  {
-    "id": "search-sheet-edge-frays",
-    "type": "exact_scenario",
-    "title": "Sheet edge frays during sanding",
-    "description": "The edge of the sandpaper frays and leaves fibers or rough backing.",
-    "customer_phrases": [
-      "frayed sandpaper edge",
-      "paper edge coming apart",
-      "rough backing fibers"
-    ],
-    "aliases": [
-      "frayed sandpaper edge",
-      "paper edge coming apart",
-      "rough backing fibers"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic"
-    ],
-    "grits": [
-      "80",
-      "120",
-      "180",
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/sheet-edge-frays/"
-  },
-  {
-    "id": "search-sandpaper-leaves-residue",
-    "type": "exact_scenario",
-    "title": "Sandpaper leaves residue",
-    "description": "Residue from dust, slurry, or loaded coating remains after sanding.",
-    "customer_phrases": [
-      "sanding residue",
-      "dirty slurry marks",
-      "loaded paper residue"
-    ],
-    "aliases": [
-      "sanding residue",
-      "dirty slurry marks",
-      "loaded paper residue"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic",
-      "clear coat"
-    ],
-    "grits": [
-      "120",
-      "180",
-      "220",
-      "320",
-      "400",
-      "600",
-      "1000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/sandpaper-leaves-residue/"
-  },
-  {
-    "id": "search-sheet-smooth-but-unused",
-    "type": "exact_scenario",
-    "title": "Sheet feels smooth but looks unused",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "customer_phrases": [
-      "glazed abrasive",
-      "paper not cutting",
-      "sheet feels worn smooth"
-    ],
-    "aliases": [
-      "glazed abrasive",
-      "paper not cutting",
-      "sheet feels worn smooth"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic",
-      "primer"
-    ],
-    "grits": [
-      "120",
-      "180",
-      "220",
-      "320",
-      "400",
-      "600"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/sheet-smooth-but-unused/"
-  },
-  {
-    "id": "search-sheet-hard-to-hold-detail-sanding",
-    "type": "exact_scenario",
-    "title": "Sheet is hard to hold for detail sanding",
-    "description": "Small details are difficult to sand evenly with a loose sheet.",
-    "customer_phrases": [
-      "detail sanding control",
-      "small piece hard to hold",
-      "folded paper detail sanding"
-    ],
-    "aliases": [
-      "detail sanding control",
-      "small piece hard to hold",
-      "folded paper detail sanding"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/sheet-hard-to-hold-detail-sanding/"
-  },
-  {
-    "id": "search-60-grit-too-aggressive",
-    "type": "exact_scenario",
-    "title": "60 grit is too aggressive",
-    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
-    "customer_phrases": [
-      "60 grit scratches",
-      "coarse grit damage",
-      "60 grit cuts too much"
-    ],
-    "aliases": [
-      "60 grit scratches",
-      "coarse grit damage",
-      "60 grit cuts too much"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal"
-    ],
-    "grits": [
-      "60",
-      "80",
-      "120"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/60-grit-too-aggressive/"
-  },
-  {
-    "id": "search-80-grit-removes-too-much",
-    "type": "exact_scenario",
-    "title": "80 grit removes too much",
-    "description": "80 grit cuts deeper or faster than expected.",
-    "customer_phrases": [
-      "80 grit too coarse",
-      "80 grit cuts too fast",
-      "coarse removal damage"
-    ],
-    "aliases": [
-      "80 grit too coarse",
-      "80 grit cuts too fast",
-      "coarse removal damage"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic"
-    ],
-    "grits": [
-      "80",
-      "120",
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/80-grit-removes-too-much/"
-  },
-  {
-    "id": "search-100-grit-marks-before-180",
-    "type": "exact_scenario",
-    "title": "100 grit leaves marks before 180",
-    "description": "100 grit scratches are still visible after moving to 180.",
-    "customer_phrases": [
-      "100 grit scratches",
-      "100 to 180 grit jump",
-      "marks before 180"
-    ],
-    "aliases": [
-      "100 grit scratches",
-      "100 to 180 grit jump",
-      "marks before 180"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal"
-    ],
-    "grits": [
-      "100",
-      "120",
-      "150",
-      "180"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/100-grit-marks-before-180/"
-  },
-  {
-    "id": "search-150-grit-not-smooth-enough",
-    "type": "exact_scenario",
-    "title": "150 grit is not smooth enough",
-    "description": "The surface still feels rough after sanding with 150 grit.",
-    "customer_phrases": [
-      "150 grit rough",
-      "surface rough after 150",
-      "need 180 after 150"
-    ],
-    "aliases": [
-      "150 grit rough",
-      "surface rough after 150",
-      "need 180 after 150"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal"
-    ],
-    "grits": [
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/150-grit-not-smooth-enough/"
-  },
-  {
-    "id": "search-240-still-leaves-scratches",
-    "type": "exact_scenario",
-    "title": "240 grit still leaves scratches",
-    "description": "Scratches remain visible after 240 grit.",
-    "customer_phrases": [
-      "240 grit scratches",
-      "scratches after 240",
-      "need 320 after 240"
-    ],
-    "aliases": [
-      "240 grit scratches",
-      "scratches after 240",
-      "need 320 after 240"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "primer"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "240",
-      "320"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/240-still-leaves-scratches/"
-  },
-  {
-    "id": "search-280-vs-320-confusion",
-    "type": "exact_scenario",
-    "title": "280 vs 320 grit confusion",
-    "description": "It is unclear whether to use 280 or 320 grit next.",
-    "customer_phrases": [
-      "280 or 320 grit",
-      "after 240 grit",
-      "fine prep grit choice"
-    ],
-    "aliases": [
-      "280 or 320 grit",
-      "after 240 grit",
-      "fine prep grit choice"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "primer"
-    ],
-    "grits": [
-      "240",
-      "280",
-      "320"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/280-vs-320-confusion/"
-  },
-  {
-    "id": "search-360-vs-400-confusion",
-    "type": "exact_scenario",
-    "title": "360 vs 400 grit confusion",
-    "description": "It is unclear whether 360 or 400 is the better next grit.",
-    "customer_phrases": [
-      "360 or 400 grit",
-      "after 320 grit",
-      "paint prep grit choice"
-    ],
-    "aliases": [
-      "360 or 400 grit",
-      "after 320 grit",
-      "paint prep grit choice"
-    ],
-    "surface": [
-      "paint",
-      "primer",
-      "wood",
-      "metal"
-    ],
-    "grits": [
-      "320",
-      "360",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/360-vs-400-confusion/"
-  },
-  {
-    "id": "search-500-vs-600-confusion",
-    "type": "exact_scenario",
-    "title": "500 vs 600 grit confusion",
-    "description": "It is unclear whether 500 or 600 grit should be used next.",
-    "customer_phrases": [
-      "500 or 600 grit",
-      "fine coating prep",
-      "after 400 grit"
-    ],
-    "aliases": [
-      "500 or 600 grit",
-      "fine coating prep",
-      "after 400 grit"
-    ],
-    "surface": [
-      "paint",
-      "primer",
-      "clear coat",
-      "plastic"
-    ],
-    "grits": [
-      "400",
-      "500",
-      "600"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/500-vs-600-confusion/"
-  },
-  {
-    "id": "search-800-leaves-dull-marks",
-    "type": "exact_scenario",
-    "title": "800 grit leaves dull marks",
-    "description": "800 grit leaves a dull, visible sanding pattern.",
-    "customer_phrases": [
-      "800 grit haze",
-      "dull after 800",
-      "800 wet sanding marks"
-    ],
-    "aliases": [
-      "800 grit haze",
-      "dull after 800",
-      "800 wet sanding marks"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "800",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/800-leaves-dull-marks/"
-  },
-  {
-    "id": "search-1000-not-fine-enough-clear-coat",
-    "type": "exact_scenario",
-    "title": "1000 grit is not fine enough for clear coat gloss",
-    "description": "Clear coat still looks dull after 1000 grit.",
-    "customer_phrases": [
-      "1000 grit clear coat haze",
-      "clear coat dull after 1000",
-      "need 1500 after 1000"
-    ],
-    "aliases": [
-      "1000 grit clear coat haze",
-      "clear coat dull after 1000",
-      "need 1500 after 1000"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/1000-not-fine-enough-clear-coat/"
-  },
-  {
-    "id": "search-1200-still-leaves-haze",
-    "type": "exact_scenario",
-    "title": "1200 grit still leaves haze",
-    "description": "The surface still has a cloudy haze after 1200 grit.",
-    "customer_phrases": [
-      "1200 grit haze",
-      "cloudy after 1200",
-      "need 1500 after 1200"
-    ],
-    "aliases": [
-      "1200 grit haze",
-      "cloudy after 1200",
-      "need 1500 after 1200"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "1200",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/1200-still-leaves-haze/"
-  },
-  {
-    "id": "search-1500-does-not-remove-1000-marks",
-    "type": "exact_scenario",
-    "title": "1500 grit does not remove 1000 marks",
-    "description": "1000-grit marks remain after sanding with 1500.",
-    "customer_phrases": [
-      "1000 marks after 1500",
-      "1500 not removing scratches",
-      "need more 1500 sanding"
-    ],
-    "aliases": [
-      "1000 marks after 1500",
-      "1500 not removing scratches",
-      "need more 1500 sanding"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/1500-does-not-remove-1000-marks/"
-  },
-  {
-    "id": "search-2000-still-needs-3000",
-    "type": "exact_scenario",
-    "title": "2000 grit still needs 3000",
-    "description": "The surface is finer after 2000 grit but still not ready for the desired gloss.",
-    "customer_phrases": [
-      "2000 grit haze",
-      "need 3000 after 2000",
-      "2000 not final gloss"
-    ],
-    "aliases": [
-      "2000 grit haze",
-      "need 3000 after 2000",
-      "2000 not final gloss"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/2000-still-needs-3000/"
-  },
-  {
-    "id": "search-3000-does-not-create-gloss",
-    "type": "exact_scenario",
-    "title": "3000 grit does not create gloss by itself",
-    "description": "The surface is still hazy after 3000 grit.",
-    "customer_phrases": [
-      "3000 grit haze",
-      "3000 not glossy",
-      "needs polish after 3000"
-    ],
-    "aliases": [
-      "3000 grit haze",
-      "3000 not glossy",
-      "needs polish after 3000"
-    ],
-    "surface": [
-      "clear coat",
-      "plastic",
-      "paint"
-    ],
-    "grits": [
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/3000-does-not-create-gloss/"
-  },
-  {
-    "id": "search-high-grit-does-not-remove-defects",
-    "type": "exact_scenario",
-    "title": "High grit does not remove defects",
-    "description": "Fine grit does not remove scratches, chips, or raised defects.",
-    "customer_phrases": [
-      "fine grit not cutting",
-      "1000 grit not removing scratch",
-      "too fine for defect"
-    ],
-    "aliases": [
-      "fine grit not cutting",
-      "1000 grit not removing scratch",
-      "too fine for defect"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "metal",
-      "plastic",
-      "clear coat"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "320",
-      "400",
-      "600",
-      "1000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/high-grit-does-not-remove-defects/"
-  },
-  {
-    "id": "search-low-grit-damages-finish",
-    "type": "exact_scenario",
-    "title": "Low grit damages finish",
-    "description": "A coarse grit leaves heavy scratches or cuts through a finish.",
-    "customer_phrases": [
-      "coarse grit finish damage",
-      "80 grit on finish",
-      "low grit scratches coating"
-    ],
-    "aliases": [
-      "coarse grit finish damage",
-      "80 grit on finish",
-      "low grit scratches coating"
-    ],
-    "surface": [
-      "paint",
-      "clear coat",
-      "wood finish",
-      "plastic"
-    ],
-    "grits": [
-      "60",
-      "80",
-      "120",
-      "320",
-      "400",
-      "600"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/low-grit-damages-finish/"
-  },
-  {
-    "id": "search-scratches-show-after-stain",
-    "type": "exact_scenario",
-    "title": "Scratches show after stain",
-    "description": "Scratch lines become visible after stain is applied.",
-    "customer_phrases": [
-      "stain reveals scratches",
-      "wood scratches under stain",
-      "sanding marks after stain"
-    ],
-    "aliases": [
-      "stain reveals scratches",
-      "wood scratches under stain",
-      "sanding marks after stain"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "120",
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/scratches-show-after-stain/"
-  },
-  {
-    "id": "search-stain-looks-blotchy",
-    "type": "exact_scenario",
-    "title": "Stain looks blotchy after sanding",
-    "description": "Stain absorbs unevenly after sanding.",
-    "customer_phrases": [
-      "blotchy stain sanding",
-      "uneven stain prep",
-      "wood stain patchy"
-    ],
-    "aliases": [
-      "blotchy stain sanding",
-      "uneven stain prep",
-      "wood stain patchy"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/stain-looks-blotchy/"
-  },
-  {
-    "id": "search-raised-grain-after-water-wipe",
-    "type": "exact_scenario",
-    "title": "Raised grain after water wipe",
-    "description": "Wood feels fuzzy or raised after wiping with water.",
-    "customer_phrases": [
-      "wood grain raised",
-      "fuzzy after water wipe",
-      "water raised fibers"
-    ],
-    "aliases": [
-      "wood grain raised",
-      "fuzzy after water wipe",
-      "water raised fibers"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "220",
-      "320"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/raised-grain-after-water-wipe/"
-  },
-  {
-    "id": "search-end-grain-sands-differently",
-    "type": "exact_scenario",
-    "title": "End grain sands differently",
-    "description": "End grain looks or feels different from the rest of the wood after sanding.",
-    "customer_phrases": [
-      "end grain sanding",
-      "end grain absorbs differently",
-      "wood end grain prep"
-    ],
-    "aliases": [
-      "end grain sanding",
-      "end grain absorbs differently",
-      "wood end grain prep"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/end-grain-sands-differently/"
-  },
-  {
-    "id": "search-veneer-sands-through",
-    "type": "exact_scenario",
-    "title": "Veneer sands through",
-    "description": "A thin wood surface is sanded through to a lower layer.",
-    "customer_phrases": [
-      "sanded through veneer",
-      "thin veneer damage",
-      "veneer cut through"
-    ],
-    "aliases": [
-      "sanded through veneer",
-      "thin veneer damage",
-      "veneer cut through"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "320"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/veneer-sands-through/"
-  },
-  {
-    "id": "search-softwood-grooves-from-sanding",
-    "type": "exact_scenario",
-    "title": "Softwood grooves from sanding",
-    "description": "Softwood develops grooves or low lines after sanding.",
-    "customer_phrases": [
-      "softwood finger grooves",
-      "pine sanding grooves",
-      "soft wood low spots"
-    ],
-    "aliases": [
-      "softwood finger grooves",
-      "pine sanding grooves",
-      "soft wood low spots"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/softwood-grooves-from-sanding/"
-  },
-  {
-    "id": "search-hardwood-scratch-lines",
-    "type": "exact_scenario",
-    "title": "Hardwood scratch lines remain",
-    "description": "Straight scratch lines remain visible on hardwood.",
-    "customer_phrases": [
-      "hardwood sanding scratches",
-      "scratch lines in hardwood",
-      "hard wood marks"
-    ],
-    "aliases": [
-      "hardwood sanding scratches",
-      "scratch lines in hardwood",
-      "hard wood marks"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "120",
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/hardwood-scratch-lines/"
-  },
-  {
-    "id": "search-dust-hides-scratches-until-finish",
-    "type": "exact_scenario",
-    "title": "Dust hides scratches until finish",
-    "description": "Scratches appear only after dust is wiped away or finish is applied.",
-    "customer_phrases": [
-      "hidden sanding scratches",
-      "dust filled scratches",
-      "finish reveals scratches"
-    ],
-    "aliases": [
-      "hidden sanding scratches",
-      "dust filled scratches",
-      "finish reveals scratches"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "clear coat"
-    ],
-    "grits": [
-      "120",
-      "150",
-      "180",
-      "220",
-      "320"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/dust-hides-scratches-until-finish/"
-  },
-  {
-    "id": "search-sanding-across-grain-lines",
-    "type": "exact_scenario",
-    "title": "Sanding across grain leaves lines",
-    "description": "Lines across the wood grain remain visible after sanding.",
-    "customer_phrases": [
-      "cross grain scratches",
-      "across grain marks",
-      "wood grain sanding lines"
-    ],
-    "aliases": [
-      "cross grain scratches",
-      "across grain marks",
-      "wood grain sanding lines"
-    ],
-    "surface": [
-      "wood"
-    ],
-    "grits": [
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/sanding-across-grain-lines/"
-  },
-  {
-    "id": "search-paint-edges-do-not-feather",
-    "type": "exact_scenario",
-    "title": "Paint edges do not feather smoothly",
-    "description": "A paint edge remains visible instead of blending into the surrounding surface.",
-    "customer_phrases": [
-      "paint feather edge",
-      "paint edge ridge",
-      "blend paint edge"
-    ],
-    "aliases": [
-      "paint feather edge",
-      "paint edge ridge",
-      "blend paint edge"
-    ],
-    "surface": [
-      "paint"
-    ],
-    "grits": [
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/paint-edges-do-not-feather/"
-  },
-  {
-    "id": "search-primer-sands-unevenly",
-    "type": "exact_scenario",
-    "title": "Primer sands unevenly",
-    "description": "Primer has patchy dull spots or uneven texture after sanding.",
-    "customer_phrases": [
-      "patchy primer sanding",
-      "primer dull spots",
-      "uneven primer prep"
-    ],
-    "aliases": [
-      "patchy primer sanding",
-      "primer dull spots",
-      "uneven primer prep"
-    ],
-    "surface": [
-      "drywall",
-      "primer"
-    ],
-    "grits": [
-      "320",
-      "400",
-      "600"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/primer-sands-unevenly/"
-  },
-  {
-    "id": "search-paint-chips-at-edge",
-    "type": "exact_scenario",
-    "title": "Paint chips at the edge while sanding",
-    "description": "Paint chips or flakes at an edge during sanding.",
-    "customer_phrases": [
-      "paint edge chips",
-      "paint flakes while sanding",
-      "fragile paint edge"
-    ],
-    "aliases": [
-      "paint edge chips",
-      "paint flakes while sanding",
-      "fragile paint edge"
-    ],
-    "surface": [
-      "paint"
-    ],
-    "grits": [
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/paint-chips-at-edge/"
-  },
-  {
-    "id": "search-old-paint-gets-gummy",
-    "type": "exact_scenario",
-    "title": "Old paint gets gummy",
-    "description": "Old paint softens or gums up the sandpaper.",
-    "customer_phrases": [
-      "gummy paint sanding",
-      "old paint loads paper",
-      "soft paint smears"
-    ],
-    "aliases": [
-      "gummy paint sanding",
-      "old paint loads paper",
-      "soft paint smears"
-    ],
-    "surface": [
-      "paint"
-    ],
-    "grits": [
-      "80",
-      "120",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/old-paint-gets-gummy/"
-  },
-  {
-    "id": "search-clear-coat-burns-through-edges",
-    "type": "exact_scenario",
-    "title": "Clear coat burns through on edges",
-    "description": "Clear coat is sanded through on corners, edges, or raised lines.",
-    "customer_phrases": [
-      "clear coat edge burn through",
-      "sanded through clear edge",
-      "clear coat corners"
-    ],
-    "aliases": [
-      "clear coat edge burn through",
-      "sanded through clear edge",
-      "clear coat corners"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/clear-coat-burns-through-edges/"
-  },
-  {
-    "id": "search-sanding-leaves-low-spots",
-    "type": "exact_scenario",
-    "title": "Sanding leaves low spots",
-    "description": "Some areas become lower or look dished after sanding.",
-    "customer_phrases": [
-      "dished sanding spot",
-      "sanded low area",
-      "uneven leveling"
-    ],
-    "aliases": [
-      "dished sanding spot",
-      "sanded low area",
-      "uneven leveling"
-    ],
-    "surface": [
-      "wood",
-      "paint",
-      "clear coat",
-      "drywall"
-    ],
-    "grits": [
-      "120",
-      "180",
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/sanding-leaves-low-spots/"
-  },
-  {
-    "id": "search-gloss-shows-scratches",
-    "type": "exact_scenario",
-    "title": "Gloss shows sanding scratches",
-    "description": "Scratches that were hard to see become obvious on a glossy surface.",
-    "customer_phrases": [
-      "gloss reveals scratches",
-      "shiny finish shows marks",
-      "scratches visible in gloss"
-    ],
-    "aliases": [
-      "gloss reveals scratches",
-      "shiny finish shows marks",
-      "scratches visible in gloss"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/gloss-shows-scratches/"
-  },
-  {
-    "id": "search-paint-looks-dull-after-sanding",
-    "type": "exact_scenario",
-    "title": "Paint looks dull after sanding",
-    "description": "Paint or clear coat looks dull after fine sanding.",
-    "customer_phrases": [
-      "dull paint after sanding",
-      "paint sanding haze",
-      "scuffed paint surface"
-    ],
-    "aliases": [
-      "dull paint after sanding",
-      "paint sanding haze",
-      "scuffed paint surface"
-    ],
-    "surface": [
-      "clear coat",
-      "paint"
-    ],
-    "grits": [
-      "600",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/paint-looks-dull-after-sanding/"
-  },
-  {
-    "id": "search-orange-peel-not-leveling",
-    "type": "exact_scenario",
-    "title": "Orange peel is not leveling",
-    "description": "Clear coat texture remains after wet sanding.",
-    "customer_phrases": [
-      "orange peel still there",
-      "clear coat texture not flat",
-      "orange peel wet sanding"
-    ],
-    "aliases": [
-      "orange peel still there",
-      "clear coat texture not flat",
-      "orange peel wet sanding"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/orange-peel-not-leveling/"
-  },
-  {
-    "id": "search-runs-drips-hard-to-level",
-    "type": "exact_scenario",
-    "title": "Runs or drips are hard to level",
-    "description": "Paint or clear coat runs remain raised after sanding.",
-    "customer_phrases": [
-      "paint run leveling",
-      "clear coat drip sanding",
-      "raised run after sanding"
-    ],
-    "aliases": [
-      "paint run leveling",
-      "clear coat drip sanding",
-      "raised run after sanding"
-    ],
-    "surface": [
-      "clear coat",
-      "paint"
-    ],
-    "grits": [
-      "800",
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/runs-drips-hard-to-level/"
-  },
-  {
-    "id": "search-dust-nibs-remain",
-    "type": "exact_scenario",
-    "title": "Dust nibs remain after sanding",
-    "description": "Small raised dust spots remain in paint or clear coat.",
-    "customer_phrases": [
-      "dust nib sanding",
-      "raised paint specks",
-      "small clear coat bumps"
-    ],
-    "aliases": [
-      "dust nib sanding",
-      "raised paint specks",
-      "small clear coat bumps"
-    ],
-    "surface": [
-      "clear coat",
-      "paint"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/dust-nibs-remain/"
-  },
-  {
-    "id": "search-clear-coat-cloudy-after-2000",
-    "type": "exact_scenario",
-    "title": "Clear coat cloudy after 2000 grit",
-    "description": "Clear coat remains cloudy after 2000 grit wet sanding.",
-    "customer_phrases": [
-      "cloudy after 2000",
-      "2000 grit clear haze",
-      "need 3000 clear coat"
-    ],
-    "aliases": [
-      "cloudy after 2000",
-      "2000 grit clear haze",
-      "need 3000 clear coat"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/clear-coat-cloudy-after-2000/"
-  },
-  {
-    "id": "search-clear-coat-shows-1500-marks",
-    "type": "exact_scenario",
-    "title": "Clear coat shows 1500 marks",
-    "description": "1500-grit marks are still visible in clear coat.",
-    "customer_phrases": [
-      "1500 scratches in clear",
-      "clear coat 1500 lines",
-      "need 2000 after 1500"
-    ],
-    "aliases": [
-      "1500 scratches in clear",
-      "clear coat 1500 lines",
-      "need 2000 after 1500"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/clear-coat-shows-1500-marks/"
-  },
-  {
-    "id": "search-sand-through-clear-coat-corners",
-    "type": "exact_scenario",
-    "title": "Sand through clear coat on corners",
-    "description": "Clear coat is removed on corners during sanding.",
-    "customer_phrases": [
-      "clear coat corner sand through",
-      "sanded clear on corner",
-      "edge cut through"
-    ],
-    "aliases": [
-      "clear coat corner sand through",
-      "sanded clear on corner",
-      "edge cut through"
-    ],
-    "surface": [
-      "clear coat"
-    ],
-    "grits": [
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/sand-through-clear-coat-corners/"
-  },
-  {
-    "id": "search-wet-sanding-straight-scratches",
-    "type": "exact_scenario",
-    "title": "Wet sanding leaves straight scratches",
-    "description": "Straight scratches appear during wet sanding.",
-    "customer_phrases": [
-      "straight wet sanding lines",
-      "wet sanding scratch lines",
-      "linear scratches wet sanding"
-    ],
-    "aliases": [
-      "straight wet sanding lines",
-      "wet sanding scratch lines",
-      "linear scratches wet sanding"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/wet-sanding-straight-scratches/"
-  },
-  {
-    "id": "search-wet-sanding-random-deep-scratches",
-    "type": "exact_scenario",
-    "title": "Wet sanding creates random deep scratches",
-    "description": "Random deeper scratches appear during wet sanding.",
-    "customer_phrases": [
-      "random wet sanding scratches",
-      "dirty slurry scratches",
-      "deep scratches from wet sanding"
-    ],
-    "aliases": [
-      "random wet sanding scratches",
-      "dirty slurry scratches",
-      "deep scratches from wet sanding"
-    ],
-    "surface": [
-      "clear coat",
-      "paint",
-      "plastic"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/wet-sanding-random-deep-scratches/"
-  },
-  {
-    "id": "search-rust-pits-remain",
-    "type": "exact_scenario",
-    "title": "Rust pits remain",
-    "description": "Dark pits or small low spots remain after rust sanding.",
-    "customer_phrases": [
-      "rust pitting",
-      "pits after rust sanding",
-      "metal rust pits"
-    ],
-    "aliases": [
-      "rust pitting",
-      "pits after rust sanding",
-      "metal rust pits"
-    ],
-    "surface": [
-      "metal"
-    ],
-    "grits": [
-      "80",
-      "120",
-      "180",
-      "220",
-      "320"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/rust-pits-remain/"
-  },
-  {
-    "id": "search-aluminum-clogs-paper",
-    "type": "exact_scenario",
-    "title": "Aluminum clogs paper",
-    "description": "Aluminum residue loads into the abrasive and sanding slows.",
-    "customer_phrases": [
-      "aluminum loading sandpaper",
-      "metal clogs abrasive",
-      "soft aluminum residue"
-    ],
-    "aliases": [
-      "aluminum loading sandpaper",
-      "metal clogs abrasive",
-      "soft aluminum residue"
-    ],
-    "surface": [
-      "aluminum",
-      "metal"
-    ],
-    "grits": [
-      "180",
-      "220",
-      "320",
-      "400"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/aluminum-clogs-paper/"
-  },
-  {
-    "id": "search-plastic-turns-white",
-    "type": "exact_scenario",
-    "title": "Plastic turns white after sanding",
-    "description": "Plastic turns white or cloudy after sanding.",
-    "customer_phrases": [
-      "white plastic haze",
-      "cloudy plastic after sanding",
-      "plastic sanding haze"
-    ],
-    "aliases": [
-      "white plastic haze",
-      "cloudy plastic after sanding",
-      "plastic sanding haze"
-    ],
-    "surface": [
-      "plastic"
-    ],
-    "grits": [
-      "1000",
-      "1500",
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/plastic-turns-white/"
-  },
-  {
-    "id": "search-plastic-melts-or-smears",
-    "type": "exact_scenario",
-    "title": "Plastic melts or smears",
-    "description": "Plastic smears, melts, or loads the sheet while sanding.",
-    "customer_phrases": [
-      "plastic smears sanding",
-      "plastic heat marks",
-      "melted plastic dust"
-    ],
-    "aliases": [
-      "plastic smears sanding",
-      "plastic heat marks",
-      "melted plastic dust"
-    ],
-    "surface": [
-      "plastic"
-    ],
-    "grits": [
-      "320",
-      "400",
-      "600",
-      "1000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/plastic-melts-or-smears/"
-  },
-  {
-    "id": "search-plastic-edge-gets-fuzzy",
-    "type": "exact_scenario",
-    "title": "Plastic edge gets fuzzy",
-    "description": "A plastic edge becomes fuzzy or rough after sanding.",
-    "customer_phrases": [
-      "fuzzy plastic edge",
-      "rough plastic edge",
-      "plastic edge sanding"
-    ],
-    "aliases": [
-      "fuzzy plastic edge",
-      "rough plastic edge",
-      "plastic edge sanding"
-    ],
-    "surface": [
-      "plastic"
-    ],
-    "grits": [
-      "400",
-      "600",
-      "1000"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/plastic-edge-gets-fuzzy/"
-  },
-  {
-    "id": "search-3000-leaves-plastic-hazy",
-    "type": "exact_scenario",
-    "title": "3000 leaves plastic hazy",
-    "description": "Plastic still looks hazy after 3000 grit.",
-    "customer_phrases": [
-      "plastic hazy after 3000",
-      "3000 plastic haze",
-      "clear plastic still cloudy"
-    ],
-    "aliases": [
-      "plastic hazy after 3000",
-      "3000 plastic haze",
-      "clear plastic still cloudy"
-    ],
-    "surface": [
-      "plastic"
-    ],
-    "grits": [
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/3000-leaves-plastic-hazy/"
-  },
-  {
-    "id": "search-plastic-dust-clogs-paper",
-    "type": "exact_scenario",
-    "title": "Plastic dust clogs paper",
-    "description": "Plastic dust packs into the abrasive and slows sanding.",
-    "customer_phrases": [
-      "plastic dust loading",
-      "plastic clogs abrasive",
-      "plastic residue on paper"
-    ],
-    "aliases": [
-      "plastic dust loading",
-      "plastic clogs abrasive",
-      "plastic residue on paper"
-    ],
-    "surface": [
-      "plastic"
-    ],
-    "grits": [
-      "320",
-      "400",
-      "600"
-    ],
-    "method": [
-      "dry",
-      "wet"
-    ],
-    "target_url": "/solutions/plastic-dust-clogs-paper/"
-  },
-  {
-    "id": "search-drywall-patch-ridges-remain",
-    "type": "exact_scenario",
-    "title": "Drywall patch ridges remain",
-    "description": "Drywall patch ridges are still visible or feel high after sanding.",
-    "customer_phrases": [
-      "drywall patch ridge",
-      "joint compound ridge",
-      "patch high spots"
-    ],
-    "aliases": [
-      "drywall patch ridge",
-      "joint compound ridge",
-      "patch high spots"
-    ],
-    "surface": [
-      "drywall"
-    ],
-    "grits": [
-      "120",
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/drywall-patch-ridges-remain/"
-  },
-  {
-    "id": "search-drywall-paper-tears",
-    "type": "exact_scenario",
-    "title": "Drywall paper tears while sanding",
-    "description": "The drywall face paper tears or fuzzes during sanding.",
-    "customer_phrases": [
-      "drywall face paper tear",
-      "fuzzy drywall paper",
-      "sanding tears drywall"
-    ],
-    "aliases": [
-      "drywall face paper tear",
-      "fuzzy drywall paper",
-      "sanding tears drywall"
-    ],
-    "surface": [
-      "drywall"
-    ],
-    "grits": [
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/drywall-paper-tears/"
-  },
-  {
-    "id": "search-joint-compound-clogs-paper",
-    "type": "exact_scenario",
-    "title": "Joint compound clogs paper",
-    "description": "Joint compound dust packs into the sandpaper quickly.",
-    "customer_phrases": [
-      "compound dust clogs",
-      "spackle clogs paper",
-      "drywall mud loads sandpaper"
-    ],
-    "aliases": [
-      "compound dust clogs",
-      "spackle clogs paper",
-      "drywall mud loads sandpaper"
-    ],
-    "surface": [
-      "drywall"
-    ],
-    "grits": [
-      "120",
-      "150",
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/joint-compound-clogs-paper/"
-  },
-  {
-    "id": "search-patch-edge-visible-after-sanding",
-    "type": "exact_scenario",
-    "title": "Patch edge visible after sanding",
-    "description": "The edge of a drywall patch still shows after sanding.",
-    "customer_phrases": [
-      "visible drywall patch edge",
-      "patch not feathered",
-      "drywall repair edge"
-    ],
-    "aliases": [
-      "visible drywall patch edge",
-      "patch not feathered",
-      "drywall repair edge"
-    ],
-    "surface": [
-      "drywall"
-    ],
-    "grits": [
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/patch-edge-visible-after-sanding/"
-  },
-  {
-    "id": "search-patch-smooth-but-shows-after-paint",
-    "type": "exact_scenario",
-    "title": "Patch is smooth but shows after paint",
-    "description": "The patch feels smooth but is visible after painting.",
-    "customer_phrases": [
-      "patch shows after paint",
-      "drywall patch flashing",
-      "smooth patch visible"
-    ],
-    "aliases": [
-      "patch shows after paint",
-      "drywall patch flashing",
-      "smooth patch visible"
-    ],
-    "surface": [
-      "drywall",
-      "paint"
-    ],
-    "grits": [
-      "180",
-      "220"
-    ],
-    "method": [
-      "dry"
-    ],
-    "target_url": "/solutions/patch-smooth-but-shows-after-paint/"
   },
   {
     "id": "search-surface-wood",
@@ -2827,35 +4045,6 @@
       "wet"
     ],
     "target_url": "/products/assorted-80-3000/"
-  },
-  {
-    "id": "search-3000-grit-does-not-make-gloss",
-    "type": "exact_scenario",
-    "title": "3000 grit does not make gloss",
-    "description": "3000 grit leaves a very fine sanding haze and does not create gloss by itself.",
-    "customer_phrases": [
-      "3000 grit does not make gloss",
-      "3000 gloss",
-      "3000 grit not shiny"
-    ],
-    "aliases": [
-      "3000 does not create gloss",
-      "3000 still hazy",
-      "need polish after 3000"
-    ],
-    "surface": [
-      "clear coat",
-      "plastic",
-      "paint"
-    ],
-    "grits": [
-      "2000",
-      "3000"
-    ],
-    "method": [
-      "wet"
-    ],
-    "target_url": "/solutions/3000-does-not-create-gloss/"
   },
   {
     "id": "search-which-sheet-from-kit-should-i-use",

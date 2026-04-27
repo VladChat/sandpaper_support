@@ -253,10 +253,10 @@
 
   function isAnswerTarget(targetUrl) {
     const url = clean(targetUrl || "");
-    if (url === "/problems/" || url === "/solutions/") {
+    if (url === "/solutions/") {
       return false;
     }
-    return url.indexOf("/problems/") === 0 || url.indexOf("/solutions/") === 0;
+    return url.indexOf("/solutions/") === 0;
   }
 
   function isAnswerResult(result) {
