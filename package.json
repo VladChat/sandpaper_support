@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "description": "Problem-first public support system for eQualle sandpaper products.",
   "scripts": {
-    "validate:data": "node -e \"console.log('validate:data placeholder')\"",
-    "build:content": "node -e \"console.log('build:content placeholder')\""
+    "validate:data": "node scripts/build-solution-pages.js --check",
+    "build:content": "node scripts/build-solution-pages.js --check",
+    "build:solution-pages:check": "node scripts/build-solution-pages.js --check",
+    "build:solution-pages": "node scripts/build-solution-pages.js --write"
   }
 }

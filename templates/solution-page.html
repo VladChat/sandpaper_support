@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PAGE_TITLE}} | eQualle Support</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="icon" href="/sandpaper_support/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/sandpaper_support/icons/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/sandpaper_support/icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
+<link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-template-20260427">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a>
+    <nav class="nav">
+      <a href="/sandpaper_support/problems/">Problems</a>
+      <a href="/sandpaper_support/surfaces/">Surfaces</a>
+      <a href="/sandpaper_support/grits/">Grit Guide</a>
+      <a href="/sandpaper_support/products/">Products</a>
+      <a href="/sandpaper_support/tools/">Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="breadcrumb">
+      <a href="/sandpaper_support/">Home</a> / <a href="/sandpaper_support/">Search</a> / {{BREADCRUMB_TITLE}}
+    </div>
+
+    <div class="label">Problem</div>
+    <h1>{{PROBLEM_TITLE}}</h1>
+    <p class="section-intro">{{PROBLEM_DESCRIPTION}}</p>
+
+    <article class="answer-card" id="{{SOLUTION_ID}}" data-problem-slug="{{PROBLEM_SLUG}}">
+      <div class="label">Answer</div>
+      <p class="value">{{ANSWER_TEXT}}</p>
+
+      <div class="answer-grid">
+        <div>
+          <div class="label">Why it happens</div>
+          <div class="value">{{LIKELY_CAUSE}}</div>
+        </div>
+        <div>
+          <div class="label">Recommended grit</div>
+          <div class="value">{{RECOMMENDED_GRIT}}</div>
+        </div>
+        <div>
+          <div class="label">Wet or dry</div>
+          <div class="value">{{WET_OR_DRY}}</div>
+        </div>
+        <div>
+          <div class="label">Success check</div>
+          <div class="value">{{SUCCESS_CHECK}}</div>
+        </div>
+      </div>
+
+      <h2>What to do</h2>
+      <ol>
+{{STEPS_HTML}}
+      </ol>
+
+      <div class="note"><strong>Avoid:</strong> {{AVOID}}</div>
+
+      {{RELATED_ANSWERS_HTML}}
+
+      <section class="answer-follow-up" data-support-top-assistant>
+        <h2>Ask a follow-up</h2>
+        <p class="section-intro">Ask about this answer, the next grit, or wet/dry use.</p>
+        <div class="chat-shell support-chat-shell">
+          <div class="chat-messages" data-ai-messages aria-live="polite"></div>
+          <form class="chat-form" data-ai-form>
+            <label class="sr-only" for="follow-up-{{SOLUTION_ID}}">Ask a follow-up about this answer</label>
+            <input id="follow-up-{{SOLUTION_ID}}" class="chat-input" data-ai-input type="text" autocomplete="off" placeholder="Example: what grit should I use next?">
+            <button class="chat-send" type="submit">Ask</button>
+          </form>
+        </div>
+      </section>
+    </article>
+
+    <p><a class="cta" href="/sandpaper_support/">← Back to search</a></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© eQualle Support System</span>
+    <span>Sandpaper troubleshooting, grit guidance, and product support.</span>
+  </div>
+</footer>
+
+<script src="/sandpaper_support/assets/config.js"></script>
+<script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
+<script src="/sandpaper_support/assets/app.js?v=answer-only-search-20260426"></script>
+</body>
+</html>
