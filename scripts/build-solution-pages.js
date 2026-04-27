@@ -137,6 +137,24 @@ function collectSearchableText(card) {
   return parts.join(" \n\n").toLowerCase();
 }
 
+function collectTopicText(card) {
+  return [
+    card.title,
+    card.problem,
+    card.surface,
+    card.task,
+    card.symptom,
+    card.quick_answer,
+    card.likely_cause,
+    card.recommended_grit,
+    card.wet_or_dry,
+    card.avoid,
+    card.success_check,
+    Array.isArray(card.steps) ? card.steps.join(" ") : "",
+    Array.isArray(card.mistakes_to_avoid) ? card.mistakes_to_avoid.join(" ") : ""
+  ].join(" ").toLowerCase();
+}
+
 function hasPhrase(text, phrase) {
   if (!text || !phrase) return false;
   return text.indexOf(String(phrase).toLowerCase()) !== -1;
@@ -175,8 +193,21 @@ function hasAnyGrit(text, grits) {
 }
 
 function addTopic(topics, label, href) {
-  if (!label) return;
-  topics.push({ label: String(label), href: String(href || "") });
+  const cleanLabel = String(label || "").trim();
+  if (!cleanLabel || cleanLabel.length > 24) {
+    return;
+  }
+
+  const normalized = cleanLabel.toLowerCase();
+  if (topics.some(function (topic) { return topic.normalized === normalized; })) {
+    return;
+  }
+
+  topics.push({
+    label: cleanLabel,
+    href: href || "",
+    normalized: normalized,
+  });
 }
 
 function relativeHrefToFilePath(href) {
@@ -196,51 +227,132 @@ function hrefExists(href) {
   }
 }
 
-function safeTopicHref(raw) {
-  if (!raw) return "";
-  const candidate = String(raw || "");
-  if (candidate.indexOf("/") === 0) return sitePath(candidate);
-  return sitePath("/" + candidate + "/");
+function safeTopicHref(href) {
+  const candidate = String(href || "").trim();
+  if (!candidate) {
+    return "";
+  }
+  if (candidate.indexOf(" ") !== -1) {
+    return "";
+  }
+  if (candidate.indexOf("/search/") === 0) {
+    return "";
+  }
+  var approvedMap = {
+    "/surfaces/wood/": true,
+    "/surfaces/metal/": true,
+    "/surfaces/plastic/": true,
+    "/surfaces/drywall-patch/": true,
+    "/surfaces/paint-primer/": true,
+    "/surfaces/clear-coat/": true,
+    "/problems/poor-results-between-coats/": true,
+    "/solutions/normal-haze-after-wet-sanding/": true,
+    "/solutions/deep-scratches-after-80-grit/": true,
+    "/solutions/paint-clogs-sheet/": true,
+  };
+  var normalized = String(candidate).toLowerCase();
+  if (!approvedMap[normalized]) {
+    return "";
+  }
+  return sitePath(candidate);
 }
 
 function inferRelatedTopics(card) {
   const topics = [];
-  const text = collectSearchableText(card);
-  // Add surface and task
-  if (card.surface) addTopic(topics, card.surface, "/surfaces/" + card.surface + "/");
-  if (card.task) addTopic(topics, card.task, "/problems/");
-  // Add grits found in text
-  const grits = Array.from(VALID_GRITS);
-  const foundGrits = grits.filter(function (g) { return hasGrit(text, g); });
-  if (foundGrits.length) addTopic(topics, foundGrits.join(" → "), "/grits/");
-  // Add explicit search phrases
-  if (Array.isArray(card.search_phrases)) {
-    card.search_phrases.slice(0, 5).forEach(function (p) {
-      addTopic(topics, p, "/search/?q=" + encodeURIComponent(p));
-    });
+  const text = collectTopicText(card);
+
+  // Surface tags
+  if (hasAnyPhrase(text, ["wood", "grain", "veneer", "hardwood", "softwood"])) {
+    addTopic(topics, "wood", "/surfaces/wood/");
   }
-  // Deduplicate by label
-  const seen = {};
-  const unique = [];
-  topics.forEach(function (t) {
-    const key = (t.label || "").toLowerCase();
-    if (!key || seen[key]) return;
-    seen[key] = true;
-    unique.push(t);
-  });
-  return unique.slice(0, 8);
+  if (hasAnyPhrase(text, ["plastic", "pvc", "acrylic", "bumper"])) {
+    addTopic(topics, "plastic", "/surfaces/plastic/");
+  }
+  if (hasAnyPhrase(text, ["metal", "aluminum", "steel", "stainless", "rust"])) {
+    addTopic(topics, "metal", "/surfaces/metal/");
+  }
+  if (hasAnyPhrase(text, ["drywall", "joint compound", "spackle", "patch"])) {
+    addTopic(topics, "drywall patch", "/surfaces/drywall-patch/");
+  }
+  if (hasAnyPhrase(text, ["clear coat", "clearcoat"])) {
+    addTopic(topics, "clear coat", "/surfaces/clear-coat/");
+  }
+  if (hasAnyPhrase(text, ["paint", "painted"])) {
+    addTopic(topics, "paint", "/surfaces/paint-primer/");
+  }
+  if (hasPhrase(text, "primer")) {
+    addTopic(topics, "primer", "/surfaces/paint-primer/");
+  }
+
+  // Method/problem tags
+  if (hasAnyPhrase(text, ["wet", "water", "rinse", "slurry"])) {
+    addTopic(topics, "wet sanding", "");
+  }
+  if (hasAnyPhrase(text, ["dry", "dust"])) {
+    addTopic(topics, "dry sanding", "");
+  }
+  if (hasAnyPhrase(text, ["between coats", "coat", "coating", "recoat"])) {
+    addTopic(topics, "between coats", "/problems/poor-results-between-coats/");
+  }
+  if (hasAnyPhrase(text, ["polish", "polishing", "gloss"])) {
+    addTopic(topics, "polishing prep", "");
+  }
+  if (hasAnyPhrase(text, ["haze", "hazy", "cloudy", "dull"])) {
+    addTopic(topics, "haze", "/solutions/normal-haze-after-wet-sanding/");
+  }
+  if (hasAnyPhrase(text, ["scratch", "scratches", "marks", "lines"])) {
+    addTopic(topics, "scratches", "/solutions/deep-scratches-after-80-grit/");
+  }
+  if (hasAnyPhrase(text, ["clog", "clogs", "clogged", "loading", "loaded", "glaze", "residue"])) {
+    addTopic(topics, "clogging", "/solutions/paint-clogs-sheet/");
+  }
+  if (hasAnyPhrase(text, ["pressure", "press", "hard", "aggressive", "gouge"])) {
+    addTopic(topics, "pressure", "");
+  }
+  if (hasPhrase(card.title, "starting grit") || hasPhrase(card.task, "grit selection")) {
+    addTopic(topics, "grit selection", "");
+  }
+
+  // Grit family tags
+  if (hasAnyGrit(text, ["60", "80", "100", "120"])) {
+    addTopic(topics, "coarse grit", "");
+  }
+  if (hasAnyGrit(text, ["150", "180", "220", "240"])) {
+    addTopic(topics, "medium grit", "");
+  }
+  if (hasAnyGrit(text, ["280", "320", "360", "400"])) {
+    addTopic(topics, "fine grit", "");
+  }
+  if (hasAnyGrit(text, ["500", "600", "800", "1000", "1200", "1500", "2000", "3000"])) {
+    addTopic(topics, "ultra fine grit", "");
+  }
+
+  // Return max 4 topics with method/problem priority
+  return topics.slice(0, 4);
 }
 
 function renderRelatedTopics(card) {
   const topics = inferRelatedTopics(card);
-  if (!topics || !topics.length) return "";
-  return topics
-    .map(function (t) {
-      const href = t.href ? safeTopicHref(t.href) : "#";
-      return '<a class="topic-pill-link" href="' + escapeHtml(href) + '">'
-        + '<span class="topic-pill">' + escapeHtml(t.label) + '</span></a>';
-    })
-    .join('\n      ');
+  if (!topics || !topics.length) {
+    return "";
+  }
+
+  const rows = topics.map(function (topic) {
+    const label = escapeHtml(topic.label);
+    const href = safeTopicHref(topic.href);
+
+    if (href) {
+      return '      <a class="topic-pill topic-pill-link" href="' + escapeHtml(href) + '">' + label + '</a>';
+    }
+
+    return '      <span class="topic-pill">' + label + '</span>';
+  });
+
+  return [
+    '    <div class="related-topics" aria-label="Related topics">',
+    rows.join("\n"),
+    '    </div>'
+  ].join("\n");
 }
 
 function renderRelatedSolutions(card, cardsById) {
