@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "eQualle Support" [ref=e4] [cursor=pointer]:
+        - /url: /sandpaper_support/
+      - navigation [ref=e5]:
+        - link "Find My Problem" [ref=e6] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+        - link "By Grit" [ref=e7] [cursor=pointer]:
+          - /url: /sandpaper_support/grits/
+        - link "By Product" [ref=e8] [cursor=pointer]:
+          - /url: /sandpaper_support/products/
+        - link "How To" [ref=e9] [cursor=pointer]:
+          - /url: /sandpaper_support/how-to/
+        - link "Documents" [ref=e10] [cursor=pointer]:
+          - /url: /sandpaper_support/documents/
+        - link "AI Assistant" [ref=e11] [cursor=pointer]:
+          - /url: /sandpaper_support/ai-assistant/
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]: Private Admin
+          - heading "Support Data Dashboard" [level=1] [ref=e17]
+          - paragraph [ref=e18]: Review search logs, zero-result searches, customer feedback, and draft solution card activity.
+        - button "Log out" [ref=e19]
+      - generic [ref=e20]:
+        - heading "Admin Login" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - text: Email
+            - textbox "Email" [ref=e24]
+          - generic [ref=e25]:
+            - text: Password
+            - textbox "Password" [ref=e26]
+          - button "Log in" [ref=e27]
+        - paragraph [ref=e28]: The dashboard is hidden until a Supabase Auth session is active.
+  - contentinfo [ref=e29]:
+    - generic [ref=e30]: © eQualle Support System Private dashboard for approved support data.

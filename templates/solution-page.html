@@ -37,6 +37,10 @@
     <h1>{{PROBLEM_TITLE}}</h1>
     <p class="section-intro">{{PROBLEM_DESCRIPTION}}</p>
 
+    <div class="related-topics" aria-label="Related topics">
+      {{RELATED_TOPICS_HTML}}
+    </div>
+
     <article class="answer-card" id="{{SOLUTION_ID}}" data-problem-slug="{{PROBLEM_SLUG}}">
       <section class="answer-summary" aria-labelledby="answer-summary-{{SOLUTION_ID}}">
         <div id="answer-summary-{{SOLUTION_ID}}" class="answer-summary-label">Answer</div>
@@ -67,10 +71,26 @@
 {{STEPS_HTML}}
       </ol>
 
-      <div class="note"><strong>Avoid:</strong> {{AVOID_TEXT}}</div>
+      <div class="note"><strong>Avoid:</strong> {{AVOID}}</div>
 
-{{RELATED_ANSWERS_HTML}}
     </article>
+
+    <section class="solution-search-block" aria-label="Ask another sanding question">
+      <div class="support-search-shell solution-search-shell">
+        <div class="support-search-form" role="search">
+          <input
+            id="solution-search-{{SOLUTION_ID}}"
+            class="support-search-input"
+            data-support-search
+            placeholder="Example: sandpaper clogs too fast"
+          >
+          <button class="mic-button" aria-label="Record voice">🎤</button>
+          <button class="add-photo-button" aria-label="Add photo">📷</button>
+          <button class="get-answer-button">Get answer</button>
+        </div>
+        <div class="search-results" data-search-results></div>
+      </div>
+    </section>
 
     <script type="application/json" data-solution-context>
 {{SOLUTION_CONTEXT_JSON}}
@@ -89,6 +109,6 @@
 
 <script src="/sandpaper_support/assets/config.js"></script>
 <script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
-<script src="/sandpaper_support/assets/app.js?v=structured-answer-20260427"></script>
+<script src="/sandpaper_support/assets/app.js?v=solution-search-bar-20260427"></script>
 </body>
 </html>

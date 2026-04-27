@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter *)",
+      "Bash(findstr *)",
+      "Read(C:\\Users\\vladi\\Documents\\vcoding\\agent-development-system\\state\\projects\\put_me_there/**)",
+      "Bash(git *)",
+      "Bash(netstat *)",
+      "Bash(timeout *)",
+      "Bash(\"c:\\users\\vladi\\appdata\\local\\android\\sdk\\platform-tools\\adb.exe\" *)",
+      "Bash(netsh *)",
+      "Bash(rmdir *)",
+      "Bash(mkdir *)",
+      "Bash(del *)",
+      "Bash(taskkill *)",
+      "Read(c:\\Users\\vladi\\Documents\\vcoding\\projects\\sandpaper-support/**)",
+      "Bash(type *)"
+    ]
+  },
+  "$version": 3,
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "qwen/qwen3.6-plus",
+        "name": "qwen/qwen3.6-plus",
+        "description": "OpenRouter Qwen 3.6 Plus",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "envKey": "OPENROUTER_API_KEY"
+      }
+    ]
+  },
+  "env": {
+    "OPENROUTER_API_KEY": "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"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  },
+  "model": {
+    "name": "qwen/qwen3.6-plus"
+  }
+}

@@ -1,0 +1,101 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "eQualle Support" [ref=e4] [cursor=pointer]:
+        - /url: /sandpaper_support/
+      - navigation [ref=e5]:
+        - link "Find My Problem" [ref=e6] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+        - link "By Grit" [ref=e7] [cursor=pointer]:
+          - /url: /sandpaper_support/grits/
+        - link "By Product" [ref=e8] [cursor=pointer]:
+          - /url: /sandpaper_support/products/
+        - link "How To" [ref=e9] [cursor=pointer]:
+          - /url: /sandpaper_support/how-to/
+        - link "Documents" [ref=e10] [cursor=pointer]:
+          - /url: /sandpaper_support/documents/
+        - link "AI Assistant" [ref=e11] [cursor=pointer]:
+          - /url: /sandpaper_support/ai-assistant/
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - link "Home" [ref=e15] [cursor=pointer]:
+          - /url: /sandpaper_support/
+        - text: /
+        - link "Problems" [ref=e16] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+        - text: / Scratches Are Too Deep
+      - heading "Scratches Are Too Deep" [level=1] [ref=e17]
+      - paragraph [ref=e18]: The surface has visible sanding marks, gouges, or scratches that remain after sanding.
+      - generic [ref=e19]:
+        - generic [ref=e20]: wood
+        - generic [ref=e21]: metal
+        - generic [ref=e22]: paint
+        - generic [ref=e23]: clear coat
+        - generic [ref=e24]: wet sanding
+        - generic [ref=e25]: dry sanding
+      - article [ref=e26]:
+        - heading "Deep scratches remain after coarse grit" [level=2] [ref=e27]
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]: Likely cause
+            - generic [ref=e31]: The starting grit was too coarse for the finish goal, or the next grit was not fine enough to remove the previous scratch pattern.
+          - generic [ref=e32]:
+            - generic [ref=e33]: Recommended grit
+            - generic [ref=e34]: "Move one step finer at a time: 80 → 120 → 180 → 220 → 320. For finishing, continue to 400+ as needed."
+          - generic [ref=e35]:
+            - generic [ref=e36]: Wet or dry
+            - generic [ref=e37]: Dry for early removal; wet for fine finishing when the surface and project allow it.
+          - generic [ref=e38]:
+            - generic [ref=e39]: Success check
+            - generic [ref=e40]: The surface shows one even, finer scratch pattern with no remaining deep lines.
+        - heading "What to do" [level=3] [ref=e41]
+        - list [ref=e42]:
+          - listitem [ref=e43]: Stop sanding aggressively in one spot.
+          - listitem [ref=e44]: Sand evenly with the next finer grit until the old scratch pattern is lighter.
+          - listitem [ref=e45]: Clean the surface before moving to the next grit.
+          - listitem [ref=e46]: Repeat with finer grits until the scratches are no longer visible.
+        - generic [ref=e47]:
+          - strong [ref=e48]: "Avoid:"
+          - text: Do not jump directly from a very coarse grit to a very fine grit.
+        - generic [ref=e49]:
+          - generic [ref=e50]: Was this helpful?
+          - generic [ref=e51]:
+            - button "👍 Helpful" [ref=e52] [cursor=pointer]
+            - button "👎 Not helpful" [ref=e53] [cursor=pointer]
+      - article [ref=e55]:
+        - heading "320 grit does not remove scratches from 180 grit" [level=2] [ref=e56]
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: Likely cause
+            - generic [ref=e60]: The grit jump is too large or the 180 grit scratches were too deep from excess pressure.
+          - generic [ref=e61]:
+            - generic [ref=e62]: Recommended grit
+            - generic [ref=e63]: Use 220 or 240 grit first, then 320 grit.
+          - generic [ref=e64]:
+            - generic [ref=e65]: Wet or dry
+            - generic [ref=e66]: Dry for most prep work; wet only for fine finish stages where appropriate.
+          - generic [ref=e67]:
+            - generic [ref=e68]: Success check
+            - generic [ref=e69]: The surface has no visible 180-grit lines before switching back to 320.
+        - heading "What to do" [level=3] [ref=e70]
+        - list [ref=e71]:
+          - listitem [ref=e72]: Return to 220 or 240 grit.
+          - listitem [ref=e73]: Sand with lighter pressure and overlapping strokes.
+          - listitem [ref=e74]: Clean the surface.
+          - listitem [ref=e75]: Move to 320 grit only after the 180-grit scratches are gone.
+        - generic [ref=e76]:
+          - strong [ref=e77]: "Avoid:"
+          - text: Do not press harder with 320 grit to force it to remove deep scratches.
+        - generic [ref=e78]:
+          - generic [ref=e79]: Was this helpful?
+          - generic [ref=e80]:
+            - button "👍 Helpful" [ref=e81] [cursor=pointer]
+            - button "👎 Not helpful" [ref=e82] [cursor=pointer]
+      - paragraph [ref=e84]:
+        - link "← Back to all problems" [ref=e85] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+  - contentinfo [ref=e86]:
+    - generic [ref=e87]:
+      - generic [ref=e88]: © eQualle Support System
+      - generic [ref=e89]: Sandpaper troubleshooting, grit guidance, and product support.

@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "eQualle Support" [ref=e4] [cursor=pointer]:
+        - /url: /sandpaper_support/
+      - navigation [ref=e5]:
+        - link "Find My Problem" [ref=e6] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+        - link "By Grit" [ref=e7] [cursor=pointer]:
+          - /url: /sandpaper_support/grits/
+        - link "By Product" [ref=e8] [cursor=pointer]:
+          - /url: /sandpaper_support/products/
+        - link "How To" [ref=e9] [cursor=pointer]:
+          - /url: /sandpaper_support/how-to/
+        - link "Documents" [ref=e10] [cursor=pointer]:
+          - /url: /sandpaper_support/documents/
+        - link "AI Assistant" [ref=e11] [cursor=pointer]:
+          - /url: /sandpaper_support/ai-assistant/
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]: Sandpaper Help Center
+        - heading "Find the sanding problem. Get the exact fix." [level=1] [ref=e15]
+        - paragraph [ref=e16]: "Search by symptom first: scratches, clogging, rough finish, haze, grit choice, wet sanding, dry sanding, or between-coat sanding."
+        - generic [ref=e17]:
+          - text: Search your problem
+          - generic [ref=e18]:
+            - textbox "Search your problem" [ref=e19]:
+              - /placeholder: "Example: deep scratches after 180 grit"
+            - link "Browse Problems" [ref=e20] [cursor=pointer]:
+              - /url: /sandpaper_support/problems/
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - heading "Find My Problem" [level=2] [ref=e23]
+      - paragraph [ref=e24]: Top 12 shortcuts for the most common sanding problems. Use search for more exact scenarios.
+      - generic [ref=e25]:
+        - link "Scratches Are Too Deep The surface has visible sanding marks, gouges, or scratches that remain after sanding. Open problem →" [ref=e26] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/scratches-too-deep/
+          - heading "Scratches Are Too Deep" [level=3] [ref=e27]
+          - paragraph [ref=e28]: The surface has visible sanding marks, gouges, or scratches that remain after sanding.
+          - text: Open problem →
+        - link "Not Sure What Grit To Use The customer does not know which grit to start with or which grit comes next. Open problem →" [ref=e29] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/not-sure-what-grit-to-use/
+          - heading "Not Sure What Grit To Use" [level=3] [ref=e30]
+          - paragraph [ref=e31]: The customer does not know which grit to start with or which grit comes next.
+          - text: Open problem →
+        - link "Sandpaper Clogs Too Fast Dust, paint, finish, or residue loads into the abrasive surface quickly. Open problem →" [ref=e32] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/paper-clogs-too-fast/
+          - heading "Sandpaper Clogs Too Fast" [level=3] [ref=e33]
+          - paragraph [ref=e34]: Dust, paint, finish, or residue loads into the abrasive surface quickly.
+          - text: Open problem →
+        - link "Surface Still Feels Rough The surface does not become smooth even after sanding. Open problem →" [ref=e35] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/surface-still-feels-rough/
+          - heading "Surface Still Feels Rough" [level=3] [ref=e36]
+          - paragraph [ref=e37]: The surface does not become smooth even after sanding.
+          - text: Open problem →
+        - link "Wet Sanding Leaves Haze Wet sanding leaves a cloudy, dull, or hazy surface. Open problem →" [ref=e38] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/wet-sanding-leaves-haze/
+          - heading "Wet Sanding Leaves Haze" [level=3] [ref=e39]
+          - paragraph [ref=e40]: Wet sanding leaves a cloudy, dull, or hazy surface.
+          - text: Open problem →
+        - link "Finish Looks Uneven The surface has uneven dull spots, patchy sanding marks, or inconsistent texture. Open problem →" [ref=e41] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/finish-looks-uneven/
+          - heading "Finish Looks Uneven" [level=3] [ref=e42]
+          - paragraph [ref=e43]: The surface has uneven dull spots, patchy sanding marks, or inconsistent texture.
+          - text: Open problem →
+        - link "Sanding Takes Too Long The sandpaper is cutting slowly or the task feels inefficient. Open problem →" [ref=e44] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/sanding-takes-too-long/
+          - heading "Sanding Takes Too Long" [level=3] [ref=e45]
+          - paragraph [ref=e46]: The sandpaper is cutting slowly or the task feels inefficient.
+          - text: Open problem →
+        - link "Paper Tears Early The sheet rips, catches, or wears through before expected. Open problem →" [ref=e47] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/paper-tears-early/
+          - heading "Paper Tears Early" [level=3] [ref=e48]
+          - paragraph [ref=e49]: The sheet rips, catches, or wears through before expected.
+          - text: Open problem →
+        - link "Poor Results Between Coats Sanding between paint, primer, sealer, or clear coats leaves visible problems. Open problem →" [ref=e50] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/poor-results-between-coats/
+          - heading "Poor Results Between Coats" [level=3] [ref=e51]
+          - paragraph [ref=e52]: Sanding between paint, primer, sealer, or clear coats leaves visible problems.
+          - text: Open problem →
+        - link "Swirl Marks Remain Circular or curved marks remain visible after sanding or wet sanding. Open problem →" [ref=e53] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/swirl-marks-remain/
+          - heading "Swirl Marks Remain" [level=3] [ref=e54]
+          - paragraph [ref=e55]: Circular or curved marks remain visible after sanding or wet sanding.
+          - text: Open problem →
+        - link "Paint Or Finish Removal Is Not Working The coating is not coming off, removal feels slow, or the sheet stops cutting. Open problem →" [ref=e56] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/paint-or-finish-removal-not-working/
+          - heading "Paint Or Finish Removal Is Not Working" [level=3] [ref=e57]
+          - paragraph [ref=e58]: The coating is not coming off, removal feels slow, or the sheet stops cutting.
+          - text: Open problem →
+        - link "Wrong Grit Progression The sanding sequence skips too far, leaves old scratches, or fails to refine the surface. Open problem →" [ref=e59] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/wrong-grit-progression/
+          - heading "Wrong Grit Progression" [level=3] [ref=e60]
+          - paragraph [ref=e61]: The sanding sequence skips too far, leaves old scratches, or fails to refine the surface.
+          - text: Open problem →
+    - generic [ref=e62]:
+      - heading "Support Paths" [level=2] [ref=e63]
+      - paragraph [ref=e64]: Use the fastest path for your situation.
+      - generic [ref=e65]:
+        - link "By Grit Understand what each grit range is used for. Open grit guide →" [ref=e66] [cursor=pointer]:
+          - /url: /sandpaper_support/grits/
+          - heading "By Grit" [level=3] [ref=e67]
+          - paragraph [ref=e68]: Understand what each grit range is used for.
+          - text: Open grit guide →
+        - link "By Product Find help for assorted kits and single-grit sheets. Open products →" [ref=e69] [cursor=pointer]:
+          - /url: /sandpaper_support/products/
+          - heading "By Product" [level=3] [ref=e70]
+          - paragraph [ref=e71]: Find help for assorted kits and single-grit sheets.
+          - text: Open products →
+        - link "How To Short practical guides for wet sanding, dry sanding, grit progression, and finish prep. Open how-to →" [ref=e72] [cursor=pointer]:
+          - /url: /sandpaper_support/how-to/
+          - heading "How To" [level=3] [ref=e73]
+          - paragraph [ref=e74]: Short practical guides for wet sanding, dry sanding, grit progression, and finish prep.
+          - text: Open how-to →
+  - contentinfo [ref=e75]:
+    - generic [ref=e76]: © eQualle Support SystemProblem-first sandpaper help for customers.

@@ -398,6 +398,26 @@ body.support-home {
   min-width: 0;
 }
 
+/* Neutralize new small-card / followup layout selectors for solution pages */
+body.solution-page .solution-layout,
+body.solution-page .solution-card,
+body.solution-page .solution-card-label,
+body.solution-page .grit-path,
+body.solution-page .grit-chip,
+body.solution-page .solution-followup-card,
+body.solution-page .solution-followup-form,
+body.solution-page .solution-followup-messages {
+  all: unset;
+  display: block;
+}
+
+/* Ensure chat messages in solution pages are not constrained */
+body.solution-page .chat-messages {
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
 .result-title {
   font-weight: 700;
 }

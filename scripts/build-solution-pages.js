@@ -125,6 +125,124 @@ function renderBestGritPath(card) {
   return escapeHtml(parts.join(" \u2192 "));
 }
 
+function collectSearchableText(card) {
+  const parts = [];
+  if (card.title) parts.push(card.title);
+  if (card.problem) parts.push(card.problem);
+  if (card.quick_answer) parts.push(card.quick_answer);
+  if (Array.isArray(card.search_phrases)) parts.push(card.search_phrases.join(" "));
+  if (Array.isArray(card.steps)) parts.push(card.steps.join(" "));
+  if (card.likely_cause) parts.push(card.likely_cause);
+  if (card.recommended_grit) parts.push(card.recommended_grit);
+  return parts.join(" \n\n").toLowerCase();
+}
+
+function hasPhrase(text, phrase) {
+  if (!text || !phrase) return false;
+  return text.indexOf(String(phrase).toLowerCase()) !== -1;
+}
+
+function hasWholeWord(text, word) {
+  if (!text || !word) return false;
+  const re = new RegExp("\\b" + String(word).replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "\\b", "i");
+  return re.test(text);
+}
+
+function hasAnyWholeWord(text, words) {
+  if (!text || !Array.isArray(words)) return false;
+  return words.some(function (w) {
+    return hasWholeWord(text, w);
+  });
+}
+
+function hasAnyPhrase(text, phrases) {
+  if (!text || !Array.isArray(phrases)) return false;
+  return phrases.some(function (p) {
+    return hasPhrase(text, p);
+  });
+}
+
+function hasGrit(text, grit) {
+  if (!text || !grit) return false;
+  return hasWholeWord(text, String(grit));
+}
+
+function hasAnyGrit(text, grits) {
+  if (!text || !Array.isArray(grits)) return false;
+  return grits.some(function (g) {
+    return hasGrit(text, g);
+  });
+}
+
+function addTopic(topics, label, href) {
+  if (!label) return;
+  topics.push({ label: String(label), href: String(href || "") });
+}
+
+function relativeHrefToFilePath(href) {
+  if (!href) return null;
+  // normalize to site path and map to local file path
+  const rel = href.replace(/^\/*sandpaper_support\/*/, "");
+  return path.join(ROOT_DIR, rel);
+}
+
+function hrefExists(href) {
+  if (!href) return false;
+  try {
+    const filePath = relativeHrefToFilePath(href);
+    return fs.existsSync(filePath) || fs.existsSync(path.join(filePath, "index.html"));
+  } catch (e) {
+    return false;
+  }
+}
+
+function safeTopicHref(raw) {
+  if (!raw) return "";
+  const candidate = String(raw || "");
+  if (candidate.indexOf("/") === 0) return sitePath(candidate);
+  return sitePath("/" + candidate + "/");
+}
+
+function inferRelatedTopics(card) {
+  const topics = [];
+  const text = collectSearchableText(card);
+  // Add surface and task
+  if (card.surface) addTopic(topics, card.surface, "/surfaces/" + card.surface + "/");
+  if (card.task) addTopic(topics, card.task, "/problems/");
+  // Add grits found in text
+  const grits = Array.from(VALID_GRITS);
+  const foundGrits = grits.filter(function (g) { return hasGrit(text, g); });
+  if (foundGrits.length) addTopic(topics, foundGrits.join(" → "), "/grits/");
+  // Add explicit search phrases
+  if (Array.isArray(card.search_phrases)) {
+    card.search_phrases.slice(0, 5).forEach(function (p) {
+      addTopic(topics, p, "/search/?q=" + encodeURIComponent(p));
+    });
+  }
+  // Deduplicate by label
+  const seen = {};
+  const unique = [];
+  topics.forEach(function (t) {
+    const key = (t.label || "").toLowerCase();
+    if (!key || seen[key]) return;
+    seen[key] = true;
+    unique.push(t);
+  });
+  return unique.slice(0, 8);
+}
+
+function renderRelatedTopics(card) {
+  const topics = inferRelatedTopics(card);
+  if (!topics || !topics.length) return "";
+  return topics
+    .map(function (t) {
+      const href = t.href ? safeTopicHref(t.href) : "#";
+      return '<a class="topic-pill-link" href="' + escapeHtml(href) + '">'
+        + '<span class="topic-pill">' + escapeHtml(t.label) + '</span></a>';
+    })
+    .join('\n      ');
+}
+
 function renderRelatedSolutions(card, cardsById) {
   const ids = Array.isArray(card.related_solution_ids) ? card.related_solution_ids : [];
   const uniqueIds = [];
@@ -387,14 +505,15 @@ function renderPage(card, template, cardsById) {
     PROBLEM_TITLE: escapeHtml(card.title),
     PROBLEM_DESCRIPTION: escapeHtml(card.problem),
     PROBLEM_SLUG: escapeHtml(card.problem_slug),
-    ANSWER_TEXT: escapeHtml(card.quick_answer),
+    ANSWER_TEXT: escapeHtml(card.quick_answer || card.answer || ""),
     LIKELY_CAUSE: escapeHtml(card.likely_cause),
     RECOMMENDED_GRIT: escapeHtml(card.recommended_grit),
     STEPS_HTML: renderSteps(card.steps),
     WET_OR_DRY: escapeHtml(card.wet_or_dry),
-    AVOID_TEXT: escapeHtml(renderAvoidText(card)),
+    AVOID: escapeHtml(renderAvoidText(card)),
     SUCCESS_CHECK: escapeHtml(card.success_check),
-    RELATED_ANSWERS_HTML: renderRelatedSolutions(card, cardsById),
+    RELATED_ANSWERS_HTML: "",
+    RELATED_TOPICS_HTML: renderRelatedTopics(card),
     SOLUTION_ID: escapeHtml(card.id),
     SOLUTION_CONTEXT_JSON: contextJson,
   };

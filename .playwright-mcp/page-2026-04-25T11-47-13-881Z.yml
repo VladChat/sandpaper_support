@@ -1,0 +1,103 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "eQualle Support" [ref=e4] [cursor=pointer]:
+        - /url: /sandpaper_support/
+      - navigation [ref=e5]:
+        - link "Find My Problem" [ref=e6] [cursor=pointer]:
+          - /url: /sandpaper_support/problems/
+        - link "By Grit" [ref=e7] [cursor=pointer]:
+          - /url: /sandpaper_support/grits/
+        - link "By Product" [ref=e8] [cursor=pointer]:
+          - /url: /sandpaper_support/products/
+        - link "How To" [ref=e9] [cursor=pointer]:
+          - /url: /sandpaper_support/how-to/
+        - link "Documents" [ref=e10] [cursor=pointer]:
+          - /url: /sandpaper_support/documents/
+        - link "AI Assistant" [ref=e11] [cursor=pointer]:
+          - /url: /sandpaper_support/ai-assistant/
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e15]:
+        - generic [ref=e16]: Private Admin
+        - heading "Support Data Dashboard" [level=1] [ref=e17]
+        - paragraph [ref=e18]: Review search logs, zero-result searches, customer feedback, and draft solution card activity.
+      - generic [ref=e20]:
+        - heading "Admin Login" [level=2] [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - text: Email
+            - textbox "Email" [ref=e24]
+          - generic [ref=e25]:
+            - text: Password
+            - textbox "Password" [ref=e26]
+          - button "Log in" [ref=e27] [cursor=pointer]
+        - paragraph [ref=e28]: The dashboard is hidden until a Supabase Auth session is active.
+      - generic [ref=e29]:
+        - article [ref=e30]:
+          - heading "Recent Search Logs" [level=2] [ref=e31]
+          - table [ref=e33]:
+            - rowgroup [ref=e34]:
+              - row "Time Query Results Selected path" [ref=e35]:
+                - columnheader "Time" [ref=e36]
+                - columnheader "Query" [ref=e37]
+                - columnheader "Results" [ref=e38]
+                - columnheader "Selected path" [ref=e39]
+            - rowgroup [ref=e40]:
+              - row "Loading..." [ref=e41]:
+                - cell "Loading..." [ref=e42]
+        - article [ref=e43]:
+          - heading "Zero Result Searches" [level=2] [ref=e44]
+          - table [ref=e46]:
+            - rowgroup [ref=e47]:
+              - row "Time Query Normalized query" [ref=e48]:
+                - columnheader "Time" [ref=e49]
+                - columnheader "Query" [ref=e50]
+                - columnheader "Normalized query" [ref=e51]
+            - rowgroup [ref=e52]:
+              - row "Loading..." [ref=e53]:
+                - cell "Loading..." [ref=e54]
+        - article [ref=e55]:
+          - heading "Recent Feedback" [level=2] [ref=e56]
+          - table [ref=e58]:
+            - rowgroup [ref=e59]:
+              - row "Time Type Rating Page Message" [ref=e60]:
+                - columnheader "Time" [ref=e61]
+                - columnheader "Type" [ref=e62]
+                - columnheader "Rating" [ref=e63]
+                - columnheader "Page" [ref=e64]
+                - columnheader "Message" [ref=e65]
+            - rowgroup [ref=e66]:
+              - row "Loading..." [ref=e67]:
+                - cell "Loading..." [ref=e68]
+        - article [ref=e69]:
+          - heading "Not Helpful Feedback" [level=2] [ref=e70]
+          - table [ref=e72]:
+            - rowgroup [ref=e73]:
+              - row "Time Type Rating Page Message" [ref=e74]:
+                - columnheader "Time" [ref=e75]
+                - columnheader "Type" [ref=e76]
+                - columnheader "Rating" [ref=e77]
+                - columnheader "Page" [ref=e78]
+                - columnheader "Message" [ref=e79]
+            - rowgroup [ref=e80]:
+              - row "Loading..." [ref=e81]:
+                - cell "Loading..." [ref=e82]
+        - article [ref=e83]:
+          - heading "Draft Solution Cards" [level=2] [ref=e84]
+          - paragraph [ref=e85]: Placeholder review surface for draft support cards stored in Supabase.
+          - table [ref=e87]:
+            - rowgroup [ref=e88]:
+              - row "Title Problem Grit Status Updated" [ref=e89]:
+                - columnheader "Title" [ref=e90]
+                - columnheader "Problem" [ref=e91]
+                - columnheader "Grit" [ref=e92]
+                - columnheader "Status" [ref=e93]
+                - columnheader "Updated" [ref=e94]
+            - rowgroup [ref=e95]:
+              - row "Loading..." [ref=e96]:
+                - cell "Loading..." [ref=e97]
+  - contentinfo [ref=e98]:
+    - generic [ref=e99]:
+      - generic [ref=e100]: © eQualle Support System
+      - generic [ref=e101]: Private dashboard for approved support data.
