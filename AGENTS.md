@@ -341,6 +341,10 @@ URL:
 /problems/
 ```
 
+Problem pages can organize related exact answers, but homepage search should not treat broad problem/list pages as final answer destinations.
+
+Each exact answer card inside a problem page should eventually become its own `/solutions/<slug>/index.html` page.
+
 Recommended problem groups:
 
 ```text
@@ -375,8 +379,6 @@ Grit Choice Problems
 - Low grit damages finish
 ```
 
-Each problem path should lead to exact solution pages, not long generic articles.
-
 ---
 
 ## 7) Surfaces Section
@@ -402,46 +404,6 @@ Sheet Problems
 ```
 
 Surface pages may organize related answers, but they should not replace exact answer pages.
-
-Each surface page should use the same structure:
-
-```text
-Surface name
-Best starting grits
-Common problems
-Recommended sequences
-Common mistakes
-Related answers
-Link to Grit Sequence Builder
-```
-
-Example for Wood:
-
-```text
-Best starting grits
-- Rough wood: 80–120
-- Surface prep: 120–180
-- Before stain: 180–220
-- Fine prep: 220–320
-
-Common wood problems
-- Scratches show after stain
-- Stain looks blotchy
-- Raised grain after water
-- Veneer sands through
-- Edges round over too much
-
-Recommended sequences
-- General prep: 120 → 150 → 180 → 220
-- Before stain: 150 → 180 → 220
-- Fix scratches: step back one grit, then progress again
-
-Common mistakes
-- sanding across grain
-- skipping grits
-- using too much pressure
-- not removing dust before finish
-```
 
 ---
 
@@ -474,22 +436,6 @@ Ultra Fine: 1000–3000
 For wet sanding, haze reduction, clear coat prep, polishing preparation.
 ```
 
-Include a clear “what grit comes next” reference:
-
-```text
-80 → 120
-120 → 150 or 180
-180 → 220
-220 → 320
-320 → 400
-400 → 600
-600 → 800
-800 → 1000
-1000 → 1500
-1500 → 2000
-2000 → 3000
-```
-
 ---
 
 ## 9) Tools Section
@@ -509,27 +455,6 @@ https://vladchat.github.io/sandpaper_support/tools/grit-sequence-builder/
 
 This is a useful and important part of the site. Preserve it and improve it, but do not use it as a homepage answer-search fallback.
 
-### Grit Sequence Builder structure
-
-```text
-Choose surface:
-Wood / Paint / Clear Coat / Metal / Plastic / Drywall
-
-Choose goal:
-Heavy removal / Surface preparation / Fine prep / Wet sanding / Fix scratches / Remove haze
-```
-
-Result should show:
-
-```text
-Start grit
-Next grit sequence
-Wet or dry
-Avoid
-Related solution pages
-Related product page
-```
-
 ---
 
 ## 10) Products Section
@@ -546,22 +471,7 @@ Current important product page:
 /products/assorted-80-3000/
 ```
 
-This page supports the eQualle Assorted Sandpaper Kit 80–3000.
-
 Product pages may support purchase/product questions, but they should not appear as normal homepage answer-search results for sanding problems.
-
-Recommended structure:
-
-```text
-What is included
-Which sheet should I start with?
-Do I need to use every grit?
-What is 3000 grit for?
-Wet or dry?
-Common mistakes
-Related tools
-Related solutions
-```
 
 Allowed product facts:
 
@@ -578,25 +488,66 @@ Do not invent unsupported product claims.
 
 ---
 
-## 11) Solution Page Template
+## 11) Canonical Solution Page Direction
+
+Current state: solution/problem pages are static HTML files and there is no single canonical template or generator yet.
+
+Required next implementation direction:
+
+```text
+Create one canonical solution page template and one generator.
+```
+
+Recommended files:
+
+```text
+templates/solution-page.html
+scripts/build-solution-pages.js
+```
+
+Data source:
+
+```text
+data/solution-cards.json
+```
 
 Each solution page should answer one exact customer problem.
 
-Recommended structure:
+Required page structure:
 
 ```text
-Top search / ask bar
-Problem title
-Short answer
-What to do
-Recommended grit / grit sequence
+Breadcrumb
+Problem
+[problem title]
+[problem description]
+
+Answer
+[one short direct answer]
+
+Why it happens
+Recommended grit
 Wet or dry
+What to do
 Avoid
 Success check
-Related guides
+Related answers
+Ask a follow-up about this answer
+Was this helpful?
+← Back to search
 ```
 
-Avoid placing a large disconnected assistant/chat block at the bottom of the page. If a follow-up helper exists, it should be integrated near the main answer or referenced through the top search/ask bar.
+Rules:
+
+```text
+Do not write both "Answer" and "Short answer".
+"Answer" is the short direct answer.
+One answer card = one /solutions/<slug>/ page.
+Problem pages may remain as overview/navigation pages.
+Homepage search should open exact solution pages, not problem/list pages.
+The bottom link should be "← Back to search" and should point to /sandpaper_support/.
+Tags that look clickable must be real links; otherwise they should not look like buttons.
+Use a small context follow-up box, not a large disconnected chat block.
+```
 
 ---
 
@@ -748,6 +699,8 @@ Make one search / ask bar the central interface.
 Homepage search must return exact answer pages only.
 Do not use guide/tool/product/list pages as homepage search fallback.
 If no exact answer exists, answer through AI and save the missing-answer candidate.
+Create a canonical solution page template and generator.
+Split answer cards into individual /solutions/<slug>/ pages.
 Later, generate reviewed static answer pages from saved candidates.
 Keep Problems, Surfaces, Grit Guide, Products, Tools as the main structure.
 Keep Grit Sequence Builder available in Tools, not as an answer fallback.
