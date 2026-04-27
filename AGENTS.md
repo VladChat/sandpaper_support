@@ -744,6 +744,43 @@ Related answers:
 
 ---
 
+## 13A) Solution Card Content Standard
+
+Before editing, improving, or creating solution card content, agents must read and follow:
+
+```text
+docs/solution-card-content-standard.md
+```
+
+This applies to:
+
+```text
+data/solution-cards.json
+new solution cards
+existing solution card improvements
+quick_answer
+recommended_grit
+best_grit_path
+optional_starting_grits
+steps
+avoid
+mistakes_to_avoid
+success_check
+surface
+task
+symptom
+related_solution_ids
+related_links
+search_phrases
+generated solution page content
+```
+
+This standard controls content quality only. It does not override the locked canonical solution page design in section 11A.
+
+Do not create or edit solution card content without following `docs/solution-card-content-standard.md`.
+
+---
+
 ## 14) Repo / Implementation Rules
 
 1. Work only in this repository unless the user explicitly says otherwise:
@@ -767,7 +804,8 @@ Related answers:
 10. Commit and push only after tests pass or report exact failure.
 11. Read this AGENTS.md file before starting any work in this repository.
 12. For solution page design/layout/structure changes, follow section 11A and ask for explicit approval when required.
-13. Agent prompts and reports must include exact repository, branch, local path, validation commands, commit command, and push command when code or documentation changes are requested.
+13. Before editing `data/solution-cards.json` or creating/updating solution card content, read `docs/solution-card-content-standard.md` and follow it.
+14. Agent prompts and reports must include exact repository, branch, local path, validation commands, commit command, and push command when code or documentation changes are requested.
 
 ---
 
