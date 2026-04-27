@@ -9,9 +9,9 @@
 
 This file is a working guide for agents. **Agents must read AGENTS.md completely before working in this repository.**
 
-It is **guidance**, not an immutable canonical spec. Agents may improve the structure when there is a clear reason, but they should preserve the main direction: simple, problem-first, search-first customer support.
+It is **guidance**, not an immutable canonical spec, except for the locked canonical solution page design rules in section 11A. Agents may improve the system when there is a clear reason, but they must preserve the main direction: simple, problem-first, search-first customer support.
 
-**Locked Design:** The canonical solution page design, layout, and visual structure are locked. See section 11A. If a future request may affect solution page design, layout, spacing, or structure, the agent must ask Vlad for explicit approval before changing it.
+**Locked Design:** The canonical solution page design, layout, visual structure, typography scale, spacing, section order, related topic chips, answer-card structure, and bottom solution search bar are locked. See section 11A. Any task that may affect solution page design, layout, spacing, typography, section order, button styling, chip behavior, or visible structure requires Vlad’s explicit approval in the current task before changing it.
 
 ---
 
@@ -494,15 +494,9 @@ Do not invent unsupported product claims.
 
 ## 11) Canonical Solution Page Direction
 
-Current state: solution/problem pages are static HTML files and there is no single canonical template or generator yet.
+Current state: solution pages are generated from one canonical solution page template and one generator.
 
-Required next implementation direction:
-
-```text
-Create one canonical solution page template and one generator.
-```
-
-Recommended files:
+Canonical files:
 
 ```text
 templates/solution-page.html
@@ -515,29 +509,40 @@ Data source:
 data/solution-cards.json
 ```
 
-Each solution page should answer one exact customer problem.
-
-Required page structure:
+Generated pages:
 
 ```text
+solutions/*/index.html
+```
+
+Each solution page should answer one exact customer problem.
+
+Current required page structure:
+
+```text
+Header
 Breadcrumb
-Problem
+Problem label
 [problem title]
 [problem description]
+Related topic chips
 
-Answer
-[one short direct answer]
+Large answer card
+  Answer
+  [one short direct answer]
 
-Why it happens
-Recommended grit
-Wet or dry
-What to do
-Avoid
-Success check
-Related answers
-Ask a follow-up about this answer
-Was this helpful?
+  Answer grid
+    Why it happens
+    Recommended grit
+    Wet or dry
+    Success check
+
+  What to do
+  Avoid
+
+Bottom solution search bar
 ← Back to search
+Footer
 ```
 
 Rules:
@@ -550,14 +555,15 @@ Problem pages may remain as overview/navigation pages.
 Homepage search should open exact solution pages, not problem/list pages.
 The bottom link should be "← Back to search" and should point to /sandpaper_support/.
 Tags that look clickable must be real links; otherwise they should not look like buttons.
-Use a small context follow-up box, not a large disconnected chat block.
+Use the existing bottom solution search bar. Do not replace it with a large disconnected chat block.
+Do not manually edit generated solution pages except for emergency inspection; update data/template/generator and regenerate.
 ```
 
 ---
 
 ## 11A) Locked Canonical Solution Page Design
 
-**The current solution page design, visual structure, layout, spacing, typography scale, section order, answer-card structure, related topic chips, and bottom search bar are locked.**
+**The current solution page design, visual structure, layout, spacing, typography scale, section order, answer-card structure, related topic chips, and bottom solution search bar are locked.**
 
 The canonical template is finalized in:
 
@@ -569,6 +575,12 @@ The build script that generates all solution pages is:
 
 ```text
 scripts/build-solution-pages.js
+```
+
+Generated pages under this path must follow the locked template:
+
+```text
+solutions/*/index.html
 ```
 
 Locked design elements:
@@ -597,6 +609,7 @@ Solution search block at bottom with:
   - Search button with "Get Answer" text
   - Search results area below input
 Back to search link at bottom
+Footer
 ```
 
 Do not change:
@@ -612,7 +625,48 @@ Do not change:
 - Breadcrumb or header layout
 ```
 
-If a future request would modify solution page design, layout, visible structure, button styling, or chip behavior, ask Vlad for explicit approval before proceeding.
+If a future request would modify solution page design, layout, visible structure, button styling, chip behavior, section order, or typography, ask Vlad for explicit approval before proceeding.
+
+Required confirmation question:
+
+```text
+This change may affect the locked solution page design. Do you approve changing the visual design/structure, or should I only update content/data/logic while preserving the current design?
+```
+
+Allowed without extra design approval:
+
+```text
+improving data/solution-cards.json content
+fixing answer wording
+fixing quick_answer quality
+fixing recommended_grit text
+fixing grit paths
+fixing steps
+fixing avoid text
+fixing success_check text
+fixing related_solution_ids
+fixing search_phrases
+regenerating solutions/*/index.html from the same locked template
+fixing bugs that preserve the same visible design
+backend or AI changes that do not alter visible layout
+```
+
+Not allowed without explicit approval:
+
+```text
+replacing the one-card answer layout with many small cards
+removing or moving related topic chips
+removing or replacing the bottom solution search bar
+moving the answer summary
+changing the answer grid into separate cards
+adding a visible large follow-up chat block
+changing solution page scale, width, or typography
+changing section order
+changing CSS that alters the approved visual appearance
+using a content task as a reason to redesign the page
+```
+
+This instruction applies even when Vlad casually asks to "edit the template" or "fix the page" and the request is ambiguous. Preserve the locked design unless Vlad explicitly approves a visual design or structure change in the current task.
 
 The current design was validated and locked on 2026-04-27.
 
@@ -711,6 +765,9 @@ Related answers:
 8. Preserve admin dashboard auth.
 9. Keep changes small and focused.
 10. Commit and push only after tests pass or report exact failure.
+11. Read this AGENTS.md file before starting any work in this repository.
+12. For solution page design/layout/structure changes, follow section 11A and ask for explicit approval when required.
+13. Agent prompts and reports must include exact repository, branch, local path, validation commands, commit command, and push command when code or documentation changes are requested.
 
 ---
 
@@ -754,11 +811,19 @@ Does AI ask only one clarifying question when needed?
 Does AI save missing-answer candidates when static content is missing?
 ```
 
+### Solution page design lock
+
+```text
+Did this task change the locked solution page visual design, structure, scale, section order, button styling, chip behavior, or visible layout?
+If yes, did Vlad explicitly approve that design change in the current task?
+If no explicit approval exists, stop and ask before changing the design.
+```
+
 ---
 
 ## 16) Current Strategic Direction
 
-The next UX direction should be:
+The current UX direction is:
 
 ```text
 Simplify the site.
@@ -766,7 +831,7 @@ Make one search / ask bar the central interface.
 Homepage search must return exact answer pages only.
 Do not use guide/tool/product/list pages as homepage search fallback.
 If no exact answer exists, answer through AI and save the missing-answer candidate.
-Create a canonical solution page template and generator.
+Preserve the canonical solution page template and generator.
 Split answer cards into individual /solutions/<slug>/ pages.
 Later, generate reviewed static answer pages from saved candidates.
 Keep Problems, Surfaces, Grit Guide, Products, Tools as the main structure.
@@ -774,6 +839,7 @@ Keep Grit Sequence Builder available in Tools, not as an answer fallback.
 Remove confusing duplicate inputs.
 Do not make AI a separate destination.
 Use AI as continuation of search and support pages.
+Preserve the locked canonical solution page design unless Vlad explicitly approves a design change.
 ```
 
-This section is guidance, not a rigid canonical law. Agents can improve the implementation, but should not return to a cluttered homepage, duplicated chat inputs, unrelated fallback results, guide/list-page search results, or disconnected bottom assistant blocks.
+This section is guidance, not a rigid canonical law. Agents can improve the implementation, but should not return to a cluttered homepage, duplicated chat inputs, unrelated fallback results, guide/list-page search results, disconnected bottom assistant blocks, or unapproved solution page design changes.
