@@ -5,7 +5,7 @@
 **Name:** eQualle Support System  
 **Purpose:** Public support website for eQualle sandpaper products.  
 **Primary use case:** Send Amazon customers to a support website where they can quickly identify their exact sanding problem and get a precise answer.  
-**Delivery model:** GitHub Pages static site + Supabase for logging, admin, and secure AI Edge Function.
+**Delivery model:** GitHub Pages static site + Supabase for logging, admin, missing-answer capture, and secure AI Edge Function.
 
 This file is a working guide for agents. It is **guidance**, not an immutable canonical spec. Agents may improve the structure when there is a clear reason, but they should preserve the main direction: simple, problem-first, search-first customer support.
 
@@ -21,12 +21,19 @@ Preferred flow:
 
 ```text
 One main search / ask bar
-→ live matching support pages
+→ live matching answer pages only
 → exact answer page
 → optional follow-up in the same context
 ```
 
-AI is not the main destination. AI is a helper layer that continues the search experience when static support content is not enough.
+AI is not the main destination. AI is a helper layer that continues the search experience when static answer content is not enough.
+
+Important current rule:
+
+```text
+Homepage search results must not send the user to guide/list/tool/product pages.
+Homepage search results should open exact answer pages only.
+```
 
 ---
 
@@ -36,28 +43,18 @@ AI is not the main destination. AI is a helper layer that continues the search e
 
 Keep the homepage simple and focused.
 
-Recommended above-the-fold layout:
+Current preferred above-the-fold layout:
 
 ```text
 eQualle Support
 Problems | Surfaces | Grit Guide | Products | Tools
 
-What sanding problem do you have?
-[ one main search / ask input ]
-
-Example searches:
-plastic turns white
-3000 grit not glossy
-paper clogs with paint
-scratches after staining wood
-
-Main paths:
-Find by Problem
-Choose Surface
-Build Grit Sequence
+Sandpaper Help Center
+Describe the problem.
+[ one large Google-style search / ask input ]
 ```
 
-Do not overload the homepage with too many cards, menus, documents, or technical explanations.
+Do not overload the homepage with cards, category blocks, documents, technical explanations, duplicate inputs, or secondary chat boxes.
 
 ### Main navigation
 
@@ -100,30 +97,89 @@ follow-up input
 
 But visually it should be **one input**, not multiple boxes.
 
-### When matches exist
+### Homepage answer-only search rule
+
+Homepage live search should show only concrete answer pages:
+
+```text
+/problems/...
+/solutions/...
+```
+
+Homepage live search should not show these as normal results:
+
+```text
+/surfaces/...
+/tools/...
+/products/...
+/how-to/
+```
+
+Reason: a customer searching from the homepage wants an answer. Sending them to a list page, guide page, product page, or tool means they have to search again.
+
+### When answer matches exist
 
 User types:
 
 ```text
-plastic turns white
+paper clogs with paint
 ```
 
-The site should show strong matching pages, such as:
+The site should show strong matching answer pages, such as:
 
 ```text
-Plastic Turns White After Sanding
-Plastic Scratches Stay Visible
-Sanding Plastic Surface Guide
-Grit Sequence For Plastic
+Sandpaper Clogs Too Fast
+Paint Clogs Sandpaper
+Sheet Feels Smooth But Stops Cutting
 ```
 
 The user can open a result or continue typing in the same input.
 
-### When no useful match exists
+### When no useful answer match exists
 
-The typed text becomes the assistant request automatically after a short debounce.
+The site should not show weak, unrelated, guide, tool, product, or surface-page fallbacks.
 
-The assistant answer appears below the same search/ask area.
+Correct behavior:
+
+```text
+No answer page exists → show no misleading result → Get Answer opens /ask/?q=...
+```
+
+Then the AI/support assistant may answer in the ask flow and save the query as a missing-answer candidate for future page creation.
+
+### Question starter behavior
+
+One-word starters may show curated popular answer suggestions:
+
+```text
+how
+why
+what
+which
+can
+should
+where
+when
+do
+does
+is
+```
+
+Multi-word starter queries must require real semantic support-content matches beyond the starter word.
+
+Examples:
+
+```text
+how → show curated How answer suggestions
+how remove scratches → show relevant answer
+how to cut a sheet → show no result until a specific answer page exists
+is → show curated Is answer suggestions
+is 60 grit too aggressive → show relevant answer
+is there smaller smaller size → show no result
+can I get smaller sheets → show no result until a specific answer page exists
+```
+
+Do not let filler words such as `to`, `a`, `the`, `sheet`, `size`, or `there` make an unrelated suggestion pass relevance scoring.
 
 ### Follow-up behavior
 
@@ -185,11 +241,97 @@ pla → plastic/paint only, not random sheet problems
 plastic turns white → exact plastic solution
 3000 gloss → exact 3000 gloss solution
 paper clogs paint → paint clogging / clogging solution
+how to cut a sheet → no result until a specific answer page exists
 ```
+
+### Result destination rule
+
+A search result that looks like an answer must open an answer page.
+
+Do not show list pages as homepage answer results:
+
+```text
+/surfaces/plastic/ is a guide/list page, not an answer page.
+/tools/grit-sequence-builder/ is a tool, not an answer page.
+/products/ is a product section, not an answer page.
+```
+
+If a useful answer does not exist yet, capture the missing answer instead of routing the user to a broad page.
 
 ---
 
-## 5) Problems Section
+## 5) Missing Answer Capture and Knowledge Base Growth
+
+The site should gradually improve by capturing questions that do not yet have a good static answer page.
+
+Current strategic flow:
+
+```text
+User asks question on homepage
+→ answer page exists: open answer page
+→ answer page missing: open /ask/?q=...
+→ AI gives a short support answer from approved context
+→ question + AI answer + context are saved as missing_answer_candidate
+→ later workflow turns approved candidates into static answer pages
+→ future users get the static page directly
+```
+
+Important technical rule:
+
+```text
+Do not create static GitHub Pages files directly from the browser.
+```
+
+Reason: the browser must not have GitHub write credentials. Static answer pages should be created by a secure server-side/admin workflow, GitHub Action, or local agent workflow.
+
+Recommended future table:
+
+```text
+missing_answer_candidates
+```
+
+Recommended fields:
+
+```text
+id
+query
+normalized_query
+ai_answer
+matched_pages
+session_token
+status
+created_at
+updated_at
+```
+
+Recommended statuses:
+
+```text
+new
+reviewed
+draft_created
+published
+rejected
+```
+
+Recommended future publishing flow:
+
+```text
+missing_answer_candidates
+→ draft_solution_cards
+→ generated /solutions/<slug>/index.html
+→ update data/search-index.json
+→ update data/search-suggestions.json when needed
+→ validate
+→ commit
+→ GitHub Pages deploy
+```
+
+Do not remove missing-answer information after answering the customer. It is product knowledge backlog.
+
+---
+
+## 6) Problems Section
 
 Problems are the primary customer entry path.
 
@@ -237,9 +379,9 @@ Each problem path should lead to exact solution pages, not long generic articles
 
 ---
 
-## 6) Surfaces Section
+## 7) Surfaces Section
 
-Surface pages are the second main user path.
+Surface pages are the second main user path, but they are not homepage answer-search results.
 
 URL:
 
@@ -258,6 +400,8 @@ Plastic
 Drywall Patch
 Sheet Problems
 ```
+
+Surface pages may organize related answers, but they should not replace exact answer pages.
 
 Each surface page should use the same structure:
 
@@ -301,7 +445,7 @@ Common mistakes
 
 ---
 
-## 7) Grit Guide
+## 8) Grit Guide
 
 URL:
 
@@ -348,7 +492,7 @@ Include a clear “what grit comes next” reference:
 
 ---
 
-## 8) Tools Section
+## 9) Tools Section
 
 URL:
 
@@ -363,7 +507,7 @@ The most useful tool right now is the Grit Sequence Builder:
 https://vladchat.github.io/sandpaper_support/tools/grit-sequence-builder/
 ```
 
-This is a useful and important part of the site. Preserve it and improve it rather than hiding it.
+This is a useful and important part of the site. Preserve it and improve it, but do not use it as a homepage answer-search fallback.
 
 ### Grit Sequence Builder structure
 
@@ -388,7 +532,7 @@ Related product page
 
 ---
 
-## 9) Products Section
+## 10) Products Section
 
 URL:
 
@@ -403,6 +547,8 @@ Current important product page:
 ```
 
 This page supports the eQualle Assorted Sandpaper Kit 80–3000.
+
+Product pages may support purchase/product questions, but they should not appear as normal homepage answer-search results for sanding problems.
 
 Recommended structure:
 
@@ -432,7 +578,7 @@ Do not invent unsupported product claims.
 
 ---
 
-## 10) Solution Page Template
+## 11) Solution Page Template
 
 Each solution page should answer one exact customer problem.
 
@@ -454,14 +600,14 @@ Avoid placing a large disconnected assistant/chat block at the bottom of the pag
 
 ---
 
-## 11) AI Assistant Direction
+## 12) AI Assistant Direction
 
 AI should not feel like a separate chatbot product.
 
 Preferred behavior:
 
 ```text
-Search found answer → show matching pages
+Search found answer → open/show matching answer page
 User needs more → same input continues the conversation
 Search found nothing → same typed text becomes AI request
 Solution page → user can ask follow-up in that page context
@@ -474,8 +620,9 @@ read the user query
 use current page context
 retrieve approved solution cards / grit sequences / surface data
 write a short support answer
-link to approved pages
+link only to approved pages
 ask one clarifying question only when needed
+save missing-answer candidates when static content is missing
 ```
 
 AI should not:
@@ -486,6 +633,7 @@ invent product claims
 act like a general workshop chatbot
 create a second confusing input on the homepage
 bury the useful answer under chat UI
+route a homepage answer search to a guide/list page
 ```
 
 AI response format should usually be:
@@ -497,12 +645,12 @@ Recommended next step:
 Suggested grit sequence:
 Wet or dry:
 Avoid:
-Related guides:
+Related answers:
 ```
 
 ---
 
-## 12) Product and Content Rules
+## 13) Product and Content Rules
 
 1. All public user-facing text must be English.
 2. Keep answers short, direct, and practical.
@@ -524,7 +672,7 @@ Related guides:
 
 ---
 
-## 13) Repo / Implementation Rules
+## 14) Repo / Implementation Rules
 
 1. Work only in this repository unless the user explicitly says otherwise:
    ```text
@@ -548,7 +696,7 @@ Related guides:
 
 ---
 
-## 14) Quality Checks For Agents
+## 15) Quality Checks For Agents
 
 Before reporting a task complete, check:
 
@@ -571,9 +719,11 @@ Does it say what to avoid?
 ### Search quality
 
 ```text
-Does the query return strong relevant results?
+Does the query return strong relevant answer results?
 Are weak unrelated results hidden?
-Does exact customer language match the right page?
+Does exact customer language match the right answer page?
+Are guide/list/tool/product pages excluded from homepage answer search?
+Does a missing answer go to AI capture instead of a bad fallback?
 ```
 
 ### AI quality
@@ -583,22 +733,27 @@ Does AI answer from approved context?
 Does AI link to approved pages?
 Does AI avoid unsupported claims?
 Does AI ask only one clarifying question when needed?
+Does AI save missing-answer candidates when static content is missing?
 ```
 
 ---
 
-## 15) Current Strategic Direction
+## 16) Current Strategic Direction
 
 The next UX direction should be:
 
 ```text
 Simplify the site.
 Make one search / ask bar the central interface.
+Homepage search must return exact answer pages only.
+Do not use guide/tool/product/list pages as homepage search fallback.
+If no exact answer exists, answer through AI and save the missing-answer candidate.
+Later, generate reviewed static answer pages from saved candidates.
 Keep Problems, Surfaces, Grit Guide, Products, Tools as the main structure.
-Keep Grit Sequence Builder prominent.
+Keep Grit Sequence Builder available in Tools, not as an answer fallback.
 Remove confusing duplicate inputs.
 Do not make AI a separate destination.
 Use AI as continuation of search and support pages.
 ```
 
-This section is guidance, not a rigid canonical law. Agents can improve the implementation, but should not return to a cluttered homepage, duplicated chat inputs, or disconnected bottom assistant blocks.
+This section is guidance, not a rigid canonical law. Agents can improve the implementation, but should not return to a cluttered homepage, duplicated chat inputs, unrelated fallback results, guide/list-page search results, or disconnected bottom assistant blocks.
