@@ -466,6 +466,37 @@ body.support-home {
   }
 }
 
+.related-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -4px 0 24px;
+}
+
+.topic-pill {
+  align-items: center;
+  background: #eaf4fb;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #1f3d54;
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 9px 14px;
+  white-space: nowrap;
+}
+
+.topic-pill-link {
+  cursor: pointer;
+}
+
+.topic-pill-link:hover {
+  border-color: #7CB1D9;
+  background: #dff0fb;
+  color: #0b3d5c;
+}
+
 .answer-summary {
   margin: 4px 0 24px;
   padding: 18px 20px;
@@ -519,6 +550,16 @@ body.solution-page .section > .section-intro {
 }
 
 @media (max-width: 640px) {
+  .related-topics {
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+
+  .topic-pill {
+    font-size: 0.86rem;
+    padding: 8px 11px;
+  }
+
   .answer-summary {
     padding: 16px;
     border-radius: 16px;

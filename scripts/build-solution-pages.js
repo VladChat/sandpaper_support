@@ -153,6 +153,220 @@ function renderRelatedAnswers(card, searchIndex) {
   ].join("\n");
 }
 
+function collectSearchableText(card) {
+  return [
+    card.id,
+    card.problem_slug,
+    card.title,
+    card.problem,
+    card.likely_cause,
+    card.recommended_grit,
+    card.wet_or_dry,
+    card.avoid,
+    card.success_check,
+    Array.isArray(card.steps) ? card.steps.join(" ") : "",
+  ].join(" ").toLowerCase();
+}
+
+function escapeRegExp(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function hasPhrase(text, phrase) {
+  return String(text || "").indexOf(String(phrase || "").toLowerCase()) !== -1;
+}
+
+function hasWholeWord(text, word) {
+  const pattern = new RegExp("(^|[^a-z0-9])" + escapeRegExp(word.toLowerCase()) + "([^a-z0-9]|$)", "i");
+  return pattern.test(String(text || ""));
+}
+
+function hasAnyWholeWord(text, words) {
+  return words.some(function (word) {
+    return hasWholeWord(text, word);
+  });
+}
+
+function hasAnyPhrase(text, phrases) {
+  return phrases.some(function (phrase) {
+    return hasPhrase(text, phrase);
+  });
+}
+
+function hasGrit(text, grit) {
+  const pattern = new RegExp("(^|[^0-9])" + escapeRegExp(String(grit)) + "([^0-9]|$)");
+  return pattern.test(String(text || ""));
+}
+
+function hasAnyGrit(text, grits) {
+  return grits.some(function (grit) {
+    return hasGrit(text, grit);
+  });
+}
+
+function addTopic(topics, label, href) {
+  if (!label) {
+    return;
+  }
+
+  const normalized = String(label).trim().toLowerCase();
+  if (!normalized) {
+    return;
+  }
+
+  if (topics.some(function (topic) { return topic.normalized === normalized; })) {
+    return;
+  }
+
+  topics.push({
+    label: String(label).trim(),
+    href: href || "",
+    normalized: normalized,
+  });
+}
+
+function relativeHrefToFilePath(href) {
+  const cleanHref = String(href || "").trim();
+
+  if (!cleanHref || cleanHref.indexOf("/") !== 0) {
+    return "";
+  }
+
+  const withoutLeadingSlash = cleanHref.replace(/^\/+/, "");
+  return path.join(ROOT_DIR, withoutLeadingSlash, "index.html");
+}
+
+function hrefExists(href) {
+  const filePath = relativeHrefToFilePath(href);
+  return Boolean(filePath && fs.existsSync(filePath));
+}
+
+function safeTopicHref(href) {
+  const cleanHref = String(href || "").trim();
+
+  if (!cleanHref) {
+    return "";
+  }
+
+  if (cleanHref.indexOf("/") !== 0) {
+    return "";
+  }
+
+  if (!hrefExists(cleanHref)) {
+    return "";
+  }
+
+  return cleanHref;
+}
+
+function inferRelatedTopics(card) {
+  const text = collectSearchableText(card);
+  const topics = [];
+
+  if (hasAnyWholeWord(text, ["wood", "grain", "veneer", "hardwood", "softwood"])) {
+    addTopic(topics, "wood", "/surfaces/wood/");
+  }
+
+  if (hasAnyWholeWord(text, ["paint", "painted"])) {
+    addTopic(topics, "paint", "/surfaces/paint-primer/");
+  }
+
+  if (hasAnyWholeWord(text, ["primer"])) {
+    addTopic(topics, "primer", "/surfaces/paint-primer/");
+  }
+
+  if (hasAnyPhrase(text, ["clear coat", "clearcoat"])) {
+    addTopic(topics, "clear coat", "/surfaces/clear-coat/");
+  }
+
+  if (hasAnyWholeWord(text, ["metal", "aluminum", "steel", "rust", "oxidation"])) {
+    addTopic(topics, "metal", "/surfaces/metal/");
+  }
+
+  if (hasAnyWholeWord(text, ["plastic"])) {
+    addTopic(topics, "plastic", "/surfaces/plastic/");
+  }
+
+  if (hasAnyPhrase(text, ["drywall", "joint compound", "drywall patch"]) || hasAnyWholeWord(text, ["patch"])) {
+    addTopic(topics, "drywall patch", "/surfaces/drywall-patch/");
+  }
+
+  if (hasAnyWholeWord(text, ["wet", "water", "slurry", "rinse", "rinsed", "rinsing"])) {
+    addTopic(topics, "wet sanding", "");
+  }
+
+  if (hasAnyWholeWord(text, ["dry"])) {
+    addTopic(topics, "dry sanding", "");
+  }
+
+  if (hasAnyPhrase(text, ["between coats", "intercoat", "recoat"]) || hasAnyWholeWord(text, ["coating", "coat", "coats"])) {
+    addTopic(topics, "between coats", "/problems/poor-results-between-coats/");
+  }
+
+  if (hasAnyWholeWord(text, ["polish", "polishing", "gloss"])) {
+    addTopic(topics, "polishing prep", "");
+  }
+
+  if (hasAnyWholeWord(text, ["haze", "cloudy", "dull"])) {
+    addTopic(topics, "haze", "/solutions/normal-haze-after-wet-sanding/");
+  }
+
+  if (hasAnyWholeWord(text, ["scratch", "scratches", "scratched", "marks", "lines"])) {
+    addTopic(topics, "scratches", "/solutions/deep-scratches-after-80-grit/");
+  }
+
+  if (hasAnyWholeWord(text, ["clog", "clogs", "clogged", "loading", "loaded", "glaze", "residue"])) {
+    addTopic(topics, "clogging", "/solutions/paint-clogs-sheet/");
+  }
+
+  if (hasAnyWholeWord(text, ["pressure", "press", "aggressive"])) {
+    addTopic(topics, "pressure", "");
+  }
+
+  if (hasAnyGrit(text, [60, 80, 100, 120])) {
+    addTopic(topics, "coarse grit", "");
+  }
+
+  if (hasAnyGrit(text, [150, 180, 220, 240])) {
+    addTopic(topics, "medium grit", "");
+  }
+
+  if (hasAnyGrit(text, [280, 320, 360, 400])) {
+    addTopic(topics, "fine grit", "");
+  }
+
+  if (hasAnyGrit(text, [500, 600, 800, 1000, 1200, 1500, 2000, 3000])) {
+    addTopic(topics, "ultra fine grit", "");
+  }
+
+  return topics.slice(0, 6);
+}
+
+function renderRelatedTopics(card) {
+  const topics = inferRelatedTopics(card);
+
+  if (!topics.length) {
+    return "";
+  }
+
+  const items = topics.map(function (topic) {
+    const label = escapeHtml(topic.label);
+    const href = safeTopicHref(topic.href);
+
+    if (href) {
+      return '      <a class="topic-pill topic-pill-link" href="' + sitePath(href) + '">' + label + "</a>";
+    }
+
+    return '      <span class="topic-pill">' + label + "</span>";
+  });
+
+  return [
+    '    <div class="related-topics" aria-label="Related topics">',
+    items.join("\n"),
+    "    </div>",
+  ].join("\n");
+}
+
 function sentenceTrim(value) {
   return String(value || "")
     .trim()
@@ -254,6 +468,7 @@ function renderPage(card, template, searchIndex) {
     BREADCRUMB_TITLE: escapeHtml(pageTitle),
     PROBLEM_TITLE: escapeHtml(pageTitle),
     PROBLEM_DESCRIPTION: escapeHtml(problemText),
+    RELATED_TOPICS_HTML: renderRelatedTopics(card),
     ANSWER_TEXT: escapeHtml(answerText),
     LIKELY_CAUSE: escapeHtml(card.likely_cause),
     RECOMMENDED_GRIT: escapeHtml(card.recommended_grit),
