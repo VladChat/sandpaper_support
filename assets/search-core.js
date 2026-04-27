@@ -46,26 +46,79 @@
     do: true,
     does: true,
     should: true,
+    is: true,
   };
+
   const SUPPORTED_GRITS = {
     60: true, 80: true, 100: true, 120: true, 150: true, 180: true, 220: true, 240: true,
     280: true, 320: true, 360: true, 400: true, 500: true, 600: true, 800: true, 1000: true,
     1200: true, 1500: true, 2000: true, 3000: true,
   };
-  const QUESTION_ONLY = { how: true, why: true, what: true, which: true };
-  const POPULAR_QUESTION_SUGGESTIONS = [
-    { title: "What grit should I use?", target_url: "/problems/not-sure-what-grit-to-use/", description: "Start with the right grit for your surface and stage." },
-    { title: "Why does sandpaper clog?", target_url: "/problems/paper-clogs-too-fast/", description: "Find the main causes of loading and how to prevent it." },
-    { title: "How do I sand plastic?", target_url: "/surfaces/plastic/", description: "Plastic-specific sanding guidance and common issues." },
-    { title: "Which grit comes next?", target_url: "/tools/grit-sequence-builder/", description: "Use the sequence builder to choose your next grit." },
+
+  const QUESTION_STARTERS = {
+    how: true,
+    why: true,
+    what: true,
+    which: true,
+    can: true,
+    should: true,
+    where: true,
+    when: true,
+    do: true,
+    does: true,
+    is: true,
+  };
+
+  const GENERIC_SUGGESTION_STARTERS = {
+    sandpaper: true,
+    sanding: true,
+    abrasive: true,
+    abrasives: true,
+  };
+
+  const TYPO_NORMALIZATION = {
+    snd: "sand",
+    sanderpaper: "sandpaper",
+    sandpapr: "sandpaper",
+    sandpapaer: "sandpaper",
+    sandpper: "sandpaper",
+    wich: "which",
+    wihch: "which",
+    wht: "what",
+    wat: "what",
+    shoud: "should",
+    shuld: "should",
+    doesent: "does",
+    dos: "does",
+    nxt: "next",
+    nezt: "next",
+    gritt: "grit",
+    gritd: "grit",
+    clogd: "clogged",
+    clogg: "clog",
+    scrtch: "scratch",
+    scrach: "scratch",
+    hazey: "haze",
+  };
+
+  const SYNONYM_GROUPS = [
+    ["sand", "sanding", "sandpaper", "abrasive", "abrasives"],
+    ["clog", "clogs", "clogged", "clogging", "loaded", "loading", "gummed", "gum"],
+    ["scratch", "scratches", "mark", "marks", "gouge", "gouges", "swirl", "swirls"],
+    ["haze", "hazy", "cloudy", "dull", "foggy", "milky"],
+    ["tear", "tears", "rip", "rips", "ripped", "fray", "frays"],
+    ["wet", "water", "slurry"],
+    ["dry", "dust"],
+    ["grit", "grits", "grade", "sequence", "progression", "step"],
+    ["wood", "hardwood", "softwood"],
+    ["paint", "primer", "coating", "finish"],
+    ["clearcoat", "clear", "coat", "clear coat"],
+    ["plastic", "vinyl"],
+    ["metal", "rust", "oxidation"],
+    ["polish", "polishing", "gloss", "shine"],
+    ["remove", "removal", "strip", "stripping"],
   ];
-  const GENERAL_SANDPAPER_SUGGESTIONS = [
-    { title: "Sandpaper Clogs Too Fast", target_url: "/problems/paper-clogs-too-fast/", description: "Dust, paint, finish, or residue loads into the abrasive and stops cutting." },
-    { title: "Sandpaper Grit Sequence", target_url: "/tools/grit-sequence-builder/", description: "Recommended grit progression for sanding tasks by surface and goal." },
-    { title: "What Grit Should I Use?", target_url: "/problems/not-sure-what-grit-to-use/", description: "Choose a grit based on surface, material removal, prep, or finish sanding." },
-    { title: "Sandpaper Tears Early", target_url: "/problems/paper-tears-early/", description: "The sheet rips, catches, or wears through during use." },
-    { title: "Scratches Are Too Deep", target_url: "/problems/scratches-too-deep/", description: "Visible sanding marks, gouges, or scratches remain after sanding." },
-  ];
+
   const BLOCKED_SUGGESTION_IDS = { "search-how-to-use-80-to-3000-grit-sandpaper": true };
   const BLOCKED_SUGGESTION_TITLES = { "how to use 60 to 3000 grit sandpaper": true };
 
@@ -139,110 +192,34 @@
     return String(value || "").toLowerCase();
   }
 
+  function normalizeSuggestionToken(token) {
+    const normalized = clean(token).trim();
+    if (!normalized) {
+      return "";
+    }
+    return TYPO_NORMALIZATION[normalized] || normalized;
+  }
+
+  function uniqueValues(values) {
+    const seen = {};
+    const result = [];
+    (Array.isArray(values) ? values : []).forEach(function (value) {
+      const normalized = String(value || "").trim();
+      if (!normalized || seen[normalized]) {
+        return;
+      }
+      seen[normalized] = true;
+      result.push(normalized);
+    });
+    return result;
+  }
+
   function normalizeList(values) {
-    return (Array.isArray(values) ? values : [])
+    return uniqueValues((Array.isArray(values) ? values : [])
       .map(function (value) {
         return clean(value).trim();
       })
-      .filter(Boolean);
-  }
-
-  function pickTop(entries, limit, query) {
-    return entries.slice(0, Math.min(Math.max(limit || 5, 1), 5)).map(function (entry) {
-      const out = Object.assign({}, entry);
-      out.search_score = Number.isFinite(out.search_score) ? out.search_score : 120;
-      out.search_strong = out.search_strong !== false;
-      out.search_intent = out.search_intent || "general_support";
-      if (query) {
-        out.search_query = query;
-      }
-      return out;
-    });
-  }
-
-  function isBlockedFallbackEntry(entry) {
-    const id = clean(entry && entry.id);
-    const title = clean(entry && entry.title);
-    return Boolean(BLOCKED_SUGGESTION_IDS[id] || BLOCKED_SUGGESTION_TITLES[title]);
-  }
-
-  function hasSurfaceSignal(context) {
-    const q = context.normalizedQuery;
-    const hasSurface = SURFACE_TERMS.some(function (term) {
-      return q.indexOf(term) !== -1;
-    });
-    const hasSandingSignal = /\bsand|\bsanding|\bwet\b|\bdry\b/.test(q);
-    return hasSurface || hasSandingSignal;
-  }
-
-  function hasProblemSignal(context) {
-    const q = context.normalizedQuery;
-    return PROBLEM_TERMS.some(function (term) {
-      return q.indexOf(term) !== -1;
-    });
-  }
-
-  function hasGritIntentSignal(context) {
-    const q = context.normalizedQuery;
-    const gritHit = context.gritNumbers.some(function (num) {
-      return Boolean(SUPPORTED_GRITS[String(num)]);
-    });
-    return (
-      gritHit ||
-      q.indexOf("what grit") !== -1 ||
-      q.indexOf("which grit") !== -1 ||
-      q.indexOf("next grit") !== -1 ||
-      q.indexOf("grit after") !== -1 ||
-      q.indexOf("after ") !== -1 && q.indexOf("grit") !== -1
-    );
-  }
-
-  function questionOnlySuggestions(context, maxResults) {
-    if (context.wordCount !== 1 || !QUESTION_ONLY[context.normalizedQuery]) {
-      return null;
-    }
-    return pickTop(
-      POPULAR_QUESTION_SUGGESTIONS.map(function (item, index) {
-        const row = Object.assign({}, item);
-        row.search_score = 200 - index * 5;
-        row.search_intent = "question_suggestions";
-        row.search_strong = true;
-        return row;
-      }),
-      maxResults,
-      context.normalizedQuery,
-    );
-  }
-
-  function generalSandpaperSuggestions(context, maxResults) {
-    const genericQueries = {
-      sandpaper: true,
-      sanding: true,
-      abrasive: true,
-      abrasives: true,
-    };
-
-    if (context.wordCount !== 1 || !genericQueries[context.normalizedQuery]) {
-      return null;
-    }
-
-    return pickTop(
-      GENERAL_SANDPAPER_SUGGESTIONS.map(function (item, index) {
-        const row = Object.assign({}, item);
-        row.search_score = 190 - index * 5;
-        row.search_intent = "general_sandpaper_suggestions";
-        row.search_strong = false;
-        return row;
-      }),
-      maxResults,
-      context.normalizedQuery,
-    );
-  }
-
-  function containsAnyPhrase(query, phrases) {
-    return phrases.some(function (phrase) {
-      return query.indexOf(phrase) !== -1;
-    });
+      .filter(Boolean));
   }
 
   function normalizeQuery(query) {
@@ -252,6 +229,144 @@
       .replace(/[^\w\s]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
+  }
+
+  function tokenizeSmartText(text) {
+    return normalizeQuery(text)
+      .split(/\s+/)
+      .map(function (token) {
+        return normalizeSuggestionToken(token);
+      })
+      .filter(Boolean);
+  }
+
+  function expandTerms(terms) {
+    const seedTerms = (Array.isArray(terms) ? terms : [])
+      .map(function (term) {
+        return normalizeSuggestionToken(term);
+      })
+      .filter(Boolean);
+
+    const expanded = seedTerms.slice();
+
+    seedTerms.forEach(function (term) {
+      SYNONYM_GROUPS.forEach(function (group) {
+        const groupTokens = [];
+        group.forEach(function (item) {
+          tokenizeSmartText(item).forEach(function (token) {
+            groupTokens.push(token);
+          });
+        });
+
+        if (groupTokens.indexOf(term) !== -1) {
+          groupTokens.forEach(function (token) {
+            expanded.push(token);
+          });
+        }
+      });
+    });
+
+    return uniqueValues(expanded);
+  }
+
+  function editDistance(a, b) {
+    const left = String(a || "");
+    const right = String(b || "");
+
+    if (left === right) {
+      return 0;
+    }
+    if (!left.length) {
+      return right.length;
+    }
+    if (!right.length) {
+      return left.length;
+    }
+
+    const dp = Array(left.length + 1);
+    for (let i = 0; i <= left.length; i += 1) {
+      dp[i] = Array(right.length + 1).fill(0);
+      dp[i][0] = i;
+    }
+    for (let j = 0; j <= right.length; j += 1) {
+      dp[0][j] = j;
+    }
+
+    for (let i = 1; i <= left.length; i += 1) {
+      for (let j = 1; j <= right.length; j += 1) {
+        const cost = left[i - 1] === right[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          dp[i][j - 1] + 1,
+          dp[i - 1][j - 1] + cost,
+        );
+      }
+    }
+
+    return dp[left.length][right.length];
+  }
+
+  function fuzzyTokenMatch(a, b) {
+    const left = normalizeSuggestionToken(a);
+    const right = normalizeSuggestionToken(b);
+
+    if (!left || !right) {
+      return false;
+    }
+
+    if (left === right) {
+      return true;
+    }
+
+    if (left.length >= 3 && right.length >= 3) {
+      if (left.indexOf(right) === 0 || right.indexOf(left) === 0) {
+        return true;
+      }
+    }
+
+    const longest = Math.max(left.length, right.length);
+    const distance = editDistance(left, right);
+
+    if (longest >= 7) {
+      return distance <= 2;
+    }
+
+    if (longest >= 4 && longest <= 6) {
+      return distance <= 1;
+    }
+
+    return false;
+  }
+
+  function textMatchesTerm(text, term) {
+    const tokens = tokenizeSmartText(text);
+    const target = normalizeSuggestionToken(term);
+    if (!target) {
+      return false;
+    }
+
+    return tokens.some(function (token) {
+      return fuzzyTokenMatch(token, target);
+    });
+  }
+
+  function suggestionToSearchResult(suggestion, score, intent) {
+    return {
+      id: suggestion.id,
+      type: suggestion.type || "question_suggestion",
+      title: suggestion.title || "",
+      description: suggestion.description || "",
+      target_url: suggestion.target_url || "",
+      search_score: score,
+      search_strong: score >= 120,
+      search_intent: intent || "smart_suggestion",
+    };
+  }
+
+  function containsAnyPhrase(query, phrases) {
+    return phrases.some(function (phrase) {
+      return query.indexOf(phrase) !== -1;
+    });
   }
 
   function tokenizeQuery(query) {
@@ -269,6 +384,7 @@
       }
       return term.length > 1;
     });
+
     const expandedMeaningfulTerms = meaningfulTerms.slice();
     meaningfulTerms.forEach(function (term) {
       if (term === "clogging") {
@@ -415,6 +531,43 @@
     };
   }
 
+  function isBlockedFallbackEntry(entry) {
+    const id = clean(entry && entry.id);
+    const title = clean(entry && entry.title);
+    return Boolean(BLOCKED_SUGGESTION_IDS[id] || BLOCKED_SUGGESTION_TITLES[title]);
+  }
+
+  function hasSurfaceSignal(context) {
+    const q = context.normalizedQuery;
+    const hasSurface = SURFACE_TERMS.some(function (term) {
+      return q.indexOf(term) !== -1;
+    });
+    const hasSandingSignal = /\bsand|\bsanding|\bwet\b|\bdry\b/.test(q);
+    return hasSurface || hasSandingSignal;
+  }
+
+  function hasProblemSignal(context) {
+    const q = context.normalizedQuery;
+    return PROBLEM_TERMS.some(function (term) {
+      return q.indexOf(term) !== -1;
+    });
+  }
+
+  function hasGritIntentSignal(context) {
+    const q = context.normalizedQuery;
+    const gritHit = context.gritNumbers.some(function (num) {
+      return Boolean(SUPPORTED_GRITS[String(num)]);
+    });
+    return (
+      gritHit ||
+      q.indexOf("what grit") !== -1 ||
+      q.indexOf("which grit") !== -1 ||
+      q.indexOf("next grit") !== -1 ||
+      q.indexOf("grit after") !== -1 ||
+      (q.indexOf("after ") !== -1 && q.indexOf("grit") !== -1)
+    );
+  }
+
   function filterEntriesByIntent(intentContext, classified, queryContext) {
     const mainIntent = intentContext.mainIntent;
     const sequenceAsked = queryContext.phraseFlags.hasSequence || queryContext.phraseFlags.hasBuilder;
@@ -497,7 +650,6 @@
     const meaningfulTerms = queryContext.meaningfulTerms;
     const multiWord = queryContext.wordCount > 1;
     const shortQuery = query.length >= 3 && query.length <= 4;
-    const allTexts = [classified.title].concat(classified.customerPhrases).concat(classified.aliases);
     let score = 0;
     let meaningfulSignals = 0;
     let exactPhraseMatch = false;
@@ -525,21 +677,13 @@
       strongSignal = true;
       meaningfulSignals += 1;
     }
-    if (
-      classified.customerPhrases.some(function (phrase) {
-        return phrase.indexOf(query) !== -1;
-      })
-    ) {
+    if (classified.customerPhrases.some(function (phrase) { return phrase.indexOf(query) !== -1; })) {
       score += 110;
       exactPhraseMatch = true;
       strongSignal = true;
       meaningfulSignals += 1;
     }
-    if (
-      classified.aliases.some(function (alias) {
-        return alias.indexOf(query) !== -1;
-      })
-    ) {
+    if (classified.aliases.some(function (alias) { return alias.indexOf(query) !== -1; })) {
       score += 95;
       exactPhraseMatch = true;
       strongSignal = true;
@@ -552,19 +696,11 @@
         score += 20;
         matched = true;
       }
-      if (
-        classified.customerPhrases.some(function (phrase) {
-          return phrase.indexOf(term) !== -1;
-        })
-      ) {
+      if (classified.customerPhrases.some(function (phrase) { return phrase.indexOf(term) !== -1; })) {
         score += 18;
         matched = true;
       }
-      if (
-        classified.aliases.some(function (alias) {
-          return alias.indexOf(term) !== -1;
-        })
-      ) {
+      if (classified.aliases.some(function (alias) { return alias.indexOf(term) !== -1; })) {
         score += 16;
         matched = true;
       }
@@ -635,11 +771,9 @@
     if (!strongSignal && descriptionOnly && meaningfulSignals < 2) {
       return null;
     }
-
     if (!exactPhraseMatch && meaningfulSignals === 0) {
       return null;
     }
-
     if (
       multiWord &&
       !exactPhraseMatch &&
@@ -651,7 +785,6 @@
     ) {
       return null;
     }
-
     if (score < 35) {
       return null;
     }
@@ -671,26 +804,167 @@
     };
   }
 
-  function searchEntries(entries, query, limit) {
-    const queryContext = tokenizeQuery(query);
-    const intentContext = detectIntent(queryContext);
-    const maxResults = Math.min(Math.max(limit || 5, 1), 5);
+  function scoreSuggestion(suggestion, queryContext, starter) {
+    const query = queryContext.normalizedQuery;
+    const expandedTerms = queryContext.expandedTerms || [];
+    const title = String(suggestion.title || "");
+    const aliases = Array.isArray(suggestion.aliases) ? suggestion.aliases : [];
+    const keywords = Array.isArray(suggestion.keywords) ? suggestion.keywords : [];
+    const description = String(suggestion.description || "");
+    const suggestionStarter = normalizeSuggestionToken(suggestion.question_word || "");
 
-    if (queryContext.queryLength < 3) {
+    let score = Number(suggestion.priority || 0) / 10;
+
+    const normalizedTitle = normalizeQuery(title);
+    const normalizedDescription = normalizeQuery(description);
+    const normalizedAliases = aliases.map(function (item) { return normalizeQuery(item); }).filter(Boolean);
+    const normalizedKeywords = keywords.map(function (item) { return normalizeSuggestionToken(item); }).filter(Boolean);
+
+    if (query && normalizedTitle.indexOf(query) !== -1) {
+      score += 120;
+    }
+    if (query && normalizedAliases.some(function (item) { return item.indexOf(query) !== -1; })) {
+      score += 100;
+    }
+    if (query && normalizedKeywords.indexOf(normalizeSuggestionToken(query)) !== -1) {
+      score += 70;
+    }
+    if (query && normalizedDescription.indexOf(query) !== -1) {
+      score += 35;
+    }
+
+    expandedTerms.forEach(function (term) {
+      if (!term) {
+        return;
+      }
+      if (textMatchesTerm(title, term)) {
+        score += 25;
+      }
+      if (aliases.some(function (alias) { return textMatchesTerm(alias, term); })) {
+        score += 20;
+      }
+      if (normalizedKeywords.some(function (keyword) { return fuzzyTokenMatch(keyword, term); })) {
+        score += 18;
+      }
+      if (textMatchesTerm(description, term)) {
+        score += 6;
+      }
+    });
+
+    if (starter) {
+      if (suggestionStarter === starter) {
+        score += 120;
+      } else {
+        score -= 80;
+      }
+    }
+
+    return score;
+  }
+
+  function rankSuggestionEntries(suggestionEntries, queryContext, maxResults) {
+    const suggestions = Array.isArray(suggestionEntries) ? suggestionEntries : [];
+    const queryTerms = (queryContext.allTerms || [])
+      .map(function (term) { return normalizeSuggestionToken(term); })
+      .filter(Boolean);
+    const starter = queryTerms[0] || "";
+    const expandedTerms = expandTerms(queryTerms);
+    const normalizedQuery = queryContext.normalizedQuery;
+
+    if (!suggestions.length || !queryTerms.length) {
       return [];
     }
 
-    const questionSuggestions = questionOnlySuggestions(queryContext, maxResults);
-    if (questionSuggestions) {
-      return questionSuggestions;
+    function sortByPriorityDesc(left, right) {
+      return Number(right.priority || 0) - Number(left.priority || 0);
     }
 
-    const generalSuggestions = generalSandpaperSuggestions(queryContext, maxResults);
-    if (generalSuggestions) {
-      return generalSuggestions;
+    if (queryTerms.length === 1 && QUESTION_STARTERS[starter]) {
+      return suggestions
+        .filter(function (suggestion) {
+          return normalizeSuggestionToken(suggestion.question_word) === starter;
+        })
+        .sort(sortByPriorityDesc)
+        .slice(0, maxResults)
+        .map(function (suggestion, index) {
+          return suggestionToSearchResult(
+            suggestion,
+            300 - index * 3 + Number(suggestion.priority || 0) / 10,
+            "starter_suggestion",
+          );
+        });
     }
 
-    if (!queryContext.meaningfulTerms.length && !queryContext.gritNumbers.length) {
+    if (queryTerms.length === 1 && GENERIC_SUGGESTION_STARTERS[starter]) {
+      return suggestions
+        .filter(function (suggestion) {
+          return normalizeSuggestionToken(suggestion.question_word) === "sandpaper";
+        })
+        .sort(sortByPriorityDesc)
+        .slice(0, maxResults)
+        .map(function (suggestion, index) {
+          return suggestionToSearchResult(
+            suggestion,
+            290 - index * 3 + Number(suggestion.priority || 0) / 10,
+            "generic_suggestion",
+          );
+        });
+    }
+
+    const hasSandpaperSignal =
+      queryTerms.some(function (term) { return GENERIC_SUGGESTION_STARTERS[term]; }) ||
+      expandedTerms.some(function (term) {
+        return ["sand", "sanding", "sandpaper", "abrasive", "abrasives"].indexOf(term) !== -1;
+      }) ||
+      normalizedQuery.indexOf("sand") !== -1;
+
+    const ranked = suggestions
+      .map(function (suggestion) {
+        const suggestionStarter = normalizeSuggestionToken(suggestion.question_word || "");
+
+        if (suggestionStarter === "sandpaper" && !hasSandpaperSignal && !GENERIC_SUGGESTION_STARTERS[starter]) {
+          return null;
+        }
+
+        const suggestionContext = Object.assign({}, queryContext, {
+          expandedTerms: expandedTerms,
+        });
+
+        const score = scoreSuggestion(suggestion, suggestionContext, starter);
+        if (score < 35) {
+          return null;
+        }
+
+        return {
+          suggestion: suggestion,
+          score: score,
+          priority: Number(suggestion.priority || 0),
+        };
+      })
+      .filter(Boolean)
+      .sort(function (left, right) {
+        if (right.score !== left.score) {
+          return right.score - left.score;
+        }
+        return right.priority - left.priority;
+      });
+
+    const deduped = [];
+    const seen = {};
+    ranked.forEach(function (row) {
+      const key = clean((row.suggestion.target_url || "") + "::" + (row.suggestion.title || ""));
+      if (!key || seen[key]) {
+        return;
+      }
+      seen[key] = true;
+      deduped.push(suggestionToSearchResult(row.suggestion, row.score, "smart_suggestion"));
+    });
+
+    return deduped.slice(0, maxResults);
+  }
+
+  function rankIndexEntries(entries, queryContext, intentContext, maxResults) {
+    if (!queryContext.normalizedQuery || queryContext.queryLength < 3) {
       return [];
     }
 
@@ -771,6 +1045,57 @@
       output.search_intent = intentContext.mainIntent;
       return output;
     });
+  }
+
+  function searchEntries(entries, query, limit, suggestions) {
+    const queryContext = tokenizeQuery(query);
+    const intentContext = detectIntent(queryContext);
+    const maxResults = Math.min(Math.max(limit || 5, 1), 5);
+    const suggestionEntries = Array.isArray(suggestions) ? suggestions : [];
+    const starter = normalizeSuggestionToken(queryContext.allTerms[0] || "");
+
+    const suggestionResults = rankSuggestionEntries(suggestionEntries, queryContext, maxResults);
+
+    if (queryContext.wordCount === 1 && (QUESTION_STARTERS[starter] || GENERIC_SUGGESTION_STARTERS[starter])) {
+      return suggestionResults.slice(0, maxResults);
+    }
+
+    if (queryContext.queryLength < 3 && !suggestionResults.length) {
+      return [];
+    }
+
+    if (!queryContext.meaningfulTerms.length && !queryContext.gritNumbers.length && !suggestionResults.length) {
+      return [];
+    }
+
+    const rankedEntries = rankIndexEntries(entries, queryContext, intentContext, maxResults);
+    if (!rankedEntries.length && !suggestionResults.length) {
+      return [];
+    }
+
+    const combined = rankedEntries.concat(suggestionResults);
+    const deduped = [];
+    const seen = {};
+
+    combined
+      .sort(function (a, b) {
+        const leftScore = Number(a.search_score || 0);
+        const rightScore = Number(b.search_score || 0);
+        if (rightScore !== leftScore) {
+          return rightScore - leftScore;
+        }
+        return clean(a.title || "").localeCompare(clean(b.title || ""));
+      })
+      .forEach(function (item) {
+        const key = clean((item.target_url || item.targetUrl || "") + "::" + (item.title || ""));
+        if (!key || seen[key]) {
+          return;
+        }
+        seen[key] = true;
+        deduped.push(item);
+      });
+
+    return deduped.slice(0, maxResults);
   }
 
   return {

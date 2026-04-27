@@ -278,11 +278,13 @@
       loadSupportJson(basePath, "data/solution-cards.json"),
       loadSupportJson(basePath, "data/grit-sequences.json"),
       loadSupportJson(basePath, "data/surface-map.json"),
+      loadSupportJson(basePath, "data/search-suggestions.json"),
     ]).then(function (results) {
       const searchEntries = Array.isArray(results[0]) ? results[0] : [];
       const solutionCards = Array.isArray(results[1]) ? results[1] : [];
       const gritSequences = Array.isArray(results[2]) ? results[2] : [];
       const surfaceMap = Array.isArray(results[3]) ? results[3] : [];
+      const searchSuggestions = Array.isArray(results[4]) ? results[4] : [];
 
       const solutionById = {};
       solutionCards.forEach(function (card) {
@@ -293,11 +295,16 @@
 
       function findSearchMatches(query, limit) {
         const loweredQuery = clean(query).trim();
-        if (!loweredQuery || loweredQuery.length < 3) {
+        if (!loweredQuery) {
           return [];
         }
         if (window.eQualleSearchCore && typeof window.eQualleSearchCore.searchEntries === "function") {
-          return window.eQualleSearchCore.searchEntries(searchEntries, loweredQuery, limit || 5);
+          return window.eQualleSearchCore.searchEntries(
+            searchEntries,
+            loweredQuery,
+            limit || 5,
+            searchSuggestions,
+          );
         }
         return [];
       }
@@ -949,12 +956,7 @@
         return;
       }
 
-      if (q.length < 3) {
-        const hint = document.createElement("div");
-        hint.className = "result-link";
-        hint.textContent = "Type at least 3 characters to see matching support pages.";
-        results.appendChild(hint);
-      } else if (!matches.length) {
+      if (!matches.length) {
         return;
       } else {
         matches.forEach(function (match) {
@@ -979,7 +981,7 @@
 
     function render(query) {
       const q = clean(query).trim();
-      const matches = q && q.length >= 3 ? knowledge.findSearchMatches(q, 5) : [];
+      const matches = q ? knowledge.findSearchMatches(q, 5) : [];
 
       setStoredText(STORAGE_KEYS.lastQuery, q);
       setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
