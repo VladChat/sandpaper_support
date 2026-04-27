@@ -753,17 +753,26 @@
       strongSignal = true;
       meaningfulSignals += 1;
     }
+    if (classified.title.indexOf(query) === 0) {
+      score += 28;
+    }
     if (classified.customerPhrases.some(function (phrase) { return phrase.indexOf(query) !== -1; })) {
       score += 110;
       exactPhraseMatch = true;
       strongSignal = true;
       meaningfulSignals += 1;
     }
+    if (classified.customerPhrases.some(function (phrase) { return phrase.indexOf(query) === 0; })) {
+      score += 20;
+    }
     if (classified.aliases.some(function (alias) { return alias.indexOf(query) !== -1; })) {
       score += 95;
       exactPhraseMatch = true;
       strongSignal = true;
       meaningfulSignals += 1;
+    }
+    if (classified.aliases.some(function (alias) { return alias.indexOf(query) === 0; })) {
+      score += 15;
     }
 
     meaningfulTerms.forEach(function (term) {
@@ -812,6 +821,12 @@
     if (intentContext.mainIntent === "problem_intent" && classified.type === "exact_scenario") {
       score += 12;
     }
+    if (classified.type === "exact_solution" || classified.category === "solution") {
+      score += 24;
+      if (classified.category === "solution") {
+        score += 8;
+      }
+    }
     if (["buy_intent", "product_intent"].indexOf(intentContext.mainIntent) !== -1) {
       if (classified.type === "product_support") {
         score += 45;
@@ -843,6 +858,13 @@
         score += 18;
       }
     });
+
+    if (
+      ["problem_intent", "surface_intent", "grit_intent", "general_support"].indexOf(intentContext.mainIntent) !== -1 &&
+      classified.category !== "solution"
+    ) {
+      score -= 10;
+    }
 
     if (!strongSignal && descriptionOnly && meaningfulSignals < 2) {
       return null;
@@ -1012,6 +1034,18 @@
       return [];
     }
 
+    if (
+      queryTerms.length === 1 &&
+      !QUESTION_STARTERS[starter] &&
+      !GENERIC_SUGGESTION_STARTERS[starter]
+    ) {
+      return [];
+    }
+
+    if (queryTerms.length > 1 && !QUESTION_STARTERS[starter]) {
+      return [];
+    }
+
     function sortByPriorityDesc(left, right) {
       return Number(right.priority || 0) - Number(left.priority || 0);
     }
@@ -1121,6 +1155,7 @@
         const shouldPrioritizeGrit = hasGritIntentSignal(queryContext);
         const shouldPrioritizeSurface = hasSurfaceSignal(queryContext);
         const shouldPrioritizeProblem = hasProblemSignal(queryContext);
+        const isShortPrefixQuery = queryContext.queryLength >= 3 && queryContext.queryLength <= 4;
 
         if (shouldPrioritizeGrit) {
           if (["grit", "tools", "problem", "solution", "surface", "product"].indexOf(classified.category) === -1) {
@@ -1135,7 +1170,12 @@
             return false;
           }
         } else if (intentContext.mainIntent === "general_support") {
-          return false;
+          if (!isShortPrefixQuery) {
+            return false;
+          }
+          if (classified.category !== "solution") {
+            return false;
+          }
         }
         return filterEntriesByIntent(intentContext, classified, queryContext);
       })
@@ -1238,7 +1278,8 @@
         return clean(a.title || "").localeCompare(clean(b.title || ""));
       })
       .forEach(function (item) {
-        const key = clean((item.target_url || item.targetUrl || "") + "::" + (item.title || ""));
+        const targetKey = clean(item.target_url || item.targetUrl || "");
+        const key = targetKey || clean(item.title || "");
         if (!key || seen[key]) {
           return;
         }

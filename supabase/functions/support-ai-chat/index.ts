@@ -1,21 +1,49 @@
 type RetrievedEntry = {
+  id?: string;
+  slug?: string;
   title?: string;
   problem?: string;
+  surface?: string;
+  task?: string;
+  symptom?: string;
+  quick_answer?: string;
+  best_grit_path?: string[];
+  optional_starting_grits?: string[];
   likely_cause?: string;
   recommended_grit?: string;
   wet_or_dry?: string;
   steps?: string[];
+  mistakes_to_avoid?: string[];
   avoid?: string;
   success_check?: string;
   target_url?: string;
   sequence?: string[];
-  surface?: string;
   goal?: string;
+};
+
+type SolutionContext = {
+  title?: string;
+  problem?: string;
+  surface?: string;
+  task?: string;
+  symptom?: string;
+  quick_answer?: string;
+  best_grit_path?: string[];
+  optional_starting_grits?: string[];
+  steps?: string[];
+  why_it_happens?: string;
+  mistakes_to_avoid?: string[];
+  success_check?: string;
+  wet_or_dry?: string;
+  related_solution_ids?: string[];
 };
 
 type ChatContext = {
   currentPath?: string;
   currentTitle?: string;
+  solution_id?: string;
+  solution_slug?: string;
+  solution_context?: SolutionContext;
   lastQuery?: string;
   lastMatches?: Array<{
     title?: string;
@@ -73,6 +101,32 @@ function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+function sanitizeString(value: unknown, maxLength: number): string | undefined {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+  return trimmed.slice(0, maxLength);
+}
+
+function sanitizeStringArray(
+  value: unknown,
+  maxItems: number,
+  maxLength: number,
+): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .filter((item) => typeof item === "string")
+    .map((item) => String(item).trim().slice(0, maxLength))
+    .filter((item) => item.length > 0)
+    .slice(0, maxItems);
+}
+
 function validateRequest(body: unknown): ChatRequest | string {
   if (!isObject(body)) {
     return "Request body must be a JSON object.";
@@ -110,37 +164,55 @@ function sanitizeRetrievedItems(items: unknown, maxItems: number): RetrievedEntr
     .map((item) => {
       const record = item as Record<string, unknown>;
       return {
-        title: typeof record.title === "string" ? record.title : undefined,
-        problem: typeof record.problem === "string" ? record.problem : undefined,
-        likely_cause:
-          typeof record.likely_cause === "string" ? record.likely_cause : undefined,
-        recommended_grit:
-          typeof record.recommended_grit === "string"
-            ? record.recommended_grit
-            : undefined,
-        wet_or_dry:
-          typeof record.wet_or_dry === "string" ? record.wet_or_dry : undefined,
-        steps: Array.isArray(record.steps)
-          ? record.steps
-              .filter((step) => typeof step === "string")
-              .slice(0, 6)
-              .map((step) => String(step))
-          : undefined,
-        avoid: typeof record.avoid === "string" ? record.avoid : undefined,
-        success_check:
-          typeof record.success_check === "string" ? record.success_check : undefined,
-        target_url:
-          typeof record.target_url === "string" ? record.target_url : undefined,
-        sequence: Array.isArray(record.sequence)
-          ? record.sequence
-              .filter((step) => typeof step === "string")
-              .slice(0, 8)
-              .map((step) => String(step))
-          : undefined,
-        surface: typeof record.surface === "string" ? record.surface : undefined,
-        goal: typeof record.goal === "string" ? record.goal : undefined,
+        id: sanitizeString(record.id, 120),
+        slug: sanitizeString(record.slug, 120),
+        title: sanitizeString(record.title, 220),
+        problem: sanitizeString(record.problem, 280),
+        surface: sanitizeString(record.surface, 120),
+        task: sanitizeString(record.task, 120),
+        symptom: sanitizeString(record.symptom, 180),
+        quick_answer: sanitizeString(record.quick_answer, 320),
+        best_grit_path: sanitizeStringArray(record.best_grit_path, 10, 32),
+        optional_starting_grits: sanitizeStringArray(
+          record.optional_starting_grits,
+          6,
+          32,
+        ),
+        likely_cause: sanitizeString(record.likely_cause, 320),
+        recommended_grit: sanitizeString(record.recommended_grit, 220),
+        wet_or_dry: sanitizeString(record.wet_or_dry, 220),
+        steps: sanitizeStringArray(record.steps, 8, 220),
+        mistakes_to_avoid: sanitizeStringArray(record.mistakes_to_avoid, 8, 220),
+        avoid: sanitizeString(record.avoid, 220),
+        success_check: sanitizeString(record.success_check, 220),
+        target_url: sanitizeString(record.target_url, 260),
+        sequence: sanitizeStringArray(record.sequence, 8, 32),
+        goal: sanitizeString(record.goal, 120),
       };
     });
+}
+
+function sanitizeSolutionContext(raw: unknown): SolutionContext | undefined {
+  if (!isObject(raw)) {
+    return undefined;
+  }
+
+  return {
+    title: sanitizeString(raw.title, 220),
+    problem: sanitizeString(raw.problem, 320),
+    surface: sanitizeString(raw.surface, 120),
+    task: sanitizeString(raw.task, 120),
+    symptom: sanitizeString(raw.symptom, 220),
+    quick_answer: sanitizeString(raw.quick_answer, 360),
+    best_grit_path: sanitizeStringArray(raw.best_grit_path, 12, 32),
+    optional_starting_grits: sanitizeStringArray(raw.optional_starting_grits, 8, 32),
+    steps: sanitizeStringArray(raw.steps, 12, 240),
+    why_it_happens: sanitizeString(raw.why_it_happens, 420),
+    mistakes_to_avoid: sanitizeStringArray(raw.mistakes_to_avoid, 12, 240),
+    success_check: sanitizeString(raw.success_check, 260),
+    wet_or_dry: sanitizeString(raw.wet_or_dry, 220),
+    related_solution_ids: sanitizeStringArray(raw.related_solution_ids, 12, 120),
+  };
 }
 
 function sanitizeContext(context: ChatContext | undefined): ChatContext {
@@ -184,14 +256,12 @@ function sanitizeContext(context: ChatContext | undefined): ChatContext {
     : [];
 
   return {
-    currentPath:
-      typeof raw.currentPath === "string" ? raw.currentPath.slice(0, 200) : undefined,
-    currentTitle:
-      typeof raw.currentTitle === "string"
-        ? raw.currentTitle.slice(0, 160)
-        : undefined,
-    lastQuery:
-      typeof raw.lastQuery === "string" ? raw.lastQuery.slice(0, 220) : undefined,
+    currentPath: sanitizeString(raw.currentPath, 220),
+    currentTitle: sanitizeString(raw.currentTitle, 180),
+    solution_id: sanitizeString(raw.solution_id, 120),
+    solution_slug: sanitizeString(raw.solution_slug, 120),
+    solution_context: sanitizeSolutionContext(raw.solution_context),
+    lastQuery: sanitizeString(raw.lastQuery, 220),
     lastMatches: lastMatches,
     clickedPages: clickedPages,
     retrievedContent: {
@@ -199,7 +269,7 @@ function sanitizeContext(context: ChatContext | undefined): ChatContext {
       solutionCards: sanitizeRetrievedItems(rawRetrieved.solutionCards, 5),
       gritSequences: sanitizeRetrievedItems(rawRetrieved.gritSequences, 2),
     },
-    source: typeof raw.source === "string" ? raw.source.slice(0, 64) : undefined,
+    source: sanitizeString(raw.source, 64),
   };
 }
 
@@ -316,10 +386,16 @@ async function callOpenAI(
   userMessage: string,
   context: ChatContext,
 ): Promise<AssistantOutput> {
+  const isSolutionFollowup =
+    context.source === "solution_followup" &&
+    Boolean(context.solution_id) &&
+    Boolean(context.solution_context);
+
   const systemInstruction =
     "You are eQualle Sandpaper Support Assistant. " +
     "Answer only using the approved support context provided. " +
     "Do not invent product claims. " +
+    "On solution follow-up requests, use solution_context as the primary source of truth. " +
     "If context is insufficient, ask one short clarifying question. " +
     "Keep answer short, practical, and structured.";
 
@@ -336,10 +412,14 @@ async function callOpenAI(
     "If clarification is needed, keep reply short and include the question naturally.",
     "For order tracking, shipping status, delivery status, package location, or retailer-specific purchase questions, reply exactly: I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper. Set needsClarification=false, clarifyingQuestion=\"\", matchedPages=[].",
     "Use this reply template when possible: Likely issue / Why it happens / Recommended next step / Suggested grit sequence / Wet or dry / Avoid / Related guides.",
+    "On solution_followup requests, answer directly from solution_context first, then use retrievedContent for related page suggestions only.",
+    "For solution_followup requests, keep reply to a direct answer plus 2-4 short steps and one warning only if needed.",
+    "Do not switch to unrelated surfaces unless user explicitly asks to change surface.",
   ].join("\n");
 
   const promptPayload = {
     userMessage,
+    solutionFollowupMode: isSolutionFollowup,
     context,
     outputRequirements: {
       format: {

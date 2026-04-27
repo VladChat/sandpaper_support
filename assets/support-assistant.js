@@ -205,14 +205,23 @@
   function buildSolutionHaystack(card) {
     return [
       card.id,
+      card.slug,
       card.problem_slug,
       card.title,
       card.problem,
+      card.surface,
+      card.task,
+      card.symptom,
+      card.quick_answer,
+      ...(card.best_grit_path || []),
+      ...(card.optional_starting_grits || []),
       card.likely_cause,
       card.recommended_grit,
       card.wet_or_dry,
       card.success_check,
       ...(card.steps || []),
+      ...(card.mistakes_to_avoid || []),
+      ...(card.search_phrases || []),
       card.avoid,
     ].join(" ");
   }
@@ -251,12 +260,25 @@
 
   function compactSolutionCard(card) {
     return {
+      id: card.id || "",
+      slug: card.slug || card.id || "",
       title: card.title || "",
       problem: card.problem || "",
+      surface: card.surface || "",
+      task: card.task || "",
+      symptom: card.symptom || "",
+      quick_answer: card.quick_answer || "",
+      best_grit_path: Array.isArray(card.best_grit_path) ? card.best_grit_path.slice(0, 8) : [],
+      optional_starting_grits: Array.isArray(card.optional_starting_grits)
+        ? card.optional_starting_grits.slice(0, 4)
+        : [],
       likely_cause: card.likely_cause || "",
       recommended_grit: card.recommended_grit || "",
       wet_or_dry: card.wet_or_dry || "",
       steps: Array.isArray(card.steps) ? card.steps.slice(0, 5) : [],
+      mistakes_to_avoid: Array.isArray(card.mistakes_to_avoid)
+        ? card.mistakes_to_avoid.slice(0, 5)
+        : [],
       avoid: card.avoid || "",
       success_check: card.success_check || "",
       target_url: "/solutions/" + card.id + "/",
@@ -476,12 +498,14 @@
     });
   }
 
-  function appendMessage(messages, role, text) {
+  function appendMessage(messages, role, text, options) {
     const node = document.createElement("div");
     node.className = "chat-message chat-message-" + role;
     node.textContent = text;
     messages.appendChild(node);
-    messages.scrollTop = messages.scrollHeight;
+    if (!options || options.noAutoScroll !== true) {
+      messages.scrollTop = messages.scrollHeight;
+    }
     return node;
   }
 
@@ -896,12 +920,34 @@
     };
   }
 
+  function readSolutionContextFromPage() {
+    const node = document.querySelector('script[type="application/json"][data-solution-context]');
+    if (!node) {
+      return null;
+    }
+
+    try {
+      const parsed = JSON.parse(node.textContent || "{}");
+      if (!parsed || typeof parsed !== "object") {
+        return null;
+      }
+      return parsed;
+    } catch (_error) {
+      return null;
+    }
+  }
+
   function isSupportLeaf(pathname, basePath) {
     const scopedPath = String(pathname || "").replace(basePath, "");
     return /^\/(problems|solutions)\/[^/]+\/?$/.test(scopedPath);
   }
 
   function attachPageTopAssistant(basePath) {
+    const isSolutionPage = /\/solutions\/[^/]+\/?$/.test(String(window.location.pathname || ""));
+    if (isSolutionPage) {
+      return null;
+    }
+
     if (!isSupportLeaf(window.location.pathname, basePath)) {
       return null;
     }
@@ -983,6 +1029,7 @@
       const currentTitle = stripSiteTitle(document.title);
       const currentPath = window.location.pathname;
       const lastMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
+      const contextInput = context && typeof context === "object" ? context : {};
 
       const searchEntries = knowledge.findSearchMatches(userMessage, 5);
       const solutionCards = knowledge.findSolutionCards(
@@ -1015,7 +1062,10 @@
           lastMatches: getStoredJson(STORAGE_KEYS.lastMatches, []),
           clickedPages: getStoredJson(STORAGE_KEYS.clickedPages, []),
           retrievedContent: retrievedContent,
-          source: context && context.source ? context.source : "site",
+          source: contextInput.source ? contextInput.source : "site",
+          solution_id: contextInput.solution_id || "",
+          solution_slug: contextInput.solution_slug || "",
+          solution_context: contextInput.solution_context || null,
         },
       };
 
@@ -1058,6 +1108,11 @@
     }
 
     const source = options && options.source ? options.source : "chat";
+    const noAutoScroll = Boolean(options && options.noAutoScroll === true);
+    const getRequestContext =
+      options && typeof options.getRequestContext === "function"
+        ? options.getRequestContext
+        : null;
 
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
@@ -1076,12 +1131,13 @@
         30,
       );
 
-      appendMessage(shell.messages, "user", message);
+      appendMessage(shell.messages, "user", message, { noAutoScroll: noAutoScroll });
 
       const pending = appendMessage(
         shell.messages,
         "assistant",
         "Checking approved support guides...",
+        { noAutoScroll: noAutoScroll },
       );
 
       if (isOrderTrackingQuery(message)) {
@@ -1100,10 +1156,17 @@
         return;
       }
 
-      requester(message, {
-        source: source,
-        mode: meta && meta.auto ? "auto" : "manual",
-      }).then(function (result) {
+      const dynamicContext = getRequestContext ? (getRequestContext() || {}) : {};
+      requester(
+        message,
+        Object.assign(
+          {
+            source: source,
+            mode: meta && meta.auto ? "auto" : "manual",
+          },
+          dynamicContext,
+        ),
+      ).then(function (result) {
         if (!result.ok) {
           const fallbackReply =
             "Answer Summary: Assistant response is unavailable right now.\nNext Step: Use the links below or ask a more specific sanding question.";
@@ -1367,7 +1430,61 @@
   }
 
   function setupSupportFollowup(basePath, knowledge) {
-    return;
+    const followupRoot = document.querySelector("[data-solution-followup]");
+    const form = document.querySelector("[data-solution-followup-form]");
+    const input = document.querySelector("[data-solution-followup-input]");
+    const messages = document.querySelector("[data-solution-followup-messages]");
+    const solutionContext = readSolutionContextFromPage();
+
+    if (!followupRoot || !form || !input || !messages || !solutionContext) {
+      return;
+    }
+
+    const shell = {
+      root: followupRoot,
+      form: form,
+      input: input,
+      messages: messages,
+    };
+
+    const requester = createAssistantRequester(basePath, knowledge);
+    wireChat(shell, requester, basePath, {
+      source: "solution_followup",
+      noAutoScroll: true,
+      getRequestContext: function () {
+        return {
+          source: "solution_followup",
+          solution_id: solutionContext.solution_id || "",
+          solution_slug: solutionContext.solution_slug || "",
+          solution_context: {
+            title: solutionContext.title || "",
+            problem: solutionContext.problem || "",
+            surface: solutionContext.surface || "",
+            task: solutionContext.task || "",
+            symptom: solutionContext.symptom || "",
+            quick_answer: solutionContext.quick_answer || "",
+            best_grit_path: Array.isArray(solutionContext.best_grit_path)
+              ? solutionContext.best_grit_path.slice(0, 10)
+              : [],
+            optional_starting_grits: Array.isArray(solutionContext.optional_starting_grits)
+              ? solutionContext.optional_starting_grits.slice(0, 6)
+              : [],
+            steps: Array.isArray(solutionContext.steps)
+              ? solutionContext.steps.slice(0, 10)
+              : [],
+            why_it_happens: solutionContext.why_it_happens || "",
+            mistakes_to_avoid: Array.isArray(solutionContext.mistakes_to_avoid)
+              ? solutionContext.mistakes_to_avoid.slice(0, 8)
+              : [],
+            success_check: solutionContext.success_check || "",
+            wet_or_dry: solutionContext.wet_or_dry || "",
+            related_solution_ids: Array.isArray(solutionContext.related_solution_ids)
+              ? solutionContext.related_solution_ids.slice(0, 10)
+              : [],
+          },
+        };
+      },
+    });
   }
 
   function init(options) {

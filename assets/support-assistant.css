@@ -154,3 +154,14 @@
 .support-suggestion-button:hover {
   border-color: #7cb1d9;
 }
+
+/* Solution follow-up block uses page-flow messages (no nested scrolling). */
+body.solution-page .solution-followup-messages {
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+body.solution-page .solution-followup-messages .chat-message {
+  max-width: 100%;
+}

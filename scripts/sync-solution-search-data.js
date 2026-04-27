@@ -8,33 +8,36 @@ const SOLUTION_CARDS_PATH = path.join(ROOT_DIR, "data", "solution-cards.json");
 const SEARCH_INDEX_PATH = path.join(ROOT_DIR, "data", "search-index.json");
 const SEARCH_SUGGESTIONS_PATH = path.join(ROOT_DIR, "data", "search-suggestions.json");
 
-const REQUIRED_CARD_FIELDS = [
+const REQUIRED_STRING_FIELDS = [
   "id",
-  "title",
+  "slug",
   "problem_slug",
+  "title",
   "problem",
+  "surface",
+  "task",
+  "symptom",
+  "quick_answer",
   "likely_cause",
   "recommended_grit",
   "wet_or_dry",
-  "steps",
   "avoid",
   "success_check",
 ];
 
-const SURFACE_RULES = [
-  { term: "wood", value: "wood" },
-  { term: "paint", value: "paint" },
-  { term: "primer", value: "primer" },
-  { term: "clear coat", value: "clear coat" },
-  { term: "clearcoat", value: "clear coat" },
-  { term: "metal", value: "metal" },
-  { term: "plastic", value: "plastic" },
-  { term: "drywall", value: "drywall" },
-  { term: "finish", value: "finish" },
-  { term: "coating", value: "finish" },
+const REQUIRED_ARRAY_FIELDS = [
+  "best_grit_path",
+  "optional_starting_grits",
+  "steps",
+  "mistakes_to_avoid",
+  "related_solution_ids",
+  "search_phrases",
 ];
 
-const GRIT_ORDER = [60, 80, 100, 120, 150, 180, 220, 240, 280, 320, 360, 400, 500, 600, 800, 1000, 1200, 1500, 2000, 3000];
+const GRIT_ORDER = [
+  60, 80, 100, 120, 150, 180, 220, 240, 280, 320, 360, 400, 500, 600, 800,
+  1000, 1200, 1500, 2000, 3000,
+];
 
 const KEYWORD_FILLERS = new Set([
   "how", "why", "what", "which", "can", "should", "where", "when", "do", "does", "is",
@@ -133,60 +136,124 @@ function normalizeText(value) {
   return String(value || "").toLowerCase();
 }
 
+function uniqueStrings(values) {
+  const seen = new Set();
+  const out = [];
+  (Array.isArray(values) ? values : []).forEach(function (value) {
+    const cleaned = String(value || "").trim();
+    if (!cleaned || seen.has(cleaned)) {
+      return;
+    }
+    seen.add(cleaned);
+    out.push(cleaned);
+  });
+  return out;
+}
+
+function ensureNonEmptyString(value) {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function validateCard(card, index, cardsById) {
+  const errors = [];
+  const label = "Card " + index + " (" + (card.id || "unknown") + ")";
+
+  REQUIRED_STRING_FIELDS.forEach(function (field) {
+    if (!(field in card)) {
+      errors.push(label + " missing field '" + field + "'");
+      return;
+    }
+    if (!ensureNonEmptyString(card[field])) {
+      errors.push(label + " field '" + field + "' must be non-empty");
+    }
+  });
+
+  REQUIRED_ARRAY_FIELDS.forEach(function (field) {
+    if (!(field in card)) {
+      errors.push(label + " missing field '" + field + "'");
+      return;
+    }
+    if (!Array.isArray(card[field])) {
+      errors.push(label + " field '" + field + "' must be an array");
+    }
+  });
+
+  if (Array.isArray(card.best_grit_path) && !card.best_grit_path.length) {
+    errors.push(label + " field 'best_grit_path' must be non-empty");
+  }
+  if (Array.isArray(card.steps) && !card.steps.length) {
+    errors.push(label + " field 'steps' must be non-empty");
+  }
+  if (Array.isArray(card.mistakes_to_avoid) && !card.mistakes_to_avoid.length) {
+    errors.push(label + " field 'mistakes_to_avoid' must be non-empty");
+  }
+  if (Array.isArray(card.search_phrases) && !card.search_phrases.length) {
+    errors.push(label + " field 'search_phrases' must be non-empty");
+  }
+
+  if (card.id !== card.slug) {
+    errors.push(label + " id and slug should match");
+  }
+
+  if (Array.isArray(card.related_solution_ids)) {
+    card.related_solution_ids.forEach(function (id, relIndex) {
+      const relId = String(id || "").trim();
+      if (!relId) {
+        errors.push(label + " related_solution_ids[" + relIndex + "] must be non-empty");
+        return;
+      }
+      if (!cardsById[relId]) {
+        errors.push(label + " related_solution_ids[" + relIndex + "] references missing id '" + relId + "'");
+      }
+    });
+  }
+
+  return errors;
+}
+
 function buildSearchableText(card) {
   return [
     card.title,
     card.problem,
+    card.surface,
+    card.task,
+    card.symptom,
+    card.quick_answer,
     card.likely_cause,
     card.recommended_grit,
     card.wet_or_dry,
     card.avoid,
     card.success_check,
     ...(Array.isArray(card.steps) ? card.steps : []),
+    ...(Array.isArray(card.best_grit_path) ? card.best_grit_path : []),
+    ...(Array.isArray(card.optional_starting_grits) ? card.optional_starting_grits : []),
+    ...(Array.isArray(card.mistakes_to_avoid) ? card.mistakes_to_avoid : []),
+    ...(Array.isArray(card.search_phrases) ? card.search_phrases : []),
   ].join(" ");
 }
 
-function uniqueStrings(values) {
-  const seen = new Set();
-  const output = [];
-  (values || []).forEach(function (value) {
-    const cleaned = String(value || "").trim();
-    if (!cleaned || seen.has(cleaned)) {
-      return;
-    }
-    seen.add(cleaned);
-    output.push(cleaned);
-  });
-  return output;
-}
-
-function inferSurfaces(searchableText) {
+function inferGrits(card, searchableText) {
   const text = normalizeText(searchableText);
-  const found = [];
+  const fromPaths = uniqueStrings(
+    (Array.isArray(card.best_grit_path) ? card.best_grit_path : [])
+      .concat(Array.isArray(card.optional_starting_grits) ? card.optional_starting_grits : [])
+      .map(String),
+  );
 
-  SURFACE_RULES.forEach(function (rule) {
-    if (text.indexOf(rule.term) !== -1) {
-      found.push(rule.value);
-    }
+  const detected = GRIT_ORDER
+    .map(String)
+    .filter(function (grit) {
+      return new RegExp("\\b" + grit + "\\b").test(text);
+    });
+
+  const merged = uniqueStrings(fromPaths.concat(detected));
+  return GRIT_ORDER.map(String).filter(function (grit) {
+    return merged.indexOf(grit) !== -1;
   });
-
-  return uniqueStrings(found);
-}
-
-function inferGrits(searchableText) {
-  const text = normalizeText(searchableText);
-  const found = [];
-  GRIT_ORDER.forEach(function (grit) {
-    const pattern = new RegExp("\\b" + grit + "\\b");
-    if (pattern.test(text)) {
-      found.push(String(grit));
-    }
-  });
-  return found;
 }
 
 function inferMethods(card, searchableText) {
-  const text = normalizeText(searchableText + " " + String(card.wet_or_dry || ""));
+  const text = normalizeText([card.wet_or_dry, searchableText].join(" "));
   const methods = [];
   if (text.indexOf("wet") !== -1) {
     methods.push("wet");
@@ -197,41 +264,25 @@ function inferMethods(card, searchableText) {
   return uniqueStrings(methods);
 }
 
-function validateCard(card, index) {
-  const errors = [];
-  REQUIRED_CARD_FIELDS.forEach(function (field) {
-    if (!(field in card)) {
-      errors.push("Card " + index + " (" + (card.id || "unknown") + ") missing field: " + field);
-      return;
-    }
-
-    if (field === "steps") {
-      if (!Array.isArray(card.steps) || card.steps.length === 0) {
-        errors.push("Card " + index + " (" + (card.id || "unknown") + ") field 'steps' must be a non-empty array");
-      }
-      return;
-    }
-
-    if (!String(card[field] || "").trim()) {
-      errors.push("Card " + index + " (" + (card.id || "unknown") + ") field '" + field + "' must be non-empty");
-    }
-  });
-  return errors;
-}
-
 function buildSolutionSearchEntry(card) {
   const searchableText = buildSearchableText(card);
-  const firstTwoSteps = Array.isArray(card.steps) ? card.steps.slice(0, 2) : [];
 
   return {
     id: "solution-" + card.id,
     type: "exact_solution",
     title: card.title,
     description: card.problem,
-    customer_phrases: uniqueStrings([card.title, card.problem].concat(firstTwoSteps)),
-    aliases: uniqueStrings([card.likely_cause, card.recommended_grit, card.avoid]),
-    surface: inferSurfaces(searchableText),
-    grits: inferGrits(searchableText),
+    customer_phrases: uniqueStrings([card.title, card.problem, card.quick_answer].concat(card.search_phrases || [])),
+    aliases: uniqueStrings([
+      card.surface,
+      card.task,
+      card.symptom,
+      card.likely_cause,
+      card.recommended_grit,
+      card.avoid,
+    ].concat(card.mistakes_to_avoid || [])),
+    surface: uniqueStrings([card.surface]),
+    grits: inferGrits(card, searchableText),
     method: inferMethods(card, searchableText),
     target_url: "/solutions/" + card.id + "/",
     result_kind: "answer",
@@ -239,29 +290,23 @@ function buildSolutionSearchEntry(card) {
 }
 
 function keywordsFromText(text) {
-  const tokens = String(text || "")
-    .toLowerCase()
-    .match(/[a-z0-9]+/g) || [];
-
+  const tokens = String(text || "").toLowerCase().match(/[a-z0-9]+/g) || [];
   const seen = new Set();
-  const output = [];
-
+  const out = [];
   tokens.forEach(function (token) {
-    if (KEYWORD_FILLERS.has(token)) {
-      return;
-    }
-    if (seen.has(token)) {
+    if (KEYWORD_FILLERS.has(token) || seen.has(token)) {
       return;
     }
     seen.add(token);
-    output.push(token);
+    out.push(token);
   });
-
-  return output.slice(0, 12);
+  return out.slice(0, 12);
 }
 
 function buildSuggestionObject(questionWord, rankIndex, title, card) {
-  const type = questionWord === "sandpaper" ? "general_sandpaper_suggestion" : "question_suggestion";
+  const type = questionWord === "sandpaper"
+    ? "general_sandpaper_suggestion"
+    : "question_suggestion";
   return {
     id: "suggestion-" + questionWord + "-" + card.id,
     type: type,
@@ -306,7 +351,6 @@ function main() {
 
   const cards = readJson(SOLUTION_CARDS_PATH);
   const searchIndex = readJson(SEARCH_INDEX_PATH);
-
   if (!Array.isArray(cards)) {
     throw new Error("data/solution-cards.json must be an array");
   }
@@ -314,25 +358,36 @@ function main() {
     throw new Error("data/search-index.json must be an array");
   }
 
-  const validationErrors = [];
+  const cardsById = {};
+  cards.forEach(function (card) {
+    cardsById[card.id] = card;
+  });
+
+  const errors = [];
+  const seenId = {};
+  const seenSlug = {};
+
   cards.forEach(function (card, index) {
-    validateCard(card, index).forEach(function (error) {
-      validationErrors.push(error);
+    if (seenId[card.id]) {
+      errors.push("Duplicate card id: " + card.id);
+    }
+    if (seenSlug[card.slug]) {
+      errors.push("Duplicate card slug: " + card.slug);
+    }
+    seenId[card.id] = true;
+    seenSlug[card.slug] = true;
+    validateCard(card, index, cardsById).forEach(function (error) {
+      errors.push(error);
     });
   });
 
-  if (validationErrors.length) {
-    validationErrors.forEach(function (error) {
+  if (errors.length) {
+    errors.forEach(function (error) {
       console.error(error);
     });
     process.exitCode = 1;
     return;
   }
-
-  const cardsById = {};
-  cards.forEach(function (card) {
-    cardsById[card.id] = card;
-  });
 
   const generatedEntries = cards.map(buildSolutionSearchEntry);
   const solutionTargetSet = new Set(cards.map(function (card) {
@@ -342,7 +397,6 @@ function main() {
   const preservedEntries = searchIndex.filter(function (entry) {
     const id = String((entry && entry.id) || "").trim();
     const target = String((entry && entry.target_url) || "").trim();
-
     if (id.indexOf("solution-") === 0) {
       return false;
     }
@@ -353,7 +407,6 @@ function main() {
   });
 
   const nextSearchIndex = generatedEntries.concat(preservedEntries);
-
   const curated = buildCuratedSuggestions(cardsById);
   if (curated.missingIds.length) {
     curated.missingIds.forEach(function (id) {
@@ -372,7 +425,6 @@ function main() {
 
   writeJson(SEARCH_INDEX_PATH, nextSearchIndex);
   writeJson(SEARCH_SUGGESTIONS_PATH, curated.suggestions);
-
   console.log("Solution search entries written: " + generatedEntries.length);
   console.log("Search suggestions written: " + curated.suggestions.length);
   console.log("Mode: write");

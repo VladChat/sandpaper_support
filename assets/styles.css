@@ -604,3 +604,143 @@ body.solution-page .section > .section-intro {
     line-height: 1.12;
   }
 }
+
+/* Structured solution answer layout */
+body.solution-page .solution-layout {
+  display: grid;
+  gap: 14px;
+}
+
+body.solution-page .solution-card {
+  background: #ffffff;
+  border: 1px solid #dbe5ef;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+body.solution-page .solution-card p {
+  margin: 0;
+}
+
+body.solution-page .solution-card-label {
+  color: #005f93;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+body.solution-page .solution-card-title {
+  margin: 0 0 8px;
+}
+
+body.solution-page .answer-summary {
+  border-left: 6px solid #7cb1d9;
+  box-shadow: 0 8px 24px rgba(12, 17, 23, 0.08);
+}
+
+body.solution-page .grit-path {
+  color: #0f2940;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+body.solution-page .grit-chip {
+  align-items: center;
+  background: #eaf4fb;
+  border: 1px solid #cfe0f0;
+  border-radius: 999px;
+  color: #11466e;
+  display: inline-flex;
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-right: 8px;
+  padding: 6px 10px;
+}
+
+body.solution-page .mistake-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+body.solution-page .mistake-list li {
+  margin-bottom: 8px;
+}
+
+body.solution-page .related-solutions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+body.solution-page .related-solutions li + li {
+  margin-top: 8px;
+}
+
+body.solution-page .related-solutions a {
+  color: #0d527a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body.solution-page .related-solutions a:hover {
+  text-decoration: underline;
+}
+
+body.solution-page .solution-followup-card {
+  background: #f8fbff;
+}
+
+body.solution-page .solution-followup-messages {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+body.solution-page .solution-followup-messages:empty {
+  display: none;
+  margin: 0;
+}
+
+body.solution-page .solution-followup-form {
+  align-items: center;
+  border-top: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0;
+}
+
+body.solution-page .solution-followup-input {
+  min-width: 0;
+  width: 100%;
+}
+
+body.solution-page .solution-followup-send {
+  min-height: 46px;
+}
+
+/* Prevent nested chat scrolling on solution pages */
+body.solution-page .chat-messages,
+body.solution-page .solution-followup-messages {
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+@media (max-width: 640px) {
+  body.solution-page .solution-card {
+    border-radius: 14px;
+    padding: 14px;
+  }
+
+  body.solution-page .solution-followup-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.solution-page .solution-followup-send {
+    width: 100%;
+  }
+}
