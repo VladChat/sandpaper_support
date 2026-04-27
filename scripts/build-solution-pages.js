@@ -22,10 +22,6 @@ const REQUIRED_CARD_FIELDS = [
   "success_check",
 ];
 
-const PREVIEW_COMPAT_CARD_ALIASES = {
-  "uneven-pressure-pattern": "uneven-finish-from-pressure",
-};
-
 function readJson(filePath) {
   const raw = fs.readFileSync(filePath, "utf8");
   return JSON.parse(raw);
@@ -104,7 +100,7 @@ function renderSteps(steps) {
 
 function isAnswerRelativeUrl(url) {
   const value = String(url || "").trim();
-  return value.indexOf("/problems/") === 0 || value.indexOf("/solutions/") === 0;
+  return value.indexOf("/solutions/") === 0;
 }
 
 function buildSearchIndexTitleMap(searchIndex) {
@@ -157,10 +153,35 @@ function renderRelatedAnswers(card, searchIndex) {
   ].join("\n");
 }
 
+function sentenceTrim(value) {
+  return String(value || "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .replace(/[.?!]+$/g, "");
+}
+
+function startsWithActionVerb(value) {
+  return /^(use|return|repeat|move|start|stay|sand|clean|keep|switch|replace|allow|reduce|choose|progress|refine|continue|stop|wipe|rinse|inspect|identify|mark|blend)\b/i.test(
+    String(value || "").trim()
+  );
+}
+
+function asSentence(value, options) {
+  const text = sentenceTrim(value);
+  if (!text) {
+    return "";
+  }
+
+  const shouldPrefixUse = options && options.prefixUse === true && !startsWithActionVerb(text);
+  const sentence = shouldPrefixUse ? "Use " + text : text;
+
+  return sentence.charAt(0).toUpperCase() + sentence.slice(1) + ".";
+}
+
 function buildAnswerText(card) {
   const explicit = String(card.answer || card.short_answer || "").trim();
   if (explicit) {
-    return explicit;
+    return asSentence(explicit);
   }
 
   const recommended = String(card.recommended_grit || "").trim();
@@ -168,19 +189,24 @@ function buildAnswerText(card) {
     ? String(card.steps[0] || "").trim()
     : "";
 
-  if (recommended && firstStep) {
-    return "Use " + recommended + ". " + firstStep;
-  }
+  const parts = [];
 
   if (recommended) {
-    return "Use " + recommended + ".";
+    parts.push(asSentence(recommended, { prefixUse: true }));
   }
 
   if (firstStep) {
-    return firstStep;
+    const firstStepSentence = asSentence(firstStep);
+    if (firstStepSentence && parts.indexOf(firstStepSentence) === -1) {
+      parts.push(firstStepSentence);
+    }
   }
 
-  return String(card.title || "").trim();
+  if (parts.length) {
+    return parts.join(" ");
+  }
+
+  return asSentence(card.title || "");
 }
 
 function validateCard(card) {
@@ -260,9 +286,8 @@ function findCardByPreviewId(cards, requestedId) {
     return null;
   }
 
-  const resolvedId = PREVIEW_COMPAT_CARD_ALIASES[rawId] || rawId;
   return cards.find(function (card) {
-    return card && card.id === resolvedId;
+    return card && card.id === rawId;
   }) || null;
 }
 

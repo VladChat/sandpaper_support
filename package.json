@@ -8,6 +8,6 @@
     "build:content": "node scripts/build-solution-pages.js --check",
     "build:solution-pages:check": "node scripts/build-solution-pages.js --check",
     "build:solution-pages": "node scripts/build-solution-pages.js --write",
-    "build:solution-pages:preview": "node scripts/build-solution-pages.js --preview uneven-pressure-pattern"
+    "build:solution-pages:preview": "node scripts/build-solution-pages.js --preview uneven-finish-from-pressure"
   }
 }
