@@ -159,15 +159,34 @@ function renderRelatedSolutions(card, cardsById) {
   }
 
   return [
-    '    <section class="solution-card related-solutions-card">',
-    '      <div class="solution-card-label">Related Problems</div>',
-    '      <div class="related-solutions">',
-    "      <ul>",
+    '<section class="related-answers">',
+    "  <h2>Related answers</h2>",
+    "  <ul>",
     items.join("\n"),
-    "      </ul>",
-    "      </div>",
-    "    </section>",
+    "  </ul>",
+    "</section>",
   ].join("\n");
+}
+
+function renderAvoidText(card) {
+  const avoid = String(card.avoid || "").trim();
+  const mistakes = Array.isArray(card.mistakes_to_avoid)
+    ? card.mistakes_to_avoid
+      .map(function (item) {
+        return String(item || "").trim();
+      })
+      .filter(Boolean)
+    : [];
+
+  if (avoid.length >= 24) {
+    return avoid;
+  }
+
+  if (!mistakes.length) {
+    return avoid || "";
+  }
+
+  return mistakes.slice(0, 3).join(" ");
 }
 
 function buildSolutionContextJson(card) {
@@ -367,14 +386,15 @@ function renderPage(card, template, cardsById) {
     BREADCRUMB_TITLE: escapeHtml(card.title),
     PROBLEM_TITLE: escapeHtml(card.title),
     PROBLEM_DESCRIPTION: escapeHtml(card.problem),
-    QUICK_ANSWER: escapeHtml(card.quick_answer),
-    BEST_GRIT_PATH: renderBestGritPath(card),
+    PROBLEM_SLUG: escapeHtml(card.problem_slug),
+    ANSWER_TEXT: escapeHtml(card.quick_answer),
+    LIKELY_CAUSE: escapeHtml(card.likely_cause),
+    RECOMMENDED_GRIT: escapeHtml(card.recommended_grit),
     STEPS_HTML: renderSteps(card.steps),
-    WHY_IT_HAPPENS: escapeHtml(card.likely_cause),
     WET_OR_DRY: escapeHtml(card.wet_or_dry),
-    MISTAKES_HTML: renderMistakesToAvoid(card),
+    AVOID_TEXT: escapeHtml(renderAvoidText(card)),
     SUCCESS_CHECK: escapeHtml(card.success_check),
-    RELATED_SOLUTIONS_HTML: renderRelatedSolutions(card, cardsById),
+    RELATED_ANSWERS_HTML: renderRelatedSolutions(card, cardsById),
     SOLUTION_ID: escapeHtml(card.id),
     SOLUTION_CONTEXT_JSON: contextJson,
   };

@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=structured-answer-20260427">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-layout-restore-20260427">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -37,82 +37,53 @@
     <h1>Sanding stainless steel</h1>
     <p class="section-intro">Stainless steel stays rough or scratched after sanding prep.</p>
 
-    <article class="answer-card solution-layout" id="sanding-stainless-steel">
-      <section class="solution-card answer-summary">
-        <div class="solution-card-label">Quick Answer</div>
+    <article class="answer-card" id="sanding-stainless-steel" data-problem-slug="surface-still-feels-rough">
+      <section class="answer-summary" aria-labelledby="answer-summary-sanding-stainless-steel">
+        <div id="answer-summary-sanding-stainless-steel" class="answer-summary-label">Answer</div>
         <p class="answer-summary-text">Start with 180 grit for leveling, then move through 220, 320, and 400 grit to refine stainless steel.</p>
       </section>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Best Grit Path</div>
-        <p class="grit-path">120 only if very uneven → 180 → 220 → 320 → 400</p>
-      </section>
+      <div class="answer-grid">
+        <div>
+          <div class="label">Why it happens</div>
+          <div class="value">Stainless steel defects persist when coarse marks are not fully removed before moving finer.</div>
+        </div>
+        <div>
+          <div class="label">Recommended grit</div>
+          <div class="value">180, then 220, 320, and 400 for smoother prep.</div>
+        </div>
+        <div>
+          <div class="label">Wet or dry</div>
+          <div class="value">Use dry sanding for early correction. Wet sanding can help from 320 and finer when cleanup control is needed.</div>
+        </div>
+        <div>
+          <div class="label">Success check</div>
+          <div class="value">The stainless surface has an even scratch pattern at the final prep grit.</div>
+        </div>
+      </div>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Step-by-Step Fix</div>
-        <ol>
+      <h2>What to do</h2>
+      <ol>
           <li>Clean the stainless surface before sanding.</li>
           <li>Use 180 grit to remove visible defects.</li>
           <li>Move to 220 grit once 180 marks are even.</li>
           <li>Use 320 then 400 grit to refine the surface.</li>
           <li>Sand in a consistent direction for easier scratch tracking.</li>
           <li>Clean residue before coating or finishing.</li>
-        </ol>
-      </section>
+      </ol>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Why It Happens</div>
-        <p>Stainless steel defects persist when coarse marks are not fully removed before moving finer.</p>
-      </section>
+      <div class="note"><strong>Avoid:</strong> Do not jump from coarse grit directly to very fine grit on stainless steel.</div>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Wet or Dry</div>
-        <p>Use dry sanding for early correction. Wet sanding can help from 320 and finer when cleanup control is needed.</p>
-      </section>
-
-      <section class="solution-card">
-        <div class="solution-card-label">Mistakes to Avoid</div>
-        <ul class="mistake-list">
-          <li>Do not move to finer grit before coarse marks are fully even.</li>
-          <li>Do not cross-sand randomly if directional finish is required.</li>
-          <li>Do not leave abrasive residue before coating.</li>
-        </ul>
-      </section>
-
-      <section class="solution-card">
-        <div class="solution-card-label">Success Check</div>
-        <p>The stainless surface has an even scratch pattern at the final prep grit.</p>
-      </section>
-
-    <section class="solution-card related-solutions-card">
-      <div class="solution-card-label">Related Problems</div>
-      <div class="related-solutions">
-      <ul>
+<section class="related-answers">
+  <h2>Related answers</h2>
+  <ul>
         <li><a href="/sandpaper_support/solutions/metal-still-rough/">Metal still feels rough</a></li>
         <li><a href="/sandpaper_support/solutions/rust-pits-remain/">Rust pits remain</a></li>
         <li><a href="/sandpaper_support/solutions/scratches-on-metal-after-prep/">Scratches remain on metal after prep</a></li>
         <li><a href="/sandpaper_support/solutions/wood-still-rough-after-120/">Wood still rough after 120 grit</a></li>
         <li><a href="/sandpaper_support/solutions/wood-still-rough-after-220/">Wood still rough after 220 grit</a></li>
-      </ul>
-      </div>
-    </section>
-
-      <section class="solution-card solution-followup-card" data-solution-followup>
-        <div class="solution-card-label">Ask about this answer</div>
-        <div class="solution-followup-messages chat-messages" data-solution-followup-messages aria-live="polite"></div>
-        <form class="solution-followup-form" data-solution-followup-form>
-          <label class="sr-only" for="followup-sanding-stainless-steel">Ask about this answer</label>
-          <input
-            id="followup-sanding-stainless-steel"
-            class="solution-followup-input chat-input"
-            data-solution-followup-input
-            type="text"
-            autocomplete="off"
-            placeholder="Example: should I wet sand this?"
-          >
-          <button class="solution-followup-send chat-send" type="submit">Ask</button>
-        </form>
-      </section>
+  </ul>
+</section>
     </article>
 
     <script type="application/json" data-solution-context>

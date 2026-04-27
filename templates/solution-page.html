@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=structured-answer-20260427">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-layout-restore-20260427">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -37,64 +37,39 @@
     <h1>{{PROBLEM_TITLE}}</h1>
     <p class="section-intro">{{PROBLEM_DESCRIPTION}}</p>
 
-    <article class="answer-card solution-layout" id="{{SOLUTION_ID}}">
-      <section class="solution-card answer-summary">
-        <div class="solution-card-label">Quick Answer</div>
-        <p class="answer-summary-text">{{QUICK_ANSWER}}</p>
+    <article class="answer-card" id="{{SOLUTION_ID}}" data-problem-slug="{{PROBLEM_SLUG}}">
+      <section class="answer-summary" aria-labelledby="answer-summary-{{SOLUTION_ID}}">
+        <div id="answer-summary-{{SOLUTION_ID}}" class="answer-summary-label">Answer</div>
+        <p class="answer-summary-text">{{ANSWER_TEXT}}</p>
       </section>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Best Grit Path</div>
-        <p class="grit-path">{{BEST_GRIT_PATH}}</p>
-      </section>
+      <div class="answer-grid">
+        <div>
+          <div class="label">Why it happens</div>
+          <div class="value">{{LIKELY_CAUSE}}</div>
+        </div>
+        <div>
+          <div class="label">Recommended grit</div>
+          <div class="value">{{RECOMMENDED_GRIT}}</div>
+        </div>
+        <div>
+          <div class="label">Wet or dry</div>
+          <div class="value">{{WET_OR_DRY}}</div>
+        </div>
+        <div>
+          <div class="label">Success check</div>
+          <div class="value">{{SUCCESS_CHECK}}</div>
+        </div>
+      </div>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Step-by-Step Fix</div>
-        <ol>
+      <h2>What to do</h2>
+      <ol>
 {{STEPS_HTML}}
-        </ol>
-      </section>
+      </ol>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Why It Happens</div>
-        <p>{{WHY_IT_HAPPENS}}</p>
-      </section>
+      <div class="note"><strong>Avoid:</strong> {{AVOID_TEXT}}</div>
 
-      <section class="solution-card">
-        <div class="solution-card-label">Wet or Dry</div>
-        <p>{{WET_OR_DRY}}</p>
-      </section>
-
-      <section class="solution-card">
-        <div class="solution-card-label">Mistakes to Avoid</div>
-        <ul class="mistake-list">
-{{MISTAKES_HTML}}
-        </ul>
-      </section>
-
-      <section class="solution-card">
-        <div class="solution-card-label">Success Check</div>
-        <p>{{SUCCESS_CHECK}}</p>
-      </section>
-
-{{RELATED_SOLUTIONS_HTML}}
-
-      <section class="solution-card solution-followup-card" data-solution-followup>
-        <div class="solution-card-label">Ask about this answer</div>
-        <div class="solution-followup-messages chat-messages" data-solution-followup-messages aria-live="polite"></div>
-        <form class="solution-followup-form" data-solution-followup-form>
-          <label class="sr-only" for="followup-{{SOLUTION_ID}}">Ask about this answer</label>
-          <input
-            id="followup-{{SOLUTION_ID}}"
-            class="solution-followup-input chat-input"
-            data-solution-followup-input
-            type="text"
-            autocomplete="off"
-            placeholder="Example: should I wet sand this?"
-          >
-          <button class="solution-followup-send chat-send" type="submit">Ask</button>
-        </form>
-      </section>
+{{RELATED_ANSWERS_HTML}}
     </article>
 
     <script type="application/json" data-solution-context>
