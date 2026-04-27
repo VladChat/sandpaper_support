@@ -22,6 +22,10 @@ const REQUIRED_CARD_FIELDS = [
   "success_check",
 ];
 
+const PREVIEW_COMPAT_CARD_ALIASES = {
+  "uneven-pressure-pattern": "uneven-finish-from-pressure",
+};
+
 function readJson(filePath) {
   const raw = fs.readFileSync(filePath, "utf8");
   return JSON.parse(raw);
@@ -153,6 +157,32 @@ function renderRelatedAnswers(card, searchIndex) {
   ].join("\n");
 }
 
+function buildAnswerText(card) {
+  const explicit = String(card.answer || card.short_answer || "").trim();
+  if (explicit) {
+    return explicit;
+  }
+
+  const recommended = String(card.recommended_grit || "").trim();
+  const firstStep = Array.isArray(card.steps) && card.steps.length
+    ? String(card.steps[0] || "").trim()
+    : "";
+
+  if (recommended && firstStep) {
+    return "Use " + recommended + ". " + firstStep;
+  }
+
+  if (recommended) {
+    return "Use " + recommended + ".";
+  }
+
+  if (firstStep) {
+    return firstStep;
+  }
+
+  return String(card.title || "").trim();
+}
+
 function validateCard(card) {
   const errors = [];
 
@@ -189,14 +219,14 @@ function validateCard(card) {
 
 function renderPage(card, template, searchIndex) {
   const pageTitle = String(card.title || "").trim();
-  const problemText = String(card.problem || card.title || "").trim();
-  const answerText = String(card.answer || card.short_answer || card.title || "").trim();
+  const problemText = String(card.problem || "").trim();
+  const answerText = buildAnswerText(card);
 
   const values = {
     PAGE_TITLE: escapeHtml(pageTitle),
     META_DESCRIPTION: escapeHtml(problemText),
     BREADCRUMB_TITLE: escapeHtml(pageTitle),
-    PROBLEM_TITLE: escapeHtml(problemText),
+    PROBLEM_TITLE: escapeHtml(pageTitle),
     PROBLEM_DESCRIPTION: escapeHtml(problemText),
     ANSWER_TEXT: escapeHtml(answerText),
     LIKELY_CAUSE: escapeHtml(card.likely_cause),
@@ -224,16 +254,36 @@ function ensureArray(value, name) {
   return value;
 }
 
+function findCardByPreviewId(cards, requestedId) {
+  const rawId = String(requestedId || "").trim();
+  if (!rawId) {
+    return null;
+  }
+
+  const resolvedId = PREVIEW_COMPAT_CARD_ALIASES[rawId] || rawId;
+  return cards.find(function (card) {
+    return card && card.id === resolvedId;
+  }) || null;
+}
+
 function main() {
   const args = process.argv.slice(2);
   const hasCheck = args.indexOf("--check") !== -1;
   const hasWrite = args.indexOf("--write") !== -1;
+  const previewFlagIndex = args.indexOf("--preview");
+  const hasPreview = previewFlagIndex !== -1;
+  const previewCardId = hasPreview ? String(args[previewFlagIndex + 1] || "").trim() : "";
 
-  if (hasCheck && hasWrite) {
-    throw new Error("Use either --check or --write, not both.");
+  const modeCount = [hasCheck, hasWrite, hasPreview].filter(Boolean).length;
+  if (modeCount > 1) {
+    throw new Error("Use only one mode flag: --check, --write, or --preview <card-id>.");
   }
 
-  const mode = hasWrite ? "write" : "check";
+  if (hasPreview && !previewCardId) {
+    throw new Error("Preview mode requires a card id: --preview <card-id>.");
+  }
+
+  const mode = hasPreview ? "preview" : (hasWrite ? "write" : "check");
 
   const cards = ensureArray(readJson(DATA_PATH), "data/solution-cards.json");
   const searchIndex = ensureArray(readJson(SEARCH_INDEX_PATH), "data/search-index.json");
@@ -263,6 +313,25 @@ function main() {
       console.error(err);
     });
     process.exitCode = 1;
+    return;
+  }
+
+  if (mode === "preview") {
+    const selectedCard = findCardByPreviewId(cards, previewCardId);
+    if (!selectedCard) {
+      console.error("Preview card id not found: " + previewCardId);
+      process.exitCode = 1;
+      return;
+    }
+
+    const previewPath = path.join(SOLUTIONS_DIR, "preview-generated-solution", "index.html");
+    const previewHtml = renderPage(selectedCard, template, searchIndex);
+    fs.mkdirSync(path.dirname(previewPath), { recursive: true });
+    fs.writeFileSync(previewPath, previewHtml);
+
+    console.log("Preview solution page written: solutions/preview-generated-solution/index.html");
+    console.log("Source card: " + previewCardId);
+    console.log("Mode: preview");
     return;
   }
 
