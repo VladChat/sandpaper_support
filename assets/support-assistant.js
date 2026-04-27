@@ -485,40 +485,267 @@
     return node;
   }
 
-  function appendLinks(messages, pages, basePath, onClick) {
-    if (!Array.isArray(pages) || !pages.length) {
+  const INTERNAL_PATH_PATTERN = /(?:https?:\/\/[^\s/]+)?(?:\/sandpaper_support)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/gi;
+  const INTERNAL_PATH_FAMILIES = {
+    "/tools/": true,
+    "/problems/": true,
+    "/solutions/": true,
+    "/surfaces/": true,
+    "/products/": true,
+    "/grits/": true,
+    "/how-to/": true,
+  };
+  const KNOWN_INTERNAL_TITLES = {
+    "/tools/grit-sequence-builder/": "Grit Sequence Builder",
+    "/grits/": "Grit Guide",
+    "/products/": "Products",
+    "/surfaces/": "Surfaces",
+    "/problems/": "Problems",
+    "/solutions/": "Solutions",
+    "/how-to/": "How To",
+  };
+
+  function normalizeInternalSupportPath(path) {
+    const raw = String(path || "").trim();
+    if (!raw) {
+      return "";
+    }
+
+    const baseMatch = raw.match(/(?:https?:\/\/[^\s/]+)?(?:\/sandpaper_support)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/i);
+    if (!baseMatch || !baseMatch[1]) {
+      return "";
+    }
+
+    let normalized = baseMatch[1].replace(/\/+/g, "/");
+    if (normalized.charAt(0) !== "/") {
+      normalized = "/" + normalized;
+    }
+    if (normalized.charAt(normalized.length - 1) !== "/") {
+      normalized += "/";
+    }
+    return normalized;
+  }
+
+  function isInternalSupportPath(path) {
+    const normalized = normalizeInternalSupportPath(path);
+    return Object.keys(INTERNAL_PATH_FAMILIES).some(function (prefix) {
+      return normalized.indexOf(prefix) === 0;
+    });
+  }
+
+  function humanizeSupportPath(path) {
+    const normalized = normalizeInternalSupportPath(path);
+    if (!normalized) {
+      return "Support Page";
+    }
+    if (KNOWN_INTERNAL_TITLES[normalized]) {
+      return KNOWN_INTERNAL_TITLES[normalized];
+    }
+
+    const parts = normalized.replace(/^\/|\/$/g, "").split("/");
+    const slug = parts[parts.length - 1] || parts[0] || "";
+    const text = slug.replace(/-/g, " ").trim();
+    if (!text) {
+      return "Support Page";
+    }
+
+    return text
+      .split(/\s+/)
+      .map(function (part) {
+        return part.charAt(0).toUpperCase() + part.slice(1);
+      })
+      .join(" ");
+  }
+
+  function buildPageLookup(pages) {
+    const lookup = {};
+    (Array.isArray(pages) ? pages : []).forEach(function (page) {
+      const rawPath = page && (page.path || page.href || page.url || page.target_url || page.targetUrl);
+      const normalized = normalizeInternalSupportPath(rawPath);
+      if (!normalized) {
+        return;
+      }
+      const title = String((page && (page.title || page.label)) || "").trim();
+      lookup[normalized] = title || humanizeSupportPath(normalized);
+    });
+    return lookup;
+  }
+
+  function rewriteInternalReferences(text, pageLookup) {
+    const references = [];
+    const seen = {};
+    const rewritten = String(text || "").replace(INTERNAL_PATH_PATTERN, function (_match, pathToken) {
+      const normalized = normalizeInternalSupportPath(pathToken);
+      if (!isInternalSupportPath(normalized)) {
+        return _match;
+      }
+      const title = pageLookup[normalized] || humanizeSupportPath(normalized);
+      if (!seen[normalized]) {
+        references.push({
+          path: normalized,
+          title: title,
+        });
+        seen[normalized] = true;
+      }
+      return title;
+    });
+
+    return {
+      text: rewritten,
+      references: references,
+    };
+  }
+
+  function buildSupportSections(replyText) {
+    const lines = String(replyText || "")
+      .split(/\n+/)
+      .map(function (line) {
+        return line.trim();
+      })
+      .filter(Boolean);
+
+    if (!lines.length) {
+      return [];
+    }
+
+    const sections = [];
+    let current = {
+      title: "Answer Summary",
+      lines: [],
+    };
+
+    lines.forEach(function (line) {
+      const headingMatch = line.match(/^([A-Za-z][A-Za-z0-9 ]{2,40}):\s*(.*)$/);
+      if (headingMatch) {
+        if (current.lines.length) {
+          sections.push(current);
+        }
+        current = {
+          title: headingMatch[1].trim(),
+          lines: headingMatch[2] ? [headingMatch[2].trim()] : [],
+        };
+        return;
+      }
+      current.lines.push(line);
+    });
+
+    if (current.lines.length) {
+      sections.push(current);
+    }
+
+    return sections;
+  }
+
+  function appendSupportLinkBlock(parent, title, links, basePath, onClick) {
+    if (!Array.isArray(links) || !links.length) {
       return;
     }
 
-    const list = document.createElement("div");
-    list.className = "chat-links";
+    const section = document.createElement("section");
+    section.className = "support-answer-section";
 
-    pages.forEach(function (page) {
-      const rawPath = page && (page.path || page.href || page.url);
-      const title = (page && (page.title || page.label)) || rawPath;
+    const heading = document.createElement("h4");
+    heading.className = "support-answer-section-title";
+    heading.textContent = title;
+    section.appendChild(heading);
 
-      if (!rawPath || !title) {
+    const grid = document.createElement("div");
+    grid.className = "support-answer-link-grid";
+
+    links.forEach(function (item) {
+      if (!item || !item.path || !item.title) {
         return;
       }
-
       const link = document.createElement("a");
-      link.href = normalizePath(basePath, rawPath);
-      link.textContent = title;
+      link.className = "support-answer-link";
+      link.href = normalizePath(basePath, item.path);
+      link.textContent = item.title;
       link.addEventListener("click", function () {
         if (typeof onClick === "function") {
           onClick({
             path: link.pathname,
-            title: title,
+            title: item.title,
           });
         }
       });
-      list.appendChild(link);
+      grid.appendChild(link);
     });
 
-    if (list.children.length) {
-      messages.appendChild(list);
-      messages.scrollTop = messages.scrollHeight;
+    if (grid.children.length) {
+      section.appendChild(grid);
+      parent.appendChild(section);
     }
+  }
+
+  function renderSupportAnswer(node, replyText, pages, basePath, onClick) {
+    const pageLookup = buildPageLookup(pages);
+    const rewritten = rewriteInternalReferences(replyText, pageLookup);
+    const sections = buildSupportSections(rewritten.text);
+
+    node.textContent = "";
+    const wrapper = document.createElement("div");
+    wrapper.className = "support-answer";
+
+    sections.forEach(function (sectionData, index) {
+      const section = document.createElement("section");
+      section.className = "support-answer-section";
+
+      const heading = document.createElement("h4");
+      heading.className = "support-answer-section-title";
+      heading.textContent = sectionData.title || (index === 0 ? "Answer Summary" : "Details");
+      section.appendChild(heading);
+
+      const lines = sectionData.lines.filter(Boolean);
+      const stepLines = lines.filter(function (line) {
+        return /^\d+[.)]\s+/.test(line);
+      });
+
+      if (stepLines.length >= 2) {
+        const list = document.createElement("ol");
+        list.className = "support-answer-steps";
+        stepLines.forEach(function (line) {
+          const item = document.createElement("li");
+          item.textContent = line.replace(/^\d+[.)]\s+/, "");
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+      } else if (lines.length >= 2) {
+        const list = document.createElement("ul");
+        list.className = "support-answer-list";
+        lines.forEach(function (line) {
+          const item = document.createElement("li");
+          item.textContent = line.replace(/^[-*]\s+/, "");
+          list.appendChild(item);
+        });
+        section.appendChild(list);
+      } else if (lines.length === 1) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = lines[0];
+        section.appendChild(paragraph);
+      }
+
+      if (/next step/i.test(sectionData.title)) {
+        section.classList.add("support-answer-next-step");
+      }
+
+      wrapper.appendChild(section);
+    });
+
+    const matchedLinks = Object.keys(pageLookup).map(function (path) {
+      return {
+        path: path,
+        title: pageLookup[path],
+      };
+    });
+
+    if (matchedLinks.length) {
+      appendSupportLinkBlock(wrapper, "Recommended Page", matchedLinks, basePath, onClick);
+    }
+    if (rewritten.references.length) {
+      appendSupportLinkBlock(wrapper, "Related Guide", rewritten.references, basePath, onClick);
+    }
+
+    node.appendChild(wrapper);
   }
 
   function pushSessionArray(key, value, maxItems) {
@@ -878,14 +1105,17 @@
         mode: meta && meta.auto ? "auto" : "manual",
       }).then(function (result) {
         if (!result.ok) {
-          pending.textContent =
-            "Assistant response is unavailable right now. Approved support guides are still shown above.";
+          const fallbackReply =
+            "Answer Summary: Assistant response is unavailable right now.\nNext Step: Use the links below or ask a more specific sanding question.";
+          renderSupportAnswer(pending, fallbackReply, result.localMatches || [], basePath, function (page) {
+            recordClickedPage(page.path, page.title);
+          });
 
           pushSessionArray(
             STORAGE_KEYS.assistantMessages,
             {
               role: "assistant",
-              text: pending.textContent,
+              text: fallbackReply,
               at: new Date().toISOString(),
               source: source,
             },
@@ -903,22 +1133,20 @@
                 : result.clarifyingQuestion)
             : (result.reply || "I need one more detail to guide you.");
 
-        pending.textContent = combinedReply;
+        renderSupportAnswer(pending, combinedReply, result.matchedPages, basePath, function (page) {
+          recordClickedPage(page.path, page.title);
+        });
 
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
           {
             role: "assistant",
-            text: pending.textContent,
+            text: combinedReply,
             at: new Date().toISOString(),
             source: source,
           },
           30,
         );
-
-        appendLinks(shell.messages, result.matchedPages, basePath, function (page) {
-          recordClickedPage(page.path, page.title);
-        });
       });
     }
 
