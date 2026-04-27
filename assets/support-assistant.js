@@ -295,7 +295,7 @@
         }
       });
 
-      function findSearchMatches(query, limit) {
+      function findSearchMatches(query, limit, options) {
         const loweredQuery = clean(query).trim();
         if (!loweredQuery) {
           return [];
@@ -306,6 +306,7 @@
             loweredQuery,
             limit || 5,
             searchSuggestions,
+            options || {},
           );
         }
         return [];
@@ -951,34 +952,39 @@
       }
     }, 600);
 
+    function isHomepageAnswerMatch(match) {
+      const target = String((match && (match.target_url || match.targetUrl)) || "");
+      if (target === "/problems/" || target === "/solutions/") {
+        return false;
+      }
+      return Boolean(
+        match &&
+          match.result_kind === "answer" &&
+          (target.indexOf("/problems/") === 0 || target.indexOf("/solutions/") === 0)
+      );
+    }
+
     function renderOutput(q, matches) {
       results.innerHTML = "";
+      const visibleMatches = (Array.isArray(matches) ? matches : []).filter(isHomepageAnswerMatch);
 
       if (!q) {
         return;
       }
 
-      if (!matches.length) {
+      if (!visibleMatches.length) {
         return;
       } else {
-        matches.forEach(function (match) {
+        visibleMatches.forEach(function (match) {
           const link = document.createElement("a");
           link.className = "result-link";
           link.href = normalizePath(basePath, match.target_url || match.targetUrl || "");
           const title = String(match.title || "").trim();
           const description = String(match.description || "").trim();
-          const kindRaw = clean(match.result_kind || "");
-          const kindMap = {
-            answer: { label: "Answer", className: "result-kind-answer" },
-            guide: { label: "Guide", className: "result-kind-guide" },
-            tool: { label: "Tool", className: "result-kind-tool" },
-            product: { label: "Product", className: "result-kind-product" },
-          };
-          const kind = kindMap[kindRaw] || kindMap.guide;
 
           const kindNode = document.createElement("span");
-          kindNode.className = "result-kind " + kind.className;
-          kindNode.textContent = kind.label;
+          kindNode.className = "result-kind result-kind-answer";
+          kindNode.textContent = "Answer";
 
           const textNode = document.createElement("span");
           textNode.className = "result-text";
@@ -1000,7 +1006,7 @@
 
           link.addEventListener("click", function () {
             if (window.eQualleSupabase) {
-              window.eQualleSupabase.logSearch(q, matches.length, link.pathname);
+              window.eQualleSupabase.logSearch(q, visibleMatches.length, link.pathname);
             }
             recordClickedPage(link.pathname, match.title);
           });
@@ -1012,16 +1018,17 @@
 
     function render(query) {
       const q = clean(query).trim();
-      const matches = q ? knowledge.findSearchMatches(q, 5) : [];
+      const matches = q ? knowledge.findSearchMatches(q, 5, { answerOnly: true }) : [];
+      const visibleMatches = matches.filter(isHomepageAnswerMatch);
 
       setStoredText(STORAGE_KEYS.lastQuery, q);
-      setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
+      setStoredJson(STORAGE_KEYS.lastMatches, visibleMatches.slice(0, 5).map(compactSearchEntry));
 
       pushSessionArray(
         STORAGE_KEYS.searchTrail,
         {
           query: q,
-          resultCount: matches.length,
+          resultCount: visibleMatches.length,
           at: new Date().toISOString(),
         },
         25,
@@ -1032,9 +1039,9 @@
         return;
       }
 
-      logRenderedSearch(q, matches.length);
+      logRenderedSearch(q, visibleMatches.length);
 
-      renderOutput(q, matches);
+      renderOutput(q, visibleMatches);
     }
 
     input.addEventListener("input", function (event) {
@@ -1045,24 +1052,15 @@
       window.location.href = normalizePath(basePath, "/ask/") + "?q=" + encodeURIComponent(message);
     }
 
-    function isAnswerResult(match) {
-      const target = String((match && (match.target_url || match.targetUrl)) || "");
-      return Boolean(
-        match &&
-          (match.result_kind === "answer" ||
-            target.indexOf("/problems/") === 0 ||
-            target.indexOf("/solutions/") === 0)
-      );
-    }
-
     function runSearchAction() {
       const message = input.value.trim();
       if (!message) {
         input.focus();
         return;
       }
-      const matches = knowledge.findSearchMatches(message, 5);
-      const topMatch = matches.length ? matches[0] : null;
+      const matches = knowledge.findSearchMatches(message, 5, { answerOnly: true });
+      const visibleMatches = matches.filter(isHomepageAnswerMatch);
+      const topMatch = visibleMatches.length ? visibleMatches[0] : null;
       const topHref = topMatch ? normalizePath(basePath, topMatch.target_url || topMatch.targetUrl || "") : "";
       const isStrongTopMatch = Boolean(
         topMatch &&
@@ -1071,14 +1069,14 @@
       );
 
       setStoredText(STORAGE_KEYS.lastQuery, clean(message).trim());
-      setStoredJson(STORAGE_KEYS.lastMatches, matches.slice(0, 5).map(compactSearchEntry));
-      renderOutput(message, matches);
+      setStoredJson(STORAGE_KEYS.lastMatches, visibleMatches.slice(0, 5).map(compactSearchEntry));
+      renderOutput(message, visibleMatches);
 
-      if (isStrongTopMatch && topHref && isAnswerResult(topMatch)) {
+      if (isStrongTopMatch && topHref && isHomepageAnswerMatch(topMatch)) {
         try {
           const parsed = new URL(topHref, window.location.origin);
           if (window.eQualleSupabase) {
-            window.eQualleSupabase.logSearch(message, matches.length, parsed.pathname);
+            window.eQualleSupabase.logSearch(message, visibleMatches.length, parsed.pathname);
           }
           recordClickedPage(parsed.pathname, topMatch.title || "");
         } catch (_error) {
@@ -1090,15 +1088,15 @@
         return;
       }
 
-      if (matches.length) {
+      if (visibleMatches.length) {
         if (window.eQualleSupabase) {
-          window.eQualleSupabase.logSearch(message, matches.length, null);
+          window.eQualleSupabase.logSearch(message, visibleMatches.length, null);
         }
         return;
       }
 
       if (window.eQualleSupabase) {
-        window.eQualleSupabase.logSearch(message, matches.length, null);
+        window.eQualleSupabase.logSearch(message, 0, null);
       }
       redirectToAskPage(message);
     }

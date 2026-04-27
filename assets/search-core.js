@@ -77,6 +77,24 @@
   };
 
   const LOW_VALUE_QUERY_TERMS = {
+    to: true,
+    a: true,
+    an: true,
+    the: true,
+    of: true,
+    for: true,
+    with: true,
+    about: true,
+    at: true,
+    on: true,
+    in: true,
+    by: true,
+    from: true,
+    it: true,
+    its: true,
+    my: true,
+    your: true,
+    our: true,
     there: true,
     this: true,
     that: true,
@@ -231,6 +249,22 @@
       return "product";
     }
     return "guide";
+  }
+
+  function isAnswerTarget(targetUrl) {
+    const url = clean(targetUrl || "");
+    if (url === "/problems/" || url === "/solutions/") {
+      return false;
+    }
+    return url.indexOf("/problems/") === 0 || url.indexOf("/solutions/") === 0;
+  }
+
+  function isAnswerResult(result) {
+    if (!result) {
+      return false;
+    }
+    const target = result.target_url || result.targetUrl || "";
+    return result.result_kind === "answer" && isAnswerTarget(target);
   }
 
   function normalizeSuggestionToken(token) {
@@ -904,6 +938,10 @@
       }
     }
 
+    if (isMultiWordStarterQuery && suggestionStarter && suggestionStarter !== starter) {
+      return null;
+    }
+
     let matchedNonStarterTerms = 0;
     let strongNonStarterMatches = 0;
     let weakNonStarterMatches = 0;
@@ -934,6 +972,10 @@
 
       matchedNonStarterTerms = Object.keys(matchedTerms).length;
       if (!matchedNonStarterTerms) {
+        return null;
+      }
+
+      if (usefulNonStarterTerms.length >= 2 && strongNonStarterMatches < 2) {
         return null;
       }
 
@@ -1150,7 +1192,9 @@
     });
   }
 
-  function searchEntries(entries, query, limit, suggestions) {
+  function searchEntries(entries, query, limit, suggestions, options) {
+    const searchOptions = options || {};
+    const answerOnly = searchOptions.answerOnly === true;
     const queryContext = tokenizeQuery(query);
     const intentContext = detectIntent(queryContext);
     const maxResults = Math.min(Math.max(limit || 5, 1), 5);
@@ -1160,7 +1204,11 @@
     const suggestionResults = rankSuggestionEntries(suggestionEntries, queryContext, maxResults);
 
     if (queryContext.wordCount === 1 && (QUESTION_STARTERS[starter] || GENERIC_SUGGESTION_STARTERS[starter])) {
-      return suggestionResults.slice(0, maxResults);
+      let filteredSuggestions = suggestionResults;
+      if (answerOnly) {
+        filteredSuggestions = filteredSuggestions.filter(isAnswerResult);
+      }
+      return filteredSuggestions.slice(0, maxResults);
     }
 
     if (queryContext.queryLength < 3 && !suggestionResults.length) {
@@ -1199,7 +1247,12 @@
         deduped.push(item);
       });
 
-    return deduped.slice(0, maxResults);
+    let filtered = deduped;
+    if (answerOnly) {
+      filtered = filtered.filter(isAnswerResult);
+    }
+
+    return filtered.slice(0, maxResults);
   }
 
   return {
