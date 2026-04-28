@@ -27,7 +27,7 @@ function setupSolutionVideoStyles() {
   const link = document.createElement("link");
   link.id = stylesheetId;
   link.rel = "stylesheet";
-  link.href = getSupportBasePath() + "/assets/solution-video.css?v=solution-video-card-20260428";
+  link.href = getSupportBasePath() + "/assets/solution-video.css?v=solution-video-guide-20260428";
   document.head.appendChild(link);
 }
 
@@ -95,7 +95,7 @@ function createSolutionVideoBlock(video) {
   const block = document.createElement("section");
   block.className = "solution-video-block";
   block.setAttribute("data-solution-video-block", "");
-  block.setAttribute("aria-label", "Video example");
+  block.setAttribute("aria-label", "Video guide");
 
   const header = document.createElement("div");
   header.className = "solution-video-header";
@@ -104,11 +104,11 @@ function createSolutionVideoBlock(video) {
 
   const label = document.createElement("div");
   label.className = "solution-video-label";
-  label.textContent = "Video example";
+  label.textContent = "Video guide";
 
   const heading = document.createElement("h3");
   heading.className = "solution-video-heading";
-  heading.textContent = "Watch the technique";
+  heading.textContent = titleText;
 
   headerText.appendChild(label);
   headerText.appendChild(heading);
@@ -142,32 +142,26 @@ function createSolutionVideoBlock(video) {
   thumbButton.appendChild(overlay);
 
   media.appendChild(thumbButton);
+  card.appendChild(media);
 
-  const content = document.createElement("div");
-  content.className = "solution-video-content";
-
-  const title = document.createElement("h4");
-  title.className = "solution-video-title";
-  title.textContent = titleText;
-  content.appendChild(title);
-
-  if (channelText || durationText) {
-    const meta = document.createElement("div");
-    meta.className = "solution-video-meta";
-    meta.textContent = [channelText, durationText].filter(Boolean).join(" · ");
-    content.appendChild(meta);
+  const metaParts = [];
+  if (channelText) {
+    metaParts.push("Channel: " + channelText);
+  }
+  if (durationText) {
+    metaParts.push("Duration: " + durationText);
   }
 
-  const note = document.createElement("p");
-  note.className = "solution-video-note";
-  note.textContent = "Click to load the YouTube video inside this answer.";
-  content.appendChild(note);
+  if (metaParts.length) {
+    const content = document.createElement("div");
+    content.className = "solution-video-content";
 
-  const playButton = document.createElement("button");
-  playButton.className = "solution-video-action";
-  playButton.type = "button";
-  playButton.textContent = "Play video";
-  content.appendChild(playButton);
+    const meta = document.createElement("div");
+    meta.className = "solution-video-meta";
+    meta.textContent = metaParts.join(" · ");
+    content.appendChild(meta);
+    card.appendChild(content);
+  }
 
   function loadEmbed() {
     if (media.querySelector("iframe")) {
@@ -188,15 +182,11 @@ function createSolutionVideoBlock(video) {
   }
 
   thumbButton.addEventListener("click", loadEmbed);
-  playButton.addEventListener("click", loadEmbed);
 
-  card.appendChild(media);
-  card.appendChild(content);
   block.appendChild(card);
 
   return block;
 }
-
 function insertSolutionVideoBlock(card, video) {
   if (!card || card.querySelector("[data-solution-video-block]")) {
     return;
