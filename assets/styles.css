@@ -655,3 +655,48 @@ body.solution-page .solution-followup-messages {
   min-height: 0;
   overflow: visible;
 }
+
+/* P2: chip/link clarity */
+.pill-list {
+  align-items: center;
+}
+
+span.pill,
+span.topic-pill {
+  cursor: default;
+  text-decoration: none;
+}
+
+a.pill,
+a.topic-pill-link {
+  cursor: pointer;
+  text-decoration: none;
+  border-color: rgba(124, 177, 217, 0.75);
+  background: rgba(124, 177, 217, 0.14);
+}
+
+a.pill::after,
+a.topic-pill-link::after {
+  content: " →";
+  font-weight: 700;
+}
+
+a.pill:hover,
+a.topic-pill-link:hover,
+a.pill:focus-visible,
+a.topic-pill-link:focus-visible {
+  text-decoration: underline;
+  background: rgba(124, 177, 217, 0.24);
+  border-color: rgba(124, 177, 217, 1);
+}
+
+a.pill:focus-visible,
+a.topic-pill-link:focus-visible {
+  outline: 2px solid rgba(124, 177, 217, 0.9);
+  outline-offset: 2px;
+}
+
+span.pill,
+span.topic-pill {
+  opacity: 0.92;
+}
