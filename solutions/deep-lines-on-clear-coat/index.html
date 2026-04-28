@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-design-fix-20260427">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-video-card-20260428">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -47,7 +47,7 @@
     <article class="answer-card" id="deep-lines-on-clear-coat" data-problem-slug="scratches-too-deep">
       <section class="answer-summary" aria-labelledby="answer-summary-deep-lines-on-clear-coat">
         <div id="answer-summary-deep-lines-on-clear-coat" class="answer-summary-label">Answer</div>
-        <p class="answer-summary-text">Return one step coarser only as needed, then progress 1000, 1500, 2000, 3000. Rinse the surface and paper.</p>
+        <p class="answer-summary-text">Wet sand lightly through 1000, 1500, 2000, and 3000. Use 800 only to correct deeper lines.</p>
       </section>
 
       <div class="answer-grid">
@@ -57,7 +57,7 @@
         </div>
         <div>
           <div class="label">Recommended grit</div>
-          <div class="value">Return one step coarser only as needed, then progress 1000, 1500, 2000, 3000.</div>
+          <div class="value">Wet sand through 1000, 1500, 2000, and 3000. Use 800 only to correct deeper lines.</div>
         </div>
         <div>
           <div class="label">Wet or dry</div>
@@ -113,17 +113,19 @@
   "solution_slug": "deep-lines-on-clear-coat",
   "title": "Deep lines remain on clear coat",
   "problem": "Fine sanding leaves some deeper lines in clear coat.",
-  "surface": "automotive / clear coat",
+  "surface": "automotive clear coat",
   "task": "scratch removal",
-  "symptom": "fine sanding leaves some deeper lines in clear coat",
-  "quick_answer": "Return one step coarser only as needed, then progress 1000, 1500, 2000, 3000. Rinse the surface and paper.",
+  "symptom": "deep lines remain in clear coat",
+  "quick_answer": "Wet sand lightly through 1000, 1500, 2000, and 3000. Use 800 only to correct deeper lines.",
   "best_grit_path": [
     "1000",
     "1500",
     "2000",
     "3000"
   ],
-  "optional_starting_grits": [],
+  "optional_starting_grits": [
+    "800"
+  ],
   "steps": [
     "Rinse the surface and paper.",
     "Use clean water and light pressure.",
@@ -132,14 +134,15 @@
   ],
   "why_it_happens": "A previous grit or debris created scratches deeper than the current fine grit can remove.",
   "mistakes_to_avoid": [
-    "Do not dry sand a fine clear coat finish unless the coating instructions call for it."
+    "Do not use dirty water or debris during clear coat sanding.",
+    "Do not stay on one small spot too long."
   ],
   "success_check": "The haze is uniform with no isolated deep lines.",
   "wet_or_dry": "Wet.",
   "related_solution_ids": [
-    "deep-scratches-after-80-grit",
-    "320-does-not-remove-180-scratches",
-    "coarse-scratches-on-wood"
+    "choose-grit-for-automotive-wet-sanding",
+    "normal-haze-after-wet-sanding",
+    "dry-sanding-clear-coat-problem"
   ]
 }
     </script>
@@ -157,6 +160,6 @@
 
 <script src="/sandpaper_support/assets/config.js"></script>
 <script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
-<script src="/sandpaper_support/assets/app.js?v=solution-search-bar-20260427"></script>
+<script src="/sandpaper_support/assets/app.js?v=solution-video-card-20260428"></script>
 </body>
 </html>

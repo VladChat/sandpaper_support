@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-design-fix-20260427">
+<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-video-card-20260428">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -41,13 +41,13 @@
       <span class="topic-pill">wet sanding</span>
       <span class="topic-pill">dry sanding</span>
       <a class="topic-pill topic-pill-link" href="/sandpaper_support/solutions/normal-haze-after-wet-sanding/">haze</a>
-      <a class="topic-pill topic-pill-link" href="/sandpaper_support/solutions/paint-clogs-sheet/">clogging</a>
+      <a class="topic-pill topic-pill-link" href="/sandpaper_support/solutions/deep-scratches-after-80-grit/">scratches</a>
     </div>
 
     <article class="answer-card" id="wet-sanding-slurry-builds-up" data-problem-slug="paper-clogs-too-fast">
       <section class="answer-summary" aria-labelledby="answer-summary-wet-sanding-slurry-builds-up">
         <div id="answer-summary-wet-sanding-slurry-builds-up" class="answer-summary-label">Answer</div>
-        <p class="answer-summary-text">Use the planned fine grit sequence, such as 1000 to 3000. Keep clean water on the surface.</p>
+        <p class="answer-summary-text">Use clean water, rinse often, and wipe between grits. Dirty slurry can leave uneven marks.</p>
       </section>
 
       <div class="answer-grid">
@@ -114,14 +114,18 @@
   "title": "Wet sanding slurry builds up",
   "problem": "Wet sanding residue collects and makes cutting inconsistent.",
   "surface": "general sandpaper use",
-  "task": "clog control",
-  "symptom": "wet sanding residue collects and makes cutting inconsistent",
-  "quick_answer": "Use the planned fine grit sequence, such as 1000 to 3000. Keep clean water on the surface.",
+  "task": "wet sanding",
+  "symptom": "wet sanding slurry builds up",
+  "quick_answer": "Use clean water, rinse often, and wipe between grits. Dirty slurry can leave uneven marks.",
   "best_grit_path": [
     "1000",
+    "1500",
+    "2000",
     "3000"
   ],
-  "optional_starting_grits": [],
+  "optional_starting_grits": [
+    "800"
+  ],
   "steps": [
     "Keep clean water on the surface.",
     "Rinse the sheet often.",
@@ -130,14 +134,14 @@
   ],
   "why_it_happens": "The surface and sheet are not being rinsed often enough.",
   "mistakes_to_avoid": [
-    "Do not let dirty slurry dry on the work area."
+    "Do not reuse dirty slurry as a lubricant."
   ],
   "success_check": "The wet sanding haze stays even and controlled.",
   "wet_or_dry": "Wet.",
   "related_solution_ids": [
-    "paint-clogs-sheet",
-    "primer-dust-loads-paper",
-    "wood-dust-clogs-paper"
+    "when-to-use-wet-sanding",
+    "water-spots-after-wet-sanding",
+    "normal-haze-after-wet-sanding"
   ]
 }
     </script>
@@ -155,6 +159,6 @@
 
 <script src="/sandpaper_support/assets/config.js"></script>
 <script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
-<script src="/sandpaper_support/assets/app.js?v=solution-search-bar-20260427"></script>
+<script src="/sandpaper_support/assets/app.js?v=solution-video-card-20260428"></script>
 </body>
 </html>

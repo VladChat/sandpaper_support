@@ -4,7 +4,7 @@
     "type": "question_suggestion",
     "question_word": "how",
     "title": "How do I remove deep scratches?",
-    "description": "80 grit removed material but left deep scratches.",
+    "description": "80 grit removed material but left deep sanding scratches.",
     "target_url": "/solutions/deep-scratches-after-80-grit/",
     "keywords": [
       "remove",
@@ -17,11 +17,12 @@
       "removed",
       "material",
       "but",
-      "left"
+      "left",
+      "sanding"
     ],
     "aliases": [
       "Deep scratches remain after 80 grit",
-      "80 grit removed material but left deep scratches."
+      "80 grit removed material but left deep sanding scratches."
     ],
     "priority": 100,
     "result_kind": "answer"
@@ -59,7 +60,7 @@
     "type": "question_suggestion",
     "question_word": "how",
     "title": "How do I reduce wet sanding haze?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "reduce",
@@ -68,14 +69,14 @@
       "haze",
       "normal",
       "after",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 90,
     "result_kind": "answer"
@@ -107,23 +108,29 @@
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-how-choosing-starting-grit",
+    "id": "suggestion-how-how-to-choose-between-common-grits",
     "type": "question_suggestion",
     "question_word": "how",
     "title": "How do I choose a starting grit?",
-    "description": "It is unclear which grit to start with.",
-    "target_url": "/solutions/choosing-starting-grit/",
+    "description": "The user sees multiple grit options and needs a practical selection guide.",
+    "target_url": "/solutions/how-to-choose-between-common-grits/",
     "keywords": [
       "choose",
       "starting",
       "grit",
-      "choosing",
-      "unclear",
-      "start"
+      "between",
+      "80",
+      "120",
+      "220",
+      "400",
+      "800",
+      "1000",
+      "2000",
+      "3000"
     ],
     "aliases": [
-      "Choosing a starting grit",
-      "It is unclear which grit to start with."
+      "How to choose between 80, 120, 220, 400, 800, 1000, 2000, and 3000 grit",
+      "The user sees multiple grit options and needs a practical selection guide."
     ],
     "priority": 80,
     "result_kind": "answer"
@@ -161,7 +168,7 @@
     "type": "question_suggestion",
     "question_word": "why",
     "title": "Why are scratches still visible?",
-    "description": "80 grit removed material but left deep scratches.",
+    "description": "80 grit removed material but left deep sanding scratches.",
     "target_url": "/solutions/deep-scratches-after-80-grit/",
     "keywords": [
       "are",
@@ -179,7 +186,7 @@
     ],
     "aliases": [
       "Deep scratches remain after 80 grit",
-      "80 grit removed material but left deep scratches."
+      "80 grit removed material but left deep sanding scratches."
     ],
     "priority": 95,
     "result_kind": "answer"
@@ -189,7 +196,7 @@
     "type": "question_suggestion",
     "question_word": "why",
     "title": "Why does wet sanding leave haze?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "wet",
@@ -198,14 +205,14 @@
       "haze",
       "normal",
       "after",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 90,
     "result_kind": "answer"
@@ -243,120 +250,123 @@
     "type": "question_suggestion",
     "question_word": "why",
     "title": "Why does the finish look uneven?",
-    "description": "The sanded surface looks patchy or uneven.",
+    "description": "The surface looks uneven after sanding.",
     "target_url": "/solutions/uneven-finish-from-pressure/",
     "keywords": [
       "finish",
       "look",
       "uneven",
       "from",
+      "sanding",
       "pressure",
-      "sanded",
       "surface",
       "looks",
-      "patchy"
+      "after"
     ],
     "aliases": [
-      "Uneven finish from pressure",
-      "The sanded surface looks patchy or uneven."
+      "Uneven finish from sanding pressure",
+      "The surface looks uneven after sanding."
     ],
     "priority": 80,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-what-choosing-starting-grit",
+    "id": "suggestion-what-how-to-choose-between-common-grits",
     "type": "question_suggestion",
     "question_word": "what",
     "title": "What grit should I use?",
-    "description": "It is unclear which grit to start with.",
-    "target_url": "/solutions/choosing-starting-grit/",
+    "description": "The user sees multiple grit options and needs a practical selection guide.",
+    "target_url": "/solutions/how-to-choose-between-common-grits/",
     "keywords": [
       "grit",
       "use",
-      "choosing",
-      "starting",
-      "unclear",
-      "start"
+      "choose",
+      "between",
+      "80",
+      "120",
+      "220",
+      "400",
+      "800",
+      "1000",
+      "2000",
+      "3000"
     ],
     "aliases": [
-      "Choosing a starting grit",
-      "It is unclear which grit to start with."
+      "How to choose between 80, 120, 220, 400, 800, 1000, 2000, and 3000 grit",
+      "The user sees multiple grit options and needs a practical selection guide."
     ],
     "priority": 100,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-what-paint-removal-too-slow",
+    "id": "suggestion-what-best-grit-for-paint-removal",
     "type": "question_suggestion",
     "question_word": "what",
     "title": "What grit removes paint?",
-    "description": "Paint is not coming off efficiently.",
-    "target_url": "/solutions/paint-removal-too-slow/",
+    "description": "The user needs a grit for removing old paint.",
+    "target_url": "/solutions/best-grit-for-paint-removal/",
     "keywords": [
       "grit",
       "removes",
       "paint",
-      "removal",
-      "too",
-      "slow",
-      "not",
-      "coming",
-      "off",
-      "efficiently"
+      "old",
+      "user",
+      "needs",
+      "removing"
     ],
     "aliases": [
-      "Paint removal is too slow",
-      "Paint is not coming off efficiently."
+      "Which grit removes old paint?",
+      "The user needs a grit for removing old paint."
     ],
     "priority": 95,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-what-what-grit-for-wood-prep",
+    "id": "suggestion-what-choose-grit-for-wood",
     "type": "question_suggestion",
     "question_word": "what",
     "title": "What grit is used for wood prep?",
-    "description": "The wood needs to be prepared but the grit is unclear.",
-    "target_url": "/solutions/what-grit-for-wood-prep/",
+    "description": "The user needs a grit sequence for sanding wood.",
+    "target_url": "/solutions/choose-grit-for-wood/",
     "keywords": [
       "grit",
       "used",
       "wood",
       "prep",
+      "use",
+      "user",
       "needs",
-      "be",
-      "prepared",
-      "but",
-      "unclear"
+      "sequence",
+      "sanding"
     ],
     "aliases": [
-      "What grit for wood prep",
-      "The wood needs to be prepared but the grit is unclear."
+      "What grit should I use for wood?",
+      "The user needs a grit sequence for sanding wood."
     ],
     "priority": 90,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-what-what-grit-for-paint-prep",
+    "id": "suggestion-what-best-grit-before-painting",
     "type": "question_suggestion",
     "question_word": "what",
     "title": "What grit is used for paint prep?",
-    "description": "Paint needs prep sanding before another coat.",
-    "target_url": "/solutions/what-grit-for-paint-prep/",
+    "description": "The user needs a grit for paint prep.",
+    "target_url": "/solutions/best-grit-before-painting/",
     "keywords": [
       "grit",
       "used",
       "paint",
       "prep",
-      "needs",
-      "sanding",
+      "best",
       "before",
-      "another",
-      "coat"
+      "painting",
+      "user",
+      "needs"
     ],
     "aliases": [
-      "What grit for paint prep",
-      "Paint needs prep sanding before another coat."
+      "Which grit is best before painting?",
+      "The user needs a grit for paint prep."
     ],
     "priority": 85,
     "result_kind": "answer"
@@ -366,7 +376,7 @@
     "type": "question_suggestion",
     "question_word": "what",
     "title": "What grit helps wet sanding haze?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "grit",
@@ -376,35 +386,42 @@
       "haze",
       "normal",
       "after",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 80,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-which-choosing-starting-grit",
+    "id": "suggestion-which-how-to-choose-between-common-grits",
     "type": "question_suggestion",
     "question_word": "which",
     "title": "Which grit should I start with?",
-    "description": "It is unclear which grit to start with.",
-    "target_url": "/solutions/choosing-starting-grit/",
+    "description": "The user sees multiple grit options and needs a practical selection guide.",
+    "target_url": "/solutions/how-to-choose-between-common-grits/",
     "keywords": [
       "grit",
       "start",
-      "choosing",
-      "starting",
-      "unclear"
+      "choose",
+      "between",
+      "80",
+      "120",
+      "220",
+      "400",
+      "800",
+      "1000",
+      "2000",
+      "3000"
     ],
     "aliases": [
-      "Choosing a starting grit",
-      "It is unclear which grit to start with."
+      "How to choose between 80, 120, 220, 400, 800, 1000, 2000, and 3000 grit",
+      "The user sees multiple grit options and needs a practical selection guide."
     ],
     "priority": 100,
     "result_kind": "answer"
@@ -437,29 +454,27 @@
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-which-60-grit-too-aggressive",
+    "id": "suggestion-which-what-is-60-grit-used-for",
     "type": "question_suggestion",
     "question_word": "which",
     "title": "Which grit is too aggressive?",
-    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
-    "target_url": "/solutions/60-grit-too-aggressive/",
+    "description": "The user wants to know when 60 grit is appropriate.",
+    "target_url": "/solutions/what-is-60-grit-used-for/",
     "keywords": [
       "grit",
       "too",
       "aggressive",
       "60",
-      "cuts",
-      "fast",
-      "leaves",
-      "scratches",
-      "deeper",
-      "than",
-      "project",
-      "needs"
+      "sandpaper",
+      "used",
+      "user",
+      "wants",
+      "know",
+      "appropriate"
     ],
     "aliases": [
-      "60 grit is too aggressive",
-      "60 grit cuts fast and leaves scratches deeper than the project needs."
+      "What is 60 grit sandpaper used for?",
+      "The user wants to know when 60 grit is appropriate."
     ],
     "priority": 90,
     "result_kind": "answer"
@@ -491,29 +506,27 @@
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-which-between-coats-too-coarse",
+    "id": "suggestion-which-best-grit-between-coats-of-paint",
     "type": "question_suggestion",
     "question_word": "which",
     "title": "Which grit works between coats?",
-    "description": "Sanding between coats leaves scratches or cuts through coating.",
-    "target_url": "/solutions/between-coats-too-coarse/",
+    "description": "The user needs a grit for light sanding between paint coats.",
+    "target_url": "/solutions/best-grit-between-coats-of-paint/",
     "keywords": [
       "grit",
       "works",
       "between",
       "coats",
-      "too",
-      "coarse",
-      "sanding",
-      "leaves",
-      "scratches",
-      "cuts",
-      "through",
-      "coating"
+      "use",
+      "paint",
+      "user",
+      "needs",
+      "light",
+      "sanding"
     ],
     "aliases": [
-      "Grit is too coarse between coats",
-      "Sanding between coats leaves scratches or cuts through coating."
+      "Which grit should I use between coats of paint?",
+      "The user needs a grit for light sanding between paint coats."
     ],
     "priority": 80,
     "result_kind": "answer"
@@ -550,7 +563,7 @@
     "type": "question_suggestion",
     "question_word": "can",
     "title": "Can 3000 grit help polishing prep?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "3000",
@@ -558,210 +571,204 @@
       "help",
       "polishing",
       "prep",
-      "normal",
       "haze",
+      "normal",
       "after",
       "wet",
       "sanding",
-      "leaves",
-      "surface"
+      "surface",
+      "looks"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 95,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-can-paint-removal-too-slow",
+    "id": "suggestion-can-best-grit-for-paint-removal",
     "type": "question_suggestion",
     "question_word": "can",
     "title": "Can sandpaper remove paint?",
-    "description": "Paint is not coming off efficiently.",
-    "target_url": "/solutions/paint-removal-too-slow/",
+    "description": "The user needs a grit for removing old paint.",
+    "target_url": "/solutions/best-grit-for-paint-removal/",
     "keywords": [
       "sandpaper",
       "remove",
       "paint",
-      "removal",
-      "too",
-      "slow",
-      "not",
-      "coming",
-      "off",
-      "efficiently"
+      "grit",
+      "removes",
+      "old",
+      "user",
+      "needs",
+      "removing"
     ],
     "aliases": [
-      "Paint removal is too slow",
-      "Paint is not coming off efficiently."
+      "Which grit removes old paint?",
+      "The user needs a grit for removing old paint."
     ],
     "priority": 90,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-can-swirls-after-1000",
+    "id": "suggestion-can-swirl-marks-after-hand-sanding",
     "type": "question_suggestion",
     "question_word": "can",
     "title": "Can sanding fix swirl marks?",
-    "description": "Curved or circular marks remain after fine sanding.",
-    "target_url": "/solutions/swirls-after-1000/",
+    "description": "Circular or random sanding marks show on the surface.",
+    "target_url": "/solutions/swirl-marks-after-hand-sanding/",
     "keywords": [
       "sanding",
       "fix",
       "swirl",
       "marks",
-      "swirls",
-      "remain",
+      "appear",
       "after",
-      "1000",
-      "grit",
-      "curved",
+      "hand",
       "circular",
-      "fine"
+      "random",
+      "show",
+      "on",
+      "surface"
     ],
     "aliases": [
-      "Swirls remain after 1000 grit",
-      "Curved or circular marks remain after fine sanding."
+      "Swirl marks appear after hand sanding",
+      "Circular or random sanding marks show on the surface."
     ],
     "priority": 85,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-can-clear-coat-haze-after-1000",
+    "id": "suggestion-can-cloudy-clear-coat-after-sanding",
     "type": "question_suggestion",
     "question_word": "can",
     "title": "Can I wet sand clear coat?",
-    "description": "1000 grit wet sanding leaves a dull clear coat.",
-    "target_url": "/solutions/clear-coat-haze-after-1000/",
+    "description": "Clear coat looks cloudy or dull after wet sanding.",
+    "target_url": "/solutions/cloudy-clear-coat-after-sanding/",
     "keywords": [
       "wet",
       "sand",
       "clear",
       "coat",
-      "haze",
+      "looks",
+      "cloudy",
       "after",
-      "1000",
-      "grit",
       "sanding",
-      "leaves",
       "dull"
     ],
     "aliases": [
-      "Clear coat haze after 1000 grit",
-      "1000 grit wet sanding leaves a dull clear coat."
+      "Clear coat looks cloudy after sanding",
+      "Clear coat looks cloudy or dull after wet sanding."
     ],
     "priority": 80,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-should-sheet-smooth-but-unused",
+    "id": "suggestion-should-sandpaper-stops-cutting-fast",
     "type": "question_suggestion",
     "question_word": "should",
     "title": "Should I replace sandpaper when it stops cutting?",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "description": "The sheet stops removing material even though sanding continues.",
+    "target_url": "/solutions/sandpaper-stops-cutting-fast/",
     "keywords": [
       "replace",
       "sandpaper",
       "stops",
       "cutting",
+      "fast",
       "sheet",
-      "feels",
-      "smooth",
-      "but",
-      "looks",
-      "unused",
-      "not",
-      "look"
+      "removing",
+      "material",
+      "even",
+      "though",
+      "sanding",
+      "continues"
     ],
     "aliases": [
-      "Sheet feels smooth but looks unused",
-      "The sheet does not look worn out, but it feels smooth and stops cutting."
+      "Sandpaper stops cutting fast",
+      "The sheet stops removing material even though sanding continues."
     ],
     "priority": 100,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-should-sheet-soft-after-soaking-too-long",
+    "id": "suggestion-should-can-sandpaper-be-used-wet-and-dry",
     "type": "question_suggestion",
     "question_word": "should",
     "title": "Should I soak sandpaper before wet sanding?",
-    "description": "The sheet feels weak or soft after sitting in water.",
-    "target_url": "/solutions/sheet-soft-after-soaking-too-long/",
+    "description": "The user wants to know whether the sandpaper can be used wet or dry.",
+    "target_url": "/solutions/can-sandpaper-be-used-wet-and-dry/",
     "keywords": [
       "soak",
       "sandpaper",
       "before",
       "wet",
       "sanding",
-      "sheet",
-      "becomes",
-      "soft",
-      "after",
-      "soaking",
-      "too",
-      "long"
+      "be",
+      "used",
+      "dry",
+      "user",
+      "wants",
+      "know",
+      "whether"
     ],
     "aliases": [
-      "Sheet becomes soft after soaking too long",
-      "The sheet feels weak or soft after sitting in water."
+      "Can this sandpaper be used wet and dry?",
+      "The user wants to know whether the sandpaper can be used wet or dry."
     ],
     "priority": 95,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-should-skipped-120-to-320",
+    "id": "suggestion-should-can-i-skip-grits",
     "type": "question_suggestion",
     "question_word": "should",
     "title": "Should I skip grits?",
-    "description": "320 grit does not remove the scratches left by 120 grit.",
-    "target_url": "/solutions/skipped-120-to-320/",
+    "description": "The user wants to know whether grit steps can be skipped.",
+    "target_url": "/solutions/can-i-skip-grits/",
     "keywords": [
       "skip",
       "grits",
-      "skipped",
-      "from",
-      "120",
-      "320",
+      "user",
+      "wants",
+      "know",
+      "whether",
       "grit",
-      "not",
-      "remove",
-      "scratches",
-      "left",
-      "by"
+      "steps",
+      "be",
+      "skipped"
     ],
     "aliases": [
-      "Skipped from 120 to 320",
-      "320 grit does not remove the scratches left by 120 grit."
+      "Can I skip grits?",
+      "The user wants to know whether grit steps can be skipped."
     ],
     "priority": 90,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-should-60-grit-too-aggressive",
+    "id": "suggestion-should-what-is-60-grit-used-for",
     "type": "question_suggestion",
     "question_word": "should",
     "title": "Should I use coarse grit first?",
-    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
-    "target_url": "/solutions/60-grit-too-aggressive/",
+    "description": "The user wants to know when 60 grit is appropriate.",
+    "target_url": "/solutions/what-is-60-grit-used-for/",
     "keywords": [
       "use",
       "coarse",
       "grit",
       "first",
       "60",
-      "too",
-      "aggressive",
-      "cuts",
-      "fast",
-      "leaves",
-      "scratches",
-      "deeper"
+      "sandpaper",
+      "used",
+      "user",
+      "wants",
+      "know",
+      "appropriate"
     ],
     "aliases": [
-      "60 grit is too aggressive",
-      "60 grit cuts fast and leaves scratches deeper than the project needs."
+      "What is 60 grit sandpaper used for?",
+      "The user wants to know when 60 grit is appropriate."
     ],
     "priority": 85,
     "result_kind": "answer"
@@ -771,52 +778,48 @@
     "type": "question_suggestion",
     "question_word": "should",
     "title": "Should I sand wet or dry?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "sand",
       "wet",
       "dry",
-      "normal",
       "haze",
+      "normal",
       "after",
       "sanding",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 80,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-when-sheet-smooth-but-unused",
+    "id": "suggestion-when-when-to-change-sandpaper-sheet",
     "type": "question_suggestion",
     "question_word": "when",
     "title": "When should I replace sandpaper?",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "description": "The user is unsure when a sheet is worn or loaded.",
+    "target_url": "/solutions/when-to-change-sandpaper-sheet/",
     "keywords": [
       "replace",
       "sandpaper",
+      "change",
       "sheet",
-      "feels",
-      "smooth",
-      "but",
-      "looks",
-      "unused",
-      "not",
-      "look",
+      "user",
+      "unsure",
       "worn",
-      "out"
+      "loaded"
     ],
     "aliases": [
-      "Sheet feels smooth but looks unused",
-      "The sheet does not look worn out, but it feels smooth and stops cutting."
+      "When should I change the sandpaper sheet?",
+      "The user is unsure when a sheet is worn or loaded."
     ],
     "priority": 100,
     "result_kind": "answer"
@@ -826,23 +829,23 @@
     "type": "question_suggestion",
     "question_word": "when",
     "title": "When should I wet sand?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "wet",
       "sand",
-      "normal",
       "haze",
+      "normal",
       "after",
       "sanding",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 95,
     "result_kind": "answer"
@@ -852,7 +855,7 @@
     "type": "question_suggestion",
     "question_word": "when",
     "title": "When should I stop sanding?",
-    "description": "The sanded surface looks patchy or uneven.",
+    "description": "The surface looks uneven after sanding.",
     "target_url": "/solutions/uneven-finish-from-pressure/",
     "keywords": [
       "stop",
@@ -861,14 +864,13 @@
       "finish",
       "from",
       "pressure",
-      "sanded",
       "surface",
       "looks",
-      "patchy"
+      "after"
     ],
     "aliases": [
-      "Uneven finish from pressure",
-      "The sanded surface looks patchy or uneven."
+      "Uneven finish from sanding pressure",
+      "The surface looks uneven after sanding."
     ],
     "priority": 90,
     "result_kind": "answer"
@@ -878,52 +880,52 @@
     "type": "question_suggestion",
     "question_word": "when",
     "title": "When should I use 3000 grit?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "use",
       "3000",
       "grit",
-      "normal",
       "haze",
+      "normal",
       "after",
       "wet",
       "sanding",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 85,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-when-skipped-120-to-320",
+    "id": "suggestion-when-can-i-skip-grits",
     "type": "question_suggestion",
     "question_word": "when",
     "title": "When should I change grit?",
-    "description": "320 grit does not remove the scratches left by 120 grit.",
-    "target_url": "/solutions/skipped-120-to-320/",
+    "description": "The user wants to know whether grit steps can be skipped.",
+    "target_url": "/solutions/can-i-skip-grits/",
     "keywords": [
       "change",
       "grit",
-      "skipped",
-      "from",
-      "120",
-      "320",
-      "not",
-      "remove",
-      "scratches",
-      "left",
-      "by"
+      "skip",
+      "grits",
+      "user",
+      "wants",
+      "know",
+      "whether",
+      "steps",
+      "be",
+      "skipped"
     ],
     "aliases": [
-      "Skipped from 120 to 320",
-      "320 grit does not remove the scratches left by 120 grit."
+      "Can I skip grits?",
+      "The user wants to know whether grit steps can be skipped."
     ],
     "priority": 80,
     "result_kind": "answer"
@@ -933,52 +935,50 @@
     "type": "question_suggestion",
     "question_word": "do",
     "title": "Do I need water for wet sanding?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "need",
       "water",
       "wet",
       "sanding",
-      "normal",
       "haze",
+      "normal",
       "after",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 100,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-do-between-coats-too-coarse",
+    "id": "suggestion-do-best-grit-between-coats-of-paint",
     "type": "question_suggestion",
     "question_word": "do",
     "title": "Do I sand between coats?",
-    "description": "Sanding between coats leaves scratches or cuts through coating.",
-    "target_url": "/solutions/between-coats-too-coarse/",
+    "description": "The user needs a grit for light sanding between paint coats.",
+    "target_url": "/solutions/best-grit-between-coats-of-paint/",
     "keywords": [
       "sand",
       "between",
       "coats",
       "grit",
-      "too",
-      "coarse",
-      "sanding",
-      "leaves",
-      "scratches",
-      "cuts",
-      "through",
-      "coating"
+      "use",
+      "paint",
+      "user",
+      "needs",
+      "light",
+      "sanding"
     ],
     "aliases": [
-      "Grit is too coarse between coats",
-      "Sanding between coats leaves scratches or cuts through coating."
+      "Which grit should I use between coats of paint?",
+      "The user needs a grit for light sanding between paint coats."
     ],
     "priority": 95,
     "result_kind": "answer"
@@ -988,7 +988,7 @@
     "type": "question_suggestion",
     "question_word": "do",
     "title": "Do I need to start over after deep scratches?",
-    "description": "80 grit removed material but left deep scratches.",
+    "description": "80 grit removed material but left deep sanding scratches.",
     "target_url": "/solutions/deep-scratches-after-80-grit/",
     "keywords": [
       "need",
@@ -1006,35 +1006,35 @@
     ],
     "aliases": [
       "Deep scratches remain after 80 grit",
-      "80 grit removed material but left deep scratches."
+      "80 grit removed material but left deep sanding scratches."
     ],
     "priority": 90,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-do-sheet-hard-to-hold-detail-sanding",
+    "id": "suggestion-do-small-parts-hand-sanding-grit",
     "type": "question_suggestion",
     "question_word": "do",
     "title": "Do I need a sanding block?",
-    "description": "Small details are difficult to sand evenly with a loose sheet.",
-    "target_url": "/solutions/sheet-hard-to-hold-detail-sanding/",
+    "description": "Small parts are hard to hold and can get rounded or uneven while sanding.",
+    "target_url": "/solutions/small-parts-hand-sanding-grit/",
     "keywords": [
       "need",
       "sanding",
       "block",
-      "sheet",
+      "sand",
+      "small",
+      "parts",
+      "by",
+      "hand",
+      "are",
       "hard",
       "hold",
-      "detail",
-      "small",
-      "details",
-      "are",
-      "difficult",
-      "sand"
+      "get"
     ],
     "aliases": [
-      "Sheet is hard to hold for detail sanding",
-      "Small details are difficult to sand evenly with a loose sheet."
+      "How to sand small parts by hand",
+      "Small parts are hard to hold and can get rounded or uneven while sanding."
     ],
     "priority": 85,
     "result_kind": "answer"
@@ -1072,25 +1072,25 @@
     "type": "question_suggestion",
     "question_word": "does",
     "title": "Does this sandpaper work wet and dry?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "sandpaper",
       "work",
       "wet",
       "dry",
-      "normal",
       "haze",
+      "normal",
       "after",
       "sanding",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 100,
     "result_kind": "answer"
@@ -1100,25 +1100,25 @@
     "type": "question_suggestion",
     "question_word": "does",
     "title": "Does 3000 grit polish the surface?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "3000",
       "grit",
       "polish",
       "surface",
-      "normal",
       "haze",
+      "normal",
       "after",
       "wet",
       "sanding",
-      "leaves",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 95,
     "result_kind": "answer"
@@ -1151,57 +1151,55 @@
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-does-sheet-smooth-but-unused",
+    "id": "suggestion-does-sandpaper-stops-cutting-fast",
     "type": "question_suggestion",
     "question_word": "does",
     "title": "Does clogging mean the sandpaper is worn out?",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "description": "The sheet stops removing material even though sanding continues.",
+    "target_url": "/solutions/sandpaper-stops-cutting-fast/",
     "keywords": [
       "clogging",
       "mean",
       "sandpaper",
       "worn",
       "out",
+      "stops",
+      "cutting",
+      "fast",
       "sheet",
-      "feels",
-      "smooth",
-      "but",
-      "looks",
-      "unused",
-      "not"
+      "removing",
+      "material",
+      "even"
     ],
     "aliases": [
-      "Sheet feels smooth but looks unused",
-      "The sheet does not look worn out, but it feels smooth and stops cutting."
+      "Sandpaper stops cutting fast",
+      "The sheet stops removing material even though sanding continues."
     ],
     "priority": 85,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-does-grit-comes-off-sheet",
+    "id": "suggestion-does-when-to-change-sandpaper-sheet",
     "type": "question_suggestion",
     "question_word": "does",
     "title": "Does grit come off the sheet?",
-    "description": "Loose abrasive appears on the surface or the sheet sheds grit during sanding.",
-    "target_url": "/solutions/grit-comes-off-sheet/",
+    "description": "The user is unsure when a sheet is worn or loaded.",
+    "target_url": "/solutions/when-to-change-sandpaper-sheet/",
     "keywords": [
       "grit",
       "come",
       "off",
       "sheet",
-      "comes",
-      "loose",
-      "abrasive",
-      "appears",
-      "on",
-      "surface",
-      "sheds",
-      "during"
+      "change",
+      "sandpaper",
+      "user",
+      "unsure",
+      "worn",
+      "loaded"
     ],
     "aliases": [
-      "Grit comes off the sheet",
-      "Loose abrasive appears on the surface or the sheet sheds grit during sanding."
+      "When should I change the sandpaper sheet?",
+      "The user is unsure when a sheet is worn or loaded."
     ],
     "priority": 80,
     "result_kind": "answer"
@@ -1211,7 +1209,7 @@
     "type": "question_suggestion",
     "question_word": "is",
     "title": "Is wet sanding better than dry sanding?",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "wet",
@@ -1219,128 +1217,125 @@
       "better",
       "than",
       "dry",
-      "normal",
       "haze",
+      "normal",
       "after",
-      "leaves",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 100,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-is-60-grit-too-aggressive",
+    "id": "suggestion-is-what-is-60-grit-used-for",
     "type": "question_suggestion",
     "question_word": "is",
     "title": "Is 60 grit too aggressive?",
-    "description": "60 grit cuts fast and leaves scratches deeper than the project needs.",
-    "target_url": "/solutions/60-grit-too-aggressive/",
+    "description": "The user wants to know when 60 grit is appropriate.",
+    "target_url": "/solutions/what-is-60-grit-used-for/",
     "keywords": [
       "60",
       "grit",
       "too",
       "aggressive",
-      "cuts",
-      "fast",
-      "leaves",
-      "scratches",
-      "deeper",
-      "than",
-      "project",
-      "needs"
+      "sandpaper",
+      "used",
+      "user",
+      "wants",
+      "know",
+      "appropriate"
     ],
     "aliases": [
-      "60 grit is too aggressive",
-      "60 grit cuts fast and leaves scratches deeper than the project needs."
+      "What is 60 grit sandpaper used for?",
+      "The user wants to know when 60 grit is appropriate."
     ],
     "priority": 95,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-is-80-grit-removes-too-much",
+    "id": "suggestion-is-what-is-80-grit-used-for",
     "type": "question_suggestion",
     "question_word": "is",
     "title": "Is 80 grit too coarse?",
-    "description": "80 grit cuts deeper or faster than expected.",
-    "target_url": "/solutions/80-grit-removes-too-much/",
+    "description": "The user wants to know when 80 grit is appropriate.",
+    "target_url": "/solutions/what-is-80-grit-used-for/",
     "keywords": [
       "80",
       "grit",
       "too",
       "coarse",
-      "removes",
-      "much",
-      "cuts",
-      "deeper",
-      "faster",
-      "than",
-      "expected"
+      "sandpaper",
+      "used",
+      "user",
+      "wants",
+      "know",
+      "appropriate"
     ],
     "aliases": [
-      "80 grit removes too much",
-      "80 grit cuts deeper or faster than expected."
+      "What is 80 grit sandpaper used for?",
+      "The user wants to know when 80 grit is appropriate."
     ],
     "priority": 90,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-is-skipped-120-to-320",
+    "id": "suggestion-is-can-i-skip-grits",
     "type": "question_suggestion",
     "question_word": "is",
     "title": "Is the surface ready for the next grit?",
-    "description": "320 grit does not remove the scratches left by 120 grit.",
-    "target_url": "/solutions/skipped-120-to-320/",
+    "description": "The user wants to know whether grit steps can be skipped.",
+    "target_url": "/solutions/can-i-skip-grits/",
     "keywords": [
       "surface",
       "ready",
       "next",
       "grit",
-      "skipped",
-      "from",
-      "120",
-      "320",
-      "not",
-      "remove",
-      "scratches",
-      "left"
+      "skip",
+      "grits",
+      "user",
+      "wants",
+      "know",
+      "whether",
+      "steps",
+      "be"
     ],
     "aliases": [
-      "Skipped from 120 to 320",
-      "320 grit does not remove the scratches left by 120 grit."
+      "Can I skip grits?",
+      "The user wants to know whether grit steps can be skipped."
     ],
     "priority": 85,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-is-sheet-smooth-but-unused",
+    "id": "suggestion-is-sandpaper-stops-cutting-fast",
     "type": "question_suggestion",
     "question_word": "is",
     "title": "Is the sandpaper worn out?",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "description": "The sheet stops removing material even though sanding continues.",
+    "target_url": "/solutions/sandpaper-stops-cutting-fast/",
     "keywords": [
       "sandpaper",
       "worn",
       "out",
+      "stops",
+      "cutting",
+      "fast",
       "sheet",
-      "feels",
-      "smooth",
-      "but",
-      "looks",
-      "unused",
-      "not",
-      "look",
-      "stops"
+      "removing",
+      "material",
+      "even",
+      "though",
+      "sanding"
     ],
     "aliases": [
-      "Sheet feels smooth but looks unused",
-      "The sheet does not look worn out, but it feels smooth and stops cutting."
+      "Sandpaper stops cutting fast",
+      "The sheet stops removing material even though sanding continues."
     ],
     "priority": 80,
     "result_kind": "answer"
@@ -1378,7 +1373,7 @@
     "type": "general_sandpaper_suggestion",
     "question_word": "sandpaper",
     "title": "Scratches are too deep",
-    "description": "80 grit removed material but left deep scratches.",
+    "description": "80 grit removed material but left deep sanding scratches.",
     "target_url": "/solutions/deep-scratches-after-80-grit/",
     "keywords": [
       "scratches",
@@ -1396,7 +1391,7 @@
     ],
     "aliases": [
       "Deep scratches remain after 80 grit",
-      "80 grit removed material but left deep scratches."
+      "80 grit removed material but left deep sanding scratches."
     ],
     "priority": 95,
     "result_kind": "answer"
@@ -1434,7 +1429,7 @@
     "type": "general_sandpaper_suggestion",
     "question_word": "sandpaper",
     "title": "Wet sanding leaves haze",
-    "description": "Wet sanding leaves the surface dull or cloudy.",
+    "description": "The surface looks hazy or dull after wet sanding.",
     "target_url": "/solutions/normal-haze-after-wet-sanding/",
     "keywords": [
       "wet",
@@ -1444,23 +1439,24 @@
       "normal",
       "after",
       "surface",
-      "dull",
-      "cloudy"
+      "looks",
+      "hazy",
+      "dull"
     ],
     "aliases": [
-      "Normal haze after wet sanding",
-      "Wet sanding leaves the surface dull or cloudy."
+      "Is haze normal after wet sanding?",
+      "The surface looks hazy or dull after wet sanding."
     ],
     "priority": 85,
     "result_kind": "answer"
   },
   {
-    "id": "suggestion-sandpaper-sheet-smooth-but-unused",
+    "id": "suggestion-sandpaper-sandpaper-stops-cutting-fast",
     "type": "general_sandpaper_suggestion",
     "question_word": "sandpaper",
     "title": "Sheet feels smooth but stops cutting",
-    "description": "The sheet does not look worn out, but it feels smooth and stops cutting.",
-    "target_url": "/solutions/sheet-smooth-but-unused/",
+    "description": "The sheet stops removing material even though sanding continues.",
+    "target_url": "/solutions/sandpaper-stops-cutting-fast/",
     "keywords": [
       "sheet",
       "feels",
@@ -1468,16 +1464,16 @@
       "but",
       "stops",
       "cutting",
-      "looks",
-      "unused",
-      "not",
-      "look",
-      "worn",
-      "out"
+      "sandpaper",
+      "fast",
+      "removing",
+      "material",
+      "even",
+      "though"
     ],
     "aliases": [
-      "Sheet feels smooth but looks unused",
-      "The sheet does not look worn out, but it feels smooth and stops cutting."
+      "Sandpaper stops cutting fast",
+      "The sheet stops removing material even though sanding continues."
     ],
     "priority": 80,
     "result_kind": "answer"
