@@ -4,30 +4,10 @@
     "title": "Wood",
     "description": "Wood sanding issues including scratches, raised grain, stain prep, veneer, softwood, hardwood, and edges.",
     "solution_card_ids": [
-      "100-grit-marks-before-180",
-      "150-grit-not-smooth-enough",
-      "240-still-leaves-scratches",
       "320-does-not-remove-180-scratches",
-      "60-grit-too-aggressive",
-      "80-grit-removes-too-much",
       "coarse-scratches-on-wood",
-      "dust-hides-scratches-until-finish",
-      "end-grain-sands-differently",
-      "hand-sanding-finger-grooves",
-      "hardwood-scratch-lines",
-      "raised-grain-after-water-wipe",
       "rough-spots-after-fine-grit",
-      "sanding-across-grain-lines",
-      "sanding-leaves-low-spots",
-      "scratches-show-after-stain",
-      "sheet-hard-to-hold-detail-sanding",
-      "skipped-120-to-320",
-      "softwood-grooves-from-sanding",
-      "stain-looks-blotchy",
-      "veneer-sands-through",
-      "what-grit-for-wood-prep",
       "wood-dust-clogs-paper",
-      "wood-prep-before-finish",
       "wood-still-rough-after-120",
       "wood-still-rough-after-220"
     ]
@@ -38,29 +18,9 @@
     "description": "Paint and primer sanding issues including clogging, feather edges, scratches, chips, dull spots, and repaint prep.",
     "solution_card_ids": [
       "320-does-not-remove-180-scratches",
-      "500-vs-600-confusion",
-      "dust-nibs-remain",
-      "fine-grit-used-for-removal",
       "finish-smears-while-sanding",
-      "gloss-shows-scratches",
-      "between-coats-too-coarse",
-      "high-grit-does-not-remove-defects",
-      "low-grit-damages-finish",
-      "old-paint-gets-gummy",
-      "paint-chips-at-edge",
       "paint-clogs-sheet",
-      "paint-edges-do-not-feather",
-      "paint-looks-dull-after-sanding",
-      "paint-removal-too-slow",
-      "patch-smooth-but-shows-after-paint",
-      "primer-dust-loads-paper",
-      "primer-sands-unevenly",
-      "primer-scratches-show-through",
-      "runs-drips-hard-to-level",
-      "between-coats-cut-through",
-      "sanding-leaves-low-spots",
-      "assorted-kit-finish-prep",
-      "what-grit-for-paint-prep"
+      "primer-dust-loads-paper"
     ]
   },
   {
@@ -68,31 +28,8 @@
     "title": "Clear Coat",
     "description": "Clear coat wet sanding issues including haze, orange peel, 1500 marks, edge burn-through, and polish prep.",
     "solution_card_ids": [
-      "1000-not-fine-enough-clear-coat",
-      "1200-still-leaves-haze",
-      "1500-does-not-remove-1000-marks",
-      "2000-still-needs-3000",
-      "3000-does-not-create-gloss",
-      "800-leaves-dull-marks",
-      "clear-coat-burns-through-edges",
-      "clear-coat-cloudy-after-2000",
-      "clear-coat-haze-after-1000",
-      "clear-coat-orange-peel-leveling",
-      "clear-coat-shows-1500-marks",
       "deep-lines-on-clear-coat",
-      "dust-nibs-remain",
-      "gloss-shows-scratches",
-      "normal-haze-after-wet-sanding",
-      "orange-peel-not-leveling",
-      "paint-looks-dull-after-sanding",
-      "runs-drips-hard-to-level",
-      "sand-through-clear-coat-corners",
-      "swirls-from-dirty-water",
-      "swirls-after-1000",
-      "assorted-kit-polishing-prep",
-      "wet-sanding-random-deep-scratches",
-      "haze-is-uneven",
-      "wet-sanding-straight-scratches"
+      "normal-haze-after-wet-sanding"
     ]
   },
   {
@@ -100,21 +37,9 @@
     "title": "Metal",
     "description": "Metal sanding issues including rust pits, oxidation, directional scratches, aluminum loading, burrs, and paint prep.",
     "solution_card_ids": [
-      "100-grit-marks-before-180",
-      "150-grit-not-smooth-enough",
-      "240-still-leaves-scratches",
       "320-does-not-remove-180-scratches",
-      "60-grit-too-aggressive",
-      "80-grit-removes-too-much",
-      "aluminum-clogs-paper",
-      "fine-grit-used-for-removal",
-      "high-grit-does-not-remove-defects",
-      "metal-prep-before-paint",
       "metal-still-rough",
-      "rust-pits-remain",
-      "sandpaper-leaves-residue",
-      "scratches-on-metal-after-prep",
-      "sheet-edge-frays"
+      "scratches-on-metal-after-prep"
     ]
   },
   {
@@ -122,63 +47,24 @@
     "title": "Plastic",
     "description": "Plastic sanding issues including white haze, smearing, fuzzy edges, visible scratches, heat, and clogged paper.",
     "solution_card_ids": [
-      "1200-still-leaves-haze",
-      "2000-still-needs-3000",
-      "3000-does-not-create-gloss",
-      "3000-leaves-plastic-hazy",
-      "800-leaves-dull-marks",
-      "high-grit-does-not-remove-defects",
-      "plastic-dust-clogs-paper",
-      "plastic-edge-gets-fuzzy",
-      "plastic-haze-after-wet-sanding",
-      "plastic-melts-or-smears",
-      "plastic-prep-before-paint",
-      "plastic-still-rough",
-      "plastic-turns-white",
-      "sheet-hard-to-hold-detail-sanding",
-      "wet-sanding-random-deep-scratches",
-      "wet-sanding-straight-scratches"
+      "plastic-still-rough"
     ]
   },
   {
     "id": "drywall-patch",
     "title": "Drywall Patch",
     "description": "Drywall patch sanding issues including ridges, torn paper, clogged joint compound, visible edges, dust, and low spots.",
-    "solution_card_ids": [
-      "drywall-paper-tears",
-      "drywall-patch-ridges-remain",
-      "joint-compound-clogs-paper",
-      "patch-edge-visible-after-sanding",
-      "patch-smooth-but-shows-after-paint",
-      "primer-sands-unevenly",
-      "sanding-leaves-low-spots"
-    ]
+    "solution_card_ids": []
   },
   {
     "id": "sheet-problems",
     "title": "General Sheet Problems",
     "description": "Sheet and abrasive handling issues including grit shedding, curling, fraying, tearing, residue, soaking, clogging, and worn sheets.",
     "solution_card_ids": [
-      "aluminum-clogs-paper",
-      "dry-sanding-leaves-dust-scratches",
-      "grit-comes-off-sheet",
-      "joint-compound-clogs-paper",
       "paint-clogs-sheet",
-      "paper-tears-from-folding",
-      "paper-tears-from-heavy-pressure",
-      "paper-tears-on-sharp-edge",
-      "plastic-dust-clogs-paper",
       "primer-dust-loads-paper",
-      "sandpaper-leaves-residue",
-      "sheet-soft-after-soaking-too-long",
-      "sheet-curls-during-wet-sanding",
-      "sheet-edge-frays",
-      "sheet-smooth-but-unused",
-      "sheet-hard-to-hold-detail-sanding",
-      "swirls-from-dirty-water",
       "wet-sanding-slurry-builds-up",
-      "wood-dust-clogs-paper",
-      "worn-sheet-not-cutting"
+      "wood-dust-clogs-paper"
     ]
   }
 ]
