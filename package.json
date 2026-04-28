@@ -12,10 +12,11 @@
     "build:solution-pages": "node scripts/build-solution-pages.js --write",
     "build:solution-pages:preview": "node scripts/build-solution-pages.js --preview uneven-finish-from-pressure",
     "sync:solution-search": "node scripts/sync-solution-search-data.js --write",
+    "build:product-pages": "node scripts/build-product-pages.js --write",
     "build:surface-pages": "node scripts/build-surface-pages.js --write",
     "build:grit-guide": "node scripts/build-grit-guide.js --write",
     "prune:stale-links": "node scripts/prune-stale-internal-links.js",
     "check:links": "node scripts/check-internal-links.js",
-    "build": "npm run build:problem-pages && npm run build:solution-pages && npm run sync:solution-search && npm run build:surface-pages && npm run build:grit-guide && npm run prune:stale-links && npm run check:links"
+    "build": "npm run build:problem-pages && npm run build:solution-pages && npm run sync:solution-search && npm run build:product-pages && npm run build:surface-pages && npm run build:grit-guide && npm run prune:stale-links && npm run check:links"
   }
 }
