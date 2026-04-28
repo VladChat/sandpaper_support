@@ -34,9 +34,6 @@
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 16px;
-  display: grid;
-  gap: 14px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   padding: 12px;
 }
 

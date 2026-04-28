@@ -27,7 +27,7 @@ function setupSolutionVideoStyles() {
   const link = document.createElement("link");
   link.id = stylesheetId;
   link.rel = "stylesheet";
-  link.href = getSupportBasePath() + "/assets/solution-video.css?v=solution-video-guide-20260428";
+  link.href = getSupportBasePath() + "/assets/solution-video.css?v=solution-video-guide-fullwidth-v2-20260428";
   document.head.appendChild(link);
 }
 
