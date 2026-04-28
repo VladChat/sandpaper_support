@@ -1,0 +1,135 @@
+/* Site-wide layout consistency overrides.
+   Keep the homepage on the same content width system as solution, problem, surface, product, and tool pages. */
+
+body.support-home .support-home-main {
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: clamp(42px, 6vw, 72px) 20px 48px;
+}
+
+body.support-home .support-hero {
+  width: 100%;
+}
+
+body.support-home .support-hero-content {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+body.support-home .support-hero-title {
+  margin: 0 0 14px;
+  max-width: 900px;
+  text-align: left;
+}
+
+body.support-home .support-hero-subtitle {
+  margin: 0 0 28px;
+  max-width: 760px;
+  text-align: left;
+}
+
+body.support-home .support-search-shell {
+  margin: 0;
+  max-width: none;
+  width: 100%;
+}
+
+body.support-home .support-search-form {
+  min-height: 64px;
+  padding: 6px 8px 6px 22px;
+  gap: 8px;
+  box-shadow: 0 8px 28px rgba(11, 12, 14, 0.1);
+}
+
+body.support-home .support-search-input {
+  min-height: 50px;
+  padding: 0;
+}
+
+body.support-home .support-search-button,
+body.support-home .support-tool-button {
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+body.support-home .support-tool-button {
+  background: transparent;
+  border-radius: 999px;
+  color: #4b5563;
+  font: inherit;
+  min-width: 44px;
+  padding: 0 12px;
+}
+
+body.support-home .support-tool-button:hover {
+  background: #f3f4f6;
+  color: #0b0c0e;
+}
+
+body.support-home .support-tool-button svg {
+  height: 20px;
+  width: 20px;
+}
+
+body.support-home .support-photo-button {
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+body.support-home .support-search-button {
+  height: 50px;
+  margin-right: 0;
+  padding: 0 28px;
+}
+
+@media (max-width: 860px) {
+  body.support-home .support-home-main {
+    padding: 40px 20px 40px;
+  }
+
+  body.support-home .support-search-shell {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  body.support-home .support-home-main {
+    padding: 32px 16px 32px;
+  }
+
+  body.support-home .support-search-form {
+    border-radius: 28px;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  body.support-home .support-search-input {
+    flex-basis: 100%;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  body.support-home .support-tool-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  body.support-home .support-photo-button {
+    flex: 1;
+  }
+
+  body.support-home .support-search-button {
+    flex: 1.4;
+    height: 44px;
+    margin-right: 0;
+    padding: 0 16px;
+  }
+}
