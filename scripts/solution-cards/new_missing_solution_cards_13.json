@@ -1,0 +1,1454 @@
+[
+  {
+    "id": "latex-paint-brush-marks-sanding-grit",
+    "problem_slug": "paint-defect-repair",
+    "title": "What grit removes brush marks in latex paint?",
+    "problem": "Dried latex paint can show brush ridges or uneven texture.",
+    "likely_cause": "Brush marks must be dry enough to sand cleanly before they can be leveled.",
+    "recommended_grit": "Use 320 or 400 to level brush marks, then 600 for smoother repaint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the paint dry enough to sand cleanly.",
+      "Level brush marks with 320 or 400.",
+      "Refine with 600 for smoother visible areas.",
+      "Remove dust before repainting."
+    ],
+    "avoid": "Do not sand latex paint that still feels soft or gummy.",
+    "success_check": "The brush ridges are level and the surface is ready for another coat.",
+    "related_links": [
+      "/solutions/paint-drips-after-drying-grit/",
+      "/solutions/finish-smears-while-sanding/",
+      "/solutions/best-grit-between-coats-of-paint/"
+    ],
+    "slug": "latex-paint-brush-marks-sanding-grit",
+    "surface": "latex paint",
+    "task": "brush mark repair",
+    "symptom": "brush marks in latex paint",
+    "quick_answer": "For dried latex brush marks, use 320 or 400, then 600 before repainting.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on visible wall or trim paint.",
+      "Do not paint over sanding dust."
+    ],
+    "related_solution_ids": [
+      "paint-drips-after-drying-grit",
+      "finish-smears-while-sanding",
+      "best-grit-between-coats-of-paint"
+    ],
+    "search_phrases": [
+      "what grit removes brush marks in latex paint",
+      "sand brush marks latex paint",
+      "latex paint brush ridges sanding grit",
+      "smooth brush marks before repainting",
+      "paint brush marks sandpaper"
+    ]
+  },
+  {
+    "id": "roller-marks-after-painting-grit",
+    "problem_slug": "paint-defect-repair",
+    "title": "What grit fixes roller marks after painting?",
+    "problem": "Dried paint can show roller lines, texture, or lap marks.",
+    "likely_cause": "Raised roller texture needs light sanding only after the coating has dried enough to powder.",
+    "recommended_grit": "Use 320 or 400 for raised roller marks, then 600 for smoother repaint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the paint dry fully.",
+      "Sand raised roller marks with 320 or 400.",
+      "Feather the surrounding area.",
+      "Use 600 if a smoother final coat is needed."
+    ],
+    "avoid": "Do not sand paint that still smears.",
+    "success_check": "The roller texture is leveled and the area is ready for repainting.",
+    "related_links": [
+      "/solutions/latex-paint-brush-marks-sanding-grit/",
+      "/solutions/paint-drips-after-drying-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "roller-marks-after-painting-grit",
+    "surface": "painted surface",
+    "task": "roller mark repair",
+    "symptom": "roller marks after painting",
+    "quick_answer": "For dried roller marks, sand lightly with 320 or 400, then 600 for smoother repaint prep.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not dig a low spot into the painted surface.",
+      "Do not repaint over dust."
+    ],
+    "related_solution_ids": [
+      "latex-paint-brush-marks-sanding-grit",
+      "paint-drips-after-drying-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "what grit fixes roller marks after painting",
+      "sand roller marks paint",
+      "paint roller lines sanding grit",
+      "fix lap marks with sandpaper",
+      "smooth wall paint roller texture"
+    ]
+  },
+  {
+    "id": "paint-lap-marks-sanding-grit",
+    "problem_slug": "paint-defect-repair",
+    "title": "Can sanding fix paint lap marks?",
+    "problem": "Paint lap marks can remain visible after the coat dries.",
+    "likely_cause": "Some lap marks are thickness ridges that can be feathered; color or sheen mismatches usually need repainting.",
+    "recommended_grit": "Use 400 or 600 to feather raised lap edges before repainting.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the paint dry fully.",
+      "Check if the lap mark is raised or only a sheen/color difference.",
+      "Feather raised edges with 400 or 600.",
+      "Clean dust and repaint the section evenly."
+    ],
+    "avoid": "Do not sand aggressively if the issue is only color or sheen mismatch.",
+    "success_check": "Raised edges are blended before repainting the full section.",
+    "related_links": [
+      "/solutions/roller-marks-after-painting-grit/",
+      "/solutions/best-grit-between-coats-of-paint/",
+      "/solutions/surface-too-smooth-for-paint/"
+    ],
+    "slug": "paint-lap-marks-sanding-grit",
+    "surface": "painted surface",
+    "task": "lap mark repair",
+    "symptom": "paint lap marks",
+    "quick_answer": "Sanding helps raised lap edges. Use 400 or 600 lightly, then repaint the section.",
+    "best_grit_path": [
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not spot-sand one visible patch without blending.",
+      "Do not expect sanding alone to fix color mismatch."
+    ],
+    "related_solution_ids": [
+      "roller-marks-after-painting-grit",
+      "best-grit-between-coats-of-paint",
+      "surface-too-smooth-for-paint"
+    ],
+    "search_phrases": [
+      "can sanding fix paint lap marks",
+      "paint lap marks sanding grit",
+      "sand paint overlap lines",
+      "fix paint lap marks before repainting",
+      "what grit for lap marks"
+    ]
+  },
+  {
+    "id": "paint-sags-on-trim-sanding-grit",
+    "problem_slug": "trim-paint-repair",
+    "title": "What grit fixes paint sags on trim?",
+    "problem": "Paint sags on trim can leave raised uneven ridges.",
+    "likely_cause": "Sags need to dry hard enough to sand without smearing, then be leveled and recoated.",
+    "recommended_grit": "Use 400 to level small sags, then 600 for smoother trim repaint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the sag dry fully.",
+      "Level the raised sag with 400.",
+      "Feather the repair with 600.",
+      "Remove dust before recoating."
+    ],
+    "avoid": "Do not sand soft paint that still gums up.",
+    "success_check": "The sag is level and the trim surface is ready for another coat.",
+    "related_links": [
+      "/solutions/paint-drips-after-drying-grit/",
+      "/solutions/trim-molding-before-painting-grit/",
+      "/solutions/enamel-paint-between-coats-grit/"
+    ],
+    "slug": "paint-sags-on-trim-sanding-grit",
+    "surface": "painted trim",
+    "task": "paint sag repair",
+    "symptom": "paint sags on trim",
+    "quick_answer": "For dried paint sags on trim, level with 400, then feather with 600 before recoating.",
+    "best_grit_path": [
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not cut through trim edges.",
+      "Do not repaint over sanding dust."
+    ],
+    "related_solution_ids": [
+      "paint-drips-after-drying-grit",
+      "trim-molding-before-painting-grit",
+      "enamel-paint-between-coats-grit"
+    ],
+    "search_phrases": [
+      "what grit fixes paint sags on trim",
+      "sand paint sag on trim",
+      "paint sag sanding grit",
+      "fix paint runs on baseboard",
+      "smooth trim paint sag"
+    ]
+  },
+  {
+    "id": "orange-peel-on-cabinet-paint-grit",
+    "problem_slug": "cabinet-paint-repair",
+    "title": "What grit fixes orange peel on cabinet paint?",
+    "problem": "Cabinet paint can dry with a bumpy orange peel texture.",
+    "likely_cause": "Orange peel must be leveled only after the coating is hard enough to sand cleanly.",
+    "recommended_grit": "Use 800 or 1000 for light orange peel, then 1500 or 2000 for finer prep before polish or recoat.",
+    "wet_or_dry": "Wet only if the cabinet paint system allows it; otherwise dry lightly.",
+    "steps": [
+      "Let the cabinet paint cure enough to sand cleanly.",
+      "Level light orange peel with 800 or 1000.",
+      "Refine with 1500 or 2000 for a smoother surface.",
+      "Clean completely before polishing or recoating."
+    ],
+    "avoid": "Do not sand soft cabinet paint that still smears.",
+    "success_check": "The texture is leveled and the surface has an even fine haze.",
+    "related_links": [
+      "/solutions/paint-orange-peel-after-spray-grit/",
+      "/solutions/finish-smears-while-sanding/"
+    ],
+    "slug": "orange-peel-on-cabinet-paint-grit",
+    "surface": "painted cabinet",
+    "task": "orange peel repair",
+    "symptom": "orange peel cabinet paint",
+    "quick_answer": "For cabinet paint orange peel, use 800 or 1000 after curing, then 1500 or 2000 for finer prep.",
+    "best_grit_path": [
+      "800",
+      "1000",
+      "1500",
+      "2000"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on a visible cabinet finish.",
+      "Do not sand through edges or profiles."
+    ],
+    "related_solution_ids": [
+      "paint-orange-peel-after-spray-grit",
+      "finish-smears-while-sanding"
+    ],
+    "search_phrases": [
+      "what grit fixes orange peel on cabinet paint",
+      "cabinet paint orange peel sanding",
+      "sand orange peel cabinet doors",
+      "smooth sprayed cabinet paint grit",
+      "cabinet finish bumpy sandpaper"
+    ]
+  },
+  {
+    "id": "painted-door-dust-nibs-grit",
+    "problem_slug": "door-paint-repair",
+    "title": "What grit removes dust nibs on a painted door?",
+    "problem": "Painted doors can feel rough from small dust bumps after drying.",
+    "likely_cause": "Dust nibs are raised defects that need light leveling before recoating.",
+    "recommended_grit": "Use 600 for dust nibs, then 800 for smoother visible areas.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the door paint dry enough to sand cleanly.",
+      "Sand dust nibs lightly with 600.",
+      "Refine visible areas with 800 if needed.",
+      "Remove dust before the next coat."
+    ],
+    "avoid": "Do not use coarse grit on a finished door surface.",
+    "success_check": "The nibs are level and the door feels smooth before recoating.",
+    "related_links": [
+      "/solutions/dust-nibs-in-finish/",
+      "/solutions/wood-door-before-painting-grit/",
+      "/solutions/best-grit-between-coats-of-paint/"
+    ],
+    "slug": "painted-door-dust-nibs-grit",
+    "surface": "painted door",
+    "task": "dust nib repair",
+    "symptom": "dust nibs on painted door",
+    "quick_answer": "For dust nibs on a painted door, use 600 lightly, then 800 for smoother visible areas.",
+    "best_grit_path": [
+      "600",
+      "800"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand soft paint.",
+      "Do not recoat over sanding dust."
+    ],
+    "related_solution_ids": [
+      "dust-nibs-in-finish",
+      "wood-door-before-painting-grit",
+      "best-grit-between-coats-of-paint"
+    ],
+    "search_phrases": [
+      "what grit removes dust nibs on painted door",
+      "painted door rough dust nibs",
+      "sand dust bumps door paint",
+      "door paint sanding grit between coats",
+      "smooth painted door before recoat"
+    ]
+  },
+  {
+    "id": "primer-scratches-before-paint-grit",
+    "problem_slug": "primer-defect-repair",
+    "title": "Primer scratches show before paint",
+    "problem": "Primer still shows sanding scratches before the topcoat.",
+    "likely_cause": "The primer was not refined enough or the previous grit marks were too deep.",
+    "recommended_grit": "Use 400 for primer prep, then 600 for smoother topcoat prep.",
+    "wet_or_dry": "Dry or wet only if the primer system allows it.",
+    "steps": [
+      "Inspect scratches under good light.",
+      "Sand with 400 until the scratch pattern is uniform.",
+      "Refine with 600 before topcoat.",
+      "Clean dust completely before paint."
+    ],
+    "avoid": "Do not topcoat over visible deep primer scratches.",
+    "success_check": "The primer has a fine even scratch pattern before paint.",
+    "related_links": [
+      "/solutions/primer-before-paint-grit/",
+      "/solutions/spray-primer-rough-after-drying-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "primer-scratches-before-paint-grit",
+    "surface": "primer",
+    "task": "scratch refinement",
+    "symptom": "primer scratches before paint",
+    "quick_answer": "If primer scratches show, refine with 400, then 600 before topcoat.",
+    "best_grit_path": [
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not jump from 220 directly to topcoat on visible work.",
+      "Do not leave primer dust before paint."
+    ],
+    "related_solution_ids": [
+      "primer-before-paint-grit",
+      "spray-primer-rough-after-drying-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "primer scratches show before paint",
+      "what grit removes primer scratches",
+      "sand primer scratches before topcoat",
+      "primer sanding marks before paint",
+      "smooth primer before paint grit"
+    ]
+  },
+  {
+    "id": "caulk-line-before-painting-sanding-warning",
+    "problem_slug": "caulk-paint-prep",
+    "title": "Should I sand caulk before painting?",
+    "problem": "Fresh caulk lines can look uneven or collect paint poorly if handled too soon.",
+    "likely_cause": "Flexible caulk is not meant to be sanded like filler; sanding can tear or smear it.",
+    "recommended_grit": "Do not sand soft caulk. Sand only adjacent hard paint edges with 220 or 320 after caulk cures.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let caulk cure fully before painting.",
+      "Do not sand the soft caulk bead.",
+      "Sand adjacent hard paint edges with 220 or 320 if needed.",
+      "Remove dust before painting."
+    ],
+    "avoid": "Do not sand uncured or flexible caulk directly.",
+    "success_check": "The caulk is cured and surrounding paint edges are smooth before coating.",
+    "related_links": [
+      "/solutions/remove-caulk-residue-sanding-grit/",
+      "/solutions/best-grit-before-painting/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "caulk-line-before-painting-sanding-warning",
+    "surface": "caulk line",
+    "task": "paint prep warning",
+    "symptom": "caulk before painting",
+    "quick_answer": "Do not sand soft caulk. Let it cure, then sand only adjacent hard paint edges with 220 or 320 if needed.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not tear the caulk bead with sandpaper.",
+      "Do not paint over dusty edges."
+    ],
+    "related_solution_ids": [
+      "remove-caulk-residue-sanding-grit",
+      "best-grit-before-painting",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "should I sand caulk before painting",
+      "sand caulk line before paint",
+      "what grit around caulk before paint",
+      "caulk bead sanding warning",
+      "paint prep caulk sandpaper"
+    ]
+  },
+  {
+    "id": "wood-putty-before-painting-grit",
+    "problem_slug": "wood-putty",
+    "title": "What grit for wood putty before painting?",
+    "problem": "Wood putty can leave raised patches or visible edges under paint.",
+    "likely_cause": "Putty needs to be fully dry and sanded flush before primer or paint.",
+    "recommended_grit": "Use 180 to level, then 220 or 320 before primer.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the wood putty dry fully.",
+      "Level the patch with 180.",
+      "Blend with 220.",
+      "Use 320 for smoother primer prep."
+    ],
+    "avoid": "Do not paint over raised or uncured putty.",
+    "success_check": "The putty is flush and blends into the surrounding surface.",
+    "related_links": [
+      "/solutions/wood-filler-flush-sanding-grit/",
+      "/solutions/best-grit-before-painting/",
+      "/solutions/rough-spots-after-fine-grit/"
+    ],
+    "slug": "wood-putty-before-painting-grit",
+    "surface": "wood putty",
+    "task": "paint prep",
+    "symptom": "raised wood putty",
+    "quick_answer": "For wood putty before painting, level with 180, blend with 220, then use 320 for smoother primer prep.",
+    "best_grit_path": [
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand putty before it dries.",
+      "Do not leave dust around the patch."
+    ],
+    "related_solution_ids": [
+      "wood-filler-flush-sanding-grit",
+      "best-grit-before-painting",
+      "rough-spots-after-fine-grit"
+    ],
+    "search_phrases": [
+      "what grit for wood putty before painting",
+      "sandpaper for wood putty",
+      "smooth wood putty before paint",
+      "wood putty sanding grit",
+      "paint over wood putty prep"
+    ]
+  },
+  {
+    "id": "cabinet-door-edge-chip-repair-grit",
+    "problem_slug": "cabinet-repair",
+    "title": "What grit for cabinet door edge chip repair?",
+    "problem": "A repaired cabinet door edge can show a raised patch or rough feathered area.",
+    "likely_cause": "Edge repairs need leveling without sanding through surrounding finish or veneer.",
+    "recommended_grit": "Use 220 to blend small repairs, then 320 or 400 before primer or paint.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let filler or repair material cure fully.",
+      "Shape the edge repair carefully with 220.",
+      "Refine with 320 or 400.",
+      "Remove dust before primer or paint."
+    ],
+    "avoid": "Do not round over cabinet edges more than needed.",
+    "success_check": "The repaired edge feels smooth and blends into the door profile.",
+    "related_links": [
+      "/solutions/cabinets-before-painting-grit/",
+      "/solutions/wood-putty-before-painting-grit/",
+      "/solutions/sanding-through-edges/"
+    ],
+    "slug": "cabinet-door-edge-chip-repair-grit",
+    "surface": "cabinet door edge",
+    "task": "chip repair",
+    "symptom": "cabinet edge chip",
+    "quick_answer": "For cabinet edge chip repair, blend with 220, then refine with 320 or 400 before primer or paint.",
+    "best_grit_path": [
+      "220",
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand through veneer or edge banding.",
+      "Do not paint over raised filler."
+    ],
+    "related_solution_ids": [
+      "cabinets-before-painting-grit",
+      "wood-putty-before-painting-grit",
+      "sanding-through-edges"
+    ],
+    "search_phrases": [
+      "what grit for cabinet door edge chip repair",
+      "cabinet edge filler sanding grit",
+      "sand cabinet chip repair",
+      "cabinet door edge paint prep",
+      "smooth cabinet edge repair"
+    ]
+  },
+  {
+    "id": "edge-banding-before-painting-grit",
+    "problem_slug": "edge-banding-prep",
+    "title": "What grit for edge banding before painting?",
+    "problem": "Edge banding can show seams, glue ridges, or rough edges after painting.",
+    "likely_cause": "Banding needs light leveling and scuffing without sanding through the thin edge layer.",
+    "recommended_grit": "Use 220 for leveling, then 320 for primer prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Check for glue ridges or raised seams.",
+      "Level lightly with 220.",
+      "Refine with 320 before primer.",
+      "Remove dust from the edge before paint."
+    ],
+    "avoid": "Do not sand through thin edge banding.",
+    "success_check": "The edge is smooth and the seam is blended before primer.",
+    "related_links": [
+      "/solutions/cabinet-door-edge-chip-repair-grit/",
+      "/solutions/wood-veneer-before-painting-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "edge-banding-before-painting-grit",
+    "surface": "edge banding",
+    "task": "paint prep",
+    "symptom": "rough edge banding",
+    "quick_answer": "For edge banding before painting, use 220 lightly, then 320 for primer prep.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on thin banding.",
+      "Do not leave glue residue before paint."
+    ],
+    "related_solution_ids": [
+      "cabinet-door-edge-chip-repair-grit",
+      "wood-veneer-before-painting-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for edge banding before painting",
+      "sandpaper for edge banding",
+      "edge banding paint prep grit",
+      "smooth edge banding seam",
+      "cabinet edge banding sanding"
+    ]
+  },
+  {
+    "id": "laminate-countertop-paint-prep-grit",
+    "problem_slug": "laminate-countertop-paint-prep",
+    "title": "What grit for laminate countertop before painting?",
+    "problem": "Paint can peel from laminate countertops when the glossy surface is not scuffed.",
+    "likely_cause": "Laminate countertops are slick and need a clean, dull surface before bonding primer.",
+    "recommended_grit": "Use 220 to scuff laminate, then 320 for smoother primer prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean grease and residue from the countertop.",
+      "Scuff the full surface with 220.",
+      "Refine lightly with 320.",
+      "Remove dust before bonding primer."
+    ],
+    "avoid": "Do not paint over glossy laminate countertop surface.",
+    "success_check": "The countertop is clean, dull, and evenly scuffed.",
+    "related_links": [
+      "/solutions/sanding-laminate-before-painting/",
+      "/solutions/surface-too-smooth-for-paint/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "laminate-countertop-paint-prep-grit",
+    "surface": "laminate countertop",
+    "task": "paint prep",
+    "symptom": "laminate countertop before paint",
+    "quick_answer": "For laminate countertops before painting, clean first, scuff with 220, then refine with 320.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit that gouges the laminate.",
+      "Do not skip degreasing."
+    ],
+    "related_solution_ids": [
+      "sanding-laminate-before-painting",
+      "surface-too-smooth-for-paint",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for laminate countertop before painting",
+      "sandpaper for laminate countertop paint prep",
+      "paint laminate countertop sanding grit",
+      "scuff countertop before primer",
+      "laminate counter paint adhesion"
+    ]
+  },
+  {
+    "id": "solid-wood-countertop-before-sealing-grit",
+    "problem_slug": "wood-countertop-sealer-prep",
+    "title": "What grit for wood countertop before sealing?",
+    "problem": "A wood countertop can feel rough or absorb sealer unevenly.",
+    "likely_cause": "Countertops need smooth sanding without over-polishing before oil, sealer, or clear finish.",
+    "recommended_grit": "Use 120 on rough areas, then 180 and 220 before sealing.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the countertop surface.",
+      "Use 120 only on rough areas.",
+      "Refine with 180 and 220.",
+      "Remove dust completely before sealer."
+    ],
+    "avoid": "Do not seal over sanding dust or raised grain.",
+    "success_check": "The countertop feels smooth and accepts sealer evenly.",
+    "related_links": [
+      "/solutions/butcher-block-before-oiling-grit/",
+      "/solutions/cutting-board-sanding-grit/",
+      "/solutions/best-grit-before-polyurethane/"
+    ],
+    "slug": "solid-wood-countertop-before-sealing-grit",
+    "surface": "wood countertop",
+    "task": "sealer prep",
+    "symptom": "wood countertop before sealing",
+    "quick_answer": "For wood countertops before sealing, use 120 on rough areas, then 180 and 220.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not wet sand bare wood countertop.",
+      "Do not over-polish before penetrating sealer."
+    ],
+    "related_solution_ids": [
+      "butcher-block-before-oiling-grit",
+      "cutting-board-sanding-grit",
+      "best-grit-before-polyurethane"
+    ],
+    "search_phrases": [
+      "what grit for wood countertop before sealing",
+      "sandpaper for wood countertop",
+      "wood counter sealing prep grit",
+      "smooth countertop before sealer",
+      "countertop sanding before oil"
+    ]
+  },
+  {
+    "id": "tabletop-between-epoxy-coats-grit",
+    "problem_slug": "epoxy-tabletop",
+    "title": "What grit between epoxy tabletop coats?",
+    "problem": "A second epoxy coat may not bond well over a cured glossy first coat.",
+    "likely_cause": "Cured epoxy needs a clean, evenly scuffed surface when recoating outside the recoat window.",
+    "recommended_grit": "Use 220 or 320 to scuff cured epoxy before the next coat.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the epoxy cure enough to sand.",
+      "Scuff the surface with 220 or 320.",
+      "Remove all dust and residue.",
+      "Apply the next coat according to the epoxy instructions."
+    ],
+    "avoid": "Do not pour over glossy cured epoxy without prep.",
+    "success_check": "The epoxy surface is evenly dull and clean before recoating.",
+    "related_links": [
+      "/solutions/epoxy-resin-polishing-sequence/",
+      "/solutions/epoxy-drips-on-wood-grit/",
+      "/solutions/finish-smears-while-sanding/"
+    ],
+    "slug": "tabletop-between-epoxy-coats-grit",
+    "surface": "epoxy tabletop",
+    "task": "between-coat prep",
+    "symptom": "glossy cured epoxy tabletop",
+    "quick_answer": "Between cured epoxy tabletop coats, scuff with 220 or 320 and clean completely before recoating.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand sticky epoxy.",
+      "Do not leave sanding dust before the next pour."
+    ],
+    "related_solution_ids": [
+      "epoxy-resin-polishing-sequence",
+      "epoxy-drips-on-wood-grit",
+      "finish-smears-while-sanding"
+    ],
+    "search_phrases": [
+      "what grit between epoxy tabletop coats",
+      "sand epoxy table before second coat",
+      "epoxy tabletop recoat sanding grit",
+      "scuff cured epoxy before pour",
+      "epoxy table between coats sandpaper"
+    ]
+  },
+  {
+    "id": "tile-paint-prep-sanding-grit",
+    "problem_slug": "tile-paint-prep",
+    "title": "What grit for tile before painting?",
+    "problem": "Paint can peel from tile when the glazed surface is too slick.",
+    "likely_cause": "Tile needs cleaning and very light scuffing, but aggressive sanding can damage glaze.",
+    "recommended_grit": "Use 400 or 600 lightly to scuff glossy tile before bonding primer.",
+    "wet_or_dry": "Wet or dry with dust control.",
+    "steps": [
+      "Clean soap film, grease, and residue from the tile.",
+      "Test a hidden area first.",
+      "Scuff lightly with 400 or 600.",
+      "Remove dust before bonding primer."
+    ],
+    "avoid": "Do not use coarse grit on glazed tile faces.",
+    "success_check": "The tile is clean, lightly dulled, and ready for bonding primer.",
+    "related_links": [
+      "/solutions/porcelain-tile-scratch-warning/",
+      "/solutions/ceramic-glaze-sanding-warning/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "tile-paint-prep-sanding-grit",
+    "surface": "glazed tile",
+    "task": "paint prep",
+    "symptom": "tile before paint",
+    "quick_answer": "For tile before painting, clean first, then scuff lightly with 400 or 600 before bonding primer.",
+    "best_grit_path": [
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand through or chip the glaze.",
+      "Do not paint over soap film or grease."
+    ],
+    "related_solution_ids": [
+      "porcelain-tile-scratch-warning",
+      "ceramic-glaze-sanding-warning",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for tile before painting",
+      "sandpaper for tile paint prep",
+      "paint ceramic tile sanding grit",
+      "scuff tile before primer",
+      "glazed tile paint adhesion"
+    ]
+  },
+  {
+    "id": "grout-rough-edge-sanding-grit",
+    "problem_slug": "grout-repair",
+    "title": "What grit smooths rough grout edges?",
+    "problem": "New or repaired grout can leave rough ridges along tile edges.",
+    "likely_cause": "Grout ridges need controlled smoothing without scratching the tile face.",
+    "recommended_grit": "Use 220 or 320 lightly on rough grout edges, then clean dust.",
+    "wet_or_dry": "Dry or lightly damp depending on grout condition.",
+    "steps": [
+      "Let the grout cure enough to sand without crumbling.",
+      "Protect the tile face from scratches.",
+      "Smooth rough edges with 220 or 320.",
+      "Vacuum or wipe residue."
+    ],
+    "avoid": "Do not sand glazed tile faces while smoothing grout.",
+    "success_check": "The grout edge feels smoother and the tile is not scratched.",
+    "related_links": [
+      "/solutions/tile-edge-sanding-grit/",
+      "/solutions/tile-paint-prep-sanding-grit/",
+      "/solutions/avoid-scratches-from-sandpaper/"
+    ],
+    "slug": "grout-rough-edge-sanding-grit",
+    "surface": "grout",
+    "task": "edge smoothing",
+    "symptom": "rough grout edge",
+    "quick_answer": "For rough grout edges, use 220 or 320 lightly while protecting the tile face.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand uncured soft grout.",
+      "Do not scratch tile glaze beside the grout line."
+    ],
+    "related_solution_ids": [
+      "tile-edge-sanding-grit",
+      "tile-paint-prep-sanding-grit",
+      "avoid-scratches-from-sandpaper"
+    ],
+    "search_phrases": [
+      "what grit smooths rough grout edges",
+      "sandpaper for grout edges",
+      "smooth rough grout sandpaper",
+      "grout repair sanding grit",
+      "can you sand grout smooth"
+    ]
+  },
+  {
+    "id": "nail-pop-drywall-sanding-grit",
+    "problem_slug": "drywall-nail-pop",
+    "title": "What grit for sanding drywall nail pop repair?",
+    "problem": "A repaired nail pop can leave a small raised patch visible under paint.",
+    "likely_cause": "Joint compound around nail pops needs fine feathering after it dries.",
+    "recommended_grit": "Use 180 to level the repair, then 220 to feather the edges.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the compound dry fully.",
+      "Level the repair with 180.",
+      "Feather the edge with 220.",
+      "Remove dust before primer or paint."
+    ],
+    "avoid": "Do not oversand into drywall paper.",
+    "success_check": "The repair feels flush and the edge cannot be felt.",
+    "related_links": [
+      "/solutions/drywall-patch-sanding-grit/",
+      "/solutions/spackle-pinhole-sanding-grit/"
+    ],
+    "slug": "nail-pop-drywall-sanding-grit",
+    "surface": "drywall",
+    "task": "nail pop repair",
+    "symptom": "drywall nail pop",
+    "quick_answer": "For drywall nail pop repair, use 180 to level, then 220 to feather before primer.",
+    "best_grit_path": [
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand through drywall paper.",
+      "Do not paint over compound dust."
+    ],
+    "related_solution_ids": [
+      "drywall-patch-sanding-grit",
+      "spackle-pinhole-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit for drywall nail pop repair",
+      "sandpaper for nail pop patch",
+      "nail pop sanding grit",
+      "smooth drywall nail pop",
+      "drywall screw pop repair sandpaper"
+    ]
+  },
+  {
+    "id": "drywall-tape-edge-sanding-grit",
+    "problem_slug": "drywall-tape-repair",
+    "title": "What grit for drywall tape edges?",
+    "problem": "Drywall tape edges can show ridges after sanding and painting.",
+    "likely_cause": "Compound over tape needs feathering without cutting into the tape or paper.",
+    "recommended_grit": "Use 150 or 180 for high ridges, then 220 for final feathering.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let joint compound dry fully.",
+      "Level high ridges with 150 or 180.",
+      "Feather edges with 220.",
+      "Remove dust before primer."
+    ],
+    "avoid": "Do not sand through the tape surface.",
+    "success_check": "The tape edge is feathered and blends into the wall.",
+    "related_links": [
+      "/solutions/drywall-corner-bead-sanding-grit/",
+      "/solutions/drywall-patch-sanding-grit/",
+      "/solutions/ceiling-patch-sanding-grit/"
+    ],
+    "slug": "drywall-tape-edge-sanding-grit",
+    "surface": "drywall tape",
+    "task": "edge feathering",
+    "symptom": "visible drywall tape edge",
+    "quick_answer": "For drywall tape edges, use 150 or 180 on ridges, then 220 for final feathering.",
+    "best_grit_path": [
+      "150",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not expose or fuzz drywall tape.",
+      "Do not use heavy pressure at the tape edge."
+    ],
+    "related_solution_ids": [
+      "drywall-corner-bead-sanding-grit",
+      "drywall-patch-sanding-grit",
+      "ceiling-patch-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit for drywall tape edges",
+      "sandpaper for drywall tape ridge",
+      "visible drywall tape sanding grit",
+      "feather drywall tape edge",
+      "joint compound tape sanding"
+    ]
+  },
+  {
+    "id": "patching-plaster-on-wood-trim-grit",
+    "problem_slug": "trim-repair",
+    "title": "What grit for filler on wood trim?",
+    "problem": "Filler on wood trim can show raised patches, scratches, or rough edges under paint.",
+    "likely_cause": "Trim filler needs careful leveling without flattening decorative profiles.",
+    "recommended_grit": "Use 220 to level small filled spots, then 320 before primer or paint.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let filler dry fully.",
+      "Sand the filled area with 220.",
+      "Refine with 320.",
+      "Remove dust from trim details before painting."
+    ],
+    "avoid": "Do not flatten trim profiles with hard pressure.",
+    "success_check": "The filled area is flush and the trim profile remains intact.",
+    "related_links": [
+      "/solutions/trim-molding-before-painting-grit/",
+      "/solutions/wood-putty-before-painting-grit/",
+      "/solutions/fold-sandpaper-for-corners/"
+    ],
+    "slug": "patching-plaster-on-wood-trim-grit",
+    "surface": "wood trim",
+    "task": "filler repair",
+    "symptom": "filled wood trim patch",
+    "quick_answer": "For filler on wood trim, use 220 to level small spots, then 320 before paint.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand through sharp decorative edges.",
+      "Do not paint over raised filler."
+    ],
+    "related_solution_ids": [
+      "trim-molding-before-painting-grit",
+      "wood-putty-before-painting-grit",
+      "fold-sandpaper-for-corners"
+    ],
+    "search_phrases": [
+      "what grit for filler on wood trim",
+      "sandpaper for wood trim filler",
+      "smooth filled trim before paint",
+      "trim repair sanding grit",
+      "wood molding filler sandpaper"
+    ]
+  },
+  {
+    "id": "wooden-window-sill-before-painting-grit",
+    "problem_slug": "window-sill-paint-prep",
+    "title": "What grit for wooden window sill before painting?",
+    "problem": "Window sills can show peeling paint, rough edges, or weathered wood before repainting.",
+    "likely_cause": "Old paint edges and rough wood need leveling before primer or paint.",
+    "recommended_grit": "Use 120 or 180 on peeling areas, then 220 for final prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Remove loose paint first.",
+      "Sand rough or peeling areas with 120 or 180.",
+      "Refine with 220.",
+      "Remove dust before primer or paint."
+    ],
+    "avoid": "Do not paint over loose paint or damp wood.",
+    "success_check": "The sill is smooth, dry, and ready for primer.",
+    "related_links": [
+      "/solutions/window-frame-before-painting-grit/",
+      "/solutions/feather-paint-edges-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "wooden-window-sill-before-painting-grit",
+    "surface": "wood window sill",
+    "task": "paint prep",
+    "symptom": "peeling window sill paint",
+    "quick_answer": "For wooden window sills, use 120 or 180 on peeling areas, then 220 for final prep.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand old paint without proper precautions where applicable.",
+      "Do not leave hard paint ridges."
+    ],
+    "related_solution_ids": [
+      "window-frame-before-painting-grit",
+      "feather-paint-edges-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for wooden window sill before painting",
+      "sandpaper for window sill paint prep",
+      "peeling window sill sanding grit",
+      "smooth window sill before paint",
+      "wood sill repaint sandpaper"
+    ]
+  },
+  {
+    "id": "painted-siding-before-repaint-grit",
+    "problem_slug": "siding-repaint-prep",
+    "title": "What grit for painted siding before repainting?",
+    "problem": "Painted siding can peel again if loose edges and glossy areas are not prepared.",
+    "likely_cause": "Exterior siding needs loose paint removed, edges feathered, and sound paint scuffed.",
+    "recommended_grit": "Use 120 or 180 on peeling edges, then 220 for smoother repaint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean and dry the siding.",
+      "Remove loose paint.",
+      "Feather peeling edges with 120 or 180.",
+      "Use 220 on smoother repaint areas."
+    ],
+    "avoid": "Do not repaint over loose paint or chalky residue.",
+    "success_check": "The siding is clean, dull, and free of loose edges.",
+    "related_links": [
+      "/solutions/wooden-window-sill-before-painting-grit/",
+      "/solutions/feather-paint-edges-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "painted-siding-before-repaint-grit",
+    "surface": "painted siding",
+    "task": "repaint prep",
+    "symptom": "peeling siding paint",
+    "quick_answer": "For painted siding, use 120 or 180 on peeling edges, then 220 for smoother repaint prep.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not paint over dust or chalking.",
+      "Do not leave hard paint ridges."
+    ],
+    "related_solution_ids": [
+      "wooden-window-sill-before-painting-grit",
+      "feather-paint-edges-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for painted siding before repainting",
+      "sandpaper for siding paint prep",
+      "peeling siding sanding grit",
+      "feather siding paint edges",
+      "repaint siding sandpaper"
+    ]
+  },
+  {
+    "id": "fiber-cement-siding-paint-prep-grit",
+    "problem_slug": "fiber-cement-siding",
+    "title": "What grit for fiber cement siding before painting?",
+    "problem": "Paint on fiber cement siding can fail if the surface is dirty, chalky, or glossy.",
+    "likely_cause": "Fiber cement needs cleaning and light scuffing only where needed before coating.",
+    "recommended_grit": "Use 220 or 320 lightly on rough paint edges or glossy patches.",
+    "wet_or_dry": "Dry with dust control.",
+    "steps": [
+      "Clean the siding first.",
+      "Remove loose paint or chalky residue.",
+      "Sand rough paint edges with 220.",
+      "Use 320 for smoother visible prep."
+    ],
+    "avoid": "Do not aggressively sand fiber cement dust without proper protection.",
+    "success_check": "The siding is clean, stable, and ready for paint.",
+    "related_links": [
+      "/solutions/painted-siding-before-repaint-grit/",
+      "/solutions/best-grit-before-painting/",
+      "/solutions/surface-too-smooth-for-paint/"
+    ],
+    "slug": "fiber-cement-siding-paint-prep-grit",
+    "surface": "fiber cement siding",
+    "task": "paint prep",
+    "symptom": "fiber cement before paint",
+    "quick_answer": "For fiber cement siding, clean first and use 220 or 320 lightly only on rough edges or glossy spots.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not grind the siding surface unnecessarily.",
+      "Do not paint over chalking or dust."
+    ],
+    "related_solution_ids": [
+      "painted-siding-before-repaint-grit",
+      "best-grit-before-painting",
+      "surface-too-smooth-for-paint"
+    ],
+    "search_phrases": [
+      "what grit for fiber cement siding before painting",
+      "sandpaper for fiber cement siding",
+      "fiber cement paint prep grit",
+      "scuff fiber cement before paint",
+      "paint hardie board sanding"
+    ]
+  },
+  {
+    "id": "composite-deck-scratch-sanding-warning",
+    "problem_slug": "composite-deck-warning",
+    "title": "Can I sand composite deck scratches?",
+    "problem": "Composite decking can become lighter, fuzzy, or mismatched after sanding.",
+    "likely_cause": "Composite boards have a manufactured surface that may not blend like natural wood.",
+    "recommended_grit": "Avoid sanding visible composite decking unless the manufacturer allows it. Test 220 or finer in a hidden area.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the deck board first.",
+      "Check whether sanding is allowed for that decking material.",
+      "Test 220 or finer in a hidden area.",
+      "Stop if color or texture changes."
+    ],
+    "avoid": "Do not sand a visible composite deck board without testing.",
+    "success_check": "The test area does not show a mismatched color or texture.",
+    "related_links": [
+      "/solutions/avoid-scratches-from-sandpaper/",
+      "/solutions/deck-rail-before-stain-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "composite-deck-scratch-sanding-warning",
+    "surface": "composite decking",
+    "task": "scratch warning",
+    "symptom": "composite deck scratches",
+    "quick_answer": "Do not sand visible composite decking without testing. Use 220 or finer only if the material allows it.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on capped composite boards.",
+      "Do not expect composite to sand like real wood."
+    ],
+    "related_solution_ids": [
+      "avoid-scratches-from-sandpaper",
+      "deck-rail-before-stain-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "can I sand composite deck scratches",
+      "sandpaper for composite decking",
+      "what grit for composite deck scratches",
+      "composite deck sanding warning",
+      "smooth composite deck scratch"
+    ]
+  },
+  {
+    "id": "trex-deck-sanding-warning",
+    "problem_slug": "composite-deck-warning",
+    "title": "Can I sand Trex decking?",
+    "problem": "Trex or similar composite boards can show permanent color or texture mismatch after sanding.",
+    "likely_cause": "Capped composite decking has a surface layer that can be damaged by abrasive sanding.",
+    "recommended_grit": "Do not sand Trex decking for normal scratches. Test hidden areas only if repair instructions allow it.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the board first.",
+      "Do not sand normal visible scuffs.",
+      "Follow the decking maker's repair guidance.",
+      "Test hidden areas only when sanding is allowed."
+    ],
+    "avoid": "Do not use coarse grit on capped composite decking.",
+    "success_check": "No visible board area is damaged by sanding.",
+    "related_links": [
+      "/solutions/composite-deck-scratch-sanding-warning/",
+      "/solutions/avoid-scratches-from-sandpaper/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "trex-deck-sanding-warning",
+    "surface": "Trex decking",
+    "task": "scratch warning",
+    "symptom": "Trex deck scratches",
+    "quick_answer": "Do not sand Trex decking for normal scratches. Follow the maker's repair guidance and test hidden areas only.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not remove the cap layer.",
+      "Do not sand one visible spot into a mismatched patch."
+    ],
+    "related_solution_ids": [
+      "composite-deck-scratch-sanding-warning",
+      "avoid-scratches-from-sandpaper",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "can I sand Trex decking",
+      "sandpaper for Trex deck scratches",
+      "Trex deck sanding warning",
+      "what grit for Trex decking",
+      "repair Trex scratch sandpaper"
+    ]
+  },
+  {
+    "id": "vinyl-fence-before-painting-grit",
+    "problem_slug": "vinyl-fence-paint-prep",
+    "title": "What grit for vinyl fence before painting?",
+    "problem": "Paint can peel from a vinyl fence when the surface is glossy or dirty.",
+    "likely_cause": "Vinyl fencing needs cleaning and very light scuffing before suitable primer or paint.",
+    "recommended_grit": "Use 320 or 400 lightly, then 600 for smoother visible prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Wash and dry the vinyl fence.",
+      "Scuff lightly with 320 or 400.",
+      "Use 600 for smoother visible areas.",
+      "Remove dust before primer or paint."
+    ],
+    "avoid": "Do not gouge or flatten the vinyl surface.",
+    "success_check": "The fence is clean, dull, and lightly scuffed before coating.",
+    "related_links": [
+      "/solutions/vinyl-shutters-before-painting-grit/",
+      "/solutions/vinyl-surface-sanding-warning/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "vinyl-fence-before-painting-grit",
+    "surface": "vinyl fence",
+    "task": "paint prep",
+    "symptom": "vinyl fence before paint",
+    "quick_answer": "For vinyl fence before painting, clean first, scuff lightly with 320 or 400, then use 600.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on vinyl fence panels.",
+      "Do not paint over outdoor grime."
+    ],
+    "related_solution_ids": [
+      "vinyl-shutters-before-painting-grit",
+      "vinyl-surface-sanding-warning",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for vinyl fence before painting",
+      "sandpaper for vinyl fence",
+      "paint vinyl fence sanding grit",
+      "scuff vinyl fence before primer",
+      "vinyl fence paint prep"
+    ]
+  },
+  {
+    "id": "aluminum-window-frame-before-painting-grit",
+    "problem_slug": "aluminum-window-frame",
+    "title": "What grit for aluminum window frames before painting?",
+    "problem": "Paint can peel from aluminum window frames if oxidation or gloss remains.",
+    "likely_cause": "Aluminum frames need cleaning, oxidation removal, and light scuffing before primer.",
+    "recommended_grit": "Use 220 or 320 for scuffing, then 400 for smoother visible prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the aluminum frame.",
+      "Remove oxidation or loose coating.",
+      "Scuff with 220 or 320.",
+      "Refine with 400 before primer or paint."
+    ],
+    "avoid": "Do not paint over oxidation dust or silicone residue.",
+    "success_check": "The frame is clean, dull, and ready for primer.",
+    "related_links": [
+      "/solutions/aluminum-shutters-before-painting-grit/",
+      "/solutions/screen-door-aluminum-before-painting-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "aluminum-window-frame-before-painting-grit",
+    "surface": "aluminum window frame",
+    "task": "paint prep",
+    "symptom": "aluminum window frame before paint",
+    "quick_answer": "For aluminum window frames, clean first, scuff with 220 or 320, then refine with 400.",
+    "best_grit_path": [
+      "220",
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit as final visible prep.",
+      "Do not paint over chalky oxidation."
+    ],
+    "related_solution_ids": [
+      "aluminum-shutters-before-painting-grit",
+      "screen-door-aluminum-before-painting-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for aluminum window frames before painting",
+      "sandpaper for aluminum window frame",
+      "paint aluminum window frame sanding",
+      "scuff aluminum frame before primer",
+      "aluminum frame oxidation sanding"
+    ]
+  },
+  {
+    "id": "exterior-wood-trim-peeling-paint-grit",
+    "problem_slug": "exterior-trim-repaint",
+    "title": "What grit for peeling paint on exterior wood trim?",
+    "problem": "Exterior trim paint can peel again when old loose edges are not feathered.",
+    "likely_cause": "Loose paint edges and weathered wood need leveling before primer or paint.",
+    "recommended_grit": "Use 80 or 120 on loose peeling edges, then 180 or 220 for smoother repaint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Remove loose paint first.",
+      "Sand peeling edges with 80 or 120.",
+      "Refine with 180 or 220.",
+      "Remove dust before exterior primer or paint."
+    ],
+    "avoid": "Do not paint over loose paint or damp wood.",
+    "success_check": "The trim is dry, smooth, and free of loose paint edges.",
+    "related_links": [
+      "/solutions/painted-siding-before-repaint-grit/",
+      "/solutions/wooden-window-sill-before-painting-grit/",
+      "/solutions/feather-paint-edges-grit/"
+    ],
+    "slug": "exterior-wood-trim-peeling-paint-grit",
+    "surface": "exterior wood trim",
+    "task": "paint prep",
+    "symptom": "peeling exterior trim paint",
+    "quick_answer": "For peeling exterior wood trim, use 80 or 120 on loose edges, then 180 or 220 before primer.",
+    "best_grit_path": [
+      "80",
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not leave hard paint ridges.",
+      "Do not paint over dust or wet wood."
+    ],
+    "related_solution_ids": [
+      "painted-siding-before-repaint-grit",
+      "wooden-window-sill-before-painting-grit",
+      "feather-paint-edges-grit"
+    ],
+    "search_phrases": [
+      "what grit for peeling paint on exterior wood trim",
+      "sandpaper for exterior trim repaint",
+      "peeling trim paint sanding grit",
+      "feather exterior trim paint edges",
+      "wood trim paint prep outside"
+    ]
+  },
+  {
+    "id": "garage-cabinet-before-painting-grit",
+    "problem_slug": "garage-cabinet-paint-prep",
+    "title": "What grit for garage cabinets before painting?",
+    "problem": "Garage cabinets can have grease, dust, and glossy finish that cause paint failure.",
+    "likely_cause": "Utility cabinets need cleaning first, then scuff sanding so primer or paint can bond.",
+    "recommended_grit": "Use 180 or 220 for scuffing, then 320 after primer if needed.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Degrease the cabinet surface.",
+      "Scuff with 180 or 220.",
+      "Remove dust before primer.",
+      "Use 320 lightly after primer if the surface feels rough."
+    ],
+    "avoid": "Do not paint over grease or shop dust.",
+    "success_check": "The cabinet surface is clean, dull, and ready for primer.",
+    "related_links": [
+      "/solutions/cabinets-before-painting-grit/",
+      "/solutions/furniture-before-painting-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "garage-cabinet-before-painting-grit",
+    "surface": "garage cabinet",
+    "task": "paint prep",
+    "symptom": "garage cabinet before paint",
+    "quick_answer": "For garage cabinets, degrease first, scuff with 180 or 220, then use 320 after primer if needed.",
+    "best_grit_path": [
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not skip degreasing.",
+      "Do not use coarse grit as final visible prep."
+    ],
+    "related_solution_ids": [
+      "cabinets-before-painting-grit",
+      "furniture-before-painting-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for garage cabinets before painting",
+      "sandpaper for garage cabinet paint prep",
+      "garage cabinet sanding grit",
+      "scuff garage cabinets before paint",
+      "paint utility cabinet sanding"
+    ]
+  },
+  {
+    "id": "wood-shelf-before-staining-grit",
+    "problem_slug": "shelf-stain-prep",
+    "title": "What grit for wood shelves before staining?",
+    "problem": "Wood shelves can show scratches or blotchy stain after finishing.",
+    "likely_cause": "Shelves need even sanding and dust removal before stain so the surface absorbs consistently.",
+    "recommended_grit": "Use 120 on rough boards, then 180 and 220 before stain.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Sand rough boards with 120.",
+      "Refine with 180.",
+      "Finish with 220 before stain.",
+      "Remove dust from edges and corners."
+    ],
+    "avoid": "Do not stain over visible scratch lines or dust.",
+    "success_check": "The shelf feels smooth and accepts stain evenly.",
+    "related_links": [
+      "/solutions/best-grit-before-staining-wood/",
+      "/solutions/choose-grit-for-wood/",
+      "/solutions/stain-looks-blotchy-after-sanding/"
+    ],
+    "slug": "wood-shelf-before-staining-grit",
+    "surface": "wood shelf",
+    "task": "stain prep",
+    "symptom": "wood shelf before stain",
+    "quick_answer": "For wood shelves before staining, use 120 on rough boards, then 180 and 220.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not skip dust removal on shelf edges.",
+      "Do not over-polish before stain."
+    ],
+    "related_solution_ids": [
+      "best-grit-before-staining-wood",
+      "choose-grit-for-wood",
+      "stain-looks-blotchy-after-sanding"
+    ],
+    "search_phrases": [
+      "what grit for wood shelves before staining",
+      "sandpaper for wood shelf",
+      "shelf staining prep grit",
+      "smooth shelf before stain",
+      "wood shelf sanding sequence"
+    ]
+  },
+  {
+    "id": "sealed-wood-before-recoating-grit",
+    "problem_slug": "sealed-wood-recoat",
+    "title": "What grit to scuff sealed wood before recoating?",
+    "problem": "A new coat may not bond well to an existing sealed wood surface.",
+    "likely_cause": "Sealed wood needs light scuff sanding to dull the surface before another coat.",
+    "recommended_grit": "Use 320 or 400 lightly before recoating.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the sealed surface first.",
+      "Scuff lightly with 320 or 400.",
+      "Do not cut through edges.",
+      "Remove dust before the next coat."
+    ],
+    "avoid": "Do not recoat over a glossy sealed surface without scuffing.",
+    "success_check": "The surface is lightly dulled and dust-free before recoating.",
+    "related_links": [
+      "/solutions/best-grit-before-polyurethane/",
+      "/solutions/sanding-between-varnish-coats/",
+      "/solutions/oil-finish-between-coats-warning/"
+    ],
+    "slug": "sealed-wood-before-recoating-grit",
+    "surface": "sealed wood",
+    "task": "recoat prep",
+    "symptom": "glossy sealed wood",
+    "quick_answer": "For sealed wood before recoating, scuff lightly with 320 or 400 and remove dust completely.",
+    "best_grit_path": [
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit on a finish coat.",
+      "Do not leave dust under the next coat."
+    ],
+    "related_solution_ids": [
+      "best-grit-before-polyurethane",
+      "sanding-between-varnish-coats",
+      "oil-finish-between-coats-warning"
+    ],
+    "search_phrases": [
+      "what grit to scuff sealed wood before recoating",
+      "sandpaper for recoating sealed wood",
+      "scuff sealed wood finish grit",
+      "recoat wood finish sanding",
+      "dull glossy wood before clear coat"
+    ]
+  }
+]

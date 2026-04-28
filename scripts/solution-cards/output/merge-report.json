@@ -1,0 +1,110 @@
+{
+  "source_dir": "C:\\Users\\vladi\\Documents\\vcoding\\projects\\sandpaper_support\\scripts\\solution-cards",
+  "output_dir": "C:\\Users\\vladi\\Documents\\vcoding\\projects\\sandpaper_support\\scripts\\solution-cards\\output",
+  "output_file": "C:\\Users\\vladi\\Documents\\vcoding\\projects\\sandpaper_support\\scripts\\solution-cards\\output\\solution-cards.json",
+  "input_files": [
+    "solution-cards.json",
+    "new_missing_solution_cards.json",
+    "new_missing_solution_cards_2.json",
+    "new_missing_solution_cards_3.json",
+    "new_missing_solution_cards_4.json",
+    "new_missing_solution_cards_5.json",
+    "new_missing_solution_cards_6.json",
+    "new_missing_solution_cards_7.json",
+    "new_missing_solution_cards_8.json",
+    "new_missing_solution_cards_9.json",
+    "new_missing_solution_cards_10.json",
+    "new_missing_solution_cards_11.json",
+    "new_missing_solution_cards_12.json",
+    "new_missing_solution_cards_13.json"
+  ],
+  "file_stats": [
+    {
+      "file": "solution-cards.json",
+      "cards": 81,
+      "added": 81,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards.json",
+      "cards": 37,
+      "added": 37,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_2.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_3.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_4.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_5.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_6.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_7.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_8.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_9.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_10.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_11.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_12.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    },
+    {
+      "file": "new_missing_solution_cards_13.json",
+      "cards": 30,
+      "added": 30,
+      "skipped": 0
+    }
+  ],
+  "total_cards_written": 478,
+  "warnings": [],
+  "errors": []
+}

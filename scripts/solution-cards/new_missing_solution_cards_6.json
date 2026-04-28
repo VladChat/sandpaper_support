@@ -1,0 +1,1468 @@
+[
+  {
+    "id": "bamboo-before-oil-grit",
+    "problem_slug": "wood-oil-finish",
+    "title": "What grit for bamboo before oil?",
+    "problem": "Bamboo can look uneven or streaky when oil is applied after rough or inconsistent sanding.",
+    "likely_cause": "Bamboo is dense and can show sanding direction and uneven scratch patterns under oil.",
+    "recommended_grit": "Use 180, then 220. Stop at 220 before oil for a clean, even surface.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the bamboo surface.",
+      "Sand evenly with 180 grit.",
+      "Finish with 220 grit in the grain direction where possible.",
+      "Remove dust before applying oil."
+    ],
+    "avoid": "Do not over-polish bamboo with ultra-fine grit before oil.",
+    "success_check": "The bamboo looks evenly dull and feels smooth before oil.",
+    "related_links": [
+      "/solutions/teak-before-oil-grit/",
+      "/solutions/walnut-before-oil-grit/",
+      "/solutions/best-grit-before-polyurethane/"
+    ],
+    "slug": "bamboo-before-oil-grit",
+    "surface": "bamboo",
+    "task": "oil finish prep",
+    "symptom": "bamboo prep before oil",
+    "quick_answer": "For bamboo before oil, use 180 then 220. Clean all dust before applying oil.",
+    "best_grit_path": [
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use heavy pressure that creates shiny low spots.",
+      "Do not apply oil over sanding dust."
+    ],
+    "related_solution_ids": [
+      "teak-before-oil-grit",
+      "walnut-before-oil-grit",
+      "best-grit-before-polyurethane"
+    ],
+    "search_phrases": [
+      "what grit for bamboo before oil",
+      "sandpaper for bamboo oil finish",
+      "bamboo sanding before oil",
+      "best grit for bamboo",
+      "oil finish bamboo sanding"
+    ]
+  },
+  {
+    "id": "cork-sanding-warning",
+    "problem_slug": "delicate-material-warning",
+    "title": "Can I sand cork?",
+    "problem": "Cork can tear, crumble, or become uneven when sanded aggressively.",
+    "likely_cause": "Cork is soft and porous, so coarse grits and heavy pressure remove material unevenly.",
+    "recommended_grit": "Use 320 or 400 only for very light smoothing. Avoid coarse grits.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Test on a hidden area first.",
+      "Use 320 or 400 with very light pressure.",
+      "Sand only raised spots or rough edges.",
+      "Clean loose dust gently."
+    ],
+    "avoid": "Do not sand cork with coarse grit or heavy pressure.",
+    "success_check": "The cork remains flat and intact with no torn edges.",
+    "related_links": [
+      "/solutions/choose-grit-for-wood/",
+      "/solutions/avoid-scratches-from-sandpaper/",
+      "/solutions/start-too-coarse-problem/"
+    ],
+    "slug": "cork-sanding-warning",
+    "surface": "cork",
+    "task": "delicate material sanding",
+    "symptom": "cork tears while sanding",
+    "quick_answer": "Cork should only be sanded lightly. Use 320 or 400 and avoid heavy pressure.",
+    "best_grit_path": [
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use 80, 120, or aggressive sanding on cork.",
+      "Do not sand decorative cork faces without testing first."
+    ],
+    "related_solution_ids": [
+      "choose-grit-for-wood",
+      "avoid-scratches-from-sandpaper",
+      "start-too-coarse-problem"
+    ],
+    "search_phrases": [
+      "can I sand cork",
+      "what grit for cork",
+      "sandpaper for cork",
+      "cork tears while sanding",
+      "how to smooth cork"
+    ]
+  },
+  {
+    "id": "osb-before-painting-grit",
+    "problem_slug": "paint-prep",
+    "title": "What grit for OSB before painting?",
+    "problem": "OSB can show rough strands and raised texture after paint.",
+    "likely_cause": "OSB has uneven wood strands that need light leveling, but aggressive sanding can tear the surface.",
+    "recommended_grit": "Use 120 for rough spots, then 180 or 220 before primer.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Remove loose debris.",
+      "Sand high rough spots with 120 grit.",
+      "Refine with 180 or 220.",
+      "Vacuum dust before primer."
+    ],
+    "avoid": "Do not try to make OSB look like smooth plywood with sanding alone.",
+    "success_check": "The OSB is cleaner, duller, and free of loose raised fibers before primer.",
+    "related_links": [
+      "/solutions/best-grit-before-painting/",
+      "/solutions/spray-paint-prep-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "osb-before-painting-grit",
+    "surface": "OSB",
+    "task": "paint prep",
+    "symptom": "rough OSB before paint",
+    "quick_answer": "For OSB before painting, use 120 on rough spots, then 180 or 220 before primer.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not oversand edges until strands lift.",
+      "Do not paint over loose OSB dust."
+    ],
+    "related_solution_ids": [
+      "best-grit-before-painting",
+      "spray-paint-prep-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "what grit for OSB before painting",
+      "sandpaper for OSB paint prep",
+      "paint OSB sanding grit",
+      "smooth OSB before primer",
+      "OSB rough after sanding"
+    ]
+  },
+  {
+    "id": "particle-board-edge-before-paint-grit",
+    "problem_slug": "paint-prep",
+    "title": "What grit for particle board edges before painting?",
+    "problem": "Particle board edges can stay rough and absorb paint unevenly.",
+    "likely_cause": "Open particle board edges are porous and fragile, so they need gentle smoothing and sealing before paint.",
+    "recommended_grit": "Use 180 or 220 for edges. After sealer or primer dries, scuff with 320.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Sand the raw edge lightly with 180 or 220.",
+      "Remove dust from the edge.",
+      "Seal or prime the edge.",
+      "After it dries, scuff lightly with 320 before paint."
+    ],
+    "avoid": "Do not sand particle board edges aggressively.",
+    "success_check": "The edge feels smoother and sealed before the paint coat.",
+    "related_links": [
+      "/solutions/mdf-before-painting-grit/",
+      "/solutions/melamine-before-painting-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "particle-board-edge-before-paint-grit",
+    "surface": "particle board",
+    "task": "paint prep",
+    "symptom": "rough particle board edge",
+    "quick_answer": "Use 180 or 220 on particle board edges, seal or prime, then scuff with 320 before paint.",
+    "best_grit_path": [
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not round over the edge with heavy pressure.",
+      "Do not paint raw dusty particle board edges."
+    ],
+    "related_solution_ids": [
+      "mdf-before-painting-grit",
+      "melamine-before-painting-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "what grit for particle board edges",
+      "particle board edge before paint",
+      "sand particle board before painting",
+      "smooth particle board edge",
+      "particle board primer sanding"
+    ]
+  },
+  {
+    "id": "mdf-edge-sealing-sanding-grit",
+    "problem_slug": "paint-prep",
+    "title": "What grit for MDF edges before sealing?",
+    "problem": "MDF edges stay fuzzy or rough after primer if they are not prepared correctly.",
+    "likely_cause": "MDF edges absorb sealer and primer more than the face, and the fibers can raise during prep.",
+    "recommended_grit": "Use 220 before sealing, then 320 after the sealer or primer dries.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Sand the MDF edge with 220 grit.",
+      "Remove dust completely.",
+      "Apply sealer or primer to the edge.",
+      "Scuff the dry sealed edge with 320."
+    ],
+    "avoid": "Do not paint raw fuzzy MDF edges without sealing.",
+    "success_check": "The edge feels smooth and sealed before the topcoat.",
+    "related_links": [
+      "/solutions/mdf-before-painting-grit/",
+      "/solutions/primer-before-paint-grit/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "mdf-edge-sealing-sanding-grit",
+    "surface": "MDF",
+    "task": "edge prep",
+    "symptom": "fuzzy MDF edge",
+    "quick_answer": "For MDF edges, sand with 220, seal or prime, then scuff with 320 after it dries.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not soak MDF edges with water.",
+      "Do not use coarse grit that tears the edge fibers."
+    ],
+    "related_solution_ids": [
+      "mdf-before-painting-grit",
+      "primer-before-paint-grit",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "what grit for MDF edges before sealing",
+      "MDF edge sanding grit",
+      "fuzzy MDF edge before paint",
+      "seal MDF edge sandpaper",
+      "MDF primer edge sanding"
+    ]
+  },
+  {
+    "id": "plywood-face-before-clear-coat-grit",
+    "problem_slug": "wood-finish-prep",
+    "title": "What grit for plywood before clear coat?",
+    "problem": "Plywood can show sanding scratches or blotchy areas under clear finish.",
+    "likely_cause": "Thin plywood face veneer can scratch or sand through easily, so the grit sequence must be controlled.",
+    "recommended_grit": "Use 180, then 220 before clear coat. Use 320 only for light scuffing between cured coats.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Sand the plywood face lightly with 180.",
+      "Finish bare plywood with 220.",
+      "Remove dust carefully.",
+      "Use 320 only between cured clear coats."
+    ],
+    "avoid": "Do not sand through the thin plywood face veneer.",
+    "success_check": "The plywood face is smooth and has no visible sanding-through marks.",
+    "related_links": [
+      "/solutions/plywood-edge-sanding-grit/",
+      "/solutions/best-grit-before-polyurethane/",
+      "/solutions/choose-grit-for-wood/"
+    ],
+    "slug": "plywood-face-before-clear-coat-grit",
+    "surface": "plywood",
+    "task": "clear coat prep",
+    "symptom": "plywood before clear coat",
+    "quick_answer": "For plywood before clear coat, use 180 then 220. Use 320 only between cured coats.",
+    "best_grit_path": [
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not start with coarse grit on plywood face veneer.",
+      "Do not press hard on edges or corners."
+    ],
+    "related_solution_ids": [
+      "plywood-edge-sanding-grit",
+      "best-grit-before-polyurethane",
+      "choose-grit-for-wood"
+    ],
+    "search_phrases": [
+      "what grit for plywood before clear coat",
+      "plywood clear coat sanding",
+      "sandpaper grit for plywood finish",
+      "plywood before polyurethane grit",
+      "smooth plywood before clear finish"
+    ]
+  },
+  {
+    "id": "remove-crayon-from-wood-grit",
+    "problem_slug": "mark-removal",
+    "title": "What grit removes crayon from wood?",
+    "problem": "Crayon marks can smear or stay in the wood grain after wiping.",
+    "likely_cause": "Crayon is waxy, so sanding too aggressively can spread residue or create visible low spots.",
+    "recommended_grit": "Use 220 for light marks. Use 180 first only when the mark is deeper, then finish with 220.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Scrape or wipe off excess crayon first.",
+      "Sand lightly with 220 grit.",
+      "Use 180 only on stubborn spots.",
+      "Finish the area again with 220 and clean dust."
+    ],
+    "avoid": "Do not grind waxy crayon residue deep into the grain.",
+    "success_check": "The mark is removed and the surrounding wood has an even scratch pattern.",
+    "related_links": [
+      "/solutions/remove-marker-from-wood-grit/",
+      "/solutions/remove-pencil-marks-from-wood/",
+      "/solutions/choose-grit-for-wood/"
+    ],
+    "slug": "remove-crayon-from-wood-grit",
+    "surface": "wood",
+    "task": "mark removal",
+    "symptom": "crayon marks on wood",
+    "quick_answer": "For crayon on wood, remove excess first, then use 220. Use 180 only for stubborn spots.",
+    "best_grit_path": [
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not start with 80 or 120 for small crayon marks.",
+      "Do not leave wax residue before finishing."
+    ],
+    "related_solution_ids": [
+      "remove-marker-from-wood-grit",
+      "remove-pencil-marks-from-wood",
+      "choose-grit-for-wood"
+    ],
+    "search_phrases": [
+      "what grit removes crayon from wood",
+      "crayon marks wood sandpaper",
+      "sand crayon off wood",
+      "remove wax crayon from wood",
+      "wood mark removal grit"
+    ]
+  },
+  {
+    "id": "pet-scratches-on-wood-floor-grit",
+    "problem_slug": "wood-floor-repair",
+    "title": "What grit for pet scratches on wood floor?",
+    "problem": "Pet scratches can remain visible after light sanding on wood flooring.",
+    "likely_cause": "Floor scratches often vary in depth. Light scratches need blending; deeper scratches may need refinishing beyond spot sanding.",
+    "recommended_grit": "Use 180 or 220 for light blending. Use 120 only for deeper visible scratches, then refine to 180 and 220.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the scratched area.",
+      "Start with 180 or 220 for light scratches.",
+      "Use 120 only if the scratch is still visible.",
+      "Blend the area with 180 and 220 before finishing."
+    ],
+    "avoid": "Do not spot sand a deep low area into the floor.",
+    "success_check": "The scratch is blended and the repair area does not show a hard sanding edge.",
+    "related_links": [
+      "/solutions/choose-grit-for-wood/",
+      "/solutions/avoid-scratches-from-sandpaper/",
+      "/solutions/rough-spots-after-fine-grit/"
+    ],
+    "slug": "pet-scratches-on-wood-floor-grit",
+    "surface": "wood floor",
+    "task": "scratch repair",
+    "symptom": "pet scratches on wood floor",
+    "quick_answer": "For light pet scratches, use 180 or 220. Use 120 only for deeper scratches, then refine to 220.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand through the floor finish without planning the refinish step.",
+      "Do not leave a visible oval spot around the repair."
+    ],
+    "related_solution_ids": [
+      "choose-grit-for-wood",
+      "avoid-scratches-from-sandpaper",
+      "rough-spots-after-fine-grit"
+    ],
+    "search_phrases": [
+      "what grit for pet scratches on wood floor",
+      "dog scratches wood floor sandpaper",
+      "sand cat scratches wood floor",
+      "wood floor scratch grit",
+      "repair pet scratches hardwood floor"
+    ]
+  },
+  {
+    "id": "hardwood-floor-screening-grit",
+    "problem_slug": "wood-floor-refinishing",
+    "title": "What grit for screening hardwood floors?",
+    "problem": "Hardwood floor finish needs light scuffing before a new coat, not aggressive removal.",
+    "likely_cause": "Screening is meant to abrade the existing finish for adhesion. Too coarse a grit can cut through the finish unevenly.",
+    "recommended_grit": "Use 220 or 320 for light scuff sanding between floor finish coats.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean the floor thoroughly.",
+      "Scuff the cured finish lightly with 220 or 320.",
+      "Vacuum and tack the dust completely.",
+      "Apply the next compatible finish coat."
+    ],
+    "avoid": "Do not use coarse grit when only screening a finish coat.",
+    "success_check": "The finish is evenly dulled with no sand-through spots.",
+    "related_links": [
+      "/solutions/pet-scratches-on-wood-floor-grit/",
+      "/solutions/between-coats-polyurethane-grit/",
+      "/solutions/clean-sanding-dust-before-paint/"
+    ],
+    "slug": "hardwood-floor-screening-grit",
+    "surface": "hardwood floor",
+    "task": "finish scuffing",
+    "symptom": "screening hardwood floor finish",
+    "quick_answer": "For screening hardwood floors, use 220 or 320 lightly on the cured finish before recoating.",
+    "best_grit_path": [
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not screen a dirty floor.",
+      "Do not sand through the finish into bare wood by accident."
+    ],
+    "related_solution_ids": [
+      "pet-scratches-on-wood-floor-grit",
+      "between-coats-polyurethane-grit",
+      "clean-sanding-dust-before-paint"
+    ],
+    "search_phrases": [
+      "what grit for screening hardwood floors",
+      "hardwood floor screen grit",
+      "scuff hardwood floor before recoat",
+      "sand between floor finish coats",
+      "hardwood floor finish sanding grit"
+    ]
+  },
+  {
+    "id": "stair-railing-before-stain-grit",
+    "problem_slug": "stain-prep",
+    "title": "What grit for stair railing before stain?",
+    "problem": "Stair railings can stain unevenly or show sanding scratches.",
+    "likely_cause": "Curved rails and hand contact areas often have old finish, oils, and uneven sanding marks.",
+    "recommended_grit": "Use 150 or 180 for old finish cleanup, then 220 before stain.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean hand oils and residue from the railing.",
+      "Sand old rough areas with 150 or 180.",
+      "Finish with 220 along the length of the rail.",
+      "Remove all dust before stain."
+    ],
+    "avoid": "Do not stain over glossy or oily hand-contact areas.",
+    "success_check": "The railing feels smooth and evenly dull before stain.",
+    "related_links": [
+      "/solutions/deck-railing-before-stain-grit/",
+      "/solutions/best-grit-before-staining-wood/",
+      "/solutions/sand-with-or-against-grain/"
+    ],
+    "slug": "stair-railing-before-stain-grit",
+    "surface": "wood railing",
+    "task": "stain prep",
+    "symptom": "stair railing before stain",
+    "quick_answer": "For stair railing before stain, clean first, use 150 or 180, then finish with 220.",
+    "best_grit_path": [
+      "150",
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not leave old glossy finish on the handrail.",
+      "Do not skip dust removal before stain."
+    ],
+    "related_solution_ids": [
+      "deck-railing-before-stain-grit",
+      "best-grit-before-staining-wood",
+      "sand-with-or-against-grain"
+    ],
+    "search_phrases": [
+      "what grit for stair railing before stain",
+      "stair rail sanding grit",
+      "handrail before stain sandpaper",
+      "wood railing stain prep",
+      "sand stair railing before staining"
+    ]
+  },
+  {
+    "id": "handrail-before-polyurethane-grit",
+    "problem_slug": "wood-finish-prep",
+    "title": "What grit for handrail before polyurethane?",
+    "problem": "A handrail can feel rough or show scratches under polyurethane.",
+    "likely_cause": "Handrails get oils and wear from hands, so the surface must be clean, smooth, and evenly scuffed before finish.",
+    "recommended_grit": "Use 180 then 220 before the first coat. Use 320 or 400 lightly between cured coats.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean hand oils from the rail.",
+      "Sand bare wood with 180 then 220.",
+      "Apply polyurethane after dust removal.",
+      "Scuff cured coats lightly with 320 or 400."
+    ],
+    "avoid": "Do not apply polyurethane over oily or dusty handrail surfaces.",
+    "success_check": "The handrail is smooth, clean, and evenly prepared before finish.",
+    "related_links": [
+      "/solutions/best-grit-before-polyurethane/",
+      "/solutions/stair-railing-before-stain-grit/",
+      "/solutions/between-coats-polyurethane-grit/"
+    ],
+    "slug": "handrail-before-polyurethane-grit",
+    "surface": "wood handrail",
+    "task": "polyurethane prep",
+    "symptom": "handrail before polyurethane",
+    "quick_answer": "For handrail before polyurethane, use 180 then 220. Between cured coats, scuff with 320 or 400.",
+    "best_grit_path": [
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not over-sand rounded edges.",
+      "Do not skip cleaning hand oils before sanding."
+    ],
+    "related_solution_ids": [
+      "best-grit-before-polyurethane",
+      "stair-railing-before-stain-grit",
+      "between-coats-polyurethane-grit"
+    ],
+    "search_phrases": [
+      "what grit for handrail before polyurethane",
+      "sand handrail before polyurethane",
+      "stair handrail finish sanding",
+      "polyurethane handrail prep",
+      "wood handrail sandpaper grit"
+    ]
+  },
+  {
+    "id": "deck-after-pressure-wash-sanding-grit",
+    "problem_slug": "outdoor-wood-prep",
+    "title": "What grit after pressure washing a deck?",
+    "problem": "Deck boards can feel fuzzy or raised after pressure washing.",
+    "likely_cause": "Water and pressure can raise wood fibers, especially on soft or weathered deck boards.",
+    "recommended_grit": "Use 80 or 120 for raised fibers, then 150 if a smoother stain-ready surface is needed.",
+    "wet_or_dry": "Dry after the deck is fully dry.",
+    "steps": [
+      "Let the deck dry completely.",
+      "Sand raised fibers with 80 or 120.",
+      "Use 150 for smoother stain prep.",
+      "Clean dust before stain or sealer."
+    ],
+    "avoid": "Do not sand wet deck boards.",
+    "success_check": "The deck feels even and dry with no fuzzy raised grain before finishing.",
+    "related_links": [
+      "/solutions/deck-board-splinter-sanding-grit/",
+      "/solutions/fence-before-staining-grit/",
+      "/solutions/pressure-treated-wood-sanding-grit/"
+    ],
+    "slug": "deck-after-pressure-wash-sanding-grit",
+    "surface": "deck wood",
+    "task": "outdoor wood prep",
+    "symptom": "fuzzy deck after pressure washing",
+    "quick_answer": "After pressure washing, let the deck dry, then sand raised fibers with 80 or 120. Use 150 for smoother prep.",
+    "best_grit_path": [
+      "80",
+      "120",
+      "150"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use 220+ as the main deck leveling grit.",
+      "Do not trap moisture under stain or sealer."
+    ],
+    "related_solution_ids": [
+      "deck-board-splinter-sanding-grit",
+      "fence-before-staining-grit",
+      "pressure-treated-wood-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit after pressure washing deck",
+      "deck fuzzy after pressure washing",
+      "sand deck after power washing",
+      "raised grain deck sandpaper",
+      "deck prep after pressure wash"
+    ]
+  },
+  {
+    "id": "fence-splinters-after-sanding",
+    "problem_slug": "outdoor-wood-prep",
+    "title": "Fence still has splinters after sanding",
+    "problem": "Fence boards can still feel splintery after light sanding.",
+    "likely_cause": "Weathered fence wood often has raised fibers and damaged grain that needs a coarse enough grit before stain prep.",
+    "recommended_grit": "Use 80 or 120 to remove splinters, then 150 for stain prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Brush off loose dirt.",
+      "Sand splintered areas with 80 or 120.",
+      "Blend the surface with 150.",
+      "Remove dust before stain or sealer."
+    ],
+    "avoid": "Do not use fine grit first on splintered fence boards.",
+    "success_check": "The board feels safe to touch and has no raised splinters.",
+    "related_links": [
+      "/solutions/fence-before-staining-grit/",
+      "/solutions/deck-board-splinter-sanding-grit/",
+      "/solutions/rough-spots-after-fine-grit/"
+    ],
+    "slug": "fence-splinters-after-sanding",
+    "surface": "fence wood",
+    "task": "outdoor wood prep",
+    "symptom": "splintery fence boards",
+    "quick_answer": "For splintered fence boards, use 80 or 120 first, then 150 before stain.",
+    "best_grit_path": [
+      "80",
+      "120",
+      "150"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not oversand thin weathered edges.",
+      "Do not stain over loose splinters."
+    ],
+    "related_solution_ids": [
+      "fence-before-staining-grit",
+      "deck-board-splinter-sanding-grit",
+      "rough-spots-after-fine-grit"
+    ],
+    "search_phrases": [
+      "fence still has splinters after sanding",
+      "what grit for splintered fence",
+      "sand fence splinters",
+      "rough fence before stain",
+      "weathered fence sanding grit"
+    ]
+  },
+  {
+    "id": "cabinet-primer-between-coats-grit",
+    "problem_slug": "cabinet-paint-prep",
+    "title": "What grit between cabinet primer coats?",
+    "problem": "Cabinet primer can feel rough, dusty, or uneven between coats.",
+    "likely_cause": "Primer often raises fibers or leaves small dust nibs that need light scuff sanding before the next coat.",
+    "recommended_grit": "Use 320 between primer coats. Use 400 before a finer topcoat.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let primer dry fully.",
+      "Scuff lightly with 320.",
+      "Use 400 for finer final prep before paint.",
+      "Remove all dust before the next coat."
+    ],
+    "avoid": "Do not sand through primer on cabinet edges.",
+    "success_check": "The primer feels smooth and evenly dull before the next coat.",
+    "related_links": [
+      "/solutions/cabinets-before-painting-grit/",
+      "/solutions/primer-before-paint-grit/",
+      "/solutions/best-grit-between-coats-of-paint/"
+    ],
+    "slug": "cabinet-primer-between-coats-grit",
+    "surface": "wood cabinets",
+    "task": "primer sanding",
+    "symptom": "rough cabinet primer",
+    "quick_answer": "Between cabinet primer coats, use 320. Use 400 before a finer topcoat.",
+    "best_grit_path": [
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use 120 or 180 between cabinet primer coats.",
+      "Do not paint over primer dust."
+    ],
+    "related_solution_ids": [
+      "cabinets-before-painting-grit",
+      "primer-before-paint-grit",
+      "best-grit-between-coats-of-paint"
+    ],
+    "search_phrases": [
+      "what grit between cabinet primer coats",
+      "cabinet primer sanding grit",
+      "sand primer on cabinets",
+      "rough cabinet primer before paint",
+      "cabinet paint prep primer grit"
+    ]
+  },
+  {
+    "id": "cabinet-topcoat-dust-nibs-grit",
+    "problem_slug": "cabinet-paint-finish",
+    "title": "What grit removes dust nibs in cabinet paint?",
+    "problem": "Small bumps or dust nibs show in cabinet paint after a coat dries.",
+    "likely_cause": "Dust can land in wet paint, and the raised nibs need light leveling after the coat cures.",
+    "recommended_grit": "Use 600 for light dust nibs. Use 400 only when the nibs are more noticeable, then refine with 600.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the paint coat cure enough to sand.",
+      "Level nibs lightly with 600.",
+      "Use 400 only for larger raised nibs.",
+      "Remove dust before recoating."
+    ],
+    "avoid": "Do not sand fresh soft cabinet paint.",
+    "success_check": "The surface feels smooth without cutting through the paint coat.",
+    "related_links": [
+      "/solutions/cabinets-before-painting-grit/",
+      "/solutions/dust-nibs-in-finish/",
+      "/solutions/clear-coat-dust-nib-grit/"
+    ],
+    "slug": "cabinet-topcoat-dust-nibs-grit",
+    "surface": "painted cabinets",
+    "task": "finish correction",
+    "symptom": "dust nibs in cabinet paint",
+    "quick_answer": "For cabinet paint dust nibs, use 600 lightly. Use 400 only for larger nibs, then refine with 600.",
+    "best_grit_path": [
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not press hard on cabinet edges.",
+      "Do not recoat over sanding dust."
+    ],
+    "related_solution_ids": [
+      "cabinets-before-painting-grit",
+      "dust-nibs-in-finish",
+      "clear-coat-dust-nib-grit"
+    ],
+    "search_phrases": [
+      "what grit removes dust nibs in cabinet paint",
+      "cabinet paint dust nib sanding",
+      "sand bumps in cabinet paint",
+      "cabinet topcoat nibs grit",
+      "smooth cabinet paint between coats"
+    ]
+  },
+  {
+    "id": "kitchen-grease-before-sanding-warning",
+    "problem_slug": "paint-prep",
+    "title": "Should I sand greasy cabinets?",
+    "problem": "Greasy cabinets can still peel after sanding and painting.",
+    "likely_cause": "Sandpaper can spread grease into the scratch pattern instead of removing it, which weakens primer or paint adhesion.",
+    "recommended_grit": "Clean first, then scuff with 180 or 220 before primer.",
+    "wet_or_dry": "Dry after cleaning.",
+    "steps": [
+      "Degrease the cabinet surface first.",
+      "Let the surface dry fully.",
+      "Scuff with 180 or 220.",
+      "Remove sanding dust before primer."
+    ],
+    "avoid": "Do not sand grease into the cabinet surface.",
+    "success_check": "The surface is clean, dry, dull, and ready for primer.",
+    "related_links": [
+      "/solutions/cabinets-before-painting-grit/",
+      "/solutions/clean-sanding-dust-before-paint/",
+      "/solutions/paint-peels-after-sanding/"
+    ],
+    "slug": "kitchen-grease-before-sanding-warning",
+    "surface": "wood cabinets",
+    "task": "paint prep",
+    "symptom": "greasy cabinets before paint",
+    "quick_answer": "Clean greasy cabinets first. After they dry, scuff with 180 or 220 before primer.",
+    "best_grit_path": [
+      "180",
+      "220"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not rely on sanding to remove kitchen grease.",
+      "Do not prime over greasy sanding dust."
+    ],
+    "related_solution_ids": [
+      "cabinets-before-painting-grit",
+      "clean-sanding-dust-before-paint",
+      "paint-peels-after-sanding"
+    ],
+    "search_phrases": [
+      "should I sand greasy cabinets",
+      "clean cabinets before sanding",
+      "grease before painting cabinets",
+      "cabinet paint peeling grease",
+      "sand greasy cabinet surface"
+    ]
+  },
+  {
+    "id": "painted-trim-rough-between-coats",
+    "problem_slug": "paint-finish-correction",
+    "title": "Painted trim feels rough between coats",
+    "problem": "Painted trim can feel gritty or rough after the first coat dries.",
+    "likely_cause": "Dust, raised grain, or thick brush marks can leave a rough surface that needs light scuff sanding.",
+    "recommended_grit": "Use 320 for normal smoothing, or 400 for finer trim paint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the coat dry fully.",
+      "Scuff lightly with 320.",
+      "Use 400 for finer final prep.",
+      "Remove dust before recoating."
+    ],
+    "avoid": "Do not sand soft paint before it is ready.",
+    "success_check": "The trim feels smooth and evenly dull before the next coat.",
+    "related_links": [
+      "/solutions/trim-molding-before-paint-grit/",
+      "/solutions/baseboard-before-painting-grit/",
+      "/solutions/best-grit-between-coats-of-paint/"
+    ],
+    "slug": "painted-trim-rough-between-coats",
+    "surface": "painted trim",
+    "task": "between coats",
+    "symptom": "rough paint on trim",
+    "quick_answer": "For rough painted trim between coats, use 320. Use 400 for a finer final scuff.",
+    "best_grit_path": [
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use coarse grit between trim paint coats.",
+      "Do not recoat over sanding dust."
+    ],
+    "related_solution_ids": [
+      "trim-molding-before-paint-grit",
+      "baseboard-before-painting-grit",
+      "best-grit-between-coats-of-paint"
+    ],
+    "search_phrases": [
+      "painted trim feels rough between coats",
+      "what grit between coats on trim",
+      "rough paint on trim sanding",
+      "sand trim paint before next coat",
+      "smooth painted trim grit"
+    ]
+  },
+  {
+    "id": "latex-paint-rough-after-drying-grit",
+    "problem_slug": "paint-finish-correction",
+    "title": "Latex paint feels rough after drying",
+    "problem": "Latex paint can dry with a rough or gritty feel.",
+    "likely_cause": "Dust, roller texture, or sanding debris can leave raised roughness after the paint dries.",
+    "recommended_grit": "Use 400 for light smoothing. Use 320 first only when the roughness is more noticeable.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Let the latex paint dry fully.",
+      "Sand lightly with 400.",
+      "Use 320 first only for heavier roughness.",
+      "Clean dust before recoating."
+    ],
+    "avoid": "Do not sand latex paint while it is soft or gummy.",
+    "success_check": "The paint feels smooth and is ready for another coat.",
+    "related_links": [
+      "/solutions/latex-paint-between-coats-grit/",
+      "/solutions/painted-trim-rough-between-coats/",
+      "/solutions/surface-too-rough-for-paint/"
+    ],
+    "slug": "latex-paint-rough-after-drying-grit",
+    "surface": "latex paint",
+    "task": "between coats",
+    "symptom": "rough latex paint",
+    "quick_answer": "For rough dried latex paint, use 400 lightly. Use 320 first only for heavier texture.",
+    "best_grit_path": [
+      "320",
+      "400"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not press hard because latex paint can gum up.",
+      "Do not recoat over loose sanding dust."
+    ],
+    "related_solution_ids": [
+      "latex-paint-between-coats-grit",
+      "painted-trim-rough-between-coats",
+      "surface-too-rough-for-paint"
+    ],
+    "search_phrases": [
+      "latex paint feels rough after drying",
+      "rough latex paint sanding grit",
+      "sand rough latex paint",
+      "what grit for dried latex paint",
+      "smooth latex paint between coats"
+    ]
+  },
+  {
+    "id": "clear-coat-edge-sanding-warning",
+    "problem_slug": "clear-coat-repair",
+    "title": "How to avoid sanding through clear coat edges",
+    "problem": "Clear coat can sand through quickly on edges, corners, and body lines.",
+    "likely_cause": "Edges have less film thickness and receive more pressure from the paper, so they cut faster than flat areas.",
+    "recommended_grit": "Use 1500, 2000, or 3000 near edges. Avoid coarse grits on clear coat edges.",
+    "wet_or_dry": "Wet.",
+    "steps": [
+      "Tape or protect sharp edges when possible.",
+      "Use light pressure near edges.",
+      "Wet sand with 1500 or finer near body lines.",
+      "Polish after the haze is uniform."
+    ],
+    "avoid": "Do not sand clear coat edges with aggressive pressure.",
+    "success_check": "The flat area is refined without exposed color or sand-through on edges.",
+    "related_links": [
+      "/solutions/deep-lines-on-clear-coat/",
+      "/solutions/dry-sanding-clear-coat-problem/",
+      "/solutions/sanding-through-edges/"
+    ],
+    "slug": "clear-coat-edge-sanding-warning",
+    "surface": "automotive clear coat",
+    "task": "edge safety",
+    "symptom": "clear coat sand-through on edges",
+    "quick_answer": "Near clear coat edges, use very light pressure and 1500 or finer. Avoid coarse grits on body lines.",
+    "best_grit_path": [
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use 800 on sharp edges unless correcting a known defect very carefully.",
+      "Do not stay on one body line."
+    ],
+    "related_solution_ids": [
+      "deep-lines-on-clear-coat",
+      "dry-sanding-clear-coat-problem",
+      "sanding-through-edges"
+    ],
+    "search_phrases": [
+      "how to avoid sanding through clear coat edges",
+      "clear coat edge sanding",
+      "sand through clear coat body line",
+      "wet sanding clear coat edges",
+      "avoid clear coat burn through"
+    ]
+  },
+  {
+    "id": "single-stage-paint-wet-sanding-grit",
+    "problem_slug": "automotive-paint",
+    "title": "What grit for wet sanding single-stage paint?",
+    "problem": "Single-stage paint can stay dull or show sanding marks after wet sanding.",
+    "likely_cause": "Single-stage paint needs fine wet sanding and polishing. Coarse scratches must be refined before polish.",
+    "recommended_grit": "Use 1000 or 1500 for leveling, then 2000 and 3000 before polishing.",
+    "wet_or_dry": "Wet.",
+    "steps": [
+      "Wash the painted surface.",
+      "Wet sand with 1000 or 1500 for leveling.",
+      "Refine with 2000 and 3000.",
+      "Polish after sanding."
+    ],
+    "avoid": "Do not stop at 1000 or 1500 before polishing.",
+    "success_check": "The surface has an even fine haze with no deep sanding marks before polish.",
+    "related_links": [
+      "/solutions/orange-peel-wet-sanding-grit/",
+      "/solutions/wet-sanding-before-polishing/",
+      "/solutions/normal-haze-after-wet-sanding/"
+    ],
+    "slug": "single-stage-paint-wet-sanding-grit",
+    "surface": "automotive paint",
+    "task": "wet sanding",
+    "symptom": "single-stage paint wet sanding",
+    "quick_answer": "For single-stage paint, wet sand 1000 or 1500, then 2000 and 3000 before polishing.",
+    "best_grit_path": [
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not dry sand fine automotive paint finish.",
+      "Do not sand edges aggressively."
+    ],
+    "related_solution_ids": [
+      "orange-peel-wet-sanding-grit",
+      "wet-sanding-before-polishing",
+      "normal-haze-after-wet-sanding"
+    ],
+    "search_phrases": [
+      "what grit for wet sanding single-stage paint",
+      "single stage paint wet sanding grit",
+      "wet sand single stage before polish",
+      "automotive single stage paint sandpaper",
+      "single stage paint orange peel grit"
+    ]
+  },
+  {
+    "id": "plastic-bumper-before-primer-grit",
+    "problem_slug": "plastic-paint-prep",
+    "title": "What grit for plastic bumper before primer?",
+    "problem": "Primer may not stick well to a plastic bumper if the surface is glossy or scratched too deeply.",
+    "likely_cause": "Plastic bumper covers need a clean, evenly scuffed surface without deep coarse scratches.",
+    "recommended_grit": "Use 400 or 600 before primer. Use 320 only for rough repair areas first.",
+    "wet_or_dry": "Dry for prep; wet can be used at 600 for finer cleaning.",
+    "steps": [
+      "Clean the bumper surface.",
+      "Use 320 only on rough repair spots.",
+      "Scuff the full primer area with 400 or 600.",
+      "Remove dust and residue before primer."
+    ],
+    "avoid": "Do not prime glossy plastic without scuff sanding.",
+    "success_check": "The bumper surface is clean, dull, and evenly scuffed before primer.",
+    "related_links": [
+      "/solutions/plastic-bumper-scratch-grit/",
+      "/solutions/choose-grit-for-plastic/",
+      "/solutions/primer-before-paint-grit/"
+    ],
+    "slug": "plastic-bumper-before-primer-grit",
+    "surface": "plastic bumper",
+    "task": "paint prep",
+    "symptom": "plastic bumper before primer",
+    "quick_answer": "For a plastic bumper before primer, use 400 or 600. Use 320 only on rough repair spots.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use 80 or 120 right before primer on plastic.",
+      "Do not create heat by pressing hard."
+    ],
+    "related_solution_ids": [
+      "plastic-bumper-scratch-grit",
+      "choose-grit-for-plastic",
+      "primer-before-paint-grit"
+    ],
+    "search_phrases": [
+      "what grit for plastic bumper before primer",
+      "plastic bumper primer sanding",
+      "sand bumper before primer",
+      "bumper paint prep grit",
+      "plastic bumper scuff sandpaper"
+    ]
+  },
+  {
+    "id": "motorcycle-fairing-sanding-grit",
+    "problem_slug": "plastic-paint-prep",
+    "title": "What grit for motorcycle fairings before paint?",
+    "problem": "Motorcycle fairings can show scratches or paint adhesion problems after sanding.",
+    "likely_cause": "Fairings are usually plastic or painted plastic, so they need a fine scuff pattern before primer or paint.",
+    "recommended_grit": "Use 400 or 600 for paint prep. Use 320 only for rough repaired spots.",
+    "wet_or_dry": "Dry for prep; wet can be used at finer stages.",
+    "steps": [
+      "Clean the fairing.",
+      "Sand repaired rough spots with 320 if needed.",
+      "Scuff the full paint area with 400 or 600.",
+      "Clean dust and residue before primer or paint."
+    ],
+    "avoid": "Do not use coarse grit across visible fairing panels before paint.",
+    "success_check": "The fairing is clean, dull, and evenly scuffed.",
+    "related_links": [
+      "/solutions/motorcycle-tank-paint-prep-grit/",
+      "/solutions/plastic-bumper-before-primer-grit/",
+      "/solutions/abs-plastic-part-sanding-grit/"
+    ],
+    "slug": "motorcycle-fairing-sanding-grit",
+    "surface": "motorcycle plastic",
+    "task": "paint prep",
+    "symptom": "motorcycle fairing before paint",
+    "quick_answer": "For motorcycle fairings, use 400 or 600 before primer or paint. Use 320 only on rough repairs.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not press hard enough to heat the plastic.",
+      "Do not paint over glossy unsanded plastic."
+    ],
+    "related_solution_ids": [
+      "motorcycle-tank-paint-prep-grit",
+      "plastic-bumper-before-primer-grit",
+      "abs-plastic-part-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit for motorcycle fairings before paint",
+      "motorcycle fairing sanding grit",
+      "sand plastic fairing before paint",
+      "fairing primer prep sandpaper",
+      "motorcycle plastic paint prep"
+    ]
+  },
+  {
+    "id": "aluminum-boat-before-paint-grit",
+    "problem_slug": "aluminum-paint-prep",
+    "title": "What grit for aluminum boat before paint?",
+    "problem": "Paint may peel from an aluminum boat if oxidation or gloss remains.",
+    "likely_cause": "Aluminum needs clean oxidation removal and an even scuff pattern before primer or marine coating.",
+    "recommended_grit": "Use 320 or 400 for oxidation and paint prep, then 600 for finer primer prep.",
+    "wet_or_dry": "Dry for initial prep; wet can be used at 600.",
+    "steps": [
+      "Wash and degrease the aluminum.",
+      "Remove oxidation with 320 or 400.",
+      "Refine with 600 where a finer primer prep is needed.",
+      "Clean residue before primer or coating."
+    ],
+    "avoid": "Do not paint over oxidized or dusty aluminum.",
+    "success_check": "The aluminum is clean, dull, and evenly scuffed before primer.",
+    "related_links": [
+      "/solutions/aluminum-sanding-grit/",
+      "/solutions/aluminum-oxidation-removal-grit/",
+      "/solutions/best-grit-before-painting/"
+    ],
+    "slug": "aluminum-boat-before-paint-grit",
+    "surface": "aluminum boat",
+    "task": "paint prep",
+    "symptom": "aluminum boat before paint",
+    "quick_answer": "For aluminum boat paint prep, use 320 or 400, then 600 for finer primer prep.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not leave aluminum dust on the surface.",
+      "Do not skip cleaning before primer."
+    ],
+    "related_solution_ids": [
+      "aluminum-sanding-grit",
+      "aluminum-oxidation-removal-grit",
+      "best-grit-before-painting"
+    ],
+    "search_phrases": [
+      "what grit for aluminum boat before paint",
+      "aluminum boat sanding grit",
+      "sand aluminum boat before painting",
+      "aluminum boat paint prep",
+      "remove oxidation aluminum boat sandpaper"
+    ]
+  },
+  {
+    "id": "stainless-grill-scratch-grit",
+    "problem_slug": "stainless-steel",
+    "title": "What grit for stainless grill scratches?",
+    "problem": "Stainless grill surfaces can look worse if scratches are sanded across the grain.",
+    "likely_cause": "Brushed stainless steel has a directional finish, and mismatched sanding marks stand out.",
+    "recommended_grit": "Use 600 for light scratches, then 800 if a finer blend is needed.",
+    "wet_or_dry": "Dry first; wet can be used at finer stages with clean water.",
+    "steps": [
+      "Find the direction of the stainless grain.",
+      "Test a small hidden area first.",
+      "Sand with the grain using 600.",
+      "Refine with 800 if needed."
+    ],
+    "avoid": "Do not sand stainless grill surfaces in circles.",
+    "success_check": "The repaired area follows the original grain direction.",
+    "related_links": [
+      "/solutions/stainless-steel-sanding-grit/",
+      "/solutions/stainless-appliance-scratch-grit/",
+      "/solutions/avoid-scratches-from-sandpaper/"
+    ],
+    "slug": "stainless-grill-scratch-grit",
+    "surface": "stainless steel",
+    "task": "scratch blending",
+    "symptom": "stainless grill scratches",
+    "quick_answer": "For stainless grill scratches, sand with the grain using 600, then refine with 800 if needed.",
+    "best_grit_path": [
+      "600",
+      "800"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not start with coarse grit on visible stainless.",
+      "Do not sand across the grain."
+    ],
+    "related_solution_ids": [
+      "stainless-steel-sanding-grit",
+      "stainless-appliance-scratch-grit",
+      "avoid-scratches-from-sandpaper"
+    ],
+    "search_phrases": [
+      "what grit for stainless grill scratches",
+      "stainless grill scratch sandpaper",
+      "remove scratches stainless steel grill",
+      "sand stainless grill with grain",
+      "brushed stainless grill scratches"
+    ]
+  },
+  {
+    "id": "brass-hardware-polishing-prep-grit",
+    "problem_slug": "brass-polishing",
+    "title": "What grit for brass hardware before polishing?",
+    "problem": "Brass hardware may stay dull or scratched after cleaning.",
+    "likely_cause": "Polish works best after scratches and oxidation are refined with fine sanding steps.",
+    "recommended_grit": "Use 600 for oxidation or scratches, then 800, 1000, and 1500 before polishing.",
+    "wet_or_dry": "Dry or wet at finer stages.",
+    "steps": [
+      "Clean the brass hardware.",
+      "Sand oxidation with 600.",
+      "Refine with 800, 1000, and 1500.",
+      "Polish after sanding."
+    ],
+    "avoid": "Do not polish over deep 600-grit scratches.",
+    "success_check": "The brass has an even fine scratch pattern before polish.",
+    "related_links": [
+      "/solutions/brass-copper-polishing-prep-grit/",
+      "/solutions/copper-pipe-cleaning-before-solder-grit/",
+      "/solutions/wet-sanding-before-polishing/"
+    ],
+    "slug": "brass-hardware-polishing-prep-grit",
+    "surface": "brass",
+    "task": "polishing prep",
+    "symptom": "brass hardware before polishing",
+    "quick_answer": "For brass hardware, use 600, then 800, 1000, and 1500 before polishing.",
+    "best_grit_path": [
+      "600",
+      "800",
+      "1000",
+      "1500"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not remove plating from plated hardware.",
+      "Do not mix coarse grit debris with polishing steps."
+    ],
+    "related_solution_ids": [
+      "brass-copper-polishing-prep-grit",
+      "copper-pipe-cleaning-before-solder-grit",
+      "wet-sanding-before-polishing"
+    ],
+    "search_phrases": [
+      "what grit for brass hardware before polishing",
+      "sandpaper for brass hardware",
+      "polish brass after sanding",
+      "remove scratches from brass grit",
+      "brass oxidation sandpaper"
+    ]
+  },
+  {
+    "id": "copper-sink-scratch-grit",
+    "problem_slug": "copper-polishing",
+    "title": "What grit for copper sink scratches?",
+    "problem": "Copper sink scratches can look bright, uneven, or mismatched after sanding.",
+    "likely_cause": "Copper is soft, so aggressive grit or pressure can create visible low spots and color differences.",
+    "recommended_grit": "Use 800 for light scratches, then 1000 and 1500 before polishing or letting patina return.",
+    "wet_or_dry": "Dry or wet at finer stages.",
+    "steps": [
+      "Clean the copper surface.",
+      "Sand lightly with 800.",
+      "Refine with 1000 and 1500.",
+      "Polish or allow patina to even out naturally."
+    ],
+    "avoid": "Do not use coarse grit on visible copper sink surfaces.",
+    "success_check": "The scratch is blended without a deep low spot.",
+    "related_links": [
+      "/solutions/brass-copper-polishing-prep-grit/",
+      "/solutions/copper-pipe-cleaning-before-solder-grit/",
+      "/solutions/stainless-sink-scratch-grit/"
+    ],
+    "slug": "copper-sink-scratch-grit",
+    "surface": "copper",
+    "task": "scratch blending",
+    "symptom": "copper sink scratches",
+    "quick_answer": "For copper sink scratches, use 800, then 1000 and 1500. Use light pressure.",
+    "best_grit_path": [
+      "800",
+      "1000",
+      "1500"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not press hard on soft copper.",
+      "Do not expect fresh sanded copper to instantly match aged patina."
+    ],
+    "related_solution_ids": [
+      "brass-copper-polishing-prep-grit",
+      "copper-pipe-cleaning-before-solder-grit",
+      "stainless-sink-scratch-grit"
+    ],
+    "search_phrases": [
+      "what grit for copper sink scratches",
+      "copper sink scratch sandpaper",
+      "remove scratches from copper sink",
+      "sand copper sink grit",
+      "copper polishing prep grit"
+    ]
+  },
+  {
+    "id": "remove-mill-scale-steel-grit",
+    "problem_slug": "steel-prep",
+    "title": "What grit removes mill scale from steel?",
+    "problem": "Mill scale on steel can resist paint, primer, or finish prep.",
+    "likely_cause": "Mill scale is a hard surface layer and needs aggressive enough abrasion before finer prep.",
+    "recommended_grit": "Use 80 or 120 for removal, then 180, 220, and 320 for paint prep.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean oil from the steel.",
+      "Use 80 or 120 to cut through mill scale.",
+      "Refine with 180 and 220.",
+      "Use 320 before primer if a finer prep is needed."
+    ],
+    "avoid": "Do not apply primer over shiny remaining mill scale.",
+    "success_check": "The steel is uniformly dull with no shiny scale patches.",
+    "related_links": [
+      "/solutions/choose-grit-for-metal/",
+      "/solutions/metal-still-rough/",
+      "/solutions/remove-rust-before-painting-metal/"
+    ],
+    "slug": "remove-mill-scale-steel-grit",
+    "surface": "steel",
+    "task": "metal prep",
+    "symptom": "mill scale on steel",
+    "quick_answer": "To remove mill scale, use 80 or 120, then refine with 180, 220, and 320 before primer.",
+    "best_grit_path": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not stop while shiny scale patches remain.",
+      "Do not skip cleaning before primer."
+    ],
+    "related_solution_ids": [
+      "choose-grit-for-metal",
+      "metal-still-rough",
+      "remove-rust-before-painting-metal"
+    ],
+    "search_phrases": [
+      "what grit removes mill scale from steel",
+      "mill scale sandpaper grit",
+      "sand mill scale off steel",
+      "steel prep before paint mill scale",
+      "remove blue scale from steel"
+    ]
+  },
+  {
+    "id": "steel-tube-before-paint-grit",
+    "problem_slug": "steel-paint-prep",
+    "title": "What grit for steel tubing before paint?",
+    "problem": "Paint on steel tubing can peel if the surface is glossy, rusty, or oily.",
+    "likely_cause": "Steel tubing needs rust removal, cleaning, and an even scuff pattern before primer.",
+    "recommended_grit": "Use 180 or 220 for general scuffing. Use 120 first for rust or scale, then finish with 320 before primer.",
+    "wet_or_dry": "Dry.",
+    "steps": [
+      "Clean oil and dirt from the tubing.",
+      "Use 120 only for rust or scale.",
+      "Scuff the full tube with 180 or 220.",
+      "Use 320 for finer primer prep."
+    ],
+    "avoid": "Do not paint over oil, rust, or shiny unsanded steel.",
+    "success_check": "The steel tube is clean, dull, and evenly scuffed before primer.",
+    "related_links": [
+      "/solutions/choose-grit-for-metal/",
+      "/solutions/remove-mill-scale-steel-grit/",
+      "/solutions/metal-railing-before-paint-grit/"
+    ],
+    "slug": "steel-tube-before-paint-grit",
+    "surface": "steel",
+    "task": "paint prep",
+    "symptom": "steel tubing before paint",
+    "quick_answer": "For steel tubing before paint, use 180 or 220. Use 120 first only for rust or scale, then 320 before primer.",
+    "best_grit_path": [
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not leave rust dust on the tube.",
+      "Do not skip degreasing before sanding."
+    ],
+    "related_solution_ids": [
+      "choose-grit-for-metal",
+      "remove-mill-scale-steel-grit",
+      "metal-railing-before-paint-grit"
+    ],
+    "search_phrases": [
+      "what grit for steel tubing before paint",
+      "sand steel tube before painting",
+      "steel tubing paint prep grit",
+      "paint prep steel pipe sandpaper",
+      "scuff steel before primer"
+    ]
+  },
+  {
+    "id": "resin-3d-print-before-paint-grit",
+    "problem_slug": "3d-print-finishing",
+    "title": "What grit for resin 3D prints before painting?",
+    "problem": "Resin 3D prints can show support marks or primer scratches after painting.",
+    "likely_cause": "Support marks need leveling first, then finer grits before primer and paint.",
+    "recommended_grit": "Use 320 or 400 for support marks, then 600 before primer.",
+    "wet_or_dry": "Dry after the print is fully cured.",
+    "steps": [
+      "Make sure the resin print is washed and fully cured.",
+      "Level support marks with 320 or 400.",
+      "Refine with 600.",
+      "Clean dust before primer."
+    ],
+    "avoid": "Do not sand uncured resin.",
+    "success_check": "The print feels smooth and has no raised support marks before primer.",
+    "related_links": [
+      "/solutions/resin-3d-print-support-marks/",
+      "/solutions/sandpaper-for-3d-prints/",
+      "/solutions/3d-print-primer-sanding-grit/"
+    ],
+    "slug": "resin-3d-print-before-paint-grit",
+    "surface": "resin 3D print",
+    "task": "3D print finishing",
+    "symptom": "resin print before paint",
+    "quick_answer": "For resin 3D prints before painting, use 320 or 400 for support marks, then 600 before primer.",
+    "best_grit_path": [
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not sand resin dust without proper protection.",
+      "Do not skip primer after visible repair sanding."
+    ],
+    "related_solution_ids": [
+      "resin-3d-print-support-marks",
+      "sandpaper-for-3d-prints",
+      "3d-print-primer-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit for resin 3D prints before painting",
+      "resin print sanding grit",
+      "sand support marks resin 3d print",
+      "resin miniature before primer grit",
+      "3D resin print paint prep"
+    ]
+  },
+  {
+    "id": "petg-3d-print-sanding-grit",
+    "problem_slug": "3d-print-finishing",
+    "title": "What grit for PETG 3D prints?",
+    "problem": "PETG prints can gum up, smear, or keep visible layer lines during sanding.",
+    "likely_cause": "PETG can soften with heat and pressure, so sanding needs light pressure and gradual grits.",
+    "recommended_grit": "Use 220 or 320 for layer lines, then 400 and 600 before primer.",
+    "wet_or_dry": "Dry; wet can help at finer stages to control heat and dust.",
+    "steps": [
+      "Clean the PETG print.",
+      "Sand layer lines lightly with 220 or 320.",
+      "Refine with 400 and 600.",
+      "Clean dust before primer or paint."
+    ],
+    "avoid": "Do not press hard enough to heat or smear PETG.",
+    "success_check": "The print has smoother layer lines with no melted or gummy spots.",
+    "related_links": [
+      "/solutions/sandpaper-for-3d-prints/",
+      "/solutions/3d-print-layer-lines-grit/",
+      "/solutions/3d-print-primer-sanding-grit/"
+    ],
+    "slug": "petg-3d-print-sanding-grit",
+    "surface": "PETG 3D print",
+    "task": "3D print finishing",
+    "symptom": "PETG layer lines",
+    "quick_answer": "For PETG prints, use light pressure: 220 or 320 for layer lines, then 400 and 600 before primer.",
+    "best_grit_path": [
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "optional_starting_grits": [],
+    "mistakes_to_avoid": [
+      "Do not use high speed sanding that heats the plastic.",
+      "Do not paint over plastic dust."
+    ],
+    "related_solution_ids": [
+      "sandpaper-for-3d-prints",
+      "3d-print-layer-lines-grit",
+      "3d-print-primer-sanding-grit"
+    ],
+    "search_phrases": [
+      "what grit for PETG 3D prints",
+      "PETG sanding grit",
+      "sand PETG layer lines",
+      "PETG print before primer",
+      "PETG plastic sanding"
+    ]
+  }
+]
