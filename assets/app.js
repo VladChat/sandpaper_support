@@ -3,6 +3,243 @@ function getProblemSlug() {
   return match ? match[1] : null;
 }
 
+function getSupportBasePath() {
+  const pathname = String(window.location.pathname || "");
+  const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
+  return match && match[1] ? match[1] : "/sandpaper_support";
+}
+
+function loadJson(path) {
+  return fetch(path, { cache: "no-cache" }).then(function (response) {
+    if (!response.ok) {
+      throw new Error("Failed to load " + path);
+    }
+    return response.json();
+  });
+}
+
+function setupSolutionVideoStyles() {
+  const stylesheetId = "equalle-solution-video-css";
+  if (document.getElementById(stylesheetId)) {
+    return;
+  }
+
+  const link = document.createElement("link");
+  link.id = stylesheetId;
+  link.rel = "stylesheet";
+  link.href = getSupportBasePath() + "/assets/solution-video.css?v=solution-video-card-20260428";
+  document.head.appendChild(link);
+}
+
+function formatVideoDuration(seconds) {
+  const totalSeconds = Number(seconds);
+  if (!Number.isFinite(totalSeconds) || totalSeconds <= 0) {
+    return "";
+  }
+
+  const rounded = Math.round(totalSeconds);
+  const hours = Math.floor(rounded / 3600);
+  const minutes = Math.floor((rounded % 3600) / 60);
+  const secs = rounded % 60;
+
+  if (hours > 0) {
+    return String(hours) + ":" + String(minutes).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+  }
+
+  return String(minutes) + ":" + String(secs).padStart(2, "0");
+}
+
+function cleanVideoText(value) {
+  return String(value == null ? "" : value).trim();
+}
+
+function buildYouTubeEmbedUrl(video) {
+  const providedEmbed = cleanVideoText(video && video.embedUrl);
+  if (providedEmbed) {
+    return providedEmbed;
+  }
+
+  const youtubeId = cleanVideoText(video && video.youtubeId);
+  return youtubeId ? "https://www.youtube.com/embed/" + encodeURIComponent(youtubeId) : "";
+}
+
+function buildYouTubeThumbnail(video) {
+  const providedThumbnail = cleanVideoText(video && video.thumbnail);
+  if (providedThumbnail) {
+    return providedThumbnail;
+  }
+
+  const youtubeId = cleanVideoText(video && video.youtubeId);
+  return youtubeId ? "https://i.ytimg.com/vi/" + encodeURIComponent(youtubeId) + "/hqdefault.jpg" : "";
+}
+
+function isApprovedVideo(video) {
+  if (!video || video.status !== "approved") {
+    return false;
+  }
+
+  return Boolean(cleanVideoText(video.youtubeId) || cleanVideoText(video.embedUrl));
+}
+
+function createSolutionVideoBlock(video) {
+  const titleText = cleanVideoText(video.title) || "Sanding technique video";
+  const channelText = cleanVideoText(video.channel);
+  const durationText = formatVideoDuration(video.durationSeconds);
+  const thumbnailUrl = buildYouTubeThumbnail(video);
+  const embedUrl = buildYouTubeEmbedUrl(video);
+
+  if (!embedUrl) {
+    return null;
+  }
+
+  const block = document.createElement("section");
+  block.className = "solution-video-block";
+  block.setAttribute("data-solution-video-block", "");
+  block.setAttribute("aria-label", "Video example");
+
+  const header = document.createElement("div");
+  header.className = "solution-video-header";
+
+  const headerText = document.createElement("div");
+
+  const label = document.createElement("div");
+  label.className = "solution-video-label";
+  label.textContent = "Video example";
+
+  const heading = document.createElement("h3");
+  heading.className = "solution-video-heading";
+  heading.textContent = "Watch the technique";
+
+  headerText.appendChild(label);
+  headerText.appendChild(heading);
+  header.appendChild(headerText);
+  block.appendChild(header);
+
+  const card = document.createElement("div");
+  card.className = "solution-video-card";
+
+  const media = document.createElement("div");
+  media.className = "solution-video-media";
+
+  const thumbButton = document.createElement("button");
+  thumbButton.className = "solution-video-thumb-button";
+  thumbButton.type = "button";
+  thumbButton.setAttribute("aria-label", "Play video: " + titleText);
+
+  if (thumbnailUrl) {
+    const image = document.createElement("img");
+    image.className = "solution-video-thumbnail";
+    image.src = thumbnailUrl;
+    image.alt = "";
+    image.loading = "lazy";
+    thumbButton.appendChild(image);
+  }
+
+  const overlay = document.createElement("span");
+  overlay.className = "solution-video-play";
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.textContent = "▶";
+  thumbButton.appendChild(overlay);
+
+  media.appendChild(thumbButton);
+
+  const content = document.createElement("div");
+  content.className = "solution-video-content";
+
+  const title = document.createElement("h4");
+  title.className = "solution-video-title";
+  title.textContent = titleText;
+  content.appendChild(title);
+
+  if (channelText || durationText) {
+    const meta = document.createElement("div");
+    meta.className = "solution-video-meta";
+    meta.textContent = [channelText, durationText].filter(Boolean).join(" · ");
+    content.appendChild(meta);
+  }
+
+  const note = document.createElement("p");
+  note.className = "solution-video-note";
+  note.textContent = "Click to load the YouTube video inside this answer.";
+  content.appendChild(note);
+
+  const playButton = document.createElement("button");
+  playButton.className = "solution-video-action";
+  playButton.type = "button";
+  playButton.textContent = "Play video";
+  content.appendChild(playButton);
+
+  function loadEmbed() {
+    if (media.querySelector("iframe")) {
+      return;
+    }
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "solution-video-frame";
+    iframe.src = embedUrl + (embedUrl.indexOf("?") === -1 ? "?" : "&") + "autoplay=1&rel=0&modestbranding=1";
+    iframe.title = titleText;
+    iframe.loading = "lazy";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+
+    media.textContent = "";
+    media.appendChild(iframe);
+    block.classList.add("solution-video-loaded");
+  }
+
+  thumbButton.addEventListener("click", loadEmbed);
+  playButton.addEventListener("click", loadEmbed);
+
+  card.appendChild(media);
+  card.appendChild(content);
+  block.appendChild(card);
+
+  return block;
+}
+
+function insertSolutionVideoBlock(card, video) {
+  if (!card || card.querySelector("[data-solution-video-block]")) {
+    return;
+  }
+
+  const block = createSolutionVideoBlock(video);
+  if (!block) {
+    return;
+  }
+
+  const feedbackPanel = card.querySelector("[data-feedback-panel]");
+  if (feedbackPanel) {
+    card.insertBefore(block, feedbackPanel);
+    return;
+  }
+
+  card.appendChild(block);
+}
+
+function setupSolutionVideos() {
+  const cards = document.querySelectorAll(".answer-card[id]");
+  if (!cards.length) {
+    return Promise.resolve();
+  }
+
+  setupSolutionVideoStyles();
+
+  const basePath = getSupportBasePath();
+  return loadJson(basePath + "/data/card-videos.json")
+    .catch(function () {
+      return {};
+    })
+    .then(function (videoMap) {
+      cards.forEach(function (card) {
+        const cardId = cleanVideoText(card.id);
+        const video = videoMap && videoMap[cardId];
+        if (isApprovedVideo(video)) {
+          insertSolutionVideoBlock(card, video);
+        }
+      });
+    });
+}
+
 function setupFeedback() {
   const cards = document.querySelectorAll(".answer-card");
 
@@ -241,6 +478,7 @@ function setupSupportToolButtons() {
   });
 }
 
+setupSolutionVideos();
 setupFeedback();
 setupSupportToolButtons();
 
