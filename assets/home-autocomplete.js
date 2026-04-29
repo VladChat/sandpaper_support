@@ -1,4 +1,4 @@
-import Fuse from "/sandpaper_support/assets/vendor/fuse.min.mjs";
+import Fuse from "./vendor/fuse.min.mjs";
 
 (function () {
   window.eQualleUseAlgoliaAutocomplete = true;
