@@ -648,6 +648,24 @@ body.solution-page .related-answers a:hover {
   text-decoration: underline;
 }
 
+.answer-card .answer-section-title {
+  margin: 18px 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+
+.answer-card > h2 {
+  margin: 18px 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+
 /* Prevent nested chat scrolling on solution pages */
 body.solution-page .chat-messages,
 body.solution-page .solution-followup-messages {
@@ -677,15 +695,14 @@ a.topic-pill-link {
 
 a.pill::after,
 a.topic-pill-link::after {
-  content: " →";
-  font-weight: 700;
+  content: "";
 }
 
 a.pill:hover,
 a.topic-pill-link:hover,
 a.pill:focus-visible,
 a.topic-pill-link:focus-visible {
-  text-decoration: underline;
+  text-decoration: none;
   background: rgba(124, 177, 217, 0.24);
   border-color: rgba(124, 177, 217, 1);
 }
@@ -699,4 +716,75 @@ a.topic-pill-link:focus-visible {
 span.pill,
 span.topic-pill {
   opacity: 0.92;
+}
+
+/* Solution chips: clickable but clean (no underline/arrow text link look) */
+body.solution-page a.topic-pill-link,
+body.solution-page a.pill-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body.solution-page a.topic-pill-link::after,
+body.solution-page a.pill-link::after {
+  content: "";
+}
+
+body.solution-page a.topic-pill-link:hover,
+body.solution-page a.pill-link:hover,
+body.solution-page a.topic-pill-link:focus-visible,
+body.solution-page a.pill-link:focus-visible {
+  text-decoration: none;
+  background: #dff0fb;
+  border-color: #7CB1D9;
+}
+
+/* P7: Local autocomplete panel styling */
+.aa-Autocomplete {
+  width: 100%;
+}
+
+.aa-Form,
+.aa-InputWrapper,
+.aa-Input {
+  display: none;
+}
+
+.aa-Panel {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.aa-List {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aa-Item {
+  margin: 0;
+  padding: 0;
+}
+
+.aa-Item .result-link {
+  width: 100%;
+}
+
+.result-title-link {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.result-title-link:hover,
+.result-title-link:focus-visible {
+  text-decoration: none;
+}
+
+.result-empty {
+  color: #4b5563;
 }

@@ -19074,6 +19074,1325 @@
     "result_kind": "answer"
   },
   {
+    "id": "solution-assorted-kit-finish-prep",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for finish prep",
+    "description": "It is unclear which assorted kit grits to use before applying a finish.",
+    "customer_phrases": [
+      "Using the assorted kit for finish prep",
+      "It is unclear which assorted kit grits to use before applying a finish.",
+      "For finish prep, use the middle and fine grits from the assorted kit. Start around 180 or 220 for normal smoothing, then move to 320 and 400 before coating.",
+      "assorted sandpaper kit for finish prep",
+      "what grit before applying finish",
+      "sandpaper grits before coating",
+      "finish prep grit sequence",
+      "how to use assorted sandpaper for prep"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "finish preparation",
+      "not sure which assorted kit grits to use for final prep",
+      "Finish prep can look confusing because the kit includes both coarse removal grits and fine finishing grits in one set.",
+      "Use 180 or 220 for normal smoothing, then refine with 320 and 400 before applying finish.",
+      "Do not jump from a coarse removal grit straight to 400. Deep scratches can remain under the finish.",
+      "Do not use 60 or 80 grit for normal finish prep.",
+      "Do not skip the middle grits when deep scratches are still visible.",
+      "Do not apply finish while sanding dust remains on the surface."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/assorted-kit-finish-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-assorted-kit-heavy-removal",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for heavy removal",
+    "description": "It is unclear which assorted kit grits to use for heavy removal.",
+    "customer_phrases": [
+      "Using the assorted kit for heavy removal",
+      "It is unclear which assorted kit grits to use for heavy removal.",
+      "Use 60, 80, or 120 grit only for heavy removal. After the rough material is removed, step through 150, 180, and 220 so the coarse scratches do not stay behind.",
+      "assorted sandpaper kit heavy removal",
+      "which grit removes material fastest",
+      "60 grit 80 grit 120 grit use",
+      "coarse sandpaper sequence",
+      "how to use assorted sandpaper for removal"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "heavy removal",
+      "not sure which assorted kit grits remove material fastest",
+      "Heavy removal needs coarse grit, but coarse scratches must be refined before the surface can be finished.",
+      "Use 60 or 80 for aggressive removal, 120 for controlled removal, then refine with 150, 180, and 220.",
+      "Do not leave the surface at 60 or 80 grit unless more shaping is still needed. Those scratches are too deep for finish prep.",
+      "Do not use coarse grit on delicate plastic or thin clear coat.",
+      "Do not press hard to make a worn sheet cut faster.",
+      "Do not skip directly from 80 grit to 320 or finer."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/assorted-kit-heavy-removal/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-assorted-kit-polishing-prep",
+    "type": "exact_solution",
+    "title": "Using the assorted kit for polishing prep",
+    "description": "It is unclear which assorted kit grits to use before polishing.",
+    "customer_phrases": [
+      "Using the assorted kit for polishing prep",
+      "It is unclear which assorted kit grits to use before polishing.",
+      "For polishing prep, use the fine wet sanding grits in order. After the surface is level, move through 1000, 1200, 1500, 2000, and 3000 before polishing.",
+      "sandpaper grits before polishing",
+      "wet sanding grits before polish",
+      "assorted kit polishing prep",
+      "1000 1500 2000 3000 grit sequence",
+      "how to prepare for polishing"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "polishing prep",
+      "not sure which grits prepare the surface for polishing",
+      "Polishing cannot hide deep sanding marks; the surface must first be refined with a steady fine-grit sequence.",
+      "Use 1000 to start fine leveling, then refine with 1200, 1500, 2000, and 3000 before polishing.",
+      "Do not polish over 800 or 1000 grit scratches that are still visible. They can show as haze or dull marks.",
+      "Do not skip from 1000 directly to 3000 when sanding marks are still visible.",
+      "Do not reuse dirty water between fine grits.",
+      "Do not press hard during final wet sanding."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/assorted-kit-polishing-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-between-coats-cut-through",
+    "type": "exact_solution",
+    "title": "Cutting through finish between coats",
+    "description": "Sanding between coats removes too much finish or cuts through the coating.",
+    "customer_phrases": [
+      "Cutting through finish between coats",
+      "Sanding between coats removes too much finish or cuts through the coating.",
+      "Use a finer grit and very light pressure between coats. Try 400 for primer or paint leveling, and 600 or finer when the coat is thin or close to final finish.",
+      "sanding between coats cut through",
+      "cut through paint while sanding",
+      "what grit between coats",
+      "sanding finish between coats too much",
+      "between coats sandpaper too aggressive"
+    ],
+    "aliases": [
+      "paint / primer",
+      "between-coats sanding",
+      "sanding between coats cuts through the finish",
+      "Cut-through usually happens when the grit is too coarse, pressure is too heavy, or the coating has not hardened enough.",
+      "Use 400 for stronger primer or paint leveling. Use 600, 800, or finer for thin coats and final smoothing.",
+      "Do not sand edges or corners with heavy pressure. Coatings are thinner there and can cut through quickly.",
+      "Do not use 220 or 320 between delicate finish coats.",
+      "Do not sand before the coat has hardened enough.",
+      "Do not keep sanding after the surface already feels level."
+    ],
+    "surface": [
+      "paint / primer"
+    ],
+    "grits": [
+      "220",
+      "320",
+      "400",
+      "600",
+      "800"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/between-coats-cut-through/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-between-coats-too-coarse",
+    "type": "exact_solution",
+    "title": "Grit is too coarse between coats",
+    "description": "The sanding scratches between coats are too visible.",
+    "customer_phrases": [
+      "Grit is too coarse between coats",
+      "The sanding scratches between coats are too visible.",
+      "Switch to a finer between-coats grit. Use 400 for primer leveling, 600 for paint or finish coats, and 800 or finer when the surface is close to final appearance.",
+      "sandpaper too coarse between coats",
+      "what grit to sand between coats",
+      "scratches between paint coats",
+      "between coat sanding grit",
+      "visible scratches after sanding finish"
+    ],
+    "aliases": [
+      "paint / primer",
+      "between-coats sanding",
+      "coarse scratches show after sanding between coats",
+      "Between-coats sanding is meant to level small nibs, not remove heavy material, so coarse grit leaves scratches that the next coat may not hide.",
+      "Use 400 for primer, 600 for paint or finish coats, and 800 or finer near the final coat.",
+      "Do not use coarse removal grits between coats. They can leave scratches that stay visible under the next coat.",
+      "Do not use 120, 180, or 220 for normal between-coats sanding.",
+      "Do not sand through edges trying to remove small nibs.",
+      "Do not apply another coat over loose sanding dust."
+    ],
+    "surface": [
+      "paint / primer"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600",
+      "800"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/between-coats-too-coarse/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-choosing-starting-grit",
+    "type": "exact_solution",
+    "title": "Choosing a starting grit",
+    "description": "It is unclear which grit to start with.",
+    "customer_phrases": [
+      "Choosing a starting grit",
+      "It is unclear which grit to start with.",
+      "Choose the starting grit by the job. Use 60–120 for heavy removal, 150–240 for normal prep, 280–400 for fine prep, and 600–3000 for fine wet sanding or finishing stages.",
+      "what grit should I start with",
+      "not sure what grit to use",
+      "which sandpaper grit first",
+      "starting grit for sanding",
+      "how to choose sandpaper grit"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "grit selection",
+      "not sure what grit to start with",
+      "The right starting grit depends on how much material must be removed and how smooth the surface needs to be afterward.",
+      "Use 60–120 for heavy removal, 150–240 for normal prep, 280–400 for fine prep, and 600–3000 for fine wet sanding or finishing stages.",
+      "Do not start with 60 grit unless heavy removal is needed. It can create deep scratches that require extra refinement.",
+      "Do not start with the coarsest grit by default.",
+      "Do not skip directly from coarse grit to very fine grit.",
+      "Do not move finer before the previous scratch pattern is even."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "600",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/choosing-starting-grit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-haze-after-1000",
+    "type": "exact_solution",
+    "title": "Clear coat is hazy after 1000 grit",
+    "description": "Clear coat looks dull or hazy after sanding with 1000 grit.",
+    "customer_phrases": [
+      "Clear coat is hazy after 1000 grit",
+      "Clear coat looks dull or hazy after sanding with 1000 grit.",
+      "A 1000 grit haze is normal before refinement. Continue with 1200, 1500, 2000, and 3000 grit, then polish after the sanding marks are evenly refined.",
+      "clear coat hazy after 1000 grit",
+      "1000 grit clear coat haze",
+      "wet sanding haze before polishing",
+      "how to remove 1000 grit sanding marks",
+      "clear coat dull after wet sanding"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "wet sanding",
+      "clear coat haze after 1000 grit",
+      "1000 grit leaves a fine but still visible sanding pattern that needs finer grits before polishing.",
+      "Refine 1000 grit marks with 1200, 1500, 2000, and 3000 before polishing.",
+      "Do not polish directly over uneven 1000 grit scratches. The surface can stay hazy after polishing.",
+      "Do not skip from 1000 directly to polish when scratches are uneven.",
+      "Do not wet sand uncured clear coat.",
+      "Do not sand edges with the same pressure used on flat areas."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-haze-after-1000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-clear-coat-orange-peel-leveling",
+    "type": "exact_solution",
+    "title": "Leveling orange peel in clear coat",
+    "description": "Clear coat has orange peel texture that needs to be leveled.",
+    "customer_phrases": [
+      "Leveling orange peel in clear coat",
+      "Clear coat has orange peel texture that needs to be leveled.",
+      "Level orange peel carefully with 1000 or 1200 grit, then refine through 1500, 2000, and 3000 before polishing. Use 800 only for severe texture and with extra caution.",
+      "level orange peel clear coat",
+      "what grit for orange peel",
+      "wet sanding orange peel",
+      "clear coat leveling grit",
+      "orange peel before polishing"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "clear coat leveling",
+      "orange peel texture in clear coat",
+      "Orange peel is uneven clear coat texture that must be leveled before the surface can polish evenly.",
+      "Use 1000 or 1200 for normal orange peel leveling, then refine with 1500, 2000, and 3000.",
+      "Do not chase every low spot aggressively. Cutting through clear coat is harder to fix than mild remaining texture.",
+      "Do not start with 800 grit on thin or unknown clear coat.",
+      "Do not sand sharp body lines heavily.",
+      "Do not polish before the coarse leveling marks are refined."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/clear-coat-orange-peel-leveling/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-dry-sanding-leaves-dust-scratches",
+    "type": "exact_solution",
+    "title": "Dry sanding leaves dust scratches",
+    "description": "Dry sanding leaves visible dust scratches on the surface.",
+    "customer_phrases": [
+      "Dry sanding leaves dust scratches",
+      "Dry sanding leaves visible dust scratches on the surface.",
+      "Dust scratches usually mean debris is trapped under the sheet. Clean the surface often, use lighter pressure, and step finer instead of continuing with a dirty or worn sheet.",
+      "dry sanding leaves scratches",
+      "dust scratches after sanding",
+      "sandpaper dragging dust scratches",
+      "random scratches from sanding dust",
+      "how to avoid dust scratches"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "scratch control",
+      "dust scratches after dry sanding",
+      "Loose dust, clogged abrasive, or heavy pressure can drag particles across the surface and create random scratches.",
+      "Use the grit needed for the task, then refine one step finer after cleaning. For prep work, move from 220 to 320 or from 320 to 400.",
+      "Do not keep sanding with a loaded sheet. Trapped dust can scratch like a coarser grit.",
+      "Do not press harder when dry sanding starts scratching.",
+      "Do not reuse a sheet that has hard debris stuck to it.",
+      "Do not skip cleaning between grit changes."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/dry-sanding-leaves-dust-scratches/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-fine-grit-used-for-removal",
+    "type": "exact_solution",
+    "title": "Fine grit is being used for removal",
+    "description": "Sanding takes too long because a fine grit is being used for material removal.",
+    "customer_phrases": [
+      "Fine grit is being used for removal",
+      "Sanding takes too long because a fine grit is being used for material removal.",
+      "Use a coarser grit for removal, then refine afterward. Start around 80–120 for heavy removal or 150–180 for controlled removal, then move finer in steps.",
+      "fine grit not removing material",
+      "sanding takes too long",
+      "what grit for material removal",
+      "using too fine sandpaper",
+      "sandpaper not cutting fast enough"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "material removal",
+      "fine grit does not remove enough material",
+      "Fine grits polish and refine scratches; they are not meant to remove heavy material quickly.",
+      "Use 80–120 for heavy removal, 150–180 for controlled removal, then refine with 220, 320, and 400 as needed.",
+      "Do not try to remove old paint, rough edges, or heavy defects with 600 grit or finer. It will be slow and may glaze the surface.",
+      "Do not use finishing grits for heavy removal.",
+      "Do not press harder instead of choosing the correct grit.",
+      "Do not leave coarse scratches unrefined after removal."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/fine-grit-used-for-removal/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-finish-patchy-after-grit-change",
+    "type": "exact_solution",
+    "title": "Finish looks patchy after changing grit",
+    "description": "The finish looks patchy or uneven after switching grits.",
+    "customer_phrases": [
+      "Finish looks patchy after changing grit",
+      "The finish looks patchy or uneven after switching grits.",
+      "Patchy finish often means the previous grit marks were not fully removed. Go back one grit, sand until the scratch pattern is even, then move finer again gradually.",
+      "finish looks patchy after sanding",
+      "patchy finish after changing grit",
+      "uneven finish sanding marks",
+      "mixed scratch pattern finish",
+      "why finish absorbs unevenly"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "finish preparation",
+      "patchy finish after grit change",
+      "Uneven sanding pressure, skipped grits, or moving on too early can leave mixed scratch patterns that absorb finish differently.",
+      "Return to the last grit that leveled the surface, then move forward one step at a time, such as 180, 220, 320, and 400.",
+      "Do not spot-sand one area to a much finer grit than the rest. It can make the finish absorb unevenly.",
+      "Do not skip from coarse grit directly to fine prep grit.",
+      "Do not change pressure heavily between grits.",
+      "Do not apply finish over mixed scratch patterns."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "150",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/finish-patchy-after-grit-change/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-hand-sanding-finger-grooves",
+    "type": "exact_solution",
+    "title": "Hand sanding leaves finger grooves",
+    "description": "Hand sanding leaves grooves or uneven pressure marks.",
+    "customer_phrases": [
+      "Hand sanding leaves finger grooves",
+      "Hand sanding leaves grooves or uneven pressure marks.",
+      "Use a sanding block or flat backing pad instead of bare fingers on flat areas. Start with the grit that levels the grooves, then refine with the next finer grits.",
+      "hand sanding finger grooves",
+      "finger marks from sanding",
+      "uneven sanding pressure marks",
+      "how to avoid grooves when hand sanding",
+      "sanding block for flat surface"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "scratch control",
+      "finger grooves from hand sanding",
+      "Bare fingers create uneven pressure points, so the abrasive cuts deeper under each finger.",
+      "Use 180 or 220 to level light grooves, then refine with 320 and 400. Use 120 only for deeper grooves.",
+      "Do not press with fingertips on flat surfaces. The pressure marks can become visible after finish is applied.",
+      "Do not sand only the low groove area.",
+      "Do not move to fine grit before the grooves are leveled.",
+      "Do not fold the sheet into a sharp edge for flat sanding."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/hand-sanding-finger-grooves/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-haze-is-uneven",
+    "type": "exact_solution",
+    "title": "Wet sanding haze is uneven",
+    "description": "Wet sanding leaves a haze that is uneven across the surface.",
+    "customer_phrases": [
+      "Wet sanding haze is uneven",
+      "Wet sanding leaves a haze that is uneven across the surface.",
+      "Uneven haze means the sanding pattern is not consistent yet. Stay with the current grit until the haze is even, then move to the next finer grit.",
+      "wet sanding haze uneven",
+      "uneven haze after sanding",
+      "patchy haze after wet sanding",
+      "wet sanding marks not even",
+      "how to fix uneven sanding haze"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "wet sanding",
+      "uneven haze after wet sanding",
+      "Uneven pressure, dry spots, dirty water, or moving to the next grit too early can leave mixed sanding marks.",
+      "Use the current grit until the pattern is even, then refine through 1500, 2000, and 3000 when preparing for polish.",
+      "Do not move finer while the haze is still patchy. Fine grit will not quickly remove missed coarse marks.",
+      "Do not sand with dirty water.",
+      "Do not let the surface dry while wet sanding.",
+      "Do not use heavy pressure to fix one hazy spot."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/haze-is-uneven/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-metal-prep-before-paint",
+    "type": "exact_solution",
+    "title": "What grit to prep metal before paint",
+    "description": "It is unclear which grit to use before painting metal.",
+    "customer_phrases": [
+      "What grit to prep metal before paint",
+      "It is unclear which grit to use before painting metal.",
+      "For metal paint prep, remove rust or old coating with 120–180 if needed, then finish with 220–320 before primer. Use 400 for finer prep on smoother metal.",
+      "what grit to sand metal before paint",
+      "metal prep before paint grit",
+      "sandpaper for metal primer prep",
+      "how to sand metal before painting",
+      "metal paint prep sandpaper"
+    ],
+    "aliases": [
+      "metal",
+      "paint preparation",
+      "not sure what grit prepares metal for paint",
+      "Metal prep needs enough tooth for primer while still removing rust, oxidation, or old coating marks.",
+      "Use 120–180 for rust or old coating cleanup, 220–320 before primer, and 400 for finer prep on smooth metal.",
+      "Do not leave bare metal wet. Dry it quickly to reduce flash rust before primer.",
+      "Do not paint over rust dust or loose oxidation.",
+      "Do not stop at 80 or 120 grit before primer unless the coating system calls for it.",
+      "Do not touch cleaned metal with oily hands before painting."
+    ],
+    "surface": [
+      "metal"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/metal-prep-before-paint/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paint-removal-too-slow",
+    "type": "exact_solution",
+    "title": "Paint removal is too slow",
+    "description": "Paint is not coming off fast enough while sanding.",
+    "customer_phrases": [
+      "Paint removal is too slow",
+      "Paint is not coming off fast enough while sanding.",
+      "Switch to a coarser grit for removal. Use 60 or 80 for heavy paint removal, 120 for controlled removal, then refine with 150, 180, and 220.",
+      "paint removal too slow sanding",
+      "what grit removes paint fast",
+      "sandpaper not removing paint",
+      "paint clogs sandpaper",
+      "best grit to remove paint"
+    ],
+    "aliases": [
+      "paint / primer",
+      "paint removal",
+      "paint removal takes too long",
+      "Paint removal is slow when the grit is too fine, the sheet is clogged, or the paint softens and loads the abrasive.",
+      "Use 60 or 80 for heavy removal, 120 for controlled removal, then refine with 150, 180, and 220.",
+      "Do not use fine finishing grit to strip paint. It will load quickly and waste time.",
+      "Do not press harder with a clogged sheet.",
+      "Do not skip refinement after using coarse grit.",
+      "Do not overheat paint by sanding one spot too long."
+    ],
+    "surface": [
+      "paint / primer"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paint-removal-too-slow/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-from-folding",
+    "type": "exact_solution",
+    "title": "Sandpaper tears from folding",
+    "description": "The sandpaper tears where it is folded.",
+    "customer_phrases": [
+      "Sandpaper tears from folding",
+      "The sandpaper tears where it is folded.",
+      "Avoid sharp creases when folding the sheet. Cut the sheet to size or wrap it around a block with a rounded bend instead of folding it tightly back and forth.",
+      "sandpaper tears when folded",
+      "sandpaper ripping at fold",
+      "how to fold sandpaper without tearing",
+      "sandpaper sheet tearing",
+      "paper backing tears sanding"
+    ],
+    "aliases": [
+      "sheet problem",
+      "sheet handling",
+      "sandpaper tears at fold lines",
+      "Sharp folds weaken the paper backing and can split the sheet during sanding.",
+      "The grit is not the main issue. Use the grit required for the job, but handle the sheet without hard creases.",
+      "Do not crease the sheet repeatedly in the same line. That fold can become a tear point.",
+      "Do not fold the sheet into a sharp corner for heavy sanding.",
+      "Do not pull hard on a wet folded sheet.",
+      "Do not keep sanding after a tear reaches the working surface."
+    ],
+    "surface": [
+      "sheet problem"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-from-folding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-from-heavy-pressure",
+    "type": "exact_solution",
+    "title": "Sandpaper tears from heavy pressure",
+    "description": "The sandpaper tears early when too much pressure is used.",
+    "customer_phrases": [
+      "Sandpaper tears from heavy pressure",
+      "The sandpaper tears early when too much pressure is used.",
+      "Use lighter pressure and let the abrasive cut. When sanding needs more cutting power, switch to a coarser grit instead of pushing harder.",
+      "sandpaper tears from pressure",
+      "sandpaper ripping while sanding",
+      "why sandpaper tears fast",
+      "too much pressure sanding",
+      "sandpaper sheet tears early"
+    ],
+    "aliases": [
+      "sheet problem",
+      "sheet handling",
+      "sandpaper tears under heavy pressure",
+      "Heavy pressure overloads the backing, catches the abrasive on high spots, and can tear the sheet before the grit is worn out.",
+      "Use the correct grit for the cut needed. Move coarser for removal, then refine with the next finer grits.",
+      "Do not use pressure to make the wrong grit work. It can tear the sheet and leave deeper scratches.",
+      "Do not press hard on sharp edges or raised spots.",
+      "Do not keep sanding with a torn edge touching the surface.",
+      "Do not use a worn sheet for heavy removal."
+    ],
+    "surface": [
+      "sheet problem"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-from-heavy-pressure/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-paper-tears-on-sharp-edge",
+    "type": "exact_solution",
+    "title": "Sandpaper tears on sharp edges",
+    "description": "The sandpaper tears when sanding a sharp edge or corner.",
+    "customer_phrases": [
+      "Sandpaper tears on sharp edges",
+      "The sandpaper tears when sanding a sharp edge or corner.",
+      "Sharp edges can cut the sheet. Use lighter pressure, soften the edge with controlled passes, and keep the sheet backed or supported instead of dragging a loose edge across the corner.",
+      "sandpaper tears on sharp edge",
+      "sandpaper ripping on corners",
+      "how to sand sharp edge without tearing paper",
+      "paper tears edge sanding",
+      "sandpaper catches on edge"
+    ],
+    "aliases": [
+      "sheet problem",
+      "edge sanding",
+      "sandpaper tears on sharp edges",
+      "A sharp workpiece edge can slice or catch the paper backing, especially when the sheet is loose or pulled tightly.",
+      "Use 120 or 180 to break a sharp edge, then refine with 220 and 320 when a smoother edge is needed.",
+      "Do not drag a loose unsupported sheet hard across a sharp corner. The edge can slice the backing.",
+      "Do not fold the sheet tightly over the sharp edge under heavy pressure.",
+      "Do not keep using a torn strip near finished surfaces.",
+      "Do not start with very fine grit when the edge still needs shaping."
+    ],
+    "surface": [
+      "sheet problem"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/paper-tears-on-sharp-edge/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-haze-after-wet-sanding",
+    "type": "exact_solution",
+    "title": "Plastic is hazy after wet sanding",
+    "description": "Plastic looks cloudy or hazy after wet sanding.",
+    "customer_phrases": [
+      "Plastic is hazy after wet sanding",
+      "Plastic looks cloudy or hazy after wet sanding.",
+      "Plastic haze is usually the sanding pattern showing. Refine with 1000, 1500, 2000, and 3000 grit using light pressure, then polish only after the haze is even.",
+      "plastic hazy after wet sanding",
+      "cloudy plastic after sanding",
+      "wet sanding plastic haze",
+      "how to fix hazy plastic",
+      "plastic sanding marks before polishing"
+    ],
+    "aliases": [
+      "plastic",
+      "wet sanding",
+      "plastic haze after wet sanding",
+      "Plastic scratches easily and can stay cloudy when the grit sequence is skipped, pressure is too heavy, or residue is not rinsed away.",
+      "Use 1000, 1500, 2000, and 3000 for haze refinement. Use 800 only when deeper marks remain.",
+      "Do not press hard on plastic. Heat can smear, gouge, or distort the surface.",
+      "Do not skip from coarse grit directly to polishing.",
+      "Do not sand plastic with dirty water.",
+      "Do not stay in one spot long enough to build heat."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/plastic-haze-after-wet-sanding/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-plastic-prep-before-paint",
+    "type": "exact_solution",
+    "title": "What grit to prep plastic before paint",
+    "description": "It is unclear which grit to use before painting plastic.",
+    "customer_phrases": [
+      "What grit to prep plastic before paint",
+      "It is unclear which grit to use before painting plastic.",
+      "For plastic paint prep, start with 400 for normal scuffing. Use 320 only for uneven spots, then finish with 600 before primer or paint.",
+      "what grit to sand plastic before paint",
+      "plastic paint prep grit",
+      "sandpaper for plastic primer prep",
+      "how to scuff plastic before painting",
+      "plastic surface prep sandpaper"
+    ],
+    "aliases": [
+      "plastic",
+      "paint preparation",
+      "not sure what grit prepares plastic for paint",
+      "Plastic needs enough scratch for adhesion, but coarse grit or heavy pressure can gouge and leave marks under paint.",
+      "Use 400 for normal plastic prep, 320 only for rough spots, then refine with 600 before coating.",
+      "Do not start with 120 or 180 on normal plastic prep. Those scratches can show through paint.",
+      "Do not press hard enough to heat or smear the plastic.",
+      "Do not paint over sanding dust or cleaner residue.",
+      "Do not skip adhesion promoter when the paint system requires it."
+    ],
+    "surface": [
+      "plastic"
+    ],
+    "grits": [
+      "120",
+      "180",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/plastic-prep-before-paint/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-primer-scratches-show-through",
+    "type": "exact_solution",
+    "title": "Primer scratches show through paint",
+    "description": "Sanding scratches in primer are still visible after paint.",
+    "customer_phrases": [
+      "Primer scratches show through paint",
+      "Sanding scratches in primer are still visible after paint.",
+      "The primer scratches were too deep or not fully refined. Sand the primer with 320 or 400, then use 600 when a finer paint surface is needed.",
+      "primer scratches show through paint",
+      "what grit to sand primer before paint",
+      "paint shows sanding scratches",
+      "primer sanding marks visible",
+      "how to remove primer scratches"
+    ],
+    "aliases": [
+      "paint / primer",
+      "primer sanding",
+      "primer scratches show through paint",
+      "Paint can reveal coarse primer scratches when the primer was sanded too aggressively or the grit sequence was skipped.",
+      "Use 320 for primer leveling, 400 for normal paint prep, and 600 for finer prep before topcoat.",
+      "Do not paint over 180 or 220 grit scratches unless the coating system specifically allows it.",
+      "Do not skip from coarse primer sanding directly to paint.",
+      "Do not sand through primer on edges.",
+      "Do not leave dust in scratches before topcoat."
+    ],
+    "surface": [
+      "paint / primer"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/primer-scratches-show-through/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-random-orbital-swirl-pattern",
+    "type": "exact_solution",
+    "title": "Random orbital swirl pattern remains",
+    "description": "A random orbital sander leaves swirl marks that remain visible.",
+    "customer_phrases": [
+      "Random orbital swirl pattern remains",
+      "A random orbital sander leaves swirl marks that remain visible.",
+      "Swirls usually come from dust, worn abrasive, too much pressure, or moving grits too quickly. Clean the surface, use a fresh sheet, and refine one grit at a time.",
+      "random orbital swirl marks",
+      "orbital sander leaves swirls",
+      "how to remove orbital sanding marks",
+      "swirl pattern after sanding",
+      "sander pigtails sandpaper"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "swirl mark removal",
+      "random orbital swirl marks remain",
+      "A random orbital pattern can become visible when debris is trapped under the sheet or the previous grit marks are not fully removed.",
+      "Return to the grit that removes the swirls, often 220 or 320, then refine with 400 and finer as needed.",
+      "Do not press down hard on a random orbital sander. Extra pressure can make swirl marks worse.",
+      "Do not use a clogged disc or sheet.",
+      "Do not tilt the sander on its edge.",
+      "Do not skip grits while swirls are still visible."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/random-orbital-swirl-pattern/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-skipped-120-to-320",
+    "type": "exact_solution",
+    "title": "Skipped from 120 grit to 320 grit",
+    "description": "Deep 120 grit scratches are still visible after switching to 320 grit.",
+    "customer_phrases": [
+      "Skipped from 120 grit to 320 grit",
+      "Deep 120 grit scratches are still visible after switching to 320 grit.",
+      "Go back and add the missing middle grits. After 120, use 150 or 180, then 220, then 320 so the deeper scratches are removed gradually.",
+      "skipped from 120 to 320 grit",
+      "120 grit scratches after 320",
+      "can I go from 120 to 320",
+      "sandpaper grit jump too large",
+      "how to remove 120 grit scratches"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "grit sequence",
+      "120 grit scratches remain after 320 grit",
+      "The jump from 120 to 320 is too large for many surfaces, so 320 cannot quickly remove the 120 grit scratch pattern.",
+      "After 120 grit, refine with 150 or 180, then 220, then 320.",
+      "Do not keep sanding with 320 hoping it will quickly erase deep 120 grit scratches. It usually takes longer than using the missing grits.",
+      "Do not skip the middle grits after coarse sanding.",
+      "Do not move finer while old scratch lines remain.",
+      "Do not use heavy pressure to force fine grit to cut like coarse grit."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/skipped-120-to-320/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-swirls-after-1000",
+    "type": "exact_solution",
+    "title": "Swirls remain after 1000 grit",
+    "description": "Swirl marks are still visible after sanding with 1000 grit.",
+    "customer_phrases": [
+      "Swirls remain after 1000 grit",
+      "Swirl marks are still visible after sanding with 1000 grit.",
+      "1000 grit may be too fine to remove deeper swirls quickly. Go back to 800 or 1000 only as needed to level the marks, then refine through 1200, 1500, 2000, and 3000.",
+      "swirls after 1000 grit",
+      "1000 grit not removing swirls",
+      "wet sanding swirls remain",
+      "how to remove swirl marks with sandpaper",
+      "clear coat swirls after sanding"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "swirl mark removal",
+      "swirls after 1000 grit",
+      "Swirls can remain when the previous scratch pattern or contamination marks are deeper than the current grit can remove efficiently.",
+      "Use 800 only for deeper swirls, 1000 for normal leveling, then refine with 1200, 1500, 2000, and 3000.",
+      "Do not keep sanding with a dirty or worn 1000 grit sheet. It can add new swirls while failing to remove old ones.",
+      "Do not start with 800 on thin clear coat unless needed.",
+      "Do not skip from 1000 directly to final polish when marks remain.",
+      "Do not use dirty water during fine sanding."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "800",
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/swirls-after-1000/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-swirls-from-dirty-water",
+    "type": "exact_solution",
+    "title": "Swirls from dirty wet sanding water",
+    "description": "Wet sanding leaves swirl marks because the water or surface is dirty.",
+    "customer_phrases": [
+      "Swirls from dirty wet sanding water",
+      "Wet sanding leaves swirl marks because the water or surface is dirty.",
+      "Dirty water can drag grit and residue across the surface. Rinse the surface, change the water, clean the sheet, and continue with the same grit before moving finer.",
+      "dirty water wet sanding swirls",
+      "wet sanding water scratches",
+      "swirls from sanding slurry",
+      "how to keep wet sanding water clean",
+      "wet sanding contamination marks"
+    ],
+    "aliases": [
+      "automotive / clear coat",
+      "wet sanding",
+      "swirls caused by dirty water",
+      "Loose abrasive particles, removed coating, or dirt in the water can act like coarse grit and create swirl marks.",
+      "Stay with the current grit until the dirty-water marks are removed, then refine with the next finer grits such as 1500, 2000, and 3000.",
+      "Do not keep sanding with cloudy, gritty water. It can create scratches that look like swirl marks.",
+      "Do not dip clean fine-grit sheets into dirty water.",
+      "Do not wipe sanding slurry across the surface with pressure.",
+      "Do not move finer before contamination marks are removed."
+    ],
+    "surface": [
+      "automotive / clear coat"
+    ],
+    "grits": [
+      "1000",
+      "1200",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet"
+    ],
+    "target_url": "/solutions/swirls-from-dirty-water/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-using-60-3000-kit",
+    "type": "exact_solution",
+    "title": "How to use the 60 to 3000 grit kit",
+    "description": "It is unclear how to use the full 60 to 3000 grit assortment.",
+    "customer_phrases": [
+      "How to use the 60 to 3000 grit kit",
+      "It is unclear how to use the full 60 to 3000 grit assortment.",
+      "Use the kit by stages, not every grit on every job. Use 60–120 for removal, 150–240 for prep, 280–400 for fine prep, 500–800 for extra fine smoothing, and 1000–3000 for wet sanding or polishing prep.",
+      "how to use 60 to 3000 grit sandpaper",
+      "60 3000 grit assortment guide",
+      "sandpaper kit grit sequence",
+      "which grits in assorted kit",
+      "how to use full sandpaper kit"
+    ],
+    "aliases": [
+      "general sandpaper use",
+      "grit selection",
+      "not sure how to use 60 to 3000 grit kit",
+      "A full grit assortment covers many jobs, so the correct starting and stopping point depends on the task.",
+      "Choose the range by task: 60–120 removal, 150–240 prep, 280–400 fine prep, 500–800 extra fine, and 1000–3000 wet sanding or polishing prep.",
+      "Do not use every grit automatically. Extra sanding can waste time or create unnecessary risk on thin coatings.",
+      "Do not start with 60 grit for delicate work.",
+      "Do not skip from coarse removal directly to ultra-fine grits.",
+      "Do not wet sand materials that should stay dry."
+    ],
+    "surface": [
+      "general sandpaper use"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "240",
+      "280",
+      "320",
+      "400",
+      "500",
+      "600",
+      "800",
+      "1000",
+      "1500",
+      "2000",
+      "3000"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/using-60-3000-kit/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-what-grit-for-paint-prep",
+    "type": "exact_solution",
+    "title": "What grit to use for paint prep",
+    "description": "It is unclear which grit to use before painting.",
+    "customer_phrases": [
+      "What grit to use for paint prep",
+      "It is unclear which grit to use before painting.",
+      "For most paint prep, use 220–320 for shaping and primer prep, then 400 before paint. Use 600 when the paint system needs a finer final scratch.",
+      "what grit for paint prep",
+      "sandpaper grit before paint",
+      "what grit before painting",
+      "paint prep sandpaper",
+      "sand surface before paint grit"
+    ],
+    "aliases": [
+      "paint / primer",
+      "paint preparation",
+      "not sure what grit prepares a surface for paint",
+      "Paint prep needs enough scratch for adhesion, but scratches that are too coarse can show through the coating.",
+      "Use 220–320 for prep and leveling, 400 before paint, and 600 for finer final prep when needed.",
+      "Do not paint over coarse scratches that are still visible. Paint can make them easier to see.",
+      "Do not use 80 or 120 for final paint prep.",
+      "Do not skip primer-sanding refinement.",
+      "Do not leave dust or residue before coating."
+    ],
+    "surface": [
+      "paint / primer"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320",
+      "400",
+      "600"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/what-grit-for-paint-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-what-grit-for-wood-prep",
+    "type": "exact_solution",
+    "title": "What grit to use for wood prep",
+    "description": "It is unclear which grit to use when preparing wood.",
+    "customer_phrases": [
+      "What grit to use for wood prep",
+      "It is unclear which grit to use when preparing wood.",
+      "For most wood prep, start with 150 or 180 if the wood is rough, then move to 220. Use 320 only when a finer surface is needed before finish.",
+      "what grit for wood prep",
+      "sandpaper grit for wood before finish",
+      "what grit to sand wood",
+      "wood sanding sequence",
+      "wood prep before staining grit"
+    ],
+    "aliases": [
+      "wood",
+      "wood preparation",
+      "not sure what grit prepares wood",
+      "Wood prep depends on roughness, grain, and finish type; starting too coarse can leave scratches, while starting too fine can be slow.",
+      "Use 150 or 180 for rough wood, 220 for normal prep, and 320 for finer finish prep.",
+      "Do not over-sand bare wood with very fine grit before stain. It can reduce stain absorption and cause uneven color.",
+      "Do not start with 60 or 80 unless heavy removal is needed.",
+      "Do not skip from 120 directly to 320 when scratches remain.",
+      "Do not apply finish over sanding dust."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "60",
+      "80",
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/what-grit-for-wood-prep/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-wood-prep-before-finish",
+    "type": "exact_solution",
+    "title": "Preparing wood before finish",
+    "description": "Wood needs to be sanded before applying finish.",
+    "customer_phrases": [
+      "Preparing wood before finish",
+      "Wood needs to be sanded before applying finish.",
+      "Prepare wood by sanding through 150, 180, and 220. Use 320 only for finishes that need a finer surface, and remove all dust before applying finish.",
+      "wood prep before finish",
+      "sand wood before finish grit",
+      "final sanding wood before finish",
+      "wood finishing sandpaper sequence",
+      "how to sand wood before coating"
+    ],
+    "aliases": [
+      "wood",
+      "finish preparation",
+      "wood needs final sanding before finish",
+      "Wood finish can reveal scratches, dust, raised grain, or uneven sanding if prep is not consistent.",
+      "Use 150, 180, and 220 for most wood finish prep. Use 320 for finer prep when needed.",
+      "Do not leave sanding dust in the grain. It can make the finish look rough or cloudy.",
+      "Do not sand across the grain with coarse grit before finishing.",
+      "Do not skip grit steps when scratches remain.",
+      "Do not over-polish wood before stain unless that result is intended."
+    ],
+    "surface": [
+      "wood"
+    ],
+    "grits": [
+      "120",
+      "150",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "dry"
+    ],
+    "target_url": "/solutions/wood-prep-before-finish/",
+    "result_kind": "answer"
+  },
+  {
+    "id": "solution-worn-sheet-not-cutting",
+    "type": "exact_solution",
+    "title": "Worn sheet is not cutting",
+    "description": "The sandpaper sheet feels worn and stops cutting effectively.",
+    "customer_phrases": [
+      "Worn sheet is not cutting",
+      "The sandpaper sheet feels worn and stops cutting effectively.",
+      "Replace the sheet when it stops cutting. Pressing harder with a worn sheet creates heat, scratches, and poor results without removing material faster.",
+      "sandpaper not cutting",
+      "worn sandpaper sheet",
+      "sandpaper stops working",
+      "why sandpaper does not remove material",
+      "when to replace sandpaper"
+    ],
+    "aliases": [
+      "sheet problem",
+      "sheet wear",
+      "worn sandpaper not cutting",
+      "Abrasive grains wear down or load with dust and coating residue, so the sheet rubs instead of cutting.",
+      "Use the correct grit for the job and switch to a fresh sheet when cutting slows. Move coarser only when the grit is too fine for the task.",
+      "Do not press harder with a worn sheet. It can heat the surface and leave inconsistent scratches.",
+      "Do not keep using a loaded sheet on paint or primer.",
+      "Do not confuse worn abrasive with the wrong grit choice.",
+      "Do not use torn sheet edges on finished surfaces."
+    ],
+    "surface": [
+      "sheet problem"
+    ],
+    "grits": [
+      "80",
+      "120",
+      "180",
+      "220",
+      "320"
+    ],
+    "method": [
+      "wet",
+      "dry"
+    ],
+    "target_url": "/solutions/worn-sheet-not-cutting/",
+    "result_kind": "answer"
+  },
+  {
     "id": "search-scratches-too-deep",
     "type": "top_problem",
     "title": "Scratches Are Too Deep",

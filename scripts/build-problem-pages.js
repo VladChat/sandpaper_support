@@ -95,23 +95,40 @@ function groupCardsByProblemSlug(cards) {
 
 function readProblemTreeGroups() {
   if (!fs.existsSync(PROBLEM_TREE_PATH)) return [];
-  const tree = readJson(PROBLEM_TREE_PATH);
+  const treeRaw = readJson(PROBLEM_TREE_PATH);
+  const tree = Array.isArray(treeRaw)
+    ? treeRaw
+    : (treeRaw && Array.isArray(treeRaw.groups) ? treeRaw.groups : []);
   if (!Array.isArray(tree)) return [];
+
   return tree
     .map(function (item) {
       const slug = String(item && item.id ? item.id : "").trim();
       if (!slug) return null;
       const title = String(item && item.title ? item.title : "").trim() || titleFromSlug(slug);
       const description = String(item && item.description ? item.description : "").trim();
-      return { slug: slug, title: title, description: description };
+      const solutionCardIds = Array.isArray(item && item.solution_card_ids)
+        ? item.solution_card_ids.map(function (id) { return String(id || "").trim(); }).filter(Boolean)
+        : [];
+      return {
+        slug: slug,
+        title: title,
+        description: description,
+        solution_card_ids: solutionCardIds
+      };
     })
     .filter(Boolean);
 }
 
 function mergeProblemGroups(cards) {
+  const cardsById = new Map();
+  cards.forEach(function (card) {
+    if (card && card.id) cardsById.set(String(card.id), card);
+  });
+
   const cardGroups = groupCardsByProblemSlug(cards);
-  const cardBySlug = Object.create(null);
-  cardGroups.forEach(function (group) { cardBySlug[group.slug] = group; });
+  const cardGroupsBySlug = Object.create(null);
+  cardGroups.forEach(function (group) { cardGroupsBySlug[group.slug] = group; });
 
   const treeGroups = readProblemTreeGroups();
   if (!treeGroups.length) return cardGroups;
@@ -120,27 +137,45 @@ function mergeProblemGroups(cards) {
   const used = new Set();
 
   treeGroups.forEach(function (treeGroup) {
-    const fromCards = cardBySlug[treeGroup.slug];
-    if (fromCards) {
-      if (treeGroup.title) fromCards.title = treeGroup.title;
-      if (treeGroup.description) fromCards.description = treeGroup.description;
-      merged.push(fromCards);
-    } else {
-      merged.push({
-        slug: treeGroup.slug,
-        title: treeGroup.title,
-        description: treeGroup.description,
-        cards: []
+    const groupCards = [];
+    const missingIds = [];
+    if (Array.isArray(treeGroup.solution_card_ids) && treeGroup.solution_card_ids.length) {
+      treeGroup.solution_card_ids.forEach(function (id) {
+        const card = cardsById.get(String(id));
+        if (!card) {
+          missingIds.push(id);
+          return;
+        }
+        groupCards.push(card);
       });
     }
+
+    if (missingIds.length) {
+      throw new Error(
+        "Problem tree group " + treeGroup.slug + " references missing solution_card_ids: " + missingIds.join(", ")
+      );
+    }
+
+    if (!groupCards.length) {
+      throw new Error("Problem tree group " + treeGroup.slug + " has 0 real answers.");
+    }
+
+    merged.push({
+      slug: treeGroup.slug,
+      title: treeGroup.title || titleFromSlug(treeGroup.slug),
+      description: treeGroup.description || getProblemDescription(treeGroup.slug, groupCards),
+      cards: groupCards
+    });
     used.add(treeGroup.slug);
   });
 
   cardGroups.forEach(function (group) {
-    if (!used.has(group.slug)) merged.push(group);
+    if (!used.has(group.slug) && group.cards.length) merged.push(group);
   });
 
-  return merged;
+  return merged.filter(function (group) {
+    return Array.isArray(group.cards) && group.cards.length > 0;
+  });
 }
 
 function validateCards(cards) {
@@ -174,7 +209,7 @@ function renderProblemGroupCard(group) {
     '        <ul class="pill-list" style="display:block;padding-left:18px;margin:10px 0 0;">',
     previewItems + moreHtml,
     "        </ul>",
-    '        <span class="cta">Open problem group →</span>',
+    '        <span class="cta">View problem guide</span>',
     "      </a>"
   ].join("\n");
 }
@@ -191,20 +226,107 @@ function renderSolutionCard(card) {
     "        <h3>" + escapeHtml(card.title) + "</h3>",
     "        <p>" + escapeHtml(detailParts.join(" ")) + "</p>",
     pills ? '        <div class="pill-list">\n' + pills + "\n        </div>" : "",
-    '        <span class="cta">Open answer →</span>',
+    '        <span class="cta">View solution</span>',
     "      </a>"
   ].filter(Boolean).join("\n");
 }
 
+const PRIMARY_PROBLEM_HUB = [
+  { slug: "scratches-too-deep", description: "Scratch marks stay visible even after moving to finer grits." },
+  { slug: "not-sure-what-grit-to-use", description: "You are unsure where to start or which grit should come next." },
+  { slug: "paper-clogs-too-fast", description: "The sheet loads with dust, paint, or residue and stops cutting." },
+  { slug: "sanding-takes-too-long", description: "Cutting feels slow and defects are not clearing in a reasonable time." },
+  { slug: "surface-still-feels-rough", description: "The surface still feels uneven or textured after sanding." },
+  { slug: "wet-sanding-leaves-haze", description: "Wet sanding leaves cloudiness or haze that does not clear." },
+  { slug: "swirl-marks-remain", description: "Circular marks remain visible after sanding or prep work." },
+  { slug: "finish-looks-uneven", description: "The finish looks patchy, blotchy, or inconsistent across the surface." },
+  { slug: "poor-results-between-coats", description: "Between-coat sanding does not produce a smooth, even base." },
+  { slug: "paper-tears-early", description: "Sheets tear, fray, or wear out before finishing the sanding step." }
+];
+
+const TASK_OR_MATERIAL_HUB = [
+  { slug: "paint-prep", title: "Paint Prep", cta: "View prep guide" },
+  { slug: "wood-finish-prep", title: "Wood Finish Prep", cta: "View prep guide" },
+  { slug: "drywall-patch", title: "Drywall Patch", cta: "View related problems" },
+  { slug: "rust-removal", title: "Rust Removal", cta: "View related problems" },
+  { slug: "paint-removal", title: "Paint Removal", cta: "View related problems" },
+  { slug: "metal-prep", title: "Metal Prep", cta: "View prep guide" },
+  { slug: "plastic-sanding", title: "Plastic Sanding", cta: "View sanding guide" },
+  { slug: "wet-or-dry-use", title: "Wet Or Dry Use", cta: "View sanding guide" },
+  { slug: "grit-sequence", title: "Grit Sequence", cta: "View sanding guide" },
+  { slug: "headlight-restoration", title: "Headlight Restoration", cta: "View related problems" }
+];
+
+function renderPrimaryProblemCard(group, overrideDescription) {
+  const examples = group.cards.slice(0, 5).map(function (card) {
+    return '<span class="pill">' + escapeHtml(card.title) + "</span>";
+  }).join("");
+
+  return [
+    '      <article class="card">',
+    "        <h3>" + escapeHtml(group.title) + "</h3>",
+    "        <p>" + escapeHtml(overrideDescription || group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
+    examples ? '        <div class="pill-list">' + examples + "</div>" : "",
+    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">View problem guide</a>',
+    "      </article>"
+  ].filter(Boolean).join("\n");
+}
+
+function renderTaskCard(group, title, cta) {
+  const examples = group.cards.slice(0, 3).map(function (card) {
+    return '<span class="pill">' + escapeHtml(card.title) + "</span>";
+  }).join("");
+
+  return [
+    '      <article class="card">',
+    "        <h3>" + escapeHtml(title || group.title) + "</h3>",
+    "        <p>" + escapeHtml(group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
+    examples ? '        <div class="pill-list">' + examples + "</div>" : "",
+    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">' + escapeHtml(cta) + "</a>",
+    "      </article>"
+  ].filter(Boolean).join("\n");
+}
+
+function renderCuratedProblemsHtml(groupsBySlug) {
+  const primaryCards = PRIMARY_PROBLEM_HUB.map(function (item) {
+    const group = groupsBySlug[item.slug];
+    if (!group) return "";
+    return renderPrimaryProblemCard(group, item.description);
+  }).filter(Boolean).join("\n");
+
+  const secondaryCards = TASK_OR_MATERIAL_HUB.map(function (item) {
+    const group = groupsBySlug[item.slug];
+    if (!group) return "";
+    return renderTaskCard(group, item.title, item.cta);
+  }).filter(Boolean).join("\n");
+
+  return [
+    '<section class="section band"><h2>Common sanding problems</h2><div class="grid">',
+    primaryCards,
+    "</div></section>",
+    '<section class="section"><h2>Start by task or material</h2><div class="grid">',
+    secondaryCards,
+    "</div></section>"
+  ].join("");
+}
+
 function renderProblemsIndex(groups, template, totalSolutions) {
+  const groupsBySlug = Object.create(null);
+  groups.forEach(function (group) {
+    groupsBySlug[group.slug] = group;
+  });
+
   return replaceAllPlaceholders(template, {
-    PROBLEM_GROUPS_HTML: groups.map(renderProblemGroupCard).join("\n"),
+    CURATED_PROBLEMS_HTML: renderCuratedProblemsHtml(groupsBySlug),
     TOTAL_GROUPS: String(groups.length),
     TOTAL_SOLUTIONS: String(totalSolutions)
   });
 }
 
 function renderProblemPage(group, template) {
+  if (!Array.isArray(group.cards) || group.cards.length === 0) {
+    throw new Error("Cannot render empty problem page: " + group.slug);
+  }
   const description = group.description || getProblemDescription(group.slug, group.cards);
   return replaceAllPlaceholders(template, {
     PROBLEM_TITLE: escapeHtml(group.title),
@@ -264,3 +386,5 @@ try {
   console.error(error && error.message ? error.message : String(error));
   process.exitCode = 1;
 }
+
+

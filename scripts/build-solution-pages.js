@@ -227,34 +227,11 @@ function hrefExists(href) {
   }
 }
 
-function safeTopicHref(href) {
-  const candidate = String(href || "").trim();
-  if (!candidate) {
-    return "";
-  }
-  if (candidate.indexOf(" ") !== -1) {
-    return "";
-  }
-  if (candidate.indexOf("/search/") === 0) {
-    return "";
-  }
-  var approvedMap = {
-    "/surfaces/wood/": true,
-    "/surfaces/metal/": true,
-    "/surfaces/plastic/": true,
-    "/surfaces/drywall-patch/": true,
-    "/surfaces/paint-primer/": true,
-    "/surfaces/clear-coat/": true,
-    "/problems/poor-results-between-coats/": true,
-    "/solutions/normal-haze-after-wet-sanding/": true,
-    "/solutions/deep-scratches-after-80-grit/": true,
-    "/solutions/paint-clogs-sheet/": true,
-  };
-  var normalized = String(candidate).toLowerCase();
-  if (!approvedMap[normalized]) {
-    return "";
-  }
-  return sitePath(candidate);
+function topicLabelToTagSlug(label) {
+  return String(label || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function inferRelatedTopics(card) {
@@ -339,13 +316,9 @@ function renderRelatedTopics(card) {
 
   const rows = topics.map(function (topic) {
     const label = escapeHtml(topic.label);
-    const href = safeTopicHref(topic.href);
-
-    if (href) {
-      return '      <a class="topic-pill topic-pill-link" href="' + escapeHtml(href) + '">' + label + '</a>';
-    }
-
-    return '      <span class="topic-pill">' + label + '</span>';
+    const slug = topicLabelToTagSlug(topic.label);
+    const href = sitePath("/tags/" + slug + "/");
+    return '      <a class="topic-pill topic-pill-link pill-link" href="' + escapeHtml(href) + '">' + label + '</a>';
   });
 
   return [

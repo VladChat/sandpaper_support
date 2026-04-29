@@ -11,12 +11,14 @@ const REQUIRED_FILES = [
   "problems/index.html",
   "surfaces/index.html",
   "grits/index.html",
+  "tags/index.html",
   "products/index.html",
   "products/assorted-80-3000/index.html",
   "products/single-grit-sheets/index.html",
   "tools/index.html",
   "tools/grit-sequence-builder/index.html",
   "data/solution-cards.json",
+  "data/problem-tree.json",
   "data/search-index.json",
   "data/surface-map.json",
   "data/grit-sequences.json"
@@ -303,6 +305,56 @@ function validateGritSequences(errors) {
   });
 }
 
+function validateProblemTree(errors, cardsById) {
+  const raw = readJson("data/problem-tree.json");
+  const groups = Array.isArray(raw)
+    ? raw
+    : (raw && Array.isArray(raw.groups) ? raw.groups : null);
+
+  if (!Array.isArray(groups)) {
+    errors.push("data/problem-tree.json must be an array or an object with groups array.");
+    return;
+  }
+
+  groups.forEach((group, idx) => {
+    const label = "problem-tree[" + idx + "]";
+    const groupId = String(group && group.id ? group.id : "").trim();
+    if (!groupId) {
+      errors.push(label + " missing id.");
+      return;
+    }
+
+    if (!Array.isArray(group.solution_card_ids) || !group.solution_card_ids.length) {
+      errors.push(label + " (" + groupId + ") solution_card_ids must be a non-empty array.");
+      return;
+    }
+
+    let validCount = 0;
+    group.solution_card_ids.forEach((rawId) => {
+      const id = normalizeSolutionId(rawId);
+      if (!id) {
+        errors.push(label + " (" + groupId + ") has empty solution_card_id.");
+        return;
+      }
+      if (!cardsById.has(id)) {
+        errors.push(label + " (" + groupId + ") missing referenced solution card id: " + id);
+        return;
+      }
+      if (!solutionExists(id)) {
+        errors.push(
+          label + " (" + groupId + ") missing generated solution page for id " + id + ": " + solutionPath(id)
+        );
+        return;
+      }
+      validCount += 1;
+    });
+
+    if (validCount === 0) {
+      errors.push(label + " (" + groupId + ") resolves to 0 real answers.");
+    }
+  });
+}
+
 function validateBuildScript(errors) {
   const pkg = readJson("package.json");
   const scripts = pkg.scripts || {};
@@ -315,6 +367,7 @@ function validateBuildScript(errors) {
     "build:product-pages",
     "build:surface-pages",
     "build:grit-guide",
+    "build:tag-pages",
     "validate:source",
     "check:links"
   ];
@@ -334,11 +387,154 @@ function validateBuildScript(errors) {
   }
 }
 
+function topicLabelToTagSlug(label) {
+  return String(label || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function collectTopicText(card) {
+  return [
+    card.title,
+    card.problem,
+    card.surface,
+    card.task,
+    card.symptom,
+    card.quick_answer,
+    card.likely_cause,
+    card.recommended_grit,
+    card.wet_or_dry,
+    card.avoid,
+    card.success_check,
+    Array.isArray(card.steps) ? card.steps.join(" ") : "",
+    Array.isArray(card.mistakes_to_avoid) ? card.mistakes_to_avoid.join(" ") : ""
+  ].join(" ").toLowerCase();
+}
+
+function hasPhrase(text, phrase) {
+  if (!text || !phrase) return false;
+  return text.indexOf(String(phrase).toLowerCase()) !== -1;
+}
+
+function hasWholeWord(text, word) {
+  if (!text || !word) return false;
+  const re = new RegExp("\\b" + String(word).replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "\\b", "i");
+  return re.test(text);
+}
+
+function hasAnyPhrase(text, phrases) {
+  if (!text || !Array.isArray(phrases)) return false;
+  return phrases.some((p) => hasPhrase(text, p));
+}
+
+function hasAnyGrit(text, grits) {
+  if (!text || !Array.isArray(grits)) return false;
+  return grits.some((g) => hasWholeWord(text, String(g)));
+}
+
+function addTopic(topics, label) {
+  const cleanLabel = String(label || "").trim();
+  if (!cleanLabel || cleanLabel.length > 24) return;
+  const normalized = cleanLabel.toLowerCase();
+  if (topics.some((topic) => topic.normalized === normalized)) return;
+  topics.push({
+    label: cleanLabel,
+    normalized
+  });
+}
+
+function inferRelatedTopics(card) {
+  const topics = [];
+  const text = collectTopicText(card);
+
+  if (hasAnyPhrase(text, ["wood", "grain", "veneer", "hardwood", "softwood"])) addTopic(topics, "wood");
+  if (hasAnyPhrase(text, ["plastic", "pvc", "acrylic", "bumper"])) addTopic(topics, "plastic");
+  if (hasAnyPhrase(text, ["metal", "aluminum", "steel", "stainless", "rust"])) addTopic(topics, "metal");
+  if (hasAnyPhrase(text, ["drywall", "joint compound", "spackle", "patch"])) addTopic(topics, "drywall patch");
+  if (hasAnyPhrase(text, ["clear coat", "clearcoat"])) addTopic(topics, "clear coat");
+  if (hasAnyPhrase(text, ["paint", "painted"])) addTopic(topics, "paint");
+  if (hasPhrase(text, "primer")) addTopic(topics, "primer");
+
+  if (hasAnyPhrase(text, ["wet", "water", "rinse", "slurry"])) addTopic(topics, "wet sanding");
+  if (hasAnyPhrase(text, ["dry", "dust"])) addTopic(topics, "dry sanding");
+  if (hasAnyPhrase(text, ["between coats", "coat", "coating", "recoat"])) addTopic(topics, "between coats");
+  if (hasAnyPhrase(text, ["polish", "polishing", "gloss"])) addTopic(topics, "polishing prep");
+  if (hasAnyPhrase(text, ["haze", "hazy", "cloudy", "dull"])) addTopic(topics, "haze");
+  if (hasAnyPhrase(text, ["scratch", "scratches", "marks", "lines"])) addTopic(topics, "scratches");
+  if (hasAnyPhrase(text, ["clog", "clogs", "clogged", "loading", "loaded", "glaze", "residue"])) addTopic(topics, "clogging");
+  if (hasAnyPhrase(text, ["pressure", "press", "hard", "aggressive", "gouge"])) addTopic(topics, "pressure");
+  if (hasPhrase(String(card.title || "").toLowerCase(), "starting grit") || hasPhrase(String(card.task || "").toLowerCase(), "grit selection")) {
+    addTopic(topics, "grit selection");
+  }
+
+  if (hasAnyGrit(text, ["60", "80", "100", "120"])) addTopic(topics, "coarse grit");
+  if (hasAnyGrit(text, ["150", "180", "220", "240"])) addTopic(topics, "medium grit");
+  if (hasAnyGrit(text, ["280", "320", "360", "400"])) addTopic(topics, "fine grit");
+  if (hasAnyGrit(text, ["500", "600", "800", "1000", "1200", "1500", "2000", "3000"])) addTopic(topics, "ultra fine grit");
+
+  return topics.slice(0, 4);
+}
+
+function validateTagPages(errors, cards) {
+  const expectedTagSlugs = new Set();
+  const tagsDir = path.join(ROOT_DIR, "tags");
+  const tagIndexPath = path.join(tagsDir, "index.html");
+
+  if (!fs.existsSync(tagIndexPath)) {
+    errors.push("Missing generated tag index page: tags/index.html");
+  }
+
+  (Array.isArray(cards) ? cards : []).forEach((card) => {
+    if (!card || !card.id) return;
+    const topics = inferRelatedTopics(card);
+    topics.forEach((topic) => {
+      const slug = topicLabelToTagSlug(topic.label);
+      if (!slug) return;
+      expectedTagSlugs.add(slug);
+      const tagPage = path.join(tagsDir, slug, "index.html");
+      if (!fs.existsSync(tagPage)) {
+        errors.push("Missing generated tag page for chip '" + topic.label + "': tags/" + slug + "/index.html");
+      }
+    });
+  });
+
+  expectedTagSlugs.forEach((slug) => {
+    const filePath = path.join(tagsDir, slug, "index.html");
+    if (!fs.existsSync(filePath)) return;
+    const html = fs.readFileSync(filePath, "utf8");
+    if (!/href="\/sandpaper_support\/solutions\/[^"]+\/"/.test(html)) {
+      errors.push("Tag page has no related answers: tags/" + slug + "/index.html");
+    }
+  });
+
+  (Array.isArray(cards) ? cards : []).forEach((card) => {
+    if (!card || !card.id) return;
+    const filePath = path.join(ROOT_DIR, "solutions", String(card.id), "index.html");
+    if (!fs.existsSync(filePath)) return;
+    const html = fs.readFileSync(filePath, "utf8");
+    const links = html.match(/href="\/sandpaper_support\/tags\/[^"]+\/"/g) || [];
+    const expected = inferRelatedTopics(card).length;
+    if (links.length !== expected) {
+      errors.push("Solution chip link count mismatch for " + card.id + ": expected " + expected + ", found " + links.length);
+    }
+    links.forEach((hrefText) => {
+      const href = hrefText.replace(/^href="/, "").replace(/"$/, "");
+      const localPath = pageUrlToLocalPath(href);
+      if (localPath && !exists(localPath)) {
+        errors.push("Solution chip link points to missing tag page (" + card.id + "): " + href);
+      }
+    });
+  });
+}
+
 function main() {
   const errors = [];
 
   validateRequiredFiles(errors);
-  validateSolutionCards(errors);
+  const solutionData = validateSolutionCards(errors);
+  validateProblemTree(errors, solutionData.cardsById);
+  validateTagPages(errors, solutionData.cards);
   validateSearchIndex(errors);
   validateSurfaceMap(errors);
   validateGritSequences(errors);
