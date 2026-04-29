@@ -89,7 +89,7 @@ function pageUrlToLocalPath(rawUrl) {
 
   if (url.startsWith(BASE_PATH)) {
     url = url.slice(BASE_PATH.length);
-  } else if (url.startsWith("/solutions/") || url.startsWith("/problems/") || url.startsWith("/surfaces/") || url.startsWith("/products/") || url.startsWith("/tools/") || url.startsWith("/grits/") || url.startsWith("/ask/") || url.startsWith("/ai-assistant/") || url.startsWith("/documents/") || url.startsWith("/how-to/")) {
+  } else if (url.startsWith("/solutions/") || url.startsWith("/problems/") || url.startsWith("/surfaces/") || url.startsWith("/products/") || url.startsWith("/tools/") || url.startsWith("/grits/") || url.startsWith("/tags/") || url.startsWith("/ask/") || url.startsWith("/ai-assistant/") || url.startsWith("/documents/") || url.startsWith("/how-to/")) {
     // Data JSON files often store URLs without /sandpaper_support prefix.
   } else if (url === "/" || url === BASE_PATH + "/") {
     url = "/";

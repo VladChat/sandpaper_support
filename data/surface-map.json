@@ -12,6 +12,7 @@
       "coarse-scratches-on-wood",
       "fence-splinters-after-sanding",
       "thin-veneer-burn-through-warning",
+      "wood-prep-before-finish",
       "raised-grain-after-water-based-finish",
       "kitchen-grease-before-sanding-warning",
       "sand-with-or-against-grain",
@@ -38,8 +39,7 @@
       "cherry-before-finish-grit",
       "stainless-weld-cleanup-grit",
       "craft-wood-before-acrylic-paint-grit",
-      "deck-rail-before-stain-grit",
-      "deck-railing-before-stain-grit"
+      "deck-rail-before-stain-grit"
     ]
   },
   {
@@ -56,9 +56,12 @@
       "wicker-furniture-sanding-warning",
       "zinc-plated-hardware-sanding-warning",
       "paint-lap-marks-sanding-grit",
+      "between-coats-cut-through",
       "dust-nibs-in-finish",
       "sanding-through-edges",
+      "finish-patchy-after-grit-change",
       "finish-smears-while-sanding",
+      "between-coats-too-coarse",
       "guide-coat-still-visible-after-sanding",
       "remove-gloss-before-repainting",
       "clean-sanding-dust-before-paint",
@@ -67,22 +70,19 @@
       "paint-clogs-sheet",
       "paint-fisheyes-after-sanding",
       "paint-peels-after-sanding",
+      "paint-removal-too-slow",
       "painted-trim-rough-between-coats",
       "spackle-pinholes-after-sanding",
       "primer-on-plastic-rough-grit",
+      "wood-prep-before-finish",
       "primer-dust-loads-paper",
       "primer-scratches-before-paint-grit",
       "primer-scratches-show-through-paint",
+      "primer-scratches-show-through",
       "raised-grain-after-water-based-finish",
       "surface-shows-sanding-scratches-after-paint",
       "oil-finish-between-coats-warning",
-      "caulk-line-before-painting-sanding-warning",
-      "kitchen-grease-before-sanding-warning",
-      "spray-primer-rough-after-drying-grit",
-      "stain-looks-blotchy-after-sanding",
-      "surface-too-rough-for-paint",
-      "uneven-finish-from-pressure",
-      "wooden-picture-frame-gold-leaf-prep-grit"
+      "caulk-line-before-painting-sanding-warning"
     ]
   },
   {
@@ -92,11 +92,17 @@
     "solution_card_ids": [
       "carbon-fiber-clear-coat-sanding-warning",
       "carbon-fiber-sanding-warning",
+      "clear-coat-haze-after-1000",
       "cloudy-clear-coat-after-sanding",
       "deep-lines-on-clear-coat",
       "dry-sanding-clear-coat-problem",
       "clear-coat-edge-sanding-warning",
       "normal-haze-after-wet-sanding",
+      "clear-coat-orange-peel-leveling",
+      "swirls-from-dirty-water",
+      "swirls-after-1000",
+      "assorted-kit-polishing-prep",
+      "haze-is-uneven",
       "orange-peel-on-cabinet-paint-grit",
       "paint-orange-peel-after-spray-grit",
       "alloy-wheel-clear-coat-sanding-grit",
@@ -172,6 +178,7 @@
       "vinyl-surface-sanding-warning",
       "zinc-plated-hardware-sanding-warning",
       "pla-sanding-heat-problem",
+      "plastic-haze-after-wet-sanding",
       "avoid-melting-plastic-while-sanding",
       "primer-on-plastic-rough-grit",
       "plastic-still-rough",
@@ -196,8 +203,7 @@
       "model-kit-seam-line-sanding-grit",
       "motorcycle-fairing-sanding-grit",
       "outboard-motor-cover-before-painting-grit",
-      "painted-brick-fireplace-prep-grit",
-      "particle-board-before-painting"
+      "painted-brick-fireplace-prep-grit"
     ]
   },
   {
@@ -232,12 +238,16 @@
       "how-to-cut-sandpaper-sheets",
       "fold-sandpaper-for-corners",
       "store-sandpaper-to-prevent-curling",
+      "using-60-3000-kit",
       "paint-clogs-sheet",
       "spackle-pinholes-after-sanding",
       "primer-dust-loads-paper",
       "sandpaper-curls-during-wet-sanding",
       "sandpaper-leaves-black-residue",
       "sandpaper-stops-cutting-fast",
+      "paper-tears-from-folding",
+      "paper-tears-from-heavy-pressure",
+      "paper-tears-on-sharp-edge",
       "sheet-tears-while-sanding",
       "remove-sticker-residue-with-sandpaper-warning",
       "silicon-carbide-vs-aluminum-oxide-question",
@@ -255,9 +265,7 @@
       "when-to-change-sandpaper-sheet",
       "when-to-use-dry-sanding",
       "when-to-use-wet-sanding",
-      "which-grits-are-in-assortment-pack",
-      "which-side-of-sandpaper-to-use",
-      "wood-dust-clogs-paper"
+      "which-grits-are-in-assortment-pack"
     ]
   }
 ]
