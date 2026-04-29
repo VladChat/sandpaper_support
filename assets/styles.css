@@ -648,6 +648,24 @@ body.solution-page .related-answers a:hover {
   text-decoration: underline;
 }
 
+.answer-card .answer-section-title {
+  margin: 18px 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+
+.answer-card > h2 {
+  margin: 18px 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111827;
+}
+
 /* Prevent nested chat scrolling on solution pages */
 body.solution-page .chat-messages,
 body.solution-page .solution-followup-messages {

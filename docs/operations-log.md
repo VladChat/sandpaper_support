@@ -39,3 +39,10 @@
 - Browser-tested pages: /, /solutions/plastic-still-rough/, /solutions/paint-clogs-sheet/.
 - Tested queries: h, ho, how, how to, how to fix, clogged, wet sanding, plastic, grit, scratches (home) and how to fix, clogged, wet sanding, plastic (solution pages).
 - Results: suggestions update on every keystroke, max 8 results, consistent visible titles across pages, click + Enter navigation works, and no console errors.
+
+## 2026-04-29 — Answer Card Heading Size Fix
+- Updated templates/solution-page.html to use <h2 class='answer-section-title'>What to do</h2> inside solution answer cards.
+- Added scoped styling in assets/styles.css for .answer-card .answer-section-title and fallback .answer-card > h2 to keep the internal heading compact and card-style.
+- Regenerated solutions from template via build.
+- Browser-verified pages: /solutions/paint-clogs-sheet/ and /solutions/plastic-still-rough/.
+- Verification: page title remains large (~53.76px), internal What to do heading is compact (~21.6px), autocomplete still works (8 suggestions for how to fix), no console errors.
