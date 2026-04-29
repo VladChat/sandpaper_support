@@ -720,3 +720,53 @@ body.solution-page a.pill-link:focus-visible {
   background: #dff0fb;
   border-color: #7CB1D9;
 }
+
+/* P7: Local autocomplete panel styling */
+.aa-Autocomplete {
+  width: 100%;
+}
+
+.aa-Form,
+.aa-InputWrapper,
+.aa-Input {
+  display: none;
+}
+
+.aa-Panel {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  margin-top: 0;
+}
+
+.aa-List {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aa-Item {
+  margin: 0;
+  padding: 0;
+}
+
+.aa-Item .result-link {
+  width: 100%;
+}
+
+.result-title-link {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.result-title-link:hover,
+.result-title-link:focus-visible {
+  text-decoration: none;
+}
+
+.result-empty {
+  color: #4b5563;
+}
