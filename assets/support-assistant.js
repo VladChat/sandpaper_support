@@ -8,6 +8,12 @@
     currentPage: "currentPage",
     assistantMessages: "assistantMessages",
     autoSubmittedQueries: "autoSubmittedQueries",
+    conversationMemory: "eQualleAssistantConversationV2",
+  };
+
+  const CONVERSATION_CONFIG = {
+    maxTurns: 10,
+    expiryMs: 2 * 60 * 60 * 1000,
   };
 
   function clean(value) {
@@ -89,6 +95,213 @@
     const token = "session-" + Math.random().toString(36).slice(2) + Date.now();
     setStoredText(STORAGE_KEYS.sessionToken, token);
     return token;
+  }
+
+  function createNewConversationState() {
+    return {
+      sessionId: "conv-" + Math.random().toString(36).slice(2) + Date.now(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      lastPage: {
+        path: window.location.pathname || "",
+        title: stripSiteTitle(document.title),
+      },
+      turns: [],
+    };
+  }
+
+  function getConversationState() {
+    const raw = getStoredJson(STORAGE_KEYS.conversationMemory, null);
+    if (!raw || typeof raw !== "object") {
+      return createNewConversationState();
+    }
+
+    const now = new Date().getTime();
+    const updatedAt = new Date(raw.updatedAt || 0).getTime();
+    const isExpired = now - updatedAt > CONVERSATION_CONFIG.expiryMs;
+
+    if (isExpired) {
+      return createNewConversationState();
+    }
+
+    if (!Array.isArray(raw.turns)) {
+      raw.turns = [];
+    }
+
+    return raw;
+  }
+
+  function saveConversationState(state) {
+    if (!state || typeof state !== "object") {
+      return;
+    }
+    state.updatedAt = new Date().toISOString();
+    setStoredJson(STORAGE_KEYS.conversationMemory, state);
+  }
+
+  function addConversationTurn(role, text, extra) {
+    const state = getConversationState();
+    const pagePath = (extra && extra.pagePath) || window.location.pathname || "";
+    const pageTitle = (extra && extra.pageTitle) || stripSiteTitle(document.title);
+
+    const turn = {
+      role: String(role || "user"),
+      text: String(text || ""),
+      pagePath: pagePath,
+      pageTitle: pageTitle,
+      at: new Date().toISOString(),
+    };
+
+    state.turns.push(turn);
+
+    while (state.turns.length > CONVERSATION_CONFIG.maxTurns) {
+      state.turns.shift();
+    }
+
+    state.lastPage = {
+      path: pagePath,
+      title: pageTitle,
+    };
+
+    saveConversationState(state);
+  }
+
+  function summarizeAssistantText(text) {
+    const raw = String(text || "").trim();
+    if (!raw) {
+      return "";
+    }
+
+    const lines = raw.split(/\n+/);
+    const important = [];
+
+    for (let i = 0; i < lines.length && important.join("\n").length < 500; i++) {
+      const line = lines[i].trim();
+      if (
+        /^(grit|wet|dry|tool|tool|avoid|warning|step|recommended)/i.test(line) ||
+        /\d+/.test(line) ||
+        (line.length > 15 && !line.endsWith(":"))
+      ) {
+        important.push(line);
+      }
+    }
+
+    const summary = important.join(" ").trim().slice(0, 500);
+    return summary || raw.slice(0, 500);
+  }
+
+  function getRecentConversationText() {
+    const state = getConversationState();
+    if (!Array.isArray(state.turns) || !state.turns.length) {
+      return "";
+    }
+
+    const recentTurns = state.turns.slice(-8);
+    const lines = [];
+
+    recentTurns.forEach(function (turn) {
+      const roleLabel = turn.role === "assistant" ? "Assistant" : "User";
+      const text = String(turn.text || "").trim();
+      if (text) {
+        lines.push(roleLabel + ": " + text);
+      }
+    });
+
+    return lines.join("\n\n");
+  }
+
+  function buildPageContext() {
+    const solutionContext = readSolutionContextFromPage();
+    const pathname = window.location.pathname || "";
+    const solutionMatch = pathname.match(/\/solutions\/([^/]+)\/?$/);
+    const problemMatch = pathname.match(/\/problems\/([^/]+)\/?$/);
+
+    let context = {
+      currentPagePath: pathname,
+      currentPageTitle: stripSiteTitle(document.title),
+      solutionSlug: solutionMatch ? solutionMatch[1] : "",
+      problemSlug: problemMatch ? problemMatch[1] : "",
+    };
+
+    if (solutionContext && typeof solutionContext === "object") {
+      context.solutionContext = {
+        title: solutionContext.title || "",
+        problem: solutionContext.problem || "",
+        surface: solutionContext.surface || "",
+        task: solutionContext.task || "",
+        symptom: solutionContext.symptom || "",
+        quick_answer: solutionContext.quick_answer || "",
+      };
+    }
+
+    return context;
+  }
+
+  function buildAssistantPrompt(currentUserMessage) {
+    const state = getConversationState();
+    const pageContext = buildPageContext();
+    const recentConversation = getRecentConversationText();
+
+    const pageContextText = [
+      pageContext.currentPagePath ? "Current page: " + pageContext.currentPagePath : "",
+      pageContext.currentPageTitle ? "Page title: " + pageContext.currentPageTitle : "",
+      pageContext.solutionContext && pageContext.solutionContext.title
+        ? "Solution: " + pageContext.solutionContext.title
+        : "",
+      pageContext.solutionContext && pageContext.solutionContext.problem
+        ? "Problem: " + pageContext.solutionContext.problem
+        : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const recentText = recentConversation
+      ? "Recent conversation:\n" + recentConversation
+      : "";
+
+    const systemPrompt = [
+      "You are the eQualle Sandpaper Support Assistant.",
+      "",
+      "Use the conversation context below when the current user question is a follow-up, clarification, pronoun reference, short question, or depends on the previous answer.",
+      "",
+      "Do not reinterpret a follow-up as a new unrelated topic.",
+      "If the user clearly changes topic, answer the new topic normally.",
+      "",
+      pageContextText ? "Current page context:\n" + pageContextText : "",
+      "",
+      recentText,
+      "",
+      "Current user question:",
+      currentUserMessage,
+      "",
+      "Answer rules:",
+      "- Answer the current user question directly.",
+      "- Resolve short follow-ups using the recent conversation.",
+      "- Keep the answer about sandpaper, sanding, grit choice, cutting/trimming sheets, surface prep, or product support when that is the active topic.",
+      "- Do not switch to a different topic just because the short follow-up contains a word with another meaning.",
+      "- Use this structure:",
+      "",
+      "Answer Summary:",
+      "[1-2 short sentences]",
+      "",
+      "Recommended Action:",
+      "[action/tool/material]",
+      "",
+      "Steps:",
+      "1. [step]",
+      "2. [step]",
+      "3. [step]",
+      "",
+      "Avoid:",
+      "[short warning]",
+      "",
+      "Recommended Page:",
+      "[only include a relevant internal page title when truly useful]",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    return systemPrompt;
   }
 
   function normalizePath(basePath, target) {
@@ -1031,6 +1244,11 @@
       const lastMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
       const contextInput = context && typeof context === "object" ? context : {};
 
+      addConversationTurn("user", userMessage, {
+        pagePath: currentPath,
+        pageTitle: currentTitle,
+      });
+
       const searchEntries = knowledge.findSearchMatches(userMessage, 5);
       const solutionCards = knowledge.findSolutionCards(
         userMessage,
@@ -1052,9 +1270,11 @@
         gritSequences: gritSequences.slice(0, 2).map(compactSequence),
       };
 
+      const contextualPrompt = buildAssistantPrompt(userMessage);
+
       const payload = {
         sessionToken: getSessionToken(),
-        userMessage: userMessage,
+        userMessage: contextualPrompt,
         context: {
           currentPath: currentPath,
           currentTitle: currentTitle,
@@ -1086,9 +1306,15 @@
           };
         }
 
+        const replyText = result.reply || "";
+        addConversationTurn("assistant", replyText, {
+          pagePath: currentPath,
+          pageTitle: currentTitle,
+        });
+
         return {
           ok: true,
-          reply: result.reply,
+          reply: replyText,
           needsClarification: Boolean(result.needsClarification),
           clarifyingQuestion: result.clarifyingQuestion || "",
           matchedPages: Array.isArray(result.matchedPages) ? result.matchedPages : [],
@@ -1229,6 +1455,9 @@
   }
 
   function setupHomepageSearch(basePath, knowledge) {
+    if (window.eQualleUseAlgoliaAutocomplete) {
+      return;
+    }
     const input = document.querySelector("[data-support-search]");
     const results = document.querySelector("[data-search-results]");
     const submitButton = document.querySelector("[data-support-search-submit]");
@@ -1508,3 +1737,4 @@
     init: init,
   };
 })();
+
