@@ -11,3 +11,12 @@
 - Updated assets/home-autocomplete.js Fuse import to relative path ./vendor/fuse.min.mjs.
 - Updated assets/support-assistant.js to skip old homepage suggestion binding when window.eQualleUseAlgoliaAutocomplete is true and homepage search input exists.
 - Validation: npm run build passed; node scripts/validate-source-integrity.js passed; node scripts/check-internal-links.js passed (0 broken links).
+
+## 2026-04-29 — Homepage Autocomplete Rendering Fix
+- Removed homepage dependency on @algolia/autocomplete-js UI rendering for suggestions.
+- Updated index.html to keep the homepage autocomplete flag and module, removed vendor autocomplete-js script include, and kept assets/app.js loading after module.
+- Replaced assets/home-autocomplete.js with a direct Fuse.js autocomplete controller bound to [data-support-search] and [data-search-results], rendering up to 8 results per keystroke and fallback to /ask when no matches.
+- Added startup console message: eQualle homepage autocomplete initialized and explicit console.error on search-index load failure.
+- Browser-tested queries: h, ho, how, how to, how to fix, clogged, wet sanding, plastic.
+- Browser test result: suggestions rendered and refreshed on every keystroke; no disappearing on 'how to'; max 8 rows; click navigation worked; no console errors.
+- Validation: npm run build passed; node scripts/validate-source-integrity.js passed; node scripts/check-internal-links.js passed (0 broken links).

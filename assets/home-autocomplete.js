@@ -3,22 +3,47 @@ import Fuse from "./vendor/fuse.min.mjs";
 (function () {
   window.eQualleUseAlgoliaAutocomplete = true;
 
+  const input = document.querySelector("[data-support-search]");
+  const results = document.querySelector("[data-search-results]");
+  const submit = document.querySelector("[data-support-search-submit]");
+
+  if (!input || !results) {
+    return;
+  }
+
   const basePath = (function () {
     const pathname = String(window.location.pathname || "");
     const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
     return match && match[1] ? match[1] : "/sandpaper_support";
   })();
 
+  const MAX_RESULTS = 8;
+  let currentResults = [];
+  let fuse = null;
+  let searchEntries = [];
+
   function clean(value) {
     return String(value || "").trim();
   }
 
+  function lower(value) {
+    return clean(value).toLowerCase();
+  }
+
   function normalizePath(target) {
     const candidate = clean(target);
-    if (!candidate) return "";
-    if (/^https?:\/\//i.test(candidate)) return candidate;
-    if (candidate.indexOf(basePath + "/") === 0 || candidate === basePath) return candidate;
-    if (candidate.charAt(0) === "/") return basePath + candidate;
+    if (!candidate) {
+      return "";
+    }
+    if (/^https?:\/\//i.test(candidate)) {
+      return candidate;
+    }
+    if (candidate.indexOf(basePath + "/") === 0 || candidate === basePath) {
+      return candidate;
+    }
+    if (candidate.charAt(0) === "/") {
+      return basePath + candidate;
+    }
     return basePath + "/" + candidate;
   }
 
@@ -37,72 +62,46 @@ import Fuse from "./vendor/fuse.min.mjs";
     });
   }
 
-  function toSlug(value) {
-    return String(value || "")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+  function textFromArray(value) {
+    return Array.isArray(value)
+      ? value.map(function (item) { return clean(item); }).filter(Boolean)
+      : [];
   }
 
-  function buildSearchDocuments(searchEntries, solutionCards, problemTree) {
+  function toDoc(entry, index) {
+    return {
+      id: clean(entry.id) || "entry-" + String(index),
+      title: clean(entry.title),
+      description: clean(entry.description),
+      customer_phrases: textFromArray(entry.customer_phrases),
+      aliases: textFromArray(entry.aliases),
+      surface: textFromArray(entry.surface),
+      grits: textFromArray(entry.grits),
+      method: textFromArray(entry.method),
+      target_url: clean(entry.target_url),
+      result_kind: clean(entry.result_kind) || "answer",
+    };
+  }
+
+  function buildIndex(entries) {
     const docs = [];
     const seen = new Set();
 
-    const cardById = new Map();
-    solutionCards.forEach(function (card) {
-      if (card && card.id) {
-        cardById.set(String(card.id), card);
+    (Array.isArray(entries) ? entries : []).forEach(function (entry, index) {
+      const doc = toDoc(entry, index);
+      if (!doc.title || !doc.target_url) {
+        return;
       }
+
+      const dedupeKey = doc.target_url + "::" + doc.title;
+      if (seen.has(dedupeKey)) {
+        return;
+      }
+      seen.add(dedupeKey);
+      docs.push(doc);
     });
 
-    (Array.isArray(searchEntries) ? searchEntries : []).forEach(function (entry) {
-      if (!entry) return;
-      const target = String(entry.target_url || "");
-      if (!target.startsWith("/solutions/")) return;
-
-      const id = String(entry.id || entry.slug || target).trim();
-      if (!id || seen.has(id)) return;
-      seen.add(id);
-
-      const solutionIdMatch = target.match(/\/solutions\/([^/]+)\/?$/);
-      const card = solutionIdMatch ? cardById.get(solutionIdMatch[1]) : null;
-
-      docs.push({
-        id: id,
-        type: "Answer",
-        title: clean(entry.title) || clean(card && card.title),
-        description: clean(entry.description) || clean(card && card.problem),
-        tags: (card && Array.isArray(card.search_phrases) ? card.search_phrases : []),
-        surface: clean(card && card.surface),
-        grit: clean(card && card.recommended_grit),
-        category: clean(card && card.task) || "support answer",
-        target_url: target,
-      });
-    });
-
-    (Array.isArray(problemTree) ? problemTree : []).forEach(function (group) {
-      if (!group || !group.id || !group.title) return;
-      const target = "/problems/" + String(group.id).replace(/^\/+|\/+$/g, "") + "/";
-      const uniqueId = "problem-" + String(group.id);
-      if (seen.has(uniqueId)) return;
-      seen.add(uniqueId);
-
-      docs.push({
-        id: uniqueId,
-        type: "Problem",
-        title: clean(group.title),
-        description: clean(group.description || "Problem guide with related sanding answers."),
-        tags: Array.isArray(group.search_terms) ? group.search_terms : [],
-        surface: "",
-        grit: "",
-        category: "problem guide",
-        target_url: target,
-      });
-    });
-
-    return docs.filter(function (doc) {
-      return doc.title && doc.target_url;
-    });
+    return docs;
   }
 
   function createFuse(docs) {
@@ -110,183 +109,188 @@ import Fuse from "./vendor/fuse.min.mjs";
       includeScore: true,
       shouldSort: true,
       ignoreLocation: true,
-      threshold: 0.42,
+      threshold: 0.4,
       minMatchCharLength: 1,
       keys: [
-        { name: "title", weight: 0.45 },
-        { name: "tags", weight: 0.2 },
-        { name: "surface", weight: 0.12 },
-        { name: "grit", weight: 0.12 },
-        { name: "description", weight: 0.08 },
-        { name: "category", weight: 0.03 },
+        { name: "title", weight: 0.4 },
+        { name: "customer_phrases", weight: 0.23 },
+        { name: "aliases", weight: 0.14 },
+        { name: "description", weight: 0.12 },
+        { name: "surface", weight: 0.05 },
+        { name: "grits", weight: 0.03 },
+        { name: "method", weight: 0.03 },
       ],
     });
   }
 
-  function renderResultItem(item) {
-    const wrapper = document.createElement("div");
-    wrapper.className = "result-link";
-
-    const kindNode = document.createElement("span");
-    kindNode.className = "result-kind result-kind-answer";
-    kindNode.textContent = item.type || "Answer";
-
-    const textNode = document.createElement("span");
-    textNode.className = "result-text";
-
-    const titleNode = document.createElement("a");
-    titleNode.className = "result-title-link";
-    titleNode.href = normalizePath(item.target_url || "");
-    titleNode.textContent = item.title;
-
-    textNode.appendChild(titleNode);
-
-    if (item.description) {
-      const descriptionNode = document.createElement("span");
-      descriptionNode.className = "result-description";
-      descriptionNode.textContent = " - " + item.description;
-      textNode.appendChild(descriptionNode);
+  function getBoostScore(doc, query) {
+    const q = lower(query);
+    if (!q) {
+      return 0;
     }
 
-    wrapper.appendChild(kindNode);
-    wrapper.appendChild(textNode);
+    const title = lower(doc.title);
+    const phrases = (doc.customer_phrases || []).map(lower);
 
-    return wrapper;
+    let boost = 0;
+    if (title.startsWith(q)) {
+      boost += 50;
+    }
+    if (title.indexOf(q) !== -1) {
+      boost += 25;
+    }
+    if (phrases.some(function (p) { return p.indexOf(q) !== -1; })) {
+      boost += 20;
+    }
+    return boost;
   }
 
-  function initAutocomplete(docs, fuse) {
-    const container = document.querySelector("[data-search-results]");
-    const input = document.querySelector("[data-support-search]");
-    const submitButton = document.querySelector("[data-support-search-submit]");
-
-    if (!container || !input) {
-      return;
+  function rankResults(query) {
+    const q = clean(query);
+    if (!q || !fuse) {
+      return [];
     }
 
-    const algoliaAutocomplete =
-      window["@algolia/autocomplete-js"] && window["@algolia/autocomplete-js"].autocomplete;
-
-    if (typeof algoliaAutocomplete !== "function") {
-      return;
-    }
-
-    function runSearch(query) {
-      const q = clean(query);
-      if (!q) return [];
-      return fuse.search(q, { limit: 8 }).map(function (row) {
-        return row.item;
+    const boosted = searchEntries
+      .map(function (doc) {
+        return {
+          doc: doc,
+          score: getBoostScore(doc, q),
+        };
+      })
+      .filter(function (row) {
+        return row.score > 0;
+      })
+      .sort(function (a, b) {
+        return b.score - a.score;
+      })
+      .map(function (row) {
+        return row.doc;
       });
-    }
 
-    function goToTarget(item) {
-      const href = normalizePath(item && item.target_url ? item.target_url : "");
-      if (!href) return;
-      window.location.href = href;
-    }
-
-    const instance = algoliaAutocomplete({
-      container: container,
-      placeholder: input.getAttribute("placeholder") || "Describe the problem",
-      openOnFocus: true,
-      detachedMediaQuery: "none",
-      defaultActiveItemId: 0,
-      autoFocus: false,
-      initialState: { query: "" },
-      onSubmit: function (params) {
-        const state = params.state;
-        const active = state.collections && state.collections[0] && state.collections[0].items
-          ? state.collections[0].items[state.activeItemId || 0]
-          : null;
-        if (active) {
-          goToTarget(active);
-          return;
-        }
-        const first = runSearch(state.query)[0];
-        if (first) {
-          goToTarget(first);
-          return;
-        }
-        if (state.query) {
-          window.location.href = normalizePath("/ask/") + "?q=" + encodeURIComponent(state.query);
-        }
-      },
-      getSources: function (params) {
-        const query = params.query;
-        if (!clean(query)) {
-          return [];
-        }
-        return [
-          {
-            sourceId: "local-support-results",
-            getItems: function () {
-              return runSearch(query);
-            },
-            onSelect: function (selectParams) {
-              goToTarget(selectParams.item);
-            },
-            templates: {
-              item: function (templateParams) {
-                return renderResultItem(templateParams.item);
-              },
-              noResults: function () {
-                const node = document.createElement("div");
-                node.className = "result-link result-empty";
-                node.textContent = "No matching answers found.";
-                return node;
-              },
-            },
-          },
-        ];
-      },
+    const fuzzy = fuse.search(q, { limit: 40 }).map(function (row) {
+      return row.item;
     });
+
+    const deduped = [];
+    const seenTargets = new Set();
+
+    boosted.concat(fuzzy).forEach(function (doc) {
+      const key = clean(doc.target_url);
+      if (!key || seenTargets.has(key)) {
+        return;
+      }
+      seenTargets.add(key);
+      deduped.push(doc);
+    });
+
+    return deduped.slice(0, MAX_RESULTS);
+  }
+
+  function createResultNode(doc) {
+    const link = document.createElement("a");
+    link.className = "result-link";
+    link.href = normalizePath(doc.target_url);
+
+    const kind = document.createElement("span");
+    kind.className = "result-kind result-kind-answer";
+    kind.textContent = "Answer";
+
+    const text = document.createElement("span");
+    text.className = "result-text";
+
+    const title = document.createElement("span");
+    title.className = "result-title-link";
+    title.textContent = doc.title;
+
+    text.appendChild(title);
+
+    if (doc.description) {
+      const description = document.createElement("span");
+      description.className = "result-description";
+      description.textContent = " - " + doc.description;
+      text.appendChild(description);
+    }
+
+    link.appendChild(kind);
+    link.appendChild(text);
+
+    return link;
+  }
+
+  function renderResults(query) {
+    const q = clean(query);
+    results.innerHTML = "";
+
+    if (!q) {
+      currentResults = [];
+      return;
+    }
+
+    currentResults = rankResults(q);
+
+    if (!currentResults.length) {
+      const empty = document.createElement("div");
+      empty.className = "result-link result-empty";
+      empty.textContent = "No matching answers found.";
+      results.appendChild(empty);
+      return;
+    }
+
+    currentResults.forEach(function (doc) {
+      results.appendChild(createResultNode(doc));
+    });
+  }
+
+  function openFirstOrAsk() {
+    const query = clean(input.value);
+    if (!query) {
+      input.focus();
+      return;
+    }
+
+    if (!currentResults.length) {
+      currentResults = rankResults(query);
+    }
+
+    if (currentResults.length) {
+      window.location.href = normalizePath(currentResults[0].target_url);
+      return;
+    }
+
+    window.location.href = normalizePath("/ask/") + "?q=" + encodeURIComponent(query);
+  }
+
+  function bindEvents() {
+    input.autocomplete = "off";
 
     input.addEventListener("input", function () {
-      instance.setQuery(input.value);
-      instance.refresh();
-      if (!clean(input.value)) {
-        instance.setIsOpen(false);
-      }
-    });
-
-    input.addEventListener("focus", function () {
-      instance.setIsOpen(true);
-      instance.refresh();
+      renderResults(input.value);
     });
 
     input.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-        event.preventDefault();
-        instance.setIsOpen(true);
-        instance.refresh();
-      }
       if (event.key === "Enter") {
         event.preventDefault();
-        instance.submit();
-      }
-      if (event.key === "Escape") {
-        instance.setIsOpen(false);
+        openFirstOrAsk();
       }
     });
 
-    if (submitButton) {
-      submitButton.addEventListener("click", function (event) {
+    if (submit) {
+      submit.addEventListener("click", function (event) {
         event.preventDefault();
-        instance.submit();
+        openFirstOrAsk();
       });
     }
   }
 
-  Promise.all([
-    loadSupportJson("data/search-index.json"),
-    loadSupportJson("data/solution-cards.json"),
-    loadSupportJson("data/problem-tree.json"),
-  ])
-    .then(function (results) {
-      const docs = buildSearchDocuments(results[0], results[1], results[2]);
-      const fuse = createFuse(docs);
-      initAutocomplete(docs, fuse);
+  loadSupportJson("data/search-index.json")
+    .then(function (entries) {
+      searchEntries = buildIndex(entries);
+      fuse = createFuse(searchEntries);
+      bindEvents();
+      console.log("eQualle homepage autocomplete initialized");
     })
-    .catch(function () {
-      return;
+    .catch(function (error) {
+      console.error("Failed to load data/search-index.json", error);
     });
 })();
