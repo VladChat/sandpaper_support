@@ -920,6 +920,34 @@
     }
   }
 
+  function isSupportLinkSectionTitle(title) {
+    const normalized = clean(title).replace(/\s+/g, " " ).trim();
+
+    return /^(recommended|related|suggested) (page|guide|link|resource)s?$/.test(normalized);
+  }
+
+  function dedupeSupportLinks(links) {
+    const list = [];
+    const seen = {};
+
+    (Array.isArray(links) ? links : []).forEach(function (item) {
+      const normalizedPath = normalizeInternalSupportPath(item && item.path);
+      const title = String((item && item.title) || "").trim();
+
+      if (!normalizedPath || !title || seen[normalizedPath]) {
+        return;
+      }
+
+      seen[normalizedPath] = true;
+      list.push({
+        path: normalizedPath,
+        title: title,
+      });
+    });
+
+    return list;
+  }
+
   function renderSupportAnswer(node, replyText, pages, basePath, onClick) {
     const pageLookup = buildPageLookup(pages);
     const rewritten = rewriteInternalReferences(replyText, pageLookup);
@@ -930,6 +958,10 @@
     wrapper.className = "support-answer";
 
     sections.forEach(function (sectionData, index) {
+      if (isSupportLinkSectionTitle(sectionData.title)) {
+        return;
+      }
+
       const section = document.createElement("section");
       section.className = "support-answer-section";
 
@@ -974,18 +1006,27 @@
       wrapper.appendChild(section);
     });
 
-    const matchedLinks = Object.keys(pageLookup).map(function (path) {
+    const matchedLinks = dedupeSupportLinks(Object.keys(pageLookup).map(function (path) {
       return {
         path: path,
         title: pageLookup[path],
       };
+    }));
+
+    const matchedPathMap = {};
+    matchedLinks.forEach(function (item) {
+      matchedPathMap[normalizeInternalSupportPath(item.path)] = true;
+    });
+
+    const relatedLinks = dedupeSupportLinks(rewritten.references).filter(function (item) {
+      return !matchedPathMap[normalizeInternalSupportPath(item.path)];
     });
 
     if (matchedLinks.length) {
       appendSupportLinkBlock(wrapper, "Recommended Page", matchedLinks, basePath, onClick);
     }
-    if (rewritten.references.length) {
-      appendSupportLinkBlock(wrapper, "Related Guide", rewritten.references, basePath, onClick);
+    if (relatedLinks.length) {
+      appendSupportLinkBlock(wrapper, "Related Guide", relatedLinks, basePath, onClick);
     }
 
     node.appendChild(wrapper);
