@@ -211,7 +211,7 @@ function siteHead(title, description) {
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tags/">Tags</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
