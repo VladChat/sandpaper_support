@@ -991,6 +991,55 @@
     node.appendChild(wrapper);
   }
 
+
+  function buildCompactAssistantText(replyText, pages) {
+    const pageLookup = buildPageLookup(pages);
+    const rewritten = rewriteInternalReferences(replyText, pageLookup);
+    const sections = buildSupportSections(rewritten.text);
+
+    if (!sections.length) {
+      return String(rewritten.text || "").trim();
+    }
+
+    const chunks = [];
+
+    sections.forEach(function (sectionData) {
+      const title = clean(sectionData.title || "");
+      const lines = (sectionData.lines || [])
+        .map(function (line) {
+          return String(line || "").trim();
+        })
+        .filter(Boolean);
+
+      if (!lines.length) {
+        return;
+      }
+
+      if (/recommended page|related guide/.test(title)) {
+        return;
+      }
+
+      if (/^steps?$/.test(title)) {
+        chunks.push(lines.join("\n"));
+        return;
+      }
+
+      if (/avoid|warning|mistake/.test(title)) {
+        chunks.push("Avoid: " + lines.join(" "));
+        return;
+      }
+
+      chunks.push(lines.join(" "));
+    });
+
+    return chunks.join("\n\n").trim() || String(rewritten.text || "").trim();
+  }
+
+  function renderCompactAssistantAnswer(node, replyText, pages) {
+    node.textContent = buildCompactAssistantText(replyText, pages);
+    node.classList.add("chat-message-compact");
+  }
+
   function pushSessionArray(key, value, maxItems) {
     const list = getStoredJson(key, []);
     list.push(value);
@@ -1345,6 +1394,7 @@
       options && typeof options.getRequestContext === "function"
         ? options.getRequestContext
         : null;
+    let assistantReplyCount = 0;
 
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
@@ -1371,6 +1421,8 @@
         "Checking approved support guides...",
         { noAutoScroll: noAutoScroll },
       );
+      const shouldRenderStructuredAnswer =
+        source === "ai-assistant-page" && assistantReplyCount === 0;
 
       if (isOrderTrackingQuery(message)) {
         pending.textContent =
@@ -1385,6 +1437,7 @@
           },
           30,
         );
+        assistantReplyCount += 1;
         return;
       }
 
@@ -1402,9 +1455,13 @@
         if (!result.ok) {
           const fallbackReply =
             "Answer Summary: Assistant response is unavailable right now.\nNext Step: Use the links below or ask a more specific sanding question.";
-          renderSupportAnswer(pending, fallbackReply, result.localMatches || [], basePath, function (page) {
-            recordClickedPage(page.path, page.title);
-          });
+          if (shouldRenderStructuredAnswer) {
+            renderSupportAnswer(pending, fallbackReply, result.localMatches || [], basePath, function (page) {
+              recordClickedPage(page.path, page.title);
+            });
+          } else {
+            renderCompactAssistantAnswer(pending, fallbackReply, result.localMatches || []);
+          }
 
           pushSessionArray(
             STORAGE_KEYS.assistantMessages,
@@ -1416,6 +1473,7 @@
             },
             30,
           );
+          assistantReplyCount += 1;
           return;
         }
 
@@ -1428,9 +1486,13 @@
                 : result.clarifyingQuestion)
             : (result.reply || "I need one more detail to guide you.");
 
-        renderSupportAnswer(pending, combinedReply, result.matchedPages, basePath, function (page) {
-          recordClickedPage(page.path, page.title);
-        });
+        if (shouldRenderStructuredAnswer) {
+          renderSupportAnswer(pending, combinedReply, result.matchedPages, basePath, function (page) {
+            recordClickedPage(page.path, page.title);
+          });
+        } else {
+          renderCompactAssistantAnswer(pending, combinedReply, result.matchedPages);
+        }
 
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
@@ -1442,6 +1504,7 @@
           },
           30,
         );
+        assistantReplyCount += 1;
       });
     }
 
