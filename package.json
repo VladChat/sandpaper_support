@@ -20,5 +20,9 @@
     "check:links": "node scripts/check-internal-links.js",
     "build": "npm run build:problem-pages && npm run build:solution-pages && npm run sync:solution-search && npm run build:product-pages && npm run build:surface-pages && npm run build:grit-guide && npm run build:tag-pages && npm run validate:source && npm run check:links",
     "validate:source": "node scripts/validate-source-integrity.js"
+  },
+  "dependencies": {
+    "@algolia/autocomplete-js": "^1.19.8",
+    "fuse.js": "^7.3.0"
   }
 }
