@@ -165,3 +165,50 @@ body.solution-page .solution-followup-messages {
 body.solution-page .solution-followup-messages .chat-message {
   max-width: 100%;
 }
+
+.support-verification-card,
+.support-login-card,
+.support-rate-limit-card {
+  background: #ffffff;
+  border: 1px solid #dbe5ef;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(11, 12, 14, 0.06);
+  margin: 12px 0;
+  padding: 14px;
+}
+
+.support-verification-card-title,
+.support-login-card-title,
+.support-rate-limit-card-title {
+  color: #005f93;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.support-verification-card-text,
+.support-login-card-text,
+.support-rate-limit-card-text {
+  color: #334155;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  margin: 0 0 10px;
+}
+
+.support-turnstile-widget {
+  min-height: 65px;
+}
+
+.support-verification-status {
+  color: #0d527a;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.support-chat-locked .chat-input,
+.support-chat-locked .chat-send {
+  opacity: 0.55;
+}

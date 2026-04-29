@@ -1,3 +1,8 @@
+declare const Deno: {
+  env: { get(name: string): string | undefined };
+  serve(handler: (request: Request) => Response | Promise<Response>): void;
+};
+
 type RetrievedEntry = {
   id?: string;
   slug?: string;
@@ -68,6 +73,8 @@ type ChatRequest = {
   sessionToken: string;
   userMessage: string;
   context?: ChatContext;
+  turnstileToken?: string;
+  accessToken?: string;
 };
 
 type AssistantOutput = {
@@ -80,7 +87,38 @@ type AssistantOutput = {
   }>;
 };
 
+type LimitState = {
+  id: string;
+  session_token: string;
+  ip_hash: string;
+  anonymous_count: number;
+  turnstile_count: number;
+  turnstile_verified_at: string | null;
+  recent_request_times: string[];
+  window_started_at: string;
+  created_at?: string;
+  updated_at?: string;
+};
+
+type AccessDecision =
+  | {
+      allowed: true;
+      state: LimitState;
+      stateId: string;
+      stage: "anonymous" | "turnstile";
+      verifiedTurnstileNow: boolean;
+      recentRequestTimes: string[];
+    }
+  | {
+      allowed: false;
+      response: Response;
+    };
+
 const MODEL_NAME = "gpt-4.1-mini";
+const FREE_ANONYMOUS_REQUESTS = 2;
+const TURNSTILE_EXTRA_REQUESTS = 3;
+const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 8;
 
 const jsonHeaders = {
   "Content-Type": "application/json",
@@ -95,6 +133,18 @@ function jsonResponse(body: unknown, status = 200): Response {
     status,
     headers: jsonHeaders,
   });
+}
+
+function blockedResponse(code: string, message: string, status = 403, extra: Record<string, unknown> = {}): Response {
+  return jsonResponse(
+    {
+      ok: false,
+      code,
+      message,
+      ...extra,
+    },
+    status,
+  );
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -132,7 +182,7 @@ function validateRequest(body: unknown): ChatRequest | string {
     return "Request body must be a JSON object.";
   }
 
-  const { sessionToken, userMessage, context } = body;
+  const { sessionToken, userMessage, context, turnstileToken, accessToken } = body;
 
   if (typeof sessionToken !== "string" || sessionToken.trim().length === 0) {
     return "sessionToken is required.";
@@ -147,9 +197,11 @@ function validateRequest(body: unknown): ChatRequest | string {
   }
 
   return {
-    sessionToken: sessionToken.trim(),
-    userMessage: userMessage.trim(),
+    sessionToken: sessionToken.trim().slice(0, 160),
+    userMessage: userMessage.trim().slice(0, 2500),
     context: (context || {}) as ChatContext,
+    turnstileToken: sanitizeString(turnstileToken, 4096),
+    accessToken: sanitizeString(accessToken, 4096),
   };
 }
 
@@ -381,6 +433,339 @@ function extractOutputText(openAiBody: Record<string, unknown>): string {
   return "";
 }
 
+function getClientIp(request: Request): string {
+  const headers = request.headers;
+  const cfIp = headers.get("cf-connecting-ip");
+  if (cfIp) {
+    return cfIp.trim();
+  }
+
+  const forwarded = headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0].trim();
+  }
+
+  const realIp = headers.get("x-real-ip");
+  if (realIp) {
+    return realIp.trim();
+  }
+
+  return "unknown";
+}
+
+async function sha256Hex(input: string): Promise<string> {
+  const data = new TextEncoder().encode(input);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function getUtcDateKey(now = new Date()): string {
+  return now.toISOString().slice(0, 10);
+}
+
+function readStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value.filter((item) => typeof item === "string");
+}
+
+function normalizeLimitState(raw: Record<string, unknown>, fallback: LimitState): LimitState {
+  return {
+    id: typeof raw.id === "string" ? raw.id : fallback.id,
+    session_token: typeof raw.session_token === "string" ? raw.session_token : fallback.session_token,
+    ip_hash: typeof raw.ip_hash === "string" ? raw.ip_hash : fallback.ip_hash,
+    anonymous_count: typeof raw.anonymous_count === "number" ? raw.anonymous_count : 0,
+    turnstile_count: typeof raw.turnstile_count === "number" ? raw.turnstile_count : 0,
+    turnstile_verified_at:
+      typeof raw.turnstile_verified_at === "string" ? raw.turnstile_verified_at : null,
+    recent_request_times: readStringArray(raw.recent_request_times),
+    window_started_at:
+      typeof raw.window_started_at === "string" ? raw.window_started_at : fallback.window_started_at,
+    created_at: typeof raw.created_at === "string" ? raw.created_at : undefined,
+    updated_at: typeof raw.updated_at === "string" ? raw.updated_at : undefined,
+  };
+}
+
+function supabaseHeaders(serviceRoleKey: string): Record<string, string> {
+  return {
+    apikey: serviceRoleKey,
+    Authorization: `Bearer ${serviceRoleKey}`,
+    "Content-Type": "application/json",
+  };
+}
+
+async function supabaseRequest(
+  path: string,
+  options: {
+    method?: string;
+    body?: unknown;
+    prefer?: string;
+  } = {},
+): Promise<{ ok: boolean; status: number; body: unknown }> {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
+  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error(
+      "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for AI request protection.",
+    );
+  }
+
+  const headers = supabaseHeaders(serviceRoleKey);
+  if (options.prefer) {
+    headers.Prefer = options.prefer;
+  }
+
+  const response = await fetch(`${supabaseUrl}${path}`, {
+    method: options.method || "GET",
+    headers,
+    body: options.body === undefined ? undefined : JSON.stringify(options.body),
+  });
+
+  const text = await response.text();
+  let body: unknown = null;
+  if (text) {
+    try {
+      body = JSON.parse(text);
+    } catch {
+      body = text;
+    }
+  }
+
+  return { ok: response.ok, status: response.status, body };
+}
+
+async function getOrCreateLimitState(
+  sessionToken: string,
+  ip: string,
+): Promise<{ state: LimitState; stateId: string }> {
+  const dateKey = getUtcDateKey();
+  const ipHash = await sha256Hex(ip);
+  const safeSession = sessionToken.slice(0, 160);
+  const stateId = await sha256Hex(`${dateKey}|${ipHash}|${safeSession}`);
+  const nowIso = new Date().toISOString();
+  const fallback: LimitState = {
+    id: stateId,
+    session_token: safeSession,
+    ip_hash: ipHash,
+    anonymous_count: 0,
+    turnstile_count: 0,
+    turnstile_verified_at: null,
+    recent_request_times: [],
+    window_started_at: nowIso,
+  };
+
+  const select = await supabaseRequest(
+    `/rest/v1/support_ai_request_limits?id=eq.${encodeURIComponent(stateId)}&select=*`,
+  );
+
+  if (select.ok && Array.isArray(select.body) && select.body.length > 0 && isObject(select.body[0])) {
+    return {
+      state: normalizeLimitState(select.body[0], fallback),
+      stateId,
+    };
+  }
+
+  const create = await supabaseRequest("/rest/v1/support_ai_request_limits", {
+    method: "POST",
+    prefer: "resolution=merge-duplicates,return=representation",
+    body: fallback,
+  });
+
+  if (create.ok && Array.isArray(create.body) && create.body.length > 0 && isObject(create.body[0])) {
+    return {
+      state: normalizeLimitState(create.body[0], fallback),
+      stateId,
+    };
+  }
+
+  // Handles a race where another request inserted the row after the first select.
+  const retry = await supabaseRequest(
+    `/rest/v1/support_ai_request_limits?id=eq.${encodeURIComponent(stateId)}&select=*`,
+  );
+
+  if (retry.ok && Array.isArray(retry.body) && retry.body.length > 0 && isObject(retry.body[0])) {
+    return {
+      state: normalizeLimitState(retry.body[0], fallback),
+      stateId,
+    };
+  }
+
+  throw new Error("Could not read or create support_ai_request_limits row.");
+}
+
+async function patchLimitState(stateId: string, patch: Record<string, unknown>): Promise<void> {
+  const update = await supabaseRequest(
+    `/rest/v1/support_ai_request_limits?id=eq.${encodeURIComponent(stateId)}`,
+    {
+      method: "PATCH",
+      prefer: "return=minimal",
+      body: {
+        ...patch,
+        updated_at: new Date().toISOString(),
+      },
+    },
+  );
+
+  if (!update.ok) {
+    throw new Error("Could not update support_ai_request_limits row.");
+  }
+}
+
+function pruneRecentRequests(recentRequestTimes: string[], nowMs: number): string[] {
+  return recentRequestTimes.filter((value) => {
+    const time = new Date(value).getTime();
+    return Number.isFinite(time) && nowMs - time < RATE_LIMIT_WINDOW_MS;
+  });
+}
+
+async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
+  const secret = Deno.env.get("TURNSTILE_SECRET_KEY");
+
+  if (!secret) {
+    throw new Error("TURNSTILE_SECRET_KEY is required for Turnstile verification.");
+  }
+
+  const formData = new FormData();
+  formData.append("secret", secret);
+  formData.append("response", token);
+  if (ip && ip !== "unknown") {
+    formData.append("remoteip", ip);
+  }
+
+  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    body: formData,
+  });
+
+  const body = await response.json().catch(() => ({})) as Record<string, unknown>;
+  return response.ok && body.success === true;
+}
+
+async function checkRequestAccess(parsedRequest: ChatRequest, request: Request): Promise<AccessDecision> {
+  const ip = getClientIp(request);
+  const { state, stateId } = await getOrCreateLimitState(parsedRequest.sessionToken, ip);
+  const now = new Date();
+  const nowMs = now.getTime();
+  const recent = pruneRecentRequests(state.recent_request_times, nowMs);
+
+  if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
+    return {
+      allowed: false,
+      response: blockedResponse(
+        "rate_limited",
+        "Please wait a few minutes before asking again.",
+        429,
+        { remaining: 0 },
+      ),
+    };
+  }
+
+  if (state.turnstile_count >= TURNSTILE_EXTRA_REQUESTS) {
+    return {
+      allowed: false,
+      response: blockedResponse(
+        "login_required",
+        "Sign in with email to continue.",
+        403,
+        { remaining: 0 },
+      ),
+    };
+  }
+
+  let verifiedTurnstileNow = false;
+  let stage: "anonymous" | "turnstile" = "anonymous";
+
+  if (state.anonymous_count < FREE_ANONYMOUS_REQUESTS) {
+    stage = "anonymous";
+  } else {
+    stage = "turnstile";
+
+    if (!state.turnstile_verified_at) {
+      if (!parsedRequest.turnstileToken) {
+        return {
+          allowed: false,
+          response: blockedResponse(
+            "turnstile_required",
+            "Please complete the verification to continue.",
+            403,
+            { remaining: 0 },
+          ),
+        };
+      }
+
+      const verified = await verifyTurnstileToken(parsedRequest.turnstileToken, ip);
+      if (!verified) {
+        return {
+          allowed: false,
+          response: blockedResponse(
+            "turnstile_required",
+            "Verification failed. Please complete the verification again.",
+            403,
+            { remaining: 0 },
+          ),
+        };
+      }
+
+      verifiedTurnstileNow = true;
+      state.turnstile_verified_at = now.toISOString();
+    }
+  }
+
+  const updatedRecent = [...recent, now.toISOString()];
+  await patchLimitState(stateId, {
+    recent_request_times: updatedRecent,
+    turnstile_verified_at: state.turnstile_verified_at,
+  });
+
+  return {
+    allowed: true,
+    state,
+    stateId,
+    stage,
+    verifiedTurnstileNow,
+    recentRequestTimes: updatedRecent,
+  };
+}
+
+async function markSuccessfulAiRequest(access: Extract<AccessDecision, { allowed: true }>): Promise<{
+  nextAction?: "turnstile_required" | "login_required";
+  remaining: number;
+}> {
+  const nextAnonymousCount = access.stage === "anonymous"
+    ? access.state.anonymous_count + 1
+    : access.state.anonymous_count;
+
+  const nextTurnstileCount = access.stage === "turnstile"
+    ? access.state.turnstile_count + 1
+    : access.state.turnstile_count;
+
+  const patch: Record<string, unknown> = {
+    anonymous_count: nextAnonymousCount,
+    turnstile_count: nextTurnstileCount,
+    turnstile_verified_at: access.state.turnstile_verified_at,
+  };
+
+  await patchLimitState(access.stateId, patch);
+
+  if (access.stage === "anonymous") {
+    const remaining = Math.max(0, FREE_ANONYMOUS_REQUESTS - nextAnonymousCount);
+    return {
+      remaining,
+      nextAction: remaining === 0 ? "turnstile_required" : undefined,
+    };
+  }
+
+  const remaining = Math.max(0, TURNSTILE_EXTRA_REQUESTS - nextTurnstileCount);
+  return {
+    remaining,
+    nextAction: remaining === 0 ? "login_required" : undefined,
+  };
+}
+
 async function callOpenAI(
   apiKey: string,
   userMessage: string,
@@ -558,11 +943,33 @@ Deno.serve(async (request: Request) => {
     return jsonResponse({ error: parsedRequest }, 400);
   }
 
+  let access: AccessDecision;
+
+  try {
+    access = await checkRequestAccess(parsedRequest, request);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "AI request protection is not configured.";
+    return jsonResponse(
+      {
+        ok: false,
+        code: "protection_not_configured",
+        message,
+      },
+      500,
+    );
+  }
+
+  if (access.allowed === false) {
+    return access.response;
+  }
+
   const context = sanitizeContext(parsedRequest.context);
   const apiKey = Deno.env.get("OPENAI_API_KEY");
 
   if (isOrderTrackingQuery(parsedRequest.userMessage)) {
+    const quota = await markSuccessfulAiRequest(access);
     return jsonResponse({
+      ok: true,
       reply:
         "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.",
       needsClarification: false,
@@ -570,12 +977,15 @@ Deno.serve(async (request: Request) => {
       matchedPages: [],
       draftCreated: false,
       model: MODEL_NAME,
+      remaining: quota.remaining,
+      nextAction: quota.nextAction,
     });
   }
 
   if (!apiKey) {
     return jsonResponse(
       {
+        ok: false,
         error:
           "OPENAI_API_KEY is not configured for support-ai-chat. Please set it in Supabase Function environment variables.",
       },
@@ -585,8 +995,10 @@ Deno.serve(async (request: Request) => {
 
   try {
     const assistant = await callOpenAI(apiKey, parsedRequest.userMessage, context);
+    const quota = await markSuccessfulAiRequest(access);
 
     return jsonResponse({
+      ok: true,
       reply: assistant.reply,
       needsClarification: assistant.needsClarification,
       clarifyingQuestion: assistant.clarifyingQuestion,
@@ -595,12 +1007,15 @@ Deno.serve(async (request: Request) => {
         : fallbackMatchedPages(context),
       draftCreated: false,
       model: MODEL_NAME,
+      remaining: quota.remaining,
+      nextAction: quota.nextAction,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Assistant request failed.";
 
     return jsonResponse(
       {
+        ok: false,
         error: "assistant_request_failed",
         message,
       },

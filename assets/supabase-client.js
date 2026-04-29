@@ -1,10 +1,47 @@
 (function () {
+  var ADMIN_SESSION_KEY = "equalle_admin_session";
+  var SUPPORT_SESSION_KEY = "equalle_support_session";
+  var gateState = {
+    pendingTurnstileToken: "",
+    activeChallengePromise: null,
+    activeChallengeNode: null,
+  };
+
   function getConfig() {
     var config = window.eQualleConfig || {};
     return {
       url: String(config.SUPABASE_URL || "").replace(/\/$/, ""),
       anonKey: String(config.SUPABASE_ANON_KEY || ""),
+      turnstileSiteKey: String(config.TURNSTILE_SITE_KEY || ""),
     };
+  }
+
+  function buildQuery(params) {
+    params = params || {};
+    return Object.keys(params)
+      .map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+      })
+      .join("&");
+  }
+
+  function isConfigured() {
+    var config = getConfig();
+    return Boolean(config.url && config.anonKey);
+  }
+
+  function getSessionToken() {
+    try {
+      var existing = window.sessionStorage.getItem(SUPPORT_SESSION_KEY);
+      if (existing) {
+        return existing;
+      }
+      var token = "session-" + Math.random().toString(36).slice(2) + Date.now();
+      window.sessionStorage.setItem(SUPPORT_SESSION_KEY, token);
+      return token;
+    } catch (_error) {
+      return null;
+    }
   }
 
   function post(table, payload) {
@@ -56,12 +93,9 @@
   function saveSession(session) {
     try {
       if (session) {
-        window.localStorage.setItem(
-          "equalle_admin_session",
-          JSON.stringify(session),
-        );
+        window.localStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify(session));
       } else {
-        window.localStorage.removeItem("equalle_admin_session");
+        window.localStorage.removeItem(ADMIN_SESSION_KEY);
       }
     } catch (_error) {
       return;
@@ -70,7 +104,7 @@
 
   function readStoredSession() {
     try {
-      var raw = window.localStorage.getItem("equalle_admin_session");
+      var raw = window.localStorage.getItem(ADMIN_SESSION_KEY);
       return raw ? JSON.parse(raw) : null;
     } catch (_error) {
       return null;
@@ -175,15 +209,6 @@
       });
   }
 
-  function buildQuery(params) {
-    params = params || {};
-    return Object.keys(params)
-      .map(function (key) {
-        return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
-      })
-      .join("&");
-  }
-
   function readTable(table, params) {
     var session = readStoredSession();
 
@@ -192,6 +217,7 @@
         ok: false,
         status: 401,
         error: "Sign in before reading admin data.",
+        data: [],
       });
     }
 
@@ -265,11 +291,6 @@
       .catch(function () {
         return { ok: false, error: "Admin action could not be completed." };
       });
-  }
-
-  function isConfigured() {
-    var config = getConfig();
-    return Boolean(config.url && config.anonKey);
   }
 
   function logSearch(query, resultCount, selectedPath) {
@@ -369,19 +390,16 @@
       },
     })
       .then(function (response) {
-        return response
-          .json()
-          .catch(function () {
-            return [];
-          })
-          .then(function (body) {
-            return {
-              ok: response.ok,
-              status: response.status,
-              data: Array.isArray(body) ? body : [],
-              error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Count query failed.",
-            };
-          });
+        return response.json().catch(function () {
+          return [];
+        }).then(function (body) {
+          return {
+            ok: response.ok,
+            status: response.status,
+            data: Array.isArray(body) ? body : [],
+            error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Count query failed.",
+          };
+        });
       })
       .catch(function () {
         return { ok: false, data: [], error: "Count query failed." };
@@ -417,19 +435,16 @@
       },
     })
       .then(function (response) {
-        return response
-          .json()
-          .catch(function () {
-            return [];
-          })
-          .then(function (body) {
-            return {
-              ok: response.ok,
-              status: response.status,
-              data: Array.isArray(body) ? body : [],
-              error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Legacy count query failed.",
-            };
-          });
+        return response.json().catch(function () {
+          return [];
+        }).then(function (body) {
+          return {
+            ok: response.ok,
+            status: response.status,
+            data: Array.isArray(body) ? body : [],
+            error: response.ok ? null : (body && (body.message || body.error || body.hint)) || "Legacy count query failed.",
+          };
+        });
       })
       .catch(function () {
         return { ok: false, data: [], error: "Legacy count query failed." };
@@ -437,16 +452,6 @@
   }
 
   function readFeedbackRows(params) {
-    var session = readStoredSession();
-    if (!session || !session.access_token) {
-      return Promise.resolve({
-        ok: false,
-        status: 401,
-        error: "Sign in before reading feedback admin data.",
-        data: [],
-      });
-    }
-
     return readTable("support_feedback", Object.assign(
       {
         select: "page_path,feedback_type,created_at",
@@ -579,12 +584,227 @@
     });
   }
 
-  function askSupportAssistant(input) {
-    input = input || {};
-    var config = getConfig();
+  function findActiveMessages() {
+    var active = document.activeElement;
+    var shell = active && active.closest ? active.closest(".chat-shell, [data-ai-chat]") : null;
+    var messages = shell ? shell.querySelector("[data-ai-messages], .chat-messages, [data-solution-followup-messages]") : null;
 
-    if (!config.url || !config.anonKey) {
-      return Promise.resolve({ ok: false, skipped: true });
+    if (messages) {
+      return messages;
+    }
+
+    var all = Array.prototype.slice.call(
+      document.querySelectorAll("[data-ai-messages], .solution-followup-messages, .chat-messages"),
+    );
+
+    return all.length ? all[all.length - 1] : null;
+  }
+
+  function setChatLocked(messages, locked) {
+    if (!messages) {
+      return;
+    }
+
+    var shell = messages.closest(".chat-shell, [data-ai-chat], [data-solution-followup]");
+    if (!shell) {
+      return;
+    }
+
+    shell.classList.toggle("support-chat-locked", Boolean(locked));
+    Array.prototype.slice.call(shell.querySelectorAll("input, textarea, button[type='submit']")).forEach(function (element) {
+      element.disabled = Boolean(locked);
+    });
+  }
+
+  function createGateCard(kind, title, text) {
+    var card = document.createElement("div");
+    card.className = "support-" + kind + "-card";
+
+    var titleNode = document.createElement("div");
+    titleNode.className = "support-" + kind + "-card-title";
+    titleNode.textContent = title;
+    card.appendChild(titleNode);
+
+    var textNode = document.createElement("p");
+    textNode.className = "support-" + kind + "-card-text";
+    textNode.textContent = text;
+    card.appendChild(textNode);
+
+    return card;
+  }
+
+  function loadTurnstileApi() {
+    if (window.turnstile && typeof window.turnstile.render === "function") {
+      return Promise.resolve(window.turnstile);
+    }
+
+    return new Promise(function (resolve, reject) {
+      var existing = document.getElementById("cloudflare-turnstile-api");
+      if (existing) {
+        existing.addEventListener("load", function () {
+          resolve(window.turnstile);
+        });
+        existing.addEventListener("error", function () {
+          reject(new Error("Turnstile could not be loaded."));
+        });
+        return;
+      }
+
+      var script = document.createElement("script");
+      script.id = "cloudflare-turnstile-api";
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      script.onload = function () {
+        resolve(window.turnstile);
+      };
+      script.onerror = function () {
+        reject(new Error("Turnstile could not be loaded."));
+      };
+      document.head.appendChild(script);
+    });
+  }
+
+  function renderTurnstileChallenge(options) {
+    options = options || {};
+
+    if (gateState.activeChallengePromise) {
+      return gateState.activeChallengePromise;
+    }
+
+    var config = getConfig();
+    var messages = findActiveMessages();
+    var siteKey = config.turnstileSiteKey;
+
+    gateState.activeChallengePromise = new Promise(function (resolve, reject) {
+      if (!messages) {
+        gateState.activeChallengePromise = null;
+        reject(new Error("Chat container was not found."));
+        return;
+      }
+
+      if (!siteKey || siteKey === "PASTE_PUBLIC_TURNSTILE_SITE_KEY") {
+        var missingCard = createGateCard(
+          "verification",
+          "Verification Required",
+          "Turnstile is not configured yet. Add the public Turnstile site key in assets/config.js.",
+        );
+        messages.appendChild(missingCard);
+        gateState.activeChallengeNode = missingCard;
+        setChatLocked(messages, true);
+        gateState.activeChallengePromise = null;
+        reject(new Error("TURNSTILE_SITE_KEY is not configured."));
+        return;
+      }
+
+      if (gateState.activeChallengeNode && gateState.activeChallengeNode.parentNode) {
+        gateState.activeChallengeNode.parentNode.removeChild(gateState.activeChallengeNode);
+      }
+
+      var card = createGateCard(
+        "verification",
+        "Quick Verification",
+        options.text || "To continue asking questions, please complete this quick verification.",
+      );
+      var widget = document.createElement("div");
+      widget.className = "support-turnstile-widget";
+      card.appendChild(widget);
+
+      var status = document.createElement("div");
+      status.className = "support-verification-status";
+      status.textContent = "Waiting for verification...";
+      card.appendChild(status);
+
+      messages.appendChild(card);
+      gateState.activeChallengeNode = card;
+      setChatLocked(messages, true);
+
+      loadTurnstileApi()
+        .then(function (turnstile) {
+          if (!turnstile || typeof turnstile.render !== "function") {
+            throw new Error("Turnstile render function is unavailable.");
+          }
+
+          turnstile.render(widget, {
+            sitekey: siteKey,
+            callback: function (token) {
+              gateState.pendingTurnstileToken = token;
+              status.textContent = "Verification complete. You can continue.";
+              setChatLocked(messages, false);
+              gateState.activeChallengePromise = null;
+              resolve(token);
+            },
+            "error-callback": function () {
+              status.textContent = "Verification failed. Please try again.";
+            },
+            "expired-callback": function () {
+              gateState.pendingTurnstileToken = "";
+              status.textContent = "Verification expired. Please verify again.";
+            },
+          });
+        })
+        .catch(function (error) {
+          status.textContent = error && error.message ? error.message : "Verification could not be loaded.";
+          setChatLocked(messages, false);
+          gateState.activeChallengePromise = null;
+          reject(error);
+        });
+    });
+
+    return gateState.activeChallengePromise;
+  }
+
+  function renderSimpleGate(kind, title, text) {
+    var messages = findActiveMessages();
+    if (!messages) {
+      return;
+    }
+    messages.appendChild(createGateCard(kind, title, text));
+  }
+
+  function displayReplyForBlockedResponse(code, message, status) {
+    if (code === "login_required") {
+      renderSimpleGate("login", "Email Login Required", message || "Sign in with email to continue.");
+      return {
+        ok: true,
+        status: status || 403,
+        reply: "Answer Summary: Sign in with email to continue.\nNext Step: Email login is required before more AI questions.",
+        needsClarification: false,
+        clarifyingQuestion: "",
+        matchedPages: [],
+        draftCreated: false,
+        code: code,
+      };
+    }
+
+    if (code === "rate_limited") {
+      renderSimpleGate("rate-limit", "Please Wait", message || "Please wait a few minutes before asking again.");
+      return {
+        ok: true,
+        status: status || 429,
+        reply: "Answer Summary: Please wait a few minutes before asking again.\nNext Step: Try again shortly.",
+        needsClarification: false,
+        clarifyingQuestion: "",
+        matchedPages: [],
+        draftCreated: false,
+        code: code,
+      };
+    }
+
+    return {
+      ok: false,
+      status: status || 500,
+      error: code || "assistant_unavailable",
+      message: message || "Assistant response is unavailable right now.",
+    };
+  }
+
+  function fetchAiChat(input, turnstileToken) {
+    var config = getConfig();
+    var tokenToSend = turnstileToken || input.turnstileToken || gateState.pendingTurnstileToken || "";
+
+    if (tokenToSend && tokenToSend === gateState.pendingTurnstileToken) {
+      gateState.pendingTurnstileToken = "";
     }
 
     return fetch(config.url + "/functions/v1/support-ai-chat", {
@@ -595,9 +815,11 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sessionToken: input.sessionToken,
+        sessionToken: input.sessionToken || getSessionToken(),
         userMessage: input.userMessage,
         context: input.context || {},
+        turnstileToken: tokenToSend || undefined,
+        accessToken: input.accessToken || undefined,
       }),
     })
       .then(function (response) {
@@ -608,6 +830,76 @@
           body.status = response.status;
           return body;
         });
+      });
+  }
+
+  function askSupportAssistant(input) {
+    input = input || {};
+    var config = getConfig();
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({ ok: false, skipped: true });
+    }
+
+    function handleBody(body, retryAllowed) {
+      if (body && body.ok) {
+        if (body.nextAction === "turnstile_required") {
+          window.setTimeout(function () {
+            renderTurnstileChallenge({
+              text: "To continue asking questions, please complete this quick verification.",
+            }).catch(function () {
+              return;
+            });
+          }, 80);
+        }
+
+        if (body.nextAction === "login_required") {
+          window.setTimeout(function () {
+            renderSimpleGate("login", "Email Login Required", "Sign in with email to continue.");
+          }, 80);
+        }
+
+        return body;
+      }
+
+      if (body && body.code === "turnstile_required" && retryAllowed) {
+        return renderTurnstileChallenge({
+          text: body.message || "Please complete the verification to continue.",
+        }).then(function (token) {
+          return fetchAiChat(input, token).then(function (retryBody) {
+            if (retryBody && retryBody.ok) {
+              return handleBody(retryBody, false);
+            }
+            return displayReplyForBlockedResponse(
+              retryBody && retryBody.code,
+              retryBody && retryBody.message,
+              retryBody && retryBody.status,
+            );
+          });
+        }).catch(function (error) {
+          return displayReplyForBlockedResponse(
+            "turnstile_required",
+            error && error.message ? error.message : "Please complete the verification to continue.",
+            403,
+          );
+        });
+      }
+
+      if (body && (body.code === "login_required" || body.code === "rate_limited")) {
+        return displayReplyForBlockedResponse(body.code, body.message, body.status);
+      }
+
+      return {
+        ok: false,
+        status: body ? body.status : null,
+        error: (body && (body.error || body.code)) || "assistant_unavailable",
+        message: body && body.message,
+      };
+    }
+
+    return fetchAiChat(input, "")
+      .then(function (body) {
+        return handleBody(body, true);
       })
       .catch(function () {
         return { ok: false };
@@ -720,23 +1012,6 @@
         status: "pending",
       },
     });
-  }
-
-  function getSessionToken() {
-    try {
-      var key = "equalle_support_session";
-      var existing = window.sessionStorage.getItem(key);
-
-      if (existing) {
-        return existing;
-      }
-
-      var token = "session-" + Math.random().toString(36).slice(2) + Date.now();
-      window.sessionStorage.setItem(key, token);
-      return token;
-    } catch (_error) {
-      return null;
-    }
   }
 
   window.eQualleSupabase = {
