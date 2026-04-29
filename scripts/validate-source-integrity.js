@@ -17,6 +17,7 @@ const REQUIRED_FILES = [
   "tools/index.html",
   "tools/grit-sequence-builder/index.html",
   "data/solution-cards.json",
+  "data/problem-tree.json",
   "data/search-index.json",
   "data/surface-map.json",
   "data/grit-sequences.json"
@@ -303,6 +304,56 @@ function validateGritSequences(errors) {
   });
 }
 
+function validateProblemTree(errors, cardsById) {
+  const raw = readJson("data/problem-tree.json");
+  const groups = Array.isArray(raw)
+    ? raw
+    : (raw && Array.isArray(raw.groups) ? raw.groups : null);
+
+  if (!Array.isArray(groups)) {
+    errors.push("data/problem-tree.json must be an array or an object with groups array.");
+    return;
+  }
+
+  groups.forEach((group, idx) => {
+    const label = "problem-tree[" + idx + "]";
+    const groupId = String(group && group.id ? group.id : "").trim();
+    if (!groupId) {
+      errors.push(label + " missing id.");
+      return;
+    }
+
+    if (!Array.isArray(group.solution_card_ids) || !group.solution_card_ids.length) {
+      errors.push(label + " (" + groupId + ") solution_card_ids must be a non-empty array.");
+      return;
+    }
+
+    let validCount = 0;
+    group.solution_card_ids.forEach((rawId) => {
+      const id = normalizeSolutionId(rawId);
+      if (!id) {
+        errors.push(label + " (" + groupId + ") has empty solution_card_id.");
+        return;
+      }
+      if (!cardsById.has(id)) {
+        errors.push(label + " (" + groupId + ") missing referenced solution card id: " + id);
+        return;
+      }
+      if (!solutionExists(id)) {
+        errors.push(
+          label + " (" + groupId + ") missing generated solution page for id " + id + ": " + solutionPath(id)
+        );
+        return;
+      }
+      validCount += 1;
+    });
+
+    if (validCount === 0) {
+      errors.push(label + " (" + groupId + ") resolves to 0 real answers.");
+    }
+  });
+}
+
 function validateBuildScript(errors) {
   const pkg = readJson("package.json");
   const scripts = pkg.scripts || {};
@@ -338,7 +389,8 @@ function main() {
   const errors = [];
 
   validateRequiredFiles(errors);
-  validateSolutionCards(errors);
+  const solutionData = validateSolutionCards(errors);
+  validateProblemTree(errors, solutionData.cardsById);
   validateSearchIndex(errors);
   validateSurfaceMap(errors);
   validateGritSequences(errors);

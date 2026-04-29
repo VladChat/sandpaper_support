@@ -95,23 +95,40 @@ function groupCardsByProblemSlug(cards) {
 
 function readProblemTreeGroups() {
   if (!fs.existsSync(PROBLEM_TREE_PATH)) return [];
-  const tree = readJson(PROBLEM_TREE_PATH);
+  const treeRaw = readJson(PROBLEM_TREE_PATH);
+  const tree = Array.isArray(treeRaw)
+    ? treeRaw
+    : (treeRaw && Array.isArray(treeRaw.groups) ? treeRaw.groups : []);
   if (!Array.isArray(tree)) return [];
+
   return tree
     .map(function (item) {
       const slug = String(item && item.id ? item.id : "").trim();
       if (!slug) return null;
       const title = String(item && item.title ? item.title : "").trim() || titleFromSlug(slug);
       const description = String(item && item.description ? item.description : "").trim();
-      return { slug: slug, title: title, description: description };
+      const solutionCardIds = Array.isArray(item && item.solution_card_ids)
+        ? item.solution_card_ids.map(function (id) { return String(id || "").trim(); }).filter(Boolean)
+        : [];
+      return {
+        slug: slug,
+        title: title,
+        description: description,
+        solution_card_ids: solutionCardIds
+      };
     })
     .filter(Boolean);
 }
 
 function mergeProblemGroups(cards) {
+  const cardsById = new Map();
+  cards.forEach(function (card) {
+    if (card && card.id) cardsById.set(String(card.id), card);
+  });
+
   const cardGroups = groupCardsByProblemSlug(cards);
-  const cardBySlug = Object.create(null);
-  cardGroups.forEach(function (group) { cardBySlug[group.slug] = group; });
+  const cardGroupsBySlug = Object.create(null);
+  cardGroups.forEach(function (group) { cardGroupsBySlug[group.slug] = group; });
 
   const treeGroups = readProblemTreeGroups();
   if (!treeGroups.length) return cardGroups;
@@ -120,27 +137,45 @@ function mergeProblemGroups(cards) {
   const used = new Set();
 
   treeGroups.forEach(function (treeGroup) {
-    const fromCards = cardBySlug[treeGroup.slug];
-    if (fromCards) {
-      if (treeGroup.title) fromCards.title = treeGroup.title;
-      if (treeGroup.description) fromCards.description = treeGroup.description;
-      merged.push(fromCards);
-    } else {
-      merged.push({
-        slug: treeGroup.slug,
-        title: treeGroup.title,
-        description: treeGroup.description,
-        cards: []
+    const groupCards = [];
+    const missingIds = [];
+    if (Array.isArray(treeGroup.solution_card_ids) && treeGroup.solution_card_ids.length) {
+      treeGroup.solution_card_ids.forEach(function (id) {
+        const card = cardsById.get(String(id));
+        if (!card) {
+          missingIds.push(id);
+          return;
+        }
+        groupCards.push(card);
       });
     }
+
+    if (missingIds.length) {
+      throw new Error(
+        "Problem tree group " + treeGroup.slug + " references missing solution_card_ids: " + missingIds.join(", ")
+      );
+    }
+
+    if (!groupCards.length) {
+      throw new Error("Problem tree group " + treeGroup.slug + " has 0 real answers.");
+    }
+
+    merged.push({
+      slug: treeGroup.slug,
+      title: treeGroup.title || titleFromSlug(treeGroup.slug),
+      description: treeGroup.description || getProblemDescription(treeGroup.slug, groupCards),
+      cards: groupCards
+    });
     used.add(treeGroup.slug);
   });
 
   cardGroups.forEach(function (group) {
-    if (!used.has(group.slug)) merged.push(group);
+    if (!used.has(group.slug) && group.cards.length) merged.push(group);
   });
 
-  return merged;
+  return merged.filter(function (group) {
+    return Array.isArray(group.cards) && group.cards.length > 0;
+  });
 }
 
 function validateCards(cards) {
@@ -205,6 +240,9 @@ function renderProblemsIndex(groups, template, totalSolutions) {
 }
 
 function renderProblemPage(group, template) {
+  if (!Array.isArray(group.cards) || group.cards.length === 0) {
+    throw new Error("Cannot render empty problem page: " + group.slug);
+  }
   const description = group.description || getProblemDescription(group.slug, group.cards);
   return replaceAllPlaceholders(template, {
     PROBLEM_TITLE: escapeHtml(group.title),
