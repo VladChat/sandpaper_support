@@ -28,3 +28,14 @@
 - Added query-specific filtering so how to fix returns only How do I fix ... visible titles.
 - Tested queries: h, ho, how, how to, how to fix, clogged, wet sanding, plastic, grit, scratches.
 - Validation: npm run build passed; source integrity passed; internal links passed (0 broken links); browser test showed max 8 suggestions and no console errors.
+
+## 2026-04-29 — Unified Autocomplete Across Support Pages
+- Added shared module: assets/support-autocomplete.js.
+- Shared module loads data/search-index.json once, builds visibleTitle suggestions once, and binds all [data-support-search] inputs on each page with per-input result containers and submit buttons.
+- Unified behavior everywhere: visibleTitle-only ranking (prefix, contains, Fuse fuzzy), max 8 suggestions, same rendering, Enter/Get Answer first-result behavior, ask fallback, and base-path-safe URLs.
+- Updated index.html and templates/solution-page.html to load assets/support-autocomplete.js before assets/app.js with flags: window.eQualleUseUnifiedAutocomplete=true and window.eQualleUseAlgoliaAutocomplete=true.
+- Updated assets/support-assistant.js old homepage search guard to skip when unified autocomplete flag is active so old suggestion rendering does not conflict.
+- assets/home-autocomplete.js is now a compatibility shim that forwards to support-autocomplete.
+- Browser-tested pages: /, /solutions/plastic-still-rough/, /solutions/paint-clogs-sheet/.
+- Tested queries: h, ho, how, how to, how to fix, clogged, wet sanding, plastic, grit, scratches (home) and how to fix, clogged, wet sanding, plastic (solution pages).
+- Results: suggestions update on every keystroke, max 8 results, consistent visible titles across pages, click + Enter navigation works, and no console errors.

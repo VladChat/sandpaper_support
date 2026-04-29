@@ -1233,7 +1233,11 @@
     const results = document.querySelector("[data-search-results]");
     const submitButton = document.querySelector("[data-support-search-submit]");
 
-    if (window.eQualleUseAlgoliaAutocomplete === true && input) {
+    if (
+      (window.eQualleUseUnifiedAutocomplete === true ||
+        window.eQualleUseAlgoliaAutocomplete === true) &&
+      input
+    ) {
       return;
     }
 
