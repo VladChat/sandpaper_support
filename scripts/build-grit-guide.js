@@ -271,7 +271,7 @@ function siteHead(title, description) {
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tags/">Tags</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
@@ -279,7 +279,7 @@ function siteFooter() {
 }
 
 function renderProductCard() {
-  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit guide</span></a>';
+  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit support</span></a>';
 }
 
 function renderSolutionCard(card) {
@@ -293,7 +293,7 @@ function renderSolutionCard(card) {
     htmlEscape(card.recommended_grit || "See solution for grit guidance.") +
     '</span><span class="pill">' +
     htmlEscape(card.wet_or_dry || "See solution for wet or dry guidance.") +
-    '</span></div><span class="cta">Open solution</span></a>';
+    '</span></div><span class="cta">View solution</span></a>';
 }
 
 function renderRangeSection(range, cards) {
@@ -381,3 +381,5 @@ function main() {
 }
 
 main();
+
+

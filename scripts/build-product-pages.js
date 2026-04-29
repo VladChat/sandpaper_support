@@ -83,7 +83,7 @@ function siteHead(title, description) {
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tags/">Tags</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
@@ -171,7 +171,7 @@ function renderProductsIndex() {
         ["Clear Coat", ""]
       ],
       "/sandpaper_support/surfaces/",
-      "Open topic"
+      "View surface guide"
     ) +
     actionCard(
       "Start by Problem",
@@ -183,7 +183,7 @@ function renderProductsIndex() {
         ["Slow cutting", ""]
       ],
       "/sandpaper_support/problems/",
-      "Open problem group"
+      "View problem guide"
     ) +
     actionCard(
       "Grit Guide",
@@ -195,7 +195,7 @@ function renderProductsIndex() {
         ["Ultra fine", ""]
       ],
       "/sandpaper_support/grits/",
-      "Open topic"
+      "View grit guide"
     ) +
     '</div></section></main>' +
     siteFooter();
@@ -218,27 +218,27 @@ function renderAssortedKitPage() {
     rangeCard(
       "60-120 — Coarse / Removal",
       "Use for heavy material removal, rough sanding, paint or rust removal, and shaping uneven areas before moving finer.",
-      [["Open grit guide", "/sandpaper_support/grits/#coarse"]]
+      [["View grit guide", "/sandpaper_support/grits/#coarse"]]
     ) +
     rangeCard(
       "150-240 — Medium / Preparation",
       "Use for general prep, smoothing after rough sanding, wood prep, paint prep, and removing earlier coarse scratches.",
-      [["Open grit guide", "/sandpaper_support/grits/#medium"]]
+      [["View grit guide", "/sandpaper_support/grits/#medium"]]
     ) +
     rangeCard(
       "280-400 — Fine Prep",
       "Use for finer preparation, light scuffing, primer sanding, and preparing a smoother surface for the next stage.",
-      [["Open grit guide", "/sandpaper_support/grits/#fine"]]
+      [["View grit guide", "/sandpaper_support/grits/#fine"]]
     ) +
     rangeCard(
       "500-800 — Extra Fine",
       "Use for extra-fine finishing, light wet sanding, coating refinement, and bridging to ultra-fine sanding.",
-      [["Open grit guide", "/sandpaper_support/grits/#extra-fine"]]
+      [["View grit guide", "/sandpaper_support/grits/#extra-fine"]]
     ) +
     rangeCard(
       "1000-3000 — Ultra Fine / Wet Sanding",
       "Use for wet sanding, haze refinement, clear coat work, plastic restoration, and polishing preparation.",
-      [["Open grit guide", "/sandpaper_support/grits/#ultra-fine"]]
+      [["View grit guide", "/sandpaper_support/grits/#ultra-fine"]]
     ) +
     '</div></section>' +
     '<section class="section"><h2>Support Paths by Surface</h2><p class="section-intro">Choose the material first when you are unsure where to start.</p><div class="grid">' +
@@ -319,3 +319,7 @@ function main() {
 }
 
 main();
+
+
+
+

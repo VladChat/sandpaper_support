@@ -209,7 +209,7 @@ function renderProblemGroupCard(group) {
     '        <ul class="pill-list" style="display:block;padding-left:18px;margin:10px 0 0;">',
     previewItems + moreHtml,
     "        </ul>",
-    '        <span class="cta">Open problem group</span>',
+    '        <span class="cta">View problem guide</span>',
     "      </a>"
   ].join("\n");
 }
@@ -226,14 +226,98 @@ function renderSolutionCard(card) {
     "        <h3>" + escapeHtml(card.title) + "</h3>",
     "        <p>" + escapeHtml(detailParts.join(" ")) + "</p>",
     pills ? '        <div class="pill-list">\n' + pills + "\n        </div>" : "",
-    '        <span class="cta">Open answer</span>',
+    '        <span class="cta">View solution</span>',
     "      </a>"
   ].filter(Boolean).join("\n");
 }
 
+const PRIMARY_PROBLEM_HUB = [
+  { slug: "scratches-too-deep", description: "Scratch marks stay visible even after moving to finer grits." },
+  { slug: "not-sure-what-grit-to-use", description: "You are unsure where to start or which grit should come next." },
+  { slug: "paper-clogs-too-fast", description: "The sheet loads with dust, paint, or residue and stops cutting." },
+  { slug: "sanding-takes-too-long", description: "Cutting feels slow and defects are not clearing in a reasonable time." },
+  { slug: "surface-still-feels-rough", description: "The surface still feels uneven or textured after sanding." },
+  { slug: "wet-sanding-leaves-haze", description: "Wet sanding leaves cloudiness or haze that does not clear." },
+  { slug: "swirl-marks-remain", description: "Circular marks remain visible after sanding or prep work." },
+  { slug: "finish-looks-uneven", description: "The finish looks patchy, blotchy, or inconsistent across the surface." },
+  { slug: "poor-results-between-coats", description: "Between-coat sanding does not produce a smooth, even base." },
+  { slug: "paper-tears-early", description: "Sheets tear, fray, or wear out before finishing the sanding step." }
+];
+
+const TASK_OR_MATERIAL_HUB = [
+  { slug: "paint-prep", title: "Paint Prep", cta: "View prep guide" },
+  { slug: "wood-finish-prep", title: "Wood Finish Prep", cta: "View prep guide" },
+  { slug: "drywall-patch", title: "Drywall Patch", cta: "View related problems" },
+  { slug: "rust-removal", title: "Rust Removal", cta: "View related problems" },
+  { slug: "paint-removal", title: "Paint Removal", cta: "View related problems" },
+  { slug: "metal-prep", title: "Metal Prep", cta: "View prep guide" },
+  { slug: "plastic-sanding", title: "Plastic Sanding", cta: "View sanding guide" },
+  { slug: "wet-or-dry-use", title: "Wet Or Dry Use", cta: "View sanding guide" },
+  { slug: "grit-sequence", title: "Grit Sequence", cta: "View sanding guide" },
+  { slug: "headlight-restoration", title: "Headlight Restoration", cta: "View related problems" }
+];
+
+function renderPrimaryProblemCard(group, overrideDescription) {
+  const examples = group.cards.slice(0, 5).map(function (card) {
+    return '<span class="pill">' + escapeHtml(card.title) + "</span>";
+  }).join("");
+
+  return [
+    '      <article class="card">',
+    "        <h3>" + escapeHtml(group.title) + "</h3>",
+    "        <p>" + escapeHtml(overrideDescription || group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
+    examples ? '        <div class="pill-list">' + examples + "</div>" : "",
+    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">View problem guide</a>',
+    "      </article>"
+  ].filter(Boolean).join("\n");
+}
+
+function renderTaskCard(group, title, cta) {
+  const examples = group.cards.slice(0, 3).map(function (card) {
+    return '<span class="pill">' + escapeHtml(card.title) + "</span>";
+  }).join("");
+
+  return [
+    '      <article class="card">',
+    "        <h3>" + escapeHtml(title || group.title) + "</h3>",
+    "        <p>" + escapeHtml(group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
+    examples ? '        <div class="pill-list">' + examples + "</div>" : "",
+    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">' + escapeHtml(cta) + "</a>",
+    "      </article>"
+  ].filter(Boolean).join("\n");
+}
+
+function renderCuratedProblemsHtml(groupsBySlug) {
+  const primaryCards = PRIMARY_PROBLEM_HUB.map(function (item) {
+    const group = groupsBySlug[item.slug];
+    if (!group) return "";
+    return renderPrimaryProblemCard(group, item.description);
+  }).filter(Boolean).join("\n");
+
+  const secondaryCards = TASK_OR_MATERIAL_HUB.map(function (item) {
+    const group = groupsBySlug[item.slug];
+    if (!group) return "";
+    return renderTaskCard(group, item.title, item.cta);
+  }).filter(Boolean).join("\n");
+
+  return [
+    '<section class="section band"><h2>Common sanding problems</h2><div class="grid">',
+    primaryCards,
+    "</div></section>",
+    '<section class="section"><h2>Start by task or material</h2><div class="grid">',
+    secondaryCards,
+    "</div></section>"
+  ].join("");
+}
+
 function renderProblemsIndex(groups, template, totalSolutions) {
+  const groupsBySlug = Object.create(null);
+  groups.forEach(function (group) {
+    groupsBySlug[group.slug] = group;
+  });
+
   return replaceAllPlaceholders(template, {
-    PROBLEM_GROUPS_HTML: groups.map(renderProblemGroupCard).join("\n"),
+    CURATED_PROBLEMS_HTML: renderCuratedProblemsHtml(groupsBySlug),
     TOTAL_GROUPS: String(groups.length),
     TOTAL_SOLUTIONS: String(totalSolutions)
   });
@@ -302,3 +386,5 @@ try {
   console.error(error && error.message ? error.message : String(error));
   process.exitCode = 1;
 }
+
+
