@@ -167,7 +167,7 @@ function renderTagIndexPage(tagEntries) {
       escapeHtml(entry.label) +
       '</h3><p>Related solution answers for this topic chip.</p><div class="pill-list"><span class="pill">' +
       escapeHtml(String(entry.cards.length) + ' answers') +
-      '</span></div><span class="cta">Open topic -></span></a>';
+      '</span></div><span class="cta">Open topic</span></a>';
   }).join("");
 
   return siteHead("Tags", "Tag pages for related solution topics.") +
@@ -189,7 +189,7 @@ function renderTagPage(tagEntry) {
       escapeHtml(card.recommended_grit || "See solution for grit guidance.") +
       '</span><span class="pill">' +
       escapeHtml(card.wet_or_dry || "See solution for wet or dry guidance.") +
-      '</span></div><span class="cta">Open solution -></span></a>';
+      '</span></div><span class="cta">Open solution</span></a>';
   }).join("");
 
   return siteHead(tagEntry.label, "Related solution answers for " + tagEntry.label + ".") +

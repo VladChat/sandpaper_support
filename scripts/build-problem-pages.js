@@ -209,7 +209,7 @@ function renderProblemGroupCard(group) {
     '        <ul class="pill-list" style="display:block;padding-left:18px;margin:10px 0 0;">',
     previewItems + moreHtml,
     "        </ul>",
-    '        <span class="cta">Open problem group →</span>',
+    '        <span class="cta">Open problem group</span>',
     "      </a>"
   ].join("\n");
 }
@@ -226,7 +226,7 @@ function renderSolutionCard(card) {
     "        <h3>" + escapeHtml(card.title) + "</h3>",
     "        <p>" + escapeHtml(detailParts.join(" ")) + "</p>",
     pills ? '        <div class="pill-list">\n' + pills + "\n        </div>" : "",
-    '        <span class="cta">Open answer →</span>',
+    '        <span class="cta">Open answer</span>',
     "      </a>"
   ].filter(Boolean).join("\n");
 }

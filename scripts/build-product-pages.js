@@ -101,7 +101,7 @@ function productCard(href, title, text, cta, chips) {
     renderChipList(chips || []) +
     '<span class="cta">' +
     htmlEscape(cta) +
-    " -&gt;</span></a>";
+    "</span></a>";
 }
 
 function infoCard(title, text, chips) {
@@ -114,6 +114,20 @@ function infoCard(title, text, chips) {
     "</article>";
 }
 
+function actionCard(title, text, chips, href, cta) {
+  return '<article class="card"><h3>' +
+    htmlEscape(title) +
+    '</h3><p>' +
+    htmlEscape(text) +
+    '</p>' +
+    renderChipList(chips || []) +
+    '<p><a class="cta" href="' +
+    htmlEscape(href) +
+    '">' +
+    htmlEscape(cta) +
+    "</a></p></article>";
+}
+
 function renderProductsIndex() {
   const intro = "Choose the product type first, then move to the correct grit guide, surface guide, or troubleshooting answer.";
 
@@ -122,49 +136,66 @@ function renderProductsIndex() {
     siteHeader() +
     '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / By Product</div><h1>Product Support</h1><p class="section-intro">' +
     htmlEscape(intro) +
-    '</p><div class="grid">' +
-    productCard(
-      "/sandpaper_support/products/assorted-80-3000/",
+    '</p><h2>Choose your product</h2><div class="grid">' +
+    actionCard(
       "eQualle Assorted Sandpaper Kit 60-3000",
       "Use this guide when you have the assorted 9 x 11 inch silicon carbide wet or dry sheets and need help choosing a grit sequence.",
-      "Open kit support",
       [
         ["60-3000 grit", ""],
         ["Wet or dry use", ""],
-        ["Grit sequence help", "/sandpaper_support/grits/"]
-      ]
+        ["Grit sequence", ""]
+      ],
+      "/sandpaper_support/products/assorted-80-3000/",
+      "Open kit support"
     ) +
-    productCard(
-      "/sandpaper_support/products/single-grit-sheets/",
+    actionCard(
       "eQualle Single-Grit Sandpaper Sheets",
       "Use this guide when you have one grit number and need to understand what that grit is best for, what comes next, or why the result is not right.",
-      "Open single-grit support",
       [
         ["9 x 11 in sheets", ""],
         ["Silicon carbide", ""],
-        ["By grit", "/sandpaper_support/grits/"]
-      ]
+        ["By grit", ""]
+      ],
+      "/sandpaper_support/products/single-grit-sheets/",
+      "Open single-grit support"
     ) +
-    infoCard(
+    '</div></section><section class="section band"><h2>Not sure where to start?</h2><div class="grid">' +
+    actionCard(
       "Start by Surface",
       "When the material matters more than the product package, start with the surface you are sanding.",
       [
-        ["Wood", "/sandpaper_support/surfaces/wood/"],
-        ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"],
-        ["Metal", "/sandpaper_support/surfaces/metal/"],
-        ["Plastic", "/sandpaper_support/surfaces/plastic/"],
-        ["Clear Coat", "/sandpaper_support/surfaces/clear-coat/"]
-      ]
+        ["Wood", ""],
+        ["Paint / Primer", ""],
+        ["Metal", ""],
+        ["Plastic", ""],
+        ["Clear Coat", ""]
+      ],
+      "/sandpaper_support/surfaces/",
+      "Open topic"
     ) +
-    infoCard(
+    actionCard(
       "Start by Problem",
       "When the result looks wrong, start with the symptom: scratches, clogging, haze, roughness, or slow cutting.",
       [
-        ["Problems", "/sandpaper_support/problems/"],
-        ["Clogging", "/sandpaper_support/problems/paper-clogs-too-fast/"],
-        ["Scratches", "/sandpaper_support/problems/scratches-too-deep/"],
-        ["Wet sanding haze", "/sandpaper_support/problems/wet-sanding-haze/"]
-      ]
+        ["Scratches", ""],
+        ["Clogging", ""],
+        ["Haze", ""],
+        ["Slow cutting", ""]
+      ],
+      "/sandpaper_support/problems/",
+      "Open problem group"
+    ) +
+    actionCard(
+      "Grit Guide",
+      "When you know the grit number or need a step-by-step progression, start with grit ranges and next-step guidance.",
+      [
+        ["Coarse", ""],
+        ["Medium", ""],
+        ["Fine", ""],
+        ["Ultra fine", ""]
+      ],
+      "/sandpaper_support/grits/",
+      "Open topic"
     ) +
     '</div></section></main>' +
     siteFooter();

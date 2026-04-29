@@ -279,7 +279,7 @@ function siteFooter() {
 }
 
 function renderProductCard() {
-  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit guide -&gt;</span></a>';
+  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit guide</span></a>';
 }
 
 function renderSolutionCard(card) {
@@ -293,7 +293,7 @@ function renderSolutionCard(card) {
     htmlEscape(card.recommended_grit || "See solution for grit guidance.") +
     '</span><span class="pill">' +
     htmlEscape(card.wet_or_dry || "See solution for wet or dry guidance.") +
-    '</span></div><span class="cta">Open solution -&gt;</span></a>';
+    '</span></div><span class="cta">Open solution</span></a>';
 }
 
 function renderRangeSection(range, cards) {

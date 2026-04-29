@@ -219,7 +219,7 @@ function siteFooter() {
 }
 
 function renderProductCard() {
-  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Choose the starting grit and sequence for this surface using the 9 x 11 inch wet or dry silicon carbide sheets.</p><span class="cta">Open kit guide -&gt;</span></a>';
+  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Choose the starting grit and sequence for this surface using the 9 x 11 inch wet or dry silicon carbide sheets.</p><span class="cta">Open kit guide</span></a>';
 }
 
 function renderSolutionCard(card) {
@@ -239,7 +239,7 @@ function renderSolutionCard(card) {
     htmlEscape(recommendedGrit) +
     '</span><span class="pill">' +
     htmlEscape(wetOrDry) +
-    '</span></div><span class="cta">Open solution -&gt;</span></a>'
+    '</span></div><span class="cta">Open solution</span></a>'
   );
 }
 
@@ -278,7 +278,7 @@ function renderSurfacesIndex(groupsWithCards) {
         htmlEscape(entry.group.description) +
         '</p><div class="pill-list"><span class="pill">' +
         entry.cards.length +
-        ' fixes</span></div><span class="cta">Open surface -&gt;</span></a>'
+        ' fixes</span></div><span class="cta">Open surface</span></a>'
       );
     })
     .join("");
