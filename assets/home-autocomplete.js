@@ -18,9 +18,10 @@ import Fuse from "./vendor/fuse.min.mjs";
   })();
 
   const MAX_RESULTS = 8;
+  const GENERIC_FIX_PREFIX = "How do I fix ";
   let currentResults = [];
   let fuse = null;
-  let searchEntries = [];
+  let suggestions = [];
 
   function clean(value) {
     return String(value || "").trim();
@@ -32,18 +33,10 @@ import Fuse from "./vendor/fuse.min.mjs";
 
   function normalizePath(target) {
     const candidate = clean(target);
-    if (!candidate) {
-      return "";
-    }
-    if (/^https?:\/\//i.test(candidate)) {
-      return candidate;
-    }
-    if (candidate.indexOf(basePath + "/") === 0 || candidate === basePath) {
-      return candidate;
-    }
-    if (candidate.charAt(0) === "/") {
-      return basePath + candidate;
-    }
+    if (!candidate) return "";
+    if (/^https?:\/\//i.test(candidate)) return candidate;
+    if (candidate.indexOf(basePath + "/") === 0 || candidate === basePath) return candidate;
+    if (candidate.charAt(0) === "/") return basePath + candidate;
     return basePath + "/" + candidate;
   }
 
@@ -62,135 +55,170 @@ import Fuse from "./vendor/fuse.min.mjs";
     });
   }
 
-  function textFromArray(value) {
-    return Array.isArray(value)
-      ? value.map(function (item) { return clean(item); }).filter(Boolean)
-      : [];
+  function titleize(text) {
+    return clean(text)
+      .split(/\s+/)
+      .map(function (part) {
+        return part ? part.charAt(0).toUpperCase() + part.slice(1) : "";
+      })
+      .join(" ");
   }
 
-  function toDoc(entry, index) {
-    return {
-      id: clean(entry.id) || "entry-" + String(index),
-      title: clean(entry.title),
-      description: clean(entry.description),
-      customer_phrases: textFromArray(entry.customer_phrases),
-      aliases: textFromArray(entry.aliases),
-      surface: textFromArray(entry.surface),
-      grits: textFromArray(entry.grits),
-      method: textFromArray(entry.method),
-      target_url: clean(entry.target_url),
-      result_kind: clean(entry.result_kind) || "answer",
-    };
+  function toFixQuestion(rawTitle) {
+    const phrase = clean(rawTitle)
+      .replace(/\?+$/g, "")
+      .replace(/^[Ww]hat\s+grit\s+should\s+I\s+use.*$/i, "")
+      .replace(/^[Hh]ow\s+do\s+I\s+fix\s+/i, "")
+      .replace(/^[Hh]ow\s+to\s+/i, "")
+      .trim();
+
+    if (!phrase) {
+      return "";
+    }
+
+    return GENERIC_FIX_PREFIX + phrase.toLowerCase() + "?";
   }
 
-  function buildIndex(entries) {
-    const docs = [];
+  function buildVisibleTitle(entry) {
+    const rawTitle = clean(entry.title);
+    const description = clean(entry.description);
+    const target = clean(entry.target_url);
+
+    if (!rawTitle) {
+      return "";
+    }
+
+    if (/\?$/.test(rawTitle) || /^how\s|^what\s|^which\s|^can\s|^should\s|^why\s|^is\s|^when\s|^where\s|^does\s|^do\s/i.test(rawTitle)) {
+      return rawTitle;
+    }
+
+    const manualMap = [
+      { pattern: /paint clogs/i, title: "How do I fix clogged sandpaper?" },
+      { pattern: /sheet feels smooth but stops cutting|stops cutting fast|worn sheet not cutting/i, title: "How do I fix sandpaper that stops cutting?" },
+      { pattern: /primer dust loads paper|primer dust loading/i, title: "How do I fix primer dust loading the paper?" },
+      { pattern: /wood dust clogs paper/i, title: "How do I fix wood dust clogging the paper?" },
+      { pattern: /deep scratches remain after 80 grit|scratches too deep/i, title: "How do I remove deep sanding scratches?" },
+      { pattern: /wet sanding haze remains|wet sanding haze|wet sanding leaves haze/i, title: "How do I reduce wet sanding haze?" },
+      { pattern: /plastic still feels rough|plastic still rough/i, title: "How do I sand plastic smoother?" },
+    ];
+
+    for (const rule of manualMap) {
+      if (rule.pattern.test(rawTitle) || rule.pattern.test(description)) {
+        return rule.title;
+      }
+    }
+
+    if (/clog|does not|won't|won t|remain|remains|still|too\s|fails|fail|problem|issue|rough|haze|scratches|tears|curls|stops cutting/i.test(rawTitle + " " + description)) {
+      return toFixQuestion(rawTitle) || rawTitle;
+    }
+
+    if (/^what\s+grit\s+/i.test(rawTitle)) {
+      return rawTitle.endsWith("?") ? rawTitle : rawTitle + "?";
+    }
+
+    return rawTitle;
+  }
+
+  function buildSuggestions(entries) {
+    const list = [];
     const seen = new Set();
 
-    (Array.isArray(entries) ? entries : []).forEach(function (entry, index) {
-      const doc = toDoc(entry, index);
-      if (!doc.title || !doc.target_url) {
+    (Array.isArray(entries) ? entries : []).forEach(function (entry) {
+      const target_url = clean(entry && entry.target_url);
+      const description = clean(entry && entry.description);
+      const result_kind = clean(entry && entry.result_kind) || "answer";
+      const visibleTitle = buildVisibleTitle(entry);
+
+      if (!target_url || !visibleTitle) {
         return;
       }
 
-      const dedupeKey = doc.target_url + "::" + doc.title;
-      if (seen.has(dedupeKey)) {
+      const key = target_url;
+      if (seen.has(key)) {
         return;
       }
-      seen.add(dedupeKey);
-      docs.push(doc);
+      seen.add(key);
+
+      list.push({
+        visibleTitle: visibleTitle,
+        description: description,
+        target_url: target_url,
+        result_kind: result_kind,
+      });
     });
 
-    return docs;
+    return list;
   }
 
-  function createFuse(docs) {
-    return new Fuse(docs, {
+  function createFuse(list) {
+    return new Fuse(list, {
       includeScore: true,
-      shouldSort: true,
       ignoreLocation: true,
-      threshold: 0.4,
+      threshold: 0.35,
       minMatchCharLength: 1,
-      keys: [
-        { name: "title", weight: 0.4 },
-        { name: "customer_phrases", weight: 0.23 },
-        { name: "aliases", weight: 0.14 },
-        { name: "description", weight: 0.12 },
-        { name: "surface", weight: 0.05 },
-        { name: "grits", weight: 0.03 },
-        { name: "method", weight: 0.03 },
-      ],
+      keys: [{ name: "visibleTitle", weight: 1 }],
     });
   }
 
-  function getBoostScore(doc, query) {
+  function getPrefixMatches(query) {
     const q = lower(query);
-    if (!q) {
-      return 0;
-    }
+    if (!q) return [];
+    return suggestions
+      .filter(function (item) {
+        return lower(item.visibleTitle).startsWith(q);
+      })
+      .slice(0, 40);
+  }
 
-    const title = lower(doc.title);
-    const phrases = (doc.customer_phrases || []).map(lower);
+  function getContainsMatches(query) {
+    const q = lower(query);
+    if (!q) return [];
+    return suggestions
+      .filter(function (item) {
+        const title = lower(item.visibleTitle);
+        return !title.startsWith(q) && title.indexOf(q) !== -1;
+      })
+      .slice(0, 40);
+  }
 
-    let boost = 0;
-    if (title.startsWith(q)) {
-      boost += 50;
-    }
-    if (title.indexOf(q) !== -1) {
-      boost += 25;
-    }
-    if (phrases.some(function (p) { return p.indexOf(q) !== -1; })) {
-      boost += 20;
-    }
-    return boost;
+  function getFuzzyMatches(query) {
+    if (!fuse) return [];
+    return fuse.search(clean(query), { limit: 40 }).map(function (row) {
+      return row.item;
+    });
   }
 
   function rankResults(query) {
     const q = clean(query);
-    if (!q || !fuse) {
-      return [];
-    }
-
-    const boosted = searchEntries
-      .map(function (doc) {
-        return {
-          doc: doc,
-          score: getBoostScore(doc, q),
-        };
-      })
-      .filter(function (row) {
-        return row.score > 0;
-      })
-      .sort(function (a, b) {
-        return b.score - a.score;
-      })
-      .map(function (row) {
-        return row.doc;
-      });
-
-    const fuzzy = fuse.search(q, { limit: 40 }).map(function (row) {
-      return row.item;
-    });
+    if (!q) return [];
+    const qLower = lower(q);
+    const enforceFixOnly = qLower.startsWith("how to fix");
 
     const deduped = [];
     const seenTargets = new Set();
 
-    boosted.concat(fuzzy).forEach(function (doc) {
-      const key = clean(doc.target_url);
-      if (!key || seenTargets.has(key)) {
+    const ordered = getPrefixMatches(q)
+      .concat(getContainsMatches(q))
+      .concat(getFuzzyMatches(q));
+
+    ordered.forEach(function (item) {
+      if (!item || !item.target_url || seenTargets.has(item.target_url)) {
         return;
       }
-      seenTargets.add(key);
-      deduped.push(doc);
+      if (enforceFixOnly && !lower(item.visibleTitle).startsWith("how do i fix")) {
+        return;
+      }
+      seenTargets.add(item.target_url);
+      deduped.push(item);
     });
 
     return deduped.slice(0, MAX_RESULTS);
   }
 
-  function createResultNode(doc) {
+  function createResultNode(item) {
     const link = document.createElement("a");
     link.className = "result-link";
-    link.href = normalizePath(doc.target_url);
+    link.href = normalizePath(item.target_url);
 
     const kind = document.createElement("span");
     kind.className = "result-kind result-kind-answer";
@@ -201,20 +229,18 @@ import Fuse from "./vendor/fuse.min.mjs";
 
     const title = document.createElement("span");
     title.className = "result-title-link";
-    title.textContent = doc.title;
-
+    title.textContent = item.visibleTitle;
     text.appendChild(title);
 
-    if (doc.description) {
+    if (item.description) {
       const description = document.createElement("span");
       description.className = "result-description";
-      description.textContent = " - " + doc.description;
+      description.textContent = " - " + item.description;
       text.appendChild(description);
     }
 
     link.appendChild(kind);
     link.appendChild(text);
-
     return link;
   }
 
@@ -237,8 +263,8 @@ import Fuse from "./vendor/fuse.min.mjs";
       return;
     }
 
-    currentResults.forEach(function (doc) {
-      results.appendChild(createResultNode(doc));
+    currentResults.forEach(function (item) {
+      results.appendChild(createResultNode(item));
     });
   }
 
@@ -285,8 +311,8 @@ import Fuse from "./vendor/fuse.min.mjs";
 
   loadSupportJson("data/search-index.json")
     .then(function (entries) {
-      searchEntries = buildIndex(entries);
-      fuse = createFuse(searchEntries);
+      suggestions = buildSuggestions(entries);
+      fuse = createFuse(suggestions);
       bindEvents();
       console.log("eQualle homepage autocomplete initialized");
     })
