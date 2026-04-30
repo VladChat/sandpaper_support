@@ -236,3 +236,37 @@ node scripts/check-internal-links.js
 
 This is a frontend-only change. Do not run `Deploy Support AI Chat` unless a backend file is changed separately.
 
+
+
+# Operations Log Entry — Compact Turnstile Verification Copy
+
+## Change Summary
+
+Frontend-only cleanup for the Turnstile verification block.
+
+## Files Changed
+
+- `assets/supabase-client.js`
+- `assets/support-assistant.css`
+
+## Behavior Changes
+
+- Replaced the verbose verification card copy with one label: `I am not a robot:`.
+- Removed visible waiting/success duplicate status messages; Cloudflare Turnstile remains responsible for showing the success state.
+- Kept error/expired status messages available only when needed.
+- Made the verification card more compact with a fit-content layout.
+- No backend, database, or Edge Function changes.
+
+## Validation Required
+
+```powershell
+node --check assets/supabase-client.js
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+## Deployment Note
+
+This is a frontend-only change. Do not run `Deploy Support AI Chat` unless a backend file is changed separately.
+

@@ -625,10 +625,12 @@
     titleNode.textContent = title;
     card.appendChild(titleNode);
 
-    var textNode = document.createElement("p");
-    textNode.className = "support-" + kind + "-card-text";
-    textNode.textContent = text;
-    card.appendChild(textNode);
+    if (text) {
+      var textNode = document.createElement("p");
+      textNode.className = "support-" + kind + "-card-text";
+      textNode.textContent = text;
+      card.appendChild(textNode);
+    }
 
     return card;
   }
@@ -703,8 +705,8 @@
 
       var card = createGateCard(
         "verification",
-        "Quick Verification",
-        options.text || "To continue asking questions, please complete this quick verification.",
+        "I am not a robot:",
+        "",
       );
       var widget = document.createElement("div");
       widget.className = "support-turnstile-widget";
@@ -712,7 +714,8 @@
 
       var status = document.createElement("div");
       status.className = "support-verification-status";
-      status.textContent = "Waiting for verification...";
+      status.setAttribute("aria-live", "polite");
+      status.hidden = true;
       card.appendChild(status);
 
       messages.appendChild(card);
@@ -729,21 +732,25 @@
             sitekey: siteKey,
             callback: function (token) {
               gateState.pendingTurnstileToken = token;
-              status.textContent = "Verification complete. You can continue.";
+              status.textContent = "";
+              status.hidden = true;
               setChatLocked(messages, false);
               gateState.activeChallengePromise = null;
               resolve(token);
             },
             "error-callback": function () {
+              status.hidden = false;
               status.textContent = "Verification failed. Please try again.";
             },
             "expired-callback": function () {
               gateState.pendingTurnstileToken = "";
+              status.hidden = false;
               status.textContent = "Verification expired. Please verify again.";
             },
           });
         })
         .catch(function (error) {
+          status.hidden = false;
           status.textContent = error && error.message ? error.message : "Verification could not be loaded.";
           setChatLocked(messages, false);
           gateState.activeChallengePromise = null;
@@ -853,9 +860,7 @@
       if (body && body.ok) {
         if (body.nextAction === "turnstile_required") {
           window.setTimeout(function () {
-            renderTurnstileChallenge({
-              text: "To continue asking questions, please complete this quick verification.",
-            }).catch(function () {
+            renderTurnstileChallenge().catch(function () {
               return;
             });
           }, 80);
@@ -871,9 +876,7 @@
       }
 
       if (body && body.code === "turnstile_required" && retryAllowed) {
-        return renderTurnstileChallenge({
-          text: body.message || "Please complete the verification to continue.",
-        }).then(function (token) {
+        return renderTurnstileChallenge().then(function (token) {
           return fetchAiChat(input, token).then(function (retryBody) {
             if (retryBody && retryBody.ok) {
               return handleBody(retryBody, false);
