@@ -4,14 +4,6 @@ import Fuse from "./vendor/fuse.min.mjs";
   window.eQualleUseUnifiedAutocomplete = true;
   window.eQualleUseAlgoliaAutocomplete = true;
 
-  const allInputs = Array.prototype.slice.call(
-    document.querySelectorAll("[data-support-search]"),
-  );
-
-  if (!allInputs.length) {
-    return;
-  }
-
   const basePath = (function () {
     const pathname = String(window.location.pathname || "");
     const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
@@ -23,6 +15,7 @@ import Fuse from "./vendor/fuse.min.mjs";
   const states = new WeakMap();
   let fuse = null;
   let suggestions = [];
+  let dataReady = false;
 
   function clean(value) {
     return String(value || "").trim();
@@ -384,17 +377,54 @@ import Fuse from "./vendor/fuse.min.mjs";
     }
   }
 
-  function bindAllInputs() {
-    allInputs.forEach(function (input) {
+  function bindAllInputs(root) {
+    if (!dataReady) {
+      return;
+    }
+
+    const scope = root && root.querySelectorAll ? root : document;
+    Array.prototype.slice.call(scope.querySelectorAll("[data-support-search]")).forEach(function (input) {
       bindSearchInput(input);
     });
   }
+
+  function setupDynamicBinding() {
+    document.addEventListener("support-search-bar:ready", function (event) {
+      bindAllInputs(event && event.detail && event.detail.root ? event.detail.root : document);
+    });
+
+    if (!window.MutationObserver) {
+      return;
+    }
+
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        Array.prototype.slice.call(mutation.addedNodes || []).forEach(function (node) {
+          if (!node || node.nodeType !== 1) {
+            return;
+          }
+          if (node.matches && node.matches("[data-support-search]")) {
+            bindAllInputs(node.parentNode || document);
+            return;
+          }
+          if (node.querySelectorAll && node.querySelector("[data-support-search]")) {
+            bindAllInputs(node);
+          }
+        });
+      });
+    });
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  setupDynamicBinding();
 
   loadSupportJson("data/search-index.json")
     .then(function (entries) {
       suggestions = buildSuggestions(entries);
       fuse = createFuse(suggestions);
-      bindAllInputs();
+      dataReady = true;
+      bindAllInputs(document);
       console.log("eQualle homepage autocomplete initialized");
     })
     .catch(function (error) {

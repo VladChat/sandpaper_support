@@ -12,6 +12,7 @@
 <link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
 <link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=solution-video-card-20260428">
+<link rel="stylesheet" href="/sandpaper_support/assets/support-search-bar.css?v=support-search-bar-20260430-v1">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -82,29 +83,14 @@
     </article>
 
     <section class="solution-search-block" aria-label="Ask another sanding question">
-      <div class="support-search-shell solution-search-shell">
-        <div class="support-search-form" role="search">
-          <input
-            id="solution-search-sandpaper-stops-cutting-fast"
-            class="support-search-input"
-            data-support-search
-            placeholder="Example: sandpaper clogs too fast"
-          >
-          <button class="support-tool-button support-mic-button" type="button" aria-label="Start voice input" aria-pressed="false" title="Start voice input">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3Zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7Z"/>
-            </svg>
-          </button>
-          <button class="support-tool-button support-photo-button" type="button" aria-label="Add photo coming soon" title="Add photo coming soon">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M19 5h-3.17l-1.84-2H10L8.17 5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2Zm-7 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-1.8A3.2 3.2 0 1 0 12 9.8a3.2 3.2 0 0 0 0 6.4Z"/>
-            </svg>
-            <span>Add Photo</span>
-          </button>
-          <button class="support-search-button" type="button" data-support-search-submit>Get Answer</button>
-        </div>
-        <div class="search-results" data-search-results></div>
-      </div>
+      <div
+        data-support-search-bar
+        data-mode="search"
+        data-shell-class="solution-search-shell"
+        data-input-id="solution-search-sandpaper-stops-cutting-fast"
+        data-placeholder="Example: sandpaper clogs too fast"
+        data-button-text="Get Answer"
+      ></div>
     </section>
 
     <script type="application/json" data-solution-context>
@@ -162,7 +148,8 @@
   window.eQualleUseUnifiedAutocomplete = true;
   window.eQualleUseAlgoliaAutocomplete = true;
 </script>
-<script type="module" src="/sandpaper_support/assets/support-autocomplete.js?v=unified-autocomplete-20260429"></script>
+<script src="/sandpaper_support/assets/support-search-bar.js?v=support-search-bar-20260430-v1"></script>
+<script type="module" src="/sandpaper_support/assets/support-autocomplete.js?v=support-search-bar-20260430-v1"></script>
 <script src="/sandpaper_support/assets/app.js?v=support-voice-input-20260430-v1"></script>
 <script src="/sandpaper_support/assets/support-auth-request-fix.js?v=support-auth-session-fix-20260430-v1"></script>
 </body>
