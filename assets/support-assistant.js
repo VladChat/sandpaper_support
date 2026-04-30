@@ -139,6 +139,15 @@
     setStoredJson(STORAGE_KEYS.conversationMemory, state);
   }
 
+  function resetConversationForNewQuestion(question) {
+    const state = createNewConversationState();
+    state.initialQuestion = String(question || "").trim();
+    saveConversationState(state);
+    setStoredText(STORAGE_KEYS.lastQuery, clean(question).trim());
+    setStoredJson(STORAGE_KEYS.lastMatches, []);
+    setStoredJson(STORAGE_KEYS.clickedPages, []);
+  }
+
   function addConversationTurn(role, text, extra) {
     const state = getConversationState();
     const pagePath = (extra && extra.pagePath) || window.location.pathname || "";
@@ -240,9 +249,9 @@
   function buildAssistantPrompt(currentUserMessage, promptOptions) {
     promptOptions = promptOptions || {};
     const compactFollowup = Boolean(promptOptions.compactFollowup);
-    const state = getConversationState();
+    const includeRecentConversation = Boolean(promptOptions.includeRecentConversation);
     const pageContext = buildPageContext();
-    const recentConversation = getRecentConversationText();
+    const recentConversation = includeRecentConversation ? getRecentConversationText() : "";
 
     const pageContextText = [
       pageContext.currentPagePath ? "Current page: " + pageContext.currentPagePath : "",
@@ -261,6 +270,18 @@
       ? "Recent conversation:\n" + recentConversation
       : "";
 
+    const conversationModeText = includeRecentConversation
+      ? [
+          "Use recent conversation only to resolve the current follow-up.",
+          "The current user question remains the highest-priority instruction.",
+          "Do not let older turns override the current user question.",
+        ].join("\n")
+      : [
+          "Treat this as a new standalone first question.",
+          "Do not use previous browser conversation, previous searches, clicked pages, or old follow-up context.",
+          "Do not assume the user is continuing an earlier topic.",
+        ].join("\n");
+
     const answerModeText = compactFollowup
       ? [
           "Answer mode: compact follow-up chat.",
@@ -270,11 +291,14 @@
           "Do not include an Avoid section.",
           "Do not include Recommended Action, Steps, or Recommended Page headings unless the user explicitly asks for a step-by-step list.",
           "Use the recent conversation to answer the current follow-up directly without repeating the previous answer.",
+          "Do not let older turns override the current user question.",
         ].join("\n")
       : [
           "Answer mode: first full support answer.",
           "Use clear sections when helpful: Answer Summary, Recommended Action, Steps, Recommended Page.",
           "Do not include an Avoid section.",
+          "Use retrieved pages only when they are clearly relevant to the current question.",
+          "Ignore irrelevant suggested pages or stale search context.",
         ].join("\n");
 
     const systemPrompt = [
@@ -284,10 +308,7 @@
       "Mention eQualle only when the user directly asks about the brand, product identity, packaging, listing, order, or seller-specific support.",
       "Focus on sandpaper and related surface-preparation work: grit choice, wet/dry sanding, wood, metal, plastic, paint, primer, clear coat, scratches, clogging, cutting/trimming sheets, safe technique, and next steps.",
       "",
-      "Use the conversation context below when the current user question is a follow-up, clarification, pronoun reference, short question, or depends on the previous answer.",
-      "",
-      "Do not reinterpret a follow-up as a new unrelated topic.",
-      "If the user clearly changes topic, answer the new topic normally.",
+      conversationModeText,
       "",
       pageContextText ? "Current page context:\n" + pageContextText : "",
       "",
@@ -298,8 +319,10 @@
       "",
       "Answer rules:",
       "- Answer the current user question directly.",
-      "- Resolve short follow-ups using the recent conversation.",
+      includeRecentConversation ? "- Resolve short follow-ups using the recent conversation." : "- Do not use old conversation memory for this first answer.",
       "- Keep the answer anchored to sandpaper, sanding, grit choice, wet/dry use, cutting/trimming sheets, surface prep, wood, metal, plastic, paint, primer, clear coat, scratches, clogging, and safe technique when that is the active topic.",
+      "- Do not let retrievedContent, autocomplete suggestions, or previous matches override the current user question.",
+      "- Ignore retrieved pages that are not clearly relevant to the current user question.",
       "- Use a neutral technical support tone; do not sound like a sales or brand-promotion bot.",
       "- Do not mention eQualle unless the user directly asks about eQualle, the product listing, packaging, order, or seller-specific support.",
       "- Do not switch to a different topic just because the short follow-up contains a word with another meaning.",
@@ -1081,7 +1104,6 @@
     node.classList.add("chat-message-compact");
   }
 
-
   function getShellContainer(shell) {
     if (!shell) {
       return null;
@@ -1415,13 +1437,11 @@
     return function requestAssistant(userMessage, context) {
       const currentTitle = stripSiteTitle(document.title);
       const currentPath = window.location.pathname;
-      const lastMatches = getStoredJson(STORAGE_KEYS.lastMatches, []);
       const contextInput = context && typeof context === "object" ? context : {};
-
-      addConversationTurn("user", userMessage, {
-        pagePath: currentPath,
-        pageTitle: currentTitle,
-      });
+      const useConversationContext = contextInput.mode === "manual";
+      const lastMatches = useConversationContext
+        ? getStoredJson(STORAGE_KEYS.lastMatches, [])
+        : [];
 
       const searchEntries = knowledge.findSearchMatches(userMessage, 5);
       const solutionCards = knowledge.findSolutionCards(
@@ -1445,7 +1465,13 @@
       };
 
       const contextualPrompt = buildAssistantPrompt(userMessage, {
-        compactFollowup: contextInput.mode === "manual",
+        compactFollowup: useConversationContext,
+        includeRecentConversation: useConversationContext,
+      });
+
+      addConversationTurn("user", userMessage, {
+        pagePath: currentPath,
+        pageTitle: currentTitle,
       });
 
       const payload = {
@@ -1454,9 +1480,9 @@
         context: {
           currentPath: currentPath,
           currentTitle: currentTitle,
-          lastQuery: getStoredText(STORAGE_KEYS.lastQuery, ""),
-          lastMatches: getStoredJson(STORAGE_KEYS.lastMatches, []),
-          clickedPages: getStoredJson(STORAGE_KEYS.clickedPages, []),
+          lastQuery: useConversationContext ? getStoredText(STORAGE_KEYS.lastQuery, "") : "",
+          lastMatches: useConversationContext ? getStoredJson(STORAGE_KEYS.lastMatches, []) : [],
+          clickedPages: useConversationContext ? getStoredJson(STORAGE_KEYS.clickedPages, []) : [],
           retrievedContent: retrievedContent,
           source: contextInput.source ? contextInput.source : "site",
           solution_id: contextInput.solution_id || "",
@@ -1799,46 +1825,19 @@
         input.focus();
         return;
       }
+
       const matches = knowledge.findSearchMatches(message, 5, { answerOnly: true });
       const visibleMatches = matches.filter(isHomepageAnswerMatch);
-      const topMatch = visibleMatches.length ? visibleMatches[0] : null;
-      const topHref = topMatch ? normalizePath(basePath, topMatch.target_url || topMatch.targetUrl || "") : "";
-      const isStrongTopMatch = Boolean(
-        topMatch &&
-          (topMatch.search_strong ||
-            (Number.isFinite(topMatch.search_score) && topMatch.search_score >= 90)),
-      );
 
       setStoredText(STORAGE_KEYS.lastQuery, clean(message).trim());
-      setStoredJson(STORAGE_KEYS.lastMatches, visibleMatches.slice(0, 5).map(compactSearchEntry));
+      setStoredJson(STORAGE_KEYS.lastMatches, []);
       renderOutput(message, visibleMatches);
-
-      if (isStrongTopMatch && topHref && isHomepageAnswerMatch(topMatch)) {
-        try {
-          const parsed = new URL(topHref, window.location.origin);
-          if (window.eQualleSupabase) {
-            window.eQualleSupabase.logSearch(message, visibleMatches.length, parsed.pathname);
-          }
-          recordClickedPage(parsed.pathname, topMatch.title || "");
-        } catch (_error) {
-          if (window.eQualleSupabase) {
-            window.eQualleSupabase.logSearch(message, matches.length, null);
-          }
-        }
-        window.location.href = topHref;
-        return;
-      }
-
-      if (visibleMatches.length) {
-        if (window.eQualleSupabase) {
-          window.eQualleSupabase.logSearch(message, visibleMatches.length, null);
-        }
-        return;
-      }
+      resetConversationForNewQuestion(message);
 
       if (window.eQualleSupabase) {
-        window.eQualleSupabase.logSearch(message, 0, null);
+        window.eQualleSupabase.logSearch(message, visibleMatches.length, null);
       }
+
       redirectToAskPage(message);
     }
 
@@ -1873,6 +1872,7 @@
     const params = new URLSearchParams(window.location.search);
     const q = String(params.get("q") || "").trim();
     if (q) {
+      resetConversationForNewQuestion(q);
       shell.input.value = "";
       shell.messages.innerHTML = "";
       chat.ask(q, { auto: true });

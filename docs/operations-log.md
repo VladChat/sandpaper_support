@@ -73,3 +73,39 @@ Because `support-ai-chat/index.ts` changed, deploy the Edge Function again throu
 Deploy Support AI Chat
 ```
 
+
+## 2026-04-29: Fresh Ask Context and Homepage Submit Behavior Fix
+
+### Change Summary
+
+Fixed two connected global assistant issues:
+
+- New `/ask/?q=...` first answers now start from a fresh standalone question context instead of reusing old browser conversation memory.
+- Homepage `Enter` / `Get Answer` now always sends the typed question to the AI answer page instead of automatically opening the top suggested result.
+
+### Files Changed
+
+- `assets/support-assistant.js`
+
+### Behavior Changes
+
+- Fresh `/ask/?q=...` requests reset `conversationMemory`, `lastMatches`, and `clickedPages` before the first AI request.
+- Old follow-up history is used only for manual follow-up messages inside the current chat.
+- First AI answers explicitly tell the assistant to ignore stale searches, old clicked pages, and irrelevant suggested pages.
+- Homepage suggestions remain clickable, but they no longer hijack `Enter` or `Get Answer`.
+- Manual follow-up behavior remains compact and continues to use recent conversation context.
+- Existing Turnstile, loading indicator, login lock, and compact follow-up behavior are preserved.
+
+### Validation Required
+
+```powershell
+node --check assets/support-assistant.js
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+### Deployment Note
+
+This archive changes frontend JavaScript only. The `support-ai-chat` Edge Function is not changed, so the `Deploy Support AI Chat` workflow is not required for this specific fix unless another backend file is modified later.
+
