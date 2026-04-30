@@ -1,7 +1,7 @@
 // assets/support-search-bar.js
 // Purpose: shared support search / follow-up input bar used across homepage, solution pages, and AI chat.
 (function () {
-  const VERSION = "support-search-bar-20260430-v1";
+  const VERSION = "support-search-bar-followup-fix-20260430-v1";
   const processedNodes = new WeakSet();
 
   function clean(value) {
@@ -154,8 +154,11 @@
     const built = createForm(options);
 
     if (options.mode === "chat") {
-      node.replaceWith(built.form);
-      announceReady(built.form);
+      const wrapper = document.createElement("div");
+      wrapper.className = "support-followup-bar-shell";
+      wrapper.appendChild(built.form);
+      node.replaceWith(wrapper);
+      announceReady(wrapper);
       return built;
     }
 

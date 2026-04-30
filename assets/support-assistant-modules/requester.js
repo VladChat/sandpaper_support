@@ -16,6 +16,9 @@
   function compactSolutionCard() { return shared.compactSolutionCard.apply(shared, arguments); }
   function compactSequence() { return shared.compactSequence.apply(shared, arguments); }
 
+  function isBlockedBeforeAssistant(result) {
+    return Boolean(result && result.code === "login_required");
+  }
 
   function createAssistantRequester(basePath, knowledge) {
     return function requestAssistant(userMessage, context) {
@@ -26,7 +29,7 @@
       const lastMatches = useConversationContext
         ? getStoredJson(STORAGE_KEYS.lastMatches, [])
         : [];
-  
+
       const searchEntries = knowledge.findSearchMatches(userMessage, 5);
       const solutionCards = knowledge.findSolutionCards(
         userMessage,
@@ -41,23 +44,18 @@
         solutionCards,
         2,
       );
-  
+
       const retrievedContent = {
         searchEntries: searchEntries.slice(0, 5).map(compactSearchEntry),
         solutionCards: solutionCards.slice(0, 5).map(compactSolutionCard),
         gritSequences: gritSequences.slice(0, 2).map(compactSequence),
       };
-  
+
       const contextualPrompt = buildAssistantPrompt(userMessage, {
         compactFollowup: useConversationContext,
         includeRecentConversation: useConversationContext,
       });
-  
-      addConversationTurn("user", userMessage, {
-        pagePath: currentPath,
-        pageTitle: currentTitle,
-      });
-  
+
       const payload = {
         sessionToken: getSessionToken(),
         userMessage: contextualPrompt,
@@ -79,7 +77,7 @@
           solution_context: contextInput.solution_context || null,
         },
       };
-  
+
       if (!window.eQualleSupabase || !window.eQualleSupabase.isConfigured()) {
         return Promise.resolve({
           ok: false,
@@ -87,7 +85,7 @@
           localMatches: payload.context.lastMatches,
         });
       }
-  
+
       return window.eQualleSupabase.askSupportAssistant(payload).then(function (result) {
         if (!result || !result.ok) {
           return {
@@ -96,13 +94,34 @@
             localMatches: payload.context.lastMatches,
           };
         }
-  
+
+        if (isBlockedBeforeAssistant(result)) {
+          return {
+            ok: true,
+            reply: result.reply || "",
+            needsClarification: false,
+            clarifyingQuestion: "",
+            matchedPages: [],
+            draftCreated: false,
+            code: result.code || "",
+            nextAction: result.nextAction || "",
+            remaining: Number.isFinite(result.remaining) ? result.remaining : null,
+            requestLogId: result.requestLogId || result.request_log_id || "",
+          };
+        }
+
         const replyText = result.reply || "";
+
+        addConversationTurn("user", userMessage, {
+          pagePath: currentPath,
+          pageTitle: currentTitle,
+        });
+
         addConversationTurn("assistant", replyText, {
           pagePath: currentPath,
           pageTitle: currentTitle,
         });
-  
+
         return {
           ok: true,
           reply: replyText,

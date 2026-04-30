@@ -22,7 +22,6 @@
   function unlockShellAfterLogin() { return shared.unlockShellAfterLogin.apply(shared, arguments); }
   function updateSignedInStatus() { return shared.updateSignedInStatus.apply(shared, arguments); }
 
-
   function wireChat(shell, requester, basePath, options) {
     if (!shell) {
       return {
@@ -31,7 +30,7 @@
         },
       };
     }
-  
+
     const source = options && options.source ? options.source : "chat";
     const noAutoScroll = Boolean(options && options.noAutoScroll === true);
     const getRequestContext =
@@ -40,17 +39,17 @@
         : null;
     let assistantReplyCount = 0;
     updateSignedInStatus(shell);
-  
+
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
       if (!message || isShellLocked(shell)) {
         return;
       }
-  
+
       setShellControlsDisabled(shell, true);
 
       const skipUserBubble = Boolean(meta && meta.skipUserBubble === true);
-  
+
       if (!skipUserBubble) {
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
@@ -62,10 +61,10 @@
           },
           30,
         );
-    
+
         appendMessage(shell.messages, "user", message, { noAutoScroll: noAutoScroll });
       }
-  
+
       const pending = appendMessage(
         shell.messages,
         "assistant",
@@ -76,7 +75,7 @@
       const shouldRenderStructuredAnswer =
         source === "ai-assistant-page" &&
         (assistantReplyCount === 0 || Boolean(meta && meta.auto === true));
-  
+
       if (isOrderTrackingQuery(message)) {
         clearPendingIndicator(pending);
         pending.textContent =
@@ -95,7 +94,7 @@
         assistantReplyCount += 1;
         return;
       }
-  
+
       const dynamicContext = getRequestContext ? (getRequestContext() || {}) : {};
       requester(
         message,
@@ -108,7 +107,7 @@
         ),
       ).then(function (result) {
         clearPendingIndicator(pending);
-  
+
         if (!result.ok) {
           const fallbackReply =
             "Answer Summary: Assistant response is unavailable right now.\nNext Step: Use the links below or ask a more specific sanding question.";
@@ -119,7 +118,7 @@
           } else {
             renderCompactAssistantAnswer(pending, fallbackReply, result.localMatches || []);
           }
-  
+
           pushSessionArray(
             STORAGE_KEYS.assistantMessages,
             {
@@ -134,8 +133,8 @@
           assistantReplyCount += 1;
           return;
         }
-  
-        if (result.code === "login_required" || result.nextAction === "login_required") {
+
+        if (result.code === "login_required") {
           if (pending && pending.parentNode) {
             pending.parentNode.removeChild(pending);
           }
@@ -144,17 +143,21 @@
             onSuccess: function () {
               unlockShellAfterLogin(shell);
               updateSignedInStatus(shell);
+              sendMessage(message, {
+                auto: Boolean(meta && meta.auto === true),
+                skipUserBubble: true,
+              });
             },
           });
           lockShellForLogin(shell);
           return;
         }
-  
+
         if (result.requestLogId && shell.root) {
           shell.root.setAttribute("data-last-ai-request-log-id", result.requestLogId);
           document.documentElement.setAttribute("data-last-ai-request-log-id", result.requestLogId);
         }
-  
+
         const combinedReply =
           result.needsClarification && result.clarifyingQuestion
             ? (result.reply &&
@@ -163,7 +166,7 @@
                 ? result.reply + "\n\n" + result.clarifyingQuestion
                 : result.clarifyingQuestion)
             : (result.reply || "I need one more detail to guide you.");
-  
+
         if (shouldRenderStructuredAnswer) {
           renderSupportAnswer(pending, combinedReply, result.matchedPages, basePath, function (page) {
             recordClickedPage(page.path, page.title);
@@ -171,14 +174,14 @@
         } else {
           renderCompactAssistantAnswer(pending, combinedReply, result.matchedPages);
         }
-  
-        if (result.code === "login_required" || result.nextAction === "login_required") {
+
+        if (result.nextAction === "login_required") {
           appendLoginRequiredCard(shell.messages, { shell: shell });
           lockShellForLogin(shell);
         } else {
           setShellControlsDisabled(shell, false);
         }
-  
+
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
           {
@@ -197,7 +200,7 @@
         assistantReplyCount += 1;
       });
     }
-  
+
     shell.form.addEventListener("submit", function (event) {
       event.preventDefault();
       const userMessage = shell.input.value.trim();
@@ -207,7 +210,7 @@
       shell.input.value = "";
       sendMessage(userMessage, { auto: false });
     });
-  
+
     return {
       ask: sendMessage,
     };

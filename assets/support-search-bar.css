@@ -118,11 +118,24 @@
   background: #5f9fcf;
 }
 
+.support-followup-bar-shell {
+  background: #ffffff;
+  border-top: 1px solid #edf2f7;
+  padding: 12px 16px 16px;
+}
+
 .support-followup-search-form,
 .ask-page .chat-form.support-search-form {
-  border-top: 1px solid #d1d5db;
-  margin: 14px 16px 16px;
+  border-top: 0;
+  margin: 0;
   padding: 5px;
+  width: 100%;
+}
+
+.chat-shell > .support-followup-search-form,
+.ask-page .chat-shell > .chat-form.support-search-form {
+  margin: 12px 16px 16px;
+  width: auto;
 }
 
 .support-search-form .sr-only,
@@ -210,6 +223,10 @@ body.support-home .support-search-button {
 }
 
 @media (max-width: 640px) {
+  .support-followup-bar-shell {
+    padding: 10px;
+  }
+
   .support-search-form,
   .ask-page .chat-form.support-search-form,
   .chat-form.support-search-form,
