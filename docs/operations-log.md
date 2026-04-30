@@ -197,3 +197,42 @@ node scripts/check-internal-links.js
 
 This is frontend-only. The `support-ai-chat` Edge Function is not changed, so the `Deploy Support AI Chat` workflow is not required.
 
+
+
+# Operations Log Entry — First Answer Card Rendering Cleanup
+
+## Change Summary
+
+Frontend-only cleanup after modular refactor.
+
+## Files Changed
+
+- `assets/support-assistant-modules/renderers.js`
+- `assets/support-assistant-modules/prompt-builder.js`
+
+## Behavior Changes
+
+- Removed automatic `Related Guide` rendering from first AI answers.
+- Kept `Recommended Page` rendering when matched pages are returned.
+- Added a visible-section whitelist for first-answer structured cards.
+- Kept follow-up answers as compact chat replies.
+- Updated first-answer prompt so the answer can serve as future support-card source data.
+- No backend, database, or Edge Function changes.
+
+## Validation Required
+
+```powershell
+node --check assets/support-assistant.js
+
+Get-Content .\assets\support-assistant-modules\renderers.js -Raw | node --input-type=module --check
+Get-Content .\assets\support-assistant-modules\prompt-builder.js -Raw | node --input-type=module --check
+
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+## Deployment Note
+
+This is a frontend-only change. Do not run `Deploy Support AI Chat` unless a backend file is changed separately.
+

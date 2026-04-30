@@ -15,7 +15,7 @@
     const includeRecentConversation = Boolean(promptOptions.includeRecentConversation);
     const pageContext = buildPageContext();
     const recentConversation = includeRecentConversation ? getRecentConversationText() : "";
-  
+
     const pageContextText = [
       pageContext.currentPagePath ? "Current page: " + pageContext.currentPagePath : "",
       pageContext.currentPageTitle ? "Page title: " + pageContext.currentPageTitle : "",
@@ -28,11 +28,11 @@
     ]
       .filter(Boolean)
       .join("\n");
-  
+
     const recentText = recentConversation
       ? "Recent conversation:\n" + recentConversation
       : "";
-  
+
     const conversationModeText = includeRecentConversation
       ? [
           "Use recent conversation only to resolve the current follow-up.",
@@ -44,7 +44,7 @@
           "Do not use previous browser conversation, previous searches, clicked pages, or old follow-up context.",
           "Do not assume the user is continuing an earlier topic.",
         ].join("\n");
-  
+
     const answerModeText = compactFollowup
       ? [
           "Answer mode: compact follow-up chat.",
@@ -57,18 +57,23 @@
           "Do not let older turns override the current user question.",
         ].join("\n")
       : [
-          "Answer mode: first full support answer.",
-          "This is not a compact follow-up. This first answer must be written for the structured support-card renderer.",
-          "Return the reply with these section headings exactly when possible: Answer Summary:, Recommended Action:, Steps:, Recommended Page:.",
-          "Use 1-2 short sentences for Answer Summary.",
-          "Use one short practical recommendation for Recommended Action.",
-          "Use 2-4 numbered steps for Steps when the task needs steps.",
-          "Use Recommended Page only when a retrieved page clearly matches the current question.",
+          "Answer mode: first full support answer and future support-card source data.",
+          "This is not a compact follow-up. Write the answer so it can later be turned into a reusable support card.",
+          "Use clear, stable section headings when the information applies: Answer Summary:, Recommended Action:, Recommended Grit:, Grit Sequence:, Surface / Material:, Wet or Dry:, Steps:, Success Check:, Recommended Page:.",
+          "Answer Summary: use 1-2 short sentences that directly answer the user question.",
+          "Recommended Action: give one practical next action.",
+          "Recommended Grit or Grit Sequence: include the grit or sequence when the question is about sanding, prep, smoothing, polishing, paint, primer, clear coat, wood, metal, or plastic.",
+          "Surface / Material: identify the material only when it is clear from the question.",
+          "Wet or Dry: say wet, dry, or both only when it helps the task.",
+          "Steps: use 2-4 numbered steps when the task needs a process.",
+          "Success Check: include a simple way to know the sanding step is complete when useful.",
+          "Recommended Page: include only when a retrieved page clearly matches the current question.",
+          "Do not include Related Guide, Related Links, Suggested Guide, or generic surface links.",
           "Do not include an Avoid section.",
           "Use retrieved pages only when they are clearly relevant to the current question.",
           "Ignore irrelevant suggested pages or stale search context.",
         ].join("\n");
-  
+
     const systemPrompt = [
       "You are a technical sandpaper troubleshooting specialist.",
       "Your role is practical support, not sales.",
@@ -98,7 +103,7 @@
     ]
       .filter(Boolean)
       .join("\n");
-  
+
     return systemPrompt;
   }
 

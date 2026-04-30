@@ -28,18 +28,33 @@
       "/solutions/": "Solutions",
       "/how-to/": "How To",
     };
+    const VISIBLE_FIRST_ANSWER_SECTIONS = {
+      "answer summary": true,
+      "recommended action": true,
+      "steps": true,
+      "recommended grit": true,
+      "recommended grit sequence": true,
+      "grit sequence": true,
+      "surface material": true,
+      "surface": true,
+      "material": true,
+      "wet or dry": true,
+      "success check": true,
+      "next step": true,
+      "details": true,
+    };
 
   function normalizeInternalSupportPath(path) {
     const raw = String(path || "").trim();
     if (!raw) {
       return "";
     }
-  
+
     const baseMatch = raw.match(/(?:https?:\/\/[^\s/]+)?(?:\/sandpaper_support)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/i);
     if (!baseMatch || !baseMatch[1]) {
       return "";
     }
-  
+
     let normalized = baseMatch[1].replace(/\/+/g, "/");
     if (normalized.charAt(0) !== "/") {
       normalized = "/" + normalized;
@@ -65,14 +80,14 @@
     if (KNOWN_INTERNAL_TITLES[normalized]) {
       return KNOWN_INTERNAL_TITLES[normalized];
     }
-  
+
     const parts = normalized.replace(/^\/|\/$/g, "").split("/");
     const slug = parts[parts.length - 1] || parts[0] || "";
     const text = slug.replace(/-/g, " ").trim();
     if (!text) {
       return "Support Page";
     }
-  
+
     return text
       .split(/\s+/)
       .map(function (part) {
@@ -113,11 +128,32 @@
       }
       return title;
     });
-  
+
     return {
       text: rewritten,
       references: references,
     };
+  }
+
+  function normalizeSectionTitle(title) {
+    return clean(title)
+      .replace(/[/&-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function isVisibleFirstAnswerSection(title, index) {
+    const normalized = normalizeSectionTitle(title || (index === 0 ? "Answer Summary" : ""));
+    if (!normalized) {
+      return index === 0;
+    }
+    if (/avoid|warning|mistake|related|suggested/.test(normalized)) {
+      return false;
+    }
+    if (isSupportLinkSectionTitle(title)) {
+      return false;
+    }
+    return Boolean(VISIBLE_FIRST_ANSWER_SECTIONS[normalized]);
   }
 
   function buildSupportSections(replyText) {
@@ -127,19 +163,19 @@
         return line.trim();
       })
       .filter(Boolean);
-  
+
     if (!lines.length) {
       return [];
     }
-  
+
     const sections = [];
     let current = {
       title: "Answer Summary",
       lines: [],
     };
-  
+
     lines.forEach(function (line) {
-      const headingMatch = line.match(/^([A-Za-z][A-Za-z0-9 ]{2,40}):\s*(.*)$/);
+      const headingMatch = line.match(/^([A-Za-z][A-Za-z0-9 /&-]{2,40}):\s*(.*)$/);
       if (headingMatch) {
         if (current.lines.length) {
           sections.push(current);
@@ -152,11 +188,11 @@
       }
       current.lines.push(line);
     });
-  
+
     if (current.lines.length) {
       sections.push(current);
     }
-  
+
     return sections;
   }
 
@@ -164,18 +200,18 @@
     if (!Array.isArray(links) || !links.length) {
       return;
     }
-  
+
     const section = document.createElement("section");
     section.className = "support-answer-section";
-  
+
     const heading = document.createElement("h4");
     heading.className = "support-answer-section-title";
     heading.textContent = title;
     section.appendChild(heading);
-  
+
     const grid = document.createElement("div");
     grid.className = "support-answer-link-grid";
-  
+
     links.forEach(function (item) {
       if (!item || !item.path || !item.title) {
         return;
@@ -194,7 +230,7 @@
       });
       grid.appendChild(link);
     });
-  
+
     if (grid.children.length) {
       section.appendChild(grid);
       parent.appendChild(section);
@@ -203,29 +239,29 @@
 
   function isSupportLinkSectionTitle(title) {
     const normalized = clean(title).replace(/\s+/g, " " ).trim();
-  
+
     return /^(recommended|related|suggested) (page|guide|link|resource)s?$/.test(normalized);
   }
 
   function dedupeSupportLinks(links) {
     const list = [];
     const seen = {};
-  
+
     (Array.isArray(links) ? links : []).forEach(function (item) {
       const normalizedPath = normalizeInternalSupportPath(item && item.path);
       const title = String((item && item.title) || "").trim();
-  
+
       if (!normalizedPath || !title || seen[normalizedPath]) {
         return;
       }
-  
+
       seen[normalizedPath] = true;
       list.push({
         path: normalizedPath,
         title: title,
       });
     });
-  
+
     return list;
   }
 
@@ -233,29 +269,29 @@
     const pageLookup = buildPageLookup(pages);
     const rewritten = rewriteInternalReferences(replyText, pageLookup);
     const sections = buildSupportSections(rewritten.text);
-  
+
     node.textContent = "";
     const wrapper = document.createElement("div");
     wrapper.className = "support-answer";
-  
+
     sections.forEach(function (sectionData, index) {
-      if (isSupportLinkSectionTitle(sectionData.title)) {
+      if (!isVisibleFirstAnswerSection(sectionData.title, index)) {
         return;
       }
-  
+
       const section = document.createElement("section");
       section.className = "support-answer-section";
-  
+
       const heading = document.createElement("h4");
       heading.className = "support-answer-section-title";
       heading.textContent = sectionData.title || (index === 0 ? "Answer Summary" : "Details");
       section.appendChild(heading);
-  
+
       const lines = sectionData.lines.filter(Boolean);
       const stepLines = lines.filter(function (line) {
         return /^\d+[.)]\s+/.test(line);
       });
-  
+
       if (stepLines.length >= 2) {
         const list = document.createElement("ol");
         list.className = "support-answer-steps";
@@ -279,37 +315,25 @@
         paragraph.textContent = lines[0];
         section.appendChild(paragraph);
       }
-  
+
       if (/next step/i.test(sectionData.title)) {
         section.classList.add("support-answer-next-step");
       }
-  
+
       wrapper.appendChild(section);
     });
-  
+
     const matchedLinks = dedupeSupportLinks(Object.keys(pageLookup).map(function (path) {
       return {
         path: path,
         title: pageLookup[path],
       };
     }));
-  
-    const matchedPathMap = {};
-    matchedLinks.forEach(function (item) {
-      matchedPathMap[normalizeInternalSupportPath(item.path)] = true;
-    });
-  
-    const relatedLinks = dedupeSupportLinks(rewritten.references).filter(function (item) {
-      return !matchedPathMap[normalizeInternalSupportPath(item.path)];
-    });
-  
+
     if (matchedLinks.length) {
       appendSupportLinkBlock(wrapper, "Recommended Page", matchedLinks, basePath, onClick);
     }
-    if (relatedLinks.length) {
-      appendSupportLinkBlock(wrapper, "Related Guide", relatedLinks, basePath, onClick);
-    }
-  
+
     node.appendChild(wrapper);
   }
 
@@ -317,13 +341,13 @@
     const pageLookup = buildPageLookup(pages);
     const rewritten = rewriteInternalReferences(replyText, pageLookup);
     const sections = buildSupportSections(rewritten.text);
-  
+
     if (!sections.length) {
       return String(rewritten.text || "").trim();
     }
-  
+
     const chunks = [];
-  
+
     sections.forEach(function (sectionData) {
       const title = clean(sectionData.title || "");
       const lines = (sectionData.lines || [])
@@ -331,27 +355,27 @@
           return String(line || "").trim();
         })
         .filter(Boolean);
-  
+
       if (!lines.length) {
         return;
       }
-  
+
       if (/recommended page|related guide/.test(title)) {
         return;
       }
-  
+
       if (/^steps?$/.test(title)) {
         chunks.push(lines.join("\n"));
         return;
       }
-  
+
       if (/avoid|warning|mistake/.test(title)) {
         return;
       }
-  
+
       chunks.push(lines.join(" "));
     });
-  
+
     return chunks.join("\n\n").trim() || String(rewritten.text || "").trim();
   }
 
@@ -366,6 +390,8 @@
     humanizeSupportPath: humanizeSupportPath,
     buildPageLookup: buildPageLookup,
     rewriteInternalReferences: rewriteInternalReferences,
+    normalizeSectionTitle: normalizeSectionTitle,
+    isVisibleFirstAnswerSection: isVisibleFirstAnswerSection,
     buildSupportSections: buildSupportSections,
     appendSupportLinkBlock: appendSupportLinkBlock,
     isSupportLinkSectionTitle: isSupportLinkSectionTitle,
