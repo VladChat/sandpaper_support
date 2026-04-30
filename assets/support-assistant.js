@@ -12,10 +12,11 @@
     "shell.js",
     "requester.js",
     "chat.js",
+    "auth-ui-fixes.js",
     "pages.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-auth-otp-login-20260430-v3";
+  const CACHE_VERSION = "support-auth-otp-login-20260430-v4";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];
@@ -44,12 +45,34 @@
     }
   };
 
+  function getCurrentScript() {
+    return document.currentScript || document.getElementById("equalle-support-assistant-js");
+  }
+
   function getModuleBaseUrl() {
-    const script = document.currentScript || document.getElementById("equalle-support-assistant-js");
+    const script = getCurrentScript();
     if (script && script.src) {
       return new URL("./support-assistant-modules/", script.src).toString();
     }
     return "/sandpaper_support/assets/support-assistant-modules/";
+  }
+
+  function loadAuthUiFixStyles() {
+    const stylesheetId = "equalle-support-auth-ui-fixes-css";
+    if (document.getElementById(stylesheetId)) {
+      return;
+    }
+
+    const script = getCurrentScript();
+    const href = script && script.src
+      ? new URL("./support-auth-overrides.css", script.src).toString()
+      : "/sandpaper_support/assets/support-auth-overrides.css";
+
+    const link = document.createElement("link");
+    link.id = stylesheetId;
+    link.rel = "stylesheet";
+    link.href = href + (href.indexOf("?") === -1 ? "?" : "&") + "v=" + encodeURIComponent(CACHE_VERSION);
+    document.head.appendChild(link);
   }
 
   function loadModuleScript(baseUrl, fileName) {
@@ -87,6 +110,7 @@
   }
 
   shared.modulesLoading = true;
+  loadAuthUiFixStyles();
   const moduleBaseUrl = getModuleBaseUrl();
 
   MODULE_FILES.reduce(function (chain, fileName) {

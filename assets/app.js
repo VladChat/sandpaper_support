@@ -187,6 +187,7 @@ function createSolutionVideoBlock(video) {
 
   return block;
 }
+
 function insertSolutionVideoBlock(card, video) {
   if (!card || card.querySelector("[data-solution-video-block]")) {
     return;
@@ -409,7 +410,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/sandpaper_support/assets/support-assistant.css";
+    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-auth-otp-login-20260430-v4";
     document.head.appendChild(link);
   }
 
@@ -451,7 +452,7 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=structured-answer-20260427",
+      "/sandpaper_support/assets/support-assistant.js?v=support-auth-otp-login-20260430-v4",
     );
   });
 }
