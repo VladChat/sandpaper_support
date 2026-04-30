@@ -17,7 +17,7 @@
     "voice-input.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-followup-resume-20260430-v1";
+  const CACHE_VERSION = "support-voice-timeout-20260430-v1";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];

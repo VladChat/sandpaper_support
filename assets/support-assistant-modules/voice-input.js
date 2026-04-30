@@ -5,12 +5,15 @@
     return;
   }
 
+  const SILENCE_TIMEOUT_MS = 3000;
+
   let activeRecognition = null;
   let activeButton = null;
   let activeInput = null;
   let activeBaseText = "";
+  let activeTranscript = "";
+  let activeSilenceTimer = null;
   let observerStarted = false;
-
 
   function installVoiceStyles() {
     const styleId = "equalle-support-voice-input-css";
@@ -81,6 +84,33 @@
     );
   }
 
+  function isLikelyEnglishQuestion(value) {
+    const text = clean(value).toLowerCase();
+    return /^(what|how|why|which|when|where|who|whom|whose|can|could|should|would|will|do|does|did|is|are|am|was|were|have|has|had)\b/.test(text);
+  }
+
+  function addQuestionMarkWhenSafe(value) {
+    const text = clean(value);
+    if (!text || /[.!?]$/.test(text)) {
+      return text;
+    }
+    return isLikelyEnglishQuestion(text) ? text + "?" : text;
+  }
+
+  function clearSilenceTimer() {
+    if (activeSilenceTimer) {
+      window.clearTimeout(activeSilenceTimer);
+      activeSilenceTimer = null;
+    }
+  }
+
+  function scheduleSilenceStop() {
+    clearSilenceTimer();
+    activeSilenceTimer = window.setTimeout(function () {
+      stopActiveRecognition();
+    }, SILENCE_TIMEOUT_MS);
+  }
+
   function setButtonIdle(button) {
     if (!button) {
       return;
@@ -139,37 +169,66 @@
   }
 
   function clearActiveState() {
+    clearSilenceTimer();
     setButtonIdle(activeButton);
     activeRecognition = null;
     activeButton = null;
     activeInput = null;
     activeBaseText = "";
+    activeTranscript = "";
   }
 
-  function applyTranscript(transcript) {
+  function applyTranscript(transcript, finalize) {
     if (!activeInput) {
       return;
     }
 
-    const spokenText = clean(transcript);
+    const spokenText = finalize ? addQuestionMarkWhenSafe(transcript) : clean(transcript);
     const nextValue = clean([activeBaseText, spokenText].filter(Boolean).join(" "));
     activeInput.value = nextValue;
     dispatchInput(activeInput);
   }
 
   function readTranscript(event) {
-    const parts = [];
+    const finalParts = [];
+    const interimParts = [];
     const results = event && event.results ? event.results : [];
-    const start = Number.isFinite(event && event.resultIndex) ? event.resultIndex : 0;
 
-    for (let index = start; index < results.length; index += 1) {
+    for (let index = 0; index < results.length; index += 1) {
       const result = results[index];
       if (result && result[0] && result[0].transcript) {
-        parts.push(result[0].transcript);
+        if (result.isFinal) {
+          finalParts.push(result[0].transcript);
+        } else {
+          interimParts.push(result[0].transcript);
+        }
       }
     }
 
-    return parts.join(" ");
+    return clean(finalParts.concat(interimParts).join(" "));
+  }
+
+  function bindStopOnSubmit(button) {
+    const form = button && button.closest ? button.closest("form, .support-search-form") : null;
+    if (!form || form.getAttribute("data-support-voice-stop-bound") === "true") {
+      return;
+    }
+
+    form.setAttribute("data-support-voice-stop-bound", "true");
+    form.addEventListener("submit", function () {
+      stopActiveRecognition();
+    });
+
+    Array.prototype.slice.call(
+      form.querySelectorAll("button[type='submit'], [data-support-search-submit], .support-search-button"),
+    ).forEach(function (submitButton) {
+      if (submitButton.classList && submitButton.classList.contains("support-mic-button")) {
+        return;
+      }
+      submitButton.addEventListener("click", function () {
+        stopActiveRecognition();
+      });
+    });
   }
 
   function startVoiceInput(button) {
@@ -198,7 +257,7 @@
 
     const recognition = new Recognition();
     recognition.lang = getVoiceLang(button);
-    recognition.continuous = false;
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
@@ -206,14 +265,18 @@
     activeButton = button;
     activeInput = input;
     activeBaseText = clean(input.value);
+    activeTranscript = "";
 
     recognition.onstart = function () {
       setButtonListening(button);
       input.focus();
+      scheduleSilenceStop();
     };
 
     recognition.onresult = function (event) {
-      applyTranscript(readTranscript(event));
+      activeTranscript = readTranscript(event);
+      applyTranscript(activeTranscript, false);
+      scheduleSilenceStop();
     };
 
     recognition.onerror = function (event) {
@@ -221,10 +284,14 @@
       const message = error === "not-allowed" || error === "service-not-allowed"
         ? "Microphone permission is blocked"
         : "Voice input unavailable";
+      clearSilenceTimer();
       setButtonError(button, message);
     };
 
     recognition.onend = function () {
+      if (activeTranscript) {
+        applyTranscript(activeTranscript, true);
+      }
       clearActiveState();
     };
 
@@ -252,6 +319,7 @@
     button.disabled = false;
     button.removeAttribute("aria-hidden");
     setButtonIdle(button);
+    bindStopOnSubmit(button);
 
     button.addEventListener("click", function (event) {
       event.preventDefault();

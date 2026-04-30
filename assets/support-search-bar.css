@@ -138,6 +138,12 @@
   width: auto;
 }
 
+.ask-page .chat-shell > .support-auth-status,
+.chat-shell > .support-followup-bar-shell + .support-auth-status {
+  margin: 8px 0 12px;
+  padding: 0 20px;
+}
+
 .support-search-form .sr-only,
 .chat-form.support-search-form .sr-only {
   clip: rect(1px, 1px, 1px, 1px);
