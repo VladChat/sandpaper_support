@@ -18,9 +18,35 @@ jobs:
         with:
           version: latest
 
-      - name: Set Turnstile secret
+      - name: Read public Supabase frontend config
+        shell: bash
         run: |
-          supabase secrets set "TURNSTILE_SECRET_KEY=${TURNSTILE_SECRET_KEY}" --project-ref "${SUPABASE_PROJECT_REF}"
+          SUPABASE_URL_VALUE="$(node - <<'NODE'
+          const fs = require('fs');
+          const text = fs.readFileSync('assets/config.js', 'utf8');
+          const match = text.match(/SUPABASE_URL[\s\S]*?\|\|\s*"([^"]+)"/);
+          if (!match) process.exit(1);
+          process.stdout.write(match[1]);
+          NODE
+          )"
+          SUPABASE_ANON_KEY_VALUE="$(node - <<'NODE'
+          const fs = require('fs');
+          const text = fs.readFileSync('assets/config.js', 'utf8');
+          const match = text.match(/SUPABASE_ANON_KEY[\s\S]*?\|\|\s*"([^"]+)"/);
+          if (!match) process.exit(1);
+          process.stdout.write(match[1]);
+          NODE
+          )"
+          echo "SUPABASE_URL_VALUE=${SUPABASE_URL_VALUE}" >> "$GITHUB_ENV"
+          echo "SUPABASE_ANON_KEY_VALUE=${SUPABASE_ANON_KEY_VALUE}" >> "$GITHUB_ENV"
+
+      - name: Set support-ai-chat runtime secrets
+        run: |
+          supabase secrets set \
+            "TURNSTILE_SECRET_KEY=${TURNSTILE_SECRET_KEY}" \
+            "SUPABASE_URL=${SUPABASE_URL_VALUE}" \
+            "SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY_VALUE}" \
+            --project-ref "${SUPABASE_PROJECT_REF}"
 
       - name: Deploy support-ai-chat
         run: |
