@@ -270,3 +270,34 @@ node scripts/check-internal-links.js
 
 This is a frontend-only change. Do not run `Deploy Support AI Chat` unless a backend file is changed separately.
 
+
+# Operations Log Entry — Complete email OTP chat login and AI request logging
+
+## Change Summary
+
+Completed the missing frontend + Edge Function implementation for email OTP chat login and AI request logging.
+
+## Files Updated
+
+- assets/supabase-client.js
+- assets/support-assistant-modules/requester.js
+- assets/support-assistant-modules/chat.js
+- assets/support-assistant-modules/shell.js
+- assets/support-assistant.css
+- supabase/functions/support-ai-chat/index.ts
+
+## What was implemented
+
+- Added Supabase email OTP helpers: `sendEmailCode`, `verifyEmailCode`, `getAccessToken`, `getSession`, `signOut`.
+- Added two-step login gate UX for `login_required`.
+- Added post-login unlock flow with automatic retry of last blocked question.
+- Added signed-in compact status row with sign-out action.
+- Ensured access token is included for AI requests.
+- Added access-token verification in `support-ai-chat` while keeping function public (`--no-verify-jwt` deployment model).
+- Added authenticated bypass for guest Turnstile/login limit.
+- Added `ai_request_logs` writes for success/blocked/error requests and returned `requestLogId` in responses.
+- Added linked `ai_feedback` write from frontend feedback submissions when `requestLogId` is available.
+
+## Notes
+
+- Existing first structured answer, compact follow-up behavior, and guest Turnstile flow were preserved.

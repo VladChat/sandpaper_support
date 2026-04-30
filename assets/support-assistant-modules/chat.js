@@ -19,6 +19,8 @@
   function renderPendingIndicator() { return shared.renderPendingIndicator.apply(shared, arguments); }
   function clearPendingIndicator() { return shared.clearPendingIndicator.apply(shared, arguments); }
   function appendLoginRequiredCard() { return shared.appendLoginRequiredCard.apply(shared, arguments); }
+  function unlockShellAfterLogin() { return shared.unlockShellAfterLogin.apply(shared, arguments); }
+  function updateSignedInStatus() { return shared.updateSignedInStatus.apply(shared, arguments); }
 
 
   function wireChat(shell, requester, basePath, options) {
@@ -37,6 +39,7 @@
         ? options.getRequestContext
         : null;
     let assistantReplyCount = 0;
+    updateSignedInStatus(shell);
   
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
@@ -45,19 +48,23 @@
       }
   
       setShellControlsDisabled(shell, true);
+
+      const skipUserBubble = Boolean(meta && meta.skipUserBubble === true);
   
-      pushSessionArray(
-        STORAGE_KEYS.assistantMessages,
-        {
-          role: "user",
-          text: message,
-          at: new Date().toISOString(),
-          source: source,
-        },
-        30,
-      );
-  
-      appendMessage(shell.messages, "user", message, { noAutoScroll: noAutoScroll });
+      if (!skipUserBubble) {
+        pushSessionArray(
+          STORAGE_KEYS.assistantMessages,
+          {
+            role: "user",
+            text: message,
+            at: new Date().toISOString(),
+            source: source,
+          },
+          30,
+        );
+    
+        appendMessage(shell.messages, "user", message, { noAutoScroll: noAutoScroll });
+      }
   
       const pending = appendMessage(
         shell.messages,
@@ -128,6 +135,29 @@
           return;
         }
   
+        if (result.code === "login_required" || result.nextAction === "login_required") {
+          if (pending && pending.parentNode) {
+            pending.parentNode.removeChild(pending);
+          }
+          appendLoginRequiredCard(shell.messages, {
+            shell: shell,
+            onSuccess: function () {
+              unlockShellAfterLogin(shell);
+              sendMessage(message, {
+                auto: Boolean(meta && meta.auto === true),
+                skipUserBubble: true,
+              });
+            },
+          });
+          lockShellForLogin(shell);
+          return;
+        }
+  
+        if (result.requestLogId && shell.root) {
+          shell.root.setAttribute("data-last-ai-request-log-id", result.requestLogId);
+          document.documentElement.setAttribute("data-last-ai-request-log-id", result.requestLogId);
+        }
+  
         const combinedReply =
           result.needsClarification && result.clarifyingQuestion
             ? (result.reply &&
@@ -146,7 +176,7 @@
         }
   
         if (result.code === "login_required" || result.nextAction === "login_required") {
-          appendLoginRequiredCard(shell.messages);
+          appendLoginRequiredCard(shell.messages, { shell: shell });
           lockShellForLogin(shell);
         } else {
           setShellControlsDisabled(shell, false);

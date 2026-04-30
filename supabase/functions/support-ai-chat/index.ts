@@ -77,6 +77,11 @@ type ChatRequest = {
   accessToken?: string;
 };
 
+type AuthUser = {
+  id: string;
+  email: string | null;
+};
+
 type AssistantOutput = {
   reply: string;
   needsClarification: boolean;
@@ -145,6 +150,14 @@ function blockedResponse(code: string, message: string, status = 403, extra: Rec
     },
     status,
   );
+}
+
+function sanitizeErrorMessage(value: unknown, fallback: string): string {
+  const text = typeof value === "string" ? value.trim() : "";
+  if (!text) {
+    return fallback;
+  }
+  return text.slice(0, 400);
 }
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -538,6 +551,98 @@ async function supabaseRequest(
   return { ok: response.ok, status: response.status, body };
 }
 
+async function verifyAccessToken(accessToken: string | undefined): Promise<AuthUser | null> {
+  const token = sanitizeString(accessToken, 4096);
+  if (!token) {
+    return null;
+  }
+
+  const supabaseUrl = Deno.env.get("SUPABASE_URL")?.replace(/\/$/, "");
+  const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
+
+  if (!supabaseUrl || !anonKey) {
+    return null;
+  }
+
+  const response = await fetch(`${supabaseUrl}/auth/v1/user`, {
+    method: "GET",
+    headers: {
+      apikey: anonKey,
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const body = await response.json().catch(() => ({})) as Record<string, unknown>;
+  if (!response.ok || !body || typeof body.id !== "string") {
+    return null;
+  }
+
+  return {
+    id: body.id,
+    email: typeof body.email === "string" ? body.email : null,
+  };
+}
+
+async function insertAiRequestLog(payload: {
+  sessionToken: string;
+  user: AuthUser | null;
+  userMessage: string;
+  answer: string;
+  context: ChatContext;
+  status: "success" | "blocked" | "error";
+  errorCode?: string;
+  errorMessage?: string;
+  matchedPages?: Array<{ title: string; path: string }>;
+  request: Request;
+}): Promise<string> {
+  const ipAddress = getClientIp(payload.request);
+  const userAgent = payload.request.headers.get("user-agent") || "";
+  const ipHash = await sha256Hex(ipAddress || "unknown");
+  const sourceType = sanitizeString(payload.context.source, 64) || null;
+
+  const body = {
+    session_token: sanitizeString(payload.sessionToken, 160) || null,
+    user_id: payload.user ? payload.user.id : null,
+    user_email: payload.user ? payload.user.email : null,
+    question: sanitizeString(payload.userMessage, 2500) || "",
+    answer: sanitizeString(payload.answer, 8000) || null,
+    page_url: sanitizeString(payload.context.currentPath, 220) || null,
+    page_title: sanitizeString(payload.context.currentTitle, 180) || null,
+    source_type: sourceType,
+    solution_id: sanitizeString(payload.context.solution_id, 120) || null,
+    solution_slug: sanitizeString(payload.context.solution_slug, 120) || null,
+    matched_card_id:
+      payload.context.retrievedContent &&
+      Array.isArray(payload.context.retrievedContent.solutionCards) &&
+      payload.context.retrievedContent.solutionCards[0] &&
+      typeof payload.context.retrievedContent.solutionCards[0].id === "string"
+        ? payload.context.retrievedContent.solutionCards[0].id
+        : null,
+    matched_pages: Array.isArray(payload.matchedPages) ? payload.matchedPages : [],
+    retrieved_content: payload.context.retrievedContent || {},
+    ip_address: ipAddress || null,
+    ip_hash: ipHash,
+    user_agent: userAgent || null,
+    status: payload.status,
+    error_code: sanitizeString(payload.errorCode, 120) || null,
+    error_message: sanitizeString(payload.errorMessage, 400) || null,
+  };
+
+  const response = await supabaseRequest("/rest/v1/ai_request_logs", {
+    method: "POST",
+    prefer: "return=representation",
+    body,
+  });
+
+  if (response.ok && Array.isArray(response.body) && response.body[0] && isObject(response.body[0])) {
+    const id = (response.body[0] as Record<string, unknown>).id;
+    return typeof id === "string" ? id : "";
+  }
+
+  return "";
+}
+
 async function getOrCreateLimitState(
   sessionToken: string,
   ip: string,
@@ -645,7 +750,32 @@ async function verifyTurnstileToken(token: string, ip: string): Promise<boolean>
   return response.ok && body.success === true;
 }
 
-async function checkRequestAccess(parsedRequest: ChatRequest, request: Request): Promise<AccessDecision> {
+async function checkRequestAccess(
+  parsedRequest: ChatRequest,
+  request: Request,
+  authenticatedUser: AuthUser | null,
+): Promise<AccessDecision> {
+  if (authenticatedUser) {
+    const now = new Date().toISOString();
+    return {
+      allowed: true,
+      state: {
+        id: "authenticated",
+        session_token: parsedRequest.sessionToken,
+        ip_hash: "authenticated",
+        anonymous_count: 0,
+        turnstile_count: 0,
+        turnstile_verified_at: now,
+        recent_request_times: [],
+        window_started_at: now,
+      },
+      stateId: "authenticated",
+      stage: "turnstile",
+      verifiedTurnstileNow: false,
+      recentRequestTimes: [now],
+    };
+  }
+
   const ip = getClientIp(request);
   const { state, stateId } = await getOrCreateLimitState(parsedRequest.sessionToken, ip);
   const now = new Date();
@@ -735,6 +865,13 @@ async function markSuccessfulAiRequest(access: Extract<AccessDecision, { allowed
   nextAction?: "turnstile_required" | "login_required";
   remaining: number;
 }> {
+  if (access.stateId === "authenticated") {
+    return {
+      remaining: 999,
+      nextAction: undefined,
+    };
+  }
+
   const nextAnonymousCount = access.stage === "anonymous"
     ? access.state.anonymous_count + 1
     : access.state.anonymous_count;
@@ -944,31 +1081,74 @@ Deno.serve(async (request: Request) => {
     return jsonResponse({ error: parsedRequest }, 400);
   }
 
+  const context = sanitizeContext(parsedRequest.context);
+  const authenticatedUser = await verifyAccessToken(parsedRequest.accessToken);
+  let requestLogId = "";
   let access: AccessDecision;
 
   try {
-    access = await checkRequestAccess(parsedRequest, request);
+    access = await checkRequestAccess(parsedRequest, request, authenticatedUser);
   } catch (error) {
     const message = error instanceof Error ? error.message : "AI request protection is not configured.";
+    requestLogId = await insertAiRequestLog({
+      sessionToken: parsedRequest.sessionToken,
+      user: authenticatedUser,
+      userMessage: parsedRequest.userMessage,
+      answer: "",
+      context,
+      status: "error",
+      errorCode: "protection_not_configured",
+      errorMessage: message,
+      request,
+    });
     return jsonResponse(
       {
         ok: false,
         code: "protection_not_configured",
         message,
+        requestLogId,
       },
       500,
     );
   }
 
   if (access.allowed === false) {
-    return access.response;
+    try {
+      const bodyText = await access.response.clone().text();
+      const parsed = bodyText ? JSON.parse(bodyText) as Record<string, unknown> : {};
+      const code = typeof parsed.code === "string" ? parsed.code : "blocked";
+      const message = typeof parsed.message === "string" ? parsed.message : "Blocked";
+      requestLogId = await insertAiRequestLog({
+        sessionToken: parsedRequest.sessionToken,
+        user: authenticatedUser,
+        userMessage: parsedRequest.userMessage,
+        answer: "",
+        context,
+        status: "blocked",
+        errorCode: code,
+        errorMessage: message,
+        request,
+      });
+      return blockedResponse(code, message, access.response.status, { requestLogId });
+    } catch {
+      return access.response;
+    }
   }
-
-  const context = sanitizeContext(parsedRequest.context);
   const apiKey = Deno.env.get("OPENAI_API_KEY");
 
   if (isOrderTrackingQuery(parsedRequest.userMessage)) {
     const quota = await markSuccessfulAiRequest(access);
+    requestLogId = await insertAiRequestLog({
+      sessionToken: parsedRequest.sessionToken,
+      user: authenticatedUser,
+      userMessage: parsedRequest.userMessage,
+      answer:
+        "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.",
+      context,
+      status: "success",
+      matchedPages: [],
+      request,
+    });
     return jsonResponse({
       ok: true,
       reply:
@@ -980,15 +1160,28 @@ Deno.serve(async (request: Request) => {
       model: MODEL_NAME,
       remaining: quota.remaining,
       nextAction: quota.nextAction,
+      requestLogId,
     });
   }
 
   if (!apiKey) {
+    requestLogId = await insertAiRequestLog({
+      sessionToken: parsedRequest.sessionToken,
+      user: authenticatedUser,
+      userMessage: parsedRequest.userMessage,
+      answer: "",
+      context,
+      status: "error",
+      errorCode: "openai_api_key_missing",
+      errorMessage: "OPENAI_API_KEY is not configured for support-ai-chat.",
+      request,
+    });
     return jsonResponse(
       {
         ok: false,
         error:
           "OPENAI_API_KEY is not configured for support-ai-chat. Please set it in Supabase Function environment variables.",
+        requestLogId,
       },
       500,
     );
@@ -997,6 +1190,18 @@ Deno.serve(async (request: Request) => {
   try {
     const assistant = await callOpenAI(apiKey, parsedRequest.userMessage, context);
     const quota = await markSuccessfulAiRequest(access);
+    requestLogId = await insertAiRequestLog({
+      sessionToken: parsedRequest.sessionToken,
+      user: authenticatedUser,
+      userMessage: parsedRequest.userMessage,
+      answer: assistant.reply,
+      context,
+      status: "success",
+      matchedPages: assistant.matchedPages.length
+        ? assistant.matchedPages
+        : fallbackMatchedPages(context),
+      request,
+    });
 
     return jsonResponse({
       ok: true,
@@ -1010,15 +1215,28 @@ Deno.serve(async (request: Request) => {
       model: MODEL_NAME,
       remaining: quota.remaining,
       nextAction: quota.nextAction,
+      requestLogId,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Assistant request failed.";
+    requestLogId = await insertAiRequestLog({
+      sessionToken: parsedRequest.sessionToken,
+      user: authenticatedUser,
+      userMessage: parsedRequest.userMessage,
+      answer: "",
+      context,
+      status: "error",
+      errorCode: "assistant_request_failed",
+      errorMessage: sanitizeErrorMessage(message, "Assistant request failed."),
+      request,
+    });
 
     return jsonResponse(
       {
         ok: false,
         error: "assistant_request_failed",
         message,
+        requestLogId,
       },
       502,
     );

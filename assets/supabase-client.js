@@ -1,6 +1,7 @@
 (function () {
   var ADMIN_SESSION_KEY = "equalle_admin_session";
   var SUPPORT_SESSION_KEY = "equalle_support_session";
+  var SUPPORT_AUTH_SESSION_KEY = "equalle_support_auth_session";
   var gateState = {
     pendingTurnstileToken: "",
     activeChallengePromise: null,
@@ -111,6 +112,32 @@
     }
   }
 
+
+  function saveSupportAuthSession(session) {
+    try {
+      if (session) {
+        window.localStorage.setItem(SUPPORT_AUTH_SESSION_KEY, JSON.stringify(session));
+      } else {
+        window.localStorage.removeItem(SUPPORT_AUTH_SESSION_KEY);
+      }
+    } catch (_error) {
+      return;
+    }
+  }
+
+  function readSupportAuthSession() {
+    try {
+      var raw = window.localStorage.getItem(SUPPORT_AUTH_SESSION_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function readActiveSession() {
+    return readSupportAuthSession() || readStoredSession();
+  }
+
   function normalizeSession(body) {
     if (!body || !body.access_token) {
       return null;
@@ -122,6 +149,171 @@
       expires_at: body.expires_at || null,
       user: body.user || null,
     };
+  }
+
+
+  function refreshSupportAuthSession(session) {
+    if (!session || !session.refresh_token) {
+      saveSupportAuthSession(null);
+      return Promise.resolve({ ok: false, session: null });
+    }
+
+    return authFetch("/auth/v1/token?grant_type=refresh_token", {
+      method: "POST",
+      body: {
+        refresh_token: session.refresh_token,
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            saveSupportAuthSession(null);
+            return {
+              ok: false,
+              status: response.status,
+              session: null,
+              error: body.error_description || body.msg || body.message,
+            };
+          }
+
+          var refreshed = normalizeSession(body);
+          saveSupportAuthSession(refreshed);
+          return { ok: true, session: refreshed };
+        });
+      })
+      .catch(function () {
+        return { ok: false, session: null, error: "Session refresh failed." };
+      });
+  }
+
+  function getSupportAuthSession() {
+    var session = readSupportAuthSession();
+
+    if (!session || !session.access_token) {
+      return Promise.resolve({ ok: true, session: null });
+    }
+
+    var expiresAt = Number(session.expires_at || 0);
+    var shouldRefresh = Boolean(session.refresh_token && expiresAt && expiresAt * 1000 < Date.now() + 60000);
+
+    if (shouldRefresh) {
+      return refreshSupportAuthSession(session);
+    }
+
+    return authFetch("/auth/v1/user", {
+      headers: {
+        Authorization: "Bearer " + session.access_token,
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (response.ok) {
+            session.user = body;
+            saveSupportAuthSession(session);
+            return { ok: true, session: session };
+          }
+
+          if (session.refresh_token) {
+            return refreshSupportAuthSession(session);
+          }
+
+          saveSupportAuthSession(null);
+          return { ok: false, status: response.status, session: null };
+        });
+      })
+      .catch(function () {
+        return { ok: false, session: session };
+      });
+  }
+
+  function getAccessToken() {
+    var session = readSupportAuthSession();
+    return session && session.access_token ? session.access_token : "";
+  }
+
+  function getSupportUser() {
+    var session = readSupportAuthSession();
+    return session && session.user ? session.user : null;
+  }
+
+  function sendEmailCode(email) {
+    var cleanEmail = String(email || "").trim().toLowerCase();
+
+    if (!cleanEmail || cleanEmail.indexOf("@") < 1) {
+      return Promise.resolve({ ok: false, error: "Enter a valid email." });
+    }
+
+    return authFetch("/auth/v1/otp", {
+      method: "POST",
+      body: {
+        email: cleanEmail,
+        create_user: true,
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            return {
+              ok: false,
+              status: response.status,
+              error: body.error_description || body.msg || body.message || "Code could not be sent.",
+            };
+          }
+
+          return { ok: true, email: cleanEmail };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Code could not be sent." };
+      });
+  }
+
+  function verifyEmailCode(email, code) {
+    var cleanEmail = String(email || "").trim().toLowerCase();
+    var cleanCode = String(code || "").replace(/\D/g, "").slice(0, 6);
+
+    if (!cleanEmail || cleanEmail.indexOf("@") < 1) {
+      return Promise.resolve({ ok: false, error: "Enter a valid email." });
+    }
+
+    if (cleanCode.length !== 6) {
+      return Promise.resolve({ ok: false, error: "Enter the 6-digit code." });
+    }
+
+    return authFetch("/auth/v1/verify", {
+      method: "POST",
+      body: {
+        email: cleanEmail,
+        token: cleanCode,
+        type: "email",
+      },
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          if (!response.ok) {
+            return {
+              ok: false,
+              status: response.status,
+              error: body.error_description || body.msg || body.message || "Code is incorrect or expired.",
+            };
+          }
+
+          var session = normalizeSession(body);
+          saveSupportAuthSession(session);
+          return { ok: true, session: session, user: session ? session.user : null };
+        });
+      })
+      .catch(function () {
+        return { ok: false, error: "Code could not be verified." };
+      });
   }
 
   function signIn(email, password) {
@@ -155,10 +347,12 @@
   }
 
   function signOut() {
-    var session = readStoredSession();
+    var session = readSupportAuthSession() || readStoredSession();
+
+    saveSupportAuthSession(null);
+    saveSession(null);
 
     if (!session || !session.access_token) {
-      saveSession(null);
       return Promise.resolve({ ok: true });
     }
 
@@ -169,44 +363,48 @@
       },
     })
       .then(function (response) {
-        saveSession(null);
         return { ok: response.ok, status: response.status };
       })
       .catch(function () {
-        saveSession(null);
         return { ok: false };
       });
   }
 
   function getSession() {
-    var session = readStoredSession();
+    return getSupportAuthSession().then(function (supportResult) {
+      if (supportResult && supportResult.session) {
+        return supportResult;
+      }
 
-    if (!session || !session.access_token) {
-      return Promise.resolve({ ok: true, session: null });
-    }
+      var session = readStoredSession();
 
-    return authFetch("/auth/v1/user", {
-      headers: {
-        Authorization: "Bearer " + session.access_token,
-      },
-    })
-      .then(function (response) {
-        return response.json().catch(function () {
-          return {};
-        }).then(function (body) {
-          if (!response.ok) {
-            saveSession(null);
-            return { ok: false, status: response.status, session: null };
-          }
+      if (!session || !session.access_token) {
+        return { ok: true, session: null };
+      }
 
-          session.user = body;
-          saveSession(session);
-          return { ok: true, session: session };
-        });
+      return authFetch("/auth/v1/user", {
+        headers: {
+          Authorization: "Bearer " + session.access_token,
+        },
       })
-      .catch(function () {
-        return { ok: false, session: session };
-      });
+        .then(function (response) {
+          return response.json().catch(function () {
+            return {};
+          }).then(function (body) {
+            if (!response.ok) {
+              saveSession(null);
+              return { ok: false, status: response.status, session: null };
+            }
+
+            session.user = body;
+            saveSession(session);
+            return { ok: true, session: session };
+          });
+        })
+        .catch(function () {
+          return { ok: false, session: session };
+        });
+    });
   }
 
   function readTable(table, params) {
@@ -293,7 +491,21 @@
       });
   }
 
+  function normalizeAiFeedbackType(type) {
+    if (type === "helpful") {
+      return "like";
+    }
+    if (type === "not_helpful") {
+      return "dislike";
+    }
+    if (type === "like" || type === "dislike") {
+      return type;
+    }
+    return type || null;
+  }
+
   function logSearch(query, resultCount, selectedPath) {
+
     var cleanQuery = String(query || "").trim();
 
     if (!cleanQuery) {
@@ -316,6 +528,30 @@
 
     if (!config.url || !config.anonKey) {
       return Promise.resolve({ ok: false, skipped: true, error: "Supabase is not configured." });
+    }
+
+    var requestLogId = input.requestLogId || input.request_log_id || "";
+    if (!requestLogId && document.documentElement) {
+      requestLogId = document.documentElement.getAttribute("data-last-ai-request-log-id") || "";
+    }
+
+    function attachAiFeedback(primaryResult) {
+      var feedbackType = normalizeAiFeedbackType(input.feedbackType || null);
+      if (!requestLogId || !feedbackType) {
+        return primaryResult;
+      }
+
+      return post("ai_feedback", {
+        request_log_id: requestLogId,
+        feedback_type: feedbackType,
+        comment: input.message || null,
+        page_path: input.pagePath || window.location.pathname,
+        problem_slug: input.problemSlug || null,
+      }).then(function () {
+        return primaryResult;
+      }).catch(function () {
+        return primaryResult;
+      });
     }
 
     return fetch(config.url + "/rest/v1/support_feedback", {
@@ -356,6 +592,7 @@
           };
         });
       })
+      .then(attachAiFeedback)
       .catch(function () {
         return { ok: false, error: "Feedback request failed." };
       });
@@ -822,30 +1059,36 @@
       gateState.pendingTurnstileToken = "";
     }
 
-    return fetch(config.url + "/functions/v1/support-ai-chat", {
-      method: "POST",
-      headers: {
-        apikey: config.anonKey,
-        Authorization: "Bearer " + config.anonKey,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sessionToken: input.sessionToken || getSessionToken(),
-        userMessage: input.userMessage,
-        context: input.context || {},
-        turnstileToken: tokenToSend || undefined,
-        accessToken: input.accessToken || undefined,
-      }),
-    })
-      .then(function (response) {
-        return response.json().catch(function () {
-          return {};
-        }).then(function (body) {
-          body.ok = response.ok;
-          body.status = response.status;
-          return body;
+    return getSession().then(function (sessionResult) {
+      var activeAccessToken = input.accessToken ||
+        (sessionResult && sessionResult.session && sessionResult.session.access_token) ||
+        "";
+
+      return fetch(config.url + "/functions/v1/support-ai-chat", {
+        method: "POST",
+        headers: {
+          apikey: config.anonKey,
+          Authorization: "Bearer " + config.anonKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionToken: input.sessionToken || getSessionToken(),
+          userMessage: input.userMessage,
+          context: input.context || {},
+          turnstileToken: tokenToSend || undefined,
+          accessToken: activeAccessToken || undefined,
+        }),
+      })
+        .then(function (response) {
+          return response.json().catch(function () {
+            return {};
+          }).then(function (body) {
+            body.ok = response.ok;
+            body.status = response.status;
+            return body;
+          });
         });
-      });
+    });
   }
 
   function askSupportAssistant(input) {
@@ -1031,6 +1274,10 @@
     submitFeedback: submitFeedback,
     askSupportAssistant: askSupportAssistant,
     signIn: signIn,
+    sendEmailCode: sendEmailCode,
+    verifyEmailCode: verifyEmailCode,
+    getAccessToken: getAccessToken,
+    getSupportUser: getSupportUser,
     signOut: signOut,
     getSession: getSession,
     fetchSearchLogs: fetchSearchLogs,

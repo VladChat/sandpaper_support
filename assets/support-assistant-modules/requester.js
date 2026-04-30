@@ -61,6 +61,11 @@
       const payload = {
         sessionToken: getSessionToken(),
         userMessage: contextualPrompt,
+        accessToken:
+          window.eQualleSupabase &&
+          typeof window.eQualleSupabase.getAccessToken === "function"
+            ? window.eQualleSupabase.getAccessToken()
+            : "",
         context: {
           currentPath: currentPath,
           currentTitle: currentTitle,
@@ -108,6 +113,7 @@
           code: result.code || "",
           nextAction: result.nextAction || "",
           remaining: Number.isFinite(result.remaining) ? result.remaining : null,
+          requestLogId: result.requestLogId || result.request_log_id || "",
         };
       });
     };
