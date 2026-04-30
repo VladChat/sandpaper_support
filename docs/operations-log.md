@@ -145,3 +145,55 @@ node scripts/check-internal-links.js
 
 This is a frontend-only fix. The `support-ai-chat` Edge Function was not changed, so the `Deploy Support AI Chat` workflow is not required for this fix.
 
+
+## 2026-04-29: Support Assistant Modular Refactor
+
+# Operations Log Entry — Modularize Support Assistant Frontend
+
+## Change Summary
+
+Split the large `assets/support-assistant.js` file into smaller browser-loaded modules while preserving the public entrypoint and existing behavior.
+
+## Files Changed
+
+- `assets/support-assistant.js`
+- `assets/support-assistant-modules/constants.js`
+- `assets/support-assistant-modules/utils.js`
+- `assets/support-assistant-modules/storage.js`
+- `assets/support-assistant-modules/conversation.js`
+- `assets/support-assistant-modules/prompt-builder.js`
+- `assets/support-assistant-modules/knowledge.js`
+- `assets/support-assistant-modules/renderers.js`
+- `assets/support-assistant-modules/shell.js`
+- `assets/support-assistant-modules/requester.js`
+- `assets/support-assistant-modules/chat.js`
+- `assets/support-assistant-modules/pages.js`
+- `assets/support-assistant-modules/init.js`
+- `assets/support-assistant-modules/README.md`
+
+## Behavior Goal
+
+No behavior changes. This is an architecture-only refactor.
+
+The public API remains:
+
+```js
+window.eQualleSupportAssistant.init(options)
+```
+
+The main `assets/support-assistant.js` file now loads the module files and queues `init()` calls until the modules are ready.
+
+## Validation Required
+
+```powershell
+node --check assets/support-assistant.js
+Get-ChildItem .\assets\support-assistant-modules\*.js | ForEach-Object { node --check $_.FullName }
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+## Deployment Note
+
+This is frontend-only. The `support-ai-chat` Edge Function is not changed, so the `Deploy Support AI Chat` workflow is not required.
+
