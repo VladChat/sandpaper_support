@@ -10,6 +10,7 @@
     "knowledge.js",
     "renderers.js",
     "shell.js",
+    "photo.js",
     "requester.js",
     "chat.js",
     "auth-ui-fixes.js",
@@ -17,7 +18,7 @@
     "voice-input.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-auth-status-spacing-20260430-v1";
+  const CACHE_VERSION = "support-photo-upload-20260430-v1";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];

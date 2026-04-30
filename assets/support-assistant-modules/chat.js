@@ -37,8 +37,20 @@
       options && typeof options.getRequestContext === "function"
         ? options.getRequestContext
         : null;
+    const photoController =
+      typeof shared.attachPhotoInput === "function" ? shared.attachPhotoInput(shell) : null;
     let assistantReplyCount = 0;
     updateSignedInStatus(shell);
+
+    function getMessageImages(meta) {
+      if (meta && Array.isArray(meta.images)) {
+        return meta.images;
+      }
+      if (photoController && typeof photoController.getImages === "function") {
+        return photoController.getImages();
+      }
+      return [];
+    }
 
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
@@ -46,6 +58,8 @@
         return;
       }
 
+      const attachedImages = getMessageImages(meta);
+      const hasPhoto = attachedImages.length > 0;
       setShellControlsDisabled(shell, true);
 
       const skipUserBubble = Boolean(meta && meta.skipUserBubble === true);
@@ -55,14 +69,14 @@
           STORAGE_KEYS.assistantMessages,
           {
             role: "user",
-            text: message,
+            text: hasPhoto ? message + " [Photo attached]" : message,
             at: new Date().toISOString(),
             source: source,
           },
           30,
         );
 
-        appendMessage(shell.messages, "user", message, { noAutoScroll: noAutoScroll });
+        appendMessage(shell.messages, "user", hasPhoto ? message + "\n[Photo attached]" : message, { noAutoScroll: noAutoScroll });
       }
 
       const pending = appendMessage(
@@ -90,12 +104,19 @@
           },
           30,
         );
+        if (photoController && typeof photoController.clear === "function") {
+          photoController.clear();
+        }
         setShellControlsDisabled(shell, false);
         assistantReplyCount += 1;
         return;
       }
 
       const dynamicContext = getRequestContext ? (getRequestContext() || {}) : {};
+      if (hasPhoto) {
+        dynamicContext.images = attachedImages;
+      }
+
       requester(
         message,
         Object.assign(
@@ -146,6 +167,7 @@
               sendMessage(message, {
                 auto: Boolean(meta && meta.auto === true),
                 skipUserBubble: true,
+                images: attachedImages,
               });
             },
           });
@@ -173,6 +195,10 @@
           });
         } else {
           renderCompactAssistantAnswer(pending, combinedReply, result.matchedPages);
+        }
+
+        if (photoController && typeof photoController.clear === "function") {
+          photoController.clear();
         }
 
         if (result.nextAction === "login_required") {

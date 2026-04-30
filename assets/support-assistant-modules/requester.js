@@ -78,6 +78,10 @@
         },
       };
 
+      if (Array.isArray(contextInput.images) && contextInput.images.length > 0) {
+        payload.images = contextInput.images.slice(0, 1);
+      }
+
       if (!window.eQualleSupabase || !window.eQualleSupabase.isConfigured()) {
         return Promise.resolve({
           ok: false,
