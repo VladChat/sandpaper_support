@@ -161,7 +161,12 @@
 
     const existing = messages.querySelector(".support-login-card");
     if (existing) {
-      return;
+      if (existing.classList.contains("support-auth-gate")) {
+        return;
+      }
+      if (existing.parentNode) {
+        existing.parentNode.removeChild(existing);
+      }
     }
 
     const card = document.createElement("div");

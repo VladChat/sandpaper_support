@@ -215,7 +215,7 @@ function siteHeader() {
 }
 
 function siteFooter() {
-  return '<footer class="footer"><div class="footer-inner"><span>© eQualle Support System</span><span>Sandpaper troubleshooting, grit guidance, and product support.</span></div></footer><script src="/sandpaper_support/assets/config.js"></script><script src="/sandpaper_support/assets/supabase-client.js?v=feedback-minimal-20260426"></script><script src="/sandpaper_support/assets/app.js?v=search-fix-20260426"></script></body></html>';
+  return '<footer class="footer"><div class="footer-inner"><span>© eQualle Support System</span><span>Sandpaper troubleshooting, grit guidance, and product support.</span></div></footer><script src="/sandpaper_support/assets/config.js"></script><script src="/sandpaper_support/assets/supabase-client.js?v=support-auth-otp-login-20260430-v2"></script><script src="/sandpaper_support/assets/app.js?v=support-auth-otp-login-20260430-v2"></script></body></html>';
 }
 
 function renderProductCard() {

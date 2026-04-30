@@ -15,7 +15,7 @@
     "pages.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-assistant-modular-20260430";
+  const CACHE_VERSION = "support-auth-otp-login-20260430-v2";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];

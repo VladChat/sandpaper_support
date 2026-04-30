@@ -1016,7 +1016,6 @@
 
   function displayReplyForBlockedResponse(code, message, status) {
     if (code === "login_required") {
-      renderSimpleGate("login", "Please log in to continue.", "", { lock: true });
       return {
         ok: true,
         status: status || 403,
@@ -1110,9 +1109,7 @@
         }
 
         if (body.nextAction === "login_required") {
-          window.setTimeout(function () {
-            renderSimpleGate("login", "Please log in to continue.", "", { lock: true });
-          }, 80);
+          // Login gate UI is rendered by chat.js/shell.js when it sees nextAction/code.
         }
 
         return body;
