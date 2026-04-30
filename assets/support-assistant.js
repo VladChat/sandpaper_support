@@ -237,7 +237,9 @@
     return context;
   }
 
-  function buildAssistantPrompt(currentUserMessage) {
+  function buildAssistantPrompt(currentUserMessage, promptOptions) {
+    promptOptions = promptOptions || {};
+    const compactFollowup = Boolean(promptOptions.compactFollowup);
     const state = getConversationState();
     const pageContext = buildPageContext();
     const recentConversation = getRecentConversationText();
@@ -258,6 +260,22 @@
     const recentText = recentConversation
       ? "Recent conversation:\n" + recentConversation
       : "";
+
+    const answerModeText = compactFollowup
+      ? [
+          "Answer mode: compact follow-up chat.",
+          "Reply with a short direct answer only.",
+          "Do not use section headings.",
+          "Do not use the first-answer card format.",
+          "Do not include an Avoid section.",
+          "Do not include Recommended Action, Steps, or Recommended Page headings unless the user explicitly asks for a step-by-step list.",
+          "Use the recent conversation to answer the current follow-up directly without repeating the previous answer.",
+        ].join("\n")
+      : [
+          "Answer mode: first full support answer.",
+          "Use clear sections when helpful: Answer Summary, Recommended Action, Steps, Recommended Page.",
+          "Do not include an Avoid section.",
+        ].join("\n");
 
     const systemPrompt = [
       "You are a technical sandpaper troubleshooting specialist.",
@@ -285,24 +303,7 @@
       "- Use a neutral technical support tone; do not sound like a sales or brand-promotion bot.",
       "- Do not mention eQualle unless the user directly asks about eQualle, the product listing, packaging, order, or seller-specific support.",
       "- Do not switch to a different topic just because the short follow-up contains a word with another meaning.",
-      "- Use this structure:",
-      "",
-      "Answer Summary:",
-      "[1-2 short sentences]",
-      "",
-      "Recommended Action:",
-      "[action/tool/material]",
-      "",
-      "Steps:",
-      "1. [step]",
-      "2. [step]",
-      "3. [step]",
-      "",
-      "Avoid:",
-      "[short warning]",
-      "",
-      "Recommended Page:",
-      "[only include a relevant internal page title when truly useful]",
+      answerModeText,
     ]
       .filter(Boolean)
       .join("\n");
@@ -1066,7 +1067,6 @@
       }
 
       if (/avoid|warning|mistake/.test(title)) {
-        chunks.push("Avoid: " + lines.join(" "));
         return;
       }
 
@@ -1079,6 +1079,84 @@
   function renderCompactAssistantAnswer(node, replyText, pages) {
     node.textContent = buildCompactAssistantText(replyText, pages);
     node.classList.add("chat-message-compact");
+  }
+
+
+  function getShellContainer(shell) {
+    if (!shell) {
+      return null;
+    }
+    return shell.root || (shell.messages && shell.messages.closest(".chat-shell, [data-ai-chat], [data-solution-followup]"));
+  }
+
+  function isShellLocked(shell) {
+    const container = getShellContainer(shell);
+    return Boolean(container && container.classList.contains("support-chat-locked"));
+  }
+
+  function setShellControlsDisabled(shell, disabled) {
+    const container = getShellContainer(shell);
+    if (!container) {
+      return;
+    }
+    Array.prototype.slice.call(container.querySelectorAll("input, textarea, button[type='submit']")).forEach(function (element) {
+      element.disabled = Boolean(disabled);
+    });
+  }
+
+  function lockShellForLogin(shell) {
+    const container = getShellContainer(shell);
+    if (!container) {
+      return;
+    }
+    container.classList.add("support-chat-locked");
+    setShellControlsDisabled(shell, true);
+    if (shell.input) {
+      shell.input.placeholder = "Please log in to continue.";
+    }
+  }
+
+  function renderPendingIndicator(node) {
+    node.textContent = "";
+    node.classList.add("chat-message-pending", "support-thinking-message");
+
+    const label = document.createElement("span");
+    label.className = "support-thinking-label";
+    label.textContent = "Thinking";
+    node.appendChild(label);
+
+    const dots = document.createElement("span");
+    dots.className = "support-thinking-dots";
+    for (let i = 0; i < 3; i += 1) {
+      const dot = document.createElement("span");
+      dot.textContent = ".";
+      dots.appendChild(dot);
+    }
+    node.appendChild(dots);
+  }
+
+  function clearPendingIndicator(node) {
+    if (!node) {
+      return;
+    }
+    node.classList.remove("chat-message-pending", "support-thinking-message");
+  }
+
+  function appendLoginRequiredCard(messages) {
+    if (!messages) {
+      return;
+    }
+    const existing = messages.querySelector(".support-login-card");
+    if (existing) {
+      return;
+    }
+    const card = document.createElement("div");
+    card.className = "support-login-card";
+    const title = document.createElement("div");
+    title.className = "support-login-card-title";
+    title.textContent = "Please log in to continue.";
+    card.appendChild(title);
+    messages.appendChild(card);
   }
 
   function pushSessionArray(key, value, maxItems) {
@@ -1366,7 +1444,9 @@
         gritSequences: gritSequences.slice(0, 2).map(compactSequence),
       };
 
-      const contextualPrompt = buildAssistantPrompt(userMessage);
+      const contextualPrompt = buildAssistantPrompt(userMessage, {
+        compactFollowup: contextInput.mode === "manual",
+      });
 
       const payload = {
         sessionToken: getSessionToken(),
@@ -1415,6 +1495,9 @@
           clarifyingQuestion: result.clarifyingQuestion || "",
           matchedPages: Array.isArray(result.matchedPages) ? result.matchedPages : [],
           draftCreated: Boolean(result.draftCreated),
+          code: result.code || "",
+          nextAction: result.nextAction || "",
+          remaining: Number.isFinite(result.remaining) ? result.remaining : null,
         };
       });
     };
@@ -1439,9 +1522,11 @@
 
     function sendMessage(userMessage, meta) {
       const message = String(userMessage || "").trim();
-      if (!message) {
+      if (!message || isShellLocked(shell)) {
         return;
       }
+
+      setShellControlsDisabled(shell, true);
 
       pushSessionArray(
         STORAGE_KEYS.assistantMessages,
@@ -1459,13 +1544,15 @@
       const pending = appendMessage(
         shell.messages,
         "assistant",
-        "Checking approved support guides...",
+        "",
         { noAutoScroll: noAutoScroll },
       );
+      renderPendingIndicator(pending);
       const shouldRenderStructuredAnswer =
         source === "ai-assistant-page" && assistantReplyCount === 0;
 
       if (isOrderTrackingQuery(message)) {
+        clearPendingIndicator(pending);
         pending.textContent =
           "I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper.";
         pushSessionArray(
@@ -1478,6 +1565,7 @@
           },
           30,
         );
+        setShellControlsDisabled(shell, false);
         assistantReplyCount += 1;
         return;
       }
@@ -1493,6 +1581,8 @@
           dynamicContext,
         ),
       ).then(function (result) {
+        clearPendingIndicator(pending);
+
         if (!result.ok) {
           const fallbackReply =
             "Answer Summary: Assistant response is unavailable right now.\nNext Step: Use the links below or ask a more specific sanding question.";
@@ -1514,6 +1604,7 @@
             },
             30,
           );
+          setShellControlsDisabled(shell, false);
           assistantReplyCount += 1;
           return;
         }
@@ -1535,6 +1626,13 @@
           renderCompactAssistantAnswer(pending, combinedReply, result.matchedPages);
         }
 
+        if (result.code === "login_required" || result.nextAction === "login_required") {
+          appendLoginRequiredCard(shell.messages);
+          lockShellForLogin(shell);
+        } else {
+          setShellControlsDisabled(shell, false);
+        }
+
         pushSessionArray(
           STORAGE_KEYS.assistantMessages,
           {
@@ -1545,6 +1643,11 @@
           },
           30,
         );
+        assistantReplyCount += 1;
+      }).catch(function () {
+        clearPendingIndicator(pending);
+        pending.textContent = "Assistant response is unavailable right now.";
+        setShellControlsDisabled(shell, false);
         assistantReplyCount += 1;
       });
     }

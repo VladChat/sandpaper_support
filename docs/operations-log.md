@@ -34,3 +34,42 @@ Updated assistant persona from brand-forward support wording to a neutral techni
 
 ### Required Deployment Note
 The Supabase Edge Function `support-ai-chat` must be redeployed after this change because the main assistant persona lives in `supabase/functions/support-ai-chat/index.ts`.
+
+## 2026-04-29: Assistant Follow-up UX Refinement
+
+# Operations Log Entry — Assistant Follow-up UX Refinement
+
+## Change Summary
+
+Adjusted the AI support assistant UX globally, not for specific sample questions.
+
+## Files Changed
+
+- `supabase/functions/support-ai-chat/index.ts`
+- `assets/support-assistant.js`
+- `assets/supabase-client.js`
+- `assets/support-assistant.css`
+
+## Behavior Changes
+
+- Turnstile is now required after the first successful anonymous AI answer.
+- Manual follow-up answers are compact chat replies, not repeated structured cards.
+- `Avoid` sections are removed from follow-up output and backend instructions.
+- Login gate message is simplified to: `Please log in to continue.`
+- After `login_required`, the input and Send button are disabled.
+- During an AI request, the chat shows an animated `Thinking...` indicator and disables Send until the response returns.
+
+## Validation Required
+
+```powershell
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+Because `support-ai-chat/index.ts` changed, deploy the Edge Function again through the existing GitHub Actions workflow:
+
+```text
+Deploy Support AI Chat
+```
+

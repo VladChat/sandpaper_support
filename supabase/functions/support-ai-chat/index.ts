@@ -115,7 +115,7 @@ type AccessDecision =
     };
 
 const MODEL_NAME = "gpt-4.1-mini";
-const FREE_ANONYMOUS_REQUESTS = 2;
+const FREE_ANONYMOUS_REQUESTS = 1;
 const TURNSTILE_EXTRA_REQUESTS = 3;
 const RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
@@ -669,7 +669,7 @@ async function checkRequestAccess(parsedRequest: ChatRequest, request: Request):
       allowed: false,
       response: blockedResponse(
         "login_required",
-        "Sign in with email to continue.",
+        "Please log in to continue.",
         403,
         { remaining: 0 },
       ),
@@ -786,7 +786,7 @@ async function callOpenAI(
     "Do not invent product claims. " +
     "On solution follow-up requests, use solution_context as the primary source of truth. " +
     "If context is insufficient, ask one short clarifying question. " +
-    "Keep answer short, practical, neutral, and structured.";
+    "Keep answers short, practical, neutral, and structured only when the request is the first full answer. Manual follow-up answers must be compact and conversational.";
 
   const policyRules = [
     "Respond in English.",
@@ -795,6 +795,7 @@ async function callOpenAI(
     "When brand context is directly required, allowed facts are: eQualle sandpaper sheets, 9 x 11 inch, silicon carbide, wet or dry use, grits 60 through 3000, assorted kit 60 through 3000.",
     "Use plain words like the sandpaper, the sheet, the abrasive, or this grit instead of repeating the brand name.",
     "Avoid unsupported marketing claims.",
+    "Do not include an Avoid section in assistant replies.",
     "Do not use words: premium, best, professional-grade, superior.",
     "Do not recommend unsafe or unrelated uses.",
     "Prefer practical next steps over product promotion.",
@@ -804,9 +805,9 @@ async function callOpenAI(
     "Do not return a full separate second answer as clarifyingQuestion.",
     "If clarification is needed, keep reply short and include the question naturally.",
     "For order tracking, shipping status, delivery status, package location, or retailer-specific purchase questions, reply exactly: I can’t track orders here. Please check your order confirmation email or the retailer where you purchased the sandpaper. Set needsClarification=false, clarifyingQuestion=\"\", matchedPages=[].",
-    "Use this reply template when possible: Answer Summary / Recommended Action / Steps / Avoid / Recommended Page.",
+    "For first full answers, use this reply template when useful: Answer Summary / Recommended Action / Steps / Recommended Page.",
     "On solution_followup requests, answer directly from solution_context first, then use retrievedContent for related page suggestions only.",
-    "For solution_followup requests, keep reply to a direct answer plus 2-4 short steps and one warning only if needed.",
+    "For manual follow-up and solution_followup requests, give a short direct answer in plain chat style. Do not use section headings, do not include an Avoid section, and do not repeat the full first-answer template.",
     "Do not switch to unrelated surfaces unless user explicitly asks to change surface.",
     "When a follow-up is ambiguous, resolve it from the recent conversation and current support context instead of treating it as a new unrelated topic.",
   ].join("\n");

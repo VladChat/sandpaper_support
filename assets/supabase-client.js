@@ -754,21 +754,29 @@
     return gateState.activeChallengePromise;
   }
 
-  function renderSimpleGate(kind, title, text) {
+  function renderSimpleGate(kind, title, text, options) {
+    options = options || {};
     var messages = findActiveMessages();
     if (!messages) {
       return;
     }
+    var existing = messages.querySelector(".support-" + kind + "-card");
+    if (existing && existing.parentNode) {
+      existing.parentNode.removeChild(existing);
+    }
     messages.appendChild(createGateCard(kind, title, text));
+    if (options.lock === true) {
+      setChatLocked(messages, true);
+    }
   }
 
   function displayReplyForBlockedResponse(code, message, status) {
     if (code === "login_required") {
-      renderSimpleGate("login", "Email Login Required", message || "Sign in with email to continue.");
+      renderSimpleGate("login", "Please log in to continue.", "", { lock: true });
       return {
         ok: true,
         status: status || 403,
-        reply: "Answer Summary: Sign in with email to continue.\nNext Step: Email login is required before more AI questions.",
+        reply: "Please log in to continue.",
         needsClarification: false,
         clarifyingQuestion: "",
         matchedPages: [],
@@ -855,7 +863,7 @@
 
         if (body.nextAction === "login_required") {
           window.setTimeout(function () {
-            renderSimpleGate("login", "Email Login Required", "Sign in with email to continue.");
+            renderSimpleGate("login", "Please log in to continue.", "", { lock: true });
           }, 80);
         }
 
