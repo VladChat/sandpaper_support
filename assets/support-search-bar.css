@@ -144,6 +144,12 @@
   padding: 0 20px;
 }
 
+body.ask-page .chat-shell[data-ai-chat] > .support-auth-status.support-auth-status {
+  border-top: 0;
+  margin: 12px 0 14px;
+  padding: 0 22px;
+}
+
 .support-search-form .sr-only,
 .chat-form.support-search-form .sr-only {
   clip: rect(1px, 1px, 1px, 1px);
