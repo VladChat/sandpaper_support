@@ -410,7 +410,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-voice-input-20260430-v1";
+    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-followup-voice-20260430-v1";
     document.head.appendChild(link);
   }
 
@@ -452,7 +452,7 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=support-voice-input-20260430-v1",
+      "/sandpaper_support/assets/support-assistant.js?v=support-followup-voice-20260430-v1",
     );
   });
 }

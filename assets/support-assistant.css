@@ -522,3 +522,56 @@ body.solution-page .solution-followup-messages .chat-message {
   opacity: 1;
 }
 
+/* Follow-up voice input layout on the ask page. */
+.ask-page .chat-form {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.ask-page .chat-form .support-mic-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: #4b5563;
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.ask-page .chat-form .support-mic-button:hover {
+  background: #f3f4f6;
+  color: #0b0c0e;
+}
+
+.ask-page .chat-form .support-mic-button svg {
+  height: 20px;
+  width: 20px;
+}
+
+.ask-page .chat-form .support-mic-button[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .ask-page .chat-form {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .ask-page .chat-form .chat-input {
+    grid-column: 1 / -1;
+  }
+
+  .ask-page .chat-form .support-mic-button {
+    width: 100%;
+  }
+
+  .ask-page .chat-send {
+    width: 100%;
+  }
+}
+
