@@ -137,6 +137,17 @@
     container.appendChild(row);
   }
 
+  function removeAuthGate(container) {
+    if (!container) {
+      return;
+    }
+    Array.prototype.slice.call(container.querySelectorAll(".support-auth-gate, .support-login-card")).forEach(function (node) {
+      if (node && node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
+    });
+  }
+
   function updateSignedInStatus(shell) {
     const container = getShellContainer(shell);
     if (!container || !window.eQualleSupabase || typeof window.eQualleSupabase.getSession !== "function") {
@@ -148,6 +159,10 @@
       const user = session && session.user;
       const email = user && user.email ? user.email : "";
       setSignedInStatus(container, email);
+      if (email) {
+        removeAuthGate(container);
+        unlockShellAfterLogin(shell);
+      }
     }).catch(function () {
       return;
     });
@@ -156,6 +171,18 @@
   function appendLoginRequiredCard(messages, options) {
     options = options || {};
     if (!messages) {
+      return;
+    }
+
+    const container = messages.closest(".chat-shell, [data-ai-chat], [data-solution-followup]");
+    if (
+      window.eQualleSupabase &&
+      typeof window.eQualleSupabase.getAccessToken === "function" &&
+      window.eQualleSupabase.getAccessToken()
+    ) {
+      removeAuthGate(container || messages);
+      unlockShellAfterLogin(options.shell || { root: container });
+      updateSignedInStatus(options.shell || { root: container });
       return;
     }
 
@@ -341,14 +368,17 @@
           if (container) {
             setSignedInStatus(container, result.user && result.user.email ? result.user.email : email);
           }
-          if (typeof options.onSuccess === "function") {
-            window.setTimeout(function () {
-              if (card.parentNode) {
-                card.parentNode.removeChild(card);
-              }
+          window.setTimeout(function () {
+            if (card.parentNode) {
+              card.parentNode.removeChild(card);
+            }
+            removeAuthGate(container || messages);
+            unlockShellAfterLogin(options.shell || { root: container });
+            updateSignedInStatus(options.shell || { root: container });
+            if (typeof options.onSuccess === "function") {
               options.onSuccess(result.session || null);
-            }, 450);
-          }
+            }
+          }, 250);
         }).catch(function () {
           button.disabled = false;
           button.textContent = "Continue";
@@ -619,6 +649,7 @@
     setShellControlsDisabled: setShellControlsDisabled,
     lockShellForLogin: lockShellForLogin,
     unlockShellAfterLogin: unlockShellAfterLogin,
+    removeAuthGate: removeAuthGate,
     updateSignedInStatus: updateSignedInStatus,
     renderPendingIndicator: renderPendingIndicator,
     clearPendingIndicator: clearPendingIndicator,

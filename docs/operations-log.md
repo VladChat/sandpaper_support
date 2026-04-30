@@ -301,3 +301,10 @@ Completed the missing frontend + Edge Function implementation for email OTP chat
 ## Notes
 
 - Existing first structured answer, compact follow-up behavior, and guest Turnstile flow were preserved.
+
+## 2026-04-30 - Post-login auth gate cleanup
+
+- Removed automatic retry/resubmit after successful email OTP login.
+- Email login gate now disappears after a valid session is detected.
+- Chat input is unlocked after login and keeps the user in control of the next question.
+- Softened email OTP auth card styling: no uppercase title, lighter text weight, calmer button and compact signed-in status row.

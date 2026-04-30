@@ -143,10 +143,7 @@
             shell: shell,
             onSuccess: function () {
               unlockShellAfterLogin(shell);
-              sendMessage(message, {
-                auto: Boolean(meta && meta.auto === true),
-                skipUserBubble: true,
-              });
+              updateSignedInStatus(shell);
             },
           });
           lockShellForLogin(shell);

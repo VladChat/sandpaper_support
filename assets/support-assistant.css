@@ -424,3 +424,101 @@ body.solution-page .solution-followup-messages .chat-message {
 .support-chat-locked .support-auth-gate button {
   opacity: 1;
 }
+
+/* Post-login auth gate cleanup and softer email OTP UI. */
+.support-auth-gate {
+  border-color: #dbe7f1;
+  box-shadow: 0 8px 22px rgba(11, 12, 14, 0.04);
+  color: #1e293b;
+  font-weight: 400;
+  gap: 9px;
+  max-width: 340px;
+  padding: 13px 14px;
+}
+
+.support-auth-gate .support-login-card-title,
+.support-login-card.support-auth-gate .support-login-card-title {
+  color: #0f172a;
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0;
+  text-transform: none;
+}
+
+.support-auth-gate .support-login-card-text,
+.support-login-card.support-auth-gate .support-login-card-text {
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.42;
+  margin: 0;
+}
+
+.support-auth-label {
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.support-auth-input {
+  border-color: #d7e2ec;
+  border-radius: 9px;
+  font-size: 0.92rem;
+  padding: 8px 10px;
+}
+
+.support-auth-code-input {
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+}
+
+.support-auth-button {
+  background: #0f638e;
+  border-radius: 11px;
+  font-size: 0.92rem;
+  font-weight: 650;
+  padding: 8px 13px;
+}
+
+.support-auth-button:hover:not(:disabled) {
+  background: #0d527a;
+}
+
+.support-auth-error {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.support-auth-legal {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 400;
+}
+
+.support-auth-legal a,
+.support-auth-link,
+.support-auth-signout {
+  font-weight: 600;
+}
+
+.support-auth-status {
+  align-items: center;
+  border-top: 1px solid #edf2f7;
+  color: #64748b;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.76rem;
+  gap: 3px;
+  line-height: 1.35;
+  margin: 10px 0 0;
+  padding: 8px 2px 0;
+}
+
+.support-chat-locked .support-auth-status,
+.support-chat-locked .support-auth-status button {
+  opacity: 1;
+}
+
