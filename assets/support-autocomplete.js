@@ -310,22 +310,39 @@ import Fuse from "./vendor/fuse.min.mjs";
     });
   }
 
-  function openFirstOrAsk(state) {
+  function resetFreshAskStorage(query) {
+    try {
+      const cleanQuery = lower(query);
+      window.sessionStorage.setItem("lastQuery", cleanQuery);
+      window.sessionStorage.setItem("lastMatches", "[]");
+      window.sessionStorage.setItem("clickedPages", "[]");
+      window.sessionStorage.setItem(
+        "eQualleAssistantConversationV2",
+        JSON.stringify({
+          sessionId: "conv-" + Math.random().toString(36).slice(2) + Date.now(),
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          initialQuestion: clean(query),
+          lastPage: {
+            path: window.location.pathname || "",
+            title: document.title || "",
+          },
+          turns: [],
+        }),
+      );
+    } catch (_error) {
+      return;
+    }
+  }
+
+  function askCurrentQuery(state) {
     const query = clean(state.input.value);
     if (!query) {
       state.input.focus();
       return;
     }
 
-    if (!state.currentResults.length) {
-      state.currentResults = rankResults(query);
-    }
-
-    if (state.currentResults.length) {
-      window.location.href = normalizePath(state.currentResults[0].target_url);
-      return;
-    }
-
+    resetFreshAskStorage(query);
     window.location.href = normalizePath("/ask/") + "?q=" + encodeURIComponent(query);
   }
 
@@ -355,14 +372,14 @@ import Fuse from "./vendor/fuse.min.mjs";
     input.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
-        openFirstOrAsk(state);
+        askCurrentQuery(state);
       }
     });
 
     if (state.submit) {
       state.submit.addEventListener("click", function (event) {
         event.preventDefault();
-        openFirstOrAsk(state);
+        askCurrentQuery(state);
       });
     }
   }

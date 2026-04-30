@@ -295,7 +295,12 @@
         ].join("\n")
       : [
           "Answer mode: first full support answer.",
-          "Use clear sections when helpful: Answer Summary, Recommended Action, Steps, Recommended Page.",
+          "This is not a compact follow-up. This first answer must be written for the structured support-card renderer.",
+          "Return the reply with these section headings exactly when possible: Answer Summary:, Recommended Action:, Steps:, Recommended Page:.",
+          "Use 1-2 short sentences for Answer Summary.",
+          "Use one short practical recommendation for Recommended Action.",
+          "Use 2-4 numbered steps for Steps when the task needs steps.",
+          "Use Recommended Page only when a retrieved page clearly matches the current question.",
           "Do not include an Avoid section.",
           "Use retrieved pages only when they are clearly relevant to the current question.",
           "Ignore irrelevant suggested pages or stale search context.",
@@ -1575,7 +1580,8 @@
       );
       renderPendingIndicator(pending);
       const shouldRenderStructuredAnswer =
-        source === "ai-assistant-page" && assistantReplyCount === 0;
+        source === "ai-assistant-page" &&
+        (assistantReplyCount === 0 || Boolean(meta && meta.auto === true));
 
       if (isOrderTrackingQuery(message)) {
         clearPendingIndicator(pending);

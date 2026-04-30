@@ -109,3 +109,39 @@ node scripts/check-internal-links.js
 
 This archive changes frontend JavaScript only. The `support-ai-chat` Edge Function is not changed, so the `Deploy Support AI Chat` workflow is not required for this specific fix unless another backend file is modified later.
 
+
+## 2026-04-29: Restore First Answer Card and Fix Homepage Submit
+
+# Operations Log Entry — Restore First Answer Card and Fix Homepage Submit
+
+## Change Summary
+
+Fixed two targeted regressions without changing Edge Function logic.
+
+## Files Changed
+
+- `assets/support-assistant.js`
+- `assets/support-autocomplete.js`
+
+## Behavior Changes
+
+- Homepage autocomplete suggestions remain clickable.
+- Pressing `Enter` or `Get Answer` now always sends the typed text to `/ask/?q=...` instead of opening the first suggested result.
+- First `/ask/?q=...` response is forced back into the structured support-card format.
+- Manual follow-up answers remain compact chat replies.
+- Existing fresh-question context isolation, Turnstile timing, loading indicator, and login gate behavior are preserved.
+
+## Validation Required
+
+```powershell
+node --check assets/support-assistant.js
+node --check assets/support-autocomplete.js
+npm run build
+node scripts/validate-source-integrity.js
+node scripts/check-internal-links.js
+```
+
+## Deployment Note
+
+This is a frontend-only fix. The `support-ai-chat` Edge Function was not changed, so the `Deploy Support AI Chat` workflow is not required for this fix.
+
