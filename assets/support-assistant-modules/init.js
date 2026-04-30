@@ -11,6 +11,12 @@
   function setupHomepageSearch() { return shared.setupHomepageSearch.apply(shared, arguments); }
   function setupAiAssistantPage() { return shared.setupAiAssistantPage.apply(shared, arguments); }
   function setupSupportFollowup() { return shared.setupSupportFollowup.apply(shared, arguments); }
+  function setupVoiceInput() {
+    if (typeof shared.setupVoiceInput !== "function") {
+      return;
+    }
+    return shared.setupVoiceInput.apply(shared, arguments);
+  }
 
 
   function init(options) {
@@ -18,12 +24,14 @@
   
     setCurrentPage();
     getSessionToken();
+    setupVoiceInput(document);
   
     buildKnowledge(basePath)
       .then(function (knowledge) {
         setupHomepageSearch(basePath, knowledge);
         setupSupportFollowup(basePath, knowledge);
         setupAiAssistantPage(basePath, knowledge);
+        setupVoiceInput(document);
       })
       .catch(function () {
         return;

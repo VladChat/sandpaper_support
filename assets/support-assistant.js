@@ -14,9 +14,10 @@
     "chat.js",
     "auth-ui-fixes.js",
     "pages.js",
+    "voice-input.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-auth-otp-login-20260430-v4";
+  const CACHE_VERSION = "support-voice-input-20260430-v1";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];

@@ -410,7 +410,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-auth-otp-login-20260430-v4";
+    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-voice-input-20260430-v1";
     document.head.appendChild(link);
   }
 
@@ -452,13 +452,16 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=support-auth-otp-login-20260430-v4",
+      "/sandpaper_support/assets/support-assistant.js?v=support-voice-input-20260430-v1",
     );
   });
 }
 
 function setupSupportToolButtons() {
   document.querySelectorAll(".support-tool-button").forEach(function (button) {
+    if (button.classList.contains("support-mic-button")) {
+      return;
+    }
     button.addEventListener("click", function () {
       const shell = button.closest(".support-search-shell") || document;
       const input = shell.querySelector("[data-support-search]");
