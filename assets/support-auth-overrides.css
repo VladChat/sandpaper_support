@@ -101,7 +101,7 @@
   font-size: 0.78rem;
   gap: 4px;
   line-height: 1.35;
-  margin: -3px 0 0;
+  margin: 8px 0 0;
   overflow-wrap: anywhere;
   padding: 0 14px 14px;
   width: 100%;
@@ -116,8 +116,9 @@
   opacity: 1;
 }
 
-.ask-page .support-auth-status {
-  padding-bottom: 14px;
+.ask-page .chat-shell .support-auth-status {
+  margin: 10px 0 0;
+  padding: 0 22px 14px;
 }
 
 @media (max-width: 640px) {
@@ -128,5 +129,10 @@
   .support-auth-status {
     padding-left: 12px;
     padding-right: 12px;
+  }
+
+  .ask-page .chat-shell .support-auth-status {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
