@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const BASE_PATH = "/sandpaper_support";
+const BASE_PATH = "";
 const SOLUTION_CARDS_PATH = path.join(ROOT_DIR, "data", "solution-cards.json");
 const SURFACE_MAP_PATH = path.join(ROOT_DIR, "data", "surface-map.json");
 const SURFACES_DIR = path.join(ROOT_DIR, "surfaces");
@@ -200,26 +200,26 @@ function siteHead(title, description) {
     " | eQualle Support</title><meta name=\"description\" content=\"" +
     htmlEscape(description) +
     "\">\n" +
-    '<link rel="icon" href="/sandpaper_support/icons/favicon.ico" sizes="any">\n' +
-    '<link rel="icon" type="image/png" sizes="16x16" href="/sandpaper_support/icons/favicon-16x16.png">\n' +
-    '<link rel="icon" type="image/png" sizes="32x32" href="/sandpaper_support/icons/favicon-32x32.png">\n' +
-    '<link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">\n' +
-    '<link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">\n' +
+    '<link rel="icon" href="/icons/favicon.ico" sizes="any">\n' +
+    '<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">\n' +
+    '<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">\n' +
+    '<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">\n' +
+    '<link rel="manifest" href="/icons/site.webmanifest">\n' +
     '<meta name="theme-color" content="#0B0C0E">\n' +
-    '<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=hero-width-fix-20260426"></head>'
+    '<link rel="stylesheet" href="/assets/styles.css?v=hero-width-fix-20260426"></head>'
   );
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/">eQualle <span>Support</span></a><nav class="nav"><a href="/problems/">Problems</a><a href="/surfaces/">Surfaces</a><a href="/grits/">Grit Guide</a><a href="/products/">Products</a><a href="/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
-  return '<footer class="footer"><div class="footer-inner"><span>© eQualle Support System</span><span>Sandpaper troubleshooting, grit guidance, and product support.</span></div></footer><script src="/sandpaper_support/assets/config.js"></script><script src="/sandpaper_support/assets/supabase-client.js?v=support-auth-otp-login-20260430-v3"></script><script src="/sandpaper_support/assets/app.js?v=support-auth-otp-login-20260430-v3"></script></body></html>';
+  return '<footer class="footer"><div class="footer-inner"><span>© eQualle Support System</span><span>Sandpaper troubleshooting, grit guidance, and product support.</span></div></footer><script src="/assets/config.js"></script><script src="/assets/supabase-client.js?v=support-auth-otp-login-20260430-v3"></script><script src="/assets/app.js?v=support-auth-otp-login-20260430-v3"></script></body></html>';
 }
 
 function renderProductCard() {
-  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Choose the starting grit and sequence for this surface using the 9 x 11 inch wet or dry silicon carbide sheets.</p><span class="cta">Open kit support</span></a>';
+  return '<a class="card" href="/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Choose the starting grit and sequence for this surface using the 9 x 11 inch wet or dry silicon carbide sheets.</p><span class="cta">Open kit support</span></a>';
 }
 
 function renderSolutionCard(card) {
@@ -251,7 +251,7 @@ function renderSurfacePage(group, cards) {
     siteHead(group.pageTitle, group.description) +
     "\n" +
     siteHeader() +
-    '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / <a href="/sandpaper_support/surfaces/">By Surface</a> / ' +
+    '<main><section class="section"><div class="breadcrumb"><a href="/">Home</a> / <a href="/surfaces/">By Surface</a> / ' +
     htmlEscape(group.title) +
     "</div><h1>" +
     htmlEscape(group.pageTitle) +
@@ -270,7 +270,7 @@ function renderSurfacesIndex(groupsWithCards) {
   const cards = groupsWithCards
     .map((entry) => {
       return (
-        '<a class="card" href="/sandpaper_support/surfaces/' +
+        '<a class="card" href="/surfaces/' +
         htmlEscape(entry.group.id) +
         '/"><h3>' +
         htmlEscape(entry.group.title) +
@@ -290,7 +290,7 @@ function renderSurfacesIndex(groupsWithCards) {
     siteHead("By Surface", "Find sandpaper support by surface: wood, paint, primer, clear coat, metal, plastic, drywall patch, and sheet problems.") +
     "\n" +
     siteHeader() +
-    '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / By Surface</div><h1>By Surface</h1><p class="section-intro">' +
+    '<main><section class="section"><div class="breadcrumb"><a href="/">Home</a> / By Surface</div><h1>By Surface</h1><p class="section-intro">' +
     htmlEscape(intro) +
     '</p><div class="grid">' +
     cards +

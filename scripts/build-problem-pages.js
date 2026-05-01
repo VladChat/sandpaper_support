@@ -203,7 +203,7 @@ function renderProblemGroupCard(group) {
   const moreCount = Math.max(0, group.cards.length - 4);
   const moreHtml = moreCount ? "\n        <li>+" + String(moreCount) + " more answers</li>" : "";
   return [
-    '      <a class="card" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">',
+    '      <a class="card" href="/problems/' + escapeHtml(group.slug) + '/">',
     "        <h3>" + escapeHtml(group.title) + "</h3>",
     "        <p>" + escapeHtml(group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
     '        <ul class="pill-list" style="display:block;padding-left:18px;margin:10px 0 0;">',
@@ -222,7 +222,7 @@ function renderSolutionCard(card) {
     return '          <span class="pill">' + escapeHtml(value) + "</span>";
   }).join("\n");
   return [
-    '      <a class="card" href="/sandpaper_support/solutions/' + escapeHtml(card.id) + '/">',
+    '      <a class="card" href="/solutions/' + escapeHtml(card.id) + '/">',
     "        <h3>" + escapeHtml(card.title) + "</h3>",
     "        <p>" + escapeHtml(detailParts.join(" ")) + "</p>",
     pills ? '        <div class="pill-list">\n' + pills + "\n        </div>" : "",
@@ -267,7 +267,7 @@ function renderPrimaryProblemCard(group, overrideDescription) {
     "        <h3>" + escapeHtml(group.title) + "</h3>",
     "        <p>" + escapeHtml(overrideDescription || group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
     examples ? '        <div class="pill-list">' + examples + "</div>" : "",
-    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">View problem guide</a>',
+    '        <a class="cta" href="/problems/' + escapeHtml(group.slug) + '/">View problem guide</a>',
     "      </article>"
   ].filter(Boolean).join("\n");
 }
@@ -282,7 +282,7 @@ function renderTaskCard(group, title, cta) {
     "        <h3>" + escapeHtml(title || group.title) + "</h3>",
     "        <p>" + escapeHtml(group.description || getProblemDescription(group.slug, group.cards)) + "</p>",
     examples ? '        <div class="pill-list">' + examples + "</div>" : "",
-    '        <a class="cta" href="/sandpaper_support/problems/' + escapeHtml(group.slug) + '/">' + escapeHtml(cta) + "</a>",
+    '        <a class="cta" href="/problems/' + escapeHtml(group.slug) + '/">' + escapeHtml(cta) + "</a>",
     "      </article>"
   ].filter(Boolean).join("\n");
 }

@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const BASE_PATH = "/sandpaper_support";
+const BASE_PATH = "";
 
 const REQUIRED_FILES = [
   "index.html",
@@ -282,14 +282,14 @@ function validateGritSequences(errors) {
     }
 
     if (sequence.related_surface_url) {
-      const localPath = pageUrlToLocalPath(BASE_PATH + sequence.related_surface_url);
+      const localPath = pageUrlToLocalPath((BASE_PATH || "") + sequence.related_surface_url);
       if (localPath && !exists(localPath)) {
         errors.push(label + " related_surface_url points to missing page: " + sequence.related_surface_url);
       }
     }
 
     if (sequence.related_product_url) {
-      const localPath = pageUrlToLocalPath(BASE_PATH + sequence.related_product_url);
+      const localPath = pageUrlToLocalPath((BASE_PATH || "") + sequence.related_product_url);
       if (localPath && !exists(localPath)) {
         errors.push(label + " related_product_url points to missing page: " + sequence.related_product_url);
       }
@@ -503,7 +503,7 @@ function validateTagPages(errors, cards) {
     const filePath = path.join(tagsDir, slug, "index.html");
     if (!fs.existsSync(filePath)) return;
     const html = fs.readFileSync(filePath, "utf8");
-    if (!/href="\/sandpaper_support\/solutions\/[^"]+\/"/.test(html)) {
+    if (!/href="\/solutions\/[^"]+\/"/.test(html)) {
       errors.push("Tag page has no related answers: tags/" + slug + "/index.html");
     }
   });
@@ -513,7 +513,7 @@ function validateTagPages(errors, cards) {
     const filePath = path.join(ROOT_DIR, "solutions", String(card.id), "index.html");
     if (!fs.existsSync(filePath)) return;
     const html = fs.readFileSync(filePath, "utf8");
-    const links = html.match(/href="\/sandpaper_support\/tags\/[^"]+\/"/g) || [];
+    const links = html.match(/href="\/tags\/[^"]+\/"/g) || [];
     const expected = inferRelatedTopics(card).length;
     if (links.length !== expected) {
       errors.push("Solution chip link count mismatch for " + card.id + ": expected " + expected + ", found " + links.length);

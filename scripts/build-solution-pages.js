@@ -64,7 +64,7 @@ function escapeJsonForHtml(value) {
 function sitePath(relativeUrl) {
   const input = String(relativeUrl || "").trim();
   if (!input) {
-    return "/sandpaper_support/";
+    return "/";
   }
 
   if (/^https?:\/\//i.test(input)) {
@@ -72,11 +72,11 @@ function sitePath(relativeUrl) {
   }
 
   const withLeadingSlash = input.charAt(0) === "/" ? input : "/" + input;
-  if (withLeadingSlash.indexOf("/sandpaper_support/") === 0) {
+  if (withLeadingSlash.indexOf("/") === 0) {
     return withLeadingSlash;
   }
 
-  return "/sandpaper_support" + withLeadingSlash;
+  return "" + withLeadingSlash;
 }
 
 function replaceAllPlaceholders(template, values) {
@@ -213,7 +213,7 @@ function addTopic(topics, label, href) {
 function relativeHrefToFilePath(href) {
   if (!href) return null;
   // normalize to site path and map to local file path
-  const rel = href.replace(/^\/*sandpaper_support\/*/, "");
+  const rel = href.replace(/^\/+/, "");
   return path.join(ROOT_DIR, rel);
 }
 

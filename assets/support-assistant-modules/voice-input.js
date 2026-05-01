@@ -140,9 +140,7 @@
   }
 
   function getSupportBasePath() {
-    const pathname = String(window.location.pathname || "");
-    const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
-    return match && match[1] ? match[1] : "/sandpaper_support";
+    return "";
   }
 
   function normalizeCorrectionRule(rule) {

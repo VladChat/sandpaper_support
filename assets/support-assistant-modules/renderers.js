@@ -9,7 +9,7 @@
   function normalizePath() { return shared.normalizePath.apply(shared, arguments); }
 
 
-    const INTERNAL_PATH_PATTERN = /(?:https?:\/\/[^\s/]+)?(?:\/sandpaper_support)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/gi;
+    const INTERNAL_PATH_PATTERN = /(?:https?:\/\/[^\s/]+)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/gi;
     const INTERNAL_PATH_FAMILIES = {
       "/tools/": true,
       "/problems/": true,
@@ -50,7 +50,7 @@
       return "";
     }
 
-    const baseMatch = raw.match(/(?:https?:\/\/[^\s/]+)?(?:\/sandpaper_support)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/i);
+    const baseMatch = raw.match(/(?:https?:\/\/[^\s/]+)?(\/(?:tools|problems|solutions|surfaces|products|grits|how-to)\/[a-z0-9\-\/]*)/i);
     if (!baseMatch || !baseMatch[1]) {
       return "";
     }

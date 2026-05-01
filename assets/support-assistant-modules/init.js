@@ -26,7 +26,7 @@
 
 
   function init(options) {
-    const basePath = (options && options.basePath) || "/sandpaper_support";
+    const basePath = (options && options.basePath) || "";
   
     setCurrentPage();
     getSessionToken();

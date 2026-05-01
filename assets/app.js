@@ -4,9 +4,7 @@ function getProblemSlug() {
 }
 
 function getSupportBasePath() {
-  const pathname = String(window.location.pathname || "");
-  const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
-  return match && match[1] ? match[1] : "/sandpaper_support";
+  return "";
 }
 
 function loadJson(path) {
@@ -410,7 +408,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-voice-vocabulary-20260430-v2";
+    link.href = "/assets/support-assistant.css?v=support-voice-vocabulary-20260430-v2";
     document.head.appendChild(link);
   }
 
@@ -448,11 +446,11 @@ function loadSupportAssistantAssets() {
 
   return loadScript(
     "equalle-search-core-js",
-    "/sandpaper_support/assets/search-core.js?v=structured-answer-20260427",
+    "/assets/search-core.js?v=structured-answer-20260427",
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=support-voice-vocabulary-20260430-v2",
+      "/assets/support-assistant.js?v=support-voice-vocabulary-20260430-v2",
     );
   });
 }
@@ -479,7 +477,7 @@ setupSupportToolButtons();
 loadSupportAssistantAssets().then(function () {
   if (window.eQualleSupportAssistant && window.eQualleSupportAssistant.init) {
     window.eQualleSupportAssistant.init({
-      basePath: "/sandpaper_support",
+      basePath: "",
     });
   }
 });

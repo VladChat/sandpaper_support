@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const BASE_PATH = "/sandpaper_support";
+const BASE_PATH = "";
 const SOLUTION_CARDS_PATH = path.join(ROOT_DIR, "data", "solution-cards.json");
 const OUTPUT_PATH = path.join(ROOT_DIR, "grits", "index.html");
 
@@ -18,16 +18,16 @@ const GRIT_RANGES = [
     next: "Move to 150-240 for surface preparation after the heavy defect is removed.",
     grits: ["60", "80", "100", "120"],
     surfaceLinks: [
-      ["Wood", "/sandpaper_support/surfaces/wood/"],
-      ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"],
-      ["Metal", "/sandpaper_support/surfaces/metal/"],
-      ["Drywall Patch", "/sandpaper_support/surfaces/drywall-patch/"]
+      ["Wood", "/surfaces/wood/"],
+      ["Paint / Primer", "/surfaces/paint-primer/"],
+      ["Metal", "/surfaces/metal/"],
+      ["Drywall Patch", "/surfaces/drywall-patch/"]
     ],
     problemLinks: [
-      ["Paint Removal", "/sandpaper_support/problems/paint-removal/"],
-      ["Rust Removal", "/sandpaper_support/problems/rust-removal/"],
-      ["Too Aggressive", "/sandpaper_support/problems/too-aggressive/"],
-      ["Sanding Takes Too Long", "/sandpaper_support/problems/sanding-takes-too-long/"]
+      ["Paint Removal", "/problems/paint-removal/"],
+      ["Rust Removal", "/problems/rust-removal/"],
+      ["Too Aggressive", "/problems/too-aggressive/"],
+      ["Sanding Takes Too Long", "/problems/sanding-takes-too-long/"]
     ]
   },
   {
@@ -39,18 +39,18 @@ const GRIT_RANGES = [
     next: "Move to 280-400 for fine prep when the surface is already even.",
     grits: ["150", "180", "220", "240"],
     surfaceLinks: [
-      ["Wood", "/sandpaper_support/surfaces/wood/"],
-      ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"],
-      ["Metal", "/sandpaper_support/surfaces/metal/"],
-      ["Drywall Patch", "/sandpaper_support/surfaces/drywall-patch/"],
-      ["Plastic", "/sandpaper_support/surfaces/plastic/"]
+      ["Wood", "/surfaces/wood/"],
+      ["Paint / Primer", "/surfaces/paint-primer/"],
+      ["Metal", "/surfaces/metal/"],
+      ["Drywall Patch", "/surfaces/drywall-patch/"],
+      ["Plastic", "/surfaces/plastic/"]
     ],
     problemLinks: [
-      ["Wood Finish Prep", "/sandpaper_support/problems/wood-finish-prep/"],
-      ["Paint Prep", "/sandpaper_support/problems/paint-prep/"],
-      ["Drywall Patch", "/sandpaper_support/problems/drywall-patch/"],
-      ["Surface Still Feels Rough", "/sandpaper_support/problems/surface-still-feels-rough/"],
-      ["Scratches Too Deep", "/sandpaper_support/problems/scratches-too-deep/"]
+      ["Wood Finish Prep", "/problems/wood-finish-prep/"],
+      ["Paint Prep", "/problems/paint-prep/"],
+      ["Drywall Patch", "/problems/drywall-patch/"],
+      ["Surface Still Feels Rough", "/problems/surface-still-feels-rough/"],
+      ["Scratches Too Deep", "/problems/scratches-too-deep/"]
     ]
   },
   {
@@ -62,17 +62,17 @@ const GRIT_RANGES = [
     next: "Move to 500-800 for extra-fine finishing or to 1000+ for wet sanding stages when the surface is ready.",
     grits: ["280", "320", "360", "400"],
     surfaceLinks: [
-      ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"],
-      ["Plastic", "/sandpaper_support/surfaces/plastic/"],
-      ["Metal", "/sandpaper_support/surfaces/metal/"],
-      ["Wood", "/sandpaper_support/surfaces/wood/"]
+      ["Paint / Primer", "/surfaces/paint-primer/"],
+      ["Plastic", "/surfaces/plastic/"],
+      ["Metal", "/surfaces/metal/"],
+      ["Wood", "/surfaces/wood/"]
     ],
     problemLinks: [
-      ["Paint Prep", "/sandpaper_support/problems/paint-prep/"],
-      ["Poor Results Between Coats", "/sandpaper_support/problems/poor-results-between-coats/"],
-      ["Finish Looks Uneven", "/sandpaper_support/problems/finish-looks-uneven/"],
-      ["Plastic Sanding", "/sandpaper_support/problems/plastic-sanding/"],
-      ["Cabinet Paint Prep", "/sandpaper_support/problems/cabinet-paint-prep/"]
+      ["Paint Prep", "/problems/paint-prep/"],
+      ["Poor Results Between Coats", "/problems/poor-results-between-coats/"],
+      ["Finish Looks Uneven", "/problems/finish-looks-uneven/"],
+      ["Plastic Sanding", "/problems/plastic-sanding/"],
+      ["Cabinet Paint Prep", "/problems/cabinet-paint-prep/"]
     ]
   },
   {
@@ -84,16 +84,16 @@ const GRIT_RANGES = [
     next: "Move to 1000-3000 for wet sanding and polishing preparation when the surface is level.",
     grits: ["500", "600", "800"],
     surfaceLinks: [
-      ["Clear Coat", "/sandpaper_support/surfaces/clear-coat/"],
-      ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"],
-      ["Plastic", "/sandpaper_support/surfaces/plastic/"],
-      ["Metal", "/sandpaper_support/surfaces/metal/"]
+      ["Clear Coat", "/surfaces/clear-coat/"],
+      ["Paint / Primer", "/surfaces/paint-primer/"],
+      ["Plastic", "/surfaces/plastic/"],
+      ["Metal", "/surfaces/metal/"]
     ],
     problemLinks: [
-      ["Wet Sanding Clear Coat", "/sandpaper_support/problems/wet-sanding-clear-coat/"],
-      ["Polishing Prep", "/sandpaper_support/problems/polishing-prep/"],
-      ["Paint Repair", "/sandpaper_support/problems/paint-repair/"],
-      ["Surface Fit", "/sandpaper_support/problems/surface-fit/"]
+      ["Wet Sanding Clear Coat", "/problems/wet-sanding-clear-coat/"],
+      ["Polishing Prep", "/problems/polishing-prep/"],
+      ["Paint Repair", "/problems/paint-repair/"],
+      ["Surface Fit", "/problems/surface-fit/"]
     ]
   },
   {
@@ -105,19 +105,19 @@ const GRIT_RANGES = [
     next: "After 3000, use the correct polishing or finishing step when gloss or clarity is required.",
     grits: ["1000", "1200", "1500", "2000", "3000"],
     surfaceLinks: [
-      ["Clear Coat", "/sandpaper_support/surfaces/clear-coat/"],
-      ["Plastic", "/sandpaper_support/surfaces/plastic/"],
-      ["Metal", "/sandpaper_support/surfaces/metal/"],
-      ["Paint / Primer", "/sandpaper_support/surfaces/paint-primer/"]
+      ["Clear Coat", "/surfaces/clear-coat/"],
+      ["Plastic", "/surfaces/plastic/"],
+      ["Metal", "/surfaces/metal/"],
+      ["Paint / Primer", "/surfaces/paint-primer/"]
     ],
     problemLinks: [
-      ["Wet Sanding Leaves Haze", "/sandpaper_support/problems/wet-sanding-leaves-haze/"],
-      ["Wet Sanding Haze", "/sandpaper_support/problems/wet-sanding-haze/"],
-      ["Wet Sanding Clear Coat", "/sandpaper_support/problems/wet-sanding-clear-coat/"],
-      ["Polishing Prep", "/sandpaper_support/problems/polishing-prep/"],
-      ["Headlight Restoration", "/sandpaper_support/problems/headlight-restoration/"],
-      ["Epoxy Resin", "/sandpaper_support/problems/epoxy-resin/"],
-      ["Gelcoat", "/sandpaper_support/problems/gelcoat/"]
+      ["Wet Sanding Leaves Haze", "/problems/wet-sanding-leaves-haze/"],
+      ["Wet Sanding Haze", "/problems/wet-sanding-haze/"],
+      ["Wet Sanding Clear Coat", "/problems/wet-sanding-clear-coat/"],
+      ["Polishing Prep", "/problems/polishing-prep/"],
+      ["Headlight Restoration", "/problems/headlight-restoration/"],
+      ["Epoxy Resin", "/problems/epoxy-resin/"],
+      ["Gelcoat", "/problems/gelcoat/"]
     ]
   }
 ];
@@ -261,17 +261,17 @@ function siteHead(title, description) {
     ' | eQualle Support</title><meta name="description" content="' +
     htmlEscape(description) +
     '">\n' +
-    '<link rel="icon" href="/sandpaper_support/icons/favicon.ico" sizes="any">\n' +
-    '<link rel="icon" type="image/png" sizes="16x16" href="/sandpaper_support/icons/favicon-16x16.png">\n' +
-    '<link rel="icon" type="image/png" sizes="32x32" href="/sandpaper_support/icons/favicon-32x32.png">\n' +
-    '<link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">\n' +
-    '<link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">\n' +
+    '<link rel="icon" href="/icons/favicon.ico" sizes="any">\n' +
+    '<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">\n' +
+    '<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">\n' +
+    '<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">\n' +
+    '<link rel="manifest" href="/icons/site.webmanifest">\n' +
     '<meta name="theme-color" content="#0B0C0E">\n' +
-    '<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=grit-guide-navigation-p3"></head>';
+    '<link rel="stylesheet" href="/assets/styles.css?v=grit-guide-navigation-p3"></head>';
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/">eQualle <span>Support</span></a><nav class="nav"><a href="/problems/">Problems</a><a href="/surfaces/">Surfaces</a><a href="/grits/">Grit Guide</a><a href="/products/">Products</a><a href="/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
@@ -279,11 +279,11 @@ function siteFooter() {
 }
 
 function renderProductCard() {
-  return '<a class="card" href="/sandpaper_support/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit support</span></a>';
+  return '<a class="card" href="/products/assorted-80-3000/"><h3>Using the 60-3000 Assorted Kit</h3><p>Use the full grit range when a project needs removal, preparation, fine finishing, and wet sanding refinement.</p><span class="cta">Open kit support</span></a>';
 }
 
 function renderSolutionCard(card) {
-  return '<a class="card" href="/sandpaper_support/solutions/' +
+  return '<a class="card" href="/solutions/' +
     htmlEscape(card.id) +
     '/"><h3>' +
     htmlEscape(card.title) +
@@ -348,7 +348,7 @@ function renderPage(rangeCards) {
   return siteHead("Sandpaper Grit Guide", "Grit ranges, sanding use cases, and direct support paths for eQualle wet or dry silicon carbide sandpaper.") +
     "\n" +
     siteHeader() +
-    '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / By Grit</div><h1>Sandpaper Grit Guide</h1><p class="section-intro">' +
+    '<main><section class="section"><div class="breadcrumb"><a href="/">Home</a> / By Grit</div><h1>Sandpaper Grit Guide</h1><p class="section-intro">' +
     htmlEscape(intro) +
     '</p>' +
     renderIndexNav() +

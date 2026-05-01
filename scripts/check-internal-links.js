@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const BASE_PATH = "/sandpaper_support";
+const BASE_PATH = "";
 
 const IGNORE_DIRS = new Set([
   ".git",
@@ -91,7 +91,7 @@ function pageUrlToLocalPath(rawUrl) {
     url = url.slice(BASE_PATH.length);
   } else if (url.startsWith("/solutions/") || url.startsWith("/problems/") || url.startsWith("/surfaces/") || url.startsWith("/products/") || url.startsWith("/tools/") || url.startsWith("/grits/") || url.startsWith("/tags/") || url.startsWith("/ask/") || url.startsWith("/ai-assistant/") || url.startsWith("/documents/") || url.startsWith("/how-to/")) {
     // Data JSON files often store URLs without /sandpaper_support prefix.
-  } else if (url === "/" || url === BASE_PATH + "/") {
+  } else if (url === "/" || (BASE_PATH && url === BASE_PATH + "/")) {
     url = "/";
   } else {
     return null;

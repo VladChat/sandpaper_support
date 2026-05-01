@@ -56,7 +56,7 @@
     if (script && script.src) {
       return new URL("./support-assistant-modules/", script.src).toString();
     }
-    return "/sandpaper_support/assets/support-assistant-modules/";
+    return "/assets/support-assistant-modules/";
   }
 
   function loadAuthUiFixStyles() {
@@ -68,7 +68,7 @@
     const script = getCurrentScript();
     const href = script && script.src
       ? new URL("./support-auth-overrides.css", script.src).toString()
-      : "/sandpaper_support/assets/support-auth-overrides.css";
+      : "/assets/support-auth-overrides.css";
 
     const link = document.createElement("link");
     link.id = stylesheetId;

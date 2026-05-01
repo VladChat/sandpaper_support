@@ -87,11 +87,11 @@ function escapeHtml(value) {
 
 function sitePath(relativeUrl) {
   const input = String(relativeUrl || "").trim();
-  if (!input) return "/sandpaper_support/";
+  if (!input) return "/";
   if (/^https?:\/\//i.test(input)) return input;
   const withLeadingSlash = input.charAt(0) === "/" ? input : "/" + input;
-  if (withLeadingSlash.indexOf("/sandpaper_support/") === 0) return withLeadingSlash;
-  return "/sandpaper_support" + withLeadingSlash;
+  if (withLeadingSlash.indexOf("/") === 0) return withLeadingSlash;
+  return "" + withLeadingSlash;
 }
 
 function normalizeText(value) {
@@ -196,17 +196,17 @@ function siteHead(title, description) {
     ' | eQualle Support</title><meta name="description" content="' +
     escapeHtml(description) +
     '">\n' +
-    '<link rel="icon" href="/sandpaper_support/icons/favicon.ico" sizes="any">\n' +
-    '<link rel="icon" type="image/png" sizes="16x16" href="/sandpaper_support/icons/favicon-16x16.png">\n' +
-    '<link rel="icon" type="image/png" sizes="32x32" href="/sandpaper_support/icons/favicon-32x32.png">\n' +
-    '<link rel="apple-touch-icon" sizes="180x180" href="/sandpaper_support/icons/apple-touch-icon.png">\n' +
-    '<link rel="manifest" href="/sandpaper_support/icons/site.webmanifest">\n' +
+    '<link rel="icon" href="/icons/favicon.ico" sizes="any">\n' +
+    '<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">\n' +
+    '<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">\n' +
+    '<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">\n' +
+    '<link rel="manifest" href="/icons/site.webmanifest">\n' +
     '<meta name="theme-color" content="#0B0C0E">\n' +
-    '<link rel="stylesheet" href="/sandpaper_support/assets/styles.css?v=tags-p6d"></head>';
+    '<link rel="stylesheet" href="/assets/styles.css?v=tags-p6d"></head>';
 }
 
 function siteHeader() {
-  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/sandpaper_support/">eQualle <span>Support</span></a><nav class="nav"><a href="/sandpaper_support/problems/">Problems</a><a href="/sandpaper_support/surfaces/">Surfaces</a><a href="/sandpaper_support/grits/">Grit Guide</a><a href="/sandpaper_support/products/">Products</a><a href="/sandpaper_support/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
+  return '<body><header class="site-header"><div class="header-inner"><a class="logo" href="/">eQualle <span>Support</span></a><nav class="nav"><a href="/problems/">Problems</a><a href="/surfaces/">Surfaces</a><a href="/grits/">Grit Guide</a><a href="/products/">Products</a><a href="/tools/grit-sequence-builder/">Tools</a></nav></div></header>';
 }
 
 function siteFooter() {
@@ -281,7 +281,7 @@ function renderTagIndexPage(tagEntries) {
   return siteHead("Topic Tags", "Browse related sanding answer tags used across solution pages.") +
     "\n" +
     siteHeader() +
-    '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / Tags</div><h1>Topic Tags</h1><p class="section-intro">These tags connect related sanding answers. They are mainly used inside answer pages.</p></section>' +
+    '<main><section class="section"><div class="breadcrumb"><a href="/">Home</a> / Tags</div><h1>Topic Tags</h1><p class="section-intro">These tags connect related sanding answers. They are mainly used inside answer pages.</p></section>' +
     sections +
     "</main>" +
     siteFooter();
@@ -316,7 +316,7 @@ function renderTagPage(tagEntry) {
   return siteHead('Answers tagged "' + tagEntry.label + '"', 'Related solution answers for ' + tagEntry.label + '.') +
     "\n" +
     siteHeader() +
-    '<main><section class="section"><div class="breadcrumb"><a href="/sandpaper_support/">Home</a> / <a href="/sandpaper_support/tags/">Tags</a> / ' +
+    '<main><section class="section"><div class="breadcrumb"><a href="/">Home</a> / <a href="/tags/">Tags</a> / ' +
     escapeHtml(tagEntry.label) +
     '</div><h1>Answers tagged "' +
     escapeHtml(tagEntry.label) +

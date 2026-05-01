@@ -4,11 +4,7 @@ import Fuse from "./vendor/fuse.min.mjs";
   window.eQualleUseUnifiedAutocomplete = true;
   window.eQualleUseAlgoliaAutocomplete = true;
 
-  const basePath = (function () {
-    const pathname = String(window.location.pathname || "");
-    const match = pathname.match(/^(.*?\/sandpaper_support)(?:\/|$)/);
-    return match && match[1] ? match[1] : "/sandpaper_support";
-  })();
+  const basePath = "";
 
   const MAX_RESULTS = 8;
   const GENERIC_FIX_PREFIX = "How do I fix ";
