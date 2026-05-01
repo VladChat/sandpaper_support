@@ -138,6 +138,7 @@
             remaining: Number.isFinite(result.remaining) ? result.remaining : null,
             requestLogId: result.requestLogId || result.request_log_id || "",
             imageAccepted: Boolean(result.imageAccepted),
+            imageCount: Number.isFinite(result.imageCount) ? result.imageCount : 0,
           };
         }
 

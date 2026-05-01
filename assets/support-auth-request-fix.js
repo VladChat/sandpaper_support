@@ -1,10 +1,92 @@
 // assets/support-auth-request-fix.js
-// Purpose: keep email-authenticated AI requests using a fresh Supabase access token and avoid silent login_required loops.
+// Purpose: keep email-authenticated AI requests using a fresh Supabase access token, preserve photo payloads, and expose safe image diagnostics.
 (function () {
-  var FIX_MARKER = "support-auth-session-request-fix-v1";
+  var FIX_MARKER = "support-auth-session-request-fix-photo-v2";
 
   function getApi() {
     return window.eQualleSupabase || null;
+  }
+
+  function getConfig() {
+    var config = window.eQualleConfig || {};
+    return {
+      url: String(config.SUPABASE_URL || "").replace(/\/$/, ""),
+      anonKey: String(config.SUPABASE_ANON_KEY || ""),
+    };
+  }
+
+  function hasImages(payload) {
+    return Boolean(
+      payload &&
+        typeof payload === "object" &&
+        Array.isArray(payload.images) &&
+        payload.images.length > 0
+    );
+  }
+
+  function setImageDebugAttributes(payload, result) {
+    var count = hasImages(payload) ? payload.images.length : 0;
+    var accepted = result && typeof result.imageAccepted !== "undefined"
+      ? Boolean(result.imageAccepted)
+      : false;
+    var resultCount = result && Number.isFinite(result.imageCount)
+      ? result.imageCount
+      : count;
+
+    try {
+      document.documentElement.setAttribute("data-last-ai-image-client-sent", String(count > 0));
+      document.documentElement.setAttribute("data-last-ai-image-client-count", String(count));
+      document.documentElement.setAttribute("data-last-ai-image-accepted", String(accepted));
+      document.documentElement.setAttribute("data-last-ai-image-count", String(resultCount));
+    } catch (_error) {
+      return;
+    }
+  }
+
+  function postSupportAssistantDirect(payload) {
+    var config = getConfig();
+
+    if (!config.url || !config.anonKey) {
+      return Promise.resolve({
+        ok: false,
+        error: "supabase_not_configured",
+      });
+    }
+
+    var authToken = payload && payload.accessToken ? payload.accessToken : config.anonKey;
+
+    return fetch(config.url + "/functions/v1/support-ai-chat", {
+      method: "POST",
+      headers: {
+        apikey: config.anonKey,
+        Authorization: "Bearer " + authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (response) {
+        return response.json().catch(function () {
+          return {};
+        }).then(function (body) {
+          var result = Object.assign({}, body || {}, {
+            status: response.status,
+          });
+
+          if (typeof result.ok !== "boolean") {
+            result.ok = response.ok;
+          }
+
+          setImageDebugAttributes(payload, result);
+          return result;
+        });
+      })
+      .catch(function () {
+        setImageDebugAttributes(payload, { imageAccepted: false, imageCount: 0 });
+        return {
+          ok: false,
+          error: "assistant_unavailable",
+        };
+      });
   }
 
   function getFreshAccessToken(api) {
@@ -53,6 +135,14 @@
         if (accessToken) {
           nextPayload.accessToken = accessToken;
         }
+
+        // Important: the older supabase-client request path may rebuild/trim the payload.
+        // For photo requests, call the Edge Function directly so top-level images[] cannot be dropped.
+        if (hasImages(nextPayload)) {
+          setImageDebugAttributes(nextPayload, { imageAccepted: false, imageCount: nextPayload.images.length });
+          return postSupportAssistantDirect(nextPayload);
+        }
+
         return originalAsk.call(api, nextPayload);
       });
     };

@@ -180,6 +180,19 @@
           document.documentElement.setAttribute("data-last-ai-request-log-id", result.requestLogId);
         }
 
+        if (shell.root) {
+          shell.root.setAttribute("data-last-ai-image-accepted", String(Boolean(result.imageAccepted)));
+          shell.root.setAttribute(
+            "data-last-ai-image-count",
+            String(Number.isFinite(result.imageCount) ? result.imageCount : 0),
+          );
+          document.documentElement.setAttribute("data-last-ai-image-accepted", String(Boolean(result.imageAccepted)));
+          document.documentElement.setAttribute(
+            "data-last-ai-image-count",
+            String(Number.isFinite(result.imageCount) ? result.imageCount : 0),
+          );
+        }
+
         const combinedReply =
           result.needsClarification && result.clarifyingQuestion
             ? (result.reply &&

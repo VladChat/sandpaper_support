@@ -328,6 +328,17 @@ import Fuse from "./vendor/fuse.min.mjs";
     }
   }
 
+  function saveAttachedPhotoBeforeRedirect(input) {
+    var shared = window.eQualleSupportAssistantShared || null;
+    if (
+      shared &&
+      typeof shared.savePendingPhotoFromElement === "function"
+    ) {
+      return shared.savePendingPhotoFromElement(input);
+    }
+    return false;
+  }
+
   function askCurrentQuery(state) {
     const query = clean(state.input.value);
     if (!query) {
@@ -336,6 +347,7 @@ import Fuse from "./vendor/fuse.min.mjs";
     }
 
     resetFreshAskStorage(query);
+    saveAttachedPhotoBeforeRedirect(state.input);
     window.location.href = normalizePath("/ask/") + "?q=" + encodeURIComponent(query);
   }
 

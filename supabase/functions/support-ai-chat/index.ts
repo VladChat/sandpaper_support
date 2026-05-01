@@ -347,6 +347,19 @@ function sanitizeImages(value: unknown): ChatImageInput[] | string {
   return sanitized;
 }
 
+
+function buildImageDebug(images: ChatImageInput[] | undefined, openAiInputHasImage = false): Record<string, unknown> {
+  const first = Array.isArray(images) && images.length ? images[0] : null;
+  return {
+    image_count: Array.isArray(images) ? images.length : 0,
+    image_accepted: Boolean(first),
+    image_width: first && Number.isFinite(first.width) ? first.width : null,
+    image_height: first && Number.isFinite(first.height) ? first.height : null,
+    image_size_bytes: first && Number.isFinite(first.sizeBytes) ? first.sizeBytes : null,
+    openai_input_has_image: openAiInputHasImage,
+  };
+}
+
 function validateRequest(body: unknown): ChatRequest | string {
   if (!isObject(body)) {
     return "Request body must be a JSON object.";
@@ -760,12 +773,17 @@ async function insertAiRequestLog(payload: {
   errorCode?: string;
   errorMessage?: string;
   matchedPages?: Array<{ title: string; path: string }>;
+  imageDebug?: Record<string, unknown>;
   request: Request;
 }): Promise<string> {
   const ipAddress = getClientIp(payload.request);
   const userAgent = payload.request.headers.get("user-agent") || "";
   const ipHash = await sha256Hex(ipAddress || "unknown");
   const sourceType = sanitizeString(payload.context.source, 64) || null;
+  const retrievedContentForLog = {
+    ...(payload.context.retrievedContent || {}),
+    image_debug: payload.imageDebug || {},
+  };
 
   const body = {
     session_token: sanitizeString(payload.sessionToken, 160) || null,
@@ -786,7 +804,7 @@ async function insertAiRequestLog(payload: {
         ? payload.context.retrievedContent.solutionCards[0].id
         : null,
     matched_pages: Array.isArray(payload.matchedPages) ? payload.matchedPages : [],
-    retrieved_content: payload.context.retrievedContent || {},
+    retrieved_content: retrievedContentForLog,
     ip_address: ipAddress || null,
     ip_hash: ipHash,
     user_agent: userAgent || null,
@@ -1308,6 +1326,8 @@ Deno.serve(async (request: Request) => {
         code: "protection_not_configured",
         message,
         requestLogId,
+      imageAccepted: Boolean(parsedRequest.images && parsedRequest.images.length),
+      imageCount: parsedRequest.images ? parsedRequest.images.length : 0,
       },
       500,
     );
