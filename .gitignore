@@ -12,3 +12,5 @@ coverage/
 __pycache__/
 *.pyc
 *.zip
+data/card-videos-debug-log.json
+data/card-videos-quota-log.json

@@ -7,7 +7,7 @@
 
   const SILENCE_TIMEOUT_MS = 3000;
   const VOICE_VOCABULARY_PATH = "data/voice-vocabulary.json";
-  const VOICE_VOCABULARY_VERSION = "support-voice-vocabulary-20260430-v1";
+  const VOICE_VOCABULARY_VERSION = "support-voice-vocabulary-20260430-v2";
   const MAX_PHRASE_BIASING_ITEMS = 250;
   const DEFAULT_GRIT_NUMBERS = [
     "60", "80", "100", "120", "150", "180", "220", "240", "280", "320", "360",
