@@ -1,0 +1,1742 @@
+{
+  "schemaVersion": 1,
+  "filePurpose": "Domain vocabulary for eQualle Sandpaper Support voice input. Future browser-side voice code can load this file for phrase biasing and post-recognition transcript corrections.",
+  "recommendedPathFromRepoRoot": "data/voice-vocabulary.json",
+  "generatedFor": "VladChat/sandpaper_support",
+  "lastPrepared": "2026-04-30",
+  "usageNotes": [
+    "phraseBiasing terms are hints for browser speech recognition when supported.",
+    "corrections run after speech recognition and before inserting the transcript into the input field.",
+    "The strongest correction is limited to known sandpaper grit numbers, so '60 degree' becomes '60 grit' but random angles are not blindly changed.",
+    "This file adds no server load, no audio API cost, and no OpenAI tokens by itself."
+  ],
+  "phraseBiasing": [
+    {
+      "phrase": "sandpaper",
+      "boost": 10,
+      "category": "core"
+    },
+    {
+      "phrase": "sand paper",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "sanding",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "abrasive",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "grit",
+      "boost": 10,
+      "category": "core"
+    },
+    {
+      "phrase": "grits",
+      "boost": 10,
+      "category": "core"
+    },
+    {
+      "phrase": "grit size",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "grit number",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "grit sequence",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "sandpaper grit",
+      "boost": 10,
+      "category": "core"
+    },
+    {
+      "phrase": "sanding grit",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "coarse grit",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "medium grit",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "fine grit",
+      "boost": 9,
+      "category": "core"
+    },
+    {
+      "phrase": "very fine grit",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "ultra fine grit",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "starting grit",
+      "boost": 8,
+      "category": "core"
+    },
+    {
+      "phrase": "change grit",
+      "boost": 7,
+      "category": "core"
+    },
+    {
+      "phrase": "skip grits",
+      "boost": 7,
+      "category": "core"
+    },
+    {
+      "phrase": "FEPA grit",
+      "boost": 6,
+      "category": "standards"
+    },
+    {
+      "phrase": "CAMI grit",
+      "boost": 6,
+      "category": "standards"
+    },
+    {
+      "phrase": "P grit",
+      "boost": 6,
+      "category": "standards"
+    },
+    {
+      "phrase": "60 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P60",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 60",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "60 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "80 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P80",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 80",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "80 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "100 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P100",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 100",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "100 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "120 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P120",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 120",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "120 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "150 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P150",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 150",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "150 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "180 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P180",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 180",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "180 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "220 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P220",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 220",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "220 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "240 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P240",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 240",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "240 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "280 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P280",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 280",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "280 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "320 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P320",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 320",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "320 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "360 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P360",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 360",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "360 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "400 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P400",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 400",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "400 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "500 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P500",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 500",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "500 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "600 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P600",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 600",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "600 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "800 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P800",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 800",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "800 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1000 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P1000",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 1000",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1000 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1200 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P1200",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 1200",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1200 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1500 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P1500",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 1500",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "1500 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "2000 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P2000",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 2000",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "2000 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "2500 grit",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P2500",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 2500",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "2500 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "3000 grit",
+      "boost": 10,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P3000",
+      "boost": 8,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "P 3000",
+      "boost": 6,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "3000 grit sandpaper",
+      "boost": 9,
+      "category": "grit-number"
+    },
+    {
+      "phrase": "silicon carbide",
+      "boost": 10,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "aluminum oxide",
+      "boost": 9,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "aluminium oxide",
+      "boost": 6,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "ceramic abrasive",
+      "boost": 7,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "ceramic alumina",
+      "boost": 6,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "zirconia alumina",
+      "boost": 6,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "garnet sandpaper",
+      "boost": 6,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "emery paper",
+      "boost": 6,
+      "category": "abrasive-material"
+    },
+    {
+      "phrase": "waterproof sandpaper",
+      "boost": 10,
+      "category": "product-type"
+    },
+    {
+      "phrase": "wet dry sandpaper",
+      "boost": 9,
+      "category": "product-type"
+    },
+    {
+      "phrase": "wet or dry sandpaper",
+      "boost": 9,
+      "category": "product-type"
+    },
+    {
+      "phrase": "wetordry sandpaper",
+      "boost": 7,
+      "category": "product-type"
+    },
+    {
+      "phrase": "latex paper backing",
+      "boost": 8,
+      "category": "product-type"
+    },
+    {
+      "phrase": "paper backing",
+      "boost": 7,
+      "category": "product-type"
+    },
+    {
+      "phrase": "sanding sheet",
+      "boost": 8,
+      "category": "product-type"
+    },
+    {
+      "phrase": "sanding sheets",
+      "boost": 8,
+      "category": "product-type"
+    },
+    {
+      "phrase": "abrasive sheet",
+      "boost": 7,
+      "category": "product-type"
+    },
+    {
+      "phrase": "wet sanding",
+      "boost": 10,
+      "category": "method"
+    },
+    {
+      "phrase": "dry sanding",
+      "boost": 10,
+      "category": "method"
+    },
+    {
+      "phrase": "wet or dry",
+      "boost": 9,
+      "category": "method"
+    },
+    {
+      "phrase": "wet sand",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "dry sand",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "surface preparation",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "surface prep",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "paint prep",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "primer sanding",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "clear coat sanding",
+      "boost": 9,
+      "category": "method"
+    },
+    {
+      "phrase": "between coats",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "scuff sanding",
+      "boost": 7,
+      "category": "method"
+    },
+    {
+      "phrase": "finish sanding",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "polishing prep",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "polishing",
+      "boost": 7,
+      "category": "method"
+    },
+    {
+      "phrase": "buffing",
+      "boost": 6,
+      "category": "method"
+    },
+    {
+      "phrase": "feather edge",
+      "boost": 7,
+      "category": "method"
+    },
+    {
+      "phrase": "scratch removal",
+      "boost": 9,
+      "category": "method"
+    },
+    {
+      "phrase": "rust removal",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "paint removal",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "remove haze",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "heavy removal",
+      "boost": 8,
+      "category": "method"
+    },
+    {
+      "phrase": "fine prep",
+      "boost": 7,
+      "category": "method"
+    },
+    {
+      "phrase": "light pressure",
+      "boost": 8,
+      "category": "technique"
+    },
+    {
+      "phrase": "heavy pressure",
+      "boost": 8,
+      "category": "technique"
+    },
+    {
+      "phrase": "clean water",
+      "boost": 7,
+      "category": "technique"
+    },
+    {
+      "phrase": "dirty water",
+      "boost": 7,
+      "category": "technique"
+    },
+    {
+      "phrase": "rinse often",
+      "boost": 7,
+      "category": "technique"
+    },
+    {
+      "phrase": "wipe between grits",
+      "boost": 7,
+      "category": "technique"
+    },
+    {
+      "phrase": "wood",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "hardwood",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "softwood",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "plywood",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "MDF",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "veneer",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "raised grain",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "wood grain",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "stain prep",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "furniture",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "cabinet",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "cabinets",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "paint",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "primer",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "latex paint",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "spray paint",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "clear coat",
+      "boost": 10,
+      "category": "surface"
+    },
+    {
+      "phrase": "clearcoat",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "base coat",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "top coat",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "gelcoat",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "body filler",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "Bondo",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "fiberglass",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "lacquer",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "varnish",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "polyurethane",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "sealer",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "metal",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "steel",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "stainless steel",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "carbon steel",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "aluminum",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "aluminium",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "galvanized metal",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "cast iron",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "brass",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "bronze",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "copper",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "rust",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "oxidation",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "burrs",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "plastic",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "ABS plastic",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "acrylic",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "polycarbonate",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "headlight restoration",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "headlights",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "3D print",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "PLA",
+      "boost": 6,
+      "category": "surface"
+    },
+    {
+      "phrase": "resin",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "epoxy",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "drywall",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "drywall patch",
+      "boost": 9,
+      "category": "surface"
+    },
+    {
+      "phrase": "joint compound",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "spackle",
+      "boost": 8,
+      "category": "surface"
+    },
+    {
+      "phrase": "drywall paper",
+      "boost": 7,
+      "category": "surface"
+    },
+    {
+      "phrase": "scratch",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "scratches",
+      "boost": 10,
+      "category": "problem"
+    },
+    {
+      "phrase": "deep scratches",
+      "boost": 10,
+      "category": "problem"
+    },
+    {
+      "phrase": "visible scratches",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "sanding scratches",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "scratch pattern",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "swirl marks",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "orange peel",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "haze",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "hazy",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "cloudy",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "dull",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "rough",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "roughness",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "rough spots",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "uneven finish",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "clogging",
+      "boost": 10,
+      "category": "problem"
+    },
+    {
+      "phrase": "clogs",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "loaded paper",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "loaded sheet",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "stops cutting",
+      "boost": 10,
+      "category": "problem"
+    },
+    {
+      "phrase": "worn sheet",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "glazed sheet",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "gums up",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "smears",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "slurry",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "dust nibs",
+      "boost": 9,
+      "category": "problem"
+    },
+    {
+      "phrase": "paint runs",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "cut through",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "burn through",
+      "boost": 8,
+      "category": "problem"
+    },
+    {
+      "phrase": "fisheyes",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "peeling paint",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "pinholes",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "tears",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "curling",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "fraying",
+      "boost": 6,
+      "category": "problem"
+    },
+    {
+      "phrase": "black residue",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "heat marks",
+      "boost": 7,
+      "category": "problem"
+    },
+    {
+      "phrase": "hand sanding",
+      "boost": 8,
+      "category": "tool"
+    },
+    {
+      "phrase": "orbital sander",
+      "boost": 9,
+      "category": "tool"
+    },
+    {
+      "phrase": "random orbital sander",
+      "boost": 8,
+      "category": "tool"
+    },
+    {
+      "phrase": "sanding block",
+      "boost": 9,
+      "category": "tool"
+    },
+    {
+      "phrase": "quarter sheet",
+      "boost": 8,
+      "category": "tool"
+    },
+    {
+      "phrase": "half sheet",
+      "boost": 8,
+      "category": "tool"
+    },
+    {
+      "phrase": "full sheet",
+      "boost": 7,
+      "category": "tool"
+    },
+    {
+      "phrase": "9x11",
+      "boost": 9,
+      "category": "sheet-size"
+    },
+    {
+      "phrase": "9 by 11",
+      "boost": 9,
+      "category": "sheet-size"
+    },
+    {
+      "phrase": "9 x 11",
+      "boost": 8,
+      "category": "sheet-size"
+    },
+    {
+      "phrase": "nine by eleven",
+      "boost": 8,
+      "category": "sheet-size"
+    },
+    {
+      "phrase": "cut sandpaper",
+      "boost": 7,
+      "category": "tool"
+    },
+    {
+      "phrase": "fold sandpaper",
+      "boost": 7,
+      "category": "tool"
+    },
+    {
+      "phrase": "replace sheet",
+      "boost": 8,
+      "category": "tool"
+    },
+    {
+      "phrase": "fresh sheet",
+      "boost": 8,
+      "category": "tool"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "known-grit-degree-grid-to-grit",
+      "type": "regex",
+      "pattern": "\\b(60|80|100|120|150|180|220|240|280|320|360|400|500|600|800|1000|1200|1500|2000|2500|3000)\\s*(degree|degrees|grid|grids|great|greet|greed|grade|grades)\\b",
+      "replace": "$1 grit",
+      "flags": "gi",
+      "category": "grit-number",
+      "priority": 100,
+      "note": "Limited to known sandpaper grit numbers to avoid changing real angles."
+    },
+    {
+      "id": "known-grit-with-p-prefix-normalize",
+      "type": "regex",
+      "pattern": "\\b[Pp]\\s*(60|80|100|120|150|180|220|240|280|320|360|400|500|600|800|1000|1200|1500|2000|2500|3000)\\b",
+      "replace": "P$1",
+      "flags": "g",
+      "category": "grit-number",
+      "priority": 85
+    },
+    {
+      "id": "spoken-sixty-to-60-grit",
+      "type": "regex",
+      "pattern": "\\bsixty\\s+(degree|degrees|grid|great|greet|grade|grit)\\b",
+      "replace": "60 grit",
+      "flags": "gi",
+      "category": "spoken-grit",
+      "priority": 90
+    },
+    {
+      "id": "spoken-eighty-to-80-grit",
+      "type": "regex",
+      "pattern": "\\beighty\\s+(degree|degrees|grid|great|greet|grade|grit)\\b",
+      "replace": "80 grit",
+      "flags": "gi",
+      "category": "spoken-grit",
+      "priority": 88
+    },
+    {
+      "id": "spoken-one-twenty-to-120-grit",
+      "type": "regex",
+      "pattern": "\\b(one twenty|one hundred twenty)\\s+(degree|degrees|grid|great|greet|grade|grit)\\b",
+      "replace": "120 grit",
+      "flags": "gi",
+      "category": "spoken-grit",
+      "priority": 82
+    },
+    {
+      "id": "spoken-two-twenty-to-220-grit",
+      "type": "regex",
+      "pattern": "\\b(two twenty|two hundred twenty)\\s+(degree|degrees|grid|great|greet|grade|grit)\\b",
+      "replace": "220 grit",
+      "flags": "gi",
+      "category": "spoken-grit",
+      "priority": 80
+    },
+    {
+      "id": "sand-paper-to-sandpaper",
+      "type": "regex",
+      "pattern": "\\bsand\\s+paper(s)?\\b",
+      "replace": "sandpaper",
+      "flags": "gi",
+      "category": "sandpaper",
+      "priority": 95
+    },
+    {
+      "id": "some-paper-to-sandpaper",
+      "type": "regex",
+      "pattern": "\\bsome\\s+paper(s)?\\b",
+      "replace": "sandpaper",
+      "flags": "gi",
+      "category": "sandpaper",
+      "priority": 80
+    },
+    {
+      "id": "same-paper-to-sandpaper",
+      "type": "regex",
+      "pattern": "\\bsame\\s+paper(s)?\\b",
+      "replace": "sandpaper",
+      "flags": "gi",
+      "category": "sandpaper",
+      "priority": 72
+    },
+    {
+      "id": "sample-paper-to-sandpaper",
+      "type": "regex",
+      "pattern": "\\bsample\\s+paper(s)?\\b",
+      "replace": "sandpaper",
+      "flags": "gi",
+      "category": "sandpaper",
+      "priority": 70
+    },
+    {
+      "id": "sanding-paper-to-sandpaper",
+      "type": "regex",
+      "pattern": "\\bsanding\\s+paper(s)?\\b",
+      "replace": "sandpaper",
+      "flags": "gi",
+      "category": "sandpaper",
+      "priority": 70
+    },
+    {
+      "id": "wet-sending-to-wet-sanding",
+      "type": "regex",
+      "pattern": "\\bwet\\s+(sending|standing|sand\\s+in|sentence)\\b",
+      "replace": "wet sanding",
+      "flags": "gi",
+      "category": "method",
+      "priority": 92
+    },
+    {
+      "id": "water-sanding-to-wet-sanding",
+      "type": "regex",
+      "pattern": "\\bwater\\s+sanding\\b",
+      "replace": "wet sanding",
+      "flags": "gi",
+      "category": "method",
+      "priority": 72
+    },
+    {
+      "id": "dry-sending-to-dry-sanding",
+      "type": "regex",
+      "pattern": "\\bdry\\s+(sending|standing|sand\\s+in|sentence)\\b",
+      "replace": "dry sanding",
+      "flags": "gi",
+      "category": "method",
+      "priority": 88
+    },
+    {
+      "id": "silicone-carbide-to-silicon-carbide",
+      "type": "regex",
+      "pattern": "\\bsilicone\\s+carbide\\b",
+      "replace": "silicon carbide",
+      "flags": "gi",
+      "category": "abrasive-material",
+      "priority": 95
+    },
+    {
+      "id": "silicon-carbon-to-silicon-carbide",
+      "type": "regex",
+      "pattern": "\\bsilicon\\s+carbon\\b",
+      "replace": "silicon carbide",
+      "flags": "gi",
+      "category": "abrasive-material",
+      "priority": 85
+    },
+    {
+      "id": "silicone-carbon-to-silicon-carbide",
+      "type": "regex",
+      "pattern": "\\bsilicone\\s+carbon\\b",
+      "replace": "silicon carbide",
+      "flags": "gi",
+      "category": "abrasive-material",
+      "priority": 85
+    },
+    {
+      "id": "silicon-card-by-to-silicon-carbide",
+      "type": "regex",
+      "pattern": "\\bsilicon\\s+card\\s+by\\b",
+      "replace": "silicon carbide",
+      "flags": "gi",
+      "category": "abrasive-material",
+      "priority": 75
+    },
+    {
+      "id": "aluminum-oxide-misspell",
+      "type": "regex",
+      "pattern": "\\baluminum\\s+oxyde\\b",
+      "replace": "aluminum oxide",
+      "flags": "gi",
+      "category": "abrasive-material",
+      "priority": 70
+    },
+    {
+      "id": "clear-code-to-clear-coat",
+      "type": "regex",
+      "pattern": "\\bclear\\s+code\\b",
+      "replace": "clear coat",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 95
+    },
+    {
+      "id": "clearcoat-to-clear-coat",
+      "type": "regex",
+      "pattern": "\\bclearcoat\\b",
+      "replace": "clear coat",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 82
+    },
+    {
+      "id": "top-code-to-top-coat",
+      "type": "regex",
+      "pattern": "\\btop\\s+code\\b",
+      "replace": "top coat",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 70
+    },
+    {
+      "id": "base-code-to-base-coat",
+      "type": "regex",
+      "pattern": "\\bbase\\s+code\\b",
+      "replace": "base coat",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 70
+    },
+    {
+      "id": "prime-or-to-primer",
+      "type": "regex",
+      "pattern": "\\bprime\\s+or\\b",
+      "replace": "primer",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 80
+    },
+    {
+      "id": "primar-to-primer",
+      "type": "regex",
+      "pattern": "\\bprimar\\b",
+      "replace": "primer",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 70
+    },
+    {
+      "id": "orange-pill-to-orange-peel",
+      "type": "regex",
+      "pattern": "\\borange\\s+pill\\b",
+      "replace": "orange peel",
+      "flags": "gi",
+      "category": "problem",
+      "priority": 92
+    },
+    {
+      "id": "oral-peel-to-orange-peel",
+      "type": "regex",
+      "pattern": "\\boral\\s+peel\\b",
+      "replace": "orange peel",
+      "flags": "gi",
+      "category": "problem",
+      "priority": 82
+    },
+    {
+      "id": "orange-field-to-orange-peel",
+      "type": "regex",
+      "pattern": "\\borange\\s+field\\b",
+      "replace": "orange peel",
+      "flags": "gi",
+      "category": "problem",
+      "priority": 70
+    },
+    {
+      "id": "swirl-mark-to-swirl-marks",
+      "type": "regex",
+      "pattern": "\\bswirl\\s+mark\\b",
+      "replace": "swirl marks",
+      "flags": "gi",
+      "category": "problem",
+      "priority": 68
+    },
+    {
+      "id": "dust-nib-to-dust-nibs",
+      "type": "regex",
+      "pattern": "\\bdust\\s+nib\\b",
+      "replace": "dust nibs",
+      "flags": "gi",
+      "category": "problem",
+      "priority": 65
+    },
+    {
+      "id": "play-wood-to-plywood",
+      "type": "regex",
+      "pattern": "\\bplay\\s+wood\\b",
+      "replace": "plywood",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 90
+    },
+    {
+      "id": "ply-wood-to-plywood",
+      "type": "regex",
+      "pattern": "\\bply\\s+wood\\b",
+      "replace": "plywood",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 88
+    },
+    {
+      "id": "hard-wood-to-hardwood",
+      "type": "regex",
+      "pattern": "\\bhard\\s+wood\\b",
+      "replace": "hardwood",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 70
+    },
+    {
+      "id": "soft-wood-to-softwood",
+      "type": "regex",
+      "pattern": "\\bsoft\\s+wood\\b",
+      "replace": "softwood",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 70
+    },
+    {
+      "id": "dry-wall-to-drywall",
+      "type": "regex",
+      "pattern": "\\bdry\\s+wall\\b",
+      "replace": "drywall",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 88
+    },
+    {
+      "id": "stainless-still-to-stainless-steel",
+      "type": "regex",
+      "pattern": "\\bstainless\\s+still\\b",
+      "replace": "stainless steel",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 90
+    },
+    {
+      "id": "stain-less-steel-to-stainless-steel",
+      "type": "regex",
+      "pattern": "\\bstain\\s+less\\s+steel\\b",
+      "replace": "stainless steel",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 75
+    },
+    {
+      "id": "aluminim-to-aluminum",
+      "type": "regex",
+      "pattern": "\\baluminim\\b",
+      "replace": "aluminum",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 72
+    },
+    {
+      "id": "joint-compounding-to-joint-compound",
+      "type": "regex",
+      "pattern": "\\bjoint\\s+compounding\\b",
+      "replace": "joint compound",
+      "flags": "gi",
+      "category": "surface",
+      "priority": 68
+    },
+    {
+      "id": "orbital-sender-to-orbital-sander",
+      "type": "regex",
+      "pattern": "\\borbital\\s+sender\\b",
+      "replace": "orbital sander",
+      "flags": "gi",
+      "category": "tool",
+      "priority": 95
+    },
+    {
+      "id": "orbit-sander-to-orbital-sander",
+      "type": "regex",
+      "pattern": "\\borbit\\s+sander\\b",
+      "replace": "orbital sander",
+      "flags": "gi",
+      "category": "tool",
+      "priority": 80
+    },
+    {
+      "id": "sanding-black-to-sanding-block",
+      "type": "regex",
+      "pattern": "\\bsanding\\s+black\\b",
+      "replace": "sanding block",
+      "flags": "gi",
+      "category": "tool",
+      "priority": 90
+    },
+    {
+      "id": "nine-by-eleven-to-9x11",
+      "type": "regex",
+      "pattern": "\\bnine\\s+by\\s+eleven\\b",
+      "replace": "9x11",
+      "flags": "gi",
+      "category": "sheet-size",
+      "priority": 88
+    },
+    {
+      "id": "nine-x-eleven-to-9x11",
+      "type": "regex",
+      "pattern": "\\bnine\\s+x\\s+eleven\\b",
+      "replace": "9x11",
+      "flags": "gi",
+      "category": "sheet-size",
+      "priority": 88
+    },
+    {
+      "id": "9-by-11-to-9x11",
+      "type": "regex",
+      "pattern": "\\b9\\s+by\\s+11\\b",
+      "replace": "9x11",
+      "flags": "gi",
+      "category": "sheet-size",
+      "priority": 88
+    },
+    {
+      "id": "9-x-11-to-9x11",
+      "type": "regex",
+      "pattern": "\\b9\\s*x\\s*11\\b",
+      "replace": "9x11",
+      "flags": "gi",
+      "category": "sheet-size",
+      "priority": 80
+    }
+  ]
+}
