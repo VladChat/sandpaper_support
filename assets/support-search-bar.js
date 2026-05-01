@@ -1,7 +1,7 @@
 // assets/support-search-bar.js
 // Purpose: shared support search / follow-up input bar used across homepage, solution pages, and AI chat.
 (function () {
-  const VERSION = "support-search-bar-followup-fix-20260430-v1";
+  const VERSION = "support-photo-unified-20260430-v2";
   const processedNodes = new WeakSet();
 
   function clean(value) {
@@ -40,23 +40,18 @@
     return button;
   }
 
-  function createPhotoButton(input) {
+  function createPhotoButton() {
     const button = document.createElement("button");
     button.className = "support-tool-button support-photo-button";
     button.type = "button";
-    button.setAttribute("aria-label", "Add photo coming soon");
-    button.title = "Add photo coming soon";
+    button.setAttribute("data-support-photo-button", "");
+    button.setAttribute("aria-label", "Add photo");
+    button.title = "Add photo";
     button.appendChild(createSvg("M19 5h-3.17l-1.84-2H10L8.17 5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2Zm-7 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5Zm0-1.8A3.2 3.2 0 1 0 12 9.8a3.2 3.2 0 0 0 0 6.4Z"));
 
     const label = document.createElement("span");
     label.textContent = "Add Photo";
     button.appendChild(label);
-
-    button.addEventListener("click", function () {
-      if (input && typeof input.focus === "function") {
-        input.focus();
-      }
-    });
 
     return button;
   }
@@ -116,7 +111,7 @@
     form.appendChild(createMicButton());
 
     if (options.includePhoto) {
-      form.appendChild(createPhotoButton(input));
+      form.appendChild(createPhotoButton());
     }
 
     form.appendChild(submit);
@@ -142,6 +137,19 @@
       label: clean(node.getAttribute("data-label")) || defaultLabel,
       includePhoto: boolAttr(node, "data-include-photo", true),
     };
+  }
+
+  function announceReady(root) {
+    try {
+      document.dispatchEvent(new CustomEvent("support-search-bar:ready", {
+        detail: {
+          root: root || document,
+          version: VERSION,
+        },
+      }));
+    } catch (_error) {
+      return;
+    }
   }
 
   function renderSearchPlaceholder(node) {
@@ -212,23 +220,10 @@
     }
 
     if (!form.querySelector(".support-photo-button")) {
-      form.insertBefore(createPhotoButton(input), submit);
+      form.insertBefore(createPhotoButton(), submit);
     }
 
     announceReady(form);
-  }
-
-  function announceReady(root) {
-    try {
-      document.dispatchEvent(new CustomEvent("support-search-bar:ready", {
-        detail: {
-          root: root || document,
-          version: VERSION,
-        },
-      }));
-    } catch (_error) {
-      return;
-    }
   }
 
   function renderAll(root) {

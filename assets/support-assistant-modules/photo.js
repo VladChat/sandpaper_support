@@ -1,10 +1,11 @@
 // assets/support-assistant-modules/photo.js
-// Purpose: browser-side photo selection, resize, compression, preview, and payload creation for AI support chat.
+// Purpose: browser-side photo selection, resize, compression, preview, pending transfer, and payload creation for AI support chat.
 (function (shared) {
   if (!shared) {
     return;
   }
 
+  const PENDING_PHOTO_KEY = "equalle_support_pending_photo_v1";
   const MAX_ORIGINAL_BYTES = 12 * 1024 * 1024;
   const MAX_PROCESSED_BYTES = 1 * 1024 * 1024;
   const MAX_DIMENSION = 1280;
@@ -12,6 +13,8 @@
   const JPEG_QUALITIES = [0.82, 0.75, 0.68];
   const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
   const ALLOWED_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "heic", "heif"];
+
+  let observerStarted = false;
 
   function fileExtension(fileName) {
     const value = String(fileName || "").toLowerCase();
@@ -25,8 +28,19 @@
     return ALLOWED_TYPES.indexOf(type) !== -1 || ALLOWED_EXTENSIONS.indexOf(ext) !== -1;
   }
 
-  function showError(root, message) {
-    const error = root ? root.querySelector("[data-support-photo-error]") : null;
+  function formatBytes(bytes) {
+    const value = Number(bytes || 0);
+    if (!Number.isFinite(value) || value <= 0) {
+      return "";
+    }
+    if (value >= 1024 * 1024) {
+      return (value / (1024 * 1024)).toFixed(1).replace(/\.0$/, "") + " MB";
+    }
+    return Math.max(1, Math.round(value / 1024)) + " KB";
+  }
+
+  function showError(container, message) {
+    const error = container ? container.querySelector("[data-support-photo-error]") : null;
     if (!error) {
       return;
     }
@@ -34,8 +48,8 @@
     error.hidden = false;
   }
 
-  function clearError(root) {
-    const error = root ? root.querySelector("[data-support-photo-error]") : null;
+  function clearError(container) {
+    const error = container ? container.querySelector("[data-support-photo-error]") : null;
     if (!error) {
       return;
     }
@@ -175,14 +189,67 @@
     ].join("");
   }
 
-  function attachPhotoInput(shell) {
-    if (!shell || !shell.form || !shell.input) {
+  function createFallbackButton() {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "support-tool-button support-photo-button";
+    button.setAttribute("data-support-photo-button", "");
+    button.setAttribute("aria-label", "Add photo");
+    button.title = "Add photo";
+    button.innerHTML = createSvgIcon() + '<span>Add Photo</span>';
+    return button;
+  }
+
+  function resolveForm(shellOrForm) {
+    if (!shellOrForm) {
       return null;
     }
-    if (shell.form.querySelector("[data-support-photo-input]")) {
+    if (shellOrForm.form) {
+      return shellOrForm.form;
+    }
+    if (shellOrForm.matches && (shellOrForm.matches("form") || shellOrForm.classList.contains("support-search-form"))) {
+      return shellOrForm;
+    }
+    if (shellOrForm.querySelector) {
+      return shellOrForm.querySelector("form, .support-search-form, [data-ai-form], [data-solution-followup-form]");
+    }
+    return null;
+  }
+
+  function resolveInput(shellOrForm, form) {
+    if (shellOrForm && shellOrForm.input) {
+      return shellOrForm.input;
+    }
+    return form ? form.querySelector("[data-ai-input], [data-solution-followup-input], [data-support-search], .chat-input, .support-search-input") : null;
+  }
+
+  function findPreviewContainer(form) {
+    const parent = form && form.parentNode ? form.parentNode : null;
+    if (!parent) {
+      return form;
+    }
+    if (
+      parent.classList &&
+      (parent.classList.contains("support-followup-bar-shell") ||
+        parent.classList.contains("support-search-shell") ||
+        parent.classList.contains("chat-shell"))
+    ) {
+      return parent;
+    }
+    return parent;
+  }
+
+  function attachPhotoInput(shellOrForm) {
+    const form = resolveForm(shellOrForm);
+    if (!form) {
       return null;
     }
 
+    if (form.__equalleSupportPhotoController) {
+      return form.__equalleSupportPhotoController;
+    }
+
+    const input = resolveInput(shellOrForm, form);
     let currentImage = null;
     let previewUrl = "";
 
@@ -192,15 +259,23 @@
     fileInput.hidden = true;
     fileInput.setAttribute("data-support-photo-input", "");
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "support-photo-button";
+    let button = form.querySelector("[data-support-photo-button], .support-photo-button");
+    if (!button) {
+      button = createFallbackButton();
+      const sendButton = form.querySelector("button[type='submit'], [data-support-search-submit], .support-search-button, .chat-send");
+      if (sendButton && sendButton.parentNode === form) {
+        form.insertBefore(button, sendButton);
+      } else {
+        form.appendChild(button);
+      }
+    }
+
     button.setAttribute("data-support-photo-button", "");
     button.setAttribute("aria-label", "Add photo");
-    button.innerHTML = createSvgIcon() + '<span class="support-photo-button-text">Add Photo</span>';
+    button.title = "Add photo";
 
     const preview = document.createElement("div");
-    preview.className = "support-photo-preview";
+    preview.className = "support-photo-attachment-panel";
     preview.hidden = true;
     preview.setAttribute("data-support-photo-preview", "");
 
@@ -223,7 +298,8 @@
       clearPreviewUrl();
       preview.innerHTML = "";
       preview.hidden = true;
-      clearError(shell.form);
+      error.hidden = true;
+      error.textContent = "";
       button.classList.remove("support-photo-button-attached");
       button.disabled = false;
     }
@@ -233,14 +309,27 @@
       preview.innerHTML = "";
       previewUrl = URL.createObjectURL(file);
 
-      const img = document.createElement("img");
-      img.src = previewUrl;
-      img.alt = "Attached photo preview";
-      img.decoding = "async";
+      const thumb = document.createElement("img");
+      thumb.className = "support-photo-thumb";
+      thumb.src = previewUrl;
+      thumb.alt = "Attached photo preview";
+      thumb.decoding = "async";
 
-      const meta = document.createElement("span");
+      const meta = document.createElement("div");
       meta.className = "support-photo-preview-meta";
-      meta.textContent = "Photo attached · " + Math.round(image.sizeBytes / 1024) + " KB";
+
+      const title = document.createElement("span");
+      title.className = "support-photo-preview-title";
+      title.textContent = "Photo attached";
+
+      const size = document.createElement("span");
+      size.className = "support-photo-preview-size";
+      size.textContent = formatBytes(image.sizeBytes);
+
+      meta.appendChild(title);
+      if (size.textContent) {
+        meta.appendChild(size);
+      }
 
       const remove = document.createElement("button");
       remove.type = "button";
@@ -248,14 +337,15 @@
       remove.textContent = "Remove";
       remove.addEventListener("click", clear);
 
-      preview.appendChild(img);
+      preview.appendChild(thumb);
       preview.appendChild(meta);
       preview.appendChild(remove);
       preview.hidden = false;
       button.classList.add("support-photo-button-attached");
     }
 
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
       if (button.disabled) {
         return;
       }
@@ -268,37 +358,44 @@
         return;
       }
 
-      clearError(shell.form);
+      clearError(error.parentNode || form);
       button.disabled = true;
       button.classList.add("support-photo-button-loading");
 
       processPhoto(file).then(function (image) {
         currentImage = image;
         renderPreview(file, image);
-      }).catch(function (error) {
+        if (input && typeof input.focus === "function") {
+          input.focus();
+        }
+      }).catch(function (reason) {
         currentImage = null;
         fileInput.value = "";
         clearPreviewUrl();
         preview.innerHTML = "";
         preview.hidden = true;
-        showError(shell.form, error && error.message ? error.message : "Could not process this image. Please try another photo.");
+        showError(error.parentNode || form, reason && reason.message ? reason.message : "Could not process this image. Please try another photo.");
       }).finally(function () {
         button.disabled = false;
         button.classList.remove("support-photo-button-loading");
       });
     });
 
-    const sendButton = shell.form.querySelector("button[type='submit']");
-    shell.form.appendChild(fileInput);
-    if (sendButton && sendButton.parentNode === shell.form) {
-      shell.form.insertBefore(button, sendButton);
-    } else {
-      shell.form.appendChild(button);
-    }
-    shell.form.appendChild(preview);
-    shell.form.appendChild(error);
+    form.appendChild(fileInput);
 
-    return {
+    const previewContainer = findPreviewContainer(form);
+    if (previewContainer && form.parentNode === previewContainer) {
+      form.insertAdjacentElement("afterend", preview);
+      preview.insertAdjacentElement("afterend", error);
+    } else if (previewContainer) {
+      previewContainer.appendChild(preview);
+      previewContainer.appendChild(error);
+    } else {
+      form.appendChild(preview);
+      form.appendChild(error);
+    }
+
+    const controller = {
       getImages: function () {
         return currentImage ? [currentImage] : [];
       },
@@ -306,10 +403,97 @@
         return Boolean(currentImage);
       },
       clear: clear,
+      form: form,
+      input: input,
     };
+
+    form.__equalleSupportPhotoController = controller;
+    return controller;
   }
+
+  function getControllerFromElement(element) {
+    if (!element) {
+      return null;
+    }
+    const form = element.form || (element.closest ? element.closest("form, .support-search-form, [data-ai-form], [data-solution-followup-form]") : null);
+    return form ? (form.__equalleSupportPhotoController || attachPhotoInput(form)) : null;
+  }
+
+  function savePendingPhotoFromElement(element) {
+    const controller = getControllerFromElement(element);
+    const images = controller && typeof controller.getImages === "function" ? controller.getImages() : [];
+    if (!images.length) {
+      try { sessionStorage.removeItem(PENDING_PHOTO_KEY); } catch (_error) { return false; }
+      return false;
+    }
+
+    try {
+      sessionStorage.setItem(PENDING_PHOTO_KEY, JSON.stringify({
+        images: images.slice(0, 1),
+        savedAt: new Date().toISOString(),
+      }));
+      return true;
+    } catch (_error) {
+      return false;
+    }
+  }
+
+  function consumePendingPhoto() {
+    let raw = "";
+    try {
+      raw = sessionStorage.getItem(PENDING_PHOTO_KEY) || "";
+      sessionStorage.removeItem(PENDING_PHOTO_KEY);
+    } catch (_error) {
+      return [];
+    }
+
+    if (!raw) {
+      return [];
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+      return parsed && Array.isArray(parsed.images) ? parsed.images.slice(0, 1) : [];
+    } catch (_error) {
+      return [];
+    }
+  }
+
+  function setupPhotoInputs(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    Array.prototype.slice.call(scope.querySelectorAll(".support-search-form, .chat-form, [data-ai-form], [data-solution-followup-form]")).forEach(attachPhotoInput);
+
+    if (observerStarted || !window.MutationObserver) {
+      return;
+    }
+
+    observerStarted = true;
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        Array.prototype.slice.call(mutation.addedNodes || []).forEach(function (node) {
+          if (!node || node.nodeType !== 1) {
+            return;
+          }
+          if (node.matches && node.matches(".support-search-form, .chat-form, [data-ai-form], [data-solution-followup-form]")) {
+            attachPhotoInput(node);
+          }
+          if (node.querySelectorAll) {
+            Array.prototype.slice.call(node.querySelectorAll(".support-search-form, .chat-form, [data-ai-form], [data-solution-followup-form]")).forEach(attachPhotoInput);
+          }
+        });
+      });
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  document.addEventListener("support-search-bar:ready", function (event) {
+    setupPhotoInputs(event && event.detail && event.detail.root ? event.detail.root : document);
+  });
 
   Object.assign(shared, {
     attachPhotoInput: attachPhotoInput,
+    setupPhotoInputs: setupPhotoInputs,
+    savePendingPhotoFromElement: savePendingPhotoFromElement,
+    consumePendingPhoto: consumePendingPhoto,
   });
 })(window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {});

@@ -410,7 +410,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-auth-status-spacing-20260430-v1";
+    link.href = "/sandpaper_support/assets/support-assistant.css?v=support-photo-unified-20260430-v2";
     document.head.appendChild(link);
   }
 
@@ -452,7 +452,7 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/sandpaper_support/assets/support-assistant.js?v=support-auth-status-spacing-20260430-v1",
+      "/sandpaper_support/assets/support-assistant.js?v=support-photo-unified-20260430-v2",
     );
   });
 }

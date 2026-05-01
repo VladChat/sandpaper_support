@@ -20,11 +20,34 @@
     return Boolean(result && result.code === "login_required");
   }
 
+  function sanitizeImages(images) {
+    if (!Array.isArray(images)) {
+      return [];
+    }
+    return images
+      .filter(function (image) {
+        return image && typeof image === "object" && typeof image.dataUrl === "string";
+      })
+      .slice(0, 1)
+      .map(function (image) {
+        return {
+          dataUrl: image.dataUrl,
+          mimeType: image.mimeType || "image/jpeg",
+          width: Number.isFinite(image.width) ? image.width : 0,
+          height: Number.isFinite(image.height) ? image.height : 0,
+          sizeBytes: Number.isFinite(image.sizeBytes) ? image.sizeBytes : 0,
+          detail: "low",
+        };
+      });
+  }
+
   function createAssistantRequester(basePath, knowledge) {
     return function requestAssistant(userMessage, context) {
       const currentTitle = stripSiteTitle(document.title);
       const currentPath = window.location.pathname;
       const contextInput = context && typeof context === "object" ? context : {};
+      const attachedImages = sanitizeImages(contextInput.images);
+      const hasAttachedImages = attachedImages.length > 0;
       const useConversationContext = contextInput.mode === "manual";
       const lastMatches = useConversationContext
         ? getStoredJson(STORAGE_KEYS.lastMatches, [])
@@ -58,7 +81,10 @@
 
       const payload = {
         sessionToken: getSessionToken(),
-        userMessage: contextualPrompt,
+        // Best practice: send the latest user question as the real user message.
+        // Previous conversation and page details stay in context only.
+        userMessage: userMessage,
+        images: attachedImages,
         accessToken:
           window.eQualleSupabase &&
           typeof window.eQualleSupabase.getAccessToken === "function"
@@ -75,12 +101,12 @@
           solution_id: contextInput.solution_id || "",
           solution_slug: contextInput.solution_slug || "",
           solution_context: contextInput.solution_context || null,
+          latest_user_question: userMessage,
+          has_attached_image: hasAttachedImages,
+          // Backend should use this as low-priority background context only, never as the current question.
+          conversation_context: contextualPrompt,
         },
       };
-
-      if (Array.isArray(contextInput.images) && contextInput.images.length > 0) {
-        payload.images = contextInput.images.slice(0, 1);
-      }
 
       if (!window.eQualleSupabase || !window.eQualleSupabase.isConfigured()) {
         return Promise.resolve({
@@ -111,6 +137,7 @@
             nextAction: result.nextAction || "",
             remaining: Number.isFinite(result.remaining) ? result.remaining : null,
             requestLogId: result.requestLogId || result.request_log_id || "",
+            imageAccepted: Boolean(result.imageAccepted),
           };
         }
 
@@ -119,6 +146,7 @@
         addConversationTurn("user", userMessage, {
           pagePath: currentPath,
           pageTitle: currentTitle,
+          hasAttachedImage: hasAttachedImages,
         });
 
         addConversationTurn("assistant", replyText, {
@@ -137,6 +165,7 @@
           nextAction: result.nextAction || "",
           remaining: Number.isFinite(result.remaining) ? result.remaining : null,
           requestLogId: result.requestLogId || result.request_log_id || "",
+          imageAccepted: Boolean(result.imageAccepted),
         };
       });
     };

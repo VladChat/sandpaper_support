@@ -19,6 +19,24 @@
   function createAssistantRequester() { return shared.createAssistantRequester.apply(shared, arguments); }
   function wireChat() { return shared.wireChat.apply(shared, arguments); }
   function readSolutionContextFromPage() { return shared.readSolutionContextFromPage.apply(shared, arguments); }
+  function setupPhotoInputs() {
+    if (typeof shared.setupPhotoInputs !== "function") {
+      return;
+    }
+    return shared.setupPhotoInputs.apply(shared, arguments);
+  }
+  function savePendingPhotoFromElement() {
+    if (typeof shared.savePendingPhotoFromElement !== "function") {
+      return false;
+    }
+    return shared.savePendingPhotoFromElement.apply(shared, arguments);
+  }
+  function consumePendingPhoto() {
+    if (typeof shared.consumePendingPhoto !== "function") {
+      return [];
+    }
+    return shared.consumePendingPhoto.apply(shared, arguments);
+  }
 
 
   function setupHomepageSearch(basePath, knowledge) {
@@ -40,6 +58,8 @@
     if (!input || !results) {
       return;
     }
+
+    setupPhotoInputs(input.closest(".support-search-shell") || document);
   
     const logRenderedSearch = debounce(function (query, resultCount) {
       if (window.eQualleSupabase) {
@@ -161,6 +181,7 @@
       setStoredJson(STORAGE_KEYS.lastMatches, []);
       renderOutput(message, visibleMatches);
       resetConversationForNewQuestion(message);
+      savePendingPhotoFromElement(input);
   
       if (window.eQualleSupabase) {
         window.eQualleSupabase.logSearch(message, visibleMatches.length, null);
@@ -193,6 +214,7 @@
       return;
     }
   
+    setupPhotoInputs(shell.root || document);
     const requester = createAssistantRequester(basePath, knowledge);
     const chat = wireChat(shell, requester, basePath, {
       source: "ai-assistant-page",
@@ -200,10 +222,11 @@
     const params = new URLSearchParams(window.location.search);
     const q = String(params.get("q") || "").trim();
     if (q) {
+      const pendingImages = consumePendingPhoto();
       resetConversationForNewQuestion(q);
       shell.input.value = "";
       shell.messages.innerHTML = "";
-      chat.ask(q, { auto: true });
+      chat.ask(q, { auto: true, images: pendingImages });
     }
   }
 
@@ -225,6 +248,7 @@
       messages: messages,
     };
   
+    setupPhotoInputs(followupRoot);
     const requester = createAssistantRequester(basePath, knowledge);
     wireChat(shell, requester, basePath, {
       source: "solution_followup",

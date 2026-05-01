@@ -17,6 +17,12 @@
     }
     return shared.setupVoiceInput.apply(shared, arguments);
   }
+  function setupPhotoInputs() {
+    if (typeof shared.setupPhotoInputs !== "function") {
+      return;
+    }
+    return shared.setupPhotoInputs.apply(shared, arguments);
+  }
 
 
   function init(options) {
@@ -25,6 +31,7 @@
     setCurrentPage();
     getSessionToken();
     setupVoiceInput(document);
+    setupPhotoInputs(document);
   
     buildKnowledge(basePath)
       .then(function (knowledge) {
@@ -32,6 +39,7 @@
         setupSupportFollowup(basePath, knowledge);
         setupAiAssistantPage(basePath, knowledge);
         setupVoiceInput(document);
+        setupPhotoInputs(document);
       })
       .catch(function () {
         return;
