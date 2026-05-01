@@ -18,7 +18,7 @@
     "voice-input.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-photo-upload-20260430-v1";
+  const CACHE_VERSION = "support-voice-vocabulary-20260430-v2";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];

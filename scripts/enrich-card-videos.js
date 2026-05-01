@@ -18,7 +18,7 @@ const https = require("https");
 // =========================
 const CONFIG = {
   WRITE: true,
-  LIMIT: 10,
+  LIMIT: 30,
   CARD_ID: "",
   FORCE: false,
 

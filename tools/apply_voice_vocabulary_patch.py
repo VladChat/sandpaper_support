@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-VERSION = "support-voice-vocabulary-20260430-v1"
+VERSION = "support-voice-vocabulary-20260430-v2"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_FILES = [
@@ -38,8 +38,8 @@ def update_support_assistant_js() -> None:
     content = read(path)
     content = replace_or_fail(
         content,
-        r'const CACHE_VERSION = "[^"]+";',
-        f'const CACHE_VERSION = "{VERSION}";',
+        r'const CACHE_VERSION = "support-voice-vocabulary-20260430-v2"]+";',
+        f'const CACHE_VERSION = "support-voice-vocabulary-20260430-v2";',
         str(path),
     )
     write(path, content)

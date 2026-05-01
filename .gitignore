@@ -11,3 +11,4 @@ coverage/
 *.log
 __pycache__/
 *.pyc
+*.zip

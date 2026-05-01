@@ -107,10 +107,28 @@
     return String(value || "").replace(/\s+/g, " ").trim();
   }
 
+  function voiceTextValue(value) {
+    if (typeof value === "string" || typeof value === "number") {
+      return clean(value);
+    }
+    if (value && typeof value === "object") {
+      if (typeof value.phrase === "string" || typeof value.phrase === "number") {
+        return clean(value.phrase);
+      }
+      if (typeof value.term === "string" || typeof value.term === "number") {
+        return clean(value.term);
+      }
+      if (typeof value.value === "string" || typeof value.value === "number") {
+        return clean(value.value);
+      }
+    }
+    return "";
+  }
+
   function uniqueStrings(values) {
     const seen = {};
     return (Array.isArray(values) ? values : [])
-      .map(function (value) { return clean(value); })
+      .map(voiceTextValue)
       .filter(function (value) {
         const key = value.toLowerCase();
         if (!value || seen[key]) {
@@ -147,9 +165,15 @@
     const source = String(pattern || "").toLowerCase();
     const target = String(replacement || "").toLowerCase();
     if (target.indexOf("grit") !== -1 && /(degree|degrees|grid|great|greet|greed|grade)/.test(source)) {
-      return /\\d|\[0-9\]|\(\?\:|\(\d/.test(source) ? "context" : "skip-dangerous";
+      return /\\d|\[0-9\]|\(\?\:|\(\d/.test(source) ? "gritNumberOnly" : "skip-dangerous";
     }
     return "always";
+  }
+
+  function isGritConfusionRule(rule) {
+    const source = String((rule && rule.pattern) || "").toLowerCase();
+    const target = String((rule && rule.replace) || "").toLowerCase();
+    return target.indexOf("grit") !== -1 && /(degree|degrees|grid|great|greet|greed|grade)/.test(source);
   }
 
   function mergeVocabulary(remote) {
@@ -295,7 +319,7 @@
     return /\b(angle|angles|corner|corners|bevel|beveled|slope|incline|temperature|temp|fahrenheit|celsius|celcius|weather|hot|cold|heat)\b/.test(nearby);
   }
 
-  function applyGritNumberCorrections(value, vocabulary) {
+  function applyGritNumberCorrections(value, vocabulary, contextAvailable) {
     let text = clean(value);
     const gritNumbers = uniqueStrings((vocabulary && vocabulary.gritNumbers) || DEFAULT_GRIT_NUMBERS)
       .filter(function (value) { return /^\d{2,4}$/.test(value); });
@@ -307,8 +331,13 @@
     const confusedGritWord = "degree|degrees|grid|grids|great|greet|greed|grade|grades";
     const regex = new RegExp("\\b(" + numberPattern + ")\\s+(" + confusedGritWord + ")\\b", "gi");
 
-    text = text.replace(regex, function (match, number, _word, offset, whole) {
+    text = text.replace(regex, function (match, number, word, offset, whole) {
+      const normalizedWord = String(word || "").toLowerCase();
+      const isDegreeWord = normalizedWord === "degree" || normalizedWord === "degrees";
       if (shouldKeepDegreeMeaning(whole, offset, match.length)) {
+        return match;
+      }
+      if (isDegreeWord && !contextAvailable) {
         return match;
       }
       return number + " grit";
@@ -328,7 +357,7 @@
       if (rule.mode === "context" && !contextAvailable) {
         return;
       }
-      if (rule.mode === "gritNumberOnly") {
+      if (rule.mode === "gritNumberOnly" || isGritConfusionRule(rule)) {
         return;
       }
 
@@ -350,11 +379,11 @@
       return "";
     }
 
-    let text = applyConfiguredCorrections(rawText, activeVocab, true);
+    let text = applyConfiguredCorrections(rawText, activeVocab, false);
     const contextAvailable = hasSandpaperContext(text, activeVocab) || hasSandpaperContext(rawText, activeVocab);
-    text = applyGritNumberCorrections(text, activeVocab);
+    text = applyGritNumberCorrections(text, activeVocab, contextAvailable);
     text = applyConfiguredCorrections(text, activeVocab, contextAvailable);
-    text = applyGritNumberCorrections(text, activeVocab);
+    text = applyGritNumberCorrections(text, activeVocab, contextAvailable);
     return clean(text);
   }
 
