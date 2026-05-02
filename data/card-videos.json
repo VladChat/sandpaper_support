@@ -5952,5 +5952,5067 @@
     "checkedAt": "2026-05-01",
     "source": "youtube_api",
     "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "silicon-carbide-vs-aluminum-oxide-question": {
+    "status": "rejected",
+    "query": "plastic sanding abrasive material 120 220 400 800 1000 grit sandpaper tutorial",
+    "bestYoutubeId": "V5AyJv6i4hg",
+    "bestTitle": "General Sandpaper Selection & Grit Guide for Auto Body Work",
+    "bestChannel": "Lakeside Autobody",
+    "bestScore": 68,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:resin",
+      "keyword_matches:aluminum|oxide|sandpaper|abrasive",
+      "grit_matches:120|220|400|1000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "minor_competitor_penalty:3m|mirka",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "aluminum",
+        "oxide",
+        "sandpaper",
+        "abrasive"
+      ],
+      "grits": [
+        "120",
+        "220",
+        "400",
+        "1000"
+      ],
+      "surface": [
+        "resin"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": [
+        "3m",
+        "mirka"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wet-dry-sandpaper-without-water": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat wet or dry use 120 220 400 800 1000 grit sandpaper tutorial",
+    "bestYoutubeId": "iwdnL3X5sMY",
+    "bestTitle": "Top Wet Sanding and Polishing Tips",
+    "bestChannel": "RUPES",
+    "bestScore": 61,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:clear coat|clearcoat|wet sand|wet sanding",
+      "keyword_matches:wet|use|using",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "wet",
+        "use",
+        "using"
+      ],
+      "grits": [],
+      "surface": [
+        "clear coat",
+        "clearcoat",
+        "wet sand",
+        "wet sanding"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "surface-shows-sanding-scratches-after-paint": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 93,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "task_match:paint|primer|smooth|rough",
+      "keyword_matches:sanding|paint|under|320",
+      "grit_matches:320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "sanding",
+        "paint",
+        "under",
+        "320"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "smooth",
+        "rough",
+        "surface"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wood-end-grain-sanding-grit": {
+    "status": "approved",
+    "youtubeId": "GmIcV7Lvifw",
+    "title": "How To Sand Wood for a Smooth Finish (Wood Sanding Tips)",
+    "channel": "Pahjo Designs",
+    "thumbnail": "https://i.ytimg.com/vi/GmIcV7Lvifw/hqdefault.jpg",
+    "watchUrl": "https://www.youtube.com/watch?v=GmIcV7Lvifw",
+    "embedUrl": "https://www.youtube.com/embed/GmIcV7Lvifw",
+    "query": "wood sanding wood finishing 180 220 320 grit sandpaper tutorial",
+    "qualityScore": 73,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "durationSeconds": 278,
+    "decision": "auto_approved",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|wood|rough|finish|face",
+      "grit_matches:180|220|320",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "wood",
+        "rough",
+        "finish",
+        "face"
+      ],
+      "grits": [
+        "180",
+        "220",
+        "320"
+      ],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "between-coats-polyurethane-grit": {
+    "status": "approved",
+    "youtubeId": "sZn1456L9sY",
+    "title": "How to Sand Between Coats of Wood Finish",
+    "channel": "Bailey Line Road",
+    "thumbnail": "https://i.ytimg.com/vi/sZn1456L9sY/hqdefault.jpg",
+    "watchUrl": "https://www.youtube.com/watch?v=sZn1456L9sY",
+    "embedUrl": "https://www.youtube.com/embed/sZn1456L9sY",
+    "query": "wood sanding between coats 320 400 grit sandpaper tutorial",
+    "qualityScore": 85,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "durationSeconds": 706,
+    "decision": "auto_approved",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "task_match:between coats|smooth|finish",
+      "keyword_matches:between|polyurethane|coats|wood|finish|show",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "between",
+        "polyurethane",
+        "coats",
+        "wood",
+        "finish",
+        "show"
+      ],
+      "grits": [],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [
+        "between coats",
+        "smooth",
+        "finish"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "tabletop-refinishing-grit-sequence": {
+    "status": "rejected",
+    "query": "wood sanding furniture refinishing 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 89,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "keyword_matches:grit|sequence|wood|furniture|sanding|can|finish|stain",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "sequence",
+        "wood",
+        "furniture",
+        "sanding",
+        "can",
+        "finish",
+        "stain"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "mdf-before-painting-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 86,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|not|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "not",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "plywood-edge-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding edge sanding 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "GmIcV7Lvifw",
+    "bestTitle": "How To Sand Wood for a Smooth Finish (Wood Sanding Tips)",
+    "bestChannel": "Pahjo Designs",
+    "bestScore": 77,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "task_match:swirl|smooth|rough|finish",
+      "keyword_matches:grit|edge|sanding|rough|show|sandpaper|120",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "edge",
+        "sanding",
+        "rough",
+        "show",
+        "sandpaper",
+        "120"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [
+        "swirl",
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "laminate-furniture-scuff-sanding": {
+    "status": "rejected",
+    "query": "wood sanding paint prep 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 78,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "task_match:paint|prep|between coats",
+      "keyword_matches:sand|painting|paint|prep|not",
+      "grit_matches:220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "sand",
+        "painting",
+        "paint",
+        "prep",
+        "not"
+      ],
+      "grits": [
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [
+        "paint",
+        "prep",
+        "between coats"
+      ],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "door-edge-sticking-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding edge repair 80 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "GmIcV7Lvifw",
+    "bestTitle": "How To Sand Wood for a Smooth Finish (Wood Sanding Tips)",
+    "bestChannel": "Pahjo Designs",
+    "bestScore": 59,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "keyword_matches:grit|sand|edge|wood|sandpaper",
+      "grit_matches:80|120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "sand",
+        "edge",
+        "wood",
+        "sandpaper"
+      ],
+      "grits": [
+        "80",
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "stair-tread-refinishing-grit": {
+    "status": "rejected",
+    "query": "wood sanding refinishing 80 100 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "_E9pjcHLIj0",
+    "bestTitle": "How do I know which sandpaper grit to use? #diy #sanding #furnitureflip",
+    "bestChannel": "Catie Mae Ferguson",
+    "bestScore": 81,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|furniture|stain|veneer",
+      "task_match:swirl",
+      "keyword_matches:grit|refinishing|wood|finish|bare",
+      "grit_matches:80|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "grit",
+        "refinishing",
+        "wood",
+        "finish",
+        "bare"
+      ],
+      "grits": [
+        "80",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "stain",
+        "veneer"
+      ],
+      "task": [
+        "swirl"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "deck-board-splinter-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding outdoor wood prep 60 80 100 120 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 95,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|wood|prep|rough",
+      "grit_matches:80|120",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "wood",
+        "prep",
+        "rough"
+      ],
+      "grits": [
+        "80",
+        "120"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "cutting-board-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding wood smoothing 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "_E9pjcHLIj0",
+    "bestTitle": "How do I know which sandpaper grit to use? #diy #sanding #furnitureflip",
+    "bestChannel": "Catie Mae Ferguson",
+    "bestScore": 91,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|furniture|stain|veneer",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|sanding|wood|rough|use|sandpaper",
+      "grit_matches:180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "grit",
+        "sanding",
+        "wood",
+        "rough",
+        "use",
+        "sandpaper"
+      ],
+      "grits": [
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "stain",
+        "veneer"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "butcher-block-countertop-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding countertop smoothing 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "3khJ8h1QTZw",
+    "bestTitle": "How to Sand Wood by Hand | Woodworking 101",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 67,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:paint|finish",
+      "task_match:scratch|scratches|smooth|finish",
+      "keyword_matches:grit|show|scratches",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "acceptable_but_short_duration"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "show",
+        "scratches"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "finish"
+      ],
+      "task": [
+        "scratch",
+        "scratches",
+        "smooth",
+        "finish"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wood-filler-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding surface leveling 120 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 92,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "task_match:smooth|finish",
+      "keyword_matches:what|grit|sanding|wood|sandpaper|120",
+      "grit_matches:120|150|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "sanding",
+        "wood",
+        "sandpaper",
+        "120"
+      ],
+      "grits": [
+        "120",
+        "150",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "finish"
+      ],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "raised-grain-after-stain-sanding": {
+    "status": "rejected",
+    "query": "wood sanding finish correction 320 grit sandpaper tutorial",
+    "bestYoutubeId": "_E9pjcHLIj0",
+    "bestTitle": "How do I know which sandpaper grit to use? #diy #sanding #furnitureflip",
+    "bestChannel": "Catie Mae Ferguson",
+    "bestScore": 79,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|furniture|stain|veneer",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:wood|finish|stain|rough|sand|grit",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "wood",
+        "finish",
+        "stain",
+        "rough",
+        "sand",
+        "grit"
+      ],
+      "grits": [],
+      "surface": [
+        "wood",
+        "furniture",
+        "stain",
+        "veneer"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sanding-drips-in-polyurethane": {
+    "status": "rejected",
+    "query": "paint primer sanding finish correction 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 73,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish|auto body",
+      "keyword_matches:how|sand|finish|what|grit|320|400",
+      "grit_matches:320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "how",
+        "sand",
+        "finish",
+        "what",
+        "grit",
+        "320",
+        "400"
+      ],
+      "grits": [
+        "320",
+        "400"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "finish",
+        "auto body"
+      ],
+      "task": [],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sanding-runs-in-paint": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat paint correction 600 800 1000 grit sandpaper tutorial",
+    "bestYoutubeId": "iwdnL3X5sMY",
+    "bestTitle": "Top Wet Sanding and Polishing Tips",
+    "bestChannel": "RUPES",
+    "bestScore": 61,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:clear coat|clearcoat|wet sand|wet sanding",
+      "keyword_matches:sand|paint|correction",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "sand",
+        "paint",
+        "correction"
+      ],
+      "grits": [],
+      "surface": [
+        "clear coat",
+        "clearcoat",
+        "wet sand",
+        "wet sanding"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "body-filler-bondo-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding automotive prep 80 120 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "IsUPR3M60bY",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyDIY",
+    "bestScore": 106,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish|auto body",
+      "task_match:scratch|scratches|paint|primer",
+      "keyword_matches:what|grit|body|automotive|can|scratches|primer|bondo",
+      "grit_matches:80|220|320",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "body",
+        "automotive",
+        "can",
+        "scratches",
+        "primer",
+        "bondo"
+      ],
+      "grits": [
+        "80",
+        "220",
+        "320"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "finish",
+        "auto body"
+      ],
+      "task": [
+        "scratch",
+        "scratches",
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "automotive-primer-before-paint-grit": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat paint prep 400 600 800 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 93,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:clear coat|car paint|automotive|wet sand",
+      "task_match:paint|primer",
+      "keyword_matches:what|grit|automotive|primer|paint|can|sand|car",
+      "grit_matches:400|600|800",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "automotive",
+        "primer",
+        "paint",
+        "can",
+        "sand",
+        "car"
+      ],
+      "grits": [
+        "400",
+        "600",
+        "800"
+      ],
+      "surface": [
+        "clear coat",
+        "car paint",
+        "automotive",
+        "wet sand"
+      ],
+      "task": [
+        "paint",
+        "primer"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "clear-coat-run-sanding-grit": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat clear coat correction 1000 1500 2000 3000 grit sandpaper tutorial",
+    "bestYoutubeId": "iwdnL3X5sMY",
+    "bestTitle": "Top Wet Sanding and Polishing Tips",
+    "bestChannel": "RUPES",
+    "bestScore": 63,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:clear coat|clearcoat|wet sand|wet sanding",
+      "keyword_matches:sand|clear|coat|correction",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "sand",
+        "clear",
+        "coat",
+        "correction"
+      ],
+      "grits": [],
+      "surface": [
+        "clear coat",
+        "clearcoat",
+        "wet sand",
+        "wet sanding"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "touch-up-paint-blending-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding touch-up blending 1500 2000 3000 grit sandpaper tutorial",
+    "bestYoutubeId": "Sgiw5ImQUUk",
+    "bestTitle": "How to Wet  Sand & Buff a paint job for a Perfect Finish!",
+    "bestChannel": "Garage Noise",
+    "bestScore": 52,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "shorts_like",
+    "reasons": [
+      "surface_match:paint|finish|car paint",
+      "keyword_matches:paint|leave|wet|sand",
+      "grit_matches:2000|3000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m"
+    ],
+    "matched": {
+      "keywords": [
+        "paint",
+        "leave",
+        "wet",
+        "sand"
+      ],
+      "grits": [
+        "2000",
+        "3000"
+      ],
+      "surface": [
+        "paint",
+        "finish",
+        "car paint"
+      ],
+      "task": [],
+      "salesTerms": [
+        "amazon",
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-surface-rust-from-tools": {
+    "status": "approved",
+    "youtubeId": "H44w5XvKuk0",
+    "title": "The Basics of Rust Repair and Painting",
+    "channel": "4DIYers",
+    "thumbnail": "https://i.ytimg.com/vi/H44w5XvKuk0/hqdefault.jpg",
+    "watchUrl": "https://www.youtube.com/watch?v=H44w5XvKuk0",
+    "embedUrl": "https://www.youtube.com/embed/H44w5XvKuk0",
+    "query": "metal sanding rust removal 220 320 400 600 grit sandpaper tutorial",
+    "qualityScore": 87,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "durationSeconds": 614,
+    "decision": "auto_approved",
+    "reasons": [
+      "surface_match:metal|steel|rust",
+      "keyword_matches:what|grit|rust|tools|metal|have|light|dark",
+      "grit_matches:220|320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:amazon"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "rust",
+        "tools",
+        "metal",
+        "have",
+        "light",
+        "dark",
+        "sandpaper",
+        "220"
+      ],
+      "grits": [
+        "220",
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "metal",
+        "steel",
+        "rust"
+      ],
+      "task": [],
+      "salesTerms": [
+        "amazon"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "metal-burr-removal-grit": {
+    "status": "rejected",
+    "query": "metal sanding deburring 120 180 220 320 400 grit sandpaper tutorial",
+    "bestYoutubeId": "6IfgPZhtsR8",
+    "bestTitle": "You DON'T NEED a guided system to sharpen knives! #youtubeshorts #shorts #knife #sharpening",
+    "bestChannel": "Off The Stone",
+    "bestScore": 23,
+    "requiredScore": 80,
+    "isShortButAllowed": true,
+    "rejectReason": "shorts_like",
+    "reasons": [
+      "keyword_matches:grit|sharp|cut",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "short_video_penalty:60s"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "sharp",
+        "cut"
+      ],
+      "grits": [],
+      "surface": [],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 4,
+      "uniqueVideoIds": 4
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "brass-copper-polishing-prep-grit": {
+    "status": "rejected",
+    "query": "metal sanding polishing prep 600 800 1000 1500 2000 grit sandpaper tutorial",
+    "bestYoutubeId": "z5r-dlyB8r0",
+    "bestTitle": "Why Wet Sanding And Re-Clear Beats Buffing",
+    "bestChannel": "Cande Shop",
+    "bestScore": 65,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:wet sanding|polish|buff",
+      "keyword_matches:what|prep|polish",
+      "grit_matches:800|1000|1500|2000|3000",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "acceptable_but_short_duration",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "prep",
+        "polish"
+      ],
+      "grits": [
+        "800",
+        "1000",
+        "1500",
+        "2000",
+        "3000"
+      ],
+      "surface": [],
+      "task": [
+        "wet sanding",
+        "polish",
+        "buff"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "chrome-sanding-warning": {
+    "status": "rejected",
+    "query": "paint primer sanding surface caution 800 1000 1500 2000 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 77,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish|auto body",
+      "task_match:scratch|scratches",
+      "keyword_matches:can|sand|scratch|what|grit|2000",
+      "grit_matches:2000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "can",
+        "sand",
+        "scratch",
+        "what",
+        "grit",
+        "2000"
+      ],
+      "grits": [
+        "2000"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "finish",
+        "auto body"
+      ],
+      "task": [
+        "scratch",
+        "scratches"
+      ],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "powder-coat-scuff-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 320 400 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 88,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|coat|painting|paint|prep|over|not",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "coat",
+        "painting",
+        "paint",
+        "prep",
+        "over",
+        "not"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "pvc-pipe-edge-sanding-grit": {
+    "status": "rejected",
+    "query": "plastic sanding edge smoothing 120 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "fMOU7gxL_pk",
+    "bestTitle": "Sanding Past 220 - How Smooth Should You Go? #woodworking #diy",
+    "bestChannel": "Workshop Companion",
+    "bestScore": 39,
+    "requiredScore": 80,
+    "isShortButAllowed": true,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:can|rough",
+      "grit_matches:220",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "short_video_penalty:60s",
+      "sales_penalty:affiliate"
+    ],
+    "matched": {
+      "keywords": [
+        "can",
+        "rough"
+      ],
+      "grits": [
+        "220"
+      ],
+      "surface": [],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "plastic-bumper-scratch-grit": {
+    "status": "rejected",
+    "query": "plastic sanding scratch repair 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 92,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:plastic|acrylic|epoxy",
+      "task_match:paint|primer",
+      "keyword_matches:what|grit|plastic|has|primer|paint|sandpaper|320",
+      "grit_matches:320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "plastic",
+        "has",
+        "primer",
+        "paint",
+        "sandpaper",
+        "320"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "plastic",
+        "acrylic",
+        "epoxy"
+      ],
+      "task": [
+        "paint",
+        "primer"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "resin-3d-print-support-marks": {
+    "status": "rejected",
+    "query": "plastic sanding 3D print finishing 400 600 800 1000 1500 grit sandpaper tutorial",
+    "bestYoutubeId": "QtJBD9k35II",
+    "bestTitle": "Painting 3D Printed Pokemon Sprigatito Gen 9 Starter | Airbrushing & Hand Painting Resin Print",
+    "bestChannel": "ItsMeaDMaDe",
+    "bestScore": 79,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:plastic|acrylic|resin",
+      "keyword_matches:grit|resin|print|support|prints|small|bumps|where",
+      "grit_matches:400|600|800|1000|1500",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "resin",
+        "print",
+        "support",
+        "prints",
+        "small",
+        "bumps",
+        "where",
+        "supports"
+      ],
+      "grits": [
+        "400",
+        "600",
+        "800",
+        "1000",
+        "1500"
+      ],
+      "surface": [
+        "plastic",
+        "acrylic",
+        "resin"
+      ],
+      "task": [],
+      "salesTerms": [
+        "affiliate",
+        "sponsored"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "smooth-spackle-before-paint": {
+    "status": "rejected",
+    "query": "drywall sanding wall paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "imoKbJnHbKE",
+    "bestTitle": "HOW TO SAND DRYWALL!!!",
+    "bestChannel": "Vancouver Carpenter",
+    "bestScore": 59,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:drywall|mud",
+      "task_match:paint|rough|finish",
+      "keyword_matches:paint|wall|rough|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "long_but_allowed",
+      "sales_penalty:amazon"
+    ],
+    "matched": {
+      "keywords": [
+        "paint",
+        "wall",
+        "rough",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [
+        "drywall",
+        "mud"
+      ],
+      "task": [
+        "paint",
+        "rough",
+        "finish"
+      ],
+      "salesTerms": [
+        "amazon"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "joint-compound-between-coats-grit": {
+    "status": "rejected",
+    "query": "drywall sanding between coats sanding 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "imoKbJnHbKE",
+    "bestTitle": "HOW TO SAND DRYWALL!!!",
+    "bestChannel": "Vancouver Carpenter",
+    "bestScore": 59,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:drywall|mud",
+      "task_match:paint|rough|finish",
+      "keyword_matches:drywall|sanding|through|paint",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "long_but_allowed",
+      "sales_penalty:amazon"
+    ],
+    "matched": {
+      "keywords": [
+        "drywall",
+        "sanding",
+        "through",
+        "paint"
+      ],
+      "grits": [],
+      "surface": [
+        "drywall",
+        "mud"
+      ],
+      "task": [
+        "paint",
+        "rough",
+        "finish"
+      ],
+      "salesTerms": [
+        "amazon"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "tile-edge-smoothing-grit": {
+    "status": "rejected",
+    "query": "sandpaper sanding edge smoothing 220 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "_8Yc32ROUQg",
+    "bestTitle": "🛠️ HOW TO SAND YOUR EPOXY PROJECT THE RIGHT WAY",
+    "bestChannel": "Superclear Epoxy Resin Systems",
+    "bestScore": 99,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:sand|sanding|sandpaper|grit",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:sandpaper|smooth|rough|grit",
+      "grit_matches:220|320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "sandpaper",
+        "smooth",
+        "rough",
+        "grit"
+      ],
+      "grits": [
+        "220",
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "sand",
+        "sanding",
+        "sandpaper",
+        "grit"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sandpaper-to-sharpen-chisels": {
+    "status": "rejected",
+    "query": "metal sanding tool sharpening 400 600 1000 1500 2000 grit sandpaper tutorial",
+    "bestYoutubeId": "f4BEQeW8cdo",
+    "bestTitle": "Stop Sharpening with Sandpaper!",
+    "bestChannel": "Rex Krueger",
+    "bestScore": 49,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "keyword_matches:can|sandpaper|sharpen|chisels|tool|sharpening|chisel|needs",
+      "grit_matches:400|1000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:affiliate",
+      "competitor_context_penalty:3m|norton|dewalt"
+    ],
+    "matched": {
+      "keywords": [
+        "can",
+        "sandpaper",
+        "sharpen",
+        "chisels",
+        "tool",
+        "sharpening",
+        "chisel",
+        "needs",
+        "grit",
+        "400"
+      ],
+      "grits": [
+        "400",
+        "1000"
+      ],
+      "surface": [],
+      "task": [],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": [
+        "3m",
+        "norton",
+        "dewalt"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "clean-sanding-dust-before-paint": {
+    "status": "rejected",
+    "query": "paint primer sanding dust removal 220 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 77,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish|auto body",
+      "keyword_matches:how|painting|paint|can|look|when",
+      "grit_matches:220|320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "how",
+        "painting",
+        "paint",
+        "can",
+        "look",
+        "when"
+      ],
+      "grits": [
+        "220",
+        "320",
+        "400"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "finish",
+        "auto body"
+      ],
+      "task": [],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wall-before-repainting-grit": {
+    "status": "rejected",
+    "query": "drywall sanding repaint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "hysD3gPYWn8",
+    "bestTitle": "Paint like a Pro - How to prep a wall for painting",
+    "bestChannel": "MasterStroke by Resene",
+    "bestScore": 45,
+    "requiredScore": 80,
+    "isShortButAllowed": true,
+    "rejectReason": "shorts_like",
+    "reasons": [
+      "task_match:paint|primer|prep",
+      "keyword_matches:sand|wall|prep|can|when",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "short_video_penalty:71s"
+    ],
+    "matched": {
+      "keywords": [
+        "sand",
+        "wall",
+        "prep",
+        "can",
+        "when"
+      ],
+      "grits": [],
+      "surface": [],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "oak-before-stain-grit": {
+    "status": "rejected",
+    "query": "wood sanding stain prep 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 87,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "keyword_matches:grit|oak|wood|stain|prep|sanding|can",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "oak",
+        "wood",
+        "stain",
+        "prep",
+        "sanding",
+        "can"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "pine-before-stain-grit": {
+    "status": "rejected",
+    "query": "wood sanding stain prep 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 91,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "keyword_matches:grit|pine|wood|stain|prep|sanding|can|finishing",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "pine",
+        "wood",
+        "stain",
+        "prep",
+        "sanding",
+        "can",
+        "finishing",
+        "120"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-pencil-marks-from-wood": {
+    "status": "rejected",
+    "query": "wood sanding mark removal 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "_E9pjcHLIj0",
+    "bestTitle": "How do I know which sandpaper grit to use? #diy #sanding #furnitureflip",
+    "bestChannel": "Catie Mae Ferguson",
+    "bestScore": 71,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|furniture|stain|veneer",
+      "keyword_matches:grit|marks|wood|mark|finishing|remove",
+      "grit_matches:180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "grit",
+        "marks",
+        "wood",
+        "mark",
+        "finishing",
+        "remove"
+      ],
+      "grits": [
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "stain",
+        "veneer"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sanding-rounded-edges-without-flattening": {
+    "status": "rejected",
+    "query": "wood sanding edge sanding 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "GmIcV7Lvifw",
+    "bestTitle": "How To Sand Wood for a Smooth Finish (Wood Sanding Tips)",
+    "bestChannel": "Pahjo Designs",
+    "bestScore": 55,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "keyword_matches:how|sand|without|sandpaper|edge|sanding",
+      "grit_matches:180|220|320",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "how",
+        "sand",
+        "without",
+        "sandpaper",
+        "edge",
+        "sanding"
+      ],
+      "grits": [
+        "180",
+        "220",
+        "320"
+      ],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "trim-molding-before-paint-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 82,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "baseboard-before-painting-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "interior-door-before-painting-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|sanding",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "sanding"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "window-trim-before-painting-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep|smooth",
+      "keyword_matches:what|grit|painting|paint|prep",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep",
+        "smooth",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-old-varnish-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding finish removal 80 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "keyword_matches:what|grit|wood|finish|sanding|sandpaper|120|180",
+      "grit_matches:80|120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "wood",
+        "finish",
+        "sanding",
+        "sandpaper",
+        "120",
+        "180"
+      ],
+      "grits": [
+        "80",
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sanding-lacquer-between-coats-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding between coats 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 82,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|finish|sanding|adhesion",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "finish",
+        "sanding",
+        "adhesion"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "water-based-finish-between-coats-grit": {
+    "status": "approved",
+    "youtubeId": "Q0lEM_BOgmo",
+    "title": "Improper sanding between coats of finish- HOW TO AVOID IT!",
+    "channel": "Stumpy Nubs (James Hamilton)",
+    "thumbnail": "https://i.ytimg.com/vi/Q0lEM_BOgmo/hqdefault.jpg",
+    "watchUrl": "https://www.youtube.com/watch?v=Q0lEM_BOgmo",
+    "embedUrl": "https://www.youtube.com/embed/Q0lEM_BOgmo",
+    "query": "wood sanding between coats 320 400 grit sandpaper tutorial",
+    "qualityScore": 75,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "durationSeconds": 404,
+    "decision": "auto_approved",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "task_match:between coats|smooth|finish",
+      "keyword_matches:between|finish|coats|wood|coat",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "between",
+        "finish",
+        "coats",
+        "wood",
+        "coat"
+      ],
+      "grits": [],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [
+        "between coats",
+        "smooth",
+        "finish"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "oil-based-paint-scuff-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 82,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|paint|prep|not",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "paint",
+        "prep",
+        "not"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "metal-railing-before-paint-grit": {
+    "status": "rejected",
+    "query": "metal sanding paint prep 80 120 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 76,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:paint|prep|between coats",
+      "keyword_matches:what|grit|painting|paint|prep|sandpaper",
+      "grit_matches:80|120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "sandpaper"
+      ],
+      "grits": [
+        "80",
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [],
+      "task": [
+        "paint",
+        "prep",
+        "between coats"
+      ],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wrought-iron-rust-removal-grit": {
+    "status": "rejected",
+    "query": "metal sanding rust removal 80 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 61,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:steel|aluminum",
+      "task_match:finish",
+      "keyword_matches:what|grit",
+      "grit_matches:80|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit"
+      ],
+      "grits": [
+        "80",
+        "220"
+      ],
+      "surface": [
+        "steel",
+        "aluminum"
+      ],
+      "task": [
+        "finish"
+      ],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "stainless-sink-scratch-grit": {
+    "status": "rejected",
+    "query": "metal sanding scratch blending 400 600 800 1000 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 86,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:metal|steel|aluminum",
+      "keyword_matches:what|grit|steel|can|stand|out|look|sanding",
+      "grit_matches:400|600|800|1000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "steel",
+        "can",
+        "stand",
+        "out",
+        "look",
+        "sanding"
+      ],
+      "grits": [
+        "400",
+        "600",
+        "800",
+        "1000"
+      ],
+      "surface": [
+        "metal",
+        "steel",
+        "aluminum"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "aluminum-wheel-polishing-prep-grit": {
+    "status": "rejected",
+    "query": "metal sanding polishing prep 400 600 800 1000 1500 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:metal|steel|aluminum",
+      "keyword_matches:what|grit|aluminum|can|stay|sanding|sandpaper",
+      "grit_matches:400|600|800|1000|1500",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "aluminum",
+        "can",
+        "stay",
+        "sanding",
+        "sandpaper"
+      ],
+      "grits": [
+        "400",
+        "600",
+        "800",
+        "1000",
+        "1500"
+      ],
+      "surface": [
+        "metal",
+        "steel",
+        "aluminum"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "powder-coat-removal-grit": {
+    "status": "rejected",
+    "query": "metal sanding coating removal 60 80 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 59,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:steel|aluminum",
+      "keyword_matches:what|grit|coat|not",
+      "grit_matches:80|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "coat",
+        "not"
+      ],
+      "grits": [
+        "80",
+        "220"
+      ],
+      "surface": [
+        "steel",
+        "aluminum"
+      ],
+      "task": [],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-glue-from-wood-grit": {
+    "status": "rejected",
+    "query": "wood sanding adhesive removal 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 74,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "keyword_matches:what|grit|wood|stain|finish|sandpaper",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "wood",
+        "stain",
+        "finish",
+        "sandpaper"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "drywall-corner-sanding-grit": {
+    "status": "rejected",
+    "query": "drywall sanding corner sanding 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "imoKbJnHbKE",
+    "bestTitle": "HOW TO SAND DRYWALL!!!",
+    "bestChannel": "Vancouver Carpenter",
+    "bestScore": 53,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:drywall|mud",
+      "task_match:rough|finish",
+      "keyword_matches:sanding|drywall|corner|rough",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "long_but_allowed",
+      "sales_penalty:amazon"
+    ],
+    "matched": {
+      "keywords": [
+        "sanding",
+        "drywall",
+        "corner",
+        "rough"
+      ],
+      "grits": [],
+      "surface": [
+        "drywall",
+        "mud"
+      ],
+      "task": [
+        "rough",
+        "finish"
+      ],
+      "salesTerms": [
+        "amazon"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "ceiling-patch-sanding-grit": {
+    "status": "rejected",
+    "query": "drywall sanding patch sanding 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "fEc7WZyOKu0",
+    "bestTitle": "How To Sand Drywall Correctly - The Most Important Step- Click ⬇️ for more Info",
+    "bestChannel": "That Kilted Guy DIY Home Improvement",
+    "bestScore": 53,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:drywall|mud",
+      "keyword_matches:grit|sanding|ceiling|drywall|can|show|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "sanding",
+        "ceiling",
+        "drywall",
+        "can",
+        "show",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [
+        "drywall",
+        "mud"
+      ],
+      "task": [],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "plaster-wall-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding wall repair 120 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "oh3b4QUcgTU",
+    "bestTitle": "How To Prep A Wall Before Painting - Ace Hardware",
+    "bestChannel": "Ace Hardware",
+    "bestScore": 44,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "score_below_auto_approve_threshold",
+    "reasons": [
+      "surface_match:paint",
+      "keyword_matches:sanding|wall",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "sanding",
+        "wall"
+      ],
+      "grits": [],
+      "surface": [
+        "paint"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "3d-print-layer-lines-grit": {
+    "status": "rejected",
+    "query": "sandpaper sanding layer line removal 220 320 400 600 800 grit sandpaper tutorial",
+    "bestYoutubeId": "B9fY_69pipQ",
+    "bestTitle": "How to Sand Polyurethane Smooth (800-Grit Wet Sanding Tutorial) #letterpress  #woodworking",
+    "bestChannel": "FLOODWATERS PRESS",
+    "bestScore": 63,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:sand|sanding|sandpaper|grit",
+      "keyword_matches:grit|print|line|sanding|sandpaper",
+      "grit_matches:800",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "grit",
+        "print",
+        "line",
+        "sanding",
+        "sandpaper"
+      ],
+      "grits": [
+        "800"
+      ],
+      "surface": [
+        "sand",
+        "sanding",
+        "sandpaper",
+        "grit"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "3d-print-primer-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding primer sanding 400 600 800 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 97,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "task_match:paint|primer|smooth|rough",
+      "keyword_matches:what|grit|sand|primer|sanding|rough",
+      "grit_matches:400|600|800",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "sand",
+        "primer",
+        "sanding",
+        "rough"
+      ],
+      "grits": [
+        "400",
+        "600",
+        "800"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "smooth",
+        "rough",
+        "surface"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-burn-marks-from-wood-grit": {
+    "status": "rejected",
+    "query": "wood sanding burn mark removal 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 81,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "keyword_matches:grit|wood|sand|out",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "wood",
+        "sand",
+        "out"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "outdoor-furniture-refinishing-grit": {
+    "status": "rejected",
+    "query": "wood sanding refinishing 80 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "_E9pjcHLIj0",
+    "bestTitle": "How do I know which sandpaper grit to use? #diy #sanding #furnitureflip",
+    "bestChannel": "Catie Mae Ferguson",
+    "bestScore": 101,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|furniture|stain|veneer",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|furniture|refinishing|wood|have|finish|rough|paint",
+      "grit_matches:80|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "grit",
+        "furniture",
+        "refinishing",
+        "wood",
+        "have",
+        "finish",
+        "rough",
+        "paint"
+      ],
+      "grits": [
+        "80",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "stain",
+        "veneer"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "pressure-treated-wood-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding outdoor wood prep 80 120 180 grit sandpaper tutorial",
+    "bestYoutubeId": "Lss7bjySBEk",
+    "bestTitle": "Which Sandpaper Grit Should You Use | Ultimate Guide for Woodworkers",
+    "bestChannel": "Arden Cabinet MFG",
+    "bestScore": 84,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking|table|stain",
+      "task_match:smooth|finish",
+      "keyword_matches:what|grit|wood|prep|sandpaper",
+      "grit_matches:80|120|180",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "wood",
+        "prep",
+        "sandpaper"
+      ],
+      "grits": [
+        "80",
+        "120",
+        "180"
+      ],
+      "surface": [
+        "wood",
+        "woodworking",
+        "table",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "finish"
+      ],
+      "salesTerms": [
+        "best sandpaper"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-mill-glaze-from-wood-grit": {
+    "status": "rejected",
+    "query": "wood sanding finish prep 120 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 115,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|glaze|wood|finish|prep|smooth|stain|not",
+      "grit_matches:120|150|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "glaze",
+        "wood",
+        "finish",
+        "prep",
+        "smooth",
+        "stain",
+        "not"
+      ],
+      "grits": [
+        "120",
+        "150",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "sand-primer-sealer-before-paint-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 93,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "task_match:paint|primer|smooth|rough",
+      "keyword_matches:what|grit|sanding|primer|paint|rough|sand",
+      "grit_matches:400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "sanding",
+        "primer",
+        "paint",
+        "rough",
+        "sand"
+      ],
+      "grits": [
+        "400",
+        "600"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "smooth",
+        "rough",
+        "surface"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-orange-peel-from-spray-paint-grit": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat paint leveling 1000 1500 2000 3000 grit sandpaper tutorial",
+    "bestYoutubeId": "Sgiw5ImQUUk",
+    "bestTitle": "How to Wet  Sand & Buff a paint job for a Perfect Finish!",
+    "bestChannel": "Garage Noise",
+    "bestScore": 73,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "shorts_like",
+    "reasons": [
+      "surface_match:clear coat|car paint|automotive|wet sand",
+      "task_match:wet sanding|polish|buff|orange peel",
+      "keyword_matches:orange|peel|paint|texture",
+      "grit_matches:2000|3000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m"
+    ],
+    "matched": {
+      "keywords": [
+        "orange",
+        "peel",
+        "paint",
+        "texture"
+      ],
+      "grits": [
+        "2000",
+        "3000"
+      ],
+      "surface": [
+        "clear coat",
+        "car paint",
+        "automotive",
+        "wet sand",
+        "wet sanding",
+        "paint correction",
+        "buff"
+      ],
+      "task": [
+        "wet sanding",
+        "polish",
+        "buff",
+        "orange peel"
+      ],
+      "salesTerms": [
+        "amazon",
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "matte-finish-after-sanding-warning": {
+    "status": "rejected",
+    "query": "paint primer sanding finish appearance 1500 2000 3000 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 62,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "keyword_matches:does|sanding|make|finish",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "does",
+        "sanding",
+        "make",
+        "finish"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "cedar-before-stain-grit": {
+    "status": "rejected",
+    "query": "wood sanding stain prep 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 107,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|wood|stain|prep|can|sanding|rough",
+      "grit_matches:150|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "wood",
+        "stain",
+        "prep",
+        "can",
+        "sanding",
+        "rough"
+      ],
+      "grits": [
+        "150",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "teak-before-oil-grit": {
+    "status": "rejected",
+    "query": "wood sanding oil finish prep 120 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 109,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:grit|oil|wood|finish|prep|can|not|120",
+      "grit_matches:120|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "oil",
+        "wood",
+        "finish",
+        "prep",
+        "can",
+        "not",
+        "120"
+      ],
+      "grits": [
+        "120",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "maple-before-stain-grit": {
+    "status": "rejected",
+    "query": "wood sanding stain prep 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "Tl4s34DZolc",
+    "bestTitle": "How to Prep Sand Raw Wood",
+    "bestChannel": "General Finishes",
+    "bestScore": 83,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|furniture|grain|stain",
+      "keyword_matches:grit|maple|wood|stain|prep|can|sanding|not",
+      "grit_matches:180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "maple",
+        "wood",
+        "stain",
+        "prep",
+        "can",
+        "sanding",
+        "not"
+      ],
+      "grits": [
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "furniture",
+        "grain",
+        "stain"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "live-edge-wood-sanding-grit": {
+    "status": "rejected",
+    "query": "wood sanding slab sanding 80 120 150 180 220 grit sandpaper tutorial",
+    "bestYoutubeId": "GmIcV7Lvifw",
+    "bestTitle": "How To Sand Wood for a Smooth Finish (Wood Sanding Tips)",
+    "bestChannel": "Pahjo Designs",
+    "bestScore": 87,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:wood|woodworking",
+      "task_match:swirl|smooth|rough|finish",
+      "keyword_matches:grit|live|edge|wood|slab|sanding|rough|slabs",
+      "grit_matches:80|120|150|180|220",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "live",
+        "edge",
+        "wood",
+        "slab",
+        "sanding",
+        "rough",
+        "slabs",
+        "marks"
+      ],
+      "grits": [
+        "80",
+        "120",
+        "150",
+        "180",
+        "220"
+      ],
+      "surface": [
+        "wood",
+        "woodworking"
+      ],
+      "task": [
+        "swirl",
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "thin-veneer-burn-through-warning": {
+    "status": "rejected",
+    "query": "wood sanding delicate wood prep 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "UATm3FzI_Vg",
+    "bestTitle": "Learn to Sand those Curves w/ Surfprep!  Raw Wood Buffet Makeover #rawwoodfurniture #woodworking",
+    "bestChannel": "IgniteFurnishingsCo",
+    "bestScore": 63,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "too_short",
+    "reasons": [
+      "surface_match:wood|woodworking|furniture",
+      "task_match:smooth|rough|finish|surface",
+      "keyword_matches:how|sanding|through|wood|prep|can|sand",
+      "educational_format",
+      "sanding_terms_present"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link"
+    ],
+    "matched": {
+      "keywords": [
+        "how",
+        "sanding",
+        "through",
+        "wood",
+        "prep",
+        "can",
+        "sand"
+      ],
+      "grits": [],
+      "surface": [
+        "wood",
+        "woodworking",
+        "furniture"
+      ],
+      "task": [
+        "smooth",
+        "rough",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [
+        "affiliate",
+        "discount"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "melamine-before-painting-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint prep 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 86,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|not|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "not",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "chalk-paint-between-coats-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding between coats 320 400 grit sandpaper tutorial",
+    "bestYoutubeId": "QXNFjZLYqgY",
+    "bestTitle": "How to Wet Sand Primer for Painting",
+    "bestChannel": "Lakeside Autobody",
+    "bestScore": 79,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer",
+      "task_match:paint|primer|prep",
+      "keyword_matches:grit|paint|show",
+      "grit_matches:320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "minor_competitor_penalty:3m",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "grit",
+        "paint",
+        "show"
+      ],
+      "grits": [
+        "320",
+        "400"
+      ],
+      "surface": [
+        "paint",
+        "primer"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "enamel-paint-between-coats-grit": {
+    "status": "approved",
+    "youtubeId": "BD4txPwjsfI",
+    "title": "How to Wet Sand Auto Body Primer for Paint Prep",
+    "channel": "Lakeside Autobody",
+    "thumbnail": "https://i.ytimg.com/vi/BD4txPwjsfI/hqdefault.jpg",
+    "watchUrl": "https://www.youtube.com/watch?v=BD4txPwjsfI",
+    "embedUrl": "https://www.youtube.com/embed/BD4txPwjsfI",
+    "query": "paint primer sanding between coats 400 600 grit sandpaper tutorial",
+    "qualityScore": 80,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "durationSeconds": 569,
+    "decision": "auto_approved",
+    "reasons": [
+      "surface_match:paint|primer|auto body",
+      "task_match:dust|paint|primer|prep",
+      "keyword_matches:paint|can|dust",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [],
+    "matched": {
+      "keywords": [
+        "paint",
+        "can",
+        "dust"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "auto body"
+      ],
+      "task": [
+        "dust",
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "oil-primer-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding primer sanding 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 101,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "task_match:paint|primer|smooth|rough",
+      "keyword_matches:what|grit|sand|primer|sanding|rough|paint|can",
+      "grit_matches:320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "sand",
+        "primer",
+        "sanding",
+        "rough",
+        "paint",
+        "can"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "smooth",
+        "rough",
+        "surface"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "latex-paint-between-coats-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding between coats 320 400 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 80,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "task_match:paint|primer|prep|smooth",
+      "keyword_matches:what|grit|paint",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "paint"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "prep",
+        "smooth",
+        "finish",
+        "surface"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "high-build-primer-leveling-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding leveling 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 85,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish|auto body",
+      "task_match:paint|primer",
+      "keyword_matches:what|grit|primer|can|have|need|build",
+      "grit_matches:320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "primer",
+        "can",
+        "have",
+        "need",
+        "build"
+      ],
+      "grits": [
+        "320",
+        "400"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "finish",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer"
+      ],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "wall-paint-drip-sanding-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint repair 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 64,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|finish",
+      "keyword_matches:what|grit|sand|paint|repair",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "sand",
+        "paint",
+        "repair"
+      ],
+      "grits": [],
+      "surface": [
+        "paint",
+        "primer",
+        "finish"
+      ],
+      "task": [],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-masking-tape-edge-paint-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint repair 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 75,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "keyword_matches:what|grit|paint|can|sand",
+      "grit_matches:320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "paint",
+        "can",
+        "sand"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-primer-overspray-grit": {
+    "status": "rejected",
+    "query": "paint primer sanding paint repair 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 93,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:paint|primer|car paint|auto body",
+      "task_match:paint|primer|smooth|rough",
+      "keyword_matches:what|grit|primer|paint|can|rough|sandpaper",
+      "grit_matches:400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "primer",
+        "paint",
+        "can",
+        "rough",
+        "sandpaper"
+      ],
+      "grits": [
+        "400",
+        "600"
+      ],
+      "surface": [
+        "paint",
+        "primer",
+        "car paint",
+        "auto body"
+      ],
+      "task": [
+        "paint",
+        "primer",
+        "smooth",
+        "rough",
+        "surface"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "remove-clear-coat-overspray-grit": {
+    "status": "rejected",
+    "query": "automotive wet sanding clear coat overspray removal 1500 2000 3000 grit sandpaper tutorial",
+    "bestYoutubeId": "Sgiw5ImQUUk",
+    "bestTitle": "How to Wet  Sand & Buff a paint job for a Perfect Finish!",
+    "bestChannel": "Garage Noise",
+    "bestScore": 73,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "shorts_like",
+    "reasons": [
+      "surface_match:clear coat|car paint|automotive|wet sand",
+      "task_match:rough|finish",
+      "keyword_matches:clear|coat|automotive|removal|leave|rough|texture|wet",
+      "grit_matches:2000|3000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "strong_sales_penalty:affiliate link",
+      "competitor_context_penalty:3m"
+    ],
+    "matched": {
+      "keywords": [
+        "clear",
+        "coat",
+        "automotive",
+        "removal",
+        "leave",
+        "rough",
+        "texture",
+        "wet"
+      ],
+      "grits": [
+        "2000",
+        "3000"
+      ],
+      "surface": [
+        "clear coat",
+        "car paint",
+        "automotive",
+        "wet sand",
+        "wet sanding",
+        "paint correction",
+        "buff"
+      ],
+      "task": [
+        "rough",
+        "finish"
+      ],
+      "salesTerms": [
+        "amazon",
+        "affiliate"
+      ],
+      "strongSalesTerms": [
+        "affiliate link"
+      ],
+      "competitorBrands": [
+        "3m"
+      ]
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "galvanized-metal-before-paint-grit": {
+    "status": "rejected",
+    "query": "metal sanding paint prep 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 65,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|not|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "not",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "weld-smoothing-grit-sequence": {
+    "status": "rejected",
+    "query": "metal sanding weld cleanup 80 120 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 71,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:steel|aluminum",
+      "task_match:finish",
+      "keyword_matches:what|grit|can|coarse",
+      "grit_matches:80|220|320",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "can",
+        "coarse"
+      ],
+      "grits": [
+        "80",
+        "220",
+        "320"
+      ],
+      "surface": [
+        "steel",
+        "aluminum"
+      ],
+      "task": [
+        "finish"
+      ],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 2,
+      "uniqueVideoIds": 2
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "pitted-rust-metal-grit": {
+    "status": "rejected",
+    "query": "metal sanding rust removal 80 120 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 63,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:steel|aluminum",
+      "keyword_matches:what|grit|low",
+      "grit_matches:80|220|320",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "low"
+      ],
+      "grits": [
+        "80",
+        "220",
+        "320"
+      ],
+      "surface": [
+        "steel",
+        "aluminum"
+      ],
+      "task": [],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "motorcycle-tank-paint-prep-grit": {
+    "status": "rejected",
+    "query": "metal sanding automotive paint prep 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 90,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:metal|steel|aluminum",
+      "task_match:paint|primer",
+      "keyword_matches:what|grit|paint|painted|metal|automotive|can",
+      "grit_matches:320|400|600",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "paint",
+        "painted",
+        "metal",
+        "automotive",
+        "can"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600"
+      ],
+      "surface": [
+        "metal",
+        "steel",
+        "aluminum"
+      ],
+      "task": [
+        "paint",
+        "primer"
+      ],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "bicycle-frame-before-paint-grit": {
+    "status": "rejected",
+    "query": "metal sanding paint prep 220 320 400 grit sandpaper tutorial",
+    "bestYoutubeId": "IsUPR3M60bY",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyDIY",
+    "bestScore": 82,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:scratch|scratches|paint|primer",
+      "keyword_matches:what|grit|paint|can|scratches|finish|not",
+      "grit_matches:220|320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "paint",
+        "can",
+        "scratches",
+        "finish",
+        "not"
+      ],
+      "grits": [
+        "220",
+        "320",
+        "400"
+      ],
+      "surface": [],
+      "task": [
+        "scratch",
+        "scratches",
+        "paint",
+        "primer"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "alloy-wheel-curb-rash-grit": {
+    "status": "rejected",
+    "query": "metal sanding curb rash repair 180 220 320 400 600 grit sandpaper tutorial",
+    "bestYoutubeId": "j3v3t3UMUGg",
+    "bestTitle": "Most Common Autobody Sand Paper Grits - 80 Grit, 150 Grit, 240 Grit, 320 Grit, 400 Grit, 2000 Grit",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 81,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:steel|aluminum",
+      "task_match:scratch|scratches|finish",
+      "keyword_matches:what|grit|can",
+      "grit_matches:220|320|400",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "can"
+      ],
+      "grits": [
+        "220",
+        "320",
+        "400"
+      ],
+      "surface": [
+        "steel",
+        "aluminum"
+      ],
+      "task": [
+        "scratch",
+        "scratches",
+        "finish"
+      ],
+      "salesTerms": [
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 1,
+      "uniqueVideoIds": 1
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "brake-caliper-paint-prep-grit": {
+    "status": "rejected",
+    "query": "metal sanding paint prep 180 220 320 grit sandpaper tutorial",
+    "bestYoutubeId": "nxwr_AdoQMY",
+    "bestTitle": "How to prep your car for paint. Primer sanding tricks.",
+    "bestChannel": "customspraymods",
+    "bestScore": 63,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "missing_surface_or_task_match",
+    "reasons": [
+      "task_match:paint|primer|prep",
+      "keyword_matches:what|grit|painting|paint|prep|sandpaper",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "painting",
+        "paint",
+        "prep",
+        "sandpaper"
+      ],
+      "grits": [],
+      "surface": [],
+      "task": [
+        "paint",
+        "primer",
+        "prep"
+      ],
+      "salesTerms": [],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
+  },
+  "abs-plastic-part-sanding-grit": {
+    "status": "rejected",
+    "query": "plastic sanding plastic sanding 320 400 600 800 1000 grit sandpaper tutorial",
+    "bestYoutubeId": "8L9mWNyXxlM",
+    "bestTitle": "Best Sandpaper Grit for Car Painting - 400, 600, 800 Grit?",
+    "bestChannel": "LearnAutoBodyAndPaint",
+    "bestScore": 86,
+    "requiredScore": 72,
+    "isShortButAllowed": false,
+    "rejectReason": "video_usage_cap_reached",
+    "reasons": [
+      "surface_match:plastic|acrylic|epoxy",
+      "keyword_matches:what|grit|plastic|parts|sanding|can|too|sandpaper",
+      "grit_matches:320|400|600|800|1000",
+      "educational_format",
+      "sanding_terms_present",
+      "good_duration",
+      "reasonable_view_count"
+    ],
+    "warnings": [
+      "sales_penalty:best sandpaper|discount",
+      "video_usage:1"
+    ],
+    "matched": {
+      "keywords": [
+        "what",
+        "grit",
+        "plastic",
+        "parts",
+        "sanding",
+        "can",
+        "too",
+        "sandpaper"
+      ],
+      "grits": [
+        "320",
+        "400",
+        "600",
+        "800",
+        "1000"
+      ],
+      "surface": [
+        "plastic",
+        "acrylic",
+        "epoxy"
+      ],
+      "task": [],
+      "salesTerms": [
+        "best sandpaper",
+        "discount"
+      ],
+      "strongSalesTerms": [],
+      "competitorBrands": []
+    },
+    "searchSummary": {
+      "returned": 8,
+      "uniqueVideoIds": 8
+    },
+    "checkedAt": "2026-05-02",
+    "source": "youtube_api",
+    "qcPolicy": "auto-quality-qc-v4-short-video-penalty-video-cap-1"
   }
 }
