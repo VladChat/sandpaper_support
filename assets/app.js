@@ -408,7 +408,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/assets/support-assistant.css?v=support-photo-mobile-picker-20260503-v1";
+    link.href = "/assets/support-assistant.css?v=support-photo-desktop-mobile-ux-20260503-v1";
     document.head.appendChild(link);
   }
 
@@ -450,7 +450,7 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/assets/support-assistant.js?v=support-photo-mobile-picker-20260503-v1",
+      "/assets/support-assistant.js?v=support-photo-desktop-mobile-ux-20260503-v1",
     );
   });
 }

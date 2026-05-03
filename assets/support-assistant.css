@@ -640,6 +640,8 @@ body.solution-page .solution-followup-messages .chat-message {
 
 .support-photo-menu[hidden] {
   display: none !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .support-photo-menu-button {
@@ -704,6 +706,27 @@ body.solution-page .solution-followup-messages .chat-message {
 .support-photo-preview-size {
   color: #64748b;
   font-size: 0.76rem;
+}
+
+.support-photo-preview-processing {
+  opacity: 0.92;
+}
+
+.support-photo-attaching-dots {
+  animation: support-photo-attaching-dots 1s ease-in-out infinite;
+  display: inline-block;
+  margin-left: 0.08em;
+}
+
+@keyframes support-photo-attaching-dots {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
 }
 
 .support-photo-remove {

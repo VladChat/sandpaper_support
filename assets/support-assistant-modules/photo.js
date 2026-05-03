@@ -239,6 +239,26 @@
     return parent;
   }
 
+  function isMobilePhotoDevice() {
+    const ua = String(navigator.userAgent || "");
+    const platform = String(navigator.platform || "");
+    const maxTouchPoints = Number(navigator.maxTouchPoints || 0);
+
+    const isAndroid = /Android/i.test(ua);
+    const isIphoneOrIpod = /iPhone|iPod/i.test(ua);
+    const isIpad = /iPad/i.test(ua) || (platform === "MacIntel" && maxTouchPoints > 1);
+
+    return isAndroid || isIphoneOrIpod || isIpad;
+  }
+
+  function nextPaint() {
+    return new Promise(function (resolve) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(resolve);
+      });
+    });
+  }
+
   function attachPhotoInput(shellOrForm) {
     const form = resolveForm(shellOrForm);
     if (!form) {
@@ -250,8 +270,10 @@
     }
 
     const input = resolveInput(shellOrForm, form);
+    const useMobilePhotoMenu = isMobilePhotoDevice();
     let currentImage = null;
     let previewUrl = "";
+    let photoSelectionToken = 0;
 
     const cameraInput = document.createElement("input");
     cameraInput.type = "file";
@@ -279,8 +301,13 @@
 
     button.setAttribute("data-support-photo-button", "");
     button.setAttribute("aria-label", "Add photo");
-    button.setAttribute("aria-haspopup", "menu");
-    button.setAttribute("aria-expanded", "false");
+    if (useMobilePhotoMenu) {
+      button.setAttribute("aria-haspopup", "menu");
+      button.setAttribute("aria-expanded", "false");
+    } else {
+      button.removeAttribute("aria-haspopup");
+      button.removeAttribute("aria-expanded");
+    }
     button.title = "Add photo";
 
     const pickerWrap = document.createElement("div");
@@ -330,6 +357,7 @@
     }
 
     function clear() {
+      photoSelectionToken += 1;
       currentImage = null;
       cameraInput.value = "";
       libraryInput.value = "";
@@ -338,14 +366,64 @@
       preview.hidden = true;
       error.hidden = true;
       error.textContent = "";
+      preview.classList.remove("support-photo-preview-processing");
       button.classList.remove("support-photo-button-attached");
+      button.classList.remove("support-photo-button-loading");
       button.disabled = false;
       closeMenu();
+    }
+
+    function renderAttachingPreview(file) {
+      clearPreviewUrl();
+      preview.innerHTML = "";
+      preview.classList.add("support-photo-preview-processing");
+      previewUrl = URL.createObjectURL(file);
+
+      const thumb = document.createElement("img");
+      thumb.className = "support-photo-thumb";
+      thumb.src = previewUrl;
+      thumb.alt = "Attached photo preview";
+      thumb.decoding = "async";
+
+      const meta = document.createElement("div");
+      meta.className = "support-photo-preview-meta";
+
+      const title = document.createElement("span");
+      title.className = "support-photo-preview-title";
+      title.textContent = "Attaching photo";
+
+      const dots = document.createElement("span");
+      dots.className = "support-photo-attaching-dots";
+      dots.setAttribute("aria-hidden", "true");
+      dots.textContent = "...";
+      title.appendChild(dots);
+
+      const size = document.createElement("span");
+      size.className = "support-photo-preview-size";
+      size.textContent = formatBytes(file.size);
+
+      meta.appendChild(title);
+      if (size.textContent) {
+        meta.appendChild(size);
+      }
+
+      preview.appendChild(thumb);
+      preview.appendChild(meta);
+      preview.hidden = false;
+      button.classList.add("support-photo-button-attached");
+      button.classList.add("support-photo-button-loading");
+
+      try {
+        preview.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      } catch (_error) {
+        return;
+      }
     }
 
     function renderPreview(file, image) {
       clearPreviewUrl();
       preview.innerHTML = "";
+      preview.classList.remove("support-photo-preview-processing");
       previewUrl = URL.createObjectURL(file);
 
       const thumb = document.createElement("img");
@@ -381,19 +459,27 @@
       preview.appendChild(remove);
       preview.hidden = false;
       button.classList.add("support-photo-button-attached");
+      button.classList.remove("support-photo-button-loading");
     }
 
     function openMenu() {
+      if (!useMobilePhotoMenu) {
+        return;
+      }
       if (button.disabled) {
         return;
       }
       menu.hidden = false;
-      button.setAttribute("aria-expanded", "true");
+      if (useMobilePhotoMenu) {
+        button.setAttribute("aria-expanded", "true");
+      }
     }
 
     function closeMenu() {
       menu.hidden = true;
-      button.setAttribute("aria-expanded", "false");
+      if (useMobilePhotoMenu) {
+        button.setAttribute("aria-expanded", "false");
+      }
     }
 
     function toggleMenu() {
@@ -404,32 +490,50 @@
       closeMenu();
     }
 
-    function processSelectedFile(file, sourceInput) {
+    async function processSelectedFile(file, sourceInput) {
       if (!file) {
         return;
       }
 
+      const token = photoSelectionToken + 1;
+      photoSelectionToken = token;
+      currentImage = null;
+      closeMenu();
       clearError(error.parentNode || form);
+      cameraInput.value = "";
+      libraryInput.value = "";
+      renderAttachingPreview(file);
       button.disabled = true;
-      button.classList.add("support-photo-button-loading");
 
-      processPhoto(file).then(function (image) {
+      try {
+        await nextPaint();
+        const image = await processPhoto(file);
+        if (token !== photoSelectionToken) {
+          return;
+        }
         currentImage = image;
         renderPreview(file, image);
         if (input && typeof input.focus === "function") {
           input.focus();
         }
-      }).catch(function (reason) {
+      } catch (reason) {
+        if (token !== photoSelectionToken) {
+          return;
+        }
         currentImage = null;
         sourceInput.value = "";
         clearPreviewUrl();
         preview.innerHTML = "";
+        preview.classList.remove("support-photo-preview-processing");
         preview.hidden = true;
         showError(error.parentNode || form, reason && reason.message ? reason.message : "Could not process this image. Please try another photo.");
-      }).finally(function () {
+      } finally {
+        if (token !== photoSelectionToken) {
+          return;
+        }
         button.disabled = false;
         button.classList.remove("support-photo-button-loading");
-      });
+      }
     }
 
     button.addEventListener("click", function (event) {
@@ -437,7 +541,12 @@
       if (button.disabled) {
         return;
       }
-      toggleMenu();
+      if (useMobilePhotoMenu) {
+        toggleMenu();
+        return;
+      }
+      closeMenu();
+      libraryInput.click();
     });
 
     takePhotoButton.addEventListener("click", function () {
@@ -451,6 +560,9 @@
     });
 
     document.addEventListener("click", function (event) {
+      if (!useMobilePhotoMenu) {
+        return;
+      }
       if (menu.hidden) {
         return;
       }
@@ -461,6 +573,9 @@
     });
 
     document.addEventListener("keydown", function (event) {
+      if (!useMobilePhotoMenu) {
+        return;
+      }
       if (event.key !== "Escape" || menu.hidden) {
         return;
       }
