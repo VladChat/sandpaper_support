@@ -253,11 +253,18 @@
     let currentImage = null;
     let previewUrl = "";
 
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif";
-    fileInput.hidden = true;
-    fileInput.setAttribute("data-support-photo-input", "");
+    const cameraInput = document.createElement("input");
+    cameraInput.type = "file";
+    cameraInput.accept = "image/*,.jpg,.jpeg,.png,.webp,.heic,.heif";
+    cameraInput.hidden = true;
+    cameraInput.setAttribute("capture", "environment");
+    cameraInput.setAttribute("data-support-photo-camera-input", "");
+
+    const libraryInput = document.createElement("input");
+    libraryInput.type = "file";
+    libraryInput.accept = "image/*,.jpg,.jpeg,.png,.webp,.heic,.heif";
+    libraryInput.hidden = true;
+    libraryInput.setAttribute("data-support-photo-library-input", "");
 
     let button = form.querySelector("[data-support-photo-button], .support-photo-button");
     if (!button) {
@@ -272,10 +279,40 @@
 
     button.setAttribute("data-support-photo-button", "");
     button.setAttribute("aria-label", "Add photo");
+    button.setAttribute("aria-haspopup", "menu");
+    button.setAttribute("aria-expanded", "false");
     button.title = "Add photo";
 
+    const pickerWrap = document.createElement("div");
+    pickerWrap.className = "support-photo-picker-wrap";
+    if (button.parentNode) {
+      button.parentNode.insertBefore(pickerWrap, button);
+      pickerWrap.appendChild(button);
+    }
+
+    const menu = document.createElement("div");
+    menu.className = "support-photo-menu";
+    menu.hidden = true;
+    menu.setAttribute("role", "menu");
+
+    const takePhotoButton = document.createElement("button");
+    takePhotoButton.type = "button";
+    takePhotoButton.className = "support-photo-menu-button";
+    takePhotoButton.setAttribute("role", "menuitem");
+    takePhotoButton.textContent = "Take Photo";
+
+    const photoLibraryButton = document.createElement("button");
+    photoLibraryButton.type = "button";
+    photoLibraryButton.className = "support-photo-menu-button";
+    photoLibraryButton.setAttribute("role", "menuitem");
+    photoLibraryButton.textContent = "Photo Library";
+
+    menu.appendChild(takePhotoButton);
+    menu.appendChild(photoLibraryButton);
+    pickerWrap.appendChild(menu);
+
     const preview = document.createElement("div");
-    preview.className = "support-photo-attachment-panel";
+    preview.className = "support-photo-preview";
     preview.hidden = true;
     preview.setAttribute("data-support-photo-preview", "");
 
@@ -294,7 +331,8 @@
 
     function clear() {
       currentImage = null;
-      fileInput.value = "";
+      cameraInput.value = "";
+      libraryInput.value = "";
       clearPreviewUrl();
       preview.innerHTML = "";
       preview.hidden = true;
@@ -302,6 +340,7 @@
       error.textContent = "";
       button.classList.remove("support-photo-button-attached");
       button.disabled = false;
+      closeMenu();
     }
 
     function renderPreview(file, image) {
@@ -344,16 +383,28 @@
       button.classList.add("support-photo-button-attached");
     }
 
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
+    function openMenu() {
       if (button.disabled) {
         return;
       }
-      fileInput.click();
-    });
+      menu.hidden = false;
+      button.setAttribute("aria-expanded", "true");
+    }
 
-    fileInput.addEventListener("change", function () {
-      const file = fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+    function closeMenu() {
+      menu.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      if (menu.hidden) {
+        openMenu();
+        return;
+      }
+      closeMenu();
+    }
+
+    function processSelectedFile(file, sourceInput) {
       if (!file) {
         return;
       }
@@ -370,7 +421,7 @@
         }
       }).catch(function (reason) {
         currentImage = null;
-        fileInput.value = "";
+        sourceInput.value = "";
         clearPreviewUrl();
         preview.innerHTML = "";
         preview.hidden = true;
@@ -379,9 +430,58 @@
         button.disabled = false;
         button.classList.remove("support-photo-button-loading");
       });
+    }
+
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (button.disabled) {
+        return;
+      }
+      toggleMenu();
     });
 
-    form.appendChild(fileInput);
+    takePhotoButton.addEventListener("click", function () {
+      closeMenu();
+      cameraInput.click();
+    });
+
+    photoLibraryButton.addEventListener("click", function () {
+      closeMenu();
+      libraryInput.click();
+    });
+
+    document.addEventListener("click", function (event) {
+      if (menu.hidden) {
+        return;
+      }
+      if (pickerWrap.contains(event.target)) {
+        return;
+      }
+      closeMenu();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || menu.hidden) {
+        return;
+      }
+      closeMenu();
+      if (input && typeof input.focus === "function") {
+        input.focus();
+      }
+    });
+
+    cameraInput.addEventListener("change", function () {
+      const file = cameraInput.files && cameraInput.files[0] ? cameraInput.files[0] : null;
+      processSelectedFile(file, cameraInput);
+    });
+
+    libraryInput.addEventListener("change", function () {
+      const file = libraryInput.files && libraryInput.files[0] ? libraryInput.files[0] : null;
+      processSelectedFile(file, libraryInput);
+    });
+
+    form.appendChild(cameraInput);
+    form.appendChild(libraryInput);
 
     const previewContainer = findPreviewContainer(form);
     if (previewContainer && form.parentNode === previewContainer) {

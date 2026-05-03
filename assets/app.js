@@ -408,7 +408,7 @@ function loadSupportAssistantAssets() {
     const link = document.createElement("link");
     link.id = stylesheetId;
     link.rel = "stylesheet";
-    link.href = "/assets/support-assistant.css?v=support-voice-vocabulary-20260430-v2";
+    link.href = "/assets/support-assistant.css?v=support-photo-mobile-picker-20260503-v1";
     document.head.appendChild(link);
   }
 
@@ -450,14 +450,18 @@ function loadSupportAssistantAssets() {
   ).then(function () {
     return loadScript(
       "equalle-support-assistant-js",
-      "/assets/support-assistant.js?v=support-voice-vocabulary-20260430-v2",
+      "/assets/support-assistant.js?v=support-photo-mobile-picker-20260503-v1",
     );
   });
 }
 
 function setupSupportToolButtons() {
   document.querySelectorAll(".support-tool-button").forEach(function (button) {
-    if (button.classList.contains("support-mic-button")) {
+    if (
+      button.classList.contains("support-mic-button") ||
+      button.classList.contains("support-photo-button") ||
+      button.matches("[data-support-photo-button]")
+    ) {
       return;
     }
     button.addEventListener("click", function () {
