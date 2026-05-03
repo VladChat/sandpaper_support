@@ -216,6 +216,7 @@ body.support-home {
   font-weight: 700;
   line-height: 1.1;
   color: #0b0c0e;
+  white-space: nowrap;
 }
 
 .support-hero-subtitle {
@@ -473,6 +474,13 @@ body.solution-page .chat-messages {
 }
 
 @media (max-width: 480px) {
+  .support-hero-title {
+    white-space: nowrap;
+    font-size: clamp(1.65rem, 7.4vw, 2.25rem);
+    letter-spacing: -0.045em;
+    line-height: 1.08;
+  }
+
   .support-home-main {
     padding: 20px 16px;
   }
@@ -492,6 +500,13 @@ body.solution-page .chat-messages {
   .support-search-button {
     width: 100%;
     margin-right: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .support-hero-title {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+    letter-spacing: -0.05em;
   }
 }
 
