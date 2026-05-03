@@ -11,8 +11,8 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
-<link rel="stylesheet" href="/assets/styles.css?v=solution-video-card-20260428">
-<link rel="stylesheet" href="/assets/support-search-bar.css?v=support-photo-unified-20260430-v2">
+<link rel="stylesheet" href="/assets/styles.css?v=footer-layout-20260503">
+<link rel="stylesheet" href="/assets/support-search-bar.css?v=input-end-visible-20260503">
 </head>
 <body class="solution-page">
 <header class="site-header">
@@ -149,8 +149,18 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <span>© eQualle Support System</span>
-    <span>Sandpaper troubleshooting, grit guidance, and product support.</span>
+    <div class="footer-left">
+      <span>&copy; <span data-current-year></span> eQualle Support</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-context">Sandpaper troubleshooting, grit guidance, and product support.</span>
+      <nav class="footer-legal-links" aria-label="Legal links">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Use</a>
+        <a href="/disclaimer/">Disclaimer</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
@@ -160,9 +170,10 @@
   window.eQualleUseUnifiedAutocomplete = true;
   window.eQualleUseAlgoliaAutocomplete = true;
 </script>
-<script src="/assets/support-search-bar.js?v=support-photo-unified-20260430-v2"></script>
+<script src="/assets/support-search-bar.js?v=input-end-visible-20260503"></script>
 <script type="module" src="/assets/support-autocomplete.js?v=support-photo-unified-20260430-v2"></script>
 <script src="/assets/app.js?v=support-photo-unified-20260430-v2"></script>
 <script src="/assets/support-auth-request-fix.js?v=support-auth-session-fix-20260430-v1"></script>
+<script src="/assets/footer-year.js?v=footer-layout-20260503"></script>
 </body>
 </html>
