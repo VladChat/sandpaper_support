@@ -66,6 +66,11 @@ function solutionExists(id) {
   return cleanId && exists(solutionPath(cleanId));
 }
 
+function isConcreteSolutionAnswerUrl(targetUrl) {
+  const target = String(targetUrl || "").trim();
+  return /^\/solutions\/[^/]+\/?$/.test(target) && target !== "/solutions/";
+}
+
 function pageUrlToLocalPath(rawUrl) {
   let url = String(rawUrl || "").split("#")[0].split("?")[0].trim();
 
@@ -221,6 +226,52 @@ function validateSearchIndex(errors) {
     const localPath = pageUrlToLocalPath(targetUrl);
     if (localPath && !exists(localPath)) {
       errors.push("search-index target_url points to missing page: " + targetUrl + " expected " + localPath);
+    }
+
+    const resultKind = String(item.result_kind || "").trim();
+    if (resultKind === "answer") {
+      if (!isConcreteSolutionAnswerUrl(targetUrl)) {
+        errors.push("search-index[" + idx + "] invalid answer target_url: " + targetUrl);
+        return;
+      }
+      const solutionId = normalizeSolutionId(targetUrl);
+      if (!solutionExists(solutionId)) {
+        errors.push("search-index[" + idx + "] answer target_url missing solution page: " + targetUrl);
+      }
+    }
+  });
+}
+
+function validateSearchSuggestions(errors) {
+  const suggestions = readJson("data/search-suggestions.json");
+
+  if (!Array.isArray(suggestions)) {
+    errors.push("data/search-suggestions.json must be an array.");
+    return;
+  }
+
+  suggestions.forEach((item, idx) => {
+    if (!item || typeof item !== "object") {
+      errors.push("search-suggestions[" + idx + "] must be an object.");
+      return;
+    }
+
+    const targetUrl = String(item.target_url || "").trim();
+    if (!targetUrl) {
+      errors.push("search-suggestions[" + idx + "] missing target_url.");
+      return;
+    }
+
+    const resultKind = String(item.result_kind || "").trim();
+    if (resultKind === "answer") {
+      if (!isConcreteSolutionAnswerUrl(targetUrl)) {
+        errors.push("search-suggestions[" + idx + "] invalid answer target_url: " + targetUrl);
+        return;
+      }
+      const solutionId = normalizeSolutionId(targetUrl);
+      if (!solutionExists(solutionId)) {
+        errors.push("search-suggestions[" + idx + "] answer target_url missing solution page: " + targetUrl);
+      }
     }
   });
 }
@@ -536,6 +587,7 @@ function main() {
   validateProblemTree(errors, solutionData.cardsById);
   validateTagPages(errors, solutionData.cards);
   validateSearchIndex(errors);
+  validateSearchSuggestions(errors);
   validateSurfaceMap(errors);
   validateGritSequences(errors);
   validateBuildScript(errors);

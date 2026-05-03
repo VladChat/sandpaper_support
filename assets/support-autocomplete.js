@@ -21,6 +21,12 @@ import Fuse from "./vendor/fuse.min.mjs";
     return clean(value).toLowerCase();
   }
 
+  function isConcreteSolutionAnswer(entry) {
+    const target = clean(entry && entry.target_url);
+    const kind = clean(entry && entry.result_kind) || "answer";
+    return kind === "answer" && /^\/solutions\/[^/]+\/?$/.test(target) && target !== "/solutions/";
+  }
+
   function normalizePath(target) {
     const candidate = clean(target);
     if (!candidate) return "";
@@ -125,10 +131,16 @@ import Fuse from "./vendor/fuse.min.mjs";
     (Array.isArray(entries) ? entries : []).forEach(function (entry) {
       const target_url = clean(entry && entry.target_url);
       const description = clean(entry && entry.description);
-      const result_kind = clean(entry && entry.result_kind) || "answer";
+      const result_kind = clean(entry && entry.result_kind);
       const visibleTitle = buildVisibleTitle(entry);
 
       if (!target_url || !visibleTitle) {
+        return;
+      }
+      if (result_kind !== "answer") {
+        return;
+      }
+      if (!isConcreteSolutionAnswer(entry)) {
         return;
       }
 
@@ -143,6 +155,9 @@ import Fuse from "./vendor/fuse.min.mjs";
         description: description,
         target_url: target_url,
         result_kind: result_kind,
+        aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
+        customer_phrases: Array.isArray(entry.customer_phrases) ? entry.customer_phrases : [],
+        keywords: Array.isArray(entry.keywords) ? entry.keywords : [],
       });
     });
 
@@ -155,7 +170,13 @@ import Fuse from "./vendor/fuse.min.mjs";
       ignoreLocation: true,
       threshold: 0.35,
       minMatchCharLength: 1,
-      keys: [{ name: "visibleTitle", weight: 1 }],
+      keys: [
+        { name: "visibleTitle", weight: 0.55 },
+        { name: "description", weight: 0.2 },
+        { name: "aliases", weight: 0.1 },
+        { name: "customer_phrases", weight: 0.1 },
+        { name: "keywords", weight: 0.05 },
+      ],
     });
   }
 

@@ -154,6 +154,17 @@ function ensureNonEmptyString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function isConcreteSolutionUrl(targetUrl) {
+  const target = String(targetUrl || "").trim();
+  return /^\/solutions\/[^/]+\/?$/.test(target) && target !== "/solutions/";
+}
+
+function isInvalidAnswerEntry(entry) {
+  const kind = String((entry && entry.result_kind) || "").trim();
+  const target = String((entry && entry.target_url) || "").trim();
+  return kind === "answer" && !isConcreteSolutionUrl(target);
+}
+
 function validateCard(card, index, cardsById) {
   const errors = [];
   const label = "Card " + index + " (" + (card.id || "unknown") + ")";
@@ -401,6 +412,9 @@ function main() {
       return false;
     }
     if (solutionTargetSet.has(target)) {
+      return false;
+    }
+    if (isInvalidAnswerEntry(entry)) {
       return false;
     }
     return true;
