@@ -338,9 +338,11 @@ body.support-home .support-search-button {
   .support-followup-search-form,
   .solution-search-block .support-search-form,
   body.support-home .support-search-form {
-    border-radius: 28px;
-    flex-wrap: wrap;
-    padding: 10px;
+    border-radius: 26px;
+    display: grid;
+    grid-template-columns: 44px minmax(112px, 1fr) minmax(128px, 1.25fr);
+    gap: 6px 8px;
+    padding: 8px;
   }
 
   .support-search-input,
@@ -348,15 +350,31 @@ body.support-home .support-search-button {
   .chat-form.support-search-form .support-search-input,
   .solution-search-block .support-search-input,
   body.support-home .support-search-input {
-    flex-basis: 100%;
-    min-height: 44px;
-    padding: 0 8px;
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+    min-height: 46px;
+    padding: 0 6px;
+    width: 100%;
+  }
+
+  .support-mic-button,
+  .ask-page .chat-form.support-search-form .support-mic-button,
+  .chat-form.support-search-form .support-mic-button {
+    grid-column: 1;
+    justify-self: stretch;
+    min-width: 44px;
+    padding: 0;
+    width: 44px;
   }
 
   .support-photo-button,
   .ask-page .chat-form.support-search-form .support-photo-button,
   .chat-form.support-search-form .support-photo-button {
-    flex: 1 1 auto;
+    grid-column: 2;
+    justify-self: stretch;
+    min-width: 0;
+    padding: 0 10px;
+    width: 100%;
   }
 
   .support-search-button,
@@ -364,14 +382,44 @@ body.support-home .support-search-button {
   .chat-form.support-search-form .support-search-button,
   .solution-search-block .support-search-button,
   body.support-home .support-search-button {
-    flex: 1.4 1 auto;
+    grid-column: 3;
     height: 44px;
+    justify-self: stretch;
     margin-right: 0;
-    padding: 0 16px;
-    width: auto;
+    min-width: 0;
+    padding: 0 14px;
+    width: 100%;
   }
 
-  .support-photo-attachment-panel {
+  .support-photo-attachment-panel,
+  .support-photo-preview {
     border-radius: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .support-search-form,
+  .ask-page .chat-form.support-search-form,
+  .chat-form.support-search-form,
+  .support-followup-search-form,
+  .solution-search-block .support-search-form,
+  body.support-home .support-search-form {
+    grid-template-columns: 44px minmax(96px, 1fr) minmax(112px, 1.15fr);
+    gap: 6px;
+    padding: 7px;
+  }
+
+  .support-photo-button,
+  .ask-page .chat-form.support-search-form .support-photo-button,
+  .chat-form.support-search-form .support-photo-button {
+    padding: 0 8px;
+  }
+
+  .support-search-button,
+  .ask-page .chat-form.support-search-form .support-search-button,
+  .chat-form.support-search-form .support-search-button,
+  .solution-search-block .support-search-button,
+  body.support-home .support-search-button {
+    padding: 0 10px;
   }
 }

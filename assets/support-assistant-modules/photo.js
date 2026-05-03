@@ -513,7 +513,7 @@
         }
         currentImage = image;
         renderPreview(file, image);
-        if (input && typeof input.focus === "function") {
+        if (!useMobilePhotoMenu && input && typeof input.focus === "function") {
           input.focus();
         }
       } catch (reason) {

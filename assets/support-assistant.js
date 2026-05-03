@@ -18,7 +18,7 @@
     "voice-input.js",
     "init.js",
   ];
-  const CACHE_VERSION = "support-photo-desktop-mobile-ux-20260503-v1";
+  const CACHE_VERSION = "support-mobile-input-width-20260503-v1";
 
   const shared = window.eQualleSupportAssistantShared = window.eQualleSupportAssistantShared || {};
   const pendingInits = shared.pendingInits || [];
