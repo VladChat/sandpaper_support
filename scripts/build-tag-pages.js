@@ -202,7 +202,7 @@ function siteHead(title, description) {
     '<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">\n' +
     '<link rel="manifest" href="/icons/site.webmanifest">\n' +
     '<meta name="theme-color" content="#0B0C0E">\n' +
-    '<link rel="stylesheet" href="/assets/styles.css?v=tags-p6d"></head>';
+    '<link rel="stylesheet" href="/assets/styles.css?v=footer-layout-20260503"></head>';
 }
 
 function siteHeader() {
@@ -210,7 +210,7 @@ function siteHeader() {
 }
 
 function siteFooter() {
-  return '<footer class="footer"><div class="footer-inner"><span>© eQualle Support System</span><span>Sandpaper troubleshooting, grit guidance, and product support.</span></div></footer></body></html>';
+  return '<footer class="footer"><div class="footer-inner"><div class="footer-left"><span>&copy; <span data-current-year></span> eQualle Support</span></div><div class="footer-right"><span class="footer-context">Sandpaper troubleshooting, grit guidance, and product support.</span><nav class="footer-legal-links" aria-label="Legal links"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/contact/">Contact</a></nav></div></div></footer><script src="/assets/footer-year.js?v=footer-layout-20260503"></script></body></html>';
 }
 
 function buildTagMap(cards) {

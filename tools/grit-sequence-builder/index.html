@@ -12,7 +12,7 @@
 <link rel="manifest" href="/icons/site.webmanifest">
 <meta name="theme-color" content="#0B0C0E">
 
-  <link rel="stylesheet" href="/assets/styles.css?v=hero-width-fix-20260426">
+  <link rel="stylesheet" href="/assets/styles.css?v=footer-layout-20260503">
   <style>
     .builder-form {
       display: flex;
@@ -166,13 +166,24 @@
 </main>
 <footer class="footer">
   <div class="footer-inner">
-    <span>&copy; eQualle Support System</span>
-    <span>Sandpaper troubleshooting, grit guidance, and product support.</span>
+    <div class="footer-left">
+      <span>&copy; <span data-current-year></span> eQualle Support</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-context">Sandpaper troubleshooting, grit guidance, and product support.</span>
+      <nav class="footer-legal-links" aria-label="Legal links">
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Use</a>
+        <a href="/disclaimer/">Disclaimer</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
   </div>
 </footer>
 <script src="/assets/config.js"></script>
 <script src="/assets/supabase-client.js?v=feedback-minimal-20260426"></script>
 <script src="/assets/app.js?v=search-fix-20260426"></script>
+<script src="/assets/footer-year.js?v=footer-layout-20260503"></script>
 <script>
 (function() {
   const surfaceSelect = document.getElementById('surface-select');
