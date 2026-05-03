@@ -16,6 +16,32 @@
     return !/^(false|0|no)$/i.test(value);
   }
 
+  function keepInputEndVisible(input) {
+    if (!input) {
+      return;
+    }
+
+    window.requestAnimationFrame(function () {
+      input.scrollLeft = input.scrollWidth;
+    });
+  }
+
+  function bindInputEndVisibility(input) {
+    if (!input || input.getAttribute("data-support-end-visible-bound") === "true") {
+      return;
+    }
+
+    input.setAttribute("data-support-end-visible-bound", "true");
+
+    ["input", "change", "focus", "keyup", "mouseup", "touchend"].forEach(function (eventName) {
+      input.addEventListener(eventName, function () {
+        keepInputEndVisible(input);
+      });
+    });
+
+    keepInputEndVisible(input);
+  }
+
   function createSvg(pathData) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 24 24");
@@ -69,6 +95,8 @@
     } else {
       input.setAttribute("data-support-search", "");
     }
+
+    bindInputEndVisibility(input);
 
     return input;
   }
@@ -213,6 +241,7 @@
     processedNodes.add(form);
     form.classList.add("support-search-form", "support-followup-search-form");
     input.classList.add("support-search-input");
+    bindInputEndVisibility(input);
     submit.classList.add("support-search-button");
 
     if (!form.querySelector(".support-mic-button")) {

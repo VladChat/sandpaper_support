@@ -37,6 +37,7 @@
 .chat-form.support-search-form .support-search-input {
   background: transparent;
   border: 0;
+  direction: ltr;
   color: #0b0c0e;
   flex: 1 1 auto;
   font: inherit;
@@ -45,6 +46,7 @@
   min-width: 0;
   outline: 0;
   padding: 0 0 0 17px;
+  text-align: left;
   width: auto;
 }
 
