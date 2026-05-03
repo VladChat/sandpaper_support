@@ -429,7 +429,6 @@ body.solution-page .chat-messages {
 .support-footer {
   flex-shrink: 0;
   padding: 18px 24px;
-  text-align: center;
   font-size: 0.875rem;
   color: #6b7280;
   border-top: 1px solid #f3f4f6;
@@ -439,6 +438,28 @@ body.solution-page .chat-messages {
 .support-footer-inner {
   max-width: 1120px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-legal-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover,
+.footer-legal-links a:focus-visible {
+  text-decoration: underline;
 }
 
 @media (max-width: 860px) {
@@ -475,6 +496,16 @@ body.solution-page .chat-messages {
 }
 
 @media (max-width: 600px) {
+  .footer-inner,
+  .support-footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-legal-links {
+    gap: 10px;
+  }
+
   .result-link {
     gap: 8px;
   }
