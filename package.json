@@ -16,9 +16,10 @@
     "build:surface-pages": "node scripts/build-surface-pages.js --write",
     "build:grit-guide": "node scripts/build-grit-guide.js --write",
     "build:tag-pages": "node scripts/build-tag-pages.js --write",
+    "build:sitemap": "node scripts/build-sitemap.js",
     "prune:stale-links": "node scripts/prune-stale-internal-links.js",
     "check:links": "node scripts/check-internal-links.js",
-    "build": "npm run build:problem-pages && npm run build:solution-pages && npm run sync:solution-search && npm run build:product-pages && npm run build:surface-pages && npm run build:grit-guide && npm run build:tag-pages && npm run validate:source && npm run check:links",
+    "build": "npm run build:problem-pages && npm run build:solution-pages && npm run sync:solution-search && npm run build:product-pages && npm run build:surface-pages && npm run build:grit-guide && npm run build:tag-pages && npm run validate:source && npm run check:links && npm run build:sitemap",
     "validate:source": "node scripts/validate-source-integrity.js"
   },
   "dependencies": {
